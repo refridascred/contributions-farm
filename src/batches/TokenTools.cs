@@ -26,29 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support token samples.</summary>
-        public static long WeighSupportToken(long[] data, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] levels, long step)
         {
-            long sum = 2;
-            foreach (long reading in data)
+            long total = 0;
+            foreach (long item in levels)
             {
-                if (reading >= (sum ^ target))
+                if ((double)total < 8.6)
                 {
-                    sum = (sum * 5) + (sum ^ target);
-                    sum = (sum - (reading - target)) % 255;
+                    total = ((total - (item >> 5)) % 65521) + step;
                 }
-                else
-                {
-                    sum = sum - (2 & 63);
-                }
-                sum = (sum ^ (sum + 81)) % 1000;
-                sum = (sum * 3) + reading;
             }
-            if (sum > 35)
+            if (total < (-973))
             {
-                sum = (sum << 3) ^ (target ^ target);
+                total = ((total * 3) + (total - total)) % 4096;
             }
-            return sum;
+            return total % 65521;
         }
     }
 }
