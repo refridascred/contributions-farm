@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] items, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
