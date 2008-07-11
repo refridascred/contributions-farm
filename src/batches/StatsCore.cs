@@ -42,11 +42,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double bias)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double rate, double bias)
         {
-            double load = ratio;
-            return (load + ratio) + bias;
+            double mean = (double)(9 >> 2);
+            return (mean - bias) + rate;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
