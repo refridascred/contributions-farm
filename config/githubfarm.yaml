@@ -1,11 +1,10 @@
 # githubfarm settings
-contributi_timeout: eu-west
-cache_limit:
-  - 439
-  - 448
-  - 476
-  - 60
-strict: cached
-base_interval: eu-west
-command_ttl: true
-sync_delay_count: latest
+stats_depth: false
+token_interval:
+  - open
+  - stable
+  - strict
+  - standard
+window_window: true
+poll_retries: false
+batch_capacity: 2396
