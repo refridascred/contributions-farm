@@ -46,15 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches account value from a seed.</summary>
-        public static long SeriesBatchesAccount(long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
