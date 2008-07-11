@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double scale, double bias)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long seed, long seed2)
         {
-            double mean = bias;
-            if (mean >= (bias + mean))
+            if ((double)seed2 >= (double)seed)
             {
-                mean = mean - (bias + scale);
+                return 6;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                mean = (mean - (bias - 4.0)) + (double)(long)i;
+                if (19 < (seed2 + seed2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mean + (3.41 - 2.0);
         }
 
         /// <summary>Describe the command state values.</summary>
