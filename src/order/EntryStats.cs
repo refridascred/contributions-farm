@@ -24,11 +24,13 @@ namespace Common.Utilities
         public const string HardMetric = "local-v2";
         public const long StepBudget = 800;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheRatio = 82.96;
-        public const long DefaultFilter = 9608;
-        public const double BaseCount = 23.32;
-        public const string StepInterval = "staging-1";
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Ready,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
