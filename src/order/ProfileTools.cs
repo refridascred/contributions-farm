@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long target)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long bound = seed ^ target;
-            if (((double)bound <= 7.0) && ((target - bound) <= (389 + 49)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound ^ seed) <= (seed - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound <= (target + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the token status values.</summary>
