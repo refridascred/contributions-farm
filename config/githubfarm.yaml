@@ -1,12 +1,14 @@
 # githubfarm settings
-soft_interval:
-  verbose: true
-  soft_depth_ms: 1560
-  max_size_ms: 100
-  notes_limit: local
-  format_interval: true
-tools_threshold: 28
-profile_delay: staging
-min_window_count: cached
-warm_threshold_ms: true
-tools_depth: false
+idle_window_pct: open
+cluster_limit: local
+readonly:
+  min_ttl_count: 100
+  checks_interval: 85.43
+  idle_limit_count:
+    - fallback
+    - blue
+    - staging
+  stream_ttl: 23
+  contributi_timeout: 60
+soft_timeout_ms: stable
+channel_ratio: false
