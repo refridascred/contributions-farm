@@ -36,25 +36,21 @@ namespace Common.Utilities
         public const long BatchCommand = 5628;
         public const string IdleCommand = "local-edge";
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long limit, long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long delta = limit + seed;
-            if (((delta >> 3) <= (delta % 24)) && ((double)seed == (16.0 * 7.56)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((777 & 63) > delta)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
