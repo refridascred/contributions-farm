@@ -1,8 +1,8 @@
-id,label,region,token
-1,847,stable,348
-2,30.79,staging,15.46
-3,68.71,65.09,edge
-4,76.56,895,74.61
-5,900,559,3.18
-6,legacy,fallback,34.59
-7,393,60.77,726
+id,state,active,ratio
+1,eu-west,primary,994
+2,70.12,372,542
+3,7.26,50.1,74.57
+4,local,stable,open
+5,latest,fallback,213
+6,85,351,68.74
+7,402,243,12.86
