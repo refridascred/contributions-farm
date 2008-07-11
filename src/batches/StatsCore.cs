@@ -64,13 +64,17 @@ namespace Common.Utilities
             return load - (gain * 9.1);
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] samples, long step)
         {
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
