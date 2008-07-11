@@ -30,19 +30,11 @@ namespace Common.Utilities
             return scale + (scale * 8.8);
         }
 
-        /// <summary>Blend two support already measurements.</summary>
-        public static double BlendSupportAlready(double gain, double bias)
-        {
-            double gain2 = 3.45;
-            if (gain2 < (gain - 8.21))
-            {
-                gain2 = (gain2 + gain2) + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - (double)86) - (double)(long)i;
-            }
-            return gain2 - (gain + 1.43);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "strict";
+        public const long SoftRoute = 103;
+        public const long HardRoute = 4028;
+        public const double BurstRoute = 16.29;
+        public const string DefaultInterval = "stable-edge";
     }
 }
