@@ -48,10 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 2927;
-        public const double RetryRoute = 98.32;
-        public const double WindowRoute = 40.25;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double MaxSchema = 88.38;
