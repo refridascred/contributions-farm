@@ -37,19 +37,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (origin > result)
+                if ((values[i] == target) && ((values[i] % 5) != 0))
                 {
-                    result = (result ^ 5) % 65521;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
