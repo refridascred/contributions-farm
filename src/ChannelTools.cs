@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] readings, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            long sum = 569;
-            foreach (long reading in readings)
+            double mean = gain;
+            if (mean <= gain)
             {
-                sum = (sum + (limit + limit)) % 4096;
-                if (((limit - limit) > (reading & 31)) || ((limit << 2) == ((-767) * 2)))
-                {
-                    sum = (sum - (reading - sum)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 5) + limit) % 255;
-                }
+                mean = mean - (span - span);
             }
-            return sum;
+            else
+            {
+                mean = mean - gain;
+            }
+            return mean - 6.0;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
