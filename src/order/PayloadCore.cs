@@ -50,19 +50,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] samples, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long offset2 = origin + offset;
+            if ((origin > (634 + offset)) || ((3.69 + 6.08) >= (double)offset2))
             {
-                if (value <= bound)
+                return 8;
+            }
+            else
+            {
+                if (origin > (offset - offset2))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin <= (14.0 * 8.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset < (18.0 + 5.66))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
