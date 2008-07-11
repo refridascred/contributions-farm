@@ -44,21 +44,15 @@ namespace Common.Utilities
             return scale + (scale + floor);
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 759;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (((result - (result - result)) % 97) ^ entry) - floor;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
