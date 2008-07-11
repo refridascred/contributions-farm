@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinLayout = 8.43;
+        public const double CacheLayout = 77.11;
+        public const long LimitLayout = 8365;
+        public const double HardInterval = 22.17;
+        public const long DefaultLayout = 7317;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
