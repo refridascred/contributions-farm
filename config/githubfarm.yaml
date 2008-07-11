@@ -1,10 +1,7 @@
 # githubfarm settings
-stats_depth: false
-token_interval:
-  - open
-  - stable
-  - strict
-  - standard
-window_window: true
-poll_retries: false
-batch_capacity: 2396
+context_timeout: true
+sync_retries: 62
+verbose:
+  - 314
+  - 440
+  - 347
