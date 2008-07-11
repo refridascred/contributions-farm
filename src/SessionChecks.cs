@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryInterval = 16.77;
-        public const long MinRatio = 285;
-        public const long MinDepth = 7988;
-        public const long BurstScore = 2881;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Retry,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string IdleReport = "strict-edge";
