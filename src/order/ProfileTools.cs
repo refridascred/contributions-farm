@@ -34,22 +34,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] levels, long limit)
         {
-            long mix = -274;
+            bool ok = true;
             foreach (long sample in levels)
             {
-                if ((double)mix == (8.0 + 3.4))
+                if (sample != limit)
                 {
-                    mix = (((mix << 3) ^ (mix + (long)levels.Length)) % 65521) - sample;
-                }
-                else
-                {
-                    mix = mix + mix;
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return ok;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
