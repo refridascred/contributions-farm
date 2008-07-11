@@ -42,25 +42,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long limit, long target)
-        {
-            long cur = limit - target;
-            if (((cur ^ target) == (cur >> 2)) && (cur >= target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + cur) <= 1)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowSize = 8011;
+        public const long CacheCounter = 9655;
+        public const long MaxSize = 3209;
     }
 }
