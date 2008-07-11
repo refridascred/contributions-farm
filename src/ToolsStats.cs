@@ -33,10 +33,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryLevel = 3782;
-        public const string IdleQueue = "staging-1";
-        public const long MaxRatio = 4329;
+        /// <summary>Adjust a command context reading.</summary>
+        public static double AdjustCommandContext(double scale, double offset)
+        {
+            double gain = offset;
+            if (gain <= offset)
+            {
+                gain = (gain - (double)90) + scale;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long ClassifyGithubfarm(long origin, long step)
