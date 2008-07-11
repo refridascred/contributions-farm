@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long seed, long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long step2 = seed + step;
-            if (0.2 <= (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step < step2) || ((double)step > (3.99 / 3.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Active,
+            Done,
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Roll a command counter forward.</summary>
