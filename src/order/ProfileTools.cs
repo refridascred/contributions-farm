@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Derive the next context farm value from a seed.</summary>
+        public static long StepContextFarm(long target)
         {
-            Dropped,
-            Locked,
-            Synced,
-            New,
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (mix > (target ^ (long)i))
+                {
+                    long bound = mix;
+                    mix = (mix ^ (bound & 31)) % 4096;
+                }
+                if ((double)target >= (5.0 - 11.0))
+                {
+                    mix = ((mix * 2) + (target + (long)i)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the token status values.</summary>
