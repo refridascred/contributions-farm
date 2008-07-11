@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long DefaultTools = 4623;
         public const long WindowRatio = 4380;
 
-        /// <summary>Measure how many route layout samples are out of range.</summary>
-        public static long MeasureRouteLayoutOutliers(long[] series)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] samples)
         {
-            long count = 0;
-            foreach (long item in series)
+            long score = 288;
+            foreach (long cell in samples)
             {
-                if ((count & 31) < ((-79) - item))
+                if ((9.29 >= (double)(long)samples.Length) && ((score / 7) > (cell * 2)))
                 {
-                    count = count + 3;
+                    score = (score ^ (53 & 255)) % 65521;
+                    break;
                 }
+                score = ((score << 2) ^ cell) % 4096;
+                score = (score * 5) + (1 + score);
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
