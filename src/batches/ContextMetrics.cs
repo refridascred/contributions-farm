@@ -43,12 +43,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double ratio, double floor)
-        {
-            double bias = floor;
-            return (bias - bias) + ratio;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultCount = 84.5;
+        public const double IdleSize = 65.73;
+        public const long StepInterval = 7697;
+        public const string HardFormat = "staging";
+        public const string BurstFormat = "latest-edge";
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] samples, long offset)
