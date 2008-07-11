@@ -1,17 +1,11 @@
 # support settings
-enabled: false
-dry_run:
-  - 59
-  - 134
-strict:
-  min_interval: edge
-  verbose: 7557
-  poll_limit_count:
-    - primary
-    - local
-    - edge
-  audit: true
-  batch_size: open
-  checks_ttl:
-    - legacy
-    - standard
+compress:
+  - 62
+  - 239
+  - 241
+  - 418
+flush_threshold: 60
+idle_window_count: latest
+readonly: true
+retry_delay_ms: 20
+schema_capacity: true
