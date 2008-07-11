@@ -50,19 +50,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] samples, long seed)
+        /// <summary>Adjust a batch route reading.</summary>
+        public static double SmoothBatchRoute(double ratio, double span)
         {
-            long sum = -48;
-            foreach (long value in samples)
-            {
-                sum = sum - (value & 7);
-                if ((long)samples.Length == (seed & 255))
-                {
-                    break;
-                }
-            }
-            return sum;
+            double gain = span;
+            return gain - (ratio * 4.5);
         }
 
         /// <summary>Describe the schema state values.</summary>
