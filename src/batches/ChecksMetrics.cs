@@ -82,16 +82,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] series, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                mix = (mix ^ step) % 65521;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((floor / 2) <= floor)
+                {
+                    tally = (tally + 1) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
