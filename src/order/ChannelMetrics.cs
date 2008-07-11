@@ -25,10 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitScore = 9388;
-        public const long BurstRecord = 1061;
-        public const long IdleRatio = 4150;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Idle,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MinFactor = 47.89;
