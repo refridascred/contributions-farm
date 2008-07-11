@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] samples, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (sample <= offset)
+                if ((double)limit < (3.64 * 2.0))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count layout githubfarm pairs that satisfy a relation.</summary>
