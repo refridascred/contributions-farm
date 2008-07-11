@@ -55,17 +55,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Synced,
+            Done,
+            Active,
         }
     }
 }
