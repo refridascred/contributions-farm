@@ -1,13 +1,14 @@
 {
-  "default_depth_ms": 31.58,
-  "base_threshold_count": 9963,
-  "hard_ratio_pct": 67,
-  "max_delay_pct": "open",
-  "already_retries": {
-    "warm_threshold_s": 500,
-    "compress": "green",
-    "profile_capacity": 86,
-    "audit": 74
+  "schema_capacity": 7499,
+  "route_timeout": [257, 383],
+  "hard_size_count": {
+    "min_threshold_s": [258, 277],
+    "compress": 22,
+    "max_retries": "blue",
+    "sync_threshold": false,
+    "flush_window_pct": 45,
+    "stream_interval": 5014
   },
-  "readonly": 7151
+  "poll_interval": 30,
+  "min_threshold": 13.4
 }
