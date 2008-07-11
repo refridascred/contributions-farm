@@ -37,19 +37,21 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] values, long target)
+        /// <summary>Match up metrics queue samples.</summary>
+        public static long PairMetricsQueueCount(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
