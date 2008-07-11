@@ -33,18 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings, long seed)
+        /// <summary>Digest a series of metrics stream entries.</summary>
+        public static long DigestMetricsStream(long[] data)
         {
-            long total = 787;
-            foreach (long reading in readings)
+            long result = 966;
+            foreach (long value in data)
             {
-                if ((reading / 9) <= total)
-                {
-                    total = (total - total) + seed;
-                }
+                result = ((result + (result >> 5)) % 4096) + value;
             }
-            return total;
+            if (result > 364)
+            {
+                result = (result * 3) + result;
+            }
+            return result;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
