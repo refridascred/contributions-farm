@@ -32,39 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long origin, long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            long cur = origin ^ target;
-            if (((double)origin <= (1.3 / 5.0)) && ((target << 2) < (target % 10)))
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 5) > (1 % 60))
+                for (int i3 = 0; i3 < 4; i3++)
                 {
-                    return 6;
+                    mark = ((mark - ((long)i + origin)) % 97) ^ (long)i3;
                 }
-                else
-                {
-                    if (578 < (origin + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((222 >> 3) < cur)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
+            return mark;
         }
     }
 }
