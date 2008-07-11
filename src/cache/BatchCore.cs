@@ -43,11 +43,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 84.95;
-        public const long LimitCommits = 5370;
-        public const long HardCommits = 8159;
-        public const string WindowFactor = "latest";
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long limit)
