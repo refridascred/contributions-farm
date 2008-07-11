@@ -23,19 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] items, long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long seed, long limit)
         {
-            bool flag = true;
-            foreach (long item in items)
+            if ((87 + seed) >= (seed << 1))
             {
-                if (item < step)
+                return 1;
+            }
+            else
+            {
+                if ((limit - seed) < (limit + seed))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Accumulate format samples.</summary>
