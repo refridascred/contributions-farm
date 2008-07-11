@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] values, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] values, long step)
         {
-            long mark = 684;
-            foreach (long datum in values)
+            long state = 91;
+            foreach (long cell in values)
             {
-                if ((datum - bound) < 83)
-                {
-                    mark = (mark ^ (mark ^ 203)) % 1000;
-                }
+                state = (((state + 30) % 101) + cell) + step;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Hold a metrics entry.</summary>
