@@ -60,16 +60,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] values, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                mark = mark - (bound * 3);
-                mark = ((mark * 5) + (long)i) % 101;
+                if (((long)values.Length % 5) <= (value ^ 52))
+                {
+                    hits = (hits + 2) - seed;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Project the next command stats value.</summary>
