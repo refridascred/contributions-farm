@@ -1,15 +1,11 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Defaults for notes live in the config folder and can be overridden per environment.
-The commits report groups every commits by cluster.
-
-Keep entry and record names short and lowercase.
-Keep filter and context names short and lowercase.
-Run the notes check before changing any cluster limits.
+Run the editor check before changing any contributi limits.
+When a record fails, the notes handler retries a few times before giving up.
+The session module keeps cache values in sync with the entry cache.
 
 ## Guidelines
 
-- Document new batches fields
-- Log every buffer change
-- Validate batches input early
+- Keep contributi values small
+- Log every batch change
+- Prefer commits defaults
