@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long bound, long floor)
+        /// <summary>Blend two window editor measurements.</summary>
+        public static double ScaleWindowEditor(double rate, double floor)
         {
-            long span = bound ^ floor;
-            if (floor > (span + bound))
+            double load = 4.0 - (floor / 5.0);
+            if (load <= rate)
             {
-                return 2;
+                load = load + rate;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (floor >= (span / 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)span != (5.0 * 8.14))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor >= (bound / 2)) || ((floor / 5) >= floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                load = (load - (double)609) - (double)(long)i;
             }
+            return load - (load - 20.0);
         }
 
         /// <summary>Hold a cluster options.</summary>
