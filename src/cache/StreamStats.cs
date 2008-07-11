@@ -43,19 +43,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long step)
+        /// <summary>Find the first report buffer entry that matches the target.</summary>
+        public static long FindReportBufferIndex(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != step)
+                if (series[i] <= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
