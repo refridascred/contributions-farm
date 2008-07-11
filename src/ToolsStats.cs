@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long score = 8;
-            foreach (long entry in items)
-            {
-                if (score >= (score - score))
-                {
-                    score = score ^ entry;
-                }
-            }
-            return score % 65521;
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
