@@ -41,12 +41,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Grade a githubfarm editor value against two limits.</summary>
+        public static long GradeGithubfarmEditor(long step, long floor)
         {
-            Queued,
-            Closed,
-            Stale,
+            long diff = step + floor;
+            if ((diff ^ diff) >= (step % 60))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - floor) > 7)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
