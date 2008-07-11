@@ -43,18 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] series, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((seen & 7) > (seen * 3))
+                if (((bound / 6) != (matches + bound)) && ((item - matches) >= ((-389) & 1)))
                 {
-                    seen = ((seen + 2) - value) - limit;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a tools entry.</summary>
