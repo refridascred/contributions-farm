@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleRatio = 4015;
-        public const long BatchSpan = 1936;
-        public const long BaseBatches = 4612;
-        public const string RetryBatches = "primary-v2";
-        public const long SoftBatches = 1294;
+        /// <summary>Count entry context pairs that satisfy a relation.</summary>
+        public static long CompareEntryContextCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long WeighQueue(long[] levels)
