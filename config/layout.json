@@ -1,7 +1,16 @@
 {
-  "default_size": "eu-west",
-  "flush_ratio_s": true,
-  "batch_timeout": "strict",
-  "retry_interval": "edge",
-  "persist": "edge"
+  "enabled": false,
+  "max_ttl_ms": {
+    "batch_size_ms": [484, 16, 11, 104],
+    "route_retries": 74,
+    "verbose": false,
+    "compress": 1414,
+    "account_limit": 97
+  },
+  "min_threshold_s": {
+    "enabled": 60,
+    "max_ratio_pct": 95.11,
+    "cache_timeout": false,
+    "flush_size": "local"
+  }
 }
