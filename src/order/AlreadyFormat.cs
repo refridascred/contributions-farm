@@ -26,13 +26,21 @@ namespace Common.Utilities
         public const long LimitScore = 6523;
         public const double DefaultGraph = 41.47;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Match up cache window samples.</summary>
+        public static long MatchCacheWindowCount(long[] data)
         {
-            Draft,
-            New,
-            Ready,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
