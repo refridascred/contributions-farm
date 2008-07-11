@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const long HardEditor = 2824;
         public const double HardCount = 74.77;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultSpan = 282;
-        public const long BaseCount = 1194;
-        public const long IdleFarm = 404;
-        public const long StepFarm = 1974;
-        public const string MaxScore = "strict-v2";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
