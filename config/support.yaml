@@ -1,6 +1,5 @@
 # support settings
-stats_window: primary
-soft_size: latest
-notes_delay: 56.93
-cluster_retries: 5453
-batch_capacity: cached
+persist: local
+retry_timeout_ms: stable
+base_delay: cached
+dry_run: eu-west
