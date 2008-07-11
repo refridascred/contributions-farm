@@ -43,18 +43,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel account samples are out of range.</summary>
-        public static long AuditChannelAccountMatches(long[] series, long step)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally - (-56)) < (4 ^ cell))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Blend two tools measurements.</summary>
