@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstPayload = 63.35;
+        public const double HardPayload = 59.96;
+        public const long BasePayload = 1086;
+        public const double WindowPayload = 23.58;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheInterval = "strict-1";
