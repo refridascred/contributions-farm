@@ -41,12 +41,13 @@ namespace Common.Utilities
         public const long BatchCommand = 5628;
         public const string IdleCommand = "local-edge";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 5644;
-        public const long DefaultRatio = 8913;
-        public const long DefaultContext = 7946;
-        public const long RetryInterval = 2680;
-        public const long CacheSpan = 462;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Done,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmLimits(long[] levels, long floor)
