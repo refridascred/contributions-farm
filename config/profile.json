@@ -1,11 +1,5 @@
 {
-  "warm_depth_pct": {
-    "stream_timeout": 55,
-    "compress": "cached",
-    "retry_capacity_count": 88.95,
-    "context_window": 6827
-  },
-  "queue_interval": "staging",
-  "hard_ratio_count": ["stable", "latest", "blue"],
-  "buffer_capacity": "primary"
+  "max_limit_pct": 60,
+  "format_timeout": true,
+  "idle_depth_s": ["local", "stable", "edge"]
 }
