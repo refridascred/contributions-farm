@@ -20,25 +20,16 @@ namespace Common.Utilities
             return mean - 6.0;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long seed, long seed2)
+        /// <summary>Derive the next editor context value from a seed.</summary>
+        public static long SeriesEditorContext(long target)
         {
-            long span = seed ^ seed2;
-            if ((seed2 ^ seed2) != (seed / 8))
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                mix = mix - (target * 2);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((9 - span) < (seed2 - span)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
