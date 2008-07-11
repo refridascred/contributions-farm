@@ -46,10 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepDepth = 9666;
-        public const long WindowContributi = 7997;
-        public const long WindowScore = 1899;
+        /// <summary>Derive the next batches account value from a seed.</summary>
+        public static long SeriesBatchesAccount(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinGithubfarm = 8208;
