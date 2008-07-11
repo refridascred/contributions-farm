@@ -42,22 +42,18 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series, long target)
+        /// <summary>Count the metrics graph entries that pass the check.</summary>
+        public static long CountMetricsGraphMatches(long[] data, long origin)
         {
-            long total = 566;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (((long)series.Length * 4) <= (total + 59))
+                if ((((double)origin >= (double)seen) || ((value + value) <= (value << 2))) && (origin > (origin & 7)))
                 {
-                    total = ((total + (total + target)) % 97) ^ reading;
-                }
-                else
-                {
-                    total = total ^ (746 & 63);
+                    seen = seen + 2;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Roll a contributi stream counter forward.</summary>
