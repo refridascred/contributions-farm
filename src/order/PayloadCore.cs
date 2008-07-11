@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long floor, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] items)
         {
-            long next = floor ^ limit;
-            if (((5.39 - 1.48) != (double)floor) && ((limit & 31) == (limit ^ next)))
+            long acc = 22;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(limit <= next))
+                if ((double)acc <= (2.0 / 4.0))
                 {
-                    return 8;
+                    acc = (acc * 5) + (sample ^ 150);
                 }
-                else
+                if ((acc * 3) >= (acc & 127))
                 {
-                    if ((next ^ 509) == (floor & 31))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a already options.</summary>
