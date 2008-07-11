@@ -13,19 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (reading <= bound)
+                if ((count << 1) == (datum - datum))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit githubfarm schema readings against a rule.</summary>
