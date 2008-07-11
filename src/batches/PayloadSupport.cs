@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] series, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!((limit + 128) >= seen))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a commits layout reading by value.</summary>
