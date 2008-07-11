@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate record metric samples.</summary>
-        public static long ScoreRecordMetric(long[] levels)
+        /// <summary>Match up editor queue samples.</summary>
+        public static long MatchEditorQueueCount(long[] data)
         {
-            long state = 8;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state - datum) < (state + state))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state ^ state;
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Digest a series of format entries.</summary>
