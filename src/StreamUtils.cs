@@ -29,25 +29,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long bound, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings, long seed)
         {
-            long delta = bound - offset;
-            if ((delta & 7) != (delta - delta))
+            long total = 787;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-19) - 5) >= (bound % 60))
+                if ((reading / 9) <= total)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    total = (total - total) + seed;
                 }
             }
+            return total;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
