@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const string BaseTimeout = "standard-1";
         public const string BatchAlready = "alpha-1";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] items)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((39 ^ 36) > (tally + value))
+                if (!((12.0 + 8.0) == (double)count))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
