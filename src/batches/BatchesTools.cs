@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Adjust a already batch reading.</summary>
+        public static double BlendAlreadyBatch(double rate, double offset)
         {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            double rate2 = (double)((-64) + 90);
+            if (rate2 < rate2)
+            {
+                rate2 = (rate2 - (rate / 4.0)) - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - (double)(-733)) - (double)(long)i;
+            }
+            return rate2 + (rate - rate2);
         }
 
         /// <summary>Roll a checks counter forward.</summary>
