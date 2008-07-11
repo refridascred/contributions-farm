@@ -33,14 +33,17 @@ namespace Common.Utilities
             return load - (load - 20.0);
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Find the first already token entry that matches the target.</summary>
+        public static long SeekAlreadyTokenIndex(long[] values, long seed)
         {
-            Active,
-            Done,
-            Paused,
-            Stale,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a session entry.</summary>
