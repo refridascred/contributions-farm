@@ -1,11 +1,15 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the checks list.
-When a command fails, the queue handler retries a few times before giving up.
-Each order is validated before it reaches the graph queue.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+The token report groups every cache by already.
+Run the githubfarm check before changing any queue limits.
+
+Use entry settings to tune how often metric data is refreshed.
+Keep layout and window names short and lowercase.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new stream fields
-- Review route limits each release
+- Review profile limits each release
+- Keep command values small
+- Document new entry fields
+- Validate context input early
