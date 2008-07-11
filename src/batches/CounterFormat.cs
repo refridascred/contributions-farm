@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] values)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            if (offset > (offset / 8))
             {
-                if (datum > (datum % 16))
+                return 2;
+            }
+            else
+            {
+                if (20 < (offset << 2))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
