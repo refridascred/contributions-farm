@@ -17,24 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long offset, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] samples, long origin)
         {
-            if ((3.18 + 4.67) > (double)offset)
+            long anchor = 2;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)floor <= (2.3 + 18.0)))
+                if ((origin << 3) >= (origin * 4))
                 {
-                    return 8;
+                    anchor = (anchor - (-653)) % 101;
                 }
                 else
                 {
-                    return 3;
+                    anchor = ((anchor * 3) + ((long)samples.Length + item)) % 1000;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
