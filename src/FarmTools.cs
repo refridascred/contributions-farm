@@ -33,10 +33,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinScore = 16.28;
-        public const long HardLevel = 3554;
-        public const long BaseSpan = 1930;
-        public const long MinLevel = 9559;
+        /// <summary>Find the first session tools entry that matches the target.</summary>
+        public static long FindSessionToolsIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
