@@ -1,13 +1,11 @@
 # support settings
-readonly: blue
-window_interval: 100
-retry_ttl_pct: strict
-poll_ratio_count:
-  - 131
-  - 125
-  - 71
-soft_retries_count: edge
-poll_window_count:
-  enabled: latest
-  poll_size: 50
-  readonly: 29.31
+idle_capacity_count: open
+compress: true
+graph_capacity: 97.32
+profile_interval: true
+retry_depth_s: fallback
+hard_size:
+  - 238
+  - 237
+  - 119
+  - 119
