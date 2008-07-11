@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseWidth = 2039;
-        public const long IdleChannel = 703;
-        public const string WindowChannel = "standard";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstTimeout = "fallback-1";
+        public const long BaseCounter = 9329;
+        public const long WindowCounter = 9192;
+        public const double BatchSpan = 39.02;
+        public const long DefaultCounter = 605;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 3758;
