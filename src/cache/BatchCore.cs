@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] samples)
         {
-            Pending,
-            Retry,
-            Failed,
-            Ready,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)count < (double)reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
