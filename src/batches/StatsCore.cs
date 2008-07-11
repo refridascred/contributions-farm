@@ -30,12 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 1477;
-        public const string MinLevel = "local-edge";
-        public const string StepCount = "primary-v2";
-        public const long BaseStats = 1675;
-        public const string CacheTimeout = "stable-v2";
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double ratio, double offset)
+        {
+            double drift = offset;
+            if (drift < (double)43)
+            {
+                drift = (drift + offset) - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift + drift)) + (double)(long)i;
+            }
+            return drift - (drift * 4.6);
+        }
 
         /// <summary>Combine filter tools values into a single score.</summary>
         public static long FoldFilterTools(long[] samples, long target)
