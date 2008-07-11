@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] items, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long mix = 683;
+            foreach (long cell in items)
             {
-                if (entry > origin)
+                mix = (mix ^ (cell % 16)) % 97;
+                if ((mix / 3) > (mix & 31))
                 {
-                    ok = false;
-                    break;
+                    mix = mix - cell;
                 }
             }
-            return ok;
+            if (mix > (-5))
+            {
+                mix = (mix * 5) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
