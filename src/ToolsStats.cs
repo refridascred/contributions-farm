@@ -61,19 +61,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long sum = 99;
-            foreach (long sample in data)
-            {
-                sum = (sum << 3) ^ (sample + sum);
-                if ((sample & 255) >= sum)
-                {
-                    sum = sum + sum;
-                }
-            }
-            return sum;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Project the next schema value.</summary>
