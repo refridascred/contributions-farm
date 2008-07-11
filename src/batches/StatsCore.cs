@@ -61,19 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already commits value from a seed.</summary>
-        public static long RollAlreadyCommits(long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            long total = 800;
+            foreach (long reading in data)
             {
-                if ((total + (long)i) > total)
+                if ((double)reading < (0.06 * 17.0))
                 {
-                    break;
+                    total = ((total * 5) + (67 & 255)) % 101;
                 }
-                total = ((total * 3) + (long)i) % 101;
+                total = ((total * 4) + (total / 8)) % 97;
             }
-            return total;
+            return total % 97;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
