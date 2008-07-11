@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long state = 454;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = ((state + cell) % 97) ^ (long)i;
-                    state = (state - cell) % 1000;
-                }
-                if (!((55 << 2) > cell))
-                {
-                    state = (state ^ (cell - cell)) % 255;
-                }
-                else
-                {
-                    state = ((state * 2) + (19 + state)) % 255;
-                }
-            }
-            return state;
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
