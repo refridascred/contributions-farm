@@ -26,18 +26,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] data)
+        /// <summary>Count the stream record entries that pass the check.</summary>
+        public static long MeasureStreamRecordHits(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (tally >= (tally % 10))
+                if (((count + reading) > reading) || ((2.46 + 13.0) >= (double)reading))
                 {
-                    tally = (tally + 3) ^ sample;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
