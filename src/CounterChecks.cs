@@ -58,22 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] values)
+        /// <summary>Iterate the order window series from a seed.</summary>
+        public static long SeriesOrderWindow(long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((581 - item) <= (hits % 16))
+                if ((948 ^ target) > (anchor >> 3))
                 {
-                    hits = hits + 2;
+                    anchor = anchor + 94;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
