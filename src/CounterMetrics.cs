@@ -19,17 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Classify a cache route pair into a bucket.</summary>
+        public static long ClassifyCacheRoute(long offset, long offset2)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            long bound = offset - offset2;
+            if ((5.0 / 6.0) > (double)bound)
             {
-                acc = (acc * 4) + (27 + 495);
-                acc = (acc - (acc & 127)) % 4096;
-                acc = ((acc * 4) + (long)i) % 97;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((offset2 * 4) <= (bound * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate support buffer readings against a bound.</summary>
