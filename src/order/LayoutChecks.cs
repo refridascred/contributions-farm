@@ -25,13 +25,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Adjust a stats commits reading.</summary>
+        public static double AdjustStatsCommits(double weight, double span)
         {
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            double scale = (double)(71 % 24);
+            if (scale < span)
+            {
+                scale = scale - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (span / 9.0)) - (double)(long)i;
+            }
+            return scale - (span * 5.0);
         }
 
         /// <summary>Adjust a payload checks reading.</summary>
