@@ -57,17 +57,19 @@ namespace Common.Utilities
         public const double BurstFactor = 80.1;
         public const double WindowRatio = 10.3;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((data[i] == seed) && ((data[i] % 5) == 0))
+                if (entry < floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
