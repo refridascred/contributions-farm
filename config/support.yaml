@@ -1,10 +1,8 @@
 # support settings
-warm_capacity_s: local
-burst_interval_pct: true
-batches_delay:
-  min_threshold:
-    - edge
-    - staging
-    - latest
-  verbose: 65.78
-  poll_ttl: true
+persist: true
+max_window_ms: 48.67
+sync_ttl_count: 28.21
+hard_retries: 92.13
+enabled:
+  - eu-west
+  - fallback
