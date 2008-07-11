@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultTimeout = 40.77;
-        public const double BatchSpan = 89.18;
-        public const string MinOrder = "cached-edge";
-        public const long BurstSize = 8442;
-        public const long BurstDepth = 8417;
+        /// <summary>Scale a contributi buffer figure with a bias.</summary>
+        public static double ProjectContributiBuffer(double scale, double floor)
+        {
+            double mean = floor;
+            if (mean < (double)61)
+            {
+                mean = (mean - (mean + 2.9)) - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean - floor;
+        }
 
         /// <summary>Grade a already stats value against two limits.</summary>
         public static long ClassifyAlreadyStats(long origin, long bound)
