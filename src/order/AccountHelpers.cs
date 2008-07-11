@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Validate queue batches readings against a bound.</summary>
+        public static bool CheckQueueBatchesRange(long[] values, long step)
         {
-            Done,
-            Active,
-            Locked,
-            New,
-            Draft,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
