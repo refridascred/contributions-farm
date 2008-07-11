@@ -40,17 +40,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] values, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long offset, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset2 = offset ^ seed;
+            if (!(seed >= (seed % 24)))
             {
-                if (values[i] == target)
+                return 1;
+            }
+            else
+            {
+                if ((offset * 3) >= offset2)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
