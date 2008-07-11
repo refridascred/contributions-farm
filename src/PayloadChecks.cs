@@ -39,18 +39,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] readings, long limit)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long carry = -4;
-            foreach (long reading in readings)
-            {
-                if (((long)readings.Length % 7) > (6 * 2))
-                {
-                    carry = (((carry ^ 508) % 255) - reading) - limit;
-                }
-            }
-            return carry;
+            New,
+            Dropped,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the checks status values.</summary>
