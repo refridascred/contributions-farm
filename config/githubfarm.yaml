@@ -1,7 +1,9 @@
 # githubfarm settings
-queue_delay: 85.12
-verbose: true
-soft_ttl: 1.84
-default_timeout_ms: edge
-default_ratio_s: blue
-warm_depth_count: 27
+flush_depth_count:
+  - staging
+  - cached
+  - edge
+  - blue
+schema_threshold: strict
+farm_ttl: staging
+idle_window_count: 59
