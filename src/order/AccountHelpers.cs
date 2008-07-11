@@ -68,11 +68,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Accumulate graph batch samples.</summary>
+        public static long DigestGraphBatch(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long total = 707;
+            foreach (long datum in readings)
+            {
+                if (total <= (datum & 63))
+                {
+                    total = (total - datum) % 65521;
+                }
+            }
+            if (total < 88)
+            {
+                total = (total * 3) + (568 + total);
+            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
