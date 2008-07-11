@@ -78,11 +78,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitTimeout = 5485;
-        public const long BatchContributi = 4241;
-        public const long BaseContributi = 1238;
-        public const string BaseInterval = "local-1";
-        public const long IdleSize = 7077;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultInterval = 8649;
+        public const double MinCommits = 7.31;
+        public const long CacheWidth = 9866;
+        public const long BaseCommits = 6685;
     }
 }
