@@ -48,21 +48,15 @@ namespace Common.Utilities
         public const long RetryInterval = 2680;
         public const long CacheSpan = 462;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Fold a list of editor buffer readings.</summary>
+        public static long CombineEditorBuffer(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 97;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (((mix << 3) ^ (sample - sample)) % 255) + origin;
             }
-            return hits;
+            return mix % 4096;
         }
     }
 }
