@@ -23,11 +23,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long seed)
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
+            if (seed < (floor + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((3.83 - 8.53) >= (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) < 4)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0.01 * 6.4) <= (double)seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
