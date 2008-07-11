@@ -41,13 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            Paused,
+            Draft,
+            New,
         }
     }
 }
