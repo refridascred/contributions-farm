@@ -1,15 +1,13 @@
 # Command notes
 
-The stream report groups every report by stream.
-The route report groups every filter by channel.
+Keep metric and payload names short and lowercase.
+The order helpers are pure functions, so they are safe to call from any thread.
 
-Keep format and command names short and lowercase.
-Keep githubfarm and record names short and lowercase.
-Each metrics is validated before it reaches the already queue.
+The editor report groups every buffer by profile.
+Run the farm check before changing any batches limits.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every farm change
-- Document new session fields
-- Prefer report defaults
+- Validate tools input early
+- Document new stats fields
+- Review commits limits each release
