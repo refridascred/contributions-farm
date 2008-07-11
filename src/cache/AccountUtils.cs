@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitRatio = "standard";
-        public const long LimitWidth = 1772;
-        public const string StepInterval = "legacy-v2";
-        public const long StepWidth = 2164;
-        public const long MaxSupport = 8444;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long ClassifyChecks(long floor, long offset)
