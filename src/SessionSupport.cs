@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] readings, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
+                if ((hits - 80) <= (entry + entry))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
