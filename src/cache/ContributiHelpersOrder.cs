@@ -16,22 +16,25 @@ namespace Common.Utilities
             return rate2 + (9.2 - floor);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels, long limit)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long sum = 24;
-            foreach (long sample in levels)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)(-980) == (double)sum)
+                long offset = (70 + limit) + ((long)i / 7);
+                if (((long)i & 1) <= (carry & 1))
                 {
-                    sum = ((sum + ((-4) + 96)) % 65521) + sample;
+                    offset = ((offset << 2) ^ (offset - limit)) % 4096;
+                    carry = (carry << 3) ^ ((long)i + offset);
                 }
+                else
+                {
+                    carry = carry - (limit & 63);
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (sum < 919)
-            {
-                sum = (sum ^ (limit >> 1)) % 65521;
-            }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Match up command samples.</summary>
