@@ -60,19 +60,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] series, long offset)
+        /// <summary>Measure how many context entry samples are out of range.</summary>
+        public static long MeasureContextEntryOutliers(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (reading >= offset)
+                if ((tally << 3) < ((-1) + target))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
