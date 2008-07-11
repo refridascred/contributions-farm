@@ -29,18 +29,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] samples, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (tally > (sample + sample))
-                {
-                    tally = (tally + 1) - limit;
-                }
+                sum = sum + offset;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Accumulate order metric samples.</summary>
