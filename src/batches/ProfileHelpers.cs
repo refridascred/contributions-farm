@@ -46,11 +46,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 6869;
-        public const string CacheWidth = "alpha-1";
-        public const long BaseMetrics = 6865;
-        public const double CacheMetrics = 62.93;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Audit format cluster readings against a rule.</summary>
         public static long CountFormatClusterGaps(long[] samples, long limit)
