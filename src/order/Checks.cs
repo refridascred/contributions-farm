@@ -44,21 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count buffer cache pairs that satisfy a relation.</summary>
-        public static long MatchBufferCacheCount(long[] samples)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of entry readings.</summary>
