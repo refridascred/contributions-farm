@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] items)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double weight, double span)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double bias = (weight - span) * 4.0;
+            if (bias < (double)43)
             {
-                if ((double)sample == (double)seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias - span;
             }
-            return seen;
+            return bias + bias;
         }
 
         /// <summary>Describe the checks kind values.</summary>
