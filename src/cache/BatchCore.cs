@@ -19,39 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long bound, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] values, long seed)
         {
-            long edge = bound ^ offset;
-            if ((double)bound == (3.0 / 8.0))
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((edge * 5) > bound)
+                if (sample < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((edge + edge) <= (edge / 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset >= (960 - (-976)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the checks level values.</summary>
