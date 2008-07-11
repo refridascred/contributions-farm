@@ -33,20 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data, long target)
+        /// <summary>Check that every tools order entry stays within the limit.</summary>
+        public static bool VerifyToolsOrderLimits(long[] series, long offset)
         {
-            long sum = 835;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                long span = (sum >> 3) / 4;
-                if ((span ^ span) > (target + sum))
+                if (cell != offset)
                 {
-                    span = ((span * 4) + (sample + span)) % 255;
+                    flag = false;
+                    break;
                 }
-                sum = sum ^ (long)data.Length;
             }
-            return sum;
+            return flag;
         }
     }
 }
