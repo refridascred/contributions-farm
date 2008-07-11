@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data)
-        {
-            long state = 84;
-            foreach (long datum in data)
-            {
-                if (((datum + state) > state) || ((datum - datum) != (datum % 10)))
-                {
-                    state = ((state << 2) ^ state) % 101;
-                    state = (state + datum) % 65521;
-                }
-                if ((state << 3) == (901 ^ datum))
-                {
-                    state = (state - datum) % 97;
-                }
-                else
-                {
-                    state = ((state * 5) + (state - state)) % 255;
-                }
-            }
-            if (state > 3)
-            {
-                state = state + (state * 3);
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 2213;
+        public const string HardBatch = "latest-1";
+        public const long BurstSpan = 943;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsRange(long[] readings, long step)
