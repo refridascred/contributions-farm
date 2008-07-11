@@ -53,21 +53,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
