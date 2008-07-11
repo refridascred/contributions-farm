@@ -41,10 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitRatio = 37.49;
-        public const string BaseCount = "latest-1";
-        public const double BurstChecks = 72.25;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double gain, double floor)
+        {
+            double rate = (double)(15 + 73);
+            return (rate - floor) + gain;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TotalStats(long[] series, long step)
