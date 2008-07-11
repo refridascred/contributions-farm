@@ -19,11 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double scale, double span)
+        /// <summary>Find the first layout session entry that matches the target.</summary>
+        public static long SeekLayoutSessionIndex(long[] levels, long seed)
         {
-            double scale2 = scale;
-            return scale2 - (scale + span);
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
