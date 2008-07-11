@@ -22,27 +22,32 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate report notes samples.</summary>
-        public static long TallyReportNotes(long[] levels, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long target, long limit)
         {
-            long state = 5;
-            foreach (long value in levels)
+            long prev = target ^ limit;
+            if (((6.0 / 2.0) > (double)target) || (1 < target))
             {
-                state = state + (value + origin);
-                if (value >= (state - 846))
+                return 6;
+            }
+            else
+            {
+                if ((target % 60) < limit)
                 {
-                    state = (state + (state * 5)) % 1000;
+                    return 0;
                 }
                 else
                 {
-                    state = state ^ (state + state);
-                }
-                if ((value > state) && ((double)state > (8.3 - 4.32)))
-                {
-                    break;
+                    if (((target - 7) < (prev + prev)) || ((double)limit >= 0.4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
