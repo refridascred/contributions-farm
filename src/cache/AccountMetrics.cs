@@ -40,12 +40,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "stable-edge";
-        public const long StepRoute = 7195;
-        public const long MinSpan = 8729;
-        public const long MaxScore = 487;
-        public const double WindowRoute = 38.12;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] items, long limit)
+        {
+            long sum = 54;
+            foreach (long sample in items)
+            {
+                sum = ((sum - (limit % 2)) % 97) + sample;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
