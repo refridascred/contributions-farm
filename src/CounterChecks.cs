@@ -58,19 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order window series from a seed.</summary>
-        public static long SeriesOrderWindow(long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] items, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((948 ^ target) > (anchor >> 3))
+                if (datum < step)
                 {
-                    anchor = anchor + 94;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
