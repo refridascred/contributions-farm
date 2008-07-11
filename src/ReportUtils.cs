@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 920;
-        public const double RetryLayout = 59.91;
-        public const string BatchLayout = "open-edge";
-        public const long IdleLayout = 5910;
-        public const double MaxLayout = 38.78;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double BlendFilter(double gain, double offset)
