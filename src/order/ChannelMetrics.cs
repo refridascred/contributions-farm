@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinWidth = 8722;
-        public const long StepTimeout = 5399;
-        public const long WindowScore = 1296;
-        public const long BaseScore = 8559;
-        public const long DefaultEntry = 5696;
+        /// <summary>Grade a tools report value against two limits.</summary>
+        public static long ClassifyToolsReport(long step, long seed)
+        {
+            if (((50 >> 4) <= (step & 255)) || ((4.06 - 0.9) < (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.8 / 2.0) != (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitScore = 9388;
