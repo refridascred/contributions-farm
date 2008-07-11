@@ -39,12 +39,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepReport = "standard-1";
-        public const string HardReport = "staging-v2";
-        public const long RetryInterval = 5699;
-        public const double BatchDepth = 89.31;
-        public const long WindowLevel = 3192;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double rate, double bias)
+        {
+            double scale = (double)(2 + 13);
+            if (scale < bias)
+            {
+                scale = scale - rate;
+            }
+            else
+            {
+                scale = scale - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale + rate;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
