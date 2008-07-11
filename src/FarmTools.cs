@@ -33,18 +33,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Rank record contributi input into a small class.</summary>
+        public static long GradeRecordContributi(long bound, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long slot = bound + offset;
+            if ((double)slot >= (19.0 * 4.08))
             {
-                if (19.0 >= (double)datum)
+                return 2;
+            }
+            else
+            {
+                if (((-45) + bound) != (bound * 4))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 3) < (offset + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
