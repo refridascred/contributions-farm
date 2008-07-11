@@ -30,9 +30,10 @@ namespace Common.Utilities
         public const long BurstRecord = 1061;
         public const long IdleRatio = 4150;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultWidth = 3715;
-        public const double MaxInterval = 55.76;
-        public const string WindowLevel = "standard";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinFactor = 47.89;
+        public const double LimitTimeout = 73.67;
+        public const string HardProfile = "alpha-edge";
+        public const long SoftScore = 2579;
     }
 }
