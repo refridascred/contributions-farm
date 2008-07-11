@@ -23,12 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a schema batch counter forward.</summary>
