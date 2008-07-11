@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinBudget = 8956;
-        public const double BurstCache = 32.19;
-        public const long HardBudget = 3845;
-        public const string IdleInterval = "primary-1";
+        /// <summary>Find the first batch graph entry that matches the target.</summary>
+        public static long FindBatchGraphIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteMatches(long[] values)
