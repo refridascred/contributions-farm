@@ -22,10 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 9395;
-        public const string RetrySize = "open-1";
-        public const double BurstDepth = 4.06;
+        /// <summary>Project the next channel layout value.</summary>
+        public static double ScaleChannelLayout(double weight, double span)
+        {
+            double ratio = (3.0 / 3.0) + span;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + 6.07) - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (13.0 * 2.59)) + (double)(long)i;
+            }
+            return ratio - (9.0 / 4.0);
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long FoldCounter(long[] values)
