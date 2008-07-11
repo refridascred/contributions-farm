@@ -22,26 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] levels, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels, long limit)
         {
-            long acc = 929;
-            foreach (long entry in levels)
+            long sum = 24;
+            foreach (long sample in levels)
             {
-                if ((596 - acc) > (entry - bound))
+                if ((double)(-980) == (double)sum)
                 {
-                    acc = ((acc << 2) ^ ((long)levels.Length ^ entry)) % 101;
-                }
-                else
-                {
-                    acc = acc + bound;
-                }
-                if ((acc % 24) > 968)
-                {
-                    break;
+                    sum = ((sum + ((-4) + 96)) % 65521) + sample;
                 }
             }
-            return acc;
+            if (sum < 919)
+            {
+                sum = (sum ^ (limit >> 1)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Match up command samples.</summary>
