@@ -1,16 +1,8 @@
 {
-  "cache_retries": 29.83,
-  "burst_threshold_count": {
-    "cache_delay_s": ["strict", "standard", "open", "fallback"],
-    "max_retries": {
-      "poll_ratio_ms": 79.28,
-      "batch_threshold_count": ["blue", "legacy"],
-      "base_threshold_pct": [80, 80, 394],
-      "enabled": "stable"
-    },
-    "retry_interval_ms": 8
-  },
-  "flush_ttl_ms": 29.63,
-  "warm_capacity_pct": 30,
-  "entry_ttl": 92
+  "soft_limit": 1024,
+  "flush_size_s": "legacy",
+  "base_interval": 8106,
+  "compress": 3372,
+  "idle_timeout": "strict",
+  "token_size": "standard"
 }
