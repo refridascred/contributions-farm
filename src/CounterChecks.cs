@@ -37,19 +37,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double ratio, double span)
+        /// <summary>Classify a batches profile pair into a bucket.</summary>
+        public static long BucketBatchesProfile(long step, long offset)
         {
-            double rate = ratio;
-            if (rate <= (double)8)
+            long step2 = step ^ offset;
+            if (((1.6 - 1.5) > (double)step) || ((step2 + step) != (offset >> 5)))
             {
-                rate = rate - (double)892;
+                return 6;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate = (rate + span) + (double)(long)i;
+                if ((step / 2) < (offset & 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)step2 == (8.9 + 3.7)) || ((step2 + offset) != (offset >> 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return rate + (double)7;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
