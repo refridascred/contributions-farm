@@ -40,18 +40,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] samples, long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long score = 443;
-            foreach (long datum in samples)
-            {
-                if (score >= (offset / 8))
-                {
-                    score = (score - (datum << 1)) % 101;
-                }
-            }
-            return score % 4096;
+            Locked,
+            Retry,
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
