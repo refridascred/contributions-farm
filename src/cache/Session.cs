@@ -25,22 +25,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchTimeout = "fallback";
+        public const double LimitWindow = 4.45;
+        public const long BatchWindow = 7419;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
