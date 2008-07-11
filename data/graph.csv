@@ -1,6 +1,8 @@
-id,rank,state
-1,276,50.52
-2,83.21,920
-3,43.26,staging
-4,74.79,green
-5,staging,44.64
+id,count,weight,ratio
+1,primary,15.66,600
+2,2.08,669,standard
+3,61.5,latest,19.37
+4,20.94,48.92,primary
+5,624,86.44,57
+6,950,111,edge
+7,70,675,fallback
