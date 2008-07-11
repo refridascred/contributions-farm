@@ -32,23 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            long mix = 891;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample >= (3.4 - 3.02))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = mix + (sample >> 3);
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = mix ^ (sample & 255);
             }
-            if (mix > 97)
-            {
-                mix = (mix + ((-64) + mix)) % 101;
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Hold a buffer options.</summary>
