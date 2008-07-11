@@ -26,12 +26,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long origin)
         {
-            Draft,
-            Synced,
-            Ready,
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (origin > result)
+                {
+                    result = (result ^ 5) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
