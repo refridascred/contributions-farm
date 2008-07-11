@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] values, long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long bound, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            if (!(seed < bound))
             {
-                if (cell < floor)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound > 8.2)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((6.4 >= (double)seed) || ((bound ^ seed) > (bound - 327)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many format report samples are out of range.</summary>
