@@ -1,14 +1,13 @@
 # Command notes
 
-The schema module keeps checks values in sync with the session cache.
-Each notes is validated before it reaches the filter queue.
+Keep checks and payload names short and lowercase.
+A layout that stays idle for too long is moved to the channel list.
 
-Keep stats and token names short and lowercase.
-Defaults for layout live in the config folder and can be overridden per environment.
-Keep account and contributi names short and lowercase.
+The record module keeps metric values in sync with the support cache.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate stream input early
-- Keep command values small
-- Log every commits change
+- Review layout limits each release
+- Prefer batch defaults
+- Validate filter input early
