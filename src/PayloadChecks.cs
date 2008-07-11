@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const double BatchSpan = 39.02;
         public const long DefaultCounter = 605;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] samples, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
+            long acc = 71;
+            foreach (long item in samples)
             {
-                anchor = anchor + (anchor * 5);
-                if (anchor > ((long)i / 8))
-                {
-                    anchor = (anchor - (485 - 702)) % 4096;
-                    anchor = anchor + (long)i;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                acc = (((acc * 5) + 40) % 65521) - limit;
+                acc = (acc ^ (item ^ 33)) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
