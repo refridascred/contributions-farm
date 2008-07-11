@@ -22,11 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
+            public long Label { get; set; }
             public double Offset { get; set; }
-            public long Stamp { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
