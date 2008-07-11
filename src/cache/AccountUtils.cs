@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long DefaultQueue = 5189;
         public const long HardQueue = 4160;
 
-        /// <summary>Count the schema checks entries that pass the check.</summary>
-        public static long TallySchemaChecksHits(long[] data, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((double)seed < (14.0 / 7.0))
+                if ((tally ^ origin) < (tally / 8))
                 {
-                    matches = (matches + 1) ^ cell;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
