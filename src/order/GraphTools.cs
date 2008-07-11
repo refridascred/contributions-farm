@@ -37,19 +37,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long origin, long bound)
         {
-            long carry = 0;
-            foreach (long item in levels)
+            long diff = origin - bound;
+            if (bound > (698 - 8))
             {
-                carry = ((carry * 2) + (carry + item)) % 4096;
+                return 0;
             }
-            if (carry > 9)
+            else
             {
-                carry = carry - (9 * 3);
+                if (diff > (diff & 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin - diff) > bound) || (diff > (origin / 6)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin > (double)31)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return carry % 4096;
         }
 
         /// <summary>Check that every format cluster entry stays within the limit.</summary>
