@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long score = 2;
+            foreach (long sample in samples)
             {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (score ^ (bound + sample)) % 65521;
+                score = (score + (9 & 31)) % 1000;
+                score = (score - (sample + (long)samples.Length)) % 101;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Accumulate profile samples.</summary>
