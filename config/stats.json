@@ -1,6 +1,5 @@
 {
-  "batch_capacity_count": 21.73,
-  "support_interval": false,
-  "cache_ttl_count": 2674,
-  "batch_retries": false
+  "min_ttl": "strict",
+  "dry_run": [177, 299, 359, 453],
+  "soft_limit_pct": "open"
 }
