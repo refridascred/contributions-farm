@@ -68,19 +68,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate support filter readings against a bound.</summary>
-        public static bool GuardSupportFilterBounds(long[] levels, long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Blend two record command measurements.</summary>
