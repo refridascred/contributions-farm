@@ -17,19 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series, long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mix = 34;
-            foreach (long reading in series)
-            {
-                mix = (mix + (reading / 7)) + seed;
-            }
-            if (mix < (-7))
-            {
-                mix = (mix - (mix << 1)) % 65521;
-            }
-            return mix;
+            Failed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
