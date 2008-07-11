@@ -30,12 +30,9 @@ namespace Common.Utilities
         public const long BurstRecord = 1061;
         public const long IdleRatio = 4150;
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultWidth = 3715;
+        public const double MaxInterval = 55.76;
+        public const string WindowLevel = "standard";
     }
 }
