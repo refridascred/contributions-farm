@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] readings, long target)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (sample >= (hits & 31))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a stats header.</summary>
