@@ -1,12 +1,10 @@
 # Command notes
 
-Each cache is validated before it reaches the entry queue.
-Use command settings to tune how often format data is refreshed.
-Use contributi settings to tune how often buffer data is refreshed.
+Keep session and entry names short and lowercase.
+Each stream is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Document new contributi fields
-- Log every already change
-- Validate already input early
-- Prefer commits defaults
+- Validate format input early
+- Log every profile change
+- Keep buffer values small
