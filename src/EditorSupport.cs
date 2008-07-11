@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
+            long carry = 6;
+            foreach (long cell in samples)
+            {
+                carry = (carry << 3) ^ (cell + cell);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate profile samples.</summary>
