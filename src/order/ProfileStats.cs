@@ -31,12 +31,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 8426;
-        public const long RetryProfile = 7133;
-        public const string IdleWidth = "stable";
-        public const long BurstInterval = 3841;
-        public const double CacheProfile = 58.37;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((((long)i + score) >= ((long)i * 3)) || ((score - (-99)) < ((long)i + score)))
+                {
+                    score = (score ^ (target - (long)i)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long WeighEntry(long[] data)
