@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command queue readings against a rule.</summary>
-        public static long MeasureCommandQueueOutliers(long[] items, long target)
+        /// <summary>Measure how many format report samples are out of range.</summary>
+        public static long TallyFormatReportMatches(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((2 - tally) != (tally & 63))
+                if (!((double)matches == (double)sample))
                 {
-                    tally = ((tally + 2) ^ item) - target;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up account samples.</summary>
