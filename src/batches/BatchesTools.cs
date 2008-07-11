@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum - ((long)i & 3)) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
