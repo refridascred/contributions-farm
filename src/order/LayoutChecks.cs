@@ -56,22 +56,17 @@ namespace Common.Utilities
         public const double BurstAlready = 27.23;
         public const long SoftAlready = 2888;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] levels, long seed)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((28 / 8) > (item ^ hits)) && (13.0 > (double)640))
+                if (samples[i] < floor)
                 {
-                    hits = (hits + 3) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
