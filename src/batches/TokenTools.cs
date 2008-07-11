@@ -20,19 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate report stream readings against a bound.</summary>
-        public static bool VerifyReportStreamLimits(long[] items, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Queued,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define context limits and defaults.</summary>
