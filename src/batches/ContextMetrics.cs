@@ -29,18 +29,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] items)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (count >= (item >> 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            New,
+            Failed,
+            Stale,
         }
 
         /// <summary>Digest a series of profile tools entries.</summary>
