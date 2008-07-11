@@ -58,21 +58,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 99;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix ^ 43) ^ datum;
             }
-            return matches;
+            return mix;
         }
     }
 }
