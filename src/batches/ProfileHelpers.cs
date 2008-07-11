@@ -70,13 +70,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Idle,
+            Done,
+            Queued,
         }
     }
 }
