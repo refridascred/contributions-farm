@@ -35,25 +35,13 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Classify a layout entry pair into a bucket.</summary>
-        public static long ClassifyLayoutEntry(long seed, long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long prev = seed ^ offset;
-            if (((double)offset < 11.0) || ((prev - seed) != (prev >> 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= (6.0 - 2.2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
