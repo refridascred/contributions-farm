@@ -33,9 +33,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 2.73;
-        public const long CacheCount = 4695;
-        public const long BurstLevel = 9437;
+        /// <summary>Measure how many cache cluster samples are out of range.</summary>
+        public static long MeasureCacheClusterOutliers(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally - value) > value)
+                {
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
