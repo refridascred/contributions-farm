@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long CacheWidth = 2320;
         public const long SoftCount = 7877;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] levels, long offset)
         {
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
