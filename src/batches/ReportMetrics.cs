@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 9;
+            foreach (long cell in samples)
             {
-                if (samples[i] < floor)
+                sum = ((sum << 3) ^ 56) % 97;
+                if ((sum ^ cell) < (cell << 3))
                 {
-                    return (long)i;
+                    sum = (sum - (cell * 5)) % 255;
+                }
+                if ((sum + sum) > (sum / 9))
+                {
+                    sum = sum - cell;
+                }
+                else
+                {
+                    sum = (sum - (cell / 5)) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a account entry.</summary>
