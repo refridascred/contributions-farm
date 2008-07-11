@@ -23,12 +23,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleSize = 1501;
-        public const long StepContext = 6388;
-        public const double LimitSize = 2.81;
-        public const string MinContext = "primary-v2";
-        public const long LimitBudget = 6949;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesMatches(long[] values)
