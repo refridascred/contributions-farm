@@ -51,19 +51,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] items, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] levels, long floor)
         {
             long tally = 0;
-            foreach (long entry in items)
+            foreach (long item in levels)
             {
-                if (seed <= entry)
+                if (floor > (item + tally))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
