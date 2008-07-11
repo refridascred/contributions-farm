@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long score = -722;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.58 * 8.0) < (double)score)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score * 2) + (cell & 127)) % 97;
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Combine already metrics values into a single score.</summary>
