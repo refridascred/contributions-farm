@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] values)
+        /// <summary>Adjust a filter farm reading.</summary>
+        public static double BlendFilterFarm(double rate, double span)
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!((1 + tally) < (datum / 4)) && ((double)tally >= (7.98 / 9.0)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double drift = span / 6.0;
+            return (drift + (drift / 4.0)) + rate;
         }
 
         /// <summary>Validate payload editor readings against a bound.</summary>
