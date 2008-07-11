@@ -25,14 +25,19 @@ namespace Common.Utilities
         public const string BatchRatio = "strict-1";
         public const string LimitLayout = "strict";
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double ratio, double offset)
         {
-            Stale,
-            Closed,
-            Active,
-            Idle,
-            Paused,
+            double scale = ratio + ratio;
+            if (scale > (scale / 5.0))
+            {
+                scale = (scale - (double)3) - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + ratio) - (double)(long)i;
+            }
+            return scale + (scale * 7.67);
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
