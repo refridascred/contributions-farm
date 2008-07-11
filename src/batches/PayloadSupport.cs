@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Idle,
-            Pending,
-            New,
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
