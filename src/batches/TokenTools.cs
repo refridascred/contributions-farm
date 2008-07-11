@@ -30,25 +30,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next format checks value from a seed.</summary>
-        public static long RollFormatChecks(long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                long lane = (long)i & 1;
-                lane = (lane * 3) + (mark >> 5);
-                if ((lane - lane) > (mark * 3))
-                {
-                    mark = (mark * 3) + (mark + seed);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ 2) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Active,
+            Retry,
+            Dropped,
+            Paused,
+            Queued,
         }
     }
 }
