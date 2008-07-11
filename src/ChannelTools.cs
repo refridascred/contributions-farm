@@ -12,26 +12,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double weight, double bias)
         {
-            long total = 49;
-            foreach (long reading in readings)
+            double rate = 3.12 - (weight - bias);
+            if (rate < (2.89 - weight))
             {
-                if ((reading % 100) < (reading % 64))
-                {
-                    total = ((total * 4) + (reading >> 4)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (reading + 1)) % 1000;
-                }
+                rate = rate - rate;
             }
-            if (total < 14)
-            {
-                total = total ^ (total / 9);
-            }
-            return total;
+            return rate - rate;
         }
 
         /// <summary>Hold a profile info.</summary>
