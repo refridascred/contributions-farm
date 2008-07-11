@@ -1,8 +1,5 @@
 {
-  "account_interval": 38.53,
-  "audit": 25.9,
-  "persist": false,
-  "hard_size_ms": 78.17,
-  "verbose": "open",
-  "sync_window_ms": "eu-west"
+  "strict": 2018,
+  "warm_limit": "cached",
+  "enabled": true
 }
