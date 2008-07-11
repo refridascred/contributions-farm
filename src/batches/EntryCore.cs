@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long sum = 2;
-            foreach (long cell in levels)
-            {
-                if (((0.7 - 3.5) < (double)cell) && ((7.86 + 5.07) < (double)sum))
-                {
-                    sum = (sum - (cell + cell)) % 255;
-                }
-            }
-            if (sum > (-2))
-            {
-                sum = ((sum * 2) + sum) % 1000;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many record route samples are out of range.</summary>
