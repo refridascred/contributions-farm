@@ -22,25 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long target, long floor)
+        /// <summary>Count the filter stream entries that pass the check.</summary>
+        public static long TallyFilterStreamGaps(long[] readings)
         {
-            long next = target ^ floor;
-            if (target <= floor)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor / 6) >= (floor + next)) || ((955 & 1) <= next))
+                if (((double)cell == (10.0 + 0.8)) && (((cell & 31) == (cell - cell)) && ((tally & 31) != (cell % 97))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the record already entries that pass the check.</summary>
