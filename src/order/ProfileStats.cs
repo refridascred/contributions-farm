@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long StepReport = 7355;
         public const string BatchInterval = "local-edge";
 
-        /// <summary>Combine command contributi values into a single score.</summary>
-        public static long CombineCommandContributi(long[] items, long bound)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long mark = 260;
-            foreach (long sample in items)
-            {
-                mark = (mark + (sample / 4)) + bound;
-            }
-            if (mark < 826)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark % 1000;
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
