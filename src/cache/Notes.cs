@@ -57,10 +57,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseSpan = 2.58;
-        public const long RetryQueue = 6333;
-        public const long LimitSize = 8347;
-        public const double BatchInterval = 64.86;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
