@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((count * 3) != (entry & 127)) && ((90 + count) <= (entry % 2)))
+                if (!(value < hits))
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
