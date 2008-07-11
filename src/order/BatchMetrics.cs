@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long seed)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((step & 1) > (1 - step))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    continue;
+                    carry = (((carry << 3) ^ (long)i) % 255) ^ (long)i2;
                 }
-                result = ((result * 2) + (long)i) % 1000;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Adjust a filter reading.</summary>
