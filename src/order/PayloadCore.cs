@@ -56,15 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double rate, double floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] samples, long bound)
         {
-            double rate2 = floor;
-            if (rate2 > 4.8)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                rate2 = rate2 + (rate + 4.54);
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate2 + (double)641;
+            return stale;
         }
     }
 }
