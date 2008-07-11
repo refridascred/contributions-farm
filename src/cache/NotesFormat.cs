@@ -28,15 +28,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of support window readings.</summary>
-        public static long FoldSupportWindow(long[] levels, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] data, long bound)
         {
-            long mark = -325;
-            foreach (long reading in levels)
+            long result = 10;
+            foreach (long entry in data)
             {
-                mark = ((((mark * 2) + 84) % 65521) - reading) + seed;
+                if (((bound + result) == (4 % 16)) || ((bound / 5) > (bound << 2)))
+                {
+                    result = ((result ^ (48 << 3)) % 97) + entry;
+                }
+                else
+                {
+                    result = (result << 2) ^ (69 << 1);
+                }
             }
-            return mark;
+            return result % 1000;
         }
     }
 }
