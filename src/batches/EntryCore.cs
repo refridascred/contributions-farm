@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseLevel = 9692;
-        public const long MaxRatio = 4360;
-        public const double CacheScore = 34.79;
-        public const double BatchLevel = 29.81;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((seen << 1) != (target + cell)) || (((seen >> 5) > seen) || ((double)target >= (14.0 * 4.0))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a metric route pair into a bucket.</summary>
         public static long BucketMetricRoute(long offset, long target)
