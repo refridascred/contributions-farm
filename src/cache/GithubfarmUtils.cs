@@ -59,22 +59,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] readings)
+        /// <summary>Locate a channel session reading by value.</summary>
+        public static long SeekChannelSessionIndex(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)86 < (double)item)
+                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
