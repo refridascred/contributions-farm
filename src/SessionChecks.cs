@@ -25,33 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry commits input into a small class.</summary>
-        public static long RankEntryCommits(long seed, long offset)
-        {
-            long prev = seed - offset;
-            if (!((double)offset == (6.8 * 7.8)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (88 >= (prev ^ offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed < offset) || ((seed % 64) <= (offset - offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 51.52;
+        public const string DefaultGraph = "latest-edge";
+        public const long HardGraph = 2739;
 
         /// <summary>Classify a cluster queue pair into a bucket.</summary>
         public static long RankClusterQueue(long target, long seed)
