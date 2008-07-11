@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 4750;
-        public const string LimitEditor = "staging";
-        public const long RetryScore = 5786;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (entry <= (entry >> 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long RollCluster(long target)
