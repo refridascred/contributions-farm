@@ -60,15 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command stats value.</summary>
-        public static double ProjectCommandStats(double rate, double bias)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double drift = (bias + bias) - (rate - bias);
-            if (drift < (3.0 - rate))
-            {
-                drift = drift + (double)60;
-            }
-            return drift + drift;
+            Queued,
+            Paused,
+            Dropped,
         }
     }
 }
