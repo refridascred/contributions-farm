@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const long BaseStats = 1675;
         public const string CacheTimeout = "stable-v2";
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Combine filter tools values into a single score.</summary>
+        public static long FoldFilterTools(long[] samples, long target)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long anchor = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < (double)351)
+                {
+                    anchor = anchor - (anchor + target);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Blend two payload measurements.</summary>
