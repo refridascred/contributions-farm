@@ -61,24 +61,19 @@ namespace Common.Utilities
         public const string IdleCount = "local-1";
         public const string MaxFactor = "staging-v2";
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long limit, long floor)
+        /// <summary>Check that every channel commits entry stays within the limit.</summary>
+        public static bool ValidateChannelCommitsBounds(long[] samples, long bound)
         {
-            if (((floor - floor) > limit) && ((floor - limit) <= 9))
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((219 - floor) <= (limit << 3)))
+                if (sample > bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
