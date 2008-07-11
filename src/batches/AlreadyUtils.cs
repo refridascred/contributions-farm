@@ -27,25 +27,12 @@ namespace Common.Utilities
         public const long IdleBatch = 593;
         public const double SoftBatch = 71.21;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long seed, long origin)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long bound = seed ^ origin;
-            if (((double)4 >= (double)bound) || (3.0 < (double)bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((7.0 * 2.0) <= (double)seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a checks entry.</summary>
