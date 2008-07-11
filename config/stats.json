@@ -1,6 +1,10 @@
 {
-  "readonly": "green",
-  "max_timeout_s": "fallback",
-  "cache_interval_count": 67.78,
-  "hard_interval_count": "local"
+  "poll_capacity": "blue",
+  "flush_limit_count": "legacy",
+  "commits_depth": [189, 174, 144, 278],
+  "cache_interval": {
+    "retry_delay_pct": 17.69,
+    "enabled": "open",
+    "hard_capacity_count": 61.81
+  }
 }
