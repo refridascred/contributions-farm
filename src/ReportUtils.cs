@@ -53,13 +53,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
