@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate window token readings against a bound.</summary>
-        public static bool GuardWindowTokenLimits(long[] data, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] items, long seed)
         {
             bool valid = true;
-            foreach (long item in data)
+            foreach (long entry in items)
             {
-                if (item != offset)
+                if (entry <= seed)
                 {
                     valid = false;
                     break;
