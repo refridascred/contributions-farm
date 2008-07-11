@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a notes commits reading by value.</summary>
-        public static long SeekNotesCommitsIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryFactor = 1932;
+        public const long IdleTools = 1403;
+        public const double WindowTools = 66.02;
+        public const long SoftLevel = 743;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiMatches(long[] readings)
