@@ -67,11 +67,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a commits metrics reading.</summary>
-        public static double AdjustCommitsMetrics(double gain, double offset)
+        /// <summary>Scale a session order figure with a bias.</summary>
+        public static double ProjectSessionOrder(double gain, double bias)
         {
-            double drift = (double)(580 >> 5);
-            return (drift + gain) + offset;
+            double load = bias;
+            return load - (gain * 9.1);
         }
 
         /// <summary>Look up the position of a window sample.</summary>
