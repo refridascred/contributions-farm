@@ -20,18 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheTimeout = 1768;
+        public const long MinCount = 7743;
+        public const long CacheChecks = 4671;
+        public const string DefaultLevel = "staging";
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
