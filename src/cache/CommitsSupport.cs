@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftSize = "stable-v2";
-        public const long BatchSpan = 7733;
-        public const double DefaultBudget = 12.71;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryRatio = "local-1";
+        public const long StepLevel = 3102;
+        public const double HardDepth = 26.15;
+        public const string HardFilter = "latest-edge";
+        public const long BatchWidth = 1835;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] samples, long step)
