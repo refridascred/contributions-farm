@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] series, long origin)
+        /// <summary>Digest a series of record order entries.</summary>
+        public static long TotalRecordOrder(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 51;
+            foreach (long value in samples)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (value * 2)) + bound;
             }
-            return -1;
+            if (carry > 1)
+            {
+                carry = carry - ((long)samples.Length / 8);
+            }
+            return carry;
         }
 
         /// <summary>Describe the session kind values.</summary>
