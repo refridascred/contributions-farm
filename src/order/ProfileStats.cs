@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 6302;
-        public const long CacheWidth = 2320;
-        public const long SoftCount = 7877;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items)
+        {
+            long state = -376;
+            foreach (long reading in items)
+            {
+                if ((7 + 836) > (reading ^ state))
+                {
+                    state = (state + (state + state)) % 101;
+                }
+            }
+            if (state < 16)
+            {
+                state = state + (state ^ state);
+            }
+            return state;
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
