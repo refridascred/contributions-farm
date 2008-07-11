@@ -48,13 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            long mix = 2;
+            foreach (long sample in series)
+            {
+                mix = (((mix * 4) + mix) % 97) ^ sample;
+            }
+            if (mix < 2)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
