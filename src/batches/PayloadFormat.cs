@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first batch graph entry that matches the target.</summary>
-        public static long FindBatchGraphIndex(long[] readings, long target)
+        /// <summary>Combine stream command values into a single score.</summary>
+        public static long CombineStreamCommand(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 8;
+            foreach (long value in samples)
             {
-                if (readings[i] > target)
+                if ((value < (769 - step)) && ((double)mark <= (0.1 * 1.13)))
                 {
-                    return (long)i;
+                    mark = (mark + (mark % 16)) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
