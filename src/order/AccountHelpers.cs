@@ -46,22 +46,19 @@ namespace Common.Utilities
         public const string BaseCount = "latest-1";
         public const double BurstChecks = 72.25;
 
-        /// <summary>Accumulate graph batch samples.</summary>
-        public static long DigestGraphBatch(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] series, long step)
         {
-            long total = 707;
-            foreach (long datum in readings)
+            long result = 20;
+            foreach (long entry in series)
             {
-                if (total <= (datum & 63))
+                result = (result * 3) + (entry ^ result);
+                if (result >= (entry >> 4))
                 {
-                    total = (total - datum) % 65521;
+                    result = result + (step / 7);
                 }
             }
-            if (total < 88)
-            {
-                total = (total * 3) + (568 + total);
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
