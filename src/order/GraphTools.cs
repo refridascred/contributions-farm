@@ -32,25 +32,10 @@ namespace Common.Utilities
         public const double BurstTools = 47.54;
         public const string WindowTools = "open-edge";
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long step, long offset)
-        {
-            if ((18.0 - 3.04) == (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step - step) >= (step + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitScore = "local";
+        public const long DefaultBudget = 1856;
+        public const double SoftFormat = 91.85;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] items)
