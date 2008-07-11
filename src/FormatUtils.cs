@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] readings, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long acc = 484;
+            foreach (long entry in levels)
             {
-                if (sample <= limit)
+                if ((double)1 > (double)entry)
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 5) + (entry >> 2)) % 97;
                 }
             }
-            return flag;
+            if (acc < 54)
+            {
+                acc = (acc - (acc & 31)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Find the first channel stats entry that matches the target.</summary>
