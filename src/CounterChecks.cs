@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Check that every report cluster entry stays within the limit.</summary>
+        public static bool CheckReportClusterBounds(long[] levels, long bound)
         {
-            long mark = -64;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                mark = ((mark - (mark << 2)) % 255) - reading;
+                if (reading != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
