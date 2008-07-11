@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double ratio, double floor)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double drift = ratio;
-            if (drift > floor)
-            {
-                drift = drift - (drift + drift);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + (drift * 11.0);
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the editor schema entries that pass the check.</summary>
