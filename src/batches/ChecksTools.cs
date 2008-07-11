@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next graph token value from a seed.</summary>
-        public static long SeriesGraphToken(long limit)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            long slot = origin - bound;
+            if (((slot >> 5) <= (slot ^ slot)) && (6 <= (bound << 2)))
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (((slot & 63) != (4 + slot)) || ((bound / 4) == (bound & 255)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin > bound) && (bound < (origin % 100)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((slot ^ origin) <= origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
