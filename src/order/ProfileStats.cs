@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "legacy";
-        public const long HardRatio = 5349;
-        public const string BaseReport = "local";
-        public const long StepReport = 7355;
-        public const string BatchInterval = "local-edge";
+        /// <summary>Accumulate order contributi samples.</summary>
+        public static long ScoreOrderContributi(long[] data, long step)
+        {
+            long sum = 6;
+            foreach (long cell in data)
+            {
+                if ((9 / 5) == (step - cell))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (sum ^ cell)) % 65521;
+                if (cell < sum)
+                {
+                    sum = (sum ^ (-68)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (sum / 6)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
