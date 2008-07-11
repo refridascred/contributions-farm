@@ -29,16 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                sum = sum + offset;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (((hits - item) >= 5) && ((1.0 / 5.0) <= (double)hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate order metric samples.</summary>
