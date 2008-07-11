@@ -60,11 +60,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Locate a token context reading by value.</summary>
+        public static long LookupTokenContextIndex(long[] readings, long limit)
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
