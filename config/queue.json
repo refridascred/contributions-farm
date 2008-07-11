@@ -1,6 +1,12 @@
 {
-  "token_interval": 29,
-  "order_depth": 66.72,
-  "audit": [428, 71],
-  "max_timeout": 50
+  "persist": "green",
+  "buffer_ttl": "legacy",
+  "default_interval_s": {
+    "warm_ratio_s": ["legacy", "open"],
+    "strict": 500,
+    "idle_ratio": 52.31
+  },
+  "min_retries": 100,
+  "base_timeout": 22,
+  "context_timeout": false
 }
