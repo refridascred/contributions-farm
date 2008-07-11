@@ -20,12 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            Retry,
-            Dropped,
-            Ready,
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = (acc + ((long)i * 5)) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
