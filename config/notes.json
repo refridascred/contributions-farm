@@ -1,6 +1,6 @@
 {
-  "verbose": 58.12,
-  "audit": "latest",
-  "poll_window": 98,
-  "strict": 77
+  "max_ratio": true,
+  "max_delay_ms": ["legacy", "legacy"],
+  "base_retries": "eu-west",
+  "base_ratio_ms": 7383
 }
