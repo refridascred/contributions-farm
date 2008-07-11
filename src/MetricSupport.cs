@@ -20,38 +20,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long limit, long floor)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            if ((limit >> 3) < (floor % 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((limit + floor) <= limit) || ((double)limit == (9.5 / 3.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((24 >> 1) > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit <= 15.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            New,
+            Failed,
+            Closed,
+            Synced,
         }
     }
 }
