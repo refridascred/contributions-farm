@@ -1,6 +1,6 @@
 {
-  "default_delay_pct": "open",
-  "batches_window": 45.76,
-  "burst_depth_s": 30,
-  "flush_retries": [213, 412, 402]
+  "hard_limit_pct": 6373,
+  "default_size_count": true,
+  "warm_window": 98.65,
+  "burst_limit_pct": [455, 385, 276]
 }
