@@ -19,12 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "staging";
-        public const string CacheFactor = "fallback";
-        public const long MaxFactor = 7209;
-        public const long MinContext = 4009;
-        public const long SoftContext = 2775;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long target, long bound)
+        {
+            if ((1 - bound) <= (target & 31))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target % 7) > 963)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
