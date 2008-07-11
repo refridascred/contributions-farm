@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const long MinSpan = 7198;
         public const string CacheReport = "standard-edge";
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long result = 34;
-            foreach (long reading in readings)
-            {
-                result = ((result * 2) + (reading << 1)) % 97;
-                if ((result + reading) <= reading)
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            Idle,
+            Stale,
+            Active,
+            Locked,
         }
     }
 }
