@@ -23,13 +23,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Closed,
-            New,
-            Draft,
-            Locked,
+            Stale,
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Classify a report filter pair into a bucket.</summary>
