@@ -18,18 +18,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] series, long limit)
+        public static bool GuardCounterLimits(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (sample != limit)
+                if (item < step)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Accumulate format samples.</summary>
