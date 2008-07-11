@@ -33,12 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Failed,
-            Ready,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryInterval = 5702;
+        public const long SoftInterval = 6942;
+        public const string BatchRatio = "fallback-1";
+        public const long DefaultSpan = 1389;
+        public const long BaseLayout = 8846;
     }
 }
