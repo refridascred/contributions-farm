@@ -20,22 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine farm route values into a single score.</summary>
-        public static long FoldFarmRoute(long[] levels, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            long sum = 906;
-            foreach (long sample in levels)
+            long anchor = 668;
+            foreach (long entry in levels)
             {
-                if ((((long)levels.Length % 7) == (sample + sample)) || (3 > (sample + sum)))
+                if (entry > (anchor >> 2))
                 {
-                    sum = (sum << 2) ^ (874 % 97);
+                    anchor = anchor + (anchor ^ entry);
                 }
             }
-            if (sum < 4)
+            if (anchor < (-73))
             {
-                sum = ((sum * 2) + (limit / 6)) % 101;
+                anchor = anchor ^ (-994);
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
