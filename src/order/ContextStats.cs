@@ -44,17 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] levels, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
