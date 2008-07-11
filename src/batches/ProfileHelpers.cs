@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 55;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((109 * 3) != (846 - sum))
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (925 * 5)) + reading;
                 }
             }
-            return count;
+            if (sum < 273)
+            {
+                sum = ((sum << 2) ^ (-597)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
