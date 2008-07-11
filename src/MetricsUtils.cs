@@ -40,22 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] readings, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((double)value != (double)bound)
+                if ((39 ^ 36) > (tally + value))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the graph level values.</summary>
