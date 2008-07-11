@@ -28,18 +28,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count editor buffer pairs that satisfy a relation.</summary>
-        public static long CompareEditorBufferCount(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] data, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)tally <= 2.7)
                 {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 2) ^ datum) + seed;
                 }
             }
             return tally;
