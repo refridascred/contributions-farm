@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] readings)
+        /// <summary>Find the first editor session entry that matches the target.</summary>
+        public static long SeekEditorSessionIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + 253) > (369 >> 5))
+                if (items[i] == origin)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
