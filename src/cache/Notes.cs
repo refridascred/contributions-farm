@@ -64,13 +64,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
