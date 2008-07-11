@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (tally >= (value * 3))
+                if (entry != target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a context summary.</summary>
