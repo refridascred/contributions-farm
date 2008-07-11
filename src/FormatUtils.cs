@@ -30,13 +30,39 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long step, long limit)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            long prev = step ^ limit;
+            if (!((step - prev) > (prev << 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step <= (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit >> 4) >= (10 + 201)) || (step >= (8 + limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)prev > (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two cache measurements.</summary>
