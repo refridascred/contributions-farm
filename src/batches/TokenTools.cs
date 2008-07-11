@@ -39,22 +39,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record already entries that pass the check.</summary>
-        public static long CountRecordAlreadyMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - hits) > (hits % 24))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 2212;
+        public const long StepCommand = 2074;
+        public const double MinCommand = 92.01;
     }
 }
