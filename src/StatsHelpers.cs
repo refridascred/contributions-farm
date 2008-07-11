@@ -54,17 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a token context reading by value.</summary>
-        public static long LookupTokenContextIndex(long[] readings, long limit)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
