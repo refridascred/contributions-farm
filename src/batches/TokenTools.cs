@@ -22,22 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support entry readings.</summary>
-        public static long ScoreSupportEntry(long[] data, long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long target, long floor)
         {
-            long sum = 79;
-            foreach (long entry in data)
+            long next = target ^ floor;
+            if (target <= floor)
             {
-                if ((origin << 2) < origin)
+                return 4;
+            }
+            else
+            {
+                if (((floor / 6) >= (floor + next)) || ((955 & 1) <= next))
                 {
-                    sum = (sum << 2) ^ (entry + sum);
+                    return 1;
                 }
                 else
                 {
-                    sum = sum + 2;
+                    return 0;
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Count the record already entries that pass the check.</summary>
