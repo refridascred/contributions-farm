@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long seed)
         {
-            Pending,
-            New,
-            Retry,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((9.0 + 2.0) <= (double)seed)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a profile record.</summary>
