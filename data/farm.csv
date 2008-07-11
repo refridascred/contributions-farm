@@ -1,7 +1,6 @@
-id,token,score,state
-1,fallback,91.95,524
-2,895,785,174
-3,standard,948,73.56
-4,64.61,58.67,505
-5,open,535,legacy
-6,local,legacy,605
+id,score,rank
+1,888,168
+2,75.29,cached
+3,strict,77.76
+4,999,75.17
+5,74.95,48.98
