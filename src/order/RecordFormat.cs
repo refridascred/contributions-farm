@@ -54,21 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitCount = 95.41;
+        public const double SoftGraph = 41.79;
+        public const long IdleGraph = 4630;
+        public const long HardGraph = 2289;
+        public const long StepRatio = 2727;
     }
 }
