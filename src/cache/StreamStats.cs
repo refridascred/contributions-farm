@@ -52,22 +52,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] items)
+        /// <summary>Accumulate account githubfarm samples.</summary>
+        public static long FoldAccountGithubfarm(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long state = 903;
+            foreach (long sample in values)
             {
-                if (!((12.0 + 8.06) < (double)sample))
+                if ((state + state) == (state ^ sample))
                 {
-                    matches = matches + 2;
+                    break;
+                }
+                if ((state + sample) <= sample)
+                {
+                    state = (state << 3) ^ (135 % 97);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = ((state << 2) ^ (sample ^ 420)) % 1000;
                 }
             }
-            return matches;
+            return state % 1000;
         }
     }
 }
