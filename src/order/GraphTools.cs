@@ -25,11 +25,32 @@ namespace Common.Utilities
         public const string RetryBatches = "primary-v2";
         public const long SoftBatches = 1294;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxCount = 2828;
-        public const long DefaultAccount = 442;
-        public const long BurstScore = 3877;
-        public const double BurstLevel = 98.57;
+        /// <summary>Grade a schema queue value against two limits.</summary>
+        public static long RankSchemaQueue(long offset, long target)
+        {
+            if ((target - offset) == (offset % 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target > offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((9.3 * 8.26) <= (double)target) || (offset >= (target << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
