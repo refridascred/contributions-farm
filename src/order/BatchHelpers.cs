@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i >= (mark >> 2)) && ((double)(long)i >= (double)mark))
-                {
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Stale,
+            New,
+            Closed,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
