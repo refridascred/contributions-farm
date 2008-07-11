@@ -74,12 +74,10 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 2079;
+        public const long RetrySpan = 1748;
+        public const double BaseTimeout = 71.54;
+        public const long BaseSize = 6477;
     }
 }
