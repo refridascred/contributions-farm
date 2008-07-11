@@ -55,12 +55,11 @@ namespace Common.Utilities
         public const double BatchDepth = 89.31;
         public const long WindowLevel = 3192;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Active,
-            Pending,
-            Locked,
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
