@@ -23,18 +23,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] levels)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= (11.0 - 14.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
