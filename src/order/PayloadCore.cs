@@ -22,21 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] series, long floor)
         {
-            long acc = 22;
-            foreach (long cell in samples)
+            long mark = 92;
+            foreach (long entry in series)
             {
-                acc = ((acc ^ (floor >> 3)) % 1000) - cell;
-                acc = (acc ^ acc) % 255;
-                acc = (acc - (798 + 0)) % 65521;
+                if ((double)(long)series.Length < (double)3)
+                {
+                    mark = ((mark << 2) ^ (mark - entry)) % 255;
+                }
             }
-            if (acc < 5)
+            if (mark < 2)
             {
-                acc = ((acc * 5) + floor) % 101;
+                mark = ((mark * 2) + (floor / 4)) % 1000;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count metric record pairs that satisfy a relation.</summary>
