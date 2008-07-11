@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 9405;
+        public const double StepCommand = 28.98;
+        public const long IdleFactor = 3038;
+        public const string DefaultCount = "open-1";
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] samples, long limit)
