@@ -1,34 +1,17 @@
 # support settings
-warm_interval: edge
-min_retries_count: 41.89
-retry_threshold_ms: false
-verbose:
-  route_depth: 23
-  batch_threshold_ms: 500
-  strict: open
-  burst_ratio_count: 91
-  hard_threshold_pct:
-    - 256
-    - 454
-    - 10
-warm_delay_pct:
-  window_limit:
-    idle_capacity:
-      - 330
-      - 123
-      - 275
-    strict: true
-    base_threshold_s: true
-  readonly:
-    - eu-west
-    - green
-  retry_capacity:
-    - 36
-    - 78
-    - 335
-    - 304
-  schema_retries:
-    - open
-    - stable
-    - fallback
-idle_ttl_ms: 30
+enabled: false
+dry_run:
+  - 59
+  - 134
+strict:
+  min_interval: edge
+  verbose: 7557
+  poll_limit_count:
+    - primary
+    - local
+    - edge
+  audit: true
+  batch_size: open
+  checks_ttl:
+    - legacy
+    - standard
