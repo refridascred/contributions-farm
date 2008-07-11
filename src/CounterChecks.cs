@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] series, long seed)
         {
-            Dropped,
-            Synced,
-            Locked,
-            Idle,
-            Paused,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((double)matches < (4.94 / 7.0)) || ((3.4 - 2.0) < (7.3 / 9.0)))
+                {
+                    matches = ((matches + 3) - entry) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
