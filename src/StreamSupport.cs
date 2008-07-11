@@ -23,21 +23,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Find the first layout editor entry that matches the target.</summary>
+        public static long FindLayoutEditorIndex(long[] items, long target)
         {
-            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((items[i] >= target) && ((items[i] % 3) != 0))
                 {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
