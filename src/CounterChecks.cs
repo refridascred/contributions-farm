@@ -66,18 +66,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] values)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample >> 1) != (matches - sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
