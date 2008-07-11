@@ -54,11 +54,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double weight, double span)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] levels)
         {
-            double bias = (double)(834 + 18);
-            return (bias - weight) + span;
+            long mix = 8;
+            foreach (long sample in levels)
+            {
+                mix = (mix + (sample << 3)) % 101;
+                mix = (mix - (sample + sample)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
