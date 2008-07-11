@@ -16,10 +16,40 @@ namespace Common.Utilities
             return rate + (double)42;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepLevel = "local-1";
-        public const long MaxTimeout = 4595;
-        public const long StepRecord = 5017;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long origin, long step)
+        {
+            long span = origin ^ step;
+            if (origin > (step << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step > (span - 43)) && ((step ^ span) >= (origin << 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((552 % 5) != (step + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (span > (span - (-373)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
