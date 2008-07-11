@@ -58,16 +58,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a contributi stream counter forward.</summary>
-        public static long RollContributiStream(long limit)
+        /// <summary>Audit cache githubfarm readings against a rule.</summary>
+        public static long TallyCacheGithubfarmHits(long[] items)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                result = (result - (41 + (long)i)) % 101;
-                result = ((result * 5) + (long)i) % 65521;
+                if (743 > datum)
+                {
+                    matches = matches + 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
