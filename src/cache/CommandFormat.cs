@@ -49,14 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Done,
-            Closed,
-            Paused,
-            Idle,
-            Dropped,
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
