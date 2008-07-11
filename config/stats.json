@@ -1,6 +1,5 @@
 {
-  "context_ttl": false,
-  "strict": 31.13,
-  "retry_retries": [48, 277, 19, 318],
-  "readonly": "standard"
+  "record_depth": true,
+  "audit": false,
+  "batches_timeout": [490, 471, 237, 463]
 }
