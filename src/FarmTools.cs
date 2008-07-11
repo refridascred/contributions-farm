@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] data)
         {
-            long count = 0;
-            foreach (long value in items)
+            long sum = 869;
+            foreach (long cell in data)
             {
-                if (value < (count + 970))
-                {
-                    count = count + 3;
-                }
+                sum = sum ^ (cell * 4);
             }
-            return count;
+            return sum % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
