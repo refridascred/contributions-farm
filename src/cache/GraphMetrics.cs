@@ -33,12 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 7937;
+        public const long HardScore = 2216;
+        public const double SoftCount = 82.68;
+        public const long LimitCommand = 3313;
+        public const string BurstCount = "fallback";
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountOutliers(long[] readings)
