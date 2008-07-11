@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] items)
+        /// <summary>Locate a context farm reading by value.</summary>
+        public static long LocateContextFarmIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value << 3) != (hits >> 3)) || !((559 % 97) == (value * 5)))
+                if (values[i] > offset)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
