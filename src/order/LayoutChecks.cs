@@ -48,15 +48,11 @@ namespace Common.Utilities
             return scale - (span * 5.0);
         }
 
-        /// <summary>Adjust a payload checks reading.</summary>
-        public static double ProjectPayloadChecks(double scale, double floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double rate = scale - scale;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + (double)64) + (double)(long)i) + floor;
-            }
-            return rate + (double)766;
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
