@@ -25,10 +25,13 @@ namespace Common.Utilities
         public const long IdleBatch = 593;
         public const double SoftBatch = 71.21;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 1042;
-        public const double HardAlready = 38.21;
-        public const long MaxAlready = 5645;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Pending,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepDepth = 9666;
