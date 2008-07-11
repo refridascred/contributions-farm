@@ -19,18 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi stream samples are out of range.</summary>
-        public static long TallyContributiStreamOutliers(long[] values)
+        /// <summary>Grade a entry tools value against two limits.</summary>
+        public static long RankEntryTools(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if (((offset * 5) == (13 / 6)) && ((2 + seed) == (seed + seed)))
             {
-                if (((item << 1) != (item / 2)) && ((item % 2) > seen))
+                return 2;
+            }
+            else
+            {
+                if ((seed > (seed * 3)) && (offset < (seed + offset)))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + offset) != (offset & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed - seed) >= offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
