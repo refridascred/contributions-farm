@@ -25,32 +25,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long floor, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] items)
         {
-            long edge = floor - limit;
-            if ((edge >> 4) <= edge)
+            long carry = 90;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit > (13.0 - 4.3))
+                if ((double)carry != (double)value)
                 {
-                    return 3;
+                    carry = (carry * 5) + (value * 2);
                 }
                 else
                 {
-                    if (((18.0 * 4.09) > (double)floor) && ((276 >> 2) <= floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = ((carry << 3) ^ ((long)items.Length - carry)) % 1000;
                 }
             }
+            if (carry > 12)
+            {
+                carry = ((carry << 2) ^ 8) % 97;
+            }
+            return carry;
         }
     }
 }
