@@ -33,11 +33,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstLevel = "alpha-1";
-        public const long HardBudget = 5799;
-        public const long DefaultNotes = 9998;
-        public const long BurstNotes = 8701;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((value - value) >= (87 % 3)) || (((long)values.Length + value) < (32 & 7)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of channel tools entries.</summary>
         public static long WeighChannelTools(long[] data)
