@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the payload notes series from a seed.</summary>
-        public static long RollPayloadNotes(long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix << 2) ^ step;
-                mix = ((mix << 2) ^ (long)i) % 101;
-                mix = ((mix * 4) + step) % 255;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a cache record.</summary>
