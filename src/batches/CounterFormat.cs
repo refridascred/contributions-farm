@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] items, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
