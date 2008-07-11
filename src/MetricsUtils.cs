@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] levels)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a contributi record.</summary>
