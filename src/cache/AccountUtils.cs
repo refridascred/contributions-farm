@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Classify a farm cluster pair into a bucket.</summary>
+        public static long GradeFarmCluster(long bound, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long span = bound + limit;
+            if ((7.01 / 5.0) == (double)span)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (bound >= (limit % 24))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit + limit) < (bound + bound)) || ((limit + limit) == (bound + bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
