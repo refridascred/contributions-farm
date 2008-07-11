@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const long MinContext = 4009;
         public const long SoftContext = 2775;
 
-        /// <summary>Count the farm record entries that pass the check.</summary>
-        public static long MeasureFarmRecordHits(long[] series)
+        /// <summary>Measure how many notes window samples are out of range.</summary>
+        public static long CountNotesWindowGaps(long[] values, long offset)
         {
             long hits = 0;
-            foreach (long sample in series)
+            foreach (long entry in values)
             {
-                if (((sample + sample) == ((-923) & 31)) || ((hits > sample) || (64 <= sample)))
+                if ((double)entry < (double)6)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) - offset;
                 }
             }
             return hits;
