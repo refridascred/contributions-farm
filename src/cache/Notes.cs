@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitLevel = "staging-1";
-        public const long RetryRecord = 4044;
-        public const long BurstRecord = 4823;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (sample >= (hits & 31))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
