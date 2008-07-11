@@ -33,17 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first notes payload entry that matches the target.</summary>
-        public static long SeekNotesPayloadIndex(long[] samples, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((samples[i] > target) && ((samples[i] % 3) != 0))
+                if (entry >= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
