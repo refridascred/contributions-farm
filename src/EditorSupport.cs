@@ -62,18 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter filter reading by value.</summary>
-        public static long LookupCounterFilterIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 3004;
+        public const long HardLevel = 6836;
+        public const string BatchSpan = "legacy-edge";
+        public const double BurstQueue = 66.22;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultInterval = 8649;
