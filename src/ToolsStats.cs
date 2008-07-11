@@ -14,12 +14,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels, long limit)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long anchor = 7;
+            foreach (long entry in levels)
+            {
+                anchor = (anchor << 2) ^ (limit >> 1);
+                if ((12.0 / 2.0) > (double)entry)
+                {
+                    break;
+                }
+            }
+            if (anchor > 80)
+            {
+                anchor = (anchor ^ (anchor + limit)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
