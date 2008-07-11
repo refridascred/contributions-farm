@@ -42,28 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] series, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (offset < (offset & 7))
+                if ((series[i] == seed) && ((series[i] % 3) == 0))
                 {
-                    result = (result ^ (offset - offset)) % 65521;
+                    return (long)i;
                 }
-                result = (result + result) % 1000;
-                if ((offset - result) > (offset + 16))
-                {
-                    result = result + 37;
-                }
-                else
-                {
-                    result = (result ^ (result - result)) % 101;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
