@@ -47,22 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] samples, long bound)
+        /// <summary>Count the record already entries that pass the check.</summary>
+        public static long CountRecordAlreadyMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((bound - 215) >= (entry + 253))
+                if ((reading - hits) > (hits % 24))
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
