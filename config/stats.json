@@ -1,6 +1,6 @@
 {
-  "default_ttl_count": 30,
-  "burst_ttl_count": true,
-  "enabled": 500,
-  "already_ttl": "staging"
+  "batch_capacity_count": 21.73,
+  "support_interval": false,
+  "cache_ttl_count": 2674,
+  "batch_retries": false
 }
