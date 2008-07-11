@@ -27,19 +27,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] samples, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (datum > step)
+                if ((entry + hits) >= hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
