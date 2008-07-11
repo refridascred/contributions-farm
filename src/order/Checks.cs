@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string MinContributi = "staging";
         public const long DefaultSpan = 7982;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((((13.0 * 2.91) != (double)value) || ((value / 6) <= value)) || !((91 + bound) < (value << 3)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report phase values.</summary>
