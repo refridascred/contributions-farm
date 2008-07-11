@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first editor session entry that matches the target.</summary>
-        public static long SeekEditorSessionIndex(long[] items, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 2;
+            foreach (long cell in levels)
             {
-                if (items[i] == origin)
+                if (((0.7 - 3.5) < (double)cell) && ((7.86 + 5.07) < (double)sum))
                 {
-                    return (long)i;
+                    sum = (sum - (cell + cell)) % 255;
                 }
             }
-            return -1;
+            if (sum > (-2))
+            {
+                sum = ((sum * 2) + sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many record route samples are out of range.</summary>
