@@ -1,25 +1,6 @@
 {
-  "batch_interval_pct": "standard",
-  "filter_delay": [249, 393],
-  "already_window": {
-    "context_capacity": "cached",
-    "default_threshold_s": {
-      "cache_timeout": false,
-      "flush_timeout_ms": 83,
-      "default_ttl_ms": 88,
-      "verbose": 35
-    },
-    "flush_delay_ms": "open",
-    "idle_depth_s": {
-      "cache_ttl": 1024,
-      "verbose": 3122,
-      "commits_limit": 1.15,
-      "persist": 1024,
-      "batch_threshold": false,
-      "githubfarm_depth": 953
-    }
-  },
-  "schema_ttl": "staging",
-  "soft_retries_ms": true,
-  "readonly": 100
+  "base_ratio_ms": 39,
+  "max_depth_pct": 1196,
+  "burst_window_s": 4823,
+  "notes_size": "blue"
 }
