@@ -25,21 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count editor filter pairs that satisfy a relation.</summary>
-        public static long CompareEditorFilterCount(long[] data)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
