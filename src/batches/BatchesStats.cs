@@ -11,26 +11,11 @@ namespace Common.Utilities
         public const double BatchBudget = 86.24;
         public const long CacheChecks = 5395;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long state = 57;
-            foreach (long entry in items)
-            {
-                if (((-420) - state) < (entry - entry))
-                {
-                    state = ((state * 3) + (state + 674)) % 101;
-                }
-                else
-                {
-                    state = ((state * 4) + (6 >> 4)) % 101;
-                }
-                if ((88 << 3) < state)
-                {
-                    break;
-                }
-            }
-            return state;
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Blend two schema metrics measurements.</summary>
