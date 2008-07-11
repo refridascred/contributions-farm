@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinWidth = 8367;
-        public const long MinFormat = 8798;
-        public const string StepFormat = "latest-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxTimeout = 3405;
+        public const double SoftWidth = 39.65;
+        public const long RetryScore = 5242;
+        public const long RetryDepth = 761;
+        public const long BatchOrder = 5908;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] series)
