@@ -18,38 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry tools value against two limits.</summary>
-        public static long RankEntryTools(long seed, long offset)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            if (((offset * 5) == (13 / 6)) && ((2 + seed) == (seed + seed)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed > (seed * 3)) && (offset < (seed + offset)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + offset) != (offset & 7))
+                    if ((series[i] - series[j]) < 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed - seed) >= offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a filter reading.</summary>
