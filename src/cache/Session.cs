@@ -42,22 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context command samples.</summary>
-        public static long TallyContextCommand(long[] values)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long anchor = 9;
-            foreach (long reading in values)
-            {
-                if ((anchor + reading) != (anchor ^ anchor))
-                {
-                    anchor = ((anchor * 5) + (anchor + anchor)) % 4096;
-                }
-                if ((5 >> 1) == (reading & 7))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            public bool Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a profile entry.</summary>
