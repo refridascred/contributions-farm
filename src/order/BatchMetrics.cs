@@ -50,13 +50,13 @@ namespace Common.Utilities
             return load - 10.0;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Failed,
-            Closed,
-            Idle,
-            Paused,
+            Stale,
+            Pending,
+            Active,
+            Draft,
         }
     }
 }
