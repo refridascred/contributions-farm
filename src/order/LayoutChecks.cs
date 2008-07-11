@@ -51,12 +51,12 @@ namespace Common.Utilities
             return rate + (double)766;
         }
 
-        /// <summary>Find the first profile layout entry that matches the target.</summary>
-        public static long LookupProfileLayoutIndex(long[] readings, long target)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] == target)
+                if ((data[i] < origin) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
