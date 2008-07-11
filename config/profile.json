@@ -1,8 +1,5 @@
 {
-  "editor_interval": 53,
-  "persist": 20.54,
-  "burst_ttl_pct": 2751,
-  "dry_run": 1364,
-  "idle_threshold_s": 57,
-  "default_ratio_ms": 100
+  "schema_size": "fallback",
+  "batch_timeout": 97.66,
+  "idle_delay": false
 }
