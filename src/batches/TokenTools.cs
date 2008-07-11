@@ -24,12 +24,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Accumulate support token samples.</summary>
+        public static long WeighSupportToken(long[] data, long target)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            long sum = 2;
+            foreach (long reading in data)
+            {
+                if (reading >= (sum ^ target))
+                {
+                    sum = (sum * 5) + (sum ^ target);
+                    sum = (sum - (reading - target)) % 255;
+                }
+                else
+                {
+                    sum = sum - (2 & 63);
+                }
+                sum = (sum ^ (sum + 81)) % 1000;
+                sum = (sum * 3) + reading;
+            }
+            if (sum > 35)
+            {
+                sum = (sum << 3) ^ (target ^ target);
+            }
+            return sum;
         }
     }
 }
