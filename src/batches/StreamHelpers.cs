@@ -69,19 +69,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] levels, long floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale = floor;
+            return scale + (bias + 5.0);
         }
     }
 }
