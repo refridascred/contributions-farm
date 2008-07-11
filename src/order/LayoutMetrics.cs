@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] items, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            long mark = 27;
+            foreach (long reading in items)
             {
-                state = (state + (state << 2)) % 97;
-                state = ((state * 2) + (long)i) % 4093;
+                if ((reading <= (reading ^ reading)) || ((step % 5) < (4 / 5)))
+                {
+                    mark = ((mark * 2) + (reading / 2)) % 255;
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
