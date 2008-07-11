@@ -65,18 +65,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session token entries that pass the check.</summary>
-        public static long CountSessionTokenOutliers(long[] readings)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (seen < 44)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
