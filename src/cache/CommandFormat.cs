@@ -24,38 +24,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a report filter pair into a bucket.</summary>
-        public static long BucketReportFilter(long origin, long offset)
+        /// <summary>Count the metrics account entries that pass the check.</summary>
+        public static long TallyMetricsAccountHits(long[] levels)
         {
-            if ((982 & 31) >= (origin ^ origin))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset <= (offset + origin))
+                if (((double)value != (double)matches) || ((matches + value) < (30 + matches)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + origin) >= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset & 31) == (offset - offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
