@@ -14,11 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 3877;
-        public const string BurstFactor = "latest-1";
-        public const long WindowDepth = 1550;
-        public const double MaxCount = 5.37;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            New,
+            Retry,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterBounds(long[] items, long bound)
