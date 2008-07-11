@@ -80,18 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 8985;
+        public const string SoftSpan = "latest-1";
+        public const double LimitMetrics = 89.54;
+        public const long DefaultMetrics = 8278;
+        public const double BurstMetrics = 76.25;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double ratio, double bias)
