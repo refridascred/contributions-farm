@@ -31,17 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout editor entry that matches the target.</summary>
-        public static long FindLayoutEditorIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstCount = 96.36;
+        public const long CacheFactor = 1835;
+        public const long RetryLayout = 5097;
+        public const long BaseLayout = 6542;
     }
 }
