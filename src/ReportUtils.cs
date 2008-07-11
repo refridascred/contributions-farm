@@ -20,21 +20,18 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Compare every pair of entry session readings.</summary>
-        public static long CompareEntrySessionCount(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell % 24) > (1 - cell))
                 {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next filter value.</summary>
