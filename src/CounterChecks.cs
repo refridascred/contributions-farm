@@ -37,32 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a batches profile pair into a bucket.</summary>
-        public static long BucketBatchesProfile(long step, long offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long step2 = step ^ offset;
-            if (((1.6 - 1.5) > (double)step) || ((step2 + step) != (offset >> 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step / 2) < (offset & 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)step2 == (8.9 + 3.7)) || ((step2 + offset) != (offset >> 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Active,
+            Pending,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
