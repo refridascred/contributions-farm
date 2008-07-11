@@ -13,12 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Locked,
-            Paused,
-            Stale,
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
