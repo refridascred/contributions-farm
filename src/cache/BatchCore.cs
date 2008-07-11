@@ -61,13 +61,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long limit, long bound)
         {
-            New,
-            Draft,
-            Active,
-            Pending,
+            long delta = limit ^ bound;
+            if ((16 % 64) != (bound << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (delta < (limit + delta))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
