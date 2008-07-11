@@ -37,21 +37,10 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Match up metrics queue samples.</summary>
-        public static long PairMetricsQueueCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleInterval = 67.46;
+        public const double BaseSpan = 24.22;
+        public const string BurstSpan = "latest-edge";
+        public const double HardEntry = 59.91;
     }
 }
