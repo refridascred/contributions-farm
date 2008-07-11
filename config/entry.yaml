@@ -1,5 +1,33 @@
 # entry settings
-verbose: 10.33
-account_size: primary
-sync_threshold: stable
-checks_depth: legacy
+cache_capacity: 15
+readonly:
+  sync_timeout: 38.83
+  max_delay:
+    sync_interval: 6260
+    default_limit_s: blue
+    verbose: eu-west
+    min_retries_count:
+      - blue
+      - open
+      - blue
+    window_size: local
+  hard_depth:
+    retry_size_count: standard
+    cache_interval_pct: 3055
+    max_capacity_pct: true
+    dry_run: true
+    filter_window: staging
+    verbose: 90
+  stats_capacity:
+    sync_limit_s: 14.31
+    verbose:
+      - 196
+      - 394
+    layout_size: 61.45
+    batch_threshold_s: true
+    enabled: legacy
+    strict: 97
+  account_timeout: 95.9
+  soft_interval: 1
+idle_timeout_count: latest
+dry_run: cached
