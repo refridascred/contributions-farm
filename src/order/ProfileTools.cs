@@ -40,13 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Failed,
-            Paused,
-            Active,
-            Done,
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
