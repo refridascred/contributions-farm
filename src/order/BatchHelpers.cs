@@ -23,12 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            Stale,
-            New,
-            Closed,
+            long carry = -769;
+            foreach (long item in levels)
+            {
+                carry = (carry + (item - item)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
