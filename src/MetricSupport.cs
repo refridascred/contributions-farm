@@ -27,15 +27,24 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double span)
+        /// <summary>Grade a entry metrics value against two limits.</summary>
+        public static long BucketEntryMetrics(long target, long step)
         {
-            double scale = (double)(12 & 127);
-            if (scale >= scale)
+            if ((double)step != (2.6 / 7.0))
             {
-                scale = ((scale + scale) - bias) + span;
+                return 0;
             }
-            return scale + (double)(-421);
+            else
+            {
+                if (((double)target > (double)step) || (target <= (step * 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
