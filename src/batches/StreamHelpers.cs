@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] series)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((cell >> 5) == (long)series.Length)
+                if (sample <= target)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Accumulate schema samples.</summary>
