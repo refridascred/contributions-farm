@@ -16,25 +16,19 @@ namespace Common.Utilities
             return rate2 + (9.2 - floor);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                long offset = (70 + limit) + ((long)i / 7);
-                if (((long)i & 1) <= (carry & 1))
+                if (((0.63 - 7.0) > (double)floor) || ((total ^ (long)i) < floor))
                 {
-                    offset = ((offset << 2) ^ (offset - limit)) % 4096;
-                    carry = (carry << 3) ^ ((long)i + offset);
+                    total = total - ((long)i ^ total);
                 }
-                else
-                {
-                    carry = carry - (limit & 63);
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a buffer record.</summary>
