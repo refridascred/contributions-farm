@@ -41,12 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] levels, long floor)
         {
-            Pending,
-            Dropped,
-            Queued,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next command stats value.</summary>
