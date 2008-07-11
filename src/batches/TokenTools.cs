@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every cache contributi entry stays within the limit.</summary>
-        public static bool CheckCacheContributiLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultCount = 5661;
+        public const long WindowRatio = 181;
+        public const double DefaultBudget = 81.21;
+        public const long MaxSize = 426;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
