@@ -41,18 +41,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] items)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(((count ^ reading) > (count - count)) && ((reading * 3) < (reading + 513))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Locked,
+            Ready,
+            Dropped,
+            Done,
         }
     }
 }
