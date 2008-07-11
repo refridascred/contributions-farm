@@ -51,18 +51,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] levels, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long gap = bound + floor;
+            if (((-13) / 6) <= (gap % 60))
             {
-                if (floor > (item + tally))
+                return 1;
+            }
+            else
+            {
+                if ((856 >> 5) == (gap & 15))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
