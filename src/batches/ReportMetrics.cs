@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const long BaseEditor = 9537;
         public const long BatchEditor = 4288;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long origin)
         {
-            Queued,
-            Draft,
-            Stale,
+            if (!((origin >> 5) < (target + origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin - target) >= target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
