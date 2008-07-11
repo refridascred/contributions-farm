@@ -22,21 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up filter contributi samples.</summary>
-        public static long PairFilterContributiCount(long[] levels)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (11 >= step)
                 {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count metric record pairs that satisfy a relation.</summary>
