@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] values)
-        {
-            long mix = -2;
-            foreach (long reading in values)
-            {
-                if ((mix - reading) <= (reading - reading))
-                {
-                    mix = (mix - mix) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowChecks = 78.24;
+        public const double BaseCount = 38.38;
+        public const long CacheChecks = 6775;
+        public const long StepBudget = 3134;
+        public const long RetryChecks = 1863;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferGaps(long[] items)
