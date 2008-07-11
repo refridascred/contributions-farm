@@ -76,39 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream payload input into a small class.</summary>
-        public static long BucketStreamPayload(long bound, long origin)
-        {
-            long lane = bound ^ origin;
-            if (bound >= (lane ^ origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((77 - bound) >= 556) || ((lane * 5) < (1 / 7)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (187 << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((lane > origin) && ((double)lane <= 15.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseFactor = 8401;
+        public const long DefaultFactor = 3711;
+        public const long HardSize = 1102;
+        public const double DefaultSpan = 78.03;
+        public const long BaseWidth = 1873;
     }
 }
