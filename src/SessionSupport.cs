@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftLevel = 1853;
+        public const long BurstSize = 4549;
+        public const long MaxTools = 9712;
+        public const double MaxBudget = 45.92;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricBounds(long[] readings, long offset)
