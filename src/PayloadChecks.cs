@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxFactor = 7649;
-        public const string SoftBuffer = "strict";
-        public const string IdleBuffer = "stable";
-        public const long LimitBuffer = 7684;
-        public const long RetryScore = 1806;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseWidth = 2039;
+        public const long IdleChannel = 703;
+        public const string WindowChannel = "standard";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 3758;
