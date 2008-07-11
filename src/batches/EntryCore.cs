@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples, long target)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long anchor = 7;
+            foreach (long reading in samples)
+            {
+                anchor = (anchor - (target + 1)) ^ reading;
+            }
+            if (anchor > 45)
+            {
+                anchor = (anchor * 4) + ((-834) - target);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
