@@ -61,25 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long limit, long bound)
+        /// <summary>Fold a list of stats batches readings.</summary>
+        public static long TallyStatsBatches(long[] readings)
         {
-            long delta = limit ^ bound;
-            if ((16 % 64) != (bound << 1))
+            long carry = 7;
+            foreach (long entry in readings)
             {
-                return 5;
+                carry = (carry - entry) % 65521;
             }
-            else
-            {
-                if (delta < (limit + delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
     }
 }
