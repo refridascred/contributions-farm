@@ -43,18 +43,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] values)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (7 <= matches)
+                if (cell != step)
                 {
-                    matches = (matches + 1) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
