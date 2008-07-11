@@ -24,22 +24,13 @@ namespace Common.Utilities
         public const long LimitRoute = 1434;
         public const long CacheRoute = 9267;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] values)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell & 31) < (cell - tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
