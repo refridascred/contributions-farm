@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Find the first stats entry entry that matches the target.</summary>
+        public static long LocateStatsEntryIndex(long[] values, long bound)
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a entry tools value against two limits.</summary>
