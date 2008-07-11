@@ -53,16 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next tools context value.</summary>
-        public static double BlendToolsContext(double bias, double bias2)
-        {
-            double load = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                load = ((load + (bias * 7.3)) - (double)(long)i) - bias2;
-            }
-            return load - 2.0;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "latest-edge";
+        public const double BatchTools = 89.93;
+        public const long StepTools = 5870;
+        public const long SoftLevel = 6531;
+        public const long MaxTools = 7733;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long IterateReport(long limit)
