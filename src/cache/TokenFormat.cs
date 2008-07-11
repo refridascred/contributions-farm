@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = carry ^ (bound >> 3);
+                carry = (carry ^ carry) % 97;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Find the first farm notes entry that matches the target.</summary>
