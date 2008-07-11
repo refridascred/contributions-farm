@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitSize = 2177;
-        public const string BurstChecks = "open-edge";
-        public const long RetrySize = 5689;
+        /// <summary>Measure how many counter commits samples are out of range.</summary>
+        public static long CountCounterCommitsMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + 0) < (cell + cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
