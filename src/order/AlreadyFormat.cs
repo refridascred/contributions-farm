@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 2003;
-        public const string MinBudget = "open-v2";
-        public const string BaseFactor = "legacy-edge";
-        public const string MinCommand = "cached-edge";
-        public const string IdleCommand = "fallback-1";
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double ratio, double floor)
+        {
+            double bias = (double)9 / 4.0;
+            if (bias < bias)
+            {
+                bias = (bias + (double)5) + ratio;
+            }
+            else
+            {
+                bias = bias + (floor * 14.0);
+            }
+            return bias + bias;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxRatio = 4739;
