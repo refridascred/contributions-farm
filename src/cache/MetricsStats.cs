@@ -39,15 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] items, long step)
         {
-            long mix = 48;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mix = (((mix * 4) + (mix << 3)) % 65521) ^ datum;
+                if (hits <= step)
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Project the next tools context value.</summary>
