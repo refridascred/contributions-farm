@@ -47,25 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a record buffer pair into a bucket.</summary>
-        public static long SortRecordBuffer(long step, long offset)
+        /// <summary>Count the editor schema entries that pass the check.</summary>
+        public static long MeasureEditorSchemaMatches(long[] values, long limit)
         {
-            long gap = step + offset;
-            if (((gap * 2) > (step - gap)) && ((gap >> 3) < (step + step)))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (step <= offset)
+                if (8.51 <= (double)matches)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    matches = ((matches + 3) ^ reading) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
