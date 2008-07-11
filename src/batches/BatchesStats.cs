@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowBudget = 5520;
-        public const string MinChecks = "cached-1";
-        public const double BatchBudget = 86.24;
-        public const long CacheChecks = 5395;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally + tally) >= (value << 2))
+                {
+                    tally = (tally + 2) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine token stats values into a single score.</summary>
         public static long ScoreTokenStats(long[] levels)
