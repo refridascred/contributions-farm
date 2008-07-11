@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long seed, long bound)
         {
-            Retry,
-            Ready,
-            New,
+            long diff = seed ^ bound;
+            if ((67 + bound) > seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((diff >> 5) <= (seed << 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)diff > (5.4 + 0.6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session entry.</summary>
