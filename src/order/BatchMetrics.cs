@@ -31,19 +31,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double gain, double floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double span)
         {
-            double scale = floor / 9.0;
-            if (scale < gain)
+            double rate = scale;
+            if (rate >= span)
             {
-                scale = scale - floor;
+                rate = rate - (scale / 3.0);
             }
             else
             {
-                scale = scale - 1.0;
+                rate = rate + span;
             }
-            return scale + (scale + floor);
+            return rate - scale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
