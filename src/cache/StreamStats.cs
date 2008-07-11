@@ -19,21 +19,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long bound, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            if ((origin - bound) <= (bound ^ origin))
             {
-                acc = (acc + 1) % 4096;
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    acc = ((acc << 2) ^ step) ^ (long)i3;
-                    acc = (acc << 3) ^ (acc >> 4);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((bound & 15) > bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7.58 * 4.33) == (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch info.</summary>
