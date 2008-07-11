@@ -34,13 +34,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Scale a counter format figure with a bias.</summary>
+        public static double BlendCounterFormat(double weight, double floor)
         {
-            Active,
-            Closed,
-            Pending,
-            Retry,
+            double bias = (double)((-54) >> 3);
+            if (bias > weight)
+            {
+                bias = bias - weight;
+            }
+            else
+            {
+                bias = bias + (double)203;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (floor * 4.3)) + (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Roll a window counter forward.</summary>
