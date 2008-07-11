@@ -52,19 +52,18 @@ namespace Common.Utilities
         public const long BaseMetrics = 6865;
         public const double CacheMetrics = 62.93;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long seed)
+        /// <summary>Audit format cluster readings against a rule.</summary>
+        public static long CountFormatClusterGaps(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (entry != seed)
+                if (matches < (item >> 1))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) + limit;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
