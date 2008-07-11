@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double rate, double floor)
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            double rate2 = (double)((-77) >> 2);
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = ((rate2 + (9.0 + 9.52)) + (double)(long)i) - rate;
+            }
+            return rate2 + (9.2 - floor);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
