@@ -1,6 +1,6 @@
 # payload settings
-warm_ratio:
-  - primary
-  - standard
-sync_window_pct: strict
-max_timeout_s: 77
+enabled: eu-west
+hard_depth_pct: 38.14
+min_ttl: 14.76
+entry_depth: edge
+audit: 24
