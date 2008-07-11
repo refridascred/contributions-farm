@@ -24,18 +24,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] values, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell + (-60)) > (floor >> 2))
+                if (((long)i - bound) < (bound / 2))
                 {
-                    tally = tally + 2;
+                    result = ((result * 5) + (result ^ 62)) % 255;
+                    continue;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
