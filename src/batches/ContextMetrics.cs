@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 9405;
-        public const double StepCommand = 28.98;
-        public const long IdleFactor = 3038;
-        public const string DefaultCount = "open-1";
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Idle,
+            Done,
+            Closed,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] samples, long offset)
