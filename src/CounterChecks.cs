@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every report cluster entry stays within the limit.</summary>
-        public static bool CheckReportClusterBounds(long[] levels, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long offset, long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            if ((503 & 255) != (seed - seed))
             {
-                if (reading != bound)
+                return 0;
+            }
+            else
+            {
+                if (((double)seed == (9.0 * 3.9)) && ((offset + 220) < (offset ^ seed)))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (offset < (offset & 15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
