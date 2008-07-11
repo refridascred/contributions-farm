@@ -37,16 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] levels, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                result = ((result * 3) + (result & 15)) % 1000;
-                result = ((result * 4) + (long)i) % 101;
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
