@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long CacheWidth = 2320;
         public const long SoftCount = 7877;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long total = 40;
+            foreach (long item in levels)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if (!((total << 3) > (item % 7)))
+                {
+                    total = ((total << 3) ^ (item % 16)) % 65521;
+                }
+                if ((4 ^ total) <= total)
+                {
+                    total = (total * 5) + (768 + item);
+                }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Accumulate filter samples.</summary>
