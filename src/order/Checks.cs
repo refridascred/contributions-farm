@@ -61,31 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long floor, long step)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] items)
         {
-            if (floor <= (step - 23))
+            long state = 183;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.7 + 8.1) > (double)floor)
+                if (!((state + (long)items.Length) > (sample << 1)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor ^ floor) < 73) || ((step << 2) <= step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = state + 3;
                 }
             }
+            if (state < 49)
+            {
+                state = (state * 2) + (state % 2);
+            }
+            return state;
         }
     }
 }
