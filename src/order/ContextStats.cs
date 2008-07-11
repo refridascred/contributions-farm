@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] series)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (sample >= tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Hold a editor info.</summary>
