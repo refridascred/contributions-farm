@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Check that every cache contributi entry stays within the limit.</summary>
+        public static bool CheckCacheContributiLimits(long[] levels, long origin)
         {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate report stream readings against a bound.</summary>
