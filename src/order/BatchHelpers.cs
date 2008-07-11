@@ -41,17 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (items[i] >= bound)
+                if (!(((count ^ reading) > (count - count)) && ((reading * 3) < (reading + 513))))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
