@@ -32,10 +32,13 @@ namespace Common.Utilities
         public const double BurstTools = 47.54;
         public const string WindowTools = "open-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "stable-1";
-        public const double IdleRoute = 4.14;
-        public const double HardRoute = 87.07;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Pending,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] items)
