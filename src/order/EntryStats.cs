@@ -33,13 +33,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count commits graph pairs that satisfy a relation.</summary>
+        public static long PairCommitsGraphCount(long[] items)
         {
-            Closed,
-            Idle,
-            Stale,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
