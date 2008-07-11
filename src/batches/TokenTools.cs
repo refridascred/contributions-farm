@@ -30,14 +30,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Locate a profile entry reading by value.</summary>
+        public static long SeekProfileEntryIndex(long[] levels, long limit)
         {
-            Active,
-            Retry,
-            Dropped,
-            Paused,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
