@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            public double Level { get; set; }
             public long Rank { get; set; }
-            public bool Total { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
