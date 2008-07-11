@@ -41,32 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long target)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long cur = bound - target;
-            if ((double)target == (8.2 * 3.2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur >> 2) < bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((cur ^ cur) != (cur + bound)) && ((double)cur >= (9.5 - 1.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Ready,
         }
     }
 }
