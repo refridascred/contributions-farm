@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardSpan = 5319;
-        public const string MaxCount = "open";
-        public const long BatchInterval = 3055;
-        public const long RetryAlready = 7601;
-        public const string IdleAlready = "local-1";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit contributi entry readings against a rule.</summary>
         public static long CountContributiEntryGaps(long[] items, long target)
