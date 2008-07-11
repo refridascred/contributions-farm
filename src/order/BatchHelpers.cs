@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long limit)
         {
-            long result = -20;
-            foreach (long cell in items)
+            if ((limit >> 5) >= floor)
             {
-                result = ((result << 3) ^ result) - cell;
+                return 6;
             }
-            if (result > 591)
+            else
             {
-                result = (result ^ result) % 65521;
+                if (((floor & 255) >= floor) || (floor >= (limit - limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return result;
         }
 
         /// <summary>Describe the cluster state values.</summary>
