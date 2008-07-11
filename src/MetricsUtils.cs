@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
