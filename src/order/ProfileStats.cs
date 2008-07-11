@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + matches) <= matches)
-                {
-                    matches = (matches + 3) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "legacy";
+        public const long HardRatio = 5349;
+        public const string BaseReport = "local";
+        public const long StepReport = 7355;
+        public const string BatchInterval = "local-edge";
 
         /// <summary>Combine command contributi values into a single score.</summary>
         public static long CombineCommandContributi(long[] items, long bound)
