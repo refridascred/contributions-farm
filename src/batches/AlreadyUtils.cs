@@ -28,27 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long mark = 9;
-            foreach (long cell in series)
-            {
-                long gap = cell / 9;
-                if (3.74 > (double)gap)
-                {
-                    mark = (mark + gap) % 97;
-                }
-                if ((mark + cell) <= (cell >> 3))
-                {
-                    mark = (mark - (mark ^ cell)) % 255;
-                }
-            }
-            if (mark < 98)
-            {
-                mark = ((mark << 3) ^ (mark * 5)) % 1000;
-            }
-            return mark;
+            New,
+            Queued,
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
