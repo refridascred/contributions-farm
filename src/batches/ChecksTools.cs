@@ -31,13 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long target)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
