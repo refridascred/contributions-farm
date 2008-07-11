@@ -27,19 +27,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] data, long origin)
+        /// <summary>Match up checks batch samples.</summary>
+        public static long MatchChecksBatchCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Count the window session entries that pass the check.</summary>
