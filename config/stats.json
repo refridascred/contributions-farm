@@ -1,21 +1,31 @@
 {
-  "editor_retries": 52,
-  "readonly": {
-    "cache_capacity_s": {
-      "batch_timeout_count": "green",
-      "order_retries": 60,
-      "channel_limit": "staging",
-      "record_timeout": false
-    },
-    "base_timeout_s": 74.69,
-    "enabled": 3425,
-    "retry_delay": 56.18,
-    "support_ratio": {
-      "dry_run": [307, 8],
-      "queue_window": ["local", "green", "staging", "open"],
-      "base_timeout_count": 1024
-    }
+  "warm_delay_ms": true,
+  "command_delay": "local",
+  "commits_window": {
+    "verbose": "cached",
+    "layout_timeout": 500,
+    "min_ttl_ms": 6087,
+    "hard_size": "open"
   },
-  "soft_limit_count": 95.12,
-  "contributi_threshold": 1.87
+  "base_threshold_ms": [90, 391],
+  "verbose": 250,
+  "session_capacity": {
+    "compress": "blue",
+    "order_limit": {
+      "batch_delay": 1707,
+      "strict": "legacy",
+      "poll_ttl": 46.65,
+      "cache_delay_pct": 73.94
+    },
+    "soft_window_count": ["primary", "strict", "standard"],
+    "commits_depth": {
+      "route_limit": 1197,
+      "compress": [222, 206],
+      "min_size_ms": 5149,
+      "verbose": "local",
+      "token_ratio": "primary",
+      "cache_capacity": 58.02
+    },
+    "warm_limit_pct": ["primary", "standard", "edge"]
+  }
 }
