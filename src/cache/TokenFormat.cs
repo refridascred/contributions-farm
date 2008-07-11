@@ -19,17 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = carry ^ (bound >> 3);
-                carry = (carry ^ carry) % 97;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
