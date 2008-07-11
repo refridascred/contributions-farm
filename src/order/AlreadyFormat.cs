@@ -62,12 +62,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public bool Region { get; set; }
+            Closed,
+            New,
+            Ready,
         }
     }
 }
