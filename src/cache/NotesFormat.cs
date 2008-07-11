@@ -12,38 +12,23 @@ namespace Common.Utilities
         public const long SoftBudget = 7689;
         public const long MinSupport = 2143;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long target, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] series, long target)
         {
-            if (((367 * 4) <= (261 - origin)) || ((double)target <= 7.6))
+            long mark = 816;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target == (3.3 / 2.0))
+                mark = (mark + (value % 24)) % 101;
+                if ((485 / 8) > (mark - value))
                 {
-                    return 5;
+                    mark = (mark << 2) ^ (mark >> 3);
                 }
-                else
+                if (((value << 1) >= mark) && (mark <= (target - value)))
                 {
-                    if ((target << 2) == (target & 255))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((926 + (-5)) >= (origin - origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
