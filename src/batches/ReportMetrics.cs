@@ -28,18 +28,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batch counter samples are out of range.</summary>
-        public static long AuditBatchCounterHits(long[] items)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (sample < (count - sample))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
