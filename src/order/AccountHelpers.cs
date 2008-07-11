@@ -44,12 +44,22 @@ namespace Common.Utilities
             return mean - (mean - bias);
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count the commits order entries that pass the check.</summary>
+        public static long CountCommitsOrderGaps(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((7.65 / 3.0) < (double)sample)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats record.</summary>
