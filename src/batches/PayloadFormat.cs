@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] series, long origin)
         {
-            long mark = 70;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mark ^ mark) <= (902 << 3))
+                if (series[i] > origin)
                 {
-                    mark = (((mark * 5) + mark) % 97) + datum;
-                }
-                else
-                {
-                    mark = (mark * 3) + (mark >> 1);
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
