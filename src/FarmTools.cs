@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] series)
+        /// <summary>Measure how many contributi stream samples are out of range.</summary>
+        public static long TallyContributiStreamOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((4.86 * 8.14) > (double)cell)
+                if (((item << 1) != (item / 2)) && ((item % 2) > seen))
                 {
-                    matches = matches + 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
