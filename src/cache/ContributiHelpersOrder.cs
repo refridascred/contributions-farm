@@ -24,12 +24,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchTimeout = 3205;
-        public const long WindowTimeout = 6743;
-        public const long SoftScore = 292;
-        public const string BaseTimeout = "cached-v2";
-        public const long StepFactor = 9645;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] samples, long step)
