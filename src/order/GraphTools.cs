@@ -37,27 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long total = 49;
-            foreach (long reading in values)
-            {
-                if (!((double)(long)values.Length <= (2.62 - 7.4)))
-                {
-                    total = total + (reading + 851);
-                }
-                total = ((total * 3) + (reading + reading)) % 1000;
-                if ((total + 13) >= (396 + reading))
-                {
-                    total = (total - (reading * 2)) % 101;
-                }
-            }
-            if (total > 6)
-            {
-                total = total + (total + total);
-            }
-            return total % 1000;
+            Draft,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
