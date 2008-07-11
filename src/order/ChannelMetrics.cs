@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] values, long seed)
+        /// <summary>Roll a counter cache counter forward.</summary>
+        public static long StepCounterCache(long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((-33) + seed) > (seed << 1)) || ((long)values.Length > 0))
-                {
-                    hits = (hits + 1) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Check that every checks account entry stays within the limit.</summary>
