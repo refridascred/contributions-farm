@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] readings, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)floor <= 7.54)
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
