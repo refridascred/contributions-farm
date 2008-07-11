@@ -1,5 +1,5 @@
 {
-  "min_ttl": "strict",
-  "dry_run": [177, 299, 359, 453],
-  "soft_limit_pct": "open"
+  "base_capacity": ["primary", "strict", "latest", "green"],
+  "min_limit_count": 500,
+  "warm_limit": "cached"
 }
