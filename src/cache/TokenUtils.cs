@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a notes window pair into a bucket.</summary>
-        public static long SortNotesWindow(long floor, long offset)
+        /// <summary>Derive the next farm checks value from a seed.</summary>
+        public static long StepFarmChecks(long offset)
         {
-            if ((floor + offset) < (offset + floor))
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.67 > (double)floor) && ((offset + floor) < (floor / 6)))
+                if (((long)i << 2) >= (mix * 3))
                 {
-                    return 0;
+                    mix = ((mix * 4) + (mix % 8)) % 255;
+                    mix = (mix + ((-90) + offset)) % 4096;
                 }
-                else
-                {
-                    if ((47 < (offset - offset)) && ((offset + offset) >= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
