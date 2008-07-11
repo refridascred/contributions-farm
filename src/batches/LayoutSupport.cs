@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((((1.24 - 19.0) != (double)matches) && ((sample + matches) < (sample + 263))) && ((sample + sample) > (-4)))
+                if ((45 >= (tally * 3)) && ((long)items.Length >= (tally + tally)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = ((tally + 2) ^ cell) + origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the report phase values.</summary>
