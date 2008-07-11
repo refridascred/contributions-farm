@@ -19,20 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] values, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((total >> 5) == (target & 31))
+                if ((seen >> 3) <= (seen / 2))
                 {
-                    total = (total - (long)i) % 101;
-                    total = (total * 2) + 374;
+                    seen = ((seen + 1) - entry) - seed;
                 }
-                total = ((total * 5) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a already info.</summary>
