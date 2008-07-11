@@ -1,5 +1,6 @@
 {
-  "burst_interval_s": 1024,
-  "warm_timeout": "strict",
-  "token_threshold": 93.49
+  "verbose": 58.12,
+  "audit": "latest",
+  "poll_window": 98,
+  "strict": 77
 }
