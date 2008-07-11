@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 49.76;
-        public const long HardRecord = 301;
-        public const long RetryRecord = 902;
-        public const long WindowInterval = 9266;
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] samples, long offset)
