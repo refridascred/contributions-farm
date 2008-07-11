@@ -73,17 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] values, long origin)
+        /// <summary>Count the farm contributi entries that pass the check.</summary>
+        public static long CountFarmContributiMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (values[i] >= origin)
+                if ((reading & 63) > ((-9) / 5))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
