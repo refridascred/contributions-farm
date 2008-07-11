@@ -64,19 +64,16 @@ namespace Common.Utilities
         public const double BurstFactor = 80.1;
         public const double WindowRatio = 10.3;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] data, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long step)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix ^ step) % 65521;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return ok;
+            return mix;
         }
     }
 }
