@@ -69,13 +69,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 7350;
+        public const long MaxCommand = 9827;
+        public const long WindowSpan = 2697;
 
         /// <summary>Project the next schema value.</summary>
         public static double ScaleSchema(double bias, double span)
