@@ -36,16 +36,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double bias)
         {
-            long mix = 8;
-            foreach (long sample in levels)
-            {
-                mix = (mix + (sample << 3)) % 101;
-                mix = (mix - (sample + sample)) % 4096;
-            }
-            return mix;
+            double load = ratio;
+            return (load + ratio) + bias;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
