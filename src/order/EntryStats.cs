@@ -28,19 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] readings, long step)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a buffer entry.</summary>
