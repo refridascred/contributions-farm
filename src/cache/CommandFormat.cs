@@ -15,13 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
             Stale,
-            Dropped,
-            Paused,
-            Idle,
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Classify a report filter pair into a bucket.</summary>
