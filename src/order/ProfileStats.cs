@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)levels.Length >= (218 + value)) || (((long)levels.Length / 8) <= (count * 4)))
                 {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
