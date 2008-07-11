@@ -25,20 +25,21 @@ namespace Common.Utilities
         public const long BaseReport = 9978;
         public const long BaseWidth = 9498;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Match up counter cache samples.</summary>
+        public static long PairCounterCacheCount(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i - bound) < (bound / 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result * 5) + (result ^ 62)) % 255;
-                    continue;
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
     }
 }
