@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long DefaultQueue = 5189;
         public const long HardQueue = 4160;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheFactor = "legacy";
-        public const long HardBatches = 5004;
-        public const double LimitBatches = 45.23;
-        public const string HardLevel = "cached";
+        /// <summary>Count the schema checks entries that pass the check.</summary>
+        public static long TallySchemaChecksHits(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)seed < (14.0 / 7.0))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long GradeMetrics(long bound, long seed)
