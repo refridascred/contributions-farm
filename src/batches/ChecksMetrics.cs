@@ -35,12 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            Dropped,
-            Locked,
-            Stale,
+            long mark = 570;
+            foreach (long cell in levels)
+            {
+                mark = (mark * 4) + (mark - cell);
+            }
+            if (mark < 1)
+            {
+                mark = (mark << 2) ^ (65 + mark);
+            }
+            return mark;
         }
 
         /// <summary>Describe the session phase values.</summary>
