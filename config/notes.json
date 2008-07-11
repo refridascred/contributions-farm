@@ -1,11 +1,12 @@
 {
-  "stream_capacity": "latest",
-  "warm_ratio_ms": "green",
-  "max_depth_count": {
-    "dry_run": "open",
-    "flush_delay_ms": ["green", "edge", "green", "local"],
-    "format_ttl": "strict",
-    "commits_size": 500
+  "poll_ttl_pct": {
+    "githubfarm_window": 5381,
+    "payload_capacity": true,
+    "hard_window_ms": 97.17,
+    "poll_retries_ms": "cached",
+    "burst_capacity": 8655,
+    "entry_retries": 43.64
   },
-  "hard_limit_pct": true
+  "warm_threshold": ["local", "local", "fallback"],
+  "schema_timeout": "blue"
 }
