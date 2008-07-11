@@ -18,12 +18,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long origin)
         {
-            Ready,
-            Retry,
-            Closed,
+            if ((offset + 3) <= (offset / 8))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - origin) > (origin + 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)offset <= 10.0) || (offset > (6 + origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset >= (origin >> 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first notes payload entry that matches the target.</summary>
