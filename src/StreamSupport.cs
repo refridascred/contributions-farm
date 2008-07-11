@@ -23,19 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double bias, double floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] readings, long target)
         {
-            double mean = floor + floor;
-            if (mean < (mean + mean))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (double)28;
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (mean - bias);
-            }
-            return mean + (double)3;
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
