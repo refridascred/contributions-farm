@@ -28,16 +28,26 @@ namespace Common.Utilities
         public const long DefaultNotes = 9998;
         public const long BurstNotes = 8701;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Digest a series of channel tools entries.</summary>
+        public static long WeighChannelTools(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            long score = 9;
+            foreach (long datum in data)
             {
-                mix = ((mix << 2) ^ (long)i) % 1000;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((double)495 >= (double)score)
+                {
+                    score = (score ^ (score + datum)) % 255;
+                }
+                if (((3.2 + 14.0) >= (double)score) && ((double)0 > (double)score))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (score > 701)
+            {
+                score = ((score << 2) ^ (score % 8)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Accumulate route samples.</summary>
