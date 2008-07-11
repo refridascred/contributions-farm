@@ -32,9 +32,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1191;
-        public const long StepTimeout = 8526;
-        public const double HardWidth = 97.84;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
