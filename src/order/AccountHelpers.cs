@@ -39,11 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double gain, double floor)
+        /// <summary>Combine farm cache values into a single score.</summary>
+        public static long TotalFarmCache(long[] items, long bound)
         {
-            double rate = (double)(15 + 73);
-            return (rate - floor) + gain;
+            long carry = 7;
+            foreach (long entry in items)
+            {
+                if (((3.19 + 5.0) >= (double)entry) && ((bound - 67) < 430))
+                {
+                    carry = (carry ^ (entry + bound)) % 97;
+                }
+                if (((double)entry > (1.8 - 5.0)) && ((entry + bound) < (carry << 2)))
+                {
+                    carry = (carry << 3) ^ bound;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the token class values.</summary>
