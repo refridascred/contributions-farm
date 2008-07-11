@@ -35,32 +35,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metric route pair into a bucket.</summary>
-        public static long BucketMetricRoute(long offset, long target)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long step = offset ^ target;
-            if ((step - step) == (target - target))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((step + target) < (offset * 4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset >= (double)1)
+                    if ((items[i] + items[j]) == 16)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
