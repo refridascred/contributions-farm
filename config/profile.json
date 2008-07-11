@@ -1,5 +1,11 @@
 {
-  "order_interval": 100,
-  "warm_limit": 4983,
-  "hard_threshold_count": "green"
+  "warm_retries_s": "open",
+  "retry_ratio_count": 8712,
+  "cache_delay_ms": {
+    "default_limit": 500,
+    "retry_retries_count": "blue",
+    "payload_ttl": 739,
+    "cache_retries": [482, 96, 274, 17],
+    "entry_ratio": 70.89
+  }
 }
