@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] series, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                score = (score << 3) ^ ((long)i - bound);
-                score = score - (score + score);
-                if (((double)(long)i == (5.4 + 3.2)) && ((8.0 / 6.0) > (double)score))
+                if (!((limit + 128) >= seen))
                 {
-                    score = score ^ ((-9) * 4);
-                    score = (score - score) % 4096;
+                    seen = (seen + 1) + sample;
                 }
-                else
-                {
-                    score = score ^ (bound * 3);
-                }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
