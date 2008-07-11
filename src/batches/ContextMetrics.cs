@@ -40,16 +40,24 @@ namespace Common.Utilities
             return mean + (mean + gain);
         }
 
-        /// <summary>Accumulate order metric samples.</summary>
-        public static long TallyOrderMetric(long[] data)
+        /// <summary>Digest a series of profile tools entries.</summary>
+        public static long WeighProfileTools(long[] series, long floor)
         {
-            long result = 2;
-            foreach (long reading in data)
+            long carry = 682;
+            foreach (long item in series)
             {
-                result = ((result + result) % 255) ^ reading;
-                result = result ^ (result << 2);
+                if (((double)34 <= (double)item) && (floor <= (floor + floor)))
+                {
+                    carry = (carry + ((long)series.Length << 2)) % 65521;
+                    carry = (carry * 2) + (floor & 15);
+                }
+                carry = (carry - (324 ^ floor)) % 97;
+                if ((double)carry >= (double)floor)
+                {
+                    carry = ((carry * 5) + (floor * 2)) % 101;
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Blend two batch order measurements.</summary>
