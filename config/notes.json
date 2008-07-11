@@ -1,6 +1,24 @@
 {
-  "max_ratio": true,
-  "max_delay_ms": ["legacy", "legacy"],
-  "base_retries": "eu-west",
-  "base_ratio_ms": 7383
+  "compress": "latest",
+  "batches_depth": ["staging", "stable", "fallback"],
+  "payload_limit": "strict",
+  "sync_retries": {
+    "hard_size_ms": {
+      "readonly": [195, 86, 320],
+      "compress": 16,
+      "retry_ttl": 65.91,
+      "dry_run": 9,
+      "batch_ttl_ms": false
+    },
+    "persist": {
+      "batch_capacity": "legacy",
+      "verbose": 250,
+      "enabled": 9678,
+      "burst_delay_pct": 18.4,
+      "audit": "green",
+      "poll_delay": 84.97
+    },
+    "retry_size_s": ["fallback", "green", "local"]
+  },
+  "default_ttl_ms": "local"
 }
