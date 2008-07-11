@@ -75,39 +75,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long bound, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] data, long offset)
         {
-            long step = bound + seed;
-            if ((seed ^ bound) < (seed + 1))
+            long anchor = 7;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed / 9) == (seed - step))
+                if (!((anchor + datum) >= offset))
                 {
-                    return 4;
+                    anchor = (anchor - 52) % 1000;
                 }
                 else
                 {
-                    if ((step - seed) != (seed % 60))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((19 * 3) < (seed * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    anchor = ((anchor << 2) ^ (5 << 1)) % 65521;
                 }
             }
+            return anchor % 97;
         }
     }
 }
