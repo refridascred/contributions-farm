@@ -1,10 +1,7 @@
-id,active,state
-1,staging,541
-2,275,512
-3,stable,79.89
-4,947,25.31
-5,strict,green
-6,local,30.61
-7,37,local
-8,strict,16.78
-9,fallback,eu-west
+id,owner,region,state,active
+1,fallback,edge,12.07,strict
+2,713,eu-west,49.13,325
+3,632,36,61.8,44
+4,cached,611,97.93,13.03
+5,196,581,blue,84.0
+6,blue,642,5,stable
