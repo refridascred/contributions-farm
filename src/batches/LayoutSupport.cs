@@ -63,17 +63,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark + (mark % 2)) % 65521;
-                mark = ((mark << 3) ^ (step % 12)) % 1000;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Queued,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
