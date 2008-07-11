@@ -35,24 +35,11 @@ namespace Common.Utilities
             return rate2 + (rate - rate2);
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum << 3) ^ (3 ^ sum)) % 1000;
-                if ((long)i < sum)
-                {
-                    sum = (sum + (sum + target)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (target + 2)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 2247;
+        public const long DefaultMetric = 2818;
+        public const string MinMetric = "fallback-1";
+        public const long BurstMetric = 8288;
+        public const long LimitMetric = 4768;
     }
 }
