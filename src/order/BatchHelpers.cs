@@ -20,18 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] levels, long offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            long mark = -4;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark << 3) >= cell)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (mark + mark)) + offset;
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a report entry.</summary>
