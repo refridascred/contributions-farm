@@ -27,14 +27,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] samples, long step)
         {
-            Ready,
-            Failed,
-            Active,
-            Dropped,
-            New,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
