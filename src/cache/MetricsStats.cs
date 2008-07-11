@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Synced,
+            Stale,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
