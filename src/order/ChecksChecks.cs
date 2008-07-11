@@ -23,12 +23,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long bound, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long edge = bound - origin;
+            if ((edge / 3) < (origin ^ edge))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)edge == (7.6 - 6.6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
