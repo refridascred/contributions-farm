@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Digest a series of window context entries.</summary>
+        public static long FoldWindowContext(long[] samples)
         {
-            Locked,
-            Stale,
-            Failed,
+            long state = 398;
+            foreach (long reading in samples)
+            {
+                state = (state + (reading + reading)) % 97;
+                if ((double)state < 4.7)
+                {
+                    state = ((state << 3) ^ (283 % 100)) % 1000;
+                    state = ((state * 4) + (reading << 2)) % 1000;
+                }
+                state = ((state << 2) ^ (state >> 3)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
