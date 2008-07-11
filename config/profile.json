@@ -1,5 +1,7 @@
 {
-  "sync_size_count": [285, 331, 482, 284],
-  "verbose": true,
-  "hard_window": ["primary", "standard", "legacy"]
+  "verbose": 2540,
+  "base_interval_ms": "cached",
+  "poll_interval": true,
+  "cache_window": 84.93,
+  "hard_window_count": "strict"
 }
