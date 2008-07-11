@@ -48,14 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] series, long step)
         {
-            Failed,
-            Pending,
-            Stale,
-            New,
-            Idle,
+            long state = 3;
+            foreach (long item in series)
+            {
+                if ((9.12 / 5.0) > (double)item)
+                {
+                    state = ((state << 2) ^ (52 % 7)) - step;
+                }
+            }
+            return state;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
