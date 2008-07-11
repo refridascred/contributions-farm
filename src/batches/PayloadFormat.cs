@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double weight, double floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double ratio = (weight / 8.0) * 1.2;
-            if (ratio > 13.0)
-            {
-                ratio = ratio - (7.9 - floor);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (double)(-56)) + (double)(long)i;
-            }
-            return ratio - (double)3;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
