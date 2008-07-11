@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first entry order entry that matches the target.</summary>
-        public static long FindEntryOrderIndex(long[] levels, long offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] > offset) && ((levels[i] % 3) != 0))
+                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
