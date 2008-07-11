@@ -44,39 +44,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long origin, long floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] items, long seed)
         {
-            long diff = origin - floor;
-            if ((floor * 3) < (364 % 5))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor < (floor >> 1))
+                if (items[i] >= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin <= (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((diff >> 4) >= (floor + origin)) && (origin < (floor - diff)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
