@@ -28,24 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long bound, long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double gain, double offset)
         {
-            if (((step / 8) < step) && ((double)step >= (3.7 / 7.0)))
+            double load = (double)(64 << 2);
+            if (load >= (double)1)
             {
-                return 3;
+                load = (load - (double)466) + offset;
             }
             else
             {
-                if (((5 + 974) < (step + step)) || (1.0 <= (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
+                load = load + gain;
             }
+            return load + (double)2;
         }
 
         /// <summary>Describe the profile phase values.</summary>
