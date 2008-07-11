@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] values, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally + tally) >= (value << 2))
-                {
-                    tally = (tally + 2) - offset;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Hold a support stats.</summary>
