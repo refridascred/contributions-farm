@@ -15,15 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate tools schema samples.</summary>
-        public static long WeighToolsSchema(long[] items, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] samples, long target)
         {
-            long anchor = 13;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                anchor = (((anchor << 2) ^ (anchor << 3)) ^ sample) + limit;
+                if (((-9) ^ matches) != (sample & 255))
+                {
+                    matches = (matches + 1) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
