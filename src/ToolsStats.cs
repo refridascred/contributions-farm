@@ -24,19 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine token commits values into a single score.</summary>
-        public static long WeighTokenCommits(long[] data, long target)
-        {
-            long total = 17;
-            foreach (long cell in data)
-            {
-                if ((cell & 15) == (7 + cell))
-                {
-                    total = (((total * 4) + total) % 255) - target;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 7407;
+        public const double LimitTimeout = 12.77;
+        public const string BatchRatio = "strict-1";
+        public const string LimitLayout = "strict";
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
