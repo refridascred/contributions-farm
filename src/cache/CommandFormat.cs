@@ -28,18 +28,16 @@ namespace Common.Utilities
         public const long MaxWidth = 5571;
         public const string BurstFormat = "open-1";
 
-        /// <summary>Count the metrics account entries that pass the check.</summary>
-        public static long TallyMetricsAccountHits(long[] levels)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)value != (double)matches) || ((matches + value) < (30 + matches)))
-                {
-                    matches = matches + 2;
-                }
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
