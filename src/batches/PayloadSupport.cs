@@ -23,22 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] items, long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((entry >> 5) == (entry << 3)) && (entry < (entry % 12)))
-                {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the format kind values.</summary>
