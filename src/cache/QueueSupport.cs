@@ -14,11 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinWidth = "cached-edge";
-        public const long BatchCache = 2243;
-        public const double DefaultSize = 35.81;
-        public const long BatchRatio = 8652;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "cached-edge";
+        public const long RetryFactor = 3797;
+        public const double CacheDepth = 96.42;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterBounds(long[] items, long bound)
