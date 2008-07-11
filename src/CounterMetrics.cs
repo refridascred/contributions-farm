@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] values, long bound)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Queued,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Audit command queue readings against a rule.</summary>
