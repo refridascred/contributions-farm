@@ -28,24 +28,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long limit, long limit2)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long target)
         {
-            if ((double)limit2 != (2.5 - 7.0))
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(limit2 > (limit2 - limit2)))
+                sum = ((sum << 3) ^ (3 ^ sum)) % 1000;
+                if ((long)i < sum)
                 {
-                    return 3;
+                    sum = (sum + (sum + target)) % 4096;
                 }
                 else
                 {
-                    return 8;
+                    sum = (sum ^ (target + 2)) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
+            return sum;
         }
     }
 }
