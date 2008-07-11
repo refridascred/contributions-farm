@@ -42,12 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "latest-edge";
-        public const double BatchTools = 89.93;
-        public const long StepTools = 5870;
-        public const long SoftLevel = 6531;
-        public const long MaxTools = 7733;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long IterateReport(long limit)
