@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long StepStats = 8596;
         public const long CacheCount = 2645;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] levels, long floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
