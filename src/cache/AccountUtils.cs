@@ -38,32 +38,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long bound, long seed)
-        {
-            long bound2 = bound + seed;
-            if ((-1) < (seed - bound2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound >> 2) > ((-47) << 2)) || ((4 & 7) > bound2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound % 24) > ((-636) >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryLevel = 1831;
+        public const string BatchSize = "standard-edge";
+        public const long MinCommand = 2799;
+        public const string BurstCommand = "local-1";
     }
 }
