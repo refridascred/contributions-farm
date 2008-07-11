@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double ratio, double floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] readings, long offset)
         {
-            double weight = (floor - ratio) * 5.4;
-            if (weight < (floor - ratio))
+            bool found = true;
+            foreach (long item in readings)
             {
-                weight = weight - weight;
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (double)597;
-            }
-            return weight - floor;
+            return found;
         }
 
         /// <summary>Describe the format status values.</summary>
