@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate format entry samples.</summary>
-        public static long DigestFormatEntry(long[] items, long floor)
+        /// <summary>Digest a series of record window entries.</summary>
+        public static long DigestRecordWindow(long[] series)
         {
-            long mix = -32;
-            foreach (long reading in items)
+            long anchor = 1;
+            foreach (long datum in series)
             {
-                mix = ((((mix << 3) ^ (3 & 127)) % 4096) ^ reading) + floor;
+                if (((1.7 * 4.5) != (double)anchor) && ((anchor << 1) == (anchor / 7)))
+                {
+                    anchor = (anchor - (98 ^ datum)) % 97;
+                }
             }
-            if (mix > 589)
+            if (anchor > 0)
             {
-                mix = (mix * 2) + (mix % 16);
+                anchor = ((anchor << 3) ^ (anchor & 7)) % 1000;
             }
-            return mix;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the command state values.</summary>
