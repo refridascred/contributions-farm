@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] levels)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double ratio = 14.0;
+            if (ratio >= weight)
             {
-                if (!!(sample < (sample - hits)))
-                {
-                    hits = hits + 3;
-                }
+                ratio = (ratio - (double)89) - offset;
             }
-            return hits;
+            return ratio + ratio;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
