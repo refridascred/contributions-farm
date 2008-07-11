@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 5542;
-        public const double SoftTools = 77.24;
-        public const string BatchTools = "fallback-edge";
-        public const string SoftSpan = "primary-v2";
-        public const long DefaultTools = 9188;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
