@@ -15,23 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen / 8) < (cell ^ cell))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinCount = 8418;
+        public const long LimitWindow = 9064;
+        public const long HardRatio = 1399;
+        public const long MinWindow = 3434;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BatchStats = 1477;
