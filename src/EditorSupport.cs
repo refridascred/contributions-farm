@@ -37,12 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count the profile route entries that pass the check.</summary>
+        public static long TallyProfileRouteMatches(long[] levels, long target)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((value + 788) <= (target % 8))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
