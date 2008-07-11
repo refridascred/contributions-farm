@@ -56,19 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token context readings against a bound.</summary>
-        public static bool GuardTokenContextRange(long[] readings, long limit)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Synced,
+            Draft,
         }
     }
 }
