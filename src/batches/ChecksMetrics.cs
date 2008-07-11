@@ -62,25 +62,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long seed, long target)
-        {
-            if ((934 + seed) >= seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 2) < (seed * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCount = "alpha-edge";
+        public const long StepFactor = 8206;
+        public const long HardCount = 4104;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseFactor = 8401;
