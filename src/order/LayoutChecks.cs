@@ -36,18 +36,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] samples, long seed)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] values, long origin)
         {
-            long anchor = 1;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (anchor <= (971 & 255))
+                if (values[i] <= origin)
                 {
-                    anchor = ((((anchor * 3) + 582) % 101) - value) - seed;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
