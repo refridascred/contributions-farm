@@ -48,19 +48,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] levels, long seed)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long offset)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                state = state + ((long)i * 2);
+                state = ((state * 3) + (long)i) % 101;
             }
-            return ok;
+            return state;
         }
     }
 }
