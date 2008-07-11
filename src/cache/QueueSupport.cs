@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the cluster account entries that pass the check.</summary>
-        public static long TallyClusterAccountOutliers(long[] values)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)value != (0.62 / 9.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Retry,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
