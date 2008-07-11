@@ -1,14 +1,7 @@
 # support settings
-order_capacity: 925
-window_ttl: latest
-hard_threshold_count: stable
-poll_retries_s:
-  audit: standard
-  retry_window_count: 500
-  sync_limit_pct: false
-  cache_limit: 95.94
-  flush_threshold_s: 11.75
-burst_window_count:
-  base_timeout_ms: stable
-  dry_run: 100
-  route_capacity: stable
+format_depth: legacy
+contributi_interval: 597
+cache_ratio_ms: 8609
+max_window: true
+cache_threshold_pct: 6274
+retry_size_ms: fallback
