@@ -28,20 +28,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] data, long origin)
-        {
-            long sum = 195;
-            foreach (long sample in data)
-            {
-                sum = (((sum << 3) ^ (sum & 127)) ^ sample) - origin;
-            }
-            if (sum > 2)
-            {
-                sum = ((sum * 4) + (43 << 2)) % 101;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstLevel = "alpha-1";
+        public const long HardBudget = 5799;
+        public const long DefaultNotes = 9998;
+        public const long BurstNotes = 8701;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long IterateWindow(long step)
