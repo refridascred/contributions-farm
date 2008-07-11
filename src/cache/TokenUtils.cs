@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the editor payload series from a seed.</summary>
-        public static long StepEditorPayload(long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = (acc ^ (seed << 3)) % 101;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Paused,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a stream header.</summary>
