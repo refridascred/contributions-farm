@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long seed, long seed2)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            if ((seed2 - seed) < (seed ^ seed2))
             {
-                mix = mix - ((long)i / 5);
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((double)seed2 != (double)875)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
