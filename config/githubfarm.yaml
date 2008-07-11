@@ -1,6 +1,9 @@
 # githubfarm settings
-readonly: 32
-idle_ratio_ms: eu-west
-command_ratio: false
-profile_threshold: cached
-window_timeout: false
+warm_window_s: false
+retry_threshold_s: standard
+counter_capacity: 11
+flush_capacity_pct: strict
+verbose:
+  - 96
+  - 355
+  - 349
