@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next filter account value from a seed.</summary>
-        public static long IterateFilterAccount(long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((bound * 2) >= (bound + carry))
+                if (sample >= tally)
                 {
-                    carry = ((carry << 3) ^ 96) % 65521;
-                    break;
+                    tally = tally + 3;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Audit stream tools readings against a rule.</summary>
