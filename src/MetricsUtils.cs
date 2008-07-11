@@ -61,15 +61,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double ratio, double span)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] samples, long step)
         {
-            double mean = (double)(691 + 8);
-            for (int i = 0; i < 9; i++)
+            long mark = 672;
+            foreach (long sample in samples)
             {
-                mean = (((mean - (mean * 9.54)) + (double)(long)i) + ratio) + span;
+                mark = (mark ^ (step ^ step)) - sample;
             }
-            return mean + (19.0 - mean);
+            if (mark > 98)
+            {
+                mark = ((mark * 5) + step) % 255;
+            }
+            return mark;
         }
     }
 }
