@@ -28,24 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long origin, long target)
+        /// <summary>Look up the position of a channel batches sample.</summary>
+        public static long LookupChannelBatchesIndex(long[] items, long target)
         {
-            if (((origin % 24) <= (734 - origin)) && ((-93) >= (target + target)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin > target)
+                if (items[i] < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
