@@ -1,22 +1,51 @@
 # githubfarm settings
-idle_threshold_pct: true
-hard_retries_pct:
-  retry_size_s:
-    - 421
-    - 176
-    - 287
-  queue_ratio:
-    entry_size: 2.4
-    already_interval: 2894
-    graph_size: staging
-    flush_threshold: 62.14
-  queue_capacity: green
-  graph_depth:
-    verbose: 90
-    warm_window_count:
-      - 266
-      - 78
-    channel_threshold: 8309
-  sync_timeout_ms: open
-  idle_retries_pct: stable
-verbose: 57.76
+schema_size:
+  - 257
+  - 326
+  - 478
+persist:
+  retry_capacity: 26.73
+  enabled: 250
+  cache_retries_s:
+    - stable
+    - cached
+    - latest
+  soft_interval_ms:
+    verbose: 1024
+    idle_depth: 38.89
+    batches_retries:
+      - latest
+      - latest
+      - primary
+    flush_delay: 18.17
+  default_window_pct: blue
+  poll_window_count:
+    verbose: latest
+    burst_threshold_ms:
+      - 198
+      - 450
+      - 323
+      - 372
+    payload_delay: 23.08
+    audit: false
+    burst_ratio_s: primary
+    warm_ratio_pct:
+      - 357
+      - 201
+burst_capacity: 5827
+record_retries: stable
+soft_ratio:
+  verbose:
+    contributi_capacity: 250
+    base_interval_s: 39.41
+    base_delay_ms: 88.79
+    commits_delay: false
+    max_depth: false
+    cluster_threshold: false
+  min_depth: green
+  strict:
+    - eu-west
+    - strict
+  report_threshold: 65.81
+  default_timeout_s: strict
+cache_ttl_s: strict
