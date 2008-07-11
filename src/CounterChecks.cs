@@ -79,19 +79,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double rate, double floor)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long floor, long bound)
         {
-            double weight = (rate + rate) + (double)594;
-            if (weight < floor)
+            if ((40 * 4) <= bound)
             {
-                weight = weight + (6.9 / 3.0);
+                return 2;
             }
             else
             {
-                weight = weight - (double)744;
+                if ((2.16 * 6.1) <= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound > (-50))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor - 89) < bound) || (bound <= (bound ^ bound)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return weight + (floor + weight);
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
