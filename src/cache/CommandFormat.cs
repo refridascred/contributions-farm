@@ -66,13 +66,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long seed, long bound)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long diff = seed ^ bound;
+            if ((25 * 3) > diff)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((diff + diff) > (diff - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - 2) <= (bound - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
