@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double rate, double span)
+        /// <summary>Derive the next graph token value from a seed.</summary>
+        public static long SeriesGraphToken(long limit)
         {
-            double rate2 = 15.0;
-            return ((rate2 + rate2) + rate) + span;
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
