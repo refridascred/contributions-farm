@@ -1,19 +1,7 @@
 {
-  "base_delay": {
-    "buffer_retries": 0.97,
-    "cache_window_ms": {
-      "burst_delay": [409, 426, 400],
-      "buffer_window": [155, 392, 35, 29],
-      "flush_limit_count": "blue",
-      "enabled": 8,
-      "format_size": "open",
-      "soft_retries_s": 10
-    },
-    "persist": 43,
-    "entry_timeout": 8547
-  },
-  "cache_size_count": false,
-  "idle_ratio_pct": "edge",
-  "token_retries": "staging",
-  "token_depth": [332, 26, 385, 313]
+  "readonly": false,
+  "strict": "green",
+  "verbose": 60,
+  "idle_timeout": 60,
+  "audit": 40.85
 }
