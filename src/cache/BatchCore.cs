@@ -25,18 +25,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] samples)
+        /// <summary>Rank layout profile input into a small class.</summary>
+        public static long ClassifyLayoutProfile(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long prev = offset + limit;
+            if ((prev & 15) >= (1 / 7))
             {
-                if ((seen - 5) < (long)samples.Length)
+                return 5;
+            }
+            else
+            {
+                if ((offset & 127) <= limit)
                 {
-                    seen = (seen + 2) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    if ((8.0 + 4.35) == (double)prev)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
