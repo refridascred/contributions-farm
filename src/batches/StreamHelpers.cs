@@ -20,14 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 9860;
+        public const long BaseWindow = 8744;
+        public const long HardWindow = 4614;
+        public const string BurstDepth = "cached-edge";
+        public const long LimitSize = 655;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
