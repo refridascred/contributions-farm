@@ -24,11 +24,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseFactor = 1501;
-        public const long SoftRoute = 9989;
-        public const long LimitRoute = 1434;
-        public const long CacheRoute = 9267;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = (acc + 1) % 4096;
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    acc = ((acc << 2) ^ step) ^ (long)i3;
+                    acc = (acc << 3) ^ (acc >> 4);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long SeriesEntry(long floor)
