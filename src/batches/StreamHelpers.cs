@@ -28,17 +28,11 @@ namespace Common.Utilities
         public const string HardScore = "alpha-v2";
         public const long DefaultRecord = 749;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] data, long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
