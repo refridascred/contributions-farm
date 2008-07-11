@@ -22,38 +22,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long target, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series)
         {
-            if ((target >> 4) < seed)
+            long sum = 80;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target + seed) >= target) && (target < seed))
+                sum = (sum + (sum % 16)) % 4096;
+                if ((reading << 3) >= sum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.65 - 9.2) > (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed - target) == (seed - 698))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
