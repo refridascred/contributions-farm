@@ -63,18 +63,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] samples, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((17.0 - 3.2) != (double)target)
+                if (entry != seed)
                 {
-                    tally = (tally + 1) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
