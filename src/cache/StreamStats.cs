@@ -41,15 +41,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate account githubfarm samples.</summary>
