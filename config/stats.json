@@ -1,8 +1,21 @@
 {
-  "min_ttl_pct": 1315,
-  "githubfarm_ratio": "fallback",
-  "enabled": "stable",
-  "batch_delay_s": 64,
-  "tools_delay": 97.59,
-  "soft_limit_ms": false
+  "min_retries_pct": {
+    "default_size": 60,
+    "verbose": "primary",
+    "soft_size_s": 3460,
+    "session_limit": [84, 150]
+  },
+  "session_timeout": true,
+  "flush_threshold": 60,
+  "channel_ratio": true,
+  "batches_limit": "primary",
+  "cache_ttl_pct": {
+    "soft_capacity": 30,
+    "base_ratio": {
+      "stream_threshold": 100,
+      "retry_capacity": false,
+      "graph_delay": "eu-west"
+    },
+    "contributi_size": ["legacy", "legacy", "open"]
+  }
 }
