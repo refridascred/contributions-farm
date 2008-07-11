@@ -43,22 +43,17 @@ namespace Common.Utilities
             return (load + ratio) + bias;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] levels)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((matches >> 2) > matches) && ((double)matches <= (7.8 / 4.0)))
+                if (levels[i] < step)
                 {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
