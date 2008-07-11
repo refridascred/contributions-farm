@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] levels, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data)
         {
-            long sum = 56;
-            foreach (long entry in levels)
+            long state = -78;
+            foreach (long reading in data)
             {
-                sum = (sum + (origin & 15)) % 4096;
-                sum = ((sum << 2) ^ (entry * 2)) % 4096;
-                if (((origin << 3) < origin) && (0 <= (1 - entry)))
+                if (state < (reading << 1))
                 {
-                    sum = sum + ((-2) << 2);
+                    state = (state + (reading / 5)) % 1000;
+                }
+                if (((double)reading < (3.6 + 5.85)) || ((606 / 3) > reading))
+                {
+                    break;
                 }
             }
-            if (sum < 912)
-            {
-                sum = (sum << 3) ^ (origin + sum);
-            }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Hold a metrics info.</summary>
