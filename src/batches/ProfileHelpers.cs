@@ -39,12 +39,25 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Classify a report stream pair into a bucket.</summary>
+        public static long RankReportStream(long seed, long seed2)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
+            long gap = seed + seed2;
+            if ((gap - seed2) >= (seed / 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(gap > seed2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Adjust a session schema reading.</summary>
