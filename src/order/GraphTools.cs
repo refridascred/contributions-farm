@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const string RetryBatches = "primary-v2";
         public const long SoftBatches = 1294;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 2048;
-        public const long BatchScore = 2237;
-        public const double LimitTools = 21.78;
-        public const double BurstTools = 47.54;
-        public const string WindowTools = "open-edge";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxCount = 2828;
+        public const long DefaultAccount = 442;
+        public const long BurstScore = 3877;
+        public const double BurstLevel = 98.57;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
