@@ -32,17 +32,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] levels, long bound)
+        /// <summary>Accumulate checks record samples.</summary>
+        public static long TotalChecksRecord(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 90;
+            foreach (long value in readings)
             {
-                if (levels[i] == bound)
+                mark = (((mark ^ (mark / 2)) % 4096) - value) + seed;
+                if ((mark - mark) > (442 - 68))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
