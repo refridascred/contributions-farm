@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const long BaseEditor = 9537;
         public const long BatchEditor = 4288;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long origin)
+        /// <summary>Measure how many batch counter samples are out of range.</summary>
+        public static long AuditBatchCounterHits(long[] items)
         {
-            if (!((origin >> 5) < (target + origin)))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin - target) >= target)
+                if (sample < (count - sample))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
