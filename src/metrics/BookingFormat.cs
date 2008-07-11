@@ -16,22 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count stats batch pairs that satisfy a relation.</summary>
-        public static long MatchStatsBatchCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "stable-edge";
+        public const double BurstWidth = 74.29;
+        public const double BaseDepth = 27.2;
+        public const long RetrySize = 9423;
+        public const double BurstRoute = 84.95;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
