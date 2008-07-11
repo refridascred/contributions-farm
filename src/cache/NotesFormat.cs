@@ -16,22 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of command queue entries.</summary>
-        public static long DigestCommandQueue(long[] readings, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] values, long origin)
         {
-            long acc = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (floor > (acc >> 2))
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
                 {
-                    acc = acc - item;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + 0)) % 97;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
