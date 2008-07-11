@@ -1,5 +1,14 @@
 {
-  "base_capacity": ["primary", "strict", "latest", "green"],
-  "min_limit_count": 500,
-  "warm_limit": "cached"
+  "cache_interval_pct": 2249,
+  "poll_delay_ms": 3591,
+  "session_ttl": {
+    "already_window": {
+      "context_delay": false,
+      "hard_capacity": true,
+      "record_timeout": "stable"
+    },
+    "cache_interval_pct": false,
+    "format_threshold": false
+  },
+  "min_limit_count": false
 }
