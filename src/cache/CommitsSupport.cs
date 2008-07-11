@@ -26,12 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            Pending,
-            Stale,
-            Idle,
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Blend two channel measurements.</summary>
