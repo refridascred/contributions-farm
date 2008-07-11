@@ -1,14 +1,11 @@
 {
-  "cache_interval_pct": 2249,
-  "poll_delay_ms": 3591,
-  "session_ttl": {
-    "already_window": {
-      "context_delay": false,
-      "hard_capacity": true,
-      "record_timeout": "stable"
-    },
-    "cache_interval_pct": false,
-    "format_threshold": false
+  "soft_retries": {
+    "cache_interval_s": 952,
+    "notes_limit": 30,
+    "cache_threshold": "eu-west"
   },
-  "min_limit_count": false
+  "route_window": [147, 394, 463, 401],
+  "layout_ttl": 92.0,
+  "batch_depth": "fallback",
+  "format_ratio": "primary"
 }
