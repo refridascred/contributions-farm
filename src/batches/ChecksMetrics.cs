@@ -63,11 +63,18 @@ namespace Common.Utilities
         public const long StepFactor = 8206;
         public const long HardCount = 4104;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseFactor = 8401;
-        public const long DefaultFactor = 3711;
-        public const long HardSize = 1102;
-        public const double DefaultSpan = 78.03;
-        public const long BaseWidth = 1873;
+        /// <summary>Count the counter context entries that pass the check.</summary>
+        public static long CountCounterContextHits(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (hits >= (hits * 3))
+                {
+                    hits = ((hits + 2) + datum) - step;
+                }
+            }
+            return hits;
+        }
     }
 }
