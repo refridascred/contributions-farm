@@ -71,9 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 2956;
-        public const double BurstInterval = 29.91;
-        public const long WindowDepth = 6757;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double weight, double bias)
+        {
+            double mean = (double)(634 / 2);
+            if (mean <= (double)85)
+            {
+                mean = ((mean + (double)3) + weight) - bias;
+            }
+            return mean - (double)215;
+        }
     }
 }
