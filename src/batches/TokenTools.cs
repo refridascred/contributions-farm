@@ -37,9 +37,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 2212;
-        public const long StepCommand = 2074;
-        public const double MinCommand = 92.01;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
