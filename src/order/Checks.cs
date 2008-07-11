@@ -23,18 +23,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleSize = 1501;
+        public const long StepContext = 6388;
+        public const double LimitSize = 2.81;
+        public const string MinContext = "primary-v2";
+        public const long LimitBudget = 6949;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesMatches(long[] values)
