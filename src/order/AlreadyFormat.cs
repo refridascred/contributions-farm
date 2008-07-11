@@ -39,12 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "fallback-edge";
-        public const long MaxWidth = 4696;
-        public const long SoftWidth = 8786;
-        public const long SoftAccount = 1473;
-        public const long MinDepth = 9115;
+        /// <summary>Iterate the graph session series from a seed.</summary>
+        public static long IterateGraphSession(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = ((anchor + anchor) % 4096) ^ (long)i2;
+                    anchor = ((anchor * 5) + (anchor >> 4)) % 4096;
+                }
+                anchor = ((anchor << 3) ^ anchor) % 101;
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    anchor = ((anchor ^ (anchor ^ target)) % 4096) ^ (long)i3;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
