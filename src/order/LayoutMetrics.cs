@@ -36,17 +36,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a record batches reading by value.</summary>
-        public static long FindRecordBatchesIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 1474;
+        public const long BatchLayout = 8101;
+        public const long DefaultLayout = 1209;
+        public const double WindowLayout = 68.21;
     }
 }
