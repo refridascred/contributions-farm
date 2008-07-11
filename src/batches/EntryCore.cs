@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Measure how many record route samples are out of range.</summary>
+        public static long TallyRecordRouteMatches(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches >> 3) <= (cell - matches))
                 {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up metrics samples.</summary>
