@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] samples, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (11 >= step)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
