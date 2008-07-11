@@ -25,12 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] values, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + (-60)) > (floor >> 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
