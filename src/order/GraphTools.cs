@@ -40,23 +40,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long acc = 8;
-            foreach (long cell in items)
-            {
-                if ((cell * 2) >= acc)
-                {
-                    acc = (acc + (acc + cell)) % 1000;
-                }
-                acc = (acc - (acc / 5)) % 65521;
-            }
-            if (acc < 4)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
