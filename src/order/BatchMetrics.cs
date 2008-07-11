@@ -52,13 +52,17 @@ namespace Common.Utilities
             return scale + (scale + floor);
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] samples, long step)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
