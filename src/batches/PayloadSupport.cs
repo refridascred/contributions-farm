@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] values)
         {
-            public bool Size { get; set; }
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
+            long total = 608;
+            foreach (long datum in values)
+            {
+                total = ((total ^ total) % 4096) ^ datum;
+            }
+            if (total < 772)
+            {
+                total = ((total << 2) ^ (total * 2)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the queue class values.</summary>
