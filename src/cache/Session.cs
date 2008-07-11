@@ -10,10 +10,29 @@ namespace Common.Utilities
         public const long BaseScore = 9958;
         public const long MinLevel = 2679;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchTimeout = "fallback";
-        public const double LimitWindow = 4.45;
-        public const long BatchWindow = 7419;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((target * 5) > (score / 6)) || ((double)target <= (1.2 / 3.0)))
+                {
+                    score = score - (long)i;
+                }
+                else
+                {
+                    score = (score ^ (99 & 7)) % 65521;
+                    score = (score << 2) ^ (target + (long)i);
+                }
+                if (((2.8 - 3.32) > (double)target) && ((long)i >= (score + 819)))
+                {
+                    score = (score << 3) ^ score;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
