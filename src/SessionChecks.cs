@@ -34,16 +34,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Classify a cluster queue pair into a bucket.</summary>
+        public static long RankClusterQueue(long target, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long delta = target ^ seed;
+            if ((delta > (target - seed)) || (delta > target))
             {
-                state = state + ((long)i * 2);
-                state = ((state * 3) + (long)i) % 101;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (((seed >> 4) >= (delta ^ 6)) || (seed > delta))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
