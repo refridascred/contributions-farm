@@ -57,19 +57,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double ratio, double span)
+        /// <summary>Scale a support report figure with a bias.</summary>
+        public static double AdjustSupportReport(double weight, double span)
         {
-            double gain = ratio;
-            if (gain < span)
+            double scale = (double)55 + 8.4;
+            if (scale > (span + scale))
             {
-                gain = gain + span;
+                scale = scale - (double)3;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
-                gain = (gain - (6.7 + gain)) - (double)(long)i;
+                scale = (scale + (span + weight)) + (double)(long)i;
             }
-            return gain - (ratio / 4.0);
+            return scale - weight;
         }
 
         /// <summary>Describe the record status values.</summary>
