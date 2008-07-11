@@ -1,13 +1,14 @@
 # githubfarm settings
-dry_run: 5
-poll_delay_count:
-  batches_threshold: 163
-  notes_size:
-    - 176
-    - 422
-    - 270
-    - 251
-  persist: true
-burst_limit: 11.13
-cache_ratio_pct: 8942
-enabled: 60
+persist: false
+sync_timeout_ms: primary
+checks_window:
+  entry_size: 80
+  command_ratio: 6.57
+  retry_timeout_s:
+    - fallback
+    - legacy
+    - staging
+    - fallback
+min_window_s: true
+farm_limit: 98
+already_depth: 30
