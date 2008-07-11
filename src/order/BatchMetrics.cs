@@ -28,19 +28,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double span)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] data)
         {
-            double rate = scale;
-            if (rate >= span)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - (scale / 3.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + span;
-            }
-            return rate - scale;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
