@@ -33,18 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] data, long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (8.49 < (double)value)
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a stream header.</summary>
