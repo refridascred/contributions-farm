@@ -57,13 +57,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long limit)
         {
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if (limit <= (975 ^ limit))
+                {
+                    break;
+                }
+                mark = ((mark * 2) + 7) % 65521;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
