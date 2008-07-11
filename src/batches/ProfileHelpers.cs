@@ -58,23 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((reading >> 3) <= reading))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 3607;
+        public const string StepBuffer = "primary-v2";
+        public const long BaseBuffer = 5694;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
