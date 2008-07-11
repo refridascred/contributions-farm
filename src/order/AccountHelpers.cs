@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            Done,
+            Active,
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
