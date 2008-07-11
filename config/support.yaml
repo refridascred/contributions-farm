@@ -1,4 +1,13 @@
 # support settings
-context_depth: 250
-base_capacity: 31.04
-graph_limit: 5525
+readonly: blue
+window_interval: 100
+retry_ttl_pct: strict
+poll_ratio_count:
+  - 131
+  - 125
+  - 71
+soft_retries_count: edge
+poll_window_count:
+  enabled: latest
+  poll_size: 50
+  readonly: 29.31
