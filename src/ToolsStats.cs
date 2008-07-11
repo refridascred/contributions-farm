@@ -67,15 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] series, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
