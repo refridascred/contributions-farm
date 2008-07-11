@@ -15,14 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Stale,
-            Queued,
-            Pending,
-            New,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepLevel = 2667;
+        public const long DefaultFormat = 6622;
+        public const long MaxWidth = 5571;
+        public const string BurstFormat = "open-1";
 
         /// <summary>Count the metrics account entries that pass the check.</summary>
         public static long TallyMetricsAccountHits(long[] levels)
