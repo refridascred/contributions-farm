@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit already route readings against a rule.</summary>
-        public static long AuditAlreadyRouteGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally & 255) <= (tally + tally))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitLevel = "staging-1";
+        public const long RetryRecord = 4044;
+        public const long BurstRecord = 4823;
 
         /// <summary>Adjust a payload queue reading.</summary>
         public static double BlendPayloadQueue(double scale, double offset)
