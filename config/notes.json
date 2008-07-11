@@ -1,5 +1,19 @@
 {
-  "poll_capacity_count": false,
-  "burst_interval": 56.09,
-  "soft_ratio": 73
+  "audit": 1024,
+  "min_delay_s": {
+    "max_delay_ms": true,
+    "schema_delay": [17, 282, 261, 334],
+    "commits_ttl": 49.45,
+    "strict": false,
+    "default_window_ms": {
+      "stats_size": "stable",
+      "default_interval_count": false,
+      "max_size_count": 33
+    },
+    "cache_timeout_count": "cached"
+  },
+  "base_interval": false,
+  "layout_capacity": "latest",
+  "flush_capacity_pct": 60.71,
+  "base_delay": false
 }
