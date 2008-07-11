@@ -47,28 +47,35 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long offset, long seed)
         {
-            if (offset <= (seed * 2))
+            if ((double)seed != (20.0 - 3.08))
             {
                 return 4;
             }
             else
             {
-                if ((605 / 4) <= seed)
+                if ((1.28 / 8.0) == (double)offset)
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if ((seed & 255) == (seed << 1))
+                    if ((seed & 127) > (offset - offset))
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        return 7;
+                        if (((double)seed < 19.0) || (653 < (5 + seed)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
