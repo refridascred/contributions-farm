@@ -70,21 +70,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Roll a contributi stream counter forward.</summary>
+        public static long RollContributiStream(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result - (41 + (long)i)) % 101;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
