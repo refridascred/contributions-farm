@@ -50,27 +50,12 @@ namespace Common.Utilities
         public const string HardFormat = "staging";
         public const string BurstFormat = "latest-edge";
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples, long offset)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long state = -26;
-            foreach (long cell in samples)
-            {
-                if (16.0 < (double)cell)
-                {
-                    state = state + (state & 15);
-                    break;
-                }
-                if (!((double)cell <= (double)offset))
-                {
-                    state = (state - ((long)samples.Length + offset)) % 255;
-                }
-            }
-            if (state < 0)
-            {
-                state = (state + (offset - state)) % 1000;
-            }
-            return state;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
