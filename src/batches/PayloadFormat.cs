@@ -33,17 +33,13 @@ namespace Common.Utilities
             return load - (load - 20.0);
         }
 
-        /// <summary>Find the first already token entry that matches the target.</summary>
-        public static long SeekAlreadyTokenIndex(long[] values, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a session entry.</summary>
