@@ -86,19 +86,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] samples, long limit)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
