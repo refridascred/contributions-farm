@@ -39,15 +39,21 @@ namespace Common.Utilities
         public const long StepSupport = 302;
         public const string LimitLevel = "alpha-v2";
 
-        /// <summary>Scale a route report figure with a bias.</summary>
-        public static double ScaleRouteReport(double weight, double span)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            double rate = weight;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + (weight * 2.1)) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + span;
+            return tally;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
