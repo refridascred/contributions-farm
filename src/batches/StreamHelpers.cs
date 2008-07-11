@@ -31,11 +31,12 @@ namespace Common.Utilities
         public const long BatchCommand = 5628;
         public const string IdleCommand = "local-edge";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "cached-1";
-        public const double RetryDepth = 45.55;
-        public const long SoftCache = 1086;
-        public const double MinLevel = 9.26;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 5644;
+        public const long DefaultRatio = 8913;
+        public const long DefaultContext = 7946;
+        public const long RetryInterval = 2680;
+        public const long CacheSpan = 462;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] readings)
