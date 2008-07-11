@@ -49,25 +49,19 @@ namespace Common.Utilities
         public const long MinFormat = 8020;
         public const long MaxDepth = 3363;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long origin, long offset)
+        /// <summary>Check that every order session entry stays within the limit.</summary>
+        public static bool GuardOrderSessionLimits(long[] samples, long origin)
         {
-            long edge = origin ^ offset;
-            if (!((edge & 31) > (edge + offset)))
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin < (-41))
+                if (item > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
