@@ -54,11 +54,25 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitLevel = 2832;
-        public const double CacheFormat = 19.91;
-        public const string RetryFormat = "local-edge";
-        public const long WindowLevel = 5562;
-        public const double StepTimeout = 9.58;
+        /// <summary>Classify a record window pair into a bucket.</summary>
+        public static long BucketRecordWindow(long bound, long floor)
+        {
+            long lane = bound - floor;
+            if (!(bound >= (79 - lane)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)floor <= 3.5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
