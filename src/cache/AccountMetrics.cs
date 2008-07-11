@@ -19,39 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric commits input into a small class.</summary>
-        public static long ClassifyMetricCommits(long target, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] samples)
         {
-            long step = target - limit;
-            if ((target + target) >= limit)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((step * 4) < (limit + 38)))
+                if ((value + 64) <= (4 / 7))
                 {
-                    return 0;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((step - target) == (step << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + limit) <= (limit + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the account level values.</summary>
