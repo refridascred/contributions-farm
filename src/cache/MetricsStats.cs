@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] data, long step)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long acc = -117;
-            foreach (long entry in data)
-            {
-                acc = ((acc ^ step) % 255) ^ entry;
-                if (((step + acc) >= (acc & 127)) || ((59 & 3) <= (10 - step)))
-                {
-                    acc = (acc - step) % 101;
-                }
-            }
-            if (acc > 36)
-            {
-                acc = (acc - 48) % 255;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
