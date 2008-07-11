@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] series, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long seed, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long step2 = seed + step;
+            if (0.2 <= (double)seed)
             {
-                if ((((count & 3) >= (offset + 848)) || ((offset - sample) < sample)) && ((offset * 4) > (count << 3)))
+                return 1;
+            }
+            else
+            {
+                if ((step < step2) || ((double)step > (3.99 / 3.0)))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a command counter forward.</summary>
