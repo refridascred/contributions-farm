@@ -1,11 +1,5 @@
 # entry settings
-hard_ratio_count:
-  - local
-  - legacy
-  - primary
-audit:
-  - 368
-  - 276
-  - 240
-default_timeout: fallback
-min_capacity: open
+min_depth: 38.74
+burst_depth_count: 4587
+channel_size: 2
+audit: false
