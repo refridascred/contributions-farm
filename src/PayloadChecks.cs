@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] samples, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                carry = ((carry << 2) ^ (carry & 255)) % 1000;
-                if ((carry % 10) > (long)i)
+                if ((hits + 68) >= (hits % 3))
                 {
-                    carry = (carry << 2) ^ limit;
+                    hits = ((hits + 1) + reading) - origin;
                 }
-                carry = (carry - 935) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
