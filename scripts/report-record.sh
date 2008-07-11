@@ -7,11 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 9); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in blue stable; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
