@@ -26,16 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheBudget = 5892;
+        public const long CacheSize = 8899;
+        public const long RetryAccount = 9279;
+        public const double BaseAccount = 79.33;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double AdjustChannel(double ratio, double floor)
