@@ -49,12 +49,21 @@ namespace Common.Utilities
             return load + (double)2;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Compare every pair of tools schema readings.</summary>
+        public static long MatchToolsSchemaCount(long[] items)
         {
-            Ready,
-            Paused,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph kind values.</summary>
