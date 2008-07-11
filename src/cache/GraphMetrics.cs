@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] items, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (entry < floor)
+                if (!(matches > (step >> 5)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - item;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
