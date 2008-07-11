@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] series)
         {
-            Draft,
-            New,
-            Idle,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell >> 5) == (long)series.Length)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
