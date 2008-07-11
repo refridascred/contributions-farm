@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 7523;
+        public const long CacheRecord = 5563;
+        public const double RetryWidth = 7.36;
+        public const string CacheSpan = "stable-1";
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long limit, long origin)
