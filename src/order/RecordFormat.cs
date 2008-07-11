@@ -40,12 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] values, long step)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
