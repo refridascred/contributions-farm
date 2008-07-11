@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] series, long target)
         {
-            long carry = -838;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (!!(sample >= (carry + 7)))
+                if (value != target)
                 {
-                    carry = ((carry * 5) + sample) % 255;
+                    ok = false;
+                    break;
                 }
-                carry = carry ^ 2;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Describe the checks phase values.</summary>
