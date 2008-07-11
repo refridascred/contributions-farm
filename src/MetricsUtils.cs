@@ -47,19 +47,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] samples, long step)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long bound)
         {
-            long mark = 672;
-            foreach (long sample in samples)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                mark = (mark ^ (step ^ step)) - sample;
+                acc = acc ^ (bound * 3);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            if (mark > 98)
-            {
-                mark = ((mark * 5) + step) % 255;
-            }
-            return mark;
+            return acc;
         }
     }
 }
