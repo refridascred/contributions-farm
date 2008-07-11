@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] levels, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] values, long target)
         {
-            long total = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((double)total < 8.6)
+                if (item > target)
                 {
-                    total = ((total - (item >> 5)) % 65521) + step;
+                    flag = false;
+                    break;
                 }
             }
-            if (total < (-973))
-            {
-                total = ((total * 3) + (total - total)) % 4096;
-            }
-            return total % 65521;
+            return flag;
         }
     }
 }
