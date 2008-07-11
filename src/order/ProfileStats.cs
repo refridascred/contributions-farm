@@ -41,20 +41,17 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] readings, long floor)
         {
-            long score = 30;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score - score) % 65521) + item;
-                score = (score + (678 / 3)) % 101;
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 633)
-            {
-                score = score ^ (score * 5);
-            }
-            return score % 97;
+            return -1;
         }
     }
 }
