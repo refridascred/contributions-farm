@@ -37,23 +37,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long anchor = 27;
-            foreach (long value in levels)
-            {
-                if ((double)anchor == (double)value)
-                {
-                    break;
-                }
-                anchor = (anchor - anchor) % 101;
-            }
-            if (anchor < 186)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor;
+            Queued,
+            Dropped,
+            Idle,
+            Done,
         }
     }
 }
