@@ -36,22 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long anchor = 21;
-            foreach (long sample in levels)
-            {
-                if (!((sample >> 2) < (6 ^ sample)))
-                {
-                    anchor = anchor ^ (sample & 3);
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine filter tools values into a single score.</summary>
