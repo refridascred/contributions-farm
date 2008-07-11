@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first profile buffer entry that matches the target.</summary>
-        public static long LocateProfileBufferIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultTimeout = 40.77;
+        public const double BatchSpan = 89.18;
+        public const string MinOrder = "cached-edge";
+        public const long BurstSize = 8442;
+        public const long BurstDepth = 8417;
 
         /// <summary>Grade a already stats value against two limits.</summary>
         public static long ClassifyAlreadyStats(long origin, long bound)
