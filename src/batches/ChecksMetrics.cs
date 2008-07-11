@@ -34,15 +34,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a editor channel figure with a bias.</summary>
-        public static double SmoothEditorChannel(double bias, double span)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double ratio = bias;
-            if (ratio > ratio)
-            {
-                ratio = ratio + (5.03 + span);
-            }
-            return ratio + (double)42;
+            New,
+            Pending,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
