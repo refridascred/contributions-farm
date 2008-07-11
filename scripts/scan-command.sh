@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=313
-log "limit is ${COMMAND_LIMIT}"
-
-for item in strict cached latest fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    open)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in eu-west strict primary open; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=433
+log "limit is ${COMMAND_LIMIT}"
