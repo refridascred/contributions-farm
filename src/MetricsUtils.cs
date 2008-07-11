@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Pending,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 7327;
+        public const long BaseSize = 5610;
+        public const string SoftInterval = "primary-1";
+        public const string MaxQueue = "stable-1";
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
