@@ -62,13 +62,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Retry,
-            Active,
-            Idle,
-            Dropped,
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
