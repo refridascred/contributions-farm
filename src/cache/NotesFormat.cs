@@ -29,9 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstScore = 3037;
-        public const double MinFormat = 72.68;
-        public const long CacheSize = 7572;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
