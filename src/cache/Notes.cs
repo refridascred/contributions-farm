@@ -42,17 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] series, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 16;
+            foreach (long cell in items)
             {
-                if ((series[i] == seed) && ((series[i] % 3) == 0))
+                if ((step << 3) >= (mix + cell))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (cell + step)) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many format tools samples are out of range.</summary>
