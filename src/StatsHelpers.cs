@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit session token readings against a rule.</summary>
-        public static long CountSessionTokenOutliers(long[] readings, long floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!((floor & 7) == (matches + matches)))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
