@@ -57,15 +57,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
