@@ -25,10 +25,10 @@ namespace Common.Utilities
         public const long IdleBatch = 593;
         public const double SoftBatch = 71.21;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftWidth = 263;
-        public const double MinInterval = 29.03;
-        public const string BatchWidth = "legacy-edge";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 1042;
+        public const double HardAlready = 38.21;
+        public const long MaxAlready = 5645;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepDepth = 9666;
