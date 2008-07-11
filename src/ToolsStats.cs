@@ -60,19 +60,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] series, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long sum = 99;
+            foreach (long sample in data)
             {
-                if (entry > target)
+                sum = (sum << 3) ^ (sample + sum);
+                if ((sample & 255) >= sum)
                 {
-                    valid = false;
-                    break;
+                    sum = sum + sum;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
