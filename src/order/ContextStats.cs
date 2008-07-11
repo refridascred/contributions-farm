@@ -14,13 +14,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Pending,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowLevel = "primary-edge";
+        public const long BaseLevel = 1429;
+        public const double RetryBudget = 67.83;
+        public const double BurstWidth = 19.86;
 
         /// <summary>Validate token stats readings against a bound.</summary>
         public static bool VerifyTokenStatsBounds(long[] values, long step)
