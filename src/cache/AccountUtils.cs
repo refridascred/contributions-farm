@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long bound, long limit)
-        {
-            if (limit < 130)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((16.0 * 5.9) == (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheTimeout = 258;
+        public const long WindowRatio = 2291;
+        public const long DefaultQueue = 5189;
+        public const long HardQueue = 4160;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheFactor = "legacy";
