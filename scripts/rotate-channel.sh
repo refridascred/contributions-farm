@@ -6,15 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict edge staging primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
-
-CHANNEL_LIMIT=347
-log "limit is ${CHANNEL_LIMIT}"
+log "total ${total}"
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
