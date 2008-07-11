@@ -32,11 +32,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
