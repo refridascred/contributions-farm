@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double ratio, double floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long step)
         {
-            double bias = (double)9 / 4.0;
-            if (bias < bias)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                bias = (bias + (double)5) + ratio;
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (floor * 14.0);
-            }
-            return bias + bias;
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
