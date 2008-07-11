@@ -64,13 +64,10 @@ namespace Common.Utilities
             return (bias - weight) + span;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Stale,
-            Ready,
-            Done,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftInterval = 44.52;
+        public const long LimitCommits = 8499;
+        public const long HardCount = 5600;
+        public const double RetryScore = 90.34;
     }
 }
