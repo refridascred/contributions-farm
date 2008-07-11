@@ -1,13 +1,18 @@
 # entry settings
-warm_delay_pct:
-  buffer_retries: true
-  batch_threshold_s: 60.65
-  counter_limit: local
-  idle_limit_s: 66.34
-  dry_run: false
-checks_depth:
-  - local
-  - legacy
-max_depth_count: false
-audit: edge
-soft_limit: 500
+flush_depth_s:
+  audit: true
+  channel_retries: primary
+  batch_delay:
+    - blue
+    - fallback
+  warm_timeout_s: 250
+  readonly: 100
+context_delay: 3585
+support_size:
+  githubfarm_depth: eu-west
+  retry_size: eu-west
+  poll_ratio_count:
+    - 226
+    - 399
+  counter_size: true
+min_depth: true
