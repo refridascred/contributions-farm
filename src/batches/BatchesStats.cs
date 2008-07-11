@@ -32,19 +32,12 @@ namespace Common.Utilities
             return weight + (double)46;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((long)i + (long)i) > (floor + 125))
-                {
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
