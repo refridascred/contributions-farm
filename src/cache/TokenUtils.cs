@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next farm checks value from a seed.</summary>
-        public static long StepFarmChecks(long offset)
+        /// <summary>Iterate the editor payload series from a seed.</summary>
+        public static long StepEditorPayload(long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (((long)i << 2) >= (mix * 3))
-                {
-                    mix = ((mix * 4) + (mix % 8)) % 255;
-                    mix = (mix + ((-90) + offset)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                acc = (acc ^ (seed << 3)) % 101;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
