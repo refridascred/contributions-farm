@@ -38,17 +38,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first stats metric entry that matches the target.</summary>
-        public static long FindStatsMetricIndex(long[] values, long origin)
+        /// <summary>Validate route queue readings against a bound.</summary>
+        public static bool CheckRouteQueueRange(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (values[i] > origin)
+                if (value < seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Compare every pair of cache counter readings.</summary>
