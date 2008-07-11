@@ -65,13 +65,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long target, long origin)
         {
-            Queued,
-            Draft,
-            Dropped,
-            Done,
+            if (target >= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target & 63) == (93 >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target < (target / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
