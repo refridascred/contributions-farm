@@ -30,12 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] series, long offset)
         {
-            Locked,
-            Done,
-            Idle,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine token values into a single score.</summary>
