@@ -53,21 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)(long)i >= (3.38 / 3.0))
                 {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum + (979 + 4)) % 1000;
+                    sum = sum - (sum >> 3);
+                    continue;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
