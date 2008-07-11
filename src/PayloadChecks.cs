@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double BatchSpan = 39.02;
         public const long DefaultCounter = 605;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 3758;
-        public const long MaxEntry = 3911;
-        public const long MinLevel = 983;
-        public const double BurstInterval = 67.98;
-        public const long LimitEntry = 5613;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = anchor + (anchor * 5);
+                if (anchor > ((long)i / 8))
+                {
+                    anchor = (anchor - (485 - 702)) % 4096;
+                    anchor = anchor + (long)i;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string LimitContributi = "legacy";
