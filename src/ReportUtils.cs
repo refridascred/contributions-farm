@@ -35,21 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)(21 * 4);
+            if (ratio > (gain + ratio))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + 0.04;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (offset * 7.56)) + (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
