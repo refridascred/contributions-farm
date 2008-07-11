@@ -54,10 +54,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowSpan = "fallback-v2";
-        public const string WindowCounter = "stable";
-        public const string IdleLevel = "legacy-1";
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result + (floor - (long)i)) % 1000;
+                long seen = 981 - (long)i;
+                if (1.4 < (double)seen)
+                {
+                    seen = (seen ^ (seen - result)) % 1000;
+                    break;
+                }
+                else
+                {
+                    seen = ((seen << 2) ^ seen) % 65521;
+                    seen = (seen * 2) + (result * 5);
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long RollChecks(long origin)
