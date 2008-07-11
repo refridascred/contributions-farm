@@ -1,25 +1,7 @@
 {
-  "command_window": false,
-  "burst_retries_count": {
-    "readonly": "stable",
-    "retry_size": {
-      "verbose": true,
-      "metric_capacity": true,
-      "burst_timeout_pct": "edge",
-      "batch_depth_count": 250
-    },
-    "sync_interval": "local",
-    "report_interval": {
-      "min_interval_ms": "local",
-      "hard_ratio": [499, 31, 345],
-      "batches_delay": 500,
-      "max_threshold": [277, 165, 370],
-      "dry_run": true
-    },
-    "enabled": "standard"
-  },
-  "soft_retries_s": 70.87,
-  "payload_threshold": "standard",
-  "compress": "blue",
-  "persist": 250
+  "max_timeout": 30,
+  "soft_interval": [466, 76, 91, 76],
+  "max_window_s": 40.78,
+  "flush_interval_ms": "local",
+  "burst_interval": 100
 }
