@@ -35,12 +35,21 @@ namespace Common.Utilities
         public const long WindowContributi = 7997;
         public const long WindowScore = 1899;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
