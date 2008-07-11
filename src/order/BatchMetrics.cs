@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long MaxLevel = 43;
         public const long SoftSize = 1112;
 
-        /// <summary>Audit report farm readings against a rule.</summary>
-        public static long AuditReportFarmMatches(long[] series, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((reading ^ tally) <= (reading + origin))
+                if (((double)offset < 2.58) || (((seen << 1) >= (offset - seen)) && ((seen - seen) <= 61)))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the batches state values.</summary>
