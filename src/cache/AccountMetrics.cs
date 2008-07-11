@@ -19,25 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long target, long bound)
-        {
-            if ((1 - bound) <= (target & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target % 7) > 963)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseSize = 48.02;
+        public const double CacheWidth = 42.43;
+        public const string RetryFactor = "latest";
+        public const long BatchWidth = 5122;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
