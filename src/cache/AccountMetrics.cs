@@ -37,13 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Done,
             Draft,
-            Queued,
-            Retry,
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Digest a series of window entries.</summary>
