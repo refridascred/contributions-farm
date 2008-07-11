@@ -1,33 +1,10 @@
 # support settings
-sync_depth_s: 18
-retry_limit_pct: 250
-dry_run:
-  enabled: legacy
-  base_size_count:
-    report_capacity: 4766
-    default_limit: green
-    already_ttl:
-      - legacy
-      - eu-west
-      - staging
-      - stable
-    idle_depth_s: 250
-    strict: 7.11
-    idle_delay_ms: true
-  retry_depth:
-    verbose:
-      - edge
-      - staging
-      - eu-west
-    soft_interval: true
-    checks_depth: open
-    notes_capacity: standard
-    report_interval: 78.82
-    flush_ttl_s: blue
-  retry_limit:
-    - 430
-    - 372
-    - 102
-  farm_ratio: standard
-counter_depth: 80
-flush_ratio_count: edge
+warm_capacity_s: local
+burst_interval_pct: true
+batches_delay:
+  min_threshold:
+    - edge
+    - staging
+    - latest
+  verbose: 65.78
+  poll_ttl: true
