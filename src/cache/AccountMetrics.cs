@@ -54,21 +54,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Match up cache batches samples.</summary>
-        public static long CompareCacheBatchesCount(long[] values)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Done,
+            Ready,
+            Idle,
         }
     }
 }
