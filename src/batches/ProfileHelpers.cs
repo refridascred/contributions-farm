@@ -74,13 +74,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                sum = ((sum * 4) + ((long)i & 31)) % 101;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
             return sum;
         }
