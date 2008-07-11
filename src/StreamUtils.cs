@@ -83,18 +83,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - hits) == (hits + 5))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstCount = 7342;
+        public const long CacheLevel = 1470;
+        public const long DefaultFactor = 5456;
+        public const long CacheBuffer = 570;
     }
 }
