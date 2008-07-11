@@ -40,18 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] items, long step)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mix = 16;
-            foreach (long cell in items)
-            {
-                if ((step << 3) >= (mix + cell))
-                {
-                    mix = ((mix << 2) ^ (cell + step)) % 65521;
-                }
-            }
-            return mix;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
