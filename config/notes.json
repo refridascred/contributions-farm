@@ -1,14 +1,5 @@
 {
-  "poll_depth": 9695,
-  "warm_capacity_ms": {
-    "retry_threshold_s": true,
-    "audit": 500,
-    "channel_ratio": "cached",
-    "retry_ratio_pct": true,
-    "soft_threshold_s": 250,
-    "default_capacity": [184, 211]
-  },
-  "schema_interval": 92,
-  "verbose": "stable",
-  "max_delay_s": "fallback"
+  "poll_capacity_count": false,
+  "burst_interval": 56.09,
+  "soft_ratio": 73
 }
