@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Find the first contributi githubfarm entry that matches the target.</summary>
+        public static long LookupContributiGithubfarmIndex(long[] values, long bound)
         {
-            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] == bound)
                 {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
