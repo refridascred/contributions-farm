@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long floor, long offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] series, long step)
         {
-            if ((floor - 46) <= (offset + offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset != (2.0 + 8.64))
+                if (series[i] >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset / 6) >= offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
