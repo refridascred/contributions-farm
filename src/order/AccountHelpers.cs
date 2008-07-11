@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const string MinLayout = "standard-v2";
         public const long BaseBudget = 9205;
 
-        /// <summary>Check that every batches entry entry stays within the limit.</summary>
-        public static bool ValidateBatchesEntryLimits(long[] series, long seed)
+        /// <summary>Find the first session batch entry that matches the target.</summary>
+        public static long FindSessionBatchIndex(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > seed)
+                if (readings[i] >= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many order command samples are out of range.</summary>
