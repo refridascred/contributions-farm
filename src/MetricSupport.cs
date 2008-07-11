@@ -19,38 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long floor, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] items)
         {
-            if ((7 - target) > (floor / 3))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((71 / 6) != (floor + target))
+                if (((281 - value) < (value << 1)) && (matches > value))
                 {
-                    return 0;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((floor + floor) <= (target << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor - floor) != (9 - target)) || ((target + 206) < (target + floor)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of window readings.</summary>
