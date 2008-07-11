@@ -1,6 +1,5 @@
 {
-  "default_retries_ms": ["standard", "green"],
-  "retry_capacity_s": true,
-  "enabled": 12,
-  "warm_threshold_ms": 3025
+  "already_timeout": 40.42,
+  "max_retries_ms": true,
+  "hard_limit_count": ["latest", "local"]
 }
