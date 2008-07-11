@@ -55,18 +55,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] series)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen & 63) == (seen >> 1))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
