@@ -34,18 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] levels, long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!(matches > (step >> 5)))
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
