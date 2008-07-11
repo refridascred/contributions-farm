@@ -43,11 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
