@@ -41,18 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items, long step)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long total = 5;
-            foreach (long reading in items)
-            {
-                if ((double)total < (12.0 / 8.0))
-                {
-                    total = ((total + (858 + step)) % 255) - reading;
-                }
-            }
-            return total;
+            public double Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
