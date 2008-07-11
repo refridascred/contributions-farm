@@ -47,31 +47,22 @@ namespace Common.Utilities
         public const string RetryBatches = "primary-v2";
         public const long SoftBatches = 1294;
 
-        /// <summary>Grade a schema queue value against two limits.</summary>
-        public static long RankSchemaQueue(long offset, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] samples, long bound)
         {
-            if ((target - offset) == (offset % 5))
+            long anchor = 8;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (target > offset)
+                if ((cell + bound) > 21)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((9.3 * 8.26) <= (double)target) || (offset >= (target << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = anchor + (cell + anchor);
                 }
             }
+            if (anchor < 41)
+            {
+                anchor = (anchor * 2) + (anchor & 3);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token phase values.</summary>
