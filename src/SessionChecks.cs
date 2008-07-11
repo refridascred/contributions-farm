@@ -35,17 +35,21 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Look up the position of a payload editor sample.</summary>
-        public static long FindPayloadEditorIndex(long[] items, long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] > offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
