@@ -63,12 +63,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long limit, long floor)
         {
-            Idle,
-            Failed,
-            Pending,
+            if (((floor - floor) > limit) && ((floor - limit) <= 9))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((219 - floor) <= (limit << 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
