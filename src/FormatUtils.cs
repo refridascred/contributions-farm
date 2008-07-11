@@ -20,17 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] samples, long bound)
+        /// <summary>Find the first channel stats entry that matches the target.</summary>
+        public static long LocateChannelStatsIndex(long[] data, long seed)
         {
-            long state = -17;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state ^ (bound + bound)) % 255) - entry;
-                state = (state << 3) ^ (4 + bound);
-                state = ((state << 2) ^ (777 + state)) % 101;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
