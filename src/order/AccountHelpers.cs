@@ -69,15 +69,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double weight, double bias)
-        {
-            double load = 9.0;
-            if (load <= load)
-            {
-                load = load - (bias * 8.0);
-            }
-            return load + weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinSpan = "standard-1";
+        public const double BaseWidth = 24.99;
+        public const long DefaultCount = 9337;
     }
 }
