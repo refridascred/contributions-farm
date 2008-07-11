@@ -20,25 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a filter farm value against two limits.</summary>
-        public static long BucketFilterFarm(long offset, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] items)
         {
-            long cur = offset ^ limit;
-            if (((cur + cur) == (5 + cur)) || ((offset << 3) == (16 & 255)))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.0 + 0.58) > (double)offset)
+                if ((4.19 * 10.0) <= (double)(long)items.Length)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 2) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the format kind values.</summary>
