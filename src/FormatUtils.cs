@@ -23,17 +23,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Find the first channel stats entry that matches the target.</summary>
-        public static long LocateChannelStatsIndex(long[] data, long seed)
+        /// <summary>Digest a series of account profile entries.</summary>
+        public static long WeighAccountProfile(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 715;
+            foreach (long entry in levels)
             {
-                if (data[i] == seed)
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    result = result - ((long)i + entry);
                 }
+                result = result + (result * 3);
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
