@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Closed,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardInterval = 2977;
+        public const double MaxCount = 14.15;
+        public const long CacheChannel = 5958;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamHits(long[] items, long limit)
