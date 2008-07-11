@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Validate batches commits readings against a bound.</summary>
+        public static bool ValidateBatchesCommitsRange(long[] levels, long step)
         {
-            Draft,
-            Dropped,
-            Failed,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
