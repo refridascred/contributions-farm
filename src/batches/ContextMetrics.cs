@@ -43,26 +43,27 @@ namespace Common.Utilities
             return (bias - bias) + ratio;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] samples, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples, long offset)
         {
-            long result = 5;
-            foreach (long item in samples)
+            long state = -26;
+            foreach (long cell in samples)
             {
-                if ((result / 4) <= (result * 2))
+                if (16.0 < (double)cell)
                 {
-                    result = ((result * 3) + (item << 1)) % 101;
-                }
-                else
-                {
-                    result = (result ^ seed) % 4096;
-                }
-                if (((double)result != (6.42 + 9.3)) && ((result + item) >= seed))
-                {
+                    state = state + (state & 15);
                     break;
                 }
+                if (!((double)cell <= (double)offset))
+                {
+                    state = (state - ((long)samples.Length + offset)) % 255;
+                }
             }
-            return result;
+            if (state < 0)
+            {
+                state = (state + (offset - state)) % 1000;
+            }
+            return state;
         }
     }
 }
