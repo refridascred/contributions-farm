@@ -42,12 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Locked,
+            New,
+            Idle,
             Failed,
-            Dropped,
+            Ready,
         }
     }
 }
