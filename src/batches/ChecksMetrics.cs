@@ -46,16 +46,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Iterate the cache githubfarm series from a seed.</summary>
+        public static long RollCacheGithubfarm(long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                score = score - ((long)i >> 2);
-                score = ((score * 4) + (long)i) % 1000;
+                state = (state - bound) % 97;
+                if ((double)5 != (double)(long)i)
+                {
+                    state = state - (state + (long)i);
+                }
+                if ((long)i > (state ^ (long)i))
+                {
+                    state = state + (bound - state);
+                    state = (state << 3) ^ state;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
