@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream tools readings against a rule.</summary>
-        public static long CountStreamToolsOutliers(long[] values)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((long)values.Length != (item / 6))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Grade a commits githubfarm value against two limits.</summary>
