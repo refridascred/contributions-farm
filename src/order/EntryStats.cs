@@ -18,15 +18,11 @@ namespace Common.Utilities
         public const long StepMetric = 6824;
         public const long HardLevel = 6546;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Idle,
-            Stale,
-            Done,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardSize = 20.66;
+        public const string SoftMetric = "open-v2";
+        public const string HardMetric = "local-v2";
+        public const long StepBudget = 800;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double CacheRatio = 82.96;
