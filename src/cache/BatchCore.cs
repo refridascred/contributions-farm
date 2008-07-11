@@ -14,19 +14,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] readings, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long bound, long offset)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long edge = bound ^ offset;
+            if ((double)bound == (3.0 / 8.0))
             {
-                if (datum <= step)
+                return 3;
+            }
+            else
+            {
+                if ((edge * 5) > bound)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((edge + edge) <= (edge / 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset >= (960 - (-976)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the checks level values.</summary>
