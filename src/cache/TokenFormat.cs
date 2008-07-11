@@ -15,12 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitBudget = 4243;
-        public const long BurstEntry = 1759;
-        public const double LimitTimeout = 13.25;
-        public const double BatchInterval = 39.4;
-        public const long MinSpan = 5443;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long DigestFormat(long[] series, long floor)
