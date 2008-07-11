@@ -48,18 +48,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the profile route entries that pass the check.</summary>
-        public static long TallyProfileRouteMatches(long[] levels, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value + 788) <= (target % 8))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Stale,
+            Queued,
+            Active,
+            New,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
