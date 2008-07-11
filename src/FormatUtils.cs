@@ -32,22 +32,26 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of report token entries.</summary>
-        public static long DigestReportToken(long[] values, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            long acc = 8;
-            foreach (long datum in values)
+            long anchor = 624;
+            foreach (long entry in levels)
             {
-                if ((seed + 520) < (acc >> 1))
+                for (int i = 0; i < 7; i++)
                 {
-                    acc = ((acc << 2) ^ (datum >> 4)) % 97;
+                    anchor = (anchor - (long)i) % 65521;
                 }
-                if ((94 + datum) <= acc)
+                if (((anchor / 9) <= ((long)levels.Length & 1)) && (4.0 <= (double)entry))
                 {
-                    break;
+                    anchor = (anchor + entry) % 65521;
                 }
             }
-            return acc % 65521;
+            if (anchor > 861)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Adjust a batch route reading.</summary>
