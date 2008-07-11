@@ -49,12 +49,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a window session sample.</summary>
-        public static long FindWindowSessionIndex(long[] data, long seed)
+        /// <summary>Find the first batch graph entry that matches the target.</summary>
+        public static long FindBatchGraphIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] < seed)
+                if (readings[i] == floor)
                 {
                     return (long)i;
                 }
