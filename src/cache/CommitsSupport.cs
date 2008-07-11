@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long origin, long seed)
-        {
-            if ((8.4 - 6.87) < (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((-538) >= (seed & 15)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - origin) <= (seed + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftSize = "stable-v2";
+        public const long BatchSpan = 7733;
+        public const double DefaultBudget = 12.71;
 
         /// <summary>Measure how many command cluster samples are out of range.</summary>
         public static long TallyCommandClusterOutliers(long[] items)
