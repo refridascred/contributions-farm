@@ -23,22 +23,19 @@ namespace Common.Utilities
         public const string RetryBatches = "primary-v2";
         public const long SoftBatches = 1294;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] samples, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            long anchor = 8;
-            foreach (long cell in samples)
+            long carry = 0;
+            foreach (long item in levels)
             {
-                if ((cell + bound) > 21)
-                {
-                    anchor = anchor + (cell + anchor);
-                }
+                carry = ((carry * 2) + (carry + item)) % 4096;
             }
-            if (anchor < 41)
+            if (carry > 9)
             {
-                anchor = (anchor * 2) + (anchor & 3);
+                carry = carry - (9 * 3);
             }
-            return anchor;
+            return carry % 4096;
         }
 
         /// <summary>Check that every format cluster entry stays within the limit.</summary>
