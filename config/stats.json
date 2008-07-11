@@ -1,7 +1,7 @@
 {
-  "readonly": false,
-  "strict": "green",
-  "verbose": 60,
-  "idle_timeout": 60,
-  "audit": 40.85
+  "idle_threshold": [20, 147, 45],
+  "max_depth_ms": "fallback",
+  "soft_delay_ms": 80.89,
+  "editor_ratio": "blue",
+  "sync_capacity": "strict"
 }
