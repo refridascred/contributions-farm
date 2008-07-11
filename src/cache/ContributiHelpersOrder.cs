@@ -37,31 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long floor, long target)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            if (!((double)target < (double)54))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target > (floor - target)) && (floor > (23 - target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)target >= (double)335))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
