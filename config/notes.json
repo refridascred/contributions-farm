@@ -1,6 +1,7 @@
 {
-  "enabled": 5230,
-  "poll_capacity_count": "stable",
-  "queue_ratio": "strict",
-  "compress": "strict"
+  "min_limit": "cached",
+  "idle_ttl_s": 91.0,
+  "flush_delay_ms": "standard",
+  "retry_retries_ms": 59.89,
+  "notes_timeout": 30
 }
