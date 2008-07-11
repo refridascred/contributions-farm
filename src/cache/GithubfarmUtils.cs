@@ -40,22 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] readings, long seed)
+        /// <summary>Project the next profile metrics value.</summary>
+        public static double BlendProfileMetrics(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double mean = (double)(-81);
+            if (mean <= (weight - weight))
             {
-                if ((item * 3) <= (seed >> 5))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - (double)57;
             }
-            return matches;
+            else
+            {
+                mean = mean + (offset - 18.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 9.5) - (double)(long)i;
+            }
+            return mean - (15.0 * 8.0);
         }
     }
 }
