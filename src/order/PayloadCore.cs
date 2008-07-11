@@ -56,12 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double rate, double floor)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            double rate2 = floor;
+            if (rate2 > 4.8)
+            {
+                rate2 = rate2 + (rate + 4.54);
+            }
+            return rate2 + (double)641;
         }
     }
 }
