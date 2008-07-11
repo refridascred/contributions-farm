@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every contributi batch entry stays within the limit.</summary>
-        public static bool CheckContributiBatchRange(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxFactor = 7649;
+        public const string SoftBuffer = "strict";
+        public const string IdleBuffer = "stable";
+        public const long LimitBuffer = 7684;
+        public const long RetryScore = 1806;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 3758;
