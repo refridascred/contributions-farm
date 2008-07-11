@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = floor ^ limit;
+            if (((5.39 - 1.48) != (double)floor) && ((limit & 31) == (limit ^ next)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(limit <= next))
                 {
-                    if ((values[i] ^ values[j]) == 0)
+                    return 8;
+                }
+                else
+                {
+                    if ((next ^ 509) == (floor & 31))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
