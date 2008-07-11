@@ -30,12 +30,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] samples, long seed)
         {
-            Failed,
-            Active,
-            Pending,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((5.31 / 7.0) >= (double)sample)
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
