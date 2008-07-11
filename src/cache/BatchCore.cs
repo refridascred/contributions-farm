@@ -32,32 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long limit, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] readings)
         {
-            long step = limit ^ bound;
-            if ((3 < (step - bound)) && ((step ^ limit) > (bound >> 3)))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((19.0 - 7.5) >= (double)bound)
+                if ((double)count <= (double)datum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)step == (6.24 * 8.0)) || ((limit + bound) <= 946))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
