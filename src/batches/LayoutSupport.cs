@@ -55,13 +55,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinInterval = 4710;
+        public const long MinDepth = 8995;
+        public const string IdleCount = "local-1";
+        public const string MaxFactor = "staging-v2";
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long limit, long floor)
