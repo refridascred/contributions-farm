@@ -1,10 +1,5 @@
 {
-  "sync_capacity_s": "green",
-  "notes_limit": {
-    "retry_timeout_count": 1738,
-    "idle_threshold": "blue",
-    "notes_interval": "standard",
-    "hard_capacity": [236, 378, 207]
-  },
-  "hard_timeout": "eu-west"
+  "default_retries_ms": "fallback",
+  "strict": 250,
+  "enabled": "edge"
 }
