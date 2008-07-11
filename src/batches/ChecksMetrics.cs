@@ -22,17 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] data, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 905;
+            foreach (long value in items)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) == 0))
+                total = total ^ (27 + total);
+                if (value <= (value - total))
                 {
-                    return (long)i;
+                    total = (total + (total & 1)) % 101;
+                }
+                if (value > (limit / 8))
+                {
+                    total = ((total * 2) + (limit * 3)) % 255;
+                }
+                if ((value + value) >= value)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total > 5)
+            {
+                total = ((total * 2) + (5 + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of route entries.</summary>
