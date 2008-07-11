@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            Synced,
-            Closed,
-            Retry,
+            long score = -722;
+            foreach (long cell in readings)
+            {
+                if ((5.58 * 8.0) < (double)score)
+                {
+                    score = ((score * 2) + (cell & 127)) % 97;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine already metrics values into a single score.</summary>
