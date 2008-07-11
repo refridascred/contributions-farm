@@ -1,7 +1,15 @@
 # entry settings
-readonly: 30
-min_limit_count: true
-channel_delay: false
-command_ttl:
-  - 169
-  - 143
+report_window:
+  - latest
+  - open
+sync_interval_s:
+  - 469
+  - 42
+  - 413
+batch_interval_pct:
+  - 228
+  - 306
+  - 398
+  - 50
+sync_timeout: blue
+order_interval: false
