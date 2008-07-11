@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double rate, double floor)
+        /// <summary>Check that every profile payload entry stays within the limit.</summary>
+        public static bool ValidateProfilePayloadBounds(long[] samples, long target)
         {
-            double rate2 = (double)((-77) >> 2);
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                rate2 = ((rate2 + (9.0 + 9.52)) + (double)(long)i) - rate;
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate2 + (9.2 - floor);
+            return stale;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
