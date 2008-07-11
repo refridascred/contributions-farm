@@ -1,11 +1,12 @@
 # Command notes
 
-Run the editor check before changing any contributi limits.
-When a record fails, the notes handler retries a few times before giving up.
-The session module keeps cache values in sync with the entry cache.
+The batches report groups every metrics by window.
+When a queue fails, the batches handler retries a few times before giving up.
+A buffer that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Keep contributi values small
-- Log every batch change
-- Prefer commits defaults
+- Document new buffer fields
+- Log every tools change
+- Validate order input early
+- Review context limits each release
