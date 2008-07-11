@@ -1,18 +1,8 @@
 {
-  "idle_ratio": "stable",
-  "soft_depth_count": 100,
-  "graph_window": "staging",
-  "hard_delay": {
-    "context_limit": "staging",
-    "max_timeout_count": false,
-    "base_ratio_s": "staging",
-    "idle_ttl_ms": 16.35,
-    "soft_size": 51.47,
-    "poll_timeout_ms": {
-      "cache_capacity": 30,
-      "stream_threshold": 85,
-      "persist": 40.5
-    }
-  },
-  "filter_depth": "local"
+  "order_interval": false,
+  "readonly": 23,
+  "profile_limit": 35.46,
+  "min_depth_pct": "open",
+  "min_timeout_s": "local",
+  "cache_timeout_pct": [480, 74]
 }
