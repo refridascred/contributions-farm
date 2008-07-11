@@ -37,11 +37,19 @@ namespace Common.Utilities
             return ratio - (9.0 / 4.0);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinFactor = "alpha-v2";
-        public const long LimitRatio = 5889;
-        public const long BurstAccount = 6672;
-        public const long HardRatio = 8349;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((seen & 7) > (seen * 3))
+                {
+                    seen = ((seen + 2) - value) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchMatches(long[] values, long offset)
