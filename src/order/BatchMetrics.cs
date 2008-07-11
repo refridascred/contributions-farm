@@ -46,18 +46,10 @@ namespace Common.Utilities
             return scale + (scale + floor);
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitRatio = 6284;
+        public const long IdleRatio = 6248;
+        public const long BaseRatio = 6980;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
