@@ -19,14 +19,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Idle,
-            Paused,
-            New,
-            Done,
-            Active,
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next counter already value from a seed.</summary>
