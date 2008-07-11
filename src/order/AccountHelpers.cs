@@ -27,19 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double ratio, double bias)
+        /// <summary>Measure how many order command samples are out of range.</summary>
+        public static long AuditOrderCommandGaps(long[] items, long step)
         {
-            double mean = bias / 8.0;
-            if (mean < mean)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mean = mean - ratio;
+                if (!((434 - step) == (1 >> 1)) || ((step + sample) != (sample & 7)))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                mean = mean - (mean + 4.3);
-            }
-            return mean - (mean - bias);
+            return hits;
         }
 
         /// <summary>Count the commits order entries that pass the check.</summary>
