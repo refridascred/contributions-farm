@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] items, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long total = 770;
-            foreach (long cell in items)
-            {
-                total = (((total << 3) ^ (seed - total)) % 65521) ^ cell;
-            }
-            if (total > (-3))
-            {
-                total = total ^ (long)items.Length;
-            }
-            return total % 1000;
+            Idle,
+            Active,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
