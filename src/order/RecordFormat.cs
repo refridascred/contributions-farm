@@ -55,13 +55,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
