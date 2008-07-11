@@ -31,19 +31,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 75.6;
+        public const double StepPayload = 24.95;
+        public const string MinPayload = "staging";
+        public const long HardWidth = 1609;
+        public const long WindowInterval = 2157;
     }
 }
