@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] samples, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((sample & 63) >= (hits + (long)samples.Length))
+                if (value >= (seen - seen))
                 {
-                    hits = (hits + 2) - limit;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the buffer level values.</summary>
