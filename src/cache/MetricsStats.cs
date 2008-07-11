@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of graph layout readings.</summary>
-        public static long TallyGraphLayout(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] series, long bound)
         {
-            long score = -87;
-            foreach (long entry in items)
+            long mix = 60;
+            foreach (long cell in series)
             {
-                score = (score ^ (795 - entry)) % 255;
-                for (int i = 0; i < 10; i++)
-                {
-                    score = ((score ^ 37) % 65521) - (long)i;
-                    score = score + entry;
-                }
-                if ((entry ^ score) > entry)
-                {
-                    score = (score ^ score) % 97;
-                }
+                mix = mix - (cell & 7);
+                mix = (mix - (bound % 100)) % 101;
             }
-            return score % 97;
+            return mix % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
