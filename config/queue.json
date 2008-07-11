@@ -1,7 +1,6 @@
 {
-  "sync_threshold_ms": [52, 478],
-  "notes_threshold": "fallback",
-  "soft_capacity_count": true,
-  "soft_retries_ms": ["open", "fallback", "staging"],
-  "max_threshold_pct": true
+  "retry_delay_count": 63.33,
+  "burst_ttl_count": [338, 412, 216, 343],
+  "hard_retries": false,
+  "cache_depth_pct": [386, 372]
 }
