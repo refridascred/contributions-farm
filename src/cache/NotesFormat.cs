@@ -46,12 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Check that every graph route entry stays within the limit.</summary>
+        public static bool ValidateGraphRouteLimits(long[] readings, long step)
         {
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
