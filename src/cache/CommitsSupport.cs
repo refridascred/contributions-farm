@@ -59,14 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Idle,
-            Dropped,
-            Queued,
             Synced,
-            Active,
+            Draft,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a cache summary.</summary>
