@@ -18,22 +18,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] samples, long origin)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            long anchor = 2;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin << 3) >= (origin * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - (-653)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + ((long)samples.Length + item)) % 1000;
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
