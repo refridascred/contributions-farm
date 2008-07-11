@@ -37,12 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 7937;
-        public const long HardScore = 2216;
-        public const double SoftCount = 82.68;
-        public const long LimitCommand = 3313;
-        public const string BurstCount = "fallback";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((datum + datum) <= (datum + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] values, long bound)
