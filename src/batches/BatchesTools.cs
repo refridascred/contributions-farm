@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long RetryRecord = 902;
         public const long WindowInterval = 9266;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(654 > ((long)series.Length * 5)) && (18 >= (hits & 127)))
                 {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 2) ^ entry) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the contributi status values.</summary>
