@@ -13,22 +13,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] series, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long result = 87;
+            foreach (long entry in series)
             {
-                if ((count << 1) == (datum - datum))
+                if (!((double)entry == (5.79 / 5.0)))
                 {
-                    count = count + 1;
+                    result = result - 277;
                 }
                 else
                 {
-                    count = count - 1;
+                    result = result - (3 - step);
+                }
+                if (3 <= (result / 4))
+                {
+                    break;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
