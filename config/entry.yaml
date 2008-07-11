@@ -1,4 +1,11 @@
 # entry settings
-strict: 27.85
-cache_delay_s: 5666
-readonly: 20.83
+schema_depth:
+  - 346
+  - 339
+  - 229
+  - 479
+flush_delay_pct: 1188
+enabled: 21.52
+hard_capacity_count:
+  - 257
+  - 72
