@@ -23,11 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Check that every metrics record entry stays within the limit.</summary>
+        public static bool GuardMetricsRecordRange(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine command values into a single score.</summary>
