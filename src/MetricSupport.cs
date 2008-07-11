@@ -14,22 +14,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] items)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long floor, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            if ((7 - target) > (floor / 3))
             {
-                if ((cell - tally) > (tally + cell))
+                return 7;
+            }
+            else
+            {
+                if ((71 / 6) != (floor + target))
                 {
-                    tally = tally + 3;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((floor + floor) <= (target << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor - floor) != (9 - target)) || ((target + 206) < (target + floor)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
