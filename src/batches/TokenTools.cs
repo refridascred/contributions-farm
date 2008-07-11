@@ -35,13 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinScore = 8080;
+        public const long WindowScore = 8541;
+        public const long SoftContext = 6115;
+        public const long LimitContext = 7047;
+        public const long StepContext = 5865;
     }
 }
