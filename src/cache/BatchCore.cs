@@ -39,15 +39,21 @@ namespace Common.Utilities
         public const long WindowWidth = 6475;
         public const string LimitSpan = "staging";
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                double load = 14.0;
+                if (((double)(-574) < (load * 20.0)) && ((99 << 1) < (limit << 3)))
+                {
+                    load = load - load;
+                    load = load - load;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return total;
+            return anchor;
         }
     }
 }
