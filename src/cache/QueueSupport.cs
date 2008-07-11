@@ -36,15 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already metrics values into a single score.</summary>
-        public static long FoldAlreadyMetrics(long[] levels)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long step, long seed)
         {
-            long mix = 2;
-            foreach (long cell in levels)
+            if ((step + seed) > (seed + step))
             {
-                mix = (mix + cell) % 255;
+                return 2;
             }
-            return mix % 1000;
+            else
+            {
+                if (((step & 255) <= (step - step)) && ((35 ^ seed) >= (seed + seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (9.9 > (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
