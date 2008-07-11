@@ -49,14 +49,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Active,
-            Pending,
-            Closed,
             Synced,
-            Stale,
+            Active,
+            Done,
+            Paused,
+            Idle,
         }
     }
 }
