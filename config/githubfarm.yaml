@@ -1,7 +1,7 @@
 # githubfarm settings
-batch_capacity_ms: 100
-retry_ttl_ms: stable
-dry_run: open
-compress: 28.96
-poll_retries: cached
-default_capacity: legacy
+min_ratio_pct: standard
+sync_delay: 31.06
+route_interval: 15.43
+session_ratio: 5
+queue_retries: 60
+max_interval_count: false
