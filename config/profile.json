@@ -1,13 +1,6 @@
 {
-  "retry_threshold_count": ["standard", "local", "standard", "primary"],
-  "batch_threshold_s": true,
-  "verbose": 250,
-  "batch_delay": 9153,
-  "order_ratio": {
-    "default_size_count": 7929,
-    "sync_delay": 42.28,
-    "flush_threshold": 250,
-    "burst_limit_count": 79.21,
-    "compress": false
-  }
+  "idle_ratio_ms": 38,
+  "enabled": 1024,
+  "idle_retries_count": ["latest", "cached", "local", "stable"],
+  "batch_size_ms": 250
 }
