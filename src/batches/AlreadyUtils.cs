@@ -37,26 +37,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long offset, long seed)
-        {
-            long offset2 = offset ^ seed;
-            if (!(seed >= (seed % 24)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 3) >= offset2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepDepth = 9666;
+        public const long WindowContributi = 7997;
+        public const long WindowScore = 1899;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
