@@ -33,14 +33,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            Active,
-            Locked,
-            New,
-            Failed,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
