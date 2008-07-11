@@ -1,14 +1,7 @@
 # support settings
-readonly:
-  - local
-  - primary
-  - stable
-  - stable
-poll_ttl: strict
-layout_interval:
-  - 207
-  - 485
-  - 232
-  - 419
-report_delay: edge
-cache_threshold: 500
+warm_threshold_s: 89.43
+batches_depth:
+  - blue
+  - strict
+  - latest
+support_capacity: fallback
