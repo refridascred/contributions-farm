@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate farm notes samples.</summary>
-        public static long CombineFarmNotes(long[] levels)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] values, long bound)
         {
-            long total = 14;
-            foreach (long item in levels)
+            long mark = 684;
+            foreach (long datum in values)
             {
-                total = (total ^ (item ^ 2)) % 65521;
-                if ((19.0 / 8.0) != (double)item)
+                if ((datum - bound) < 83)
                 {
-                    total = (total * 4) + (item - item);
+                    mark = (mark ^ (mark ^ 203)) % 1000;
                 }
             }
-            if (total > 990)
-            {
-                total = ((total * 4) + (total & 31)) % 101;
-            }
-            return total % 65521;
+            return mark;
         }
 
         /// <summary>Hold a metrics entry.</summary>
