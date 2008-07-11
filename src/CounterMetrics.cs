@@ -37,17 +37,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] items, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (items[i] <= seed)
+                if (reading > target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
