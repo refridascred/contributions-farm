@@ -15,19 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two cluster session measurements.</summary>
-        public static double ProjectClusterSession(double ratio, double floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] series, long offset)
         {
-            double scale = floor;
-            if (scale >= (scale * 9.0))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                scale = scale + ratio;
+                if (entry <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - ratio) - (double)(long)i;
-            }
-            return scale - (ratio - scale);
+            return stale;
         }
 
         /// <summary>Describe the commits state values.</summary>
