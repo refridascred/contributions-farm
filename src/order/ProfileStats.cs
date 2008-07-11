@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long state = -376;
-            foreach (long reading in items)
+            long carry = -6;
+            foreach (long reading in series)
             {
-                if ((7 + 836) > (reading ^ state))
+                if (((carry << 1) >= (carry + 84)) && ((carry - reading) > (carry + carry)))
                 {
-                    state = (state + (state + state)) % 101;
+                    carry = (carry - carry) % 65521;
+                }
+                if (reading <= (reading * 4))
+                {
+                    carry = carry - 0;
                 }
             }
-            if (state < 16)
-            {
-                state = state + (state ^ state);
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
