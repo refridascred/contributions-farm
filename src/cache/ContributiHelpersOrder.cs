@@ -37,21 +37,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((double)target < (double)54))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target > (floor - target)) && (floor > (23 - target)))
                 {
-                    if ((items[i] + items[j]) > 12)
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)target >= (double)335))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
     }
 }
