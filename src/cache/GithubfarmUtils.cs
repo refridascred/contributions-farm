@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long step, long bound)
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            if ((7.96 / 6.0) >= (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound - step) >= (step + bound)) || (bound < (bound << 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a session counter forward.</summary>
