@@ -72,19 +72,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] values, long origin)
+        /// <summary>Look up the position of a notes support sample.</summary>
+        public static long FindNotesSupportIndex(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != origin)
+                if ((items[i] > bound) && ((items[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
