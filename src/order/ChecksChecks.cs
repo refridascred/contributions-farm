@@ -23,15 +23,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double rate, double offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double bias = (double)((-794) ^ 2);
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (16.0 - offset)) + (double)(long)i;
-            }
-            return bias - (4.7 + rate);
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
