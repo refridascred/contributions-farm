@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long offset2)
+        /// <summary>Audit metric record readings against a rule.</summary>
+        public static long CountMetricRecordHits(long[] items)
         {
-            if (!(8.92 < (double)offset2))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset >= (offset2 + offset))
+                if ((cell ^ tally) > cell)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset ^ offset2) <= (485 + offset2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset ^ (-973)) > offset2) && ((double)offset2 >= (1.0 + 1.76)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
