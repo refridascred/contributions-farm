@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double ratio, double floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double load = ratio;
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load - (double)62;
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first entry order entry that matches the target.</summary>
