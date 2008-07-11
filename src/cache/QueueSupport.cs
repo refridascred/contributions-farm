@@ -25,26 +25,19 @@ namespace Common.Utilities
         public const double DefaultSize = 35.81;
         public const long BatchRatio = 8652;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] series, long step)
+        /// <summary>Scale a editor checks figure with a bias.</summary>
+        public static double BlendEditorChecks(double gain, double bias)
         {
-            long carry = 78;
-            foreach (long cell in series)
+            double rate = (double)885;
+            if (rate < gain)
             {
-                if (step > 734)
-                {
-                    carry = carry ^ (19 >> 4);
-                }
-                else
-                {
-                    carry = (carry ^ (cell % 97)) % 65521;
-                }
-                if ((cell % 8) >= (carry % 3))
-                {
-                    break;
-                }
+                rate = (rate + 17.0) - bias;
             }
-            return carry;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - (double)7;
         }
     }
 }
