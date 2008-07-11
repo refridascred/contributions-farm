@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] items)
-        {
-            long acc = 514;
-            foreach (long reading in items)
-            {
-                acc = ((acc ^ (3 + acc)) % 1000) ^ reading;
-            }
-            if (acc < 7)
-            {
-                acc = (acc - (acc * 4)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 1912;
+        public const double IdleRoute = 74.55;
+        public const long MinBudget = 1020;
+        public const long DefaultSpan = 3721;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorMatches(long[] items)
