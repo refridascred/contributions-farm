@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 1561;
-        public const string WindowMetric = "latest-edge";
-        public const long StepMetric = 6824;
-        public const long HardLevel = 6546;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinDepth = 24.18;
+        public const long BurstRatio = 9176;
+        public const long BatchCluster = 9566;
+        public const long StepSize = 3392;
+        public const double MinCluster = 72.7;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double HardSize = 20.66;
