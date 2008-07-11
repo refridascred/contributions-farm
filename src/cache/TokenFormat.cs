@@ -17,28 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a queue batch counter forward.</summary>
-        public static long StepQueueBatch(long bound)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((8 >= (bound << 2)) || (carry >= (carry << 1)))
-                {
-                    carry = carry - ((long)i + 1);
-                    carry = (carry << 2) ^ (carry + carry);
-                }
-                else
-                {
-                    carry = (carry + (carry ^ carry)) % 65521;
-                }
-                if (!(carry >= (carry & 255)))
-                {
-                    carry = (carry + ((long)i + 674)) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
