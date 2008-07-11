@@ -37,10 +37,12 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleInterval = 67.46;
-        public const double BaseSpan = 24.22;
-        public const string BurstSpan = "latest-edge";
-        public const double HardEntry = 59.91;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Draft,
+            Synced,
+            Ready,
+        }
     }
 }
