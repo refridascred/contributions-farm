@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long MaxLevel = 43;
         public const long SoftSize = 1112;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Audit report farm readings against a rule.</summary>
+        public static long AuditReportFarmMatches(long[] series, long origin)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading ^ tally) <= (reading + origin))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batches state values.</summary>
