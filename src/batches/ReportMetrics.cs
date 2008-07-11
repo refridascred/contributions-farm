@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 2297;
-        public const long BurstSize = 2035;
-        public const long StepStats = 8596;
-        public const long CacheCount = 2645;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample == (double)seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
