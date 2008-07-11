@@ -75,17 +75,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] data, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 74;
+            foreach (long datum in values)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = (((state * 5) + state) % 101) - datum;
+                state = (state ^ state) % 65521;
             }
-            return -1;
+            if (state > 7)
+            {
+                state = (state + (-16)) % 101;
+            }
+            return state % 65521;
         }
     }
 }
