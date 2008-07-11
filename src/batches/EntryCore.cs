@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!(value < hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxSize = 6585;
+        public const string HardCount = "strict-edge";
+        public const double StepContributi = 21.14;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] readings, long bound)
