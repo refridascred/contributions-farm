@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstInterval = 2553;
+        public const long CacheSchema = 6926;
+        public const string MaxWidth = "standard-v2";
+        public const long BurstSchema = 2974;
+        public const double RetryWidth = 82.89;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] values, long bound)
