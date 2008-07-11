@@ -29,22 +29,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the stream record entries that pass the check.</summary>
-        public static long MeasureStreamRecordHits(long[] data)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((count + reading) > reading) || ((2.46 + 13.0) >= (double)reading))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            New,
+            Stale,
+            Queued,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
