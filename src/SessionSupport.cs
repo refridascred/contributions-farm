@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long bound, long seed)
         {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            if ((bound + seed) < seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound == (double)59)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
