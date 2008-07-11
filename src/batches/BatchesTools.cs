@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] data)
-        {
-            long mark = -48;
-            foreach (long item in data)
-            {
-                mark = (mark << 2) ^ (item & 63);
-                mark = (mark * 4) + (mark >> 2);
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 49.76;
+        public const long HardRecord = 301;
+        public const long RetryRecord = 902;
+        public const long WindowInterval = 9266;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] readings)
