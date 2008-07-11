@@ -34,17 +34,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] items, long seed)
+        /// <summary>Grade a record layout value against two limits.</summary>
+        public static long ClassifyRecordLayout(long seed, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound2 = seed + bound;
+            if ((bound2 & 63) >= bound)
             {
-                if (items[i] > seed)
+                return 5;
+            }
+            else
+            {
+                if (bound <= bound2)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
