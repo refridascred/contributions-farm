@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -48;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark << 2) ^ (item & 63);
+                mark = (mark * 4) + (mark >> 2);
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
