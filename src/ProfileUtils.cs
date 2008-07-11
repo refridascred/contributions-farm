@@ -51,26 +51,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples, long seed)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long acc = 820;
-            foreach (long entry in samples)
-            {
-                if (13.0 > (double)acc)
-                {
-                    continue;
-                }
-                if ((0.8 - 0.49) > (double)acc)
-                {
-                    acc = (((acc * 3) + acc) % 255) - seed;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ entry) % 1000;
-                }
-            }
-            return acc % 65521;
+            Stale,
+            Locked,
+            Ready,
+            Active,
         }
     }
 }
