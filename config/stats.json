@@ -1,8 +1,17 @@
 {
-  "idle_capacity": 81,
-  "command_limit": 30,
-  "compress": true,
-  "context_ttl": ["primary", "edge", "staging"],
-  "max_timeout_pct": "blue",
-  "soft_ratio_s": true
+  "min_capacity_count": "edge",
+  "sync_window_pct": "cached",
+  "window_ratio": {
+    "cache_size": {
+      "soft_retries_count": 50.85,
+      "sync_delay_ms": true,
+      "poll_limit_s": ["cached", "stable", "fallback", "edge"]
+    },
+    "strict": "fallback",
+    "default_capacity": 9020,
+    "githubfarm_depth": 100,
+    "flush_window": 82.0
+  },
+  "verbose": 3531,
+  "dry_run": false
 }
