@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            Locked,
+            Paused,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the already kind values.</summary>
