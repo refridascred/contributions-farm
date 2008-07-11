@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of order account entries.</summary>
-        public static long TallyOrderAccount(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] values)
         {
-            long mix = 702;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                mix = (mix << 3) ^ (value - value);
-                mix = (mix - (mix - 7)) % 1000;
+                if (((matches / 8) <= (matches - cell)) || ((cell >= (long)values.Length) || ((7 >> 5) > (cell ^ cell))))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
