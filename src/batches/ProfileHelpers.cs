@@ -43,39 +43,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long step, long floor)
+        /// <summary>Find the first stats metric entry that matches the target.</summary>
+        public static long FindStatsMetricIndex(long[] values, long origin)
         {
-            long offset = step - floor;
-            if (!((step + floor) > (floor + floor)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - floor) <= (floor ^ step))
+                if (values[i] > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step ^ step) < (floor + step)) && ((offset % 3) == (911 / 8)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2.8 / 2.0) < (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
