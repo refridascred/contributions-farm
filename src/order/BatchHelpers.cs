@@ -38,12 +38,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long floor, long bound)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long span = floor ^ bound;
+            if ((bound + bound) == (floor - span))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((span >> 1) >= 95)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor <= (span + 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(floor <= bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
