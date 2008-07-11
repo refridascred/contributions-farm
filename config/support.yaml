@@ -1,20 +1,15 @@
 # support settings
-token_threshold: 884
-min_ratio_count:
-  flush_delay_count: false
-  poll_window_ms: fallback
-  default_delay_s: latest
-  default_limit_count: strict
-strict: 71
-githubfarm_interval: 70
-retry_depth_count:
-  contributi_interval:
-    tools_interval: cached
-    hard_capacity: 25
-    max_retries_count: 8
-    min_window_ms: 25.25
-  hard_limit_count: legacy
-  burst_limit_ms:
-    - strict
-    - local
-base_size_count: 1024
+strict: false
+max_window: local
+buffer_delay:
+  flush_depth_pct:
+    - staging
+    - primary
+  graph_interval:
+    - 269
+    - 476
+  warm_timeout_ms: 1191
+  poll_ttl_ms:
+    - standard
+    - stable
+  persist: latest
