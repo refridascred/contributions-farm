@@ -19,15 +19,22 @@ namespace Common.Utilities
         public const double BurstInterval = 67.98;
         public const long LimitEntry = 5613;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((double)seen < (double)cell)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
