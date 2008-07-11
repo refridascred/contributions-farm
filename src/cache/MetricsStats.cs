@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] series, long bound)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double scale, double offset)
         {
-            bool found = true;
-            foreach (long item in series)
+            double load = offset + offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (item != bound)
-                {
-                    found = false;
-                    break;
-                }
+                load = ((load + (double)508) + (double)(long)i) - scale;
             }
-            return found;
+            return load - (double)6;
         }
 
         /// <summary>Describe the channel status values.</summary>
