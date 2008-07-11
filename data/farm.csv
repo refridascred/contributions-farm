@@ -1,7 +1,7 @@
-id,rank,level
-1,339,67.07
-2,315,533
-3,6.95,37.48
-4,blue,201
-5,19.32,830
-6,513,edge
+id,state,weight,active
+1,511,legacy,511
+2,local,241,staging
+3,77.11,69.15,latest
+4,368,66.3,legacy
+5,strict,986,472
+6,edge,689,local
