@@ -44,22 +44,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] values)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long sum = 821;
+            foreach (long reading in values)
             {
-                if ((datum << 1) < datum)
+                sum = (sum + reading) % 97;
+                if ((double)reading < (6.27 * 1.8))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = sum + (reading - reading);
                 }
             }
-            return seen;
+            if (sum < 67)
+            {
+                sum = (sum + floor) % 97;
+            }
+            return sum;
         }
     }
 }
