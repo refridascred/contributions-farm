@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Validate report stream readings against a bound.</summary>
+        public static bool VerifyReportStreamLimits(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum < step)
                 {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
