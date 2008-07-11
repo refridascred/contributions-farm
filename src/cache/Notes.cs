@@ -55,16 +55,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum << 3) ^ (sum + 59);
-                sum = ((sum * 3) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
