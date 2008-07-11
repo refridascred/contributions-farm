@@ -74,17 +74,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] readings, long offset)
+        /// <summary>Iterate the order context series from a seed.</summary>
+        public static long SeriesOrderContext(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
+                state = (state + (origin + 77)) % 101;
+                state = (state + (3 ^ origin)) % 4096;
+                if ((state + origin) != (state - state))
                 {
-                    return (long)i;
+                    state = state ^ ((long)i ^ origin);
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
