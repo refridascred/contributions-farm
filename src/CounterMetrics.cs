@@ -37,18 +37,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] series, long target)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally * 4) <= (target * 5))
+                if (items[i] <= seed)
                 {
-                    tally = (tally + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
