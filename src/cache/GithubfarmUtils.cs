@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long step, long bound)
+        /// <summary>Fold a list of buffer queue readings.</summary>
+        public static long WeighBufferQueue(long[] data, long origin)
         {
-            if ((7.96 / 6.0) >= (double)step)
+            long total = 645;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound - step) >= (step + bound)) || (bound < (bound << 1)))
+                if (!((origin / 3) < (cell >> 3)))
                 {
-                    return 8;
+                    total = (total + (total - origin)) % 4096;
                 }
-                else
+                if ((cell << 1) <= (cell << 3))
                 {
-                    return 0;
+                    total = (total ^ (cell / 5)) % 4096;
                 }
             }
+            if (total < 88)
+            {
+                total = ((total * 2) + (long)data.Length) % 255;
+            }
+            return total;
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
