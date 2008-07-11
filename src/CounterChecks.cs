@@ -66,11 +66,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 88.38;
+        public const double BurstSchema = 47.66;
+        public const double CacheScore = 48.99;
     }
 }
