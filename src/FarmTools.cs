@@ -13,13 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] items)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (value < (count + 970))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
