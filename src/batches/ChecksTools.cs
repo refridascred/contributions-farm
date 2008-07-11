@@ -16,10 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultBudget = 7173;
-        public const long RetryRoute = 2211;
-        public const double IdleWidth = 48.26;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item - target) > target)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] values, long target)
