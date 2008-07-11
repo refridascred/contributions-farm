@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
