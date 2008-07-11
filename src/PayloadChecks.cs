@@ -33,10 +33,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "legacy";
-        public const string MinContributi = "fallback-v2";
-        public const long CacheContributi = 5760;
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data)
+        {
+            long mix = 390;
+            foreach (long entry in data)
+            {
+                mix = mix + entry;
+            }
+            if (mix < (-355))
+            {
+                mix = mix - mix;
+            }
+            return mix;
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double BlendSchema(double rate, double bias)
