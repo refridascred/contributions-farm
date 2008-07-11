@@ -43,24 +43,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank cache payload input into a small class.</summary>
-        public static long BucketCachePayload(long target, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] values)
         {
-            if ((target + bound) != (target >> 3))
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((53 / 9) >= bound)
+                if (7 <= matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 1) + item;
                 }
             }
+            return matches;
         }
     }
 }
