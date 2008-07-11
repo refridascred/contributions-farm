@@ -27,19 +27,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of command batches readings.</summary>
-        public static long FoldCommandBatches(long[] levels)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long sum = 63;
-            foreach (long cell in levels)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                sum = ((sum + (sum / 5)) % 4096) + cell;
+                anchor = (anchor * 2) + (-4);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (sum < (-586))
-            {
-                sum = (sum ^ (-8)) % 97;
-            }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
