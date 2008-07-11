@@ -43,12 +43,20 @@ namespace Common.Utilities
             return mean - (mean - bias);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftFactor = 57.86;
-        public const double StepRatio = 17.69;
-        public const long MinBudget = 6917;
-        public const long LimitBudget = 6988;
-        public const string BurstPayload = "primary-1";
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long FindCacheIndex(long[] series, long offset)
