@@ -41,17 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] values, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 5;
+            foreach (long reading in items)
             {
-                if (values[i] <= floor)
+                if ((double)total < (12.0 / 8.0))
                 {
-                    return (long)i;
+                    total = ((total + (858 + step)) % 255) - reading;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
