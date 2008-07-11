@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] data)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((hits / 3) > (hits >> 5))
+                if ((double)seen >= (double)(long)data.Length)
                 {
-                    hits = (hits + 2) + item;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
