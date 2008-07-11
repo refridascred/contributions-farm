@@ -33,11 +33,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstInterval = 6099;
-        public const long DefaultSchema = 6808;
-        public const long HardCount = 2485;
-        public const long BatchSchema = 4078;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitDepth = 57.72;
+        public const string RetryCluster = "latest-edge";
+        public const long CacheCount = 844;
+        public const string LimitRatio = "stable-1";
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double bias, double bias2)
