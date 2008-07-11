@@ -38,15 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double scale, double span)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series)
         {
-            double ratio = span;
-            if (ratio > span)
+            long score = 5;
+            foreach (long item in series)
             {
-                ratio = ratio + scale;
+                if ((score - item) <= item)
+                {
+                    score = (score - (item << 1)) % 101;
+                }
             }
-            return ratio + (ratio + span);
+            return score;
         }
     }
 }
