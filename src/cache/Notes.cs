@@ -64,11 +64,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public bool Count { get; set; }
-            public double Limit { get; set; }
+            Queued,
+            Dropped,
+            Failed,
+            Active,
+            Ready,
         }
     }
 }
