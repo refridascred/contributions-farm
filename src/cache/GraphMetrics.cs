@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] series)
+        /// <summary>Count the commits format entries that pass the check.</summary>
+        public static long AuditCommitsFormatMatches(long[] samples, long seed)
         {
             long count = 0;
-            foreach (long entry in series)
+            foreach (long value in samples)
             {
-                if (entry <= (entry >> 2))
+                if ((seed ^ count) >= (long)samples.Length)
                 {
-                    count = count + 1;
+                    count = (count + 1) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
