@@ -28,19 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] values, long seed)
+        /// <summary>Measure how many already counter samples are out of range.</summary>
+        public static long AuditAlreadyCounterGaps(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (sample < seed)
+                if ((limit << 3) >= (entry / 3))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a token header.</summary>
