@@ -29,13 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
