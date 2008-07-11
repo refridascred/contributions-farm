@@ -15,11 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double gain, double floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] data, long target)
         {
-            double load = floor;
-            return (load + load) + gain;
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((((double)927 > (double)count) || ((target & 255) >= (value - target))) || (4.6 <= (double)value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
