@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Match up metric payload samples.</summary>
-        public static long PairMetricPayloadCount(long[] items)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 4)
+                    if ((items[i] ^ items[j]) < 6)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
