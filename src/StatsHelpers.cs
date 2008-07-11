@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long mark = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((double)mark != (1.1 * 8.96)) || (step > (mark ^ mark)))
+                {
+                    mark = mark + ((-32) << 1);
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
