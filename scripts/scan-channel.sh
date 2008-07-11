@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback strict stable; do
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in strict cached eu-west fallback; do
     log "checking ${item}"
 done
-
-mode="${1:-local}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
