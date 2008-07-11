@@ -35,14 +35,26 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            Retry,
-            Queued,
-            Locked,
-            Synced,
-            Idle,
+            long mix = 99;
+            foreach (long datum in values)
+            {
+                if (datum < (datum + mix))
+                {
+                    mix = (mix * 4) + (2 - 0);
+                }
+                else
+                {
+                    mix = mix + (8 + mix);
+                }
+            }
+            if (mix < 57)
+            {
+                mix = (mix * 4) + (54 + mix);
+            }
+            return mix % 4096;
         }
     }
 }
