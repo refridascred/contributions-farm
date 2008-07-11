@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] series)
         {
-            long sum = 869;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                sum = sum ^ (cell * 4);
+                if ((4.86 * 8.14) > (double)cell)
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate graph samples.</summary>
