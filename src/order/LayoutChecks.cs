@@ -40,11 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
