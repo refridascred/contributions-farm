@@ -59,38 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long floor, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] values)
         {
-            if ((40 * 4) <= bound)
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.16 * 6.1) <= (double)bound)
+                if ((581 - item) <= (hits % 16))
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if (bound > (-50))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor - 89) < bound) || (bound <= (bound ^ bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
