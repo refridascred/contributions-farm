@@ -25,16 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Rank commits window input into a small class.</summary>
+        public static long BucketCommitsWindow(long floor, long floor2)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            long next = floor ^ floor2;
+            if ((next - next) != (278 >> 5))
             {
-                result = (result << 3) ^ floor;
-                result = ((result * 3) + (long)i) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((next & 31) < (next + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1.48 / 4.0) <= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many schema contributi samples are out of range.</summary>
