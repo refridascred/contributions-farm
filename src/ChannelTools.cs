@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double weight, double bias)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            double rate = 3.12 - (weight - bias);
-            if (rate < (2.89 - weight))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - rate;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate - rate;
+            return tally;
         }
 
         /// <summary>Hold a profile info.</summary>
