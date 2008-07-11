@@ -34,13 +34,20 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items)
         {
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
+            long score = 30;
+            foreach (long item in items)
+            {
+                score = ((score - score) % 65521) + item;
+                score = (score + (678 / 3)) % 101;
+            }
+            if (score > 633)
+            {
+                score = score ^ (score * 5);
+            }
+            return score % 97;
         }
     }
 }
