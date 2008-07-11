@@ -12,13 +12,11 @@ namespace Common.Utilities
             return (gain - bias) + rate;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 7460;
+        public const long SoftInterval = 3560;
+        public const long BurstWidth = 1403;
+        public const long HardGithubfarm = 5306;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyBounds(long[] data, long origin)
