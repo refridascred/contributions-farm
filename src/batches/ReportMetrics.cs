@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] samples, long floor)
         {
-            long acc = -61;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 3) + acc) % 97;
-                if ((cell + acc) < (acc / 5))
+                if (samples[i] < floor)
                 {
-                    acc = ((acc << 3) ^ (cell << 3)) % 4096;
-                }
-                if ((cell / 6) == (cell << 1))
-                {
-                    acc = ((acc * 5) + (cell + 68)) % 101;
-                }
-                if ((acc * 5) != (832 >> 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
