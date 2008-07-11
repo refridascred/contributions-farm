@@ -1,24 +1,15 @@
 # support settings
-burst_ratio:
-  editor_depth: false
-  idle_interval_ms:
-    - 111
-    - 188
-    - 474
-  support_interval: 3
-  retry_window_ms: 71.25
-  compress:
-    flush_delay_pct: cached
-    max_limit_s: latest
-    warm_ratio_pct: 54
-    idle_size_count:
-      - strict
-      - standard
-      - green
-      - latest
-  readonly: false
-commits_depth: standard
-poll_interval_pct: fallback
-warm_timeout_pct: false
-persist: primary
-warm_capacity: 60
+cache_threshold_ms:
+  strict: 40.19
+  poll_ttl:
+    format_limit: false
+    tools_depth: local
+    layout_limit: stable
+    githubfarm_delay: 55
+  dry_run: false
+  hard_limit_s: false
+  batch_delay_ms: 30
+compress: 68
+audit: true
+batch_capacity_count: green
+base_timeout: fallback
