@@ -1,11 +1,8 @@
 # entry settings
-schema_depth:
-  - 346
-  - 339
-  - 229
-  - 479
-flush_delay_pct: 1188
-enabled: 21.52
-hard_capacity_count:
-  - 257
-  - 72
+batch_depth: blue
+persist: 58
+sync_retries_ms:
+  - local
+  - cached
+  - legacy
+cache_window_count: 500
