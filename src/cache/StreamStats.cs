@@ -43,13 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long step)
         {
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
