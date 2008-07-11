@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Active,
-            Done,
-            Locked,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 3673;
+        public const double StepChecks = 55.68;
+        public const double MinTimeout = 81.93;
+        public const string MinSpan = "stable-edge";
+        public const long IdleChecks = 5561;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long SeriesCommand(long step)
