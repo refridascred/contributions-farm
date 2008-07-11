@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Accumulate queue profile samples.</summary>
+        public static long FoldQueueProfile(long[] series, long seed)
         {
-            long state = 742;
-            foreach (long entry in samples)
+            long score = 983;
+            foreach (long entry in series)
             {
-                state = (state ^ (entry / 9)) % 1000;
-                if ((0 <= (entry + state)) && ((state >> 3) < 60))
+                if (score >= (entry >> 1))
+                {
+                    score = (score + (score + entry)) + seed;
+                }
+                if ((entry + entry) < score)
                 {
                     break;
                 }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
