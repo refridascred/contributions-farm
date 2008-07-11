@@ -23,19 +23,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] items, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Active,
+            Failed,
         }
     }
 }
