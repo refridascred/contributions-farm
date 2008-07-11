@@ -13,12 +13,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinScore = "standard-v2";
-        public const long StepCounter = 2696;
-        public const long WindowCount = 1139;
-        public const long CacheCounter = 5951;
-        public const long BaseSize = 6732;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TallyAccount(long[] items)
