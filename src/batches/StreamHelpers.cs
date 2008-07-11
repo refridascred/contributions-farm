@@ -54,14 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] items)
         {
-            Failed,
-            Active,
-            Synced,
-            Locked,
-            Stale,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!(((item * 3) < ((long)items.Length + seen)) || (item <= ((long)items.Length - item))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a cache tools reading by value.</summary>
