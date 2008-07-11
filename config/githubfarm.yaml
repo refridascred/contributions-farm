@@ -1,4 +1,16 @@
 # githubfarm settings
-min_retries_count: 30
-context_retries: standard
-dry_run: true
+layout_depth: 100
+dry_run: strict
+verbose:
+  - 436
+  - 50
+  - 377
+  - 25
+strict:
+  sync_delay: 39
+  metrics_window: 67.26
+  strict:
+    - 28
+    - 295
+    - 60
+  profile_limit: 28.15
