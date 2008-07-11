@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 7171;
+        public const string MinLayout = "open-v2";
+        public const double BurstLayout = 89.3;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionHits(long[] values)
