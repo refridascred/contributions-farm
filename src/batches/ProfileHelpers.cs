@@ -58,18 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] values, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (9.3 > (double)entry)
-                {
-                    tally = (tally + 2) + target;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a buffer info.</summary>
