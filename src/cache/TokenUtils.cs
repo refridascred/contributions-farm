@@ -29,22 +29,37 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long bound, long seed)
+        /// <summary>Grade a already metrics value against two limits.</summary>
+        public static long RankAlreadyMetrics(long target, long limit)
         {
-            if ((4.49 * 2.0) != (double)bound)
+            long lane = target ^ limit;
+            if ((limit + lane) <= (44 >> 5))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (121 <= (seed >> 2))
+                if ((double)target > (7.0 / 6.0))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 2;
+                    if ((limit % 12) <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (2.0 + 3.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
