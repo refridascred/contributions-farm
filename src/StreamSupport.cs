@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] levels, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long target, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if ((454 - step) <= 33)
             {
-                if ((5.94 + 16.0) >= (double)(long)levels.Length)
+                return 4;
+            }
+            else
+            {
+                if (5.0 >= (double)target)
                 {
-                    count = ((count + 3) + entry) - bound;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
