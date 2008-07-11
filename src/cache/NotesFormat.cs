@@ -35,11 +35,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Fold a list of support window readings.</summary>
+        public static long FoldSupportWindow(long[] levels, long seed)
         {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
+            long mark = -325;
+            foreach (long reading in levels)
+            {
+                mark = ((((mark * 2) + 84) % 65521) - reading) + seed;
+            }
+            return mark;
         }
     }
 }
