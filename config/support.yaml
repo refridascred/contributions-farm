@@ -1,23 +1,6 @@
 # support settings
-queue_delay:
-  - 221
-  - 321
-sync_limit_ms: 60
-warm_delay_s: staging
-poll_delay_ms:
-  - latest
-  - edge
-checks_interval:
-  min_capacity_s: 89
-  flush_delay_s: legacy
-  idle_ratio_count: false
-  strict:
-    - fallback
-    - latest
-    - staging
-  max_timeout: 87
-  batch_timeout: open
-batch_window:
-  - 494
-  - 112
-  - 138
+layout_timeout: open
+warm_depth: true
+dry_run: 12.42
+flush_interval: true
+farm_threshold: strict
