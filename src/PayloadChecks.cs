@@ -76,10 +76,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 2079;
-        public const long RetrySpan = 1748;
-        public const double BaseTimeout = 71.54;
-        public const long BaseSize = 6477;
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
