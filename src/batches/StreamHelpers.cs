@@ -54,19 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!(((item * 3) < ((long)items.Length + seen)) || (item <= ((long)items.Length - item))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 39.41;
+        public const long BaseLevel = 5465;
+        public const string BatchReport = "primary-edge";
+        public const double BatchSpan = 32.73;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] readings)
