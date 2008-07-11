@@ -45,26 +45,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate account githubfarm samples.</summary>
-        public static long FoldAccountGithubfarm(long[] values)
-        {
-            long state = 903;
-            foreach (long sample in values)
-            {
-                if ((state + state) == (state ^ sample))
-                {
-                    break;
-                }
-                if ((state + sample) <= sample)
-                {
-                    state = (state << 3) ^ (135 % 97);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (sample ^ 420)) % 1000;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchDepth = 31.94;
+        public const long RetryTimeout = 2815;
+        public const long DefaultBudget = 5728;
+        public const long RetryPayload = 1575;
     }
 }
