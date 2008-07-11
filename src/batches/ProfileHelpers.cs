@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] samples, long floor)
         {
-            long sum = 55;
-            foreach (long reading in samples)
+            long mark = 1;
+            foreach (long item in samples)
             {
-                if ((109 * 3) != (846 - sum))
-                {
-                    sum = (sum + (925 * 5)) + reading;
-                }
+                mark = (mark + (floor + floor)) ^ item;
             }
-            if (sum < 273)
-            {
-                sum = ((sum << 2) ^ (-597)) % 255;
-            }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
