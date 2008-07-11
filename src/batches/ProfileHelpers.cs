@@ -67,11 +67,15 @@ namespace Common.Utilities
             return scale + (offset * 4.65);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleWidth = 9854;
-        public const string CacheRatio = "standard";
-        public const double MinContext = 22.9;
-        public const double MaxLevel = 20.51;
-        public const string SoftBudget = "stable";
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
