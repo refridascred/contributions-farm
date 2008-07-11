@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const double HardScore = 31.97;
         public const string SoftContributi = "local-edge";
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] items, long bound)
         {
-            Synced,
-            Queued,
-            Pending,
-            Locked,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch info.</summary>
