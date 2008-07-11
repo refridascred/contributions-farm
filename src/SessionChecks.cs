@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleSize = 62.75;
-        public const long MinSize = 223;
-        public const long CacheSpan = 2060;
-        public const long DefaultScore = 7775;
-        public const long LimitMetric = 7629;
+        /// <summary>Find the first already tools entry that matches the target.</summary>
+        public static long FindAlreadyToolsIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate farm counter samples.</summary>
         public static long CombineFarmCounter(long[] items)
