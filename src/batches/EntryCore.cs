@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "latest-edge";
-        public const long DefaultMetrics = 9475;
-        public const long CacheDepth = 7355;
-        public const long BurstMetrics = 88;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseLevel = 9692;
+        public const long MaxRatio = 4360;
+        public const double CacheScore = 34.79;
+        public const double BatchLevel = 29.81;
 
         /// <summary>Classify a metric route pair into a bucket.</summary>
         public static long BucketMetricRoute(long offset, long target)
