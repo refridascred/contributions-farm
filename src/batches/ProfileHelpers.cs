@@ -55,15 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double gain, double offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] samples)
         {
-            double scale = (double)243 - gain;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                scale = (scale - gain) + (double)(long)i;
+                if (!((reading >> 3) <= reading))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale + (offset * 4.65);
+            return seen;
         }
 
         /// <summary>Roll a order counter forward.</summary>
