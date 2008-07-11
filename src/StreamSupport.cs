@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            long state = 124;
+            foreach (long item in series)
+            {
+                if (item > (item % 3))
+                {
+                    state = state ^ (state >> 5);
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a format record.</summary>
