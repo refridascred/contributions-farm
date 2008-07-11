@@ -42,13 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] samples, long step)
         {
-            New,
-            Idle,
-            Failed,
-            Ready,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!((8.31 * 3.4) < (double)cell) && ((double)seen < (7.4 + 8.62)))
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
         }
     }
 }
