@@ -49,12 +49,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long state = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((limit - state) <= (state * 3)) || (state < (48 >> 2)))
+                {
+                    state = ((state << 3) ^ (56 + state)) % 101;
+                }
+                else
+                {
+                    state = state + (66 - 317);
+                    state = (state + (limit * 4)) % 97;
+                }
+                state = (state ^ (state + (long)i)) % 97;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
