@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long IdleFactor = 3038;
         public const string DefaultCount = "open-1";
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] samples, long limit)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long total = 9;
-            foreach (long datum in samples)
-            {
-                if (!((total * 2) == (limit * 4)))
-                {
-                    total = (((total * 3) + total) % 4096) + datum;
-                }
-                if ((limit + total) <= (0 ^ total))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
