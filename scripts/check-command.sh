@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback stable latest edge; do
+for item in eu-west edge; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=418
+COMMAND_LIMIT=128
 log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-edge}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
