@@ -41,17 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache editor sample.</summary>
-        public static long LookupCacheEditorIndex(long[] data, long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
