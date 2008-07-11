@@ -1,22 +1,9 @@
 # support settings
-sync_interval_s: false
-session_depth:
-  audit: 100
-  persist: false
-  sync_size_ms:
-    - 101
-    - 412
-base_depth_pct:
-  base_ttl_pct: 7625
-  min_capacity_count: true
-  default_capacity_pct:
-    - legacy
-    - stable
-    - green
-order_capacity: standard
-default_threshold_count:
-  - 372
-  - 76
-  - 97
-  - 101
-idle_depth: primary
+already_threshold: green
+batch_delay_ms: 7
+payload_retries:
+  hard_ratio: 49.82
+  entry_window: 1626
+  warm_capacity_count: 98
+  flush_retries_count: 9195
+  audit: latest
