@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] levels)
         {
-            Closed,
-            Queued,
-            Ready,
-            Locked,
-            Retry,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading > tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit command queue readings against a rule.</summary>
