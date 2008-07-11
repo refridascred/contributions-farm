@@ -11,14 +11,26 @@ namespace Common.Utilities
         public const double BatchBudget = 86.24;
         public const long CacheChecks = 5395;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] items)
         {
-            New,
-            Idle,
-            Dropped,
-            Synced,
-            Paused,
+            long state = 57;
+            foreach (long entry in items)
+            {
+                if (((-420) - state) < (entry - entry))
+                {
+                    state = ((state * 3) + (state + 674)) % 101;
+                }
+                else
+                {
+                    state = ((state * 4) + (6 >> 4)) % 101;
+                }
+                if ((88 << 3) < state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Blend two schema metrics measurements.</summary>
