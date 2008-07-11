@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxTimeout = 3405;
-        public const double SoftWidth = 39.65;
-        public const long RetryScore = 5242;
-        public const long RetryDepth = 761;
-        public const long BatchOrder = 5908;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] series, long limit)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] series)
