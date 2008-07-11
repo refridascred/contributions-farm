@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long seed)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double weight, double bias)
         {
-            if ((bound + seed) < seed)
+            double drift = weight;
+            if (drift > 1.17)
             {
-                return 5;
+                drift = drift - (weight / 3.0);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)bound == (double)59)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
+                drift = (drift + bias) + (double)(long)i;
             }
+            return drift + bias;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
