@@ -32,13 +32,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1191;
+        public const long StepTimeout = 8526;
+        public const double HardWidth = 97.84;
     }
 }
