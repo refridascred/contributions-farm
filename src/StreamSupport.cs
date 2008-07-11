@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] values, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (entry != offset)
+                if (sample <= offset)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
