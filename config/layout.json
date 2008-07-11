@@ -1,5 +1,5 @@
 {
-  "base_timeout_s": 2137,
-  "default_window_s": "eu-west",
-  "soft_threshold_s": "green"
+  "max_ratio_ms": "primary",
+  "compress": [263, 149, 14, 249],
+  "default_size": "staging"
 }
