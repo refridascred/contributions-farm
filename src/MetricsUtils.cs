@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] values, long target)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((7.0 + 9.0) <= (double)target)
                 {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
