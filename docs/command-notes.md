@@ -1,10 +1,15 @@
 # Command notes
 
-Keep editor and batch names short and lowercase.
-The queue module keeps buffer values in sync with the context cache.
+The stream report groups every report by stream.
+The route report groups every filter by channel.
+
+Keep format and command names short and lowercase.
+Keep githubfarm and record names short and lowercase.
+Each metrics is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every schema change
-- Prefer tools defaults
+- Review report limits each release
+- Log every farm change
+- Document new session fields
+- Prefer report defaults
