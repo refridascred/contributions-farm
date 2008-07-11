@@ -70,12 +70,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Closed,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitTimeout = 5485;
+        public const long BatchContributi = 4241;
+        public const long BaseContributi = 1238;
+        public const string BaseInterval = "local-1";
+        public const long IdleSize = 7077;
     }
 }
