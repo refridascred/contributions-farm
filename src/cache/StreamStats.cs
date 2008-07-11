@@ -60,10 +60,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchDepth = 31.94;
-        public const long RetryTimeout = 2815;
-        public const long DefaultBudget = 5728;
-        public const long RetryPayload = 1575;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardBudget = 4465;
+        public const long BurstCache = 4560;
+        public const long MinSize = 4879;
+        public const double HardCache = 10.53;
     }
 }
