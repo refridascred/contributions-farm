@@ -57,17 +57,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a channel session reading by value.</summary>
-        public static long SeekChannelSessionIndex(long[] readings, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)3 / 7.0;
+            if (gain <= span)
             {
-                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + span) - ratio;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
