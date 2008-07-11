@@ -61,22 +61,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine order cluster values into a single score.</summary>
-        public static long WeighOrderCluster(long[] series)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mark = 0;
-            foreach (long cell in series)
-            {
-                if ((7.68 * 2.65) == (double)cell)
-                {
-                    mark = (mark + mark) % 4096;
-                }
-            }
-            if (mark < 92)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark % 4096;
+            Pending,
+            Synced,
+            Paused,
+            New,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
