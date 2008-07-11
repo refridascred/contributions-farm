@@ -33,14 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items, long limit)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Retry,
-            Pending,
+            long state = -9;
+            foreach (long cell in items)
+            {
+                state = (((state * 3) + limit) % 4096) ^ cell;
+                if (state > limit)
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
