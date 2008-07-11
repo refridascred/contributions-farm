@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the cache format entries that pass the check.</summary>
-        public static long TallyCacheFormatOutliers(long[] series)
+        /// <summary>Count the filter profile entries that pass the check.</summary>
+        public static long MeasureFilterProfileMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((entry & 15) >= 11)
+                if (seen > sample)
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many counter commits samples are out of range.</summary>
