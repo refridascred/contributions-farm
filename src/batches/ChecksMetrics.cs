@@ -29,31 +29,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            if ((bound + bound) >= (bound & 63))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + bound) >= (-355))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((6.09 / 8.0) == (double)seed) && ((bound >> 5) == (bound + bound)))
+                    if ((items[i] + items[j]) == 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
