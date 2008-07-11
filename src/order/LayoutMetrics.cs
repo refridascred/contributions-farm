@@ -13,26 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long result = 87;
-            foreach (long entry in series)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((double)entry == (5.79 / 5.0)))
+                if (sum >= 939)
                 {
-                    result = result - 277;
+                    sum = (sum * 4) + (sum - offset);
                 }
-                else
-                {
-                    result = result - (3 - step);
-                }
-                if (3 <= (result / 4))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return result % 97;
+            return sum;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
