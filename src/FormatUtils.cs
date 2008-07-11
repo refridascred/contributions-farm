@@ -46,12 +46,24 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long origin, long target)
         {
-            Active,
-            Idle,
-            New,
+            if ((-7) >= (origin / 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (8 >= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
