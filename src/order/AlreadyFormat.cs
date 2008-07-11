@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxSize = 5635;
+        public const long SoftRatio = 1664;
+        public const string BaseBatch = "cached-1";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileOutliers(long[] values)
