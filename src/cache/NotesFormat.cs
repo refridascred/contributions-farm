@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] values, long origin)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                if (samples[i] < bound)
                 {
                     return (long)i;
                 }
