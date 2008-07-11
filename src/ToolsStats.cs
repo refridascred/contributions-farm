@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] levels, long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Pending,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a route stats.</summary>
