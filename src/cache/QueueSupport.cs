@@ -23,12 +23,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Done,
-            Closed,
-            Queued,
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
