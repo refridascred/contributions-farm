@@ -26,19 +26,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            double scale = (double)(868 ^ 19);
-            if (scale <= (double)4)
+            long score = 548;
+            foreach (long reading in readings)
             {
-                scale = (scale + 2.5) - gain;
+                if ((score >= (reading - reading)) && ((double)reading != (8.7 - 0.18)))
+                {
+                    score = (score ^ (reading + score)) % 4096;
+                }
+                if (((-637) + 217) < (score + score))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - offset;
+            return score;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
