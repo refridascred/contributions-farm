@@ -16,16 +16,17 @@ namespace Common.Utilities
             return rate - (rate - ratio);
         }
 
-        /// <summary>Iterate the route stats series from a seed.</summary>
-        public static long SeriesRouteStats(long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] data, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc + (long)i)) % 1000;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((data[i] >= floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the session mode values.</summary>
