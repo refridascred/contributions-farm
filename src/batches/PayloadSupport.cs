@@ -23,19 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long target)
+        /// <summary>Look up the position of a cache editor sample.</summary>
+        public static long LookupCacheEditorIndex(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != target)
+                if ((data[i] == floor) && ((data[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
