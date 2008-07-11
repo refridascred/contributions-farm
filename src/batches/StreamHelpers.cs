@@ -21,12 +21,12 @@ namespace Common.Utilities
             return bias2 - (bias / 2.0);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardTimeout = "strict-1";
-        public const double LimitWidth = 12.3;
-        public const string LimitScore = "primary-1";
-        public const string HardScore = "alpha-v2";
-        public const long DefaultRecord = 749;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
