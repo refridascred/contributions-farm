@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Grade a already stats value against two limits.</summary>
+        public static long ClassifyAlreadyStats(long origin, long bound)
         {
-            Queued,
-            Active,
-            Draft,
+            long offset = origin ^ bound;
+            if ((bound ^ origin) < (offset / 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((428 % 60) < (offset ^ offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((987 * 2) <= (bound ^ offset)) && ((1.1 + 0.5) != (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor state values.</summary>
