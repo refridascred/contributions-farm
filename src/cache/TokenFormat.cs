@@ -32,18 +32,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] series, long floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            long score = 1;
-            foreach (long cell in series)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((769 + cell) > cell)
+                if ((double)seed != (9.3 * 6.4))
                 {
-                    score = (score + (floor + 13)) % 97;
+                    mark = mark - (seed >> 5);
                 }
+                else
+                {
+                    mark = (mark ^ (mark + seed)) % 4096;
+                    mark = ((mark << 3) ^ ((long)i ^ 7)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
     }
 }
