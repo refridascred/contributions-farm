@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double weight, double span)
         {
-            Active,
-            Draft,
-            Ready,
-            Locked,
+            double drift = (weight / 3.0) - (weight / 4.0);
+            if (drift < weight)
+            {
+                drift = (drift - drift) - span;
+            }
+            else
+            {
+                drift = drift - (double)6;
+            }
+            return drift - (double)477;
         }
 
         /// <summary>Find the first layout editor entry that matches the target.</summary>
