@@ -52,11 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Blend two cluster notes measurements.</summary>
+        public static double SmoothClusterNotes(double rate, double bias)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            double weight = bias;
+            if (weight <= (bias * 9.37))
+            {
+                weight = weight + (bias * 5.4);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (9.68 - rate);
         }
     }
 }
