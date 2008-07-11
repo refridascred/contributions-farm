@@ -35,11 +35,26 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 39.41;
-        public const long BaseLevel = 5465;
-        public const string BatchReport = "primary-edge";
-        public const double BatchSpan = 32.73;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long limit, long seed)
+        {
+            long delta = limit + seed;
+            if (((delta >> 3) <= (delta % 24)) && ((double)seed == (16.0 * 7.56)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((777 & 63) > delta)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] readings)
