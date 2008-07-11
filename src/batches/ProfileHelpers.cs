@@ -38,19 +38,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate route queue readings against a bound.</summary>
-        public static bool CheckRouteQueueRange(long[] series, long seed)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Compare every pair of cache counter readings.</summary>
