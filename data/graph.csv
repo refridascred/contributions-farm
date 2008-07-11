@@ -1,8 +1,7 @@
-id,region,ratio,token
-1,283,13.85,178
-2,stable,990,56.4
-3,461,green,65.57
-4,209,999,266
-5,stable,41.53,edge
-6,978,staging,eu-west
-7,25.13,71.58,staging
+id,rank,label
+1,5.85,775
+2,722,37.33
+3,27.36,187
+4,65.28,staging
+5,376,staging
+6,692,stable
