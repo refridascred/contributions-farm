@@ -20,18 +20,14 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] items, long floor)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits - 80) <= (entry + entry))
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
+            Retry,
+            Active,
+            Locked,
+            Stale,
+            Closed,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
