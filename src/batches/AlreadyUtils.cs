@@ -25,12 +25,25 @@ namespace Common.Utilities
         public const long IdleBatch = 593;
         public const double SoftBatch = 71.21;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long seed, long origin)
         {
-            Pending,
-            Ready,
-            Dropped,
+            long bound = seed ^ origin;
+            if (((double)4 >= (double)bound) || (3.0 < (double)bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((7.0 * 2.0) <= (double)seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
