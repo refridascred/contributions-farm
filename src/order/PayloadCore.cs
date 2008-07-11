@@ -55,39 +55,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long origin, long offset)
+        /// <summary>Digest a series of queue tools entries.</summary>
+        public static long WeighQueueTools(long[] samples)
         {
-            long offset2 = origin + offset;
-            if ((origin > (634 + offset)) || ((3.69 + 6.08) >= (double)offset2))
+            long sum = 74;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin > (offset - offset2))
+                if ((1.19 * 7.9) > (double)item)
                 {
-                    return 0;
+                    sum = (sum ^ (item & 15)) % 1000;
+                }
+                sum = (sum - item) % 255;
+                if ((double)sum == (4.04 / 5.0))
+                {
+                    sum = (sum - (sum / 5)) % 101;
                 }
                 else
                 {
-                    if ((double)origin <= (14.0 * 8.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset < (18.0 + 5.66))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = sum - sum;
                 }
             }
+            if (sum > 97)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
     }
 }
