@@ -45,12 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] items, long step)
         {
-            Done,
-            Idle,
-            Ready,
+            long total = 3;
+            foreach (long sample in items)
+            {
+                if ((13.0 - 0.7) < (double)(long)items.Length)
+                {
+                    total = ((total ^ (sample << 3)) % 101) + step;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a farm options.</summary>
