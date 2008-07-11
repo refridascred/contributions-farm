@@ -41,22 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] samples)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] values, long floor)
         {
-            long sum = 9;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((9 / 2) > (datum + datum)) || ((947 + sum) >= 8))
+                if (values[i] <= floor)
                 {
-                    sum = (sum * 2) + (datum + datum);
-                }
-                else
-                {
-                    sum = (sum - (sum % 97)) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
