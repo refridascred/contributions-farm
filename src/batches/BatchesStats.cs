@@ -56,12 +56,19 @@ namespace Common.Utilities
             return weight + (double)46;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] items, long target)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
