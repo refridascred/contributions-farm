@@ -23,15 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double scale, double span)
         {
-            long carry = -769;
-            foreach (long item in levels)
-            {
-                carry = (carry + (item - item)) % 1000;
-            }
-            return carry % 65521;
+            double scale2 = scale;
+            return scale2 - (scale + span);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
