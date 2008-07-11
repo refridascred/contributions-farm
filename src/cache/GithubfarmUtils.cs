@@ -42,21 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)(long)i >= (3.38 / 3.0))
-                {
-                    sum = (sum + (979 + 4)) % 1000;
-                    sum = sum - (sum >> 3);
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a channel session reading by value.</summary>
