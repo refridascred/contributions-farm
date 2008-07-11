@@ -67,18 +67,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema counter entries that pass the check.</summary>
-        public static long AuditSchemaCounterGaps(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (item >= (matches / 3))
+                if ((double)86 < (double)item)
                 {
-                    matches = matches + 3;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
