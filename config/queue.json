@@ -1,18 +1,8 @@
 {
-  "cache_ttl_ms": {
-    "audit": 80.24,
-    "compress": "fallback",
-    "burst_ratio_pct": {
-      "default_retries_count": [73, 391, 219, 448],
-      "soft_size_pct": 100,
-      "enabled": ["standard", "eu-west"],
-      "sync_size_ms": 30
-    },
-    "soft_delay_count": 250,
-    "sync_depth_count": ["edge", "cached"],
-    "burst_ttl_ms": 100
-  },
-  "session_window": 100,
-  "audit": "open",
-  "account_timeout": 85.08
+  "persist": "green",
+  "dry_run": 1024,
+  "queue_timeout": 53,
+  "poll_window_ms": 82,
+  "tools_limit": 57,
+  "batches_retries": 11.98
 }
