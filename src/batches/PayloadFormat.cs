@@ -25,17 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] levels, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
+                if ((sample / 5) <= (6 >> 5))
                 {
-                    return (long)i;
+                    count = (count + 1) - offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a session entry.</summary>
