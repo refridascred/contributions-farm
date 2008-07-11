@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy stable open; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-standard}"
 case "${mode}" in
-    staging)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=105
+for item in edge latest fallback; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=255
 log "limit is ${CHANNEL_LIMIT}"
