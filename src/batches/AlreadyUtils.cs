@@ -64,21 +64,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total << 3) ^ ((-653) + (-428))) % 65521;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
     }
 }
