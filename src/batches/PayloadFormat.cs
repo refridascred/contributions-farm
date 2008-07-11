@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            Pending,
+            Draft,
+            Stale,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
