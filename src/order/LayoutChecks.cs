@@ -54,12 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchBudget = 2323;
-        public const long StepRatio = 3804;
-        public const double StepAlready = 92.99;
-        public const double BurstAlready = 27.23;
-        public const long SoftAlready = 2888;
+        /// <summary>Find the first profile layout entry that matches the target.</summary>
+        public static long LookupProfileLayoutIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long SeekBatchesIndex(long[] samples, long floor)
