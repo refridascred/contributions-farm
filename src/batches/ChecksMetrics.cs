@@ -68,13 +68,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Rank stream payload input into a small class.</summary>
+        public static long BucketStreamPayload(long bound, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            long lane = bound ^ origin;
+            if (bound >= (lane ^ origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((77 - bound) >= 556) || ((lane * 5) < (1 / 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= (187 << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((lane > origin) && ((double)lane <= 15.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
