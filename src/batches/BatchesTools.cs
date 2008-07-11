@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 267;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = (acc + 860) % 1000;
+                if ((double)reading <= (5.5 / 4.0))
                 {
-                    if ((data[i] - data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 2) ^ reading;
                 }
             }
-            return count;
+            if (acc < 6)
+            {
+                acc = acc - seed;
+            }
+            return acc;
         }
 
         /// <summary>Describe the queue status values.</summary>
