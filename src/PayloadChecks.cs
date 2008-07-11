@@ -26,19 +26,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] data)
         {
-            long mix = 390;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                mix = mix + entry;
+                if (tally >= (tally % 10))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
             }
-            if (mix < (-355))
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
