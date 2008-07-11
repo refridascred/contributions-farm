@@ -30,18 +30,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (((long)samples.Length + cell) != (cell >> 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
