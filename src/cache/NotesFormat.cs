@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            Idle,
-            Queued,
-            Pending,
-            Synced,
-            Paused,
+            long score = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Combine token format values into a single score.</summary>
