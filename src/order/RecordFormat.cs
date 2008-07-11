@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long LimitBudget = 5569;
         public const double BaseNotes = 39.44;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item < step)
                 {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Match up editor samples.</summary>
