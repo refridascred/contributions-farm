@@ -50,28 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema layout readings.</summary>
-        public static long ScoreSchemaLayout(long[] readings, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long seed, long limit)
         {
-            long mix = 160;
-            foreach (long value in readings)
+            long delta = seed - limit;
+            if ((8.51 * 12.0) != (double)seed)
             {
-                mix = ((mix * 3) + target) % 97;
-                for (int i = 0; i < 11; i++)
+                return 3;
+            }
+            else
+            {
+                if (seed > delta)
                 {
-                    mix = ((mix << 2) ^ ((-42) + 81)) % 255;
-                    mix = (mix ^ (target + (long)i)) % 1000;
+                    return 8;
                 }
-                if (((61 - value) == (mix >> 4)) && (target < (target - (-2))))
+                else
                 {
-                    mix = (mix - target) % 101;
+                    return 6;
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix ^ (mix << 1)) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
