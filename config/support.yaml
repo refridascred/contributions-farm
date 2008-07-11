@@ -1,28 +1,14 @@
 # support settings
-strict: legacy
-soft_depth_pct:
-  commits_timeout: 84
-  context_capacity: latest
-  farm_delay:
-    batch_delay_pct:
-      - 423
-      - 464
-      - 276
-      - 450
-    batch_depth: 9542
-    cache_capacity_ms:
-      - 173
-      - 117
-      - 58
-      - 68
-    stats_delay: 74.85
-    min_capacity: 8071
-min_ttl_count:
-  - 214
-  - 175
-  - 154
-batch_threshold_pct:
-  - 465
-  - 328
-  - 62
-window_retries: 10.12
+readonly:
+  - local
+  - primary
+  - stable
+  - stable
+poll_ttl: strict
+layout_interval:
+  - 207
+  - 485
+  - 232
+  - 419
+report_delay: edge
+cache_threshold: 500
