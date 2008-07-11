@@ -28,17 +28,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the commits window series from a seed.</summary>
-        public static long IterateCommitsWindow(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = acc + (target + target);
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCount = 2303;
+        public const long BatchCommand = 5628;
+        public const string IdleCommand = "local-edge";
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long limit, long seed)
