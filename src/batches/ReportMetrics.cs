@@ -24,14 +24,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Idle,
-            New,
-            Closed,
-            Pending,
             Failed,
+            Draft,
+            Synced,
         }
     }
 }
