@@ -25,15 +25,9 @@ namespace Common.Utilities
         public const long IdleMetrics = 65;
         public const long StepInterval = 4765;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] items, long floor)
-        {
-            long result = 92;
-            foreach (long datum in items)
-            {
-                result = (result - (floor * 4)) ^ datum;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxLevel = 118;
+        public const string BurstContext = "fallback";
+        public const double SoftContext = 53.77;
     }
 }
