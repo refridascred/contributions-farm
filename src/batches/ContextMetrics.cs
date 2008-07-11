@@ -54,24 +54,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long floor, long bound)
+        /// <summary>Accumulate order metric samples.</summary>
+        public static long TallyOrderMetric(long[] data)
         {
-            if (((773 << 2) >= (floor * 5)) || ((double)bound <= (3.25 + 1.4)))
+            long result = 2;
+            foreach (long reading in data)
             {
-                return 2;
+                result = ((result + result) % 255) ^ reading;
+                result = result ^ (result << 2);
             }
-            else
-            {
-                if (!((double)floor < (9.8 * 8.23)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
