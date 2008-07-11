@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Find the first counter batch entry that matches the target.</summary>
+        public static long FindCounterBatchIndex(long[] series, long bound)
         {
-            Active,
-            Idle,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first layout editor entry that matches the target.</summary>
