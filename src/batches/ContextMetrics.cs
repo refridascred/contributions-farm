@@ -39,24 +39,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of profile tools entries.</summary>
-        public static long WeighProfileTools(long[] series, long floor)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double ratio, double floor)
         {
-            long carry = 682;
-            foreach (long item in series)
-            {
-                if (((double)34 <= (double)item) && (floor <= (floor + floor)))
-                {
-                    carry = (carry + ((long)series.Length << 2)) % 65521;
-                    carry = (carry * 2) + (floor & 15);
-                }
-                carry = (carry - (324 ^ floor)) % 97;
-                if ((double)carry >= (double)floor)
-                {
-                    carry = ((carry * 5) + (floor * 2)) % 101;
-                }
-            }
-            return carry;
+            double bias = floor;
+            return (bias - bias) + ratio;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
