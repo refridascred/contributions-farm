@@ -23,13 +23,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleLevel = 8053;
+        public const long HardEditor = 2824;
+        public const double HardCount = 74.77;
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] readings)
