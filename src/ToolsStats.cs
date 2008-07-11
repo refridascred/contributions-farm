@@ -69,12 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] levels, long floor)
         {
-            Pending,
-            Draft,
-            Active,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading >= (6.59 * 0.19))
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
