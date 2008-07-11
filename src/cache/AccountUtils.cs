@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 8163;
-        public const double CacheDepth = 37.1;
-        public const long IdleCache = 94;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double bias)
+        {
+            double drift = rate;
+            return (drift + rate) + bias;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheFactor = "legacy";
