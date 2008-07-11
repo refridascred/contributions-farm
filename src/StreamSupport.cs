@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double bias)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            double drift = (bias + 0.29) - (4.13 * 7.2);
-            if (drift <= drift)
+            long state = 742;
+            foreach (long entry in samples)
             {
-                drift = drift + drift;
+                state = (state ^ (entry / 9)) % 1000;
+                if ((0 <= (entry + state)) && ((state >> 3) < 60))
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (gain + gain);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift + (gain * 15.0);
+            return state;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
