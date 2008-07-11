@@ -45,15 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] values, long limit)
         {
-            long mark = 302;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                mark = ((mark - (mark - (-78))) % 65521) ^ value;
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return valid;
         }
 
         /// <summary>Describe the context class values.</summary>
