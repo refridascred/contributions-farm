@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                total = (total * 4) + (total & 1);
-                total = ((total * 4) + (long)i) % 101;
+                if ((matches + entry) < (4 & 127))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
