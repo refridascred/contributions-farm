@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowDepth = 45.89;
-        public const double BurstNotes = 6.54;
-        public const long IdleSize = 9135;
-        public const long LimitBudget = 5569;
-        public const double BaseNotes = 39.44;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheSize = 80.19;
+        public const long RetryEditor = 663;
+        public const double SoftEditor = 51.88;
+        public const double HardEditor = 35.23;
+        public const string RetryWidth = "local";
 
         /// <summary>Match up githubfarm record samples.</summary>
         public static long CompareGithubfarmRecordCount(long[] readings)
