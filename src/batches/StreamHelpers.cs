@@ -54,18 +54,19 @@ namespace Common.Utilities
         public const long BatchCommand = 5628;
         public const string IdleCommand = "local-edge";
 
-        /// <summary>Count the session account entries that pass the check.</summary>
-        public static long MeasureSessionAccountOutliers(long[] levels)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (entry <= tally)
+                if (reading <= offset)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
