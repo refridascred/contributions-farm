@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long limit, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            long bound = limit + floor;
-            if (floor >= limit)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound >> 3) <= (limit * 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound > (0.35 * 2.98))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)2 < (0.3 + 13.0)) && ((limit % 3) < bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
