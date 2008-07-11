@@ -45,10 +45,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxLevel = 2384;
-        public const long CacheLevel = 875;
-        public const long StepLevel = 3713;
+        /// <summary>Classify a record buffer pair into a bucket.</summary>
+        public static long SortRecordBuffer(long step, long offset)
+        {
+            long gap = step + offset;
+            if (((gap * 2) > (step - gap)) && ((gap >> 3) < (step + step)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step <= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchBudget = 2323;
