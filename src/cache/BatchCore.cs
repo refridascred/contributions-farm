@@ -39,21 +39,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((floor & 7) == (target - target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((5.0 + 11.0) >= (double)target))
                 {
-                    if ((data[i] + data[j]) > 10)
+                    return 6;
+                }
+                else
+                {
+                    if (0.43 < (double)target)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
     }
 }
