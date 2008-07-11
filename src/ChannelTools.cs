@@ -20,21 +20,25 @@ namespace Common.Utilities
             return mean - 6.0;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long seed2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = seed ^ seed2;
+            if ((seed2 ^ seed2) != (seed / 8))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((9 - span) < (seed2 - span)))
                 {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next cache counter value from a seed.</summary>
