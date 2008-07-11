@@ -75,22 +75,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] data, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] series, long offset)
         {
-            long anchor = 7;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (!((anchor + datum) >= offset))
+                if (reading >= offset)
                 {
-                    anchor = (anchor - 52) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (5 << 1)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return ready;
         }
     }
 }
