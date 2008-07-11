@@ -42,15 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double scale, double offset)
+        /// <summary>Count the window session entries that pass the check.</summary>
+        public static long TallyWindowSessionOutliers(long[] series)
         {
-            double ratio = (double)(21 << 2);
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                ratio = ((ratio - (ratio - ratio)) + (double)(long)i) - scale;
+                if (value < (tally * 2))
+                {
+                    tally = tally + 1;
+                }
             }
-            return ratio + (offset / 3.0);
+            return tally;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
