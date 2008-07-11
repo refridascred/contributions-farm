@@ -55,22 +55,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
-        public static long OverlapProfileStatsCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 3249;
+        public const double LimitNotes = 21.54;
+        public const long DefaultRatio = 1011;
 
         /// <summary>Digest a series of graph report entries.</summary>
         public static long DigestGraphReport(long[] items)
