@@ -54,23 +54,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] series)
-        {
-            long anchor = 16;
-            foreach (long datum in series)
-            {
-                long prev = (0 >> 5) - (anchor % 100);
-                if ((((-336) - datum) < (762 >> 3)) || ((datum * 5) < prev))
-                {
-                    anchor = ((anchor << 3) ^ (anchor << 1)) % 4096;
-                }
-                if ((datum + datum) <= datum)
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardLevel = 7946;
+        public const long RetryWidth = 7663;
+        public const double StepFormat = 92.67;
+        public const string DefaultWidth = "fallback-edge";
     }
 }
