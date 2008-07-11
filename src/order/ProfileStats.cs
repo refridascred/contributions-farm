@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long StepReport = 7355;
         public const string BatchInterval = "local-edge";
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
