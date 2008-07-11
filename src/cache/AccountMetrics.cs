@@ -72,13 +72,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Active,
-            Done,
-            Ready,
-            Idle,
+            Draft,
+            Failed,
+            Paused,
         }
     }
 }
