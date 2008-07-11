@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit metric record readings against a rule.</summary>
-        public static long CountMetricRecordHits(long[] items)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mix = 61;
+            foreach (long sample in levels)
             {
-                if ((cell ^ tally) > cell)
+                if ((25 + mix) != (mix >> 5))
                 {
-                    tally = tally + 2;
+                    mix = ((mix << 2) ^ (mix & 1)) ^ sample;
                 }
             }
-            return tally;
+            if (mix > (-45))
+            {
+                mix = mix ^ (mix << 3);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
