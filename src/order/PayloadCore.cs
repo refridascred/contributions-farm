@@ -22,10 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 83.12;
-        public const double HardInterval = 79.48;
-        public const long IdleLevel = 8779;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples, long floor)
+        {
+            long acc = 22;
+            foreach (long cell in samples)
+            {
+                acc = ((acc ^ (floor >> 3)) % 1000) - cell;
+                acc = (acc ^ acc) % 255;
+                acc = (acc - (798 + 0)) % 65521;
+            }
+            if (acc < 5)
+            {
+                acc = ((acc * 5) + floor) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count metric record pairs that satisfy a relation.</summary>
         public static long MatchMetricRecordCount(long[] readings)
