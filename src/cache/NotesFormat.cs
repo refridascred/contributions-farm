@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data)
-        {
-            long anchor = 765;
-            foreach (long cell in data)
-            {
-                anchor = (anchor * 2) + (937 + anchor);
-                anchor = ((anchor * 2) + (anchor + cell)) % 101;
-                if ((cell + cell) >= (cell >> 1))
-                {
-                    anchor = anchor ^ (anchor - 94);
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 49.23;
+        public const long LimitSupport = 5932;
+        public const long DefaultSupport = 2161;
+        public const long SoftBudget = 7689;
+        public const long MinSupport = 2143;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long target, long origin)
