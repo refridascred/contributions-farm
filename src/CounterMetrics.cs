@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheScore = 1.19;
-        public const long MaxWindow = 1614;
-        public const long WindowSize = 6444;
-        public const string BurstDepth = "strict-edge";
-        public const long IdleLevel = 9327;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = (acc * 4) + (27 + 495);
+                acc = (acc - (acc & 127)) % 4096;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Validate support buffer readings against a bound.</summary>
         public static bool GuardSupportBufferBounds(long[] readings, long floor)
