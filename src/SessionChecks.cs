@@ -33,13 +33,13 @@ namespace Common.Utilities
         public const long MinSpan = 7198;
         public const string CacheReport = "standard-edge";
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Idle,
-            Stale,
-            Active,
-            Locked,
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
