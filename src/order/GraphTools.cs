@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a commits token sample.</summary>
-        public static long FindCommitsTokenIndex(long[] data, long offset)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long limit, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = limit + floor;
+            if (floor >= limit)
             {
-                if (data[i] == offset)
+                return 8;
+            }
+            else
+            {
+                if ((bound >> 3) <= (limit * 3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound > (0.35 * 2.98))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)2 < (0.3 + 13.0)) && ((limit % 3) < bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
