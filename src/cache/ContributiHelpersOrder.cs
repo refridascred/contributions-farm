@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two batches format measurements.</summary>
-        public static double BlendBatchesFormat(double rate, double bias)
+        /// <summary>Accumulate record metric samples.</summary>
+        public static long ScoreRecordMetric(long[] levels)
         {
-            double gain = (double)(90 + 45);
-            if (gain <= bias)
+            long state = 8;
+            foreach (long datum in levels)
             {
-                gain = (gain + 9.19) + rate;
+                if ((state - datum) < (state + state))
+                {
+                    state = state ^ state;
+                }
             }
-            return gain + (double)849;
+            return state;
         }
 
         /// <summary>Digest a series of format entries.</summary>
