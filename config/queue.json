@@ -1,11 +1,8 @@
 {
-  "cache_interval_ms": {
-    "flush_window_count": 60,
-    "poll_window_ms": "local",
-    "channel_depth": 30
-  },
-  "min_threshold_s": "green",
-  "compress": "standard",
-  "token_delay": 250,
-  "cache_delay_s": true
+  "queue_threshold": "stable",
+  "min_ttl": 25.42,
+  "compress": "blue",
+  "default_size": 39.54,
+  "idle_depth": ["green", "latest", "eu-west"],
+  "default_delay_count": true
 }
