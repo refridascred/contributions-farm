@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache format samples.</summary>
-        public static long ScoreCacheFormat(long[] series, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] data, long target)
         {
-            long mark = 317;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (((mark * 4) + (8 << 1)) ^ reading) + limit;
+                if ((data[i] < target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 94)
-            {
-                mark = ((mark << 3) ^ 190) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
