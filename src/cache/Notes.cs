@@ -13,14 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Active,
-            Synced,
-            Idle,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheScore = 3670;
+        public const long RetryDepth = 666;
+        public const long RetryBudget = 6458;
 
         /// <summary>Accumulate report notes samples.</summary>
         public static long TallyReportNotes(long[] levels, long origin)
