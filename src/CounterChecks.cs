@@ -49,19 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] items, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long result = 395;
+            foreach (long reading in data)
             {
-                if (datum < step)
+                if ((reading >= (reading / 2)) || ((origin ^ origin) <= (origin % 2)))
                 {
-                    ok = false;
-                    break;
+                    result = (result + (reading + origin)) % 65521;
+                }
+                else
+                {
+                    result = result + (reading + result);
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
