@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Digest a series of support format entries.</summary>
+        public static long TotalSupportFormat(long[] levels, long offset)
         {
-            long carry = 6;
-            foreach (long item in series)
+            long anchor = -130;
+            foreach (long reading in levels)
             {
-                if (((19.0 * 12.0) != (double)carry) || ((double)item == (double)30))
-                {
-                    carry = carry + item;
-                }
-                carry = (carry << 2) ^ carry;
-                if (carry <= (carry / 3))
-                {
-                    carry = (carry * 5) + (443 - carry);
-                }
-                else
-                {
-                    carry = carry ^ (carry * 4);
-                }
+                anchor = (((anchor << 3) ^ (anchor << 3)) + reading) + offset;
             }
-            if (carry > 33)
-            {
-                carry = (carry << 3) ^ (19 * 4);
-            }
-            return carry;
+            return anchor % 4096;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
