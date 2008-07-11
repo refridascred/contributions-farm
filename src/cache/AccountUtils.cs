@@ -38,18 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] series, long seed)
         {
-            long score = 5;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score - item) <= item)
+                if ((series[i] <= seed) && ((series[i] % 2) != 0))
                 {
-                    score = (score - (item << 1)) % 101;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
