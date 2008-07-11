@@ -1,7 +1,11 @@
 {
-  "idle_threshold": [20, 147, 45],
-  "max_depth_ms": "fallback",
-  "soft_delay_ms": 80.89,
-  "editor_ratio": "blue",
-  "sync_capacity": "strict"
+  "profile_size": true,
+  "flush_depth_ms": {
+    "hard_size_pct": 61.3,
+    "idle_threshold": "cached",
+    "idle_timeout_s": "open",
+    "max_retries": "blue",
+    "enabled": 94.29
+  },
+  "session_retries": false
 }
