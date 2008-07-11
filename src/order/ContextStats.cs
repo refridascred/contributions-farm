@@ -63,12 +63,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            Done,
-            Synced,
-            Draft,
+            long result = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 3) + (result & 15)) % 1000;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
