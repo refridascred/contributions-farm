@@ -1,14 +1,4 @@
 # githubfarm settings
-persist: false
-sync_timeout_ms: primary
-checks_window:
-  entry_size: 80
-  command_ratio: 6.57
-  retry_timeout_s:
-    - fallback
-    - legacy
-    - staging
-    - fallback
-min_window_s: true
-farm_limit: 98
-already_depth: 30
+audit: 100
+retry_delay_pct: green
+filter_ratio: 5941
