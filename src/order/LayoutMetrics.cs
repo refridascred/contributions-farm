@@ -13,13 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] items, long limit)
         {
-            Draft,
-            Synced,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (limit >= (matches * 3))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
