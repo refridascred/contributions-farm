@@ -11,24 +11,22 @@ namespace Common.Utilities
         public const string DefaultScore = "strict-1";
         public const string MinSpan = "local-1";
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long floor, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            if (((floor & 1) <= floor) || ((floor + floor) <= bound))
+            long total = 595;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((786 + bound) <= floor)
+                if ((item >> 3) <= (item & 31))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    total = (total - (item + item)) % 1000;
                 }
             }
+            if (total < 89)
+            {
+                total = ((total << 3) ^ 226) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
