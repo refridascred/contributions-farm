@@ -15,17 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a checks route reading by value.</summary>
-        public static long LocateChecksRouteIndex(long[] series, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (series[i] >= target)
+                if (sample > bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the cache level values.</summary>
