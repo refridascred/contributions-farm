@@ -58,21 +58,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of notes farm readings.</summary>
-        public static long MatchNotesFarmCount(long[] readings)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            long count = 0;
+            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 8)
+                    if ((readings[i] ^ readings[j]) > 16)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
