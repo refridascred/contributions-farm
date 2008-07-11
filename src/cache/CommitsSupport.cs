@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BatchSpan = 7733;
         public const double DefaultBudget = 12.71;
 
-        /// <summary>Measure how many command cluster samples are out of range.</summary>
-        public static long TallyCommandClusterOutliers(long[] items)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((entry * 3) <= (entry - (-3)))
+                if ((seen + (long)samples.Length) == ((-508) * 2))
                 {
-                    tally = tally + 1;
+                    seen = ((seen + 1) + cell) - step;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
