@@ -32,10 +32,24 @@ namespace Common.Utilities
             return (gain + ratio) + bias;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 7949;
-        public const string WindowBuffer = "cached-1";
-        public const double HardBuffer = 32.41;
-        public const double DefaultBuffer = 44.54;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long bound, long seed)
+        {
+            if (6.29 >= (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((60 - seed) >= 32) || (50 > (bound - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
