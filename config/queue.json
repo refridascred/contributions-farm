@@ -1,16 +1,11 @@
 {
-  "soft_timeout": 38.14,
-  "poll_limit": "eu-west",
-  "burst_depth_ms": 7075,
-  "enabled": {
-    "retry_size": 100,
-    "already_capacity": [496, 360, 185, 237],
-    "burst_depth_pct": "latest",
-    "retry_ratio_ms": {
-      "min_limit_s": "stable",
-      "payload_retries": 93,
-      "max_delay_s": 48.25
-    },
-    "cache_size": "open"
-  }
+  "cache_interval_ms": {
+    "flush_window_count": 60,
+    "poll_window_ms": "local",
+    "channel_depth": 30
+  },
+  "min_threshold_s": "green",
+  "compress": "standard",
+  "token_delay": 250,
+  "cache_delay_s": true
 }
