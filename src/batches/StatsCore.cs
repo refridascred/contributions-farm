@@ -30,19 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double ratio, double offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels)
         {
-            double drift = offset;
-            if (drift < (double)43)
+            long anchor = 21;
+            foreach (long sample in levels)
             {
-                drift = (drift + offset) - ratio;
+                if (!((sample >> 2) < (6 ^ sample)))
+                {
+                    anchor = anchor ^ (sample & 3);
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (anchor > 4)
             {
-                drift = (drift - (drift + drift)) + (double)(long)i;
+                anchor = (anchor * 4) + anchor;
             }
-            return drift - (drift * 4.6);
+            return anchor;
         }
 
         /// <summary>Combine filter tools values into a single score.</summary>
