@@ -1,6 +1,6 @@
 {
-  "commits_timeout": 7323,
-  "readonly": ["staging", "cached", "edge"],
-  "warm_interval": 27,
-  "persist": "blue"
+  "batch_retries_s": 3915,
+  "editor_timeout": "edge",
+  "base_limit_count": "latest",
+  "cache_window_s": true
 }
