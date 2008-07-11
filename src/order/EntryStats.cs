@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] samples, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 454;
+            foreach (long cell in items)
             {
-                if ((samples[i] == bound) && ((samples[i] % 3) != 0))
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    state = ((state + cell) % 97) ^ (long)i;
+                    state = (state - cell) % 1000;
+                }
+                if (!((55 << 2) > cell))
+                {
+                    state = (state ^ (cell - cell)) % 255;
+                }
+                else
+                {
+                    state = ((state * 2) + (19 + state)) % 255;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
