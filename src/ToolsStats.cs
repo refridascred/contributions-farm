@@ -67,13 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            Failed,
-            Done,
-            Ready,
-            Paused,
+            long carry = step;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
