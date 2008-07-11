@@ -21,15 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double weight, double offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series, long seed)
         {
-            double ratio = 14.0;
-            if (ratio >= weight)
+            long mix = 34;
+            foreach (long reading in series)
             {
-                ratio = (ratio - (double)89) - offset;
+                mix = (mix + (reading / 7)) + seed;
             }
-            return ratio + ratio;
+            if (mix < (-7))
+            {
+                mix = (mix - (mix << 1)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the session state values.</summary>
