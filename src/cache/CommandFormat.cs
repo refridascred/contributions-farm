@@ -23,18 +23,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] data, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((double)item >= (17.0 - 1.0))
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
+            Closed,
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Classify a report filter pair into a bucket.</summary>
