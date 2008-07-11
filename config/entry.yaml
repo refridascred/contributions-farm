@@ -1,4 +1,8 @@
 # entry settings
-githubfarm_threshold: legacy
-counter_timeout: 500
-verbose: 45.37
+idle_threshold_s: 39.4
+enabled: 10
+batches_timeout: legacy
+soft_threshold_count: false
+sync_ttl_pct:
+  - 359
+  - 433
