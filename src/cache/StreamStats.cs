@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] series, long offset)
         {
-            long mix = 683;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                mix = (mix ^ (cell % 16)) % 97;
-                if ((mix / 3) > (mix & 31))
+                if ((((count & 3) >= (offset + 848)) || ((offset - sample) < sample)) && ((offset * 4) > (count << 3)))
                 {
-                    mix = mix - cell;
+                    count = count + 1;
                 }
             }
-            if (mix > (-5))
-            {
-                mix = (mix * 5) + mix;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Roll a command counter forward.</summary>
