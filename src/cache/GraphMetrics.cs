@@ -12,19 +12,11 @@ namespace Common.Utilities
             return (drift + (drift / 4.0)) + rate;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] levels, long target)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double load = floor;
+            return (load - (double)50) + ratio;
         }
 
         /// <summary>Hold a channel stats.</summary>
