@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((tally / 6) < (44 - tally))
+                if (reading <= floor)
                 {
-                    tally = (tally + 2) - datum;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a route stats.</summary>
