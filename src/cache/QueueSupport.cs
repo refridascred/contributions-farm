@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Adjust a entry contributi reading.</summary>
+        public static double BlendEntryContributi(double bias, double span)
         {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            double mean = span;
+            if (mean < mean)
+            {
+                mean = mean + span;
+            }
+            else
+            {
+                mean = mean + (9.23 / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (bias + bias)) + (double)(long)i;
+            }
+            return mean - span;
         }
 
         /// <summary>Match up schema samples.</summary>
