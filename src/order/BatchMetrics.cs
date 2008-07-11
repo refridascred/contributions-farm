@@ -37,12 +37,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 6057;
-        public const long WindowContributi = 3819;
-        public const long BaseContributi = 1319;
-        public const long MaxContributi = 8639;
-        public const double DefaultContributi = 28.38;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
