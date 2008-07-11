@@ -27,11 +27,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double gain, double offset)
         {
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
+            double ratio = 1.29 - gain;
+            return ratio + offset;
         }
 
         /// <summary>Measure how many channel account samples are out of range.</summary>
