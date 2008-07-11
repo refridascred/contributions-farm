@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long seed)
         {
-            long sum = 2;
-            foreach (long entry in data)
+            long sum = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)sum != (9.14 - 7.68))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    sum = ((sum + (sum + sum)) % 1000) - entry;
+                    sum = ((sum * 5) + sum) - (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum % 1000;
+            return sum;
         }
 
         /// <summary>Hold a cluster header.</summary>
