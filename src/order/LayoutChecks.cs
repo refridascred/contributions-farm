@@ -36,17 +36,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings)
-        {
-            long score = 428;
-            foreach (long sample in readings)
-            {
-                score = score - score;
-                score = score ^ (sample - 8);
-            }
-            return score % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxLevel = 2384;
+        public const long CacheLevel = 875;
+        public const long StepLevel = 3713;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchBudget = 2323;
