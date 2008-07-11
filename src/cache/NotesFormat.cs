@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long offset2)
         {
-            double gain = ratio / 5.0;
-            for (int i = 0; i < 7; i++)
+            if (!(8.92 < (double)offset2))
             {
-                gain = ((gain - gain) + (double)(long)i) + offset;
+                return 0;
             }
-            return gain + 14.0;
+            else
+            {
+                if (offset >= (offset2 + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset ^ offset2) <= (485 + offset2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset ^ (-973)) > offset2) && ((double)offset2 >= (1.0 + 1.76)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
