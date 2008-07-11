@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the command channel entries that pass the check.</summary>
+        public static long AuditCommandChannelOutliers(long[] items)
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (sample <= (3 >> 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
