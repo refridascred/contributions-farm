@@ -60,18 +60,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long step)
         {
-            long result = -365;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (8.4 > (double)result)
+                if (datum > step)
                 {
-                    result = (result ^ datum) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return flag;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
