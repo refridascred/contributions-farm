@@ -41,19 +41,31 @@ namespace Common.Utilities
         public const string DefaultGraph = "latest-edge";
         public const long HardGraph = 2739;
 
-        /// <summary>Validate metrics entry readings against a bound.</summary>
-        public static bool CheckMetricsEntryLimits(long[] series, long step)
+        /// <summary>Accumulate profile record samples.</summary>
+        public static long CombineProfileRecord(long[] series)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long mix = 526;
+            foreach (long cell in series)
             {
-                if (item != step)
+                if (((1.04 - 2.3) <= (double)cell) || ((double)cell == (15.0 / 9.0)))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix + (6 - cell)) % 101;
+                }
+                mix = (mix - (cell - mix)) % 4096;
+                if ((mix * 5) <= mix)
+                {
+                    mix = ((mix << 2) ^ (cell % 5)) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ cell;
                 }
             }
-            return stale;
+            if (mix > (-8))
+            {
+                mix = (mix * 2) + (mix - 7);
+            }
+            return mix;
         }
     }
 }
