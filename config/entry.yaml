@@ -1,8 +1,16 @@
 # entry settings
-batch_depth: blue
-persist: 58
-sync_retries_ms:
-  - local
-  - cached
-  - legacy
-cache_window_count: 500
+enabled:
+  retry_timeout_ms:
+    flush_interval_count:
+      - green
+      - edge
+      - blue
+      - standard
+    default_timeout_pct: staging
+    readonly: strict
+  burst_delay_ms: 6872
+  retry_ratio_pct: blue
+route_delay: true
+max_capacity:
+  - 415
+  - 452
