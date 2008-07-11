@@ -72,17 +72,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] readings, long origin)
+        /// <summary>Blend two record command measurements.</summary>
+        public static double ScaleRecordCommand(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = scale / 9.0;
+            if (gain < (double)939)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                gain = (gain - gain) + span;
             }
-            return -1;
+            return gain - scale;
         }
     }
 }
