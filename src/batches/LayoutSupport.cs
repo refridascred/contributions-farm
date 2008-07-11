@@ -50,11 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double rate, double span)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double mean = (double)((-1) - (-62));
-            return ((mean + 0.7) + rate) + span;
+            Closed,
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a buffer info.</summary>
