@@ -64,38 +64,18 @@ namespace Common.Utilities
         public const long RetryOrder = 9774;
         public const double WindowDepth = 30.9;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long origin, long step)
+        /// <summary>Audit command cluster readings against a rule.</summary>
+        public static long CountCommandClusterGaps(long[] values, long step)
         {
-            if (((double)origin == (14.0 - 1.0)) || (step < origin))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + 5) <= (3 & 127))
+                if (step >= (step << 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin < (4.74 - 15.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step >> 5) >= 36)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 1) ^ reading;
                 }
             }
+            return seen;
         }
     }
 }
