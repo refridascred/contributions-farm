@@ -36,17 +36,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] values, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 428;
+            foreach (long sample in readings)
             {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
+                score = score - score;
+                score = score ^ (sample - 8);
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
