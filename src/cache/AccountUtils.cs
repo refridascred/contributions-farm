@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const long DefaultQueue = 5189;
         public const long HardQueue = 4160;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] readings, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if ((floor - 46) <= (offset + offset))
             {
-                if ((tally ^ origin) < (tally / 8))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset != (2.0 + 8.64))
                 {
-                    tally = (tally + 1) + entry;
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset / 6) >= offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
