@@ -33,15 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] items, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            long acc = 908;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                acc = ((acc ^ limit) % 101) - item;
+                if (19.0 >= (double)datum)
+                {
+                    count = count + 1;
+                }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
