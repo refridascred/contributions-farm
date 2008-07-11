@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            Pending,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
