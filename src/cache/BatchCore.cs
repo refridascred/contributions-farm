@@ -43,15 +43,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
