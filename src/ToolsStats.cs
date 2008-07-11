@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 30.39;
-        public const double SoftLevel = 67.59;
-        public const long BurstBuffer = 1852;
-        public const string MinFactor = "staging";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally / 6) < (44 - tally))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
