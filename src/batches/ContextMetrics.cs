@@ -53,18 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 4) <= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Synced,
+            Ready,
         }
 
         /// <summary>Adjust a record reading.</summary>
