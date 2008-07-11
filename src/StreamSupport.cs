@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count layout githubfarm pairs that satisfy a relation.</summary>
-        public static long PairLayoutGithubfarmCount(long[] series)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Find the first layout editor entry that matches the target.</summary>
