@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first contributi githubfarm entry that matches the target.</summary>
-        public static long LookupContributiGithubfarmIndex(long[] values, long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate2 = 15.0;
+            return ((rate2 + rate2) + rate) + span;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
