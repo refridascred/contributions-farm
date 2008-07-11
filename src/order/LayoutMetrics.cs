@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetryWidth = "staging";
+        public const long MaxSpan = 3669;
+        public const long BurstRatio = 3142;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TotalBatches(long[] readings)
