@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((offset + (long)i) == ((long)i & 31)))
+                {
+                    sum = ((sum * 4) + sum) % 1000;
+                }
+                if ((double)offset >= (6.98 - 12.0))
+                {
+                    sum = (sum - ((long)i + sum)) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Blend two cache route measurements.</summary>
