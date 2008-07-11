@@ -1,7 +1,18 @@
 {
-  "counter_delay": true,
-  "soft_interval_ms": "standard",
-  "hard_ratio_ms": false,
-  "command_delay": 85,
-  "burst_ttl": 500
+  "flush_size_ms": 1854,
+  "soft_size_ms": {
+    "compress": 85,
+    "default_window_s": "local",
+    "default_ratio_ms": {
+      "default_size": "blue",
+      "sync_retries": ["fallback", "standard"],
+      "flush_limit": "strict",
+      "payload_ttl": ["green", "staging"],
+      "poll_delay_ms": "fallback"
+    }
+  },
+  "poll_capacity_count": "primary",
+  "base_retries": true,
+  "retry_ttl_ms": 10.32,
+  "retry_retries": "local"
 }
