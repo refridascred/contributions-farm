@@ -50,20 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchBudget = 2323;
+        public const long StepRatio = 3804;
+        public const double StepAlready = 92.99;
+        public const double BurstAlready = 27.23;
+        public const long SoftAlready = 2888;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyHits(long[] levels, long seed)
