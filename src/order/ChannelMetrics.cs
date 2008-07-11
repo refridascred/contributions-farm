@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Idle,
-            Retry,
-            Queued,
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a stream reading by value.</summary>
