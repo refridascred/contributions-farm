@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the githubfarm order entries that pass the check.</summary>
+        public static long TallyGithubfarmOrderGaps(long[] data, long seed)
         {
-            Queued,
-            Paused,
-            Stale,
-            Done,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches - cell) > (cell + 4))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
