@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 2213;
-        public const string HardBatch = "latest-1";
-        public const long BurstSpan = 943;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsRange(long[] readings, long step)
