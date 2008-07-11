@@ -40,15 +40,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Locked,
-            Retry,
-            Paused,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultBudget = 983;
+        public const string IdleLevel = "local-v2";
+        public const long BurstBudget = 609;
 
         /// <summary>Count the session token entries that pass the check.</summary>
         public static long CountSessionTokenOutliers(long[] readings)
