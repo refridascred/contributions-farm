@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
