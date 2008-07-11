@@ -1,8 +1,16 @@
 {
-  "soft_limit": 1024,
-  "flush_size_s": "legacy",
-  "base_interval": 8106,
-  "compress": 3372,
-  "idle_timeout": "strict",
-  "token_size": "standard"
+  "soft_timeout": 38.14,
+  "poll_limit": "eu-west",
+  "burst_depth_ms": 7075,
+  "enabled": {
+    "retry_size": 100,
+    "already_capacity": [496, 360, 185, 237],
+    "burst_depth_pct": "latest",
+    "retry_ratio_ms": {
+      "min_limit_s": "stable",
+      "payload_retries": 93,
+      "max_delay_s": 48.25
+    },
+    "cache_size": "open"
+  }
 }
