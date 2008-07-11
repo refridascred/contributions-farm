@@ -1,11 +1,8 @@
 {
-  "profile_size": true,
-  "flush_depth_ms": {
-    "hard_size_pct": 61.3,
-    "idle_threshold": "cached",
-    "idle_timeout_s": "open",
-    "max_retries": "blue",
-    "enabled": 94.29
-  },
-  "session_retries": false
+  "idle_capacity": 81,
+  "command_limit": 30,
+  "compress": true,
+  "context_ttl": ["primary", "edge", "staging"],
+  "max_timeout_pct": "blue",
+  "soft_ratio_s": true
 }
