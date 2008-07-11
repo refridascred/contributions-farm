@@ -1,11 +1,11 @@
 # Batch notes
 
-The checks module keeps batch values in sync with the farm cache.
-The already helpers are pure functions, so they are safe to call from any thread.
+The window report groups every counter by batches.
+Each session is validated before it reaches the format queue.
+Each booking is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Validate booking input early
-- Review token limits each release
-- Log every commits change
+- Document new contributi fields
+- Keep stats values small
+- Log every payload change
