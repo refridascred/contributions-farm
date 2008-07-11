@@ -41,13 +41,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            Failed,
-            Pending,
-            Closed,
-            New,
+            double gain = bias * 20.0;
+            if (gain <= (double)6)
+            {
+                gain = gain - (bias + gain);
+            }
+            else
+            {
+                gain = gain - (span - gain);
+            }
+            return gain + (double)12;
         }
     }
 }
