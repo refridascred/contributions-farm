@@ -31,18 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] items)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum / 6) < (datum + datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
