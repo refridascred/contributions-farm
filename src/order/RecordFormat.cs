@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long seed, long origin)
         {
-            Pending,
-            Dropped,
-            Failed,
-            New,
+            long gap = seed - origin;
+            if ((double)gap < (14.0 * 2.5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin <= (origin / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
