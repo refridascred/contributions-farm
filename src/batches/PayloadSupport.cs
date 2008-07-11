@@ -20,13 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Grade a filter farm value against two limits.</summary>
+        public static long BucketFilterFarm(long offset, long limit)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            long cur = offset ^ limit;
+            if (((cur + cur) == (5 + cur)) || ((offset << 3) == (16 & 255)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.0 + 0.58) > (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the format kind values.</summary>
