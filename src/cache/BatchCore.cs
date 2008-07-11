@@ -39,13 +39,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats batches readings.</summary>
-        public static long TallyStatsBatches(long[] readings)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long step)
         {
-            long carry = 7;
-            foreach (long entry in readings)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry - entry) % 65521;
+                carry = (carry ^ (carry / 8)) % 97;
+                carry = carry + step;
+                if (!((step - step) >= carry))
+                {
+                    carry = carry ^ (3 + (-78));
+                    carry = (carry ^ ((long)i % 64)) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
             return carry;
         }
