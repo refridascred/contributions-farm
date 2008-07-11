@@ -54,28 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result + (floor - (long)i)) % 1000;
-                long seen = 981 - (long)i;
-                if (1.4 < (double)seen)
-                {
-                    seen = (seen ^ (seen - result)) % 1000;
-                    break;
-                }
-                else
-                {
-                    seen = ((seen << 2) ^ seen) % 65521;
-                    seen = (seen * 2) + (result * 5);
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepReport = "standard-1";
+        public const string HardReport = "staging-v2";
+        public const long RetryInterval = 5699;
+        public const double BatchDepth = 89.31;
+        public const long WindowLevel = 3192;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
