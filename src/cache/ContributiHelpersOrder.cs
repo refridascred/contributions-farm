@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up editor queue samples.</summary>
-        public static long MatchEditorQueueCount(long[] data)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Failed,
+            Done,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
