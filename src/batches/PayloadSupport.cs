@@ -32,26 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Roll a record batch counter forward.</summary>
+        public static long RollRecordBatch(long floor)
         {
-            long mix = 99;
-            foreach (long datum in values)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum < (datum + mix))
-                {
-                    mix = (mix * 4) + (2 - 0);
-                }
-                else
-                {
-                    mix = mix + (8 + mix);
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (mix < 57)
-            {
-                mix = (mix * 4) + (54 + mix);
-            }
-            return mix % 4096;
+            return sum;
         }
     }
 }
