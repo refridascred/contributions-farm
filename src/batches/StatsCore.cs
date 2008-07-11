@@ -51,13 +51,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Adjust a commits metrics reading.</summary>
+        public static double AdjustCommitsMetrics(double gain, double offset)
         {
-            Paused,
-            Closed,
-            Failed,
-            Synced,
+            double drift = (double)(580 >> 5);
+            return (drift + gain) + offset;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
