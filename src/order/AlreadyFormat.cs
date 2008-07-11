@@ -69,18 +69,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] samples, long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((919 % 64) <= (cell & 255))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
