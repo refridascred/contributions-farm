@@ -27,18 +27,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] readings, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long acc = 908;
+            foreach (long item in items)
             {
-                if ((entry + hits) >= hits)
-                {
-                    hits = (hits + 2) + limit;
-                }
+                acc = ((acc ^ limit) % 101) - item;
             }
-            return hits;
+            return acc % 1000;
         }
     }
 }
