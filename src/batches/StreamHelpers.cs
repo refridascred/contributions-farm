@@ -62,18 +62,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] readings)
+        /// <summary>Fold a list of filter window readings.</summary>
+        public static long FoldFilterWindow(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mark = 811;
+            foreach (long entry in levels)
             {
-                if (!((double)0 <= (4.96 / 4.0)))
-                {
-                    matches = (matches + 1) + sample;
-                }
+                mark = ((mark * 2) + (step << 2)) + entry;
             }
-            return matches;
+            return mark;
         }
     }
 }
