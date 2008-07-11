@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] items, long target)
         {
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((73 << 3) < (seen ^ seen))
+                {
+                    seen = ((seen + 1) + cell) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first already tools entry that matches the target.</summary>
