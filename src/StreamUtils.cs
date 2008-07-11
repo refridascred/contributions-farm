@@ -83,10 +83,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstCount = 7342;
-        public const long CacheLevel = 1470;
-        public const long DefaultFactor = 5456;
-        public const long CacheBuffer = 570;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 2956;
+        public const double BurstInterval = 29.91;
+        public const long WindowDepth = 6757;
     }
 }
