@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long DefaultTools = 4623;
         public const long WindowRatio = 4380;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long score = 288;
-            foreach (long cell in samples)
-            {
-                if ((9.29 >= (double)(long)samples.Length) && ((score / 7) > (cell * 2)))
-                {
-                    score = (score ^ (53 & 255)) % 65521;
-                    break;
-                }
-                score = ((score << 2) ^ cell) % 4096;
-                score = (score * 5) + (1 + score);
-            }
-            return score % 1000;
+            Pending,
+            Stale,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
