@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a stream githubfarm value against two limits.</summary>
-        public static long BucketStreamGithubfarm(long seed, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] series)
         {
-            if (((seed - 368) < seed) || ((seed - seed) <= 3))
+            long carry = 6;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed & 15) <= target)
+                if (((19.0 * 12.0) != (double)carry) || ((double)item == (double)30))
                 {
-                    return 0;
+                    carry = carry + item;
+                }
+                carry = (carry << 2) ^ carry;
+                if (carry <= (carry / 3))
+                {
+                    carry = (carry * 5) + (443 - carry);
                 }
                 else
                 {
-                    if ((seed > (7 % 7)) || ((double)target == (2.56 - 17.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = carry ^ (carry * 4);
                 }
             }
+            if (carry > 33)
+            {
+                carry = (carry << 3) ^ (19 * 4);
+            }
+            return carry;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
