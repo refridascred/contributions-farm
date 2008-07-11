@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a profile record.</summary>
