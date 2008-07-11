@@ -10,22 +10,16 @@ namespace Common.Utilities
         public const long IdleRatio = 6709;
         public const long MinOrder = 9544;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] readings, long bound)
         {
-            long score = 6;
-            foreach (long entry in readings)
+            long total = 6;
+            foreach (long value in readings)
             {
-                if ((score >> 2) >= (score - entry))
-                {
-                    score = (score - (entry / 6)) % 1000;
-                }
+                total = (total + (value + 24)) - bound;
+                total = ((total << 3) ^ total) % 4096;
             }
-            if (score < 65)
-            {
-                score = ((score * 5) + 316) % 4096;
-            }
-            return score % 97;
+            return total % 1000;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
