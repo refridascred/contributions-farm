@@ -74,17 +74,13 @@ namespace Common.Utilities
             return load - (gain * 9.1);
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] levels, long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
