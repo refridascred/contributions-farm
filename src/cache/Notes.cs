@@ -54,19 +54,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double span)
-        {
-            double load = (double)18 + (double)136;
-            if (load < (double)8)
-            {
-                load = load - (span + 16.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load - (double)(-40);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleCount = 7710;
+        public const double RetryScore = 43.76;
+        public const string MinContext = "alpha-1";
     }
 }
