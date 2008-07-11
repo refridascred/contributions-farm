@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long MaxTools = 8132;
         public const string IdleTools = "fallback-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinCount = "latest-edge";
-        public const long SoftFilter = 6821;
-        public const long BaseFilter = 2850;
-        public const long MinRatio = 347;
-        public const long BatchWidth = 5436;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!!(sample < (sample - hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long RankFilter(long bound, long seed)
