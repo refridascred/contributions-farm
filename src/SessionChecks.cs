@@ -35,13 +35,17 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Look up the position of a payload editor sample.</summary>
+        public static long FindPayloadEditorIndex(long[] items, long offset)
         {
-            Failed,
-            Queued,
-            Active,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
