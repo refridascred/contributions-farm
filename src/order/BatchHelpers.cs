@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples)
         {
-            if ((limit >> 5) >= floor)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor & 255) >= floor) || (floor >= (limit - limit)))
+                if ((double)value <= (1.1 / 9.0))
                 {
-                    return 1;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 5;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
