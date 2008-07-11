@@ -1,13 +1,7 @@
 # githubfarm settings
-compress:
-  batch_threshold: 41.44
-  command_ttl: true
-  batches_limit: local
-  editor_delay: eu-west
-  batch_capacity: green
-  cache_ttl_count: cached
-graph_capacity: false
-idle_capacity_count: 4839
-idle_limit_ms: 81.68
-readonly: 44
-base_retries_pct: staging
+queue_delay: 85.12
+verbose: true
+soft_ttl: 1.84
+default_timeout_ms: edge
+default_ratio_s: blue
+warm_depth_count: 27
