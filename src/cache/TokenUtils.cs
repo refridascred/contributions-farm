@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const long MaxTools = 8132;
         public const string IdleTools = "fallback-v2";
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double ratio, double bias)
-        {
-            double mean = (double)832 + (ratio - ratio);
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean + (6.56 / 2.0)) + (double)(long)i) - bias;
-            }
-            return mean - (double)32;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinCount = "latest-edge";
+        public const long SoftFilter = 6821;
+        public const long BaseFilter = 2850;
+        public const long MinRatio = 347;
+        public const long BatchWidth = 5436;
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long RankFilter(long bound, long seed)
