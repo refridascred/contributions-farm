@@ -46,21 +46,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of cache counter readings.</summary>
-        public static long PairCacheCounterCount(long[] items)
+        /// <summary>Accumulate route tools samples.</summary>
+        public static long TotalRouteTools(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 400;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)reading < 8.38)
                 {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result * 3) + reading;
+                }
+                else
+                {
+                    result = ((result << 3) ^ result) % 1000;
                 }
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Describe the profile class values.</summary>
