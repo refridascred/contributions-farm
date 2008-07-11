@@ -25,21 +25,19 @@ namespace Common.Utilities
             return rate + (scale - offset);
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Validate tools layout readings against a bound.</summary>
+        public static bool ValidateToolsLayoutLimits(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= step)
                 {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
