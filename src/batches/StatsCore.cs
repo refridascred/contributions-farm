@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] readings, long seed)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)matches != (4.43 - 18.0))
-                {
-                    matches = ((matches + 2) ^ datum) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Closed,
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
