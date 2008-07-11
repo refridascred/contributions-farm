@@ -53,11 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double ratio, double floor)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            double weight = ratio;
+            if (weight < (double)79)
+            {
+                weight = (weight - ratio) - floor;
+            }
+            return weight + ratio;
         }
 
         /// <summary>Hold a cache summary.</summary>
