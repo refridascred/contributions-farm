@@ -28,32 +28,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long floor, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] series, long offset)
         {
-            long next = floor ^ limit;
-            if ((double)floor != (double)94)
+            bool valid = true;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((next & 3) <= 9) && ((0.45 / 4.0) >= (double)limit))
+                if (item <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((next - next) != (next + 68))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a token summary.</summary>
