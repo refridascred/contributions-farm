@@ -15,24 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] items)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (!((6.2 / 7.0) == (double)result))
+                if ((seen / 8) < (cell ^ cell))
                 {
-                    result = (result - (floor * 4)) % 255;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    result = ((result * 3) + (312 - result)) % 4096;
+                    seen = seen - 1;
                 }
-                result = result ^ (result ^ result);
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
