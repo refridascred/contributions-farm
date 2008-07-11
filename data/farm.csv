@@ -1,7 +1,7 @@
-id,count,ratio
-1,500,latest
-2,135,33.59
-3,local,621
-4,legacy,27.47
-5,green,643
-6,78.31,edge
+id,token,weight
+1,stable,710
+2,91.63,354
+3,strict,567
+4,blue,eu-west
+5,737,33.61
+6,green,19.94
