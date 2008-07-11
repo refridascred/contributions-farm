@@ -20,16 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] data)
-        {
-            long carry = 9;
-            foreach (long reading in data)
-            {
-                carry = ((carry + (carry + 45)) % 1000) + reading;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitDepth = 6888;
+        public const long MinRecord = 5968;
+        public const long IdleLevel = 2911;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
