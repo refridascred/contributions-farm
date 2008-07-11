@@ -31,21 +31,16 @@ namespace Common.Utilities
         public const long BaseReport = 9978;
         public const long BaseWidth = 9498;
 
-        /// <summary>Match up counter cache samples.</summary>
-        public static long PairCounterCacheCount(long[] readings)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark - step) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
     }
 }
