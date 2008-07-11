@@ -30,22 +30,32 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] data, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data, long limit)
         {
-            long result = 10;
-            foreach (long entry in data)
+            long anchor = 84;
+            foreach (long item in data)
             {
-                if (((bound + result) == (4 % 16)) || ((bound / 5) > (bound << 2)))
+                if ((double)item < (13.0 / 2.0))
                 {
-                    result = ((result ^ (48 << 3)) % 97) + entry;
+                    anchor = ((anchor << 3) ^ limit) % 255;
                 }
                 else
                 {
-                    result = (result << 2) ^ (69 << 1);
+                    anchor = (anchor * 4) + limit;
+                    anchor = ((anchor << 3) ^ (75 ^ 776)) % 101;
+                }
+                anchor = anchor + item;
+                if (anchor <= 14)
+                {
+                    anchor = (anchor + (anchor << 3)) % 255;
                 }
             }
-            return result % 1000;
+            if (anchor < 165)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
