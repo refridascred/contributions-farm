@@ -17,19 +17,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] levels, long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long offset, long floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            if ((3.18 + 4.67) > (double)offset)
             {
-                if (cell > step)
+                return 7;
+            }
+            else
+            {
+                if (!((double)floor <= (2.3 + 18.0)))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
