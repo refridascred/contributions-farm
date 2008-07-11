@@ -20,20 +20,10 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double weight, double offset)
-        {
-            double mean = offset;
-            if (mean < (offset + weight))
-            {
-                mean = mean + 18.0;
-            }
-            else
-            {
-                mean = mean - offset;
-            }
-            return mean + (weight - weight);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryScore = "staging";
+        public const double RetryTimeout = 6.04;
+        public const long SoftRatio = 7762;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
