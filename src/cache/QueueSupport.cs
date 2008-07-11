@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] readings, long target)
+        /// <summary>Iterate the filter command series from a seed.</summary>
+        public static long SeriesFilterCommand(long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((708 % 8) < (cell % 2))
-                {
-                    seen = (seen + 3) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = score ^ (floor + score);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Match up schema samples.</summary>
