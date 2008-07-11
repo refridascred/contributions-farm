@@ -1,23 +1,20 @@
 # support settings
-stats_ratio: cached
-base_limit:
-  hard_threshold_count:
-    verbose: false
-    support_ratio: 7584
-    base_limit:
-      - edge
-      - legacy
-      - strict
-      - open
-    default_depth: edge
-    max_timeout_ms: 38.36
-  sync_window: 19
-  cache_capacity_ms: latest
-  audit: local
-  cluster_delay: false
-max_timeout: 13.88
-cache_depth:
-  - 209
-  - 478
-  - 326
-  - 317
+token_threshold: 884
+min_ratio_count:
+  flush_delay_count: false
+  poll_window_ms: fallback
+  default_delay_s: latest
+  default_limit_count: strict
+strict: 71
+githubfarm_interval: 70
+retry_depth_count:
+  contributi_interval:
+    tools_interval: cached
+    hard_capacity: 25
+    max_retries_count: 8
+    min_window_ms: 25.25
+  hard_limit_count: legacy
+  burst_limit_ms:
+    - strict
+    - local
+base_size_count: 1024
