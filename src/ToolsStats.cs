@@ -14,23 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] values)
         {
-            long anchor = 7;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                anchor = (anchor << 2) ^ (limit >> 1);
-                if ((12.0 / 2.0) > (double)entry)
+                if ((matches * 5) < (2 << 2))
                 {
-                    break;
+                    matches = (matches + 2) - reading;
                 }
             }
-            if (anchor > 80)
-            {
-                anchor = (anchor ^ (anchor + limit)) % 1000;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Adjust a command context reading.</summary>
