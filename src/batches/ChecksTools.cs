@@ -31,21 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph entry readings.</summary>
-        public static long OverlapGraphEntryCount(long[] data)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
