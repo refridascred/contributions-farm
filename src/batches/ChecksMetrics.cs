@@ -35,19 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] series, long offset)
         {
-            long mark = 570;
-            foreach (long cell in levels)
+            long sum = 351;
+            foreach (long cell in series)
             {
-                mark = (mark * 4) + (mark - cell);
+                sum = ((sum - (747 * 2)) % 4096) ^ cell;
             }
-            if (mark < 1)
+            if (sum < 1)
             {
-                mark = (mark << 2) ^ (65 + mark);
+                sum = ((sum * 3) + (sum + offset)) % 65521;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Describe the session phase values.</summary>
