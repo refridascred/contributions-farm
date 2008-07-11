@@ -41,12 +41,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the notes mode values.</summary>
