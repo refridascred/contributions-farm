@@ -1,9 +1,6 @@
 # support settings
-already_threshold: green
-batch_delay_ms: 7
-payload_retries:
-  hard_ratio: 49.82
-  entry_window: 1626
-  warm_capacity_count: 98
-  flush_retries_count: 9195
-  audit: latest
+idle_timeout: false
+farm_window: green
+burst_timeout_ms: true
+cluster_limit: 77.09
+enabled: primary
