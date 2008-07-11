@@ -57,12 +57,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] samples, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (reading < (tally - tally))
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
         }
     }
 }
