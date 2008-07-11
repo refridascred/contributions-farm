@@ -1,24 +1,17 @@
 # entry settings
-sync_limit_s:
-  - 401
-  - 13
-readonly:
-  batch_window_ms: 500
-  graph_size: cached
-  max_retries_s: 4669
-  default_timeout: eu-west
-  burst_ratio_count: false
-report_depth: standard
-poll_ttl:
-  - latest
-  - latest
-  - fallback
-verbose:
-  stream_limit: cached
-  retry_limit_s: local
-  stream_interval:
-    - latest
-    - cached
-    - primary
-    - standard
-  max_interval_s: true
+metrics_capacity:
+  soft_size_count: 21
+  warm_limit: 86
+  graph_timeout:
+    - staging
+    - open
+    - open
+    - green
+  batches_size: 7921
+  dry_run: 40
+  min_capacity_s: green
+poll_size_pct: false
+hard_size_pct: 97
+flush_window_ms: 87
+min_retries_pct: standard
+batch_threshold: standard
