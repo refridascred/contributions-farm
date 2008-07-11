@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] series, long floor)
         {
-            Locked,
-            Retry,
-            Closed,
-            Idle,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
