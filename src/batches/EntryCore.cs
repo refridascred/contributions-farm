@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string HardCount = "strict-edge";
         public const double StepContributi = 21.14;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "latest-edge";
+        public const long DefaultMetrics = 9475;
+        public const long CacheDepth = 7355;
+        public const long BurstMetrics = 88;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaMatches(long[] samples, long limit)
