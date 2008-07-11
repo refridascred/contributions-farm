@@ -56,26 +56,18 @@ namespace Common.Utilities
             return rate2 + 4.0;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] samples, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] values, long origin)
         {
-            long mix = 886;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((699 / 9) != (bound - 8))
+                if (origin >= 791)
                 {
-                    mix = ((mix * 3) + (9 * 2)) ^ datum;
-                }
-                if (((bound + bound) != (4 * 3)) && (mix > (mix % 7)))
-                {
-                    mix = (mix - (mix + mix)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (5 - bound)) % 1000;
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return mix % 4096;
+            return seen;
         }
     }
 }
