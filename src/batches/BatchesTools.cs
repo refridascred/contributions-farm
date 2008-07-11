@@ -25,12 +25,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double span)
         {
-            Closed,
-            Done,
-            Retry,
+            double ratio = (double)(70 - 46);
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (((ratio + 18.0) + (double)(long)i) - bias) - span;
+            }
+            return ratio - (double)497;
         }
     }
 }
