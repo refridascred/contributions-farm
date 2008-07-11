@@ -46,19 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster notes measurements.</summary>
-        public static double SmoothClusterNotes(double rate, double bias)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double weight = bias;
-            if (weight <= (bias * 9.37))
-            {
-                weight = weight + (bias * 5.4);
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (9.68 - rate);
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
