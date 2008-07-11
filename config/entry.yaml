@@ -1,8 +1,4 @@
 # entry settings
-flush_interval: 51
-account_timeout: false
-poll_retries_count:
-  - green
-  - staging
-  - edge
-editor_window: false
+support_timeout: staging
+verbose: 5
+cache_limit_pct: eu-west
