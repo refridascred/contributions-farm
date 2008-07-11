@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long origin)
         {
-            long carry = 6;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                carry = (carry << 3) ^ (cell + cell);
+                if (value < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry % 65521;
+            return valid;
         }
 
         /// <summary>Accumulate profile samples.</summary>
