@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long seed, long seed2)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            if ((seed2 - seed) < (seed ^ seed2))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed2 != (double)875)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
