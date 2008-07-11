@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a notes stats pair into a bucket.</summary>
-        public static long RankNotesStats(long origin, long offset)
-        {
-            if ((offset << 2) < offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin < (origin % 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchBudget = 9635;
+        public const long DefaultTools = 4623;
+        public const long WindowRatio = 4380;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string LimitTimeout = "strict-1";
