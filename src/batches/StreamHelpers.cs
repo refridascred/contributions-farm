@@ -31,22 +31,11 @@ namespace Common.Utilities
         public const long BatchCommand = 5628;
         public const string IdleCommand = "local-edge";
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "cached-1";
+        public const double RetryDepth = 45.55;
+        public const long SoftCache = 1086;
+        public const double MinLevel = 9.26;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] readings)
