@@ -32,13 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] items, long step)
         {
-            Draft,
-            Stale,
-            Idle,
-            Locked,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)(-477) < (double)seen)
+                {
+                    seen = ((seen + 3) + reading) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
