@@ -91,22 +91,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long state = 33;
-            foreach (long item in values)
-            {
-                if (!((double)state >= (6.0 - 2.5)))
-                {
-                    state = (state ^ (item ^ state)) % 4096;
-                }
-            }
-            if (state < 758)
-            {
-                state = (state + state) % 97;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
