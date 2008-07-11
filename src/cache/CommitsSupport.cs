@@ -65,11 +65,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "legacy-1";
-        public const long BaseEntry = 6282;
-        public const long BatchLevel = 8116;
-        public const double RetryEntry = 43.77;
-        public const long MinEntry = 5460;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry * 2) + carry;
+                if ((carry % 60) == ((long)i / 2))
+                {
+                    carry = (carry - carry) % 97;
+                    carry = (carry - (floor & 3)) % 4096;
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
