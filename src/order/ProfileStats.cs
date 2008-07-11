@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long CacheWidth = 2320;
         public const long SoftCount = 7877;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long total = 40;
-            foreach (long item in levels)
-            {
-                if (!((total << 3) > (item % 7)))
-                {
-                    total = ((total << 3) ^ (item % 16)) % 65521;
-                }
-                if ((4 ^ total) <= total)
-                {
-                    total = (total * 5) + (768 + item);
-                }
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
