@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] readings)
         {
-            Locked,
-            Stale,
-            Ready,
-            Done,
-            Paused,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((matches + matches) < (sample * 2)) || ((197 ^ sample) <= (sample + matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a token stats figure with a bias.</summary>
