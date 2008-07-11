@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = (((carry << 3) ^ (long)i) % 255) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
