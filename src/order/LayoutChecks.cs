@@ -33,18 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] data)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double drift = ratio;
+            if (drift > floor)
             {
-                if ((hits + hits) >= (259 + 0))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
+                drift = drift - (drift + drift);
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + (drift * 11.0);
         }
 
         /// <summary>Count the editor schema entries that pass the check.</summary>
