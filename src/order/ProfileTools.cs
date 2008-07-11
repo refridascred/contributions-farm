@@ -65,11 +65,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
+            Queued,
+            Locked,
+            Dropped,
+            Closed,
+            Paused,
         }
     }
 }
