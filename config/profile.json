@@ -1,11 +1,5 @@
 {
-  "warm_retries_s": "open",
-  "retry_ratio_count": 8712,
-  "cache_delay_ms": {
-    "default_limit": 500,
-    "retry_retries_count": "blue",
-    "payload_ttl": 739,
-    "cache_retries": [482, 96, 274, 17],
-    "entry_ratio": 70.89
-  }
+  "default_capacity": true,
+  "soft_interval_pct": ["cached", "strict", "stable"],
+  "retry_window": 26.55
 }
