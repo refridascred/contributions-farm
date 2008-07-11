@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 4827;
+        public const long MaxStats = 5230;
+        public const long DefaultWidth = 4963;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
