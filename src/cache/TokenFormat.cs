@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mark = 450;
-            foreach (long sample in series)
-            {
-                mark = ((mark * 3) + (860 + sample)) % 1000;
-            }
-            if (mark > 5)
-            {
-                mark = (mark ^ mark) % 1000;
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
