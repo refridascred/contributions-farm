@@ -50,19 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema order value from a seed.</summary>
-        public static long DeriveSchemaOrder(long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double rate, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((seed >> 2) < score))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            double mean = (double)((-1) - (-62));
+            return ((mean + 0.7) + rate) + span;
         }
 
         /// <summary>Describe the already phase values.</summary>
