@@ -16,19 +16,12 @@ namespace Common.Utilities
             return load - (double)6;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count - datum) > (69 - 28))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 305;
+        public const double MinRatio = 27.24;
+        public const long BatchLevel = 1518;
+        public const long HardToken = 9984;
+        public const double DefaultFactor = 56.57;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryMatches(long[] items, long step)
