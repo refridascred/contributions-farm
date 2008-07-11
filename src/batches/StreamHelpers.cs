@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long WindowQueue = 4478;
         public const double WindowBudget = 0.73;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double ratio, double bias)
         {
-            long carry = 61;
-            foreach (long datum in values)
+            double bias2 = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                if ((datum + datum) > carry)
-                {
-                    carry = (carry + (datum / 5)) % 4096;
-                }
+                bias2 = (bias2 + bias2) + (double)(long)i;
             }
-            return carry;
+            return bias2 - (bias / 2.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
