@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the record cache entries that pass the check.</summary>
-        public static long MeasureRecordCacheMatches(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long anchor = 98;
+            foreach (long datum in values)
             {
-                if ((double)sample < 3.3)
+                if ((anchor <= limit) && ((anchor + anchor) <= ((-9) / 2)))
                 {
-                    count = count + 2;
+                    anchor = (anchor ^ (anchor / 7)) + datum;
                 }
             }
-            return count;
+            if (anchor > 3)
+            {
+                anchor = (anchor + (limit + limit)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Match up editor samples.</summary>
