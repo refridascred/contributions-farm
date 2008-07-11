@@ -41,12 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            Retry,
+            Draft,
+            Queued,
+            Done,
         }
     }
 }
