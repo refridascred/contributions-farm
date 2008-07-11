@@ -32,14 +32,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Queued,
-            Ready,
-            Done,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftSize = 3201;
+        public const double BurstBudget = 86.43;
+        public const double BurstLevel = 29.91;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long seed, long offset)
