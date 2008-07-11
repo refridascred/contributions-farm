@@ -28,17 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a channel batches sample.</summary>
-        public static long LookupChannelBatchesIndex(long[] items, long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
+            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
