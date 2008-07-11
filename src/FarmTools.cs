@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up already editor samples.</summary>
-        public static long OverlapAlreadyEditorCount(long[] data)
+        /// <summary>Grade a stream githubfarm value against two limits.</summary>
+        public static long BucketStreamGithubfarm(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((seed - 368) < seed) || ((seed - seed) <= 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((seed & 15) <= target)
                 {
-                    if ((data[i] - data[j]) < 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((seed > (7 % 7)) || ((double)target == (2.56 - 17.0)))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
