@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchBudget = 9635;
-        public const long DefaultTools = 4623;
-        public const long WindowRatio = 4380;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Total { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
