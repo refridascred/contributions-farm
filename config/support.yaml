@@ -1,7 +1,4 @@
 # support settings
-format_depth: legacy
-contributi_interval: 597
-cache_ratio_ms: 8609
-max_window: true
-cache_threshold_pct: 6274
-retry_size_ms: fallback
+context_depth: 250
+base_capacity: 31.04
+graph_limit: 5525
