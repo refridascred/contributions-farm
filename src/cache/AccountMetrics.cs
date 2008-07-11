@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data)
         {
-            Stale,
-            Paused,
-            New,
-            Idle,
+            long carry = 46;
+            foreach (long reading in data)
+            {
+                if (((18.0 + 7.0) > (double)carry) || (carry >= (carry - reading)))
+                {
+                    carry = (carry ^ (carry / 7)) % 101;
+                }
+                else
+                {
+                    carry = carry ^ (carry - reading);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
