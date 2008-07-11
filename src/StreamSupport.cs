@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate queue profile samples.</summary>
-        public static long FoldQueueProfile(long[] series, long seed)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long score = 983;
-            foreach (long entry in series)
-            {
-                if (score >= (entry >> 1))
-                {
-                    score = (score + (score + entry)) + seed;
-                }
-                if ((entry + entry) < score)
-                {
-                    break;
-                }
-            }
-            return score;
+            Locked,
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
