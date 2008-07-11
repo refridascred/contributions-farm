@@ -37,19 +37,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] levels, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long total = 49;
+            foreach (long reading in values)
             {
-                if (datum < limit)
+                if (!((double)(long)values.Length <= (2.62 - 7.4)))
                 {
-                    flag = false;
-                    break;
+                    total = total + (reading + 851);
+                }
+                total = ((total * 3) + (reading + reading)) % 1000;
+                if ((total + 13) >= (396 + reading))
+                {
+                    total = (total - (reading * 2)) % 101;
                 }
             }
-            return flag;
+            if (total > 6)
+            {
+                total = total + (total + total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
