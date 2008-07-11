@@ -66,19 +66,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] levels, long step)
+        /// <summary>Blend two batch order measurements.</summary>
+        public static double AdjustBatchOrder(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            double load = (double)(2 % 24);
+            if (load >= (bias - rate))
             {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - load;
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)81) - (double)(long)i;
+            }
+            return load + (rate * 4.97);
         }
     }
 }
