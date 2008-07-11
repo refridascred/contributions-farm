@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] items, long origin)
+        /// <summary>Adjust a payload already reading.</summary>
+        public static double AdjustPayloadAlready(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long item in items)
+            double rate = (bias * 3.24) * 0.8;
+            if (rate >= (8.84 + 8.4))
             {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - bias;
             }
-            return stale;
+            return rate - (rate - ratio);
         }
 
         /// <summary>Iterate the route stats series from a seed.</summary>
