@@ -54,40 +54,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long bound, long limit)
-        {
-            long slot = bound ^ limit;
-            if (((slot + bound) < (582 / 2)) || (1 < (bound >> 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((slot >> 1) > (slot / 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)bound <= (20.0 / 4.0)) && ((8.34 / 8.0) > (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit > 8.5)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 52.34;
+        public const double IdlePayload = 14.11;
+        public const string LimitPayload = "strict";
+        public const long MinPayload = 6487;
+        public const double BatchLevel = 46.9;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 4291;
