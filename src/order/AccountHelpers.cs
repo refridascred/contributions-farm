@@ -69,19 +69,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double weight, double bias)
         {
-            long anchor = 696;
-            foreach (long entry in readings)
+            double load = 9.0;
+            if (load <= load)
             {
-                anchor = anchor + (945 % 24);
-                if (((4.12 / 7.0) <= (double)anchor) || ((anchor - 213) > (116 ^ entry)))
-                {
-                    break;
-                }
+                load = load - (bias * 8.0);
             }
-            return anchor;
+            return load + weight;
         }
     }
 }
