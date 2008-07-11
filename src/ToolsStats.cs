@@ -100,19 +100,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double bias, double span)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double ratio, double bias)
         {
-            double ratio = bias;
-            if (ratio <= (6.65 - span))
+            double scale = (double)(1 - (-423));
+            if (scale < (double)0)
             {
-                ratio = ratio - bias;
+                scale = (scale - (ratio - ratio)) - bias;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 4.15) + (double)(long)i;
-            }
-            return ratio + 9.5;
+            return scale - (ratio / 5.0);
         }
     }
 }
