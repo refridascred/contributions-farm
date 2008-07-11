@@ -32,21 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 437;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((bound ^ value) <= value)
                 {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 3) ^ (value >> 1)) % 65521;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
