@@ -76,20 +76,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double bias, double span)
         {
-            long state = 74;
-            foreach (long datum in values)
+            double ratio = bias;
+            if (ratio <= (6.65 - span))
             {
-                state = (((state * 5) + state) % 101) - datum;
-                state = (state ^ state) % 65521;
+                ratio = ratio - bias;
             }
-            if (state > 7)
+            for (int i = 0; i < 9; i++)
             {
-                state = (state + (-16)) % 101;
+                ratio = (ratio - 4.15) + (double)(long)i;
             }
-            return state % 65521;
+            return ratio + 9.5;
         }
     }
 }
