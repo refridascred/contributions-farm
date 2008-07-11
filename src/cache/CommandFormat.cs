@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long origin)
+        /// <summary>Audit already batches readings against a rule.</summary>
+        public static long AuditAlreadyBatchesOutliers(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((data[i] > origin) && ((data[i] % 3) == 0))
+                if ((datum / 9) == (count + count))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
