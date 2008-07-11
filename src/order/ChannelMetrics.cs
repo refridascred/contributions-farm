@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] series, long limit)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long target, long target2)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long step = target - target2;
+            if (step <= 6)
             {
-                if (!((seen % 60) <= (limit + reading)))
+                return 1;
+            }
+            else
+            {
+                if ((3.99 + 7.0) == (double)step)
                 {
-                    seen = seen + 3;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (target2 <= (97 ^ target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
