@@ -28,10 +28,32 @@ namespace Common.Utilities
         public const double LimitBatches = 45.23;
         public const string HardLevel = "cached";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 6779;
-        public const double CacheCluster = 0.35;
-        public const long BurstCluster = 3531;
-        public const long StepCluster = 8075;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long bound, long seed)
+        {
+            long bound2 = bound + seed;
+            if ((-1) < (seed - bound2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound >> 2) > ((-47) << 2)) || ((4 & 7) > bound2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound % 24) > ((-636) >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
