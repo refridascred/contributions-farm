@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel layout value.</summary>
-        public static double ScaleChannelLayout(double weight, double span)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            double ratio = (3.0 / 3.0) + span;
-            if (ratio >= ratio)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + 6.07) - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (13.0 * 2.59)) + (double)(long)i;
-            }
-            return ratio - (9.0 / 4.0);
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
