@@ -26,12 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitInterval = 6331;
-        public const string HardLevel = "cached";
-        public const string BatchRatio = "staging";
-        public const long MaxCounter = 6297;
-        public const long BatchTimeout = 9684;
+        /// <summary>Measure how many schema contributi samples are out of range.</summary>
+        public static long TallySchemaContributiOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (996 > (tally << 3))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] readings, long seed)
