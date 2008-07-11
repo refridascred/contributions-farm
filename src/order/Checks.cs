@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxPayload = 91.55;
-        public const long WindowPayload = 6353;
-        public const long BasePayload = 3309;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 6968;
+        public const double WindowTimeout = 73.8;
+        public const string StepBudget = "stable-1";
+        public const string MinContributi = "staging";
+        public const long DefaultSpan = 7982;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
