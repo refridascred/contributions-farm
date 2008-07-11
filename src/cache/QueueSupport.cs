@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the filter command series from a seed.</summary>
-        public static long SeriesFilterCommand(long floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                score = score ^ (floor + score);
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
