@@ -1,7 +1,14 @@
 {
-  "enabled": ["green", "latest"],
-  "base_threshold_count": "strict",
-  "flush_delay": 37,
-  "default_ttl": true,
-  "format_interval": "open"
+  "cache_delay_ms": {
+    "flush_depth_ms": "open",
+    "cache_size_ms": {
+      "farm_delay": 11.08,
+      "burst_retries_s": 8.37,
+      "sync_retries": [306, 143]
+    },
+    "cluster_retries": 41.28
+  },
+  "persist": "green",
+  "cache_ttl_s": "staging",
+  "soft_retries": true
 }
