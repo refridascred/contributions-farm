@@ -31,16 +31,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum - (origin / 9)) % 65521;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
