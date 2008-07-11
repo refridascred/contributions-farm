@@ -55,14 +55,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Queued,
-            Locked,
-            Dropped,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 4617;
+        public const double IdleCache = 45.86;
+        public const long HardLevel = 4844;
     }
 }
