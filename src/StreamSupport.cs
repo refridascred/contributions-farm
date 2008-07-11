@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long target, long step)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            if ((454 - step) <= 33)
-            {
-                return 4;
-            }
-            else
-            {
-                if (5.0 >= (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
