@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data)
         {
-            long mix = 61;
-            foreach (long sample in levels)
+            long anchor = 765;
+            foreach (long cell in data)
             {
-                if ((25 + mix) != (mix >> 5))
+                anchor = (anchor * 2) + (937 + anchor);
+                anchor = ((anchor * 2) + (anchor + cell)) % 101;
+                if ((cell + cell) >= (cell >> 1))
                 {
-                    mix = ((mix << 2) ^ (mix & 1)) ^ sample;
+                    anchor = anchor ^ (anchor - 94);
                 }
             }
-            if (mix > (-45))
-            {
-                mix = mix ^ (mix << 3);
-            }
-            return mix % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
