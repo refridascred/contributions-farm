@@ -61,19 +61,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long score = 809;
-            foreach (long datum in readings)
-            {
-                score = score ^ (datum - datum);
-            }
-            if (score < 75)
-            {
-                score = score ^ (score ^ score);
-            }
-            return score % 1000;
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
