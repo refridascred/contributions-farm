@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a context farm reading by value.</summary>
-        public static long LocateContextFarmIndex(long[] values, long offset)
+        /// <summary>Classify a notes window pair into a bucket.</summary>
+        public static long SortNotesWindow(long floor, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((floor + offset) < (offset + floor))
             {
-                if (values[i] > offset)
+                return 7;
+            }
+            else
+            {
+                if ((5.67 > (double)floor) && ((offset + floor) < (floor / 6)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((47 < (offset - offset)) && ((offset + offset) >= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
