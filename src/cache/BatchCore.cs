@@ -38,31 +38,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long target)
-        {
-            if ((floor & 7) == (target - target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((5.0 + 11.0) >= (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (0.43 < (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "open-edge";
+        public const long BurstDepth = 4076;
+        public const double StepEntry = 3.0;
     }
 }
