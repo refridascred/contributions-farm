@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)tally >= (17.0 - 9.85))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 6302;
+        public const long CacheWidth = 2320;
+        public const long SoftCount = 7877;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
