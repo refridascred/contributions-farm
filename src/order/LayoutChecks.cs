@@ -55,23 +55,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double weight, double span)
+        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
+        public static long OverlapProfileStatsCount(long[] data)
         {
-            double ratio = (double)((-23) & 127);
-            if (ratio >= (span - weight))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (double)(-1);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - 2.72) - (double)(long)i;
-            }
-            return ratio + (double)(-732);
+            return matches;
         }
 
         /// <summary>Digest a series of graph report entries.</summary>
