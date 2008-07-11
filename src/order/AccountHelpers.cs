@@ -39,22 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm cache values into a single score.</summary>
-        public static long TotalFarmCache(long[] items, long bound)
+        /// <summary>Locate a buffer batch reading by value.</summary>
+        public static long FindBufferBatchIndex(long[] readings, long origin)
         {
-            long carry = 7;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((3.19 + 5.0) >= (double)entry) && ((bound - 67) < 430))
+                if (readings[i] < origin)
                 {
-                    carry = (carry ^ (entry + bound)) % 97;
-                }
-                if (((double)entry > (1.8 - 5.0)) && ((entry + bound) < (carry << 2)))
-                {
-                    carry = (carry << 3) ^ bound;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the token class values.</summary>
