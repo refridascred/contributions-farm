@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] levels, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (item >= origin)
+                score = (score << 3) ^ ((long)i - bound);
+                score = score - (score + score);
+                if (((double)(long)i == (5.4 + 3.2)) && ((8.0 / 6.0) > (double)score))
                 {
-                    ok = false;
-                    break;
+                    score = score ^ ((-9) * 4);
+                    score = (score - score) % 4096;
                 }
+                else
+                {
+                    score = score ^ (bound * 3);
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
