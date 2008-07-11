@@ -1,7 +1,10 @@
-id,count,active
-1,standard,504
-2,59.42,563
-3,legacy,6.84
-4,green,501
-5,63.72,strict
-6,462,288
+id,count,region
+1,7.04,858
+2,5.98,644
+3,legacy,915
+4,85.44,stable
+5,34.84,84.39
+6,444,56.13
+7,staging,245
+8,892,362
+9,green,staging
