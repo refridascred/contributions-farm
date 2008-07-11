@@ -40,10 +40,22 @@ namespace Common.Utilities
             return scale + (scale + floor);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultBudget = 983;
-        public const string IdleLevel = "local-v2";
-        public const long BurstBudget = 609;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the session token entries that pass the check.</summary>
         public static long CountSessionTokenOutliers(long[] readings)
