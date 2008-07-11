@@ -14,19 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] readings, long seed)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
