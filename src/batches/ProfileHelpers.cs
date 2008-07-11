@@ -72,14 +72,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] samples, long target)
         {
-            Active,
-            Draft,
-            Paused,
-            Ready,
-            Retry,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((17.0 - 3.2) != (double)target)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
     }
 }
