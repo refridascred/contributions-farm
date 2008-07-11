@@ -24,16 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double ratio, double floor)
-        {
-            double weight = (double)(64 >> 1);
-            if (weight > (double)762)
-            {
-                weight = weight - (ratio - ratio);
-            }
-            return weight + (floor * 4.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleRatio = 4015;
+        public const long BatchSpan = 1936;
+        public const long BaseBatches = 4612;
+        public const string RetryBatches = "primary-v2";
+        public const long SoftBatches = 1294;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BatchTools = 2048;
