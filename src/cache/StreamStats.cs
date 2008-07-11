@@ -32,21 +32,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of entry support readings.</summary>
-        public static long MatchEntrySupportCount(long[] readings)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
