@@ -17,17 +17,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a session stream sample.</summary>
-        public static long FindSessionStreamIndex(long[] readings, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (readings[i] >= bound)
+                if (datum >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
