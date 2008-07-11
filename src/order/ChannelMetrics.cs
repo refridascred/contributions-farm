@@ -38,17 +38,31 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Find the first buffer metric entry that matches the target.</summary>
-        public static long LookupBufferMetricIndex(long[] levels, long step)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)step >= (2.0 + 17.0))
             {
-                if (levels[i] == step)
+                return 1;
+            }
+            else
+            {
+                if ((floor < (floor >> 4)) || ((floor + floor) <= (step & 15)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - floor) < (floor + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
