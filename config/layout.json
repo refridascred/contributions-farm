@@ -1,16 +1,11 @@
 {
-  "profile_window": {
-    "verbose": "latest",
-    "soft_window_s": {
-      "hard_limit_ms": "blue",
-      "poll_retries_ms": ["local", "strict", "green"],
-      "stats_limit": true
-    },
-    "channel_retries": "green",
-    "default_ttl_ms": "edge"
-  },
-  "batch_ttl": "latest",
-  "persist": "open",
-  "flush_threshold_ms": 30,
-  "cache_ttl_s": 39.32
+  "flush_timeout_pct": 96.25,
+  "stats_size": 38.98,
+  "idle_ratio": ["local", "legacy", "fallback", "green"],
+  "readonly": "eu-west",
+  "batches_delay": {
+    "payload_size": 7051,
+    "notes_size": "standard",
+    "idle_window": "staging"
+  }
 }
