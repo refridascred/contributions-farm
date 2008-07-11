@@ -46,23 +46,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate route tools samples.</summary>
-        public static long TotalRouteTools(long[] levels)
-        {
-            long result = 400;
-            foreach (long reading in levels)
-            {
-                if ((double)reading < 8.38)
-                {
-                    result = (result * 3) + reading;
-                }
-                else
-                {
-                    result = ((result << 3) ^ result) % 1000;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 6869;
+        public const string CacheWidth = "alpha-1";
+        public const long BaseMetrics = 6865;
+        public const double CacheMetrics = 62.93;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutBounds(long[] values, long seed)
