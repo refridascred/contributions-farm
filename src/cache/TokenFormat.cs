@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit order record readings against a rule.</summary>
-        public static long CountOrderRecordOutliers(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mark = 450;
+            foreach (long sample in series)
             {
-                if ((value & 1) > (235 - tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 3) + (860 + sample)) % 1000;
             }
-            return tally;
+            if (mark > 5)
+            {
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
