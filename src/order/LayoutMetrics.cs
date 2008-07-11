@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string LimitStats = "alpha-edge";
         public const string StepStats = "alpha-1";
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] items, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long carry = -838;
+            foreach (long sample in readings)
             {
-                if ((double)467 > (double)item)
+                if (!!(sample >= (carry + 7)))
                 {
-                    seen = (seen + 3) + limit;
+                    carry = ((carry * 5) + sample) % 255;
                 }
+                carry = carry ^ 2;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Locate a record batches reading by value.</summary>
