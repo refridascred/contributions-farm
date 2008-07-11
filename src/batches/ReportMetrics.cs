@@ -28,13 +28,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long step, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long bound = step - offset;
+            if ((offset >= (535 - bound)) || ((2.33 - 3.7) >= (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset <= (8.0 - 6.3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step != (1.85 - 2.39))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
