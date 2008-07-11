@@ -1,55 +1,16 @@
 # support settings
-soft_timeout_ms:
-  persist: strict
-  default_capacity: local
-  sync_ratio_pct:
-    - cached
-    - primary
-    - blue
-  audit: 3478
-  max_threshold_count: 27
-  base_threshold_count:
-    cache_retries: 250
-    command_window:
-      - latest
-      - staging
-      - primary
-      - staging
-    window_timeout: 16
-    max_limit_ms: 9675
-    sync_ratio_pct: 500
-    idle_depth_count: true
-hard_retries: true
-idle_threshold:
-  min_delay:
-    cache_threshold_pct:
-      - 185
-      - 256
-    sync_threshold: 60
-    base_window:
-      - 264
-      - 344
-    readonly:
-      - 487
-      - 87
-      - 275
-      - 45
-  default_interval: edge
-  metrics_depth: 9379
-  window_timeout:
-    retry_delay_ms: 100
-    retry_limit: 60
-    enabled: 250
-  graph_timeout:
-    batches_retries: 500
-    warm_size_s:
-      - latest
-      - local
-      - primary
-      - staging
-    burst_ttl_pct: latest
-commits_capacity:
-  - edge
-  - staging
-  - edge
-base_threshold: 60
+tools_capacity: legacy
+readonly: true
+enabled: 3.84
+burst_size_pct:
+  idle_ttl_count: 28
+  verbose:
+    retry_timeout_s: green
+    min_interval: 87.4
+    min_interval_s: 54.91
+    batches_window:
+      - 477
+      - 172
+      - 168
+    report_capacity: 5929
+  min_capacity: false
