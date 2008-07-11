@@ -46,19 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph route entry stays within the limit.</summary>
-        public static bool ValidateGraphRouteLimits(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowTimeout = "stable-edge";
+        public const string BaseSize = "standard-edge";
+        public const string SoftSize = "latest-edge";
     }
 }
