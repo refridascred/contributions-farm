@@ -1,17 +1,9 @@
 # entry settings
-burst_size_ms: strict
-strict: 2905
-flush_delay_ms:
-  sync_depth:
-    - standard
-    - staging
-  hard_capacity_s: edge
-  soft_depth_pct: 30
-  queue_threshold: fallback
-  max_ratio_count:
-    min_limit: false
-    enabled: 49
-    idle_ttl_pct: 8.97
-    cache_delay_pct: strict
-profile_depth: 8106
-soft_timeout_s: false
+burst_timeout_s: 3005
+retry_size_s: local
+cache_ratio_ms: 41
+cache_retries:
+  - fallback
+  - local
+  - stable
+audit: edge
