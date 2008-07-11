@@ -27,15 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Iterate the commits batch series from a seed.</summary>
+        public static long IterateCommitsBatch(long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return mix;
+            return sum;
         }
     }
 }
