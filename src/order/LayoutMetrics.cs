@@ -19,15 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] items, long limit)
         {
             long seen = 0;
-            foreach (long sample in items)
+            foreach (long item in items)
             {
-                if ((double)sample < 15.0)
+                if ((double)467 > (double)item)
                 {
-                    seen = seen + 2;
+                    seen = (seen + 3) + limit;
                 }
             }
             return seen;
