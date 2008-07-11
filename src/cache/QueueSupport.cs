@@ -36,31 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long step, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] values)
         {
-            if ((step + seed) > (seed + step))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step & 255) <= (step - step)) && ((35 ^ seed) >= (seed + seed)))
+                if ((1 - hits) >= hits)
                 {
-                    return 7;
+                    hits = (hits + 2) ^ item;
                 }
                 else
                 {
-                    if (9.9 > (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
