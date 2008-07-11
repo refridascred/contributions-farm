@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Check that every batches entry entry stays within the limit.</summary>
+        public static bool ValidateBatchesEntryLimits(long[] series, long seed)
         {
-            Pending,
-            Ready,
-            Synced,
-            Dropped,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next channel value.</summary>
