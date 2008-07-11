@@ -1,6 +1,7 @@
 # entry settings
-base_delay_ms:
-  - 56
-  - 108
-entry_threshold: latest
-readonly: 500
+strict:
+  - 194
+  - 428
+  - 225
+soft_limit: 6419
+audit: 98.09
