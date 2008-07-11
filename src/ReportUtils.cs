@@ -20,19 +20,21 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Compare every pair of entry session readings.</summary>
+        public static long CompareEntrySessionCount(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)carry >= 4.06)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry ^ (bound & 63);
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Project the next filter value.</summary>
