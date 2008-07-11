@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
