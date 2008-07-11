@@ -18,17 +18,24 @@ namespace Common.Utilities
         public const long DefaultWidth = 5942;
         public const double LimitFormat = 18.67;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long target)
+        /// <summary>Derive the next batches format value from a seed.</summary>
+        public static long StepBatchesFormat(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 5) != 0))
+                sum = ((sum * 3) + (sum + sum)) % 97;
+                if ((double)sum >= (5.63 / 7.0))
                 {
-                    return (long)i;
+                    sum = (sum - ((long)i * 5)) % 101;
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum ^ (sum - seed)) % 65521) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the commits level values.</summary>
