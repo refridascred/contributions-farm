@@ -41,19 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double rate, double offset)
+        /// <summary>Check that every format cluster entry stays within the limit.</summary>
+        public static bool ValidateFormatClusterRange(long[] series, long seed)
         {
-            double gain = 7.1 / 7.0;
-            if (gain >= (double)7)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                gain = gain + rate;
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (18.0 * 1.15)) + (double)(long)i;
-            }
-            return gain - offset;
+            return ready;
         }
 
         /// <summary>Project the next command stats value.</summary>
