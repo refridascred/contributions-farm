@@ -42,38 +42,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a token filter value against two limits.</summary>
-        public static long BucketTokenFilter(long limit, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double scale, double offset)
         {
-            if ((1 % 8) <= (limit / 2))
+            double ratio = (double)(21 << 2);
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                ratio = ((ratio - (ratio - ratio)) + (double)(long)i) - scale;
             }
-            else
-            {
-                if ((0.4 + 5.8) != (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((89 & 255) <= (limit ^ step)) && (limit <= (step - limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((5.32 + 0.6) < (double)limit) || ((limit + limit) == (limit * 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return ratio + (offset / 3.0);
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
