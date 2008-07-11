@@ -34,18 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] readings, long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double bias, double span)
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((2.5 + 7.0) != (double)bound)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            double gain = span;
+            return (gain - span) + bias;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
