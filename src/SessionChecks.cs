@@ -19,14 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Pending,
-            Draft,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 3498;
+        public const long CacheRoute = 4754;
+        public const long RetryRoute = 6425;
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] items)
