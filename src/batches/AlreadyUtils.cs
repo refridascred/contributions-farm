@@ -32,10 +32,22 @@ namespace Common.Utilities
         public const long WindowContributi = 7997;
         public const long WindowScore = 1899;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "staging-1";
-        public const long RetryScore = 9546;
-        public const string StepOrder = "local-edge";
-        public const string BaseRatio = "strict";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((floor - reading) < floor)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
