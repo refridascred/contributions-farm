@@ -30,19 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long step)
         {
-            long anchor = 7;
-            foreach (long reading in samples)
+            long slot = target ^ step;
+            if ((slot * 3) > target)
             {
-                anchor = (anchor - (target + 1)) ^ reading;
+                return 1;
             }
-            if (anchor > 45)
+            else
             {
-                anchor = (anchor * 4) + ((-834) - target);
+                if ((slot ^ slot) >= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((slot + step) >= (1 + step)) || ((step ^ target) < (target & 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((slot & 255) > slot) && ((double)slot <= (1.0 * 19.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Locate a session reading by value.</summary>
