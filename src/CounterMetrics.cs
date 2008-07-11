@@ -45,19 +45,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] series, long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
