@@ -20,19 +20,12 @@ namespace Common.Utilities
         public const double DefaultSize = 35.81;
         public const long BatchRatio = 8652;
 
-        /// <summary>Scale a editor checks figure with a bias.</summary>
-        public static double BlendEditorChecks(double gain, double bias)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double rate = (double)885;
-            if (rate < gain)
-            {
-                rate = (rate + 17.0) - bias;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - (double)7;
+            Paused,
+            Synced,
+            Done,
         }
     }
 }
