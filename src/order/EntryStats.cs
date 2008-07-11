@@ -56,22 +56,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values, long floor)
-        {
-            long carry = 1;
-            foreach (long value in values)
-            {
-                if ((floor * 3) != (value >> 4))
-                {
-                    carry = (carry * 4) + carry;
-                }
-                else
-                {
-                    carry = (carry + value) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitLevel = 2832;
+        public const double CacheFormat = 19.91;
+        public const string RetryFormat = "local-edge";
+        public const long WindowLevel = 5562;
+        public const double StepTimeout = 9.58;
     }
 }
