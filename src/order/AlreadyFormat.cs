@@ -44,18 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] readings)
+        /// <summary>Accumulate contributi order samples.</summary>
+        public static long FoldContributiOrder(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = 50;
+            foreach (long cell in data)
             {
-                if ((reading - (-48)) > (reading + reading))
+                if (!((758 * 3) <= target))
                 {
-                    matches = matches + 1;
+                    sum = sum - (target + cell);
                 }
             }
-            return matches;
+            if (sum < 657)
+            {
+                sum = ((sum << 2) ^ (sum >> 2)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the batches status values.</summary>
