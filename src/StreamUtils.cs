@@ -64,15 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double weight, double bias)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] values, long limit)
         {
-            double mean = (double)(634 / 2);
-            if (mean <= (double)85)
+            long matches = 0;
+            foreach (long item in values)
             {
-                mean = ((mean + (double)3) + weight) - bias;
+                if ((matches - item) > limit)
+                {
+                    matches = matches + 3;
+                }
             }
-            return mean - (double)215;
+            return matches;
         }
     }
 }
