@@ -55,25 +55,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long seed, long limit)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] items, long target)
         {
-            long delta = seed - limit;
-            if ((8.51 * 12.0) != (double)seed)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed > delta)
+                if ((items[i] >= target) && ((items[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
