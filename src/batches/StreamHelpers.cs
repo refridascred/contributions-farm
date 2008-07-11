@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardInterval = "stable";
-        public const long WindowQueue = 4478;
-        public const double WindowBudget = 0.73;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
