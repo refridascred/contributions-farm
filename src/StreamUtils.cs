@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long MaxInterval = 3994;
         public const long MinWidth = 5290;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading + reading) <= (count & 1)) && ((count << 1) != (count + reading)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Paused,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Match up batches samples.</summary>
