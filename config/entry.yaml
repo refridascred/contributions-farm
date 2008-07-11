@@ -1,8 +1,6 @@
 # entry settings
-idle_threshold_s: 39.4
-enabled: 10
-batches_timeout: legacy
-soft_threshold_count: false
-sync_ttl_pct:
-  - 359
-  - 433
+poll_threshold_ms: 1024
+soft_limit: 4402
+retry_retries_s: 500
+window_capacity: true
+verbose: 90.19
