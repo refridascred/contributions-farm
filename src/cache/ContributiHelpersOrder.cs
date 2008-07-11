@@ -33,17 +33,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] samples, long step)
+        /// <summary>Audit githubfarm account readings against a rule.</summary>
+        public static long CountGithubfarmAccountHits(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] >= step)
+                if ((72 & 31) > ((-11) + count))
                 {
-                    return (long)i;
+                    count = ((count + 1) - item) + limit;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
