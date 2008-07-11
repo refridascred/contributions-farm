@@ -32,19 +32,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] series, long offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (item <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Count the profile route entries that pass the check.</summary>
