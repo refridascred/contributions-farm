@@ -1,7 +1,20 @@
 {
-  "report_window": false,
-  "layout_interval": false,
-  "verbose": "latest",
-  "flush_delay_count": "blue",
-  "poll_delay_s": 250
+  "idle_retries_s": {
+    "verbose": "green",
+    "enabled": ["green", "local", "eu-west", "open"],
+    "graph_capacity": 50,
+    "hard_interval_count": "stable",
+    "hard_retries_ms": false
+  },
+  "hard_depth_pct": {
+    "poll_timeout": 9339,
+    "persist": "green",
+    "idle_size_count": 1024,
+    "cache_window": 7065,
+    "burst_delay_count": 15
+  },
+  "format_window": false,
+  "hard_window_count": 250,
+  "enabled": 21,
+  "sync_ttl_ms": "stable"
 }
