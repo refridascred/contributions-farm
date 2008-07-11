@@ -50,17 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] items, long step)
+        /// <summary>Derive the next schema order value from a seed.</summary>
+        public static long DeriveSchemaOrder(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
+                if (!((seed >> 2) < score))
                 {
-                    return (long)i;
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the layout level values.</summary>
