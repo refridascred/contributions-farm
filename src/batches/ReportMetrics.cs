@@ -31,22 +31,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] items, long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long sum = 77;
-            foreach (long cell in items)
-            {
-                if ((double)target > 9.0)
-                {
-                    sum = sum + (6 + cell);
-                }
-                else
-                {
-                    sum = (sum + (sum & 63)) % 97;
-                }
-            }
-            return sum % 97;
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
