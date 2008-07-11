@@ -12,12 +12,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinDepth = 24.18;
-        public const long BurstRatio = 9176;
-        public const long BatchCluster = 9566;
-        public const long StepSize = 3392;
-        public const double MinCluster = 72.7;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            New,
+            Idle,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double HardSize = 20.66;
