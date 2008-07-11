@@ -56,12 +56,19 @@ namespace Common.Utilities
         public const string HardFormat = "staging";
         public const string BurstFormat = "latest-edge";
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double ratio, double span)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
+            double mean = (double)7 + span;
+            if (mean >= (1.71 / 4.0))
+            {
+                mean = mean - (ratio * 17.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 11.0) + (double)(long)i;
+            }
+            return mean + ratio;
         }
     }
 }
