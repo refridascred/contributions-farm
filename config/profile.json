@@ -1,14 +1,5 @@
 {
-  "cache_window_s": [101, 177, 282],
-  "warm_window_pct": [142, 277],
-  "buffer_depth": {
-    "cache_timeout_pct": {
-      "counter_size": "stable",
-      "audit": "primary",
-      "min_limit_pct": 81
-    },
-    "poll_timeout_count": "edge",
-    "batch_timeout_pct": 46.67,
-    "soft_limit_pct": 24.96
-  }
+  "sync_size_count": [285, 331, 482, 284],
+  "verbose": true,
+  "hard_window": ["primary", "standard", "legacy"]
 }
