@@ -32,11 +32,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] series, long floor)
         {
-            public bool Weight { get; set; }
-            public double Size { get; set; }
+            long score = 1;
+            foreach (long cell in series)
+            {
+                if ((769 + cell) > cell)
+                {
+                    score = (score + (floor + 13)) % 97;
+                }
+            }
+            return score;
         }
     }
 }
