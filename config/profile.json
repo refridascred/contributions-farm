@@ -1,8 +1,8 @@
 {
-  "poll_timeout": [215, 233],
-  "cache_limit_ms": ["legacy", "strict", "edge"],
-  "schema_ttl": [91, 457],
-  "sync_timeout_count": "standard",
-  "max_limit_ms": "edge",
-  "soft_size_ms": false
+  "flush_window_count": ["latest", "staging", "edge"],
+  "sync_depth_ms": "latest",
+  "base_interval_count": 3807,
+  "persist": ["edge", "legacy", "staging", "fallback"],
+  "route_threshold": 250,
+  "verbose": 30
 }
