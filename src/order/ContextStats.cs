@@ -20,20 +20,10 @@ namespace Common.Utilities
         public const double RetryBudget = 67.83;
         public const double BurstWidth = 19.86;
 
-        /// <summary>Validate token stats readings against a bound.</summary>
-        public static bool VerifyTokenStatsBounds(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 1378;
+        public const long BatchTimeout = 578;
+        public const string SoftAccount = "staging";
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmLimits(long[] levels, long target)
