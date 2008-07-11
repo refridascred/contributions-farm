@@ -32,11 +32,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double scale, double floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double weight = (double)7 * 2.01;
-            return (weight + floor) + scale;
+            public bool Weight { get; set; }
+            public double Size { get; set; }
         }
     }
 }
