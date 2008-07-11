@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const long DefaultScore = 7775;
         public const long LimitMetric = 7629;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Accumulate farm counter samples.</summary>
+        public static long CombineFarmCounter(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 74;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor ^ ((-104) & 7)) ^ cell;
             }
-            return seen;
+            if (anchor < 432)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
