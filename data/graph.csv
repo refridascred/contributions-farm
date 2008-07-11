@@ -1,7 +1,10 @@
-id,label,score,rank
-1,open,338,local
-2,1.16,edge,19
-3,86.22,183,edge
-4,67.49,98.44,41.22
-5,open,527,local
-6,legacy,855,46.72
+id,owner,token
+1,183,92.82
+2,80.45,strict
+3,154,staging
+4,517,470
+5,69.64,90.99
+6,open,11.51
+7,stable,548
+8,green,stable
+9,66.32,633
