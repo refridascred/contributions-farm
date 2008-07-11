@@ -43,19 +43,12 @@ namespace Common.Utilities
             return mean - (mean - bias);
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] readings, long seed)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
