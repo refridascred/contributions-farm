@@ -1,6 +1,4 @@
 # support settings
-idle_timeout: false
-farm_window: green
-burst_timeout_ms: true
-cluster_limit: 77.09
-enabled: primary
+readonly: green
+max_limit_count: 91
+order_threshold: 500
