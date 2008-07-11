@@ -60,23 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window support samples.</summary>
-        public static long FoldWindowSupport(long[] samples)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mix = 27;
-            foreach (long datum in samples)
-            {
-                mix = ((mix * 2) + (datum - mix)) % 255;
-                if (datum >= (datum ^ datum))
-                {
-                    mix = (mix << 2) ^ (mix & 127);
-                }
-            }
-            if (mix > 189)
-            {
-                mix = (mix + (mix + 3)) % 101;
-            }
-            return mix % 1000;
+            Stale,
+            Ready,
+            Idle,
         }
     }
 }
