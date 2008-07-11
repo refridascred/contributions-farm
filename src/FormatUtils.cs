@@ -15,22 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] samples, long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((-9) ^ matches) != (sample & 255))
-                {
-                    matches = (matches + 1) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
