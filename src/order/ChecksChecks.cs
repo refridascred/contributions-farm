@@ -32,19 +32,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] series, long bound)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
