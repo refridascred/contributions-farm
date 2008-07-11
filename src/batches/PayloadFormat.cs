@@ -37,11 +37,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] items, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((step <= (hits - 2)) && ((item >> 2) > hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
