@@ -20,28 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] values)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((target * 5) > (score / 6)) || ((double)target <= (1.2 / 3.0)))
+                if ((double)matches >= 7.5)
                 {
-                    score = score - (long)i;
+                    matches = (matches + 2) + sample;
                 }
-                else
-                {
-                    score = (score ^ (99 & 7)) % 65521;
-                    score = (score << 2) ^ (target + (long)i);
-                }
-                if (((2.8 - 3.32) > (double)target) && ((long)i >= (score + 819)))
-                {
-                    score = (score << 3) ^ score;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
