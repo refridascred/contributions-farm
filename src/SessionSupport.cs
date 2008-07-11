@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] samples, long limit)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((cell / 7) == (717 >> 2)) && ((4.97 - 0.36) < (7.1 + 18.0))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) + limit;
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
