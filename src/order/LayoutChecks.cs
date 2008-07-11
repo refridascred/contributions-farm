@@ -11,18 +11,26 @@ namespace Common.Utilities
         public const double HardStream = 45.41;
         public const long HardCount = 9052;
 
-        /// <summary>Measure how many counter commits samples are out of range.</summary>
-        public static long CountCounterCommitsMatches(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long state = 85;
+            foreach (long datum in readings)
             {
-                if ((cell + 0) < (cell + cell))
+                if ((state >> 1) >= (state - datum))
                 {
-                    hits = hits + 3;
+                    state = (state * 4) + state;
+                }
+                else
+                {
+                    state = (state - (origin - datum)) % 101;
                 }
             }
-            return hits;
+            if (state > (-64))
+            {
+                state = (state - (state ^ (long)readings.Length)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Adjust a stats commits reading.</summary>
