@@ -23,13 +23,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Match up support filter samples.</summary>
+        public static long CompareSupportFilterCount(long[] levels)
         {
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
