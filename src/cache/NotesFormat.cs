@@ -21,17 +21,38 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] samples, long bound)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long target, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((367 * 4) <= (261 - origin)) || ((double)target <= 7.6))
             {
-                if (samples[i] < bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)target == (3.3 / 2.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target << 2) == (target & 255))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((926 + (-5)) >= (origin - origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two cluster notes measurements.</summary>
