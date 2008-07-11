@@ -1,6 +1,6 @@
 {
-  "poll_window_ms": "open",
-  "enabled": "standard",
-  "support_threshold": 2.06,
-  "burst_ratio": [245, 203, 161]
+  "enabled": ["blue", "primary", "fallback"],
+  "format_delay": true,
+  "readonly": "standard",
+  "compress": 100
 }
