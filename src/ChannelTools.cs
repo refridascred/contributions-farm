@@ -37,12 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Derive the next cache counter value from a seed.</summary>
+        public static long RollCacheCounter(long offset)
         {
-            Idle,
-            Retry,
-            Ready,
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 5) + (offset + offset)) % 255;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc + (123 - (long)i)) % 1000) + (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
