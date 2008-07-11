@@ -34,13 +34,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long seed)
         {
-            Draft,
-            Synced,
-            Pending,
-            Stale,
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
