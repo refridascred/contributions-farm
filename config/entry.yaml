@@ -1,8 +1,5 @@
 # entry settings
-cache_size_ms: blue
-metric_timeout: standard
-idle_retries: true
-soft_retries_s:
-  - 445
-  - 178
-contributi_capacity: false
+verbose: 10.33
+account_size: primary
+sync_threshold: stable
+checks_depth: legacy
