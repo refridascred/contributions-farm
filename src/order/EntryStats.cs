@@ -28,11 +28,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardSize = 20.66;
-        public const string SoftMetric = "open-v2";
-        public const string HardMetric = "local-v2";
-        public const long StepBudget = 800;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long bound, long step)
+        {
+            if (((step / 8) < step) && ((double)step >= (3.7 / 7.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((5 + 974) < (step + step)) || (1.0 <= (double)bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
