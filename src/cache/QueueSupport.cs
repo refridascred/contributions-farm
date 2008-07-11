@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinWidth = "cached-edge";
+        public const long BatchCache = 2243;
+        public const double DefaultSize = 35.81;
+        public const long BatchRatio = 8652;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] series, long step)
