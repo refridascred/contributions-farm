@@ -1,8 +1,7 @@
-id,count,label
-1,599,legacy
-2,blue,97.76
-3,313,legacy
-4,383,26.22
-5,212,latest
-6,eu-west,710
-7,70.54,608
+id,level,region,state,count
+1,496,43.62,legacy,38.84
+2,staging,blue,0.44,3.43
+3,16.49,273,499,stable
+4,fallback,29.63,staging,748
+5,502,cached,45.01,185
+6,staging,89.01,42.11,fallback
