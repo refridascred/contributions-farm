@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next record layout value from a seed.</summary>
-        public static long SeriesRecordLayout(long step)
+        /// <summary>Combine channel profile values into a single score.</summary>
+        public static long ScoreChannelProfile(long[] readings, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            long mix = 78;
+            foreach (long reading in readings)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((9 % 100) == (mix - reading))
+                {
+                    mix = mix ^ (reading - 2);
+                }
+                else
+                {
+                    mix = mix - (mix ^ mix);
+                }
+                if ((bound << 3) < (reading + 527))
+                {
+                    break;
+                }
             }
-            return result;
+            if (mix < 138)
+            {
+                mix = (mix * 4) + (bound - mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the route class values.</summary>
