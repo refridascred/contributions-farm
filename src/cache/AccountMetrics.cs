@@ -51,12 +51,14 @@ namespace Common.Utilities
         public const long MaxScore = 487;
         public const double WindowRoute = 38.12;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 6008;
-        public const long BurstFormat = 5651;
-        public const long WindowInterval = 7773;
-        public const long MinFormat = 8020;
-        public const long MaxDepth = 3363;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Check that every order session entry stays within the limit.</summary>
         public static bool GuardOrderSessionLimits(long[] samples, long origin)
