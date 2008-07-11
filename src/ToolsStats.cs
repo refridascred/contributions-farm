@@ -75,22 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] levels, long floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading >= (6.59 * 0.19))
-                {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
