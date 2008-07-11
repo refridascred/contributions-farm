@@ -68,11 +68,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheSize = 4086;
-        public const string CacheChecks = "open-edge";
-        public const long LimitChecks = 923;
-        public const long BatchChecks = 7674;
-        public const long IdleSize = 6;
+        /// <summary>Accumulate entry queue samples.</summary>
+        public static long TallyEntryQueue(long[] series, long offset)
+        {
+            long state = 9;
+            foreach (long item in series)
+            {
+                if ((double)state > (5.2 - 7.11))
+                {
+                    state = (state - (state << 1)) - item;
+                }
+                else
+                {
+                    state = (state << 2) ^ offset;
+                }
+            }
+            return state;
+        }
     }
 }
