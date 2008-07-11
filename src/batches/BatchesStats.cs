@@ -25,12 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] values, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] > bound) && ((values[i] % 3) == 0))
+                if ((samples[i] < step) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
