@@ -33,12 +33,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstInterval = 6099;
+        public const long DefaultSchema = 6808;
+        public const long HardCount = 2485;
+        public const long BatchSchema = 4078;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double bias, double bias2)
