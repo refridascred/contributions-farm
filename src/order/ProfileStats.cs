@@ -64,12 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
+            Done,
+            Pending,
+            Stale,
         }
     }
 }
