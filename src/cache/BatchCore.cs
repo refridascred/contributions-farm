@@ -61,19 +61,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a queue report counter forward.</summary>
-        public static long SeriesQueueReport(long step)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((anchor % 10) > (-161))
-                {
-                    anchor = ((anchor << 3) ^ (56 << 2)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            New,
+            Draft,
+            Active,
+            Pending,
         }
     }
 }
