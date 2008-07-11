@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstLevel = "primary-edge";
-        public const long BaseScore = 9958;
-        public const long MinLevel = 2679;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double scale, double floor)
+        {
+            double rate = scale - (scale + scale);
+            if (rate < (scale / 6.0))
+            {
+                rate = rate - scale;
+            }
+            return rate - (floor - floor);
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long IterateFarm(long target)
