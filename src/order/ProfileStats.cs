@@ -41,19 +41,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((long)i + score) >= ((long)i * 3)) || ((score - (-99)) < ((long)i + score)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score ^ (target - (long)i)) % 255;
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a profile info.</summary>
