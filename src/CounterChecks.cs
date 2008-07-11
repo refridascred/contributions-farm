@@ -49,23 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] data, long origin)
-        {
-            long result = 395;
-            foreach (long reading in data)
-            {
-                if ((reading >= (reading / 2)) || ((origin ^ origin) <= (origin % 2)))
-                {
-                    result = (result + (reading + origin)) % 65521;
-                }
-                else
-                {
-                    result = result + (reading + result);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 2927;
+        public const double RetryRoute = 98.32;
+        public const double WindowRoute = 40.25;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double MaxSchema = 88.38;
