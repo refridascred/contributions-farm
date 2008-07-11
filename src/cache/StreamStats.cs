@@ -44,17 +44,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] data, long floor)
+        /// <summary>Fold a list of already batch readings.</summary>
+        public static long WeighAlreadyBatch(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 7;
+            foreach (long entry in levels)
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 2) + (acc - 825)) + entry) - bound;
             }
-            return -1;
+            return acc % 97;
         }
     }
 }
