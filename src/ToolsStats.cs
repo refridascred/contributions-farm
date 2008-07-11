@@ -28,15 +28,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command context reading.</summary>
-        public static double AdjustCommandContext(double scale, double offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long origin, long target)
         {
-            double gain = offset;
-            if (gain <= offset)
+            if (((origin % 24) <= (734 - origin)) && ((-93) >= (target + target)))
             {
-                gain = (gain - (double)90) + scale;
+                return 6;
             }
-            return gain - gain;
+            else
+            {
+                if (origin > target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
