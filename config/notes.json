@@ -1,12 +1,6 @@
 {
-  "enabled": {
-    "soft_interval_pct": "eu-west",
-    "default_threshold_count": "cached",
-    "command_depth": true,
-    "soft_timeout_pct": 7,
-    "profile_delay": 40.98,
-    "warm_timeout_s": 64.84
-  },
-  "readonly": 100,
-  "retry_limit_s": ["eu-west", "open"]
+  "default_retries_ms": ["standard", "green"],
+  "retry_capacity_s": true,
+  "enabled": 12,
+  "warm_threshold_ms": 3025
 }
