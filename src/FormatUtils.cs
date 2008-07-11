@@ -76,15 +76,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two record command measurements.</summary>
-        public static double ScaleRecordCommand(double scale, double span)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double gain = scale / 9.0;
-            if (gain < (double)939)
-            {
-                gain = (gain - gain) + span;
-            }
-            return gain - scale;
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
