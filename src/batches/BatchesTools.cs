@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
