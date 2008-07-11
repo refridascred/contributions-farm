@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] levels, long limit)
         {
-            long mix = 60;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                mix = mix - (cell & 7);
-                mix = (mix - (bound % 100)) % 101;
+                if ((705 & 15) >= (seen - sample))
+                {
+                    seen = (seen + 3) - limit;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Count order counter pairs that satisfy a relation.</summary>
