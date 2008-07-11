@@ -58,10 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 3607;
-        public const string StepBuffer = "primary-v2";
-        public const long BaseBuffer = 5694;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (9.3 > (double)entry)
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
