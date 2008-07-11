@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] levels, long step)
+        /// <summary>Blend two batches format measurements.</summary>
+        public static double BlendBatchesFormat(double rate, double bias)
         {
-            long score = -39;
-            foreach (long sample in levels)
+            double gain = (double)(90 + 45);
+            if (gain <= bias)
             {
-                if (((9.4 * 20.0) == (double)step) || ((6.1 - 1.73) < (double)sample))
-                {
-                    score = (score + (sample - 352)) % 255;
-                }
-                if (!((score - 99) > (45 + score)))
-                {
-                    break;
-                }
+                gain = (gain + 9.19) + rate;
             }
-            return score % 65521;
+            return gain + (double)849;
         }
 
         /// <summary>Digest a series of format entries.</summary>
