@@ -20,19 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double gain, double floor)
+        /// <summary>Count layout githubfarm pairs that satisfy a relation.</summary>
+        public static long PairLayoutGithubfarmCount(long[] series)
         {
-            double mean = floor;
-            if (mean >= (gain / 8.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (0.4 * 6.73);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (9.0 + gain)) + (double)(long)i;
-            }
-            return mean - floor;
+            return tally;
         }
 
         /// <summary>Find the first layout editor entry that matches the target.</summary>
