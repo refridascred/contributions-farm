@@ -25,26 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long carry = 90;
-            foreach (long value in items)
-            {
-                if ((double)carry != (double)value)
-                {
-                    carry = (carry * 5) + (value * 2);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ ((long)items.Length - carry)) % 1000;
-                }
-            }
-            if (carry > 12)
-            {
-                carry = ((carry << 2) ^ 8) % 97;
-            }
-            return carry;
+            Failed,
+            Ready,
+            Active,
         }
     }
 }
