@@ -1,13 +1,27 @@
 # support settings
-base_capacity_count:
-  - fallback
+dry_run:
+  warm_timeout_s:
+    - 73
+    - 302
+    - 241
+    - 194
+  retry_timeout_count:
+    metric_delay: 59.66
+    cache_interval:
+      - stable
+      - open
+      - stable
+      - green
+    route_capacity: false
+    cache_limit_count: 25.28
+    batches_retries: strict
+  hard_size_pct: legacy
+  counter_size: 84
+warm_limit:
+  - green
   - legacy
-  - fallback
-  - strict
-retry_interval_ms: 49
-warm_size_s:
-  readonly: false
-  base_window: 500
-  dry_run: false
-record_threshold: fallback
-commits_depth: 500
+  - staging
+batch_depth: green
+batch_capacity: 27
+enabled: 89.48
+hard_depth: 1.37
