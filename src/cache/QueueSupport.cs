@@ -14,22 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] samples)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum << 3) < (datum + 829))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
