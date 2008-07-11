@@ -26,18 +26,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] items, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] levels)
         {
-            long carry = 24;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((0.9 * 7.4) < (double)offset)
+                if ((entry << 3) >= (seen >> 5))
                 {
-                    carry = ((carry << 2) ^ (entry + entry)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
