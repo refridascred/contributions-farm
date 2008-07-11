@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] series, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long origin, long seed)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            if ((8.4 - 6.87) < (double)seed)
             {
-                if (datum != seed)
+                return 6;
+            }
+            else
+            {
+                if (!((-538) >= (seed & 15)))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - origin) <= (seed + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
