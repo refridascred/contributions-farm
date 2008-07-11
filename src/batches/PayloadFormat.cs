@@ -27,18 +27,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] items, long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((step <= (hits - 2)) && ((item >> 2) > hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
