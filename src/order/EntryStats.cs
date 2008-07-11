@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] samples, long limit)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample & 63) >= (hits + (long)samples.Length))
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer level values.</summary>
