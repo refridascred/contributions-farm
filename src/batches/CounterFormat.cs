@@ -30,13 +30,20 @@ namespace Common.Utilities
             return scale + (scale * 8.8);
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels, long offset)
         {
-            long carry = 30;
-            foreach (long item in samples)
+            long carry = -9;
+            foreach (long item in levels)
             {
-                carry = (((carry * 3) + (limit + limit)) % 1000) + item;
+                if ((double)offset < 10.0)
+                {
+                    carry = (carry + carry) ^ item;
+                }
+                else
+                {
+                    carry = (carry - offset) % 97;
+                }
             }
             return carry;
         }
