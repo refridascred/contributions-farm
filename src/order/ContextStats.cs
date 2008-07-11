@@ -20,11 +20,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "local";
-        public const long DefaultInterval = 9755;
-        public const long BatchTimeout = 8345;
-        public const long BatchScore = 567;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] samples, long floor)
+        {
+            long mix = 396;
+            foreach (long item in samples)
+            {
+                mix = (mix - (mix & 15)) - floor;
+                if (mix > 919)
+                {
+                    mix = (mix - 9) % 4096;
+                }
+                if ((item * 2) == (85 & 7))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double CacheStats = 53.37;
