@@ -1,17 +1,4 @@
 # entry settings
-metrics_capacity:
-  soft_size_count: 21
-  warm_limit: 86
-  graph_timeout:
-    - staging
-    - open
-    - open
-    - green
-  batches_size: 7921
-  dry_run: 40
-  min_capacity_s: green
-poll_size_pct: false
-hard_size_pct: 97
-flush_window_ms: 87
-min_retries_pct: standard
-batch_threshold: standard
+commits_depth: 5012
+max_timeout_pct: 89.98
+audit: false
