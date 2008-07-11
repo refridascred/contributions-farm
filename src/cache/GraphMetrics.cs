@@ -60,14 +60,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate window support samples.</summary>
+        public static long FoldWindowSupport(long[] samples)
         {
-            Retry,
-            Ready,
-            Active,
-            Dropped,
-            Draft,
+            long mix = 27;
+            foreach (long datum in samples)
+            {
+                mix = ((mix * 2) + (datum - mix)) % 255;
+                if (datum >= (datum ^ datum))
+                {
+                    mix = (mix << 2) ^ (mix & 127);
+                }
+            }
+            if (mix > 189)
+            {
+                mix = (mix + (mix + 3)) % 101;
+            }
+            return mix % 1000;
         }
     }
 }
