@@ -47,18 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowScore = 5687;
+        public const long HardSize = 3314;
+        public const long WindowTools = 8367;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
