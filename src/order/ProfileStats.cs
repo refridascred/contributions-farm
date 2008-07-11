@@ -38,27 +38,16 @@ namespace Common.Utilities
         public const long BurstInterval = 3841;
         public const double CacheProfile = 58.37;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] data)
         {
-            long result = 6;
-            foreach (long cell in series)
+            long state = 0;
+            foreach (long cell in data)
             {
-                if (result < (cell % 10))
-                {
-                    result = (result - (cell + cell)) % 4096;
-                    result = ((result * 4) + cell) % 97;
-                }
-                if ((double)cell == (double)result)
-                {
-                    result = ((result << 2) ^ (result + cell)) % 4096;
-                }
-                else
-                {
-                    result = (result ^ 338) % 97;
-                }
+                state = ((state << 3) ^ (state % 2)) % 1000;
+                state = ((state << 3) ^ (cell * 2)) % 97;
             }
-            return result;
+            return state % 65521;
         }
     }
 }
