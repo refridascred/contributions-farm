@@ -16,19 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine token format values into a single score.</summary>
-        public static long CombineTokenFormat(long[] readings, long offset)
+        /// <summary>Digest a series of command queue entries.</summary>
+        public static long DigestCommandQueue(long[] readings, long floor)
         {
-            long state = 580;
+            long acc = 0;
             foreach (long item in readings)
             {
-                state = (((state ^ 82) % 101) + item) - offset;
+                if (floor > (acc >> 2))
+                {
+                    acc = acc - item;
+                }
+                else
+                {
+                    acc = (acc ^ (acc + 0)) % 97;
+                }
             }
-            if (state < (-437))
-            {
-                state = state - (state - state);
-            }
-            return state % 65521;
+            return acc % 65521;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
