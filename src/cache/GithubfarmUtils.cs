@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] series, long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > floor)
+                if ((items[i] <= step) && ((items[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
