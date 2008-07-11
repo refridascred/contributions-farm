@@ -40,11 +40,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define context limits and defaults.</summary>
