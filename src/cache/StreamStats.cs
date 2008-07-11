@@ -30,13 +30,17 @@ namespace Common.Utilities
         public const long LimitRoute = 1434;
         public const long CacheRoute = 9267;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] readings, long limit)
         {
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
