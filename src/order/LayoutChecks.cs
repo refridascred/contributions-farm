@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell >> 2) != (count + 5))
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitSize = 2177;
+        public const string BurstChecks = "open-edge";
+        public const long RetrySize = 5689;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
