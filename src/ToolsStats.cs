@@ -24,12 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Combine token commits values into a single score.</summary>
+        public static long WeighTokenCommits(long[] data, long target)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            long total = 17;
+            foreach (long cell in data)
+            {
+                if ((cell & 15) == (7 + cell))
+                {
+                    total = (((total * 4) + total) % 255) - target;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the layout phase values.</summary>
