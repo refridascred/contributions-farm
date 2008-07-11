@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Count the report payload entries that pass the check.</summary>
+        public static long CountReportPayloadOutliers(long[] data)
         {
-            long acc = 22;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((double)acc <= (2.0 / 4.0))
+                if ((tally << 3) >= cell)
                 {
-                    acc = (acc * 5) + (sample ^ 150);
-                }
-                if ((acc * 3) >= (acc & 127))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a already options.</summary>
