@@ -41,25 +41,19 @@ namespace Common.Utilities
         public const string DefaultGraph = "latest-edge";
         public const long HardGraph = 2739;
 
-        /// <summary>Classify a cluster queue pair into a bucket.</summary>
-        public static long RankClusterQueue(long target, long seed)
+        /// <summary>Validate metrics entry readings against a bound.</summary>
+        public static bool CheckMetricsEntryLimits(long[] series, long step)
         {
-            long delta = target ^ seed;
-            if ((delta > (target - seed)) || (delta > target))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed >> 4) >= (delta ^ 6)) || (seed > delta))
+                if (item != step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
