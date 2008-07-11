@@ -1,9 +1,23 @@
 # support settings
-min_retries: fallback
-default_limit_s:
-  - 105
-  - 287
-  - 417
-  - 250
-flush_size_ms: green
-batch_window: primary
+stats_ratio: cached
+base_limit:
+  hard_threshold_count:
+    verbose: false
+    support_ratio: 7584
+    base_limit:
+      - edge
+      - legacy
+      - strict
+      - open
+    default_depth: edge
+    max_timeout_ms: 38.36
+  sync_window: 19
+  cache_capacity_ms: latest
+  audit: local
+  cluster_delay: false
+max_timeout: 13.88
+cache_depth:
+  - 209
+  - 478
+  - 326
+  - 317
