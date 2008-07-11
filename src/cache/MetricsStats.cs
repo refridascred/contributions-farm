@@ -43,10 +43,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowScore = 5687;
-        public const long HardSize = 3314;
-        public const long WindowTools = 8367;
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double ratio, double offset)
+        {
+            double drift = ratio;
+            if (drift < (double)5)
+            {
+                drift = drift + (double)42;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift - offset;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
