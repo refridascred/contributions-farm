@@ -41,23 +41,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double rate, double bias)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] levels, long seed)
         {
-            double scale = (double)(2 + 13);
-            if (scale < bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - rate;
+                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale + rate;
+            return -1;
         }
 
         /// <summary>Match up route samples.</summary>
