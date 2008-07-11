@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double weight, double bias)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] samples, long limit)
         {
-            double drift = weight;
-            if (drift > 1.17)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                drift = drift - (weight / 3.0);
+                if (!(((cell / 7) == (717 >> 2)) && ((4.97 - 0.36) < (7.1 + 18.0))))
+                {
+                    seen = (seen + 1) + limit;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift + bias;
+            return seen;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
