@@ -33,18 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric layout readings.</summary>
-        public static long TallyMetricLayout(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data, long target)
         {
-            long state = 558;
-            foreach (long cell in items)
+            long sum = 835;
+            foreach (long sample in data)
             {
-                if ((state + cell) > (569 >> 2))
+                long span = (sum >> 3) / 4;
+                if ((span ^ span) > (target + sum))
                 {
-                    state = ((state << 2) ^ (751 / 5)) % 65521;
+                    span = ((span * 4) + (sample + span)) % 255;
                 }
+                sum = sum ^ (long)data.Length;
             }
-            return state % 4096;
+            return sum;
         }
     }
 }
