@@ -27,31 +27,14 @@ namespace Common.Utilities
         public const long DefaultToken = 7136;
         public const double CacheToken = 16.1;
 
-        /// <summary>Classify a stream record pair into a bucket.</summary>
-        public static long BucketStreamRecord(long step, long origin)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            if ((double)origin == (11.0 + 8.81))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step >= 5.9)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin << 3) > (origin >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Draft,
+            Pending,
+            Idle,
         }
 
         /// <summary>Find the first stats metric entry that matches the target.</summary>
