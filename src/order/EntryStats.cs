@@ -34,19 +34,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double gain, double offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long limit, long step)
         {
-            double load = (double)(64 << 2);
-            if (load >= (double)1)
+            if ((double)step > (20.0 / 6.0))
             {
-                load = (load - (double)466) + offset;
+                return 6;
             }
             else
             {
-                load = load + gain;
+                if (!((6.75 / 4.0) == (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return load + (double)2;
         }
 
         /// <summary>Compare every pair of tools schema readings.</summary>
