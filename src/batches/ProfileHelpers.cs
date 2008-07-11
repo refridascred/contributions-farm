@@ -20,12 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "fallback-v2";
-        public const long SoftToken = 2227;
-        public const long RetryToken = 4648;
-        public const long DefaultToken = 7136;
-        public const double CacheToken = 16.1;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
