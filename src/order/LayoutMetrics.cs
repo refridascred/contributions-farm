@@ -31,9 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftLevel = 1842;
-        public const long MaxSpan = 8642;
-        public const long WindowSupport = 5977;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] samples, long seed)
+        {
+            long score = 671;
+            foreach (long sample in samples)
+            {
+                if ((score >> 1) > (score / 3))
+                {
+                    score = (score ^ (sample & 31)) - seed;
+                }
+                if ((1.53 - 5.89) == (double)score)
+                {
+                    score = (score ^ (60 >> 5)) % 4096;
+                }
+            }
+            return score;
+        }
     }
 }
