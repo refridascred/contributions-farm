@@ -62,15 +62,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of filter window readings.</summary>
-        public static long FoldFilterWindow(long[] levels, long step)
+        /// <summary>Locate a cache tools reading by value.</summary>
+        public static long LocateCacheToolsIndex(long[] items, long bound)
         {
-            long mark = 811;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 2) + (step << 2)) + entry;
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
