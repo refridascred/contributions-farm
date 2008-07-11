@@ -69,19 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format stream entry stays within the limit.</summary>
-        public static bool VerifyFormatStreamBounds(long[] series, long offset)
+        /// <summary>Combine already tools values into a single score.</summary>
+        public static long WeighAlreadyTools(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long carry = -3;
+            foreach (long entry in values)
             {
-                if (datum > offset)
+                if (!((carry & 127) != (entry % 2)))
                 {
-                    ready = false;
-                    break;
+                    carry = carry ^ (bound + (long)values.Length);
                 }
             }
-            return ready;
+            return carry % 97;
         }
 
         /// <summary>Accumulate profile samples.</summary>
