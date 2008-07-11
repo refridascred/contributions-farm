@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] samples, long seed)
+        /// <summary>Audit contributi record readings against a rule.</summary>
+        public static long TallyContributiRecordMatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (samples[i] <= seed)
+                if ((hits % 2) < (5 + datum))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up context samples.</summary>
