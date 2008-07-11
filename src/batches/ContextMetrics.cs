@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] data, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long mix = 206;
+            foreach (long entry in data)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                mix = ((mix << 2) ^ (588 >> 1)) % 255;
+                if ((entry >= floor) || ((17.0 - 5.4) > (double)mix))
+                {
+                    mix = mix - (floor % 8);
+                }
             }
-            return mark;
+            return mix % 4096;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
