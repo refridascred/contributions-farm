@@ -48,12 +48,12 @@ namespace Common.Utilities
             return weight + (double)46;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
