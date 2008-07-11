@@ -27,14 +27,21 @@ namespace Common.Utilities
         public const string RetrySize = "open-1";
         public const double BurstDepth = 4.06;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long anchor = 0;
+            foreach (long sample in values)
             {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (((double)anchor > (6.0 / 5.0)) || (sample > (anchor ^ sample)))
+                {
+                    anchor = (anchor << 2) ^ (anchor + sample);
+                    anchor = (anchor << 3) ^ 926;
+                }
+                if (((double)anchor < (8.1 + 3.73)) || ((4.3 * 1.8) > (double)sample))
+                {
+                    anchor = ((anchor << 3) ^ (anchor - 5)) % 4096;
+                }
             }
             return anchor;
         }
