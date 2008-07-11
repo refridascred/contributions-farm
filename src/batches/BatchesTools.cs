@@ -32,22 +32,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] levels, long target)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long limit, long limit2)
         {
-            long result = 927;
-            foreach (long reading in levels)
+            if ((double)limit2 != (2.5 - 7.0))
             {
-                if ((3.19 * 2.0) == (double)result)
+                return 7;
+            }
+            else
+            {
+                if (!(limit2 > (limit2 - limit2)))
                 {
-                    result = ((((result * 4) + 24) % 65521) ^ reading) - target;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (result < 59)
-            {
-                result = result - (289 * 5);
-            }
-            return result % 4096;
         }
     }
 }
