@@ -24,20 +24,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Count format support pairs that satisfy a relation.</summary>
+        public static long PairFormatSupportCount(long[] data)
         {
-            long mix = 914;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix + (2 / 2)) % 65521) ^ item;
-                mix = mix + (mix + 174);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix > 0)
-            {
-                mix = mix - mix;
-            }
-            return mix % 65521;
+            return tally;
         }
     }
 }
