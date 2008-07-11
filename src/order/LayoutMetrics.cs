@@ -31,22 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm schema readings against a rule.</summary>
-        public static long CountGithubfarmSchemaGaps(long[] data, long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)seed != (double)entry)
+                if (((long)i / 4) > 3)
                 {
-                    tally = tally + 1;
+                    total = (total - (target + total)) % 1000;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
     }
 }
