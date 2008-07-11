@@ -40,18 +40,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] series, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (offset >= (offset >> 4))
+                if (cell != target)
                 {
-                    seen = (seen + 2) - item;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
