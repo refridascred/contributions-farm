@@ -40,15 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools command figure with a bias.</summary>
-        public static double ScaleToolsCommand(double rate, double bias)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] values)
         {
-            double weight = bias + (10.0 * 4.64);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                weight = (weight - (rate / 4.0)) - (double)(long)i;
+                if ((592 ^ seen) > cell)
+                {
+                    seen = seen + 1;
+                }
             }
-            return weight - (9.9 + bias);
+            return seen;
         }
 
         /// <summary>Hold a counter summary.</summary>
