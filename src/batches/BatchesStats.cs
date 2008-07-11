@@ -27,13 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many profile stream samples are out of range.</summary>
+        public static long AuditProfileStreamOutliers(long[] samples)
         {
-            Locked,
-            Active,
-            Queued,
-            Pending,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)tally <= (7.2 * 3.78))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up cluster samples.</summary>
