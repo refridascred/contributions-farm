@@ -52,17 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] readings, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (rate - rate) / 3.0;
+            if (scale > (scale - floor))
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (floor - rate);
             }
-            return -1;
+            return scale - rate;
         }
     }
 }
