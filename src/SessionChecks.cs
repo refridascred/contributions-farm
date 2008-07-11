@@ -32,12 +32,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "strict-edge";
-        public const double RetryRatio = 64.75;
-        public const long BaseScore = 4235;
-        public const long MinSpan = 7198;
-        public const string CacheReport = "standard-edge";
+        /// <summary>Classify a layout entry pair into a bucket.</summary>
+        public static long ClassifyLayoutEntry(long seed, long offset)
+        {
+            long prev = seed ^ offset;
+            if (((double)offset < 11.0) || ((prev - seed) != (prev >> 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= (6.0 - 2.2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool ValidateChecksBounds(long[] levels, long seed)
