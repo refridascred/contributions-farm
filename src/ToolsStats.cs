@@ -33,19 +33,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((value - value) >= (87 % 3)) || (((long)values.Length + value) < (32 & 7)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryLevel = 3782;
+        public const string IdleQueue = "staging-1";
+        public const long MaxRatio = 4329;
 
         /// <summary>Digest a series of channel tools entries.</summary>
         public static long WeighChannelTools(long[] data)
