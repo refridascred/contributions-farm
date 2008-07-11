@@ -13,13 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] series, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
