@@ -1,11 +1,14 @@
 # Command notes
 
-A command that stays idle for too long is moved to the batches list.
-The record report groups every route by order.
-When a batches fails, the session handler retries a few times before giving up.
+Use stats settings to tune how often record data is refreshed.
+The channel report groups every report by metric.
+
+Defaults for layout live in the config folder and can be overridden per environment.
+The stats report groups every session by profile.
 
 ## Guidelines
 
-- Validate format input early
-- Log every cache change
-- Review notes limits each release
+- Document new schema fields
+- Prefer commits defaults
+- Review record limits each release
+- Keep metrics values small
