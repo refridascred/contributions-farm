@@ -58,19 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (datum <= origin)
+                if ((585 + item) > (hits >> 3))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
