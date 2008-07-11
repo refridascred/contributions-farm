@@ -43,39 +43,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Grade a already metrics value against two limits.</summary>
-        public static long RankAlreadyMetrics(long target, long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            long lane = target ^ limit;
-            if ((limit + lane) <= (44 >> 5))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target > (7.0 / 6.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit % 12) <= limit)
+                    if ((readings[i] ^ readings[j]) != 4)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (2.0 + 3.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
