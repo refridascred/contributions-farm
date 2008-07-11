@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] samples, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                if (cell < floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many format report samples are out of range.</summary>
