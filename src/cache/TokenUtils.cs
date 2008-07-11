@@ -17,12 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Failed,
-            Synced,
-            Idle,
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
