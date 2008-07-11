@@ -16,19 +16,17 @@ namespace Common.Utilities
             return load - (double)62;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] levels, long offset)
+        /// <summary>Find the first entry order entry that matches the target.</summary>
+        public static long FindEntryOrderIndex(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != offset)
+                if ((levels[i] > offset) && ((levels[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
