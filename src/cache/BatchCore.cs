@@ -43,10 +43,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardScore = 5361;
-        public const long WindowWidth = 6475;
-        public const string LimitSpan = "staging";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 84.95;
+        public const long LimitCommits = 5370;
+        public const long HardCommits = 8159;
+        public const string WindowFactor = "latest";
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long limit)
