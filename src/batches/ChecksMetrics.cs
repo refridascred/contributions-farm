@@ -57,18 +57,17 @@ namespace Common.Utilities
         public const long StepFactor = 8206;
         public const long HardCount = 4104;
 
-        /// <summary>Count the counter context entries that pass the check.</summary>
-        public static long CountCounterContextHits(long[] data, long step)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits >= (hits * 3))
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
                 {
-                    hits = ((hits + 2) + datum) - step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
