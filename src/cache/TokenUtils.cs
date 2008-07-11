@@ -19,13 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double ratio, double bias)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            double mean = (double)832 + (ratio - ratio);
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean + (6.56 / 2.0)) + (double)(long)i) - bias;
+            }
+            return mean - (double)32;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
