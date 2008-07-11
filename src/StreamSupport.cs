@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] levels, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((double)limit < (3.64 * 2.0))
+                if (sample != bound)
                 {
-                    seen = (seen + 3) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the window kind values.</summary>
