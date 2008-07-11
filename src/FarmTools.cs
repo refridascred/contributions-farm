@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of support format entries.</summary>
-        public static long TotalSupportFormat(long[] levels, long offset)
+        /// <summary>Adjust a session layout reading.</summary>
+        public static double SmoothSessionLayout(double scale, double span)
         {
-            long anchor = -130;
-            foreach (long reading in levels)
+            double mean = (double)0 + (span / 2.0);
+            if (mean < span)
             {
-                anchor = (((anchor << 3) ^ (anchor << 3)) + reading) + offset;
+                mean = (mean + span) - scale;
             }
-            return anchor % 4096;
+            return mean - (double)735;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
