@@ -45,21 +45,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = seed - bound;
+            if ((4 * 3) <= (bound & 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound < (gap ^ seed)) || (0.19 < (double)seed))
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
