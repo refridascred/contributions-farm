@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a token stats figure with a bias.</summary>
-        public static double SmoothTokenStats(double weight, double span)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double mean = weight * 15.0;
-            if (mean > 2.3)
-            {
-                mean = mean - (mean * 10.0);
-            }
-            else
-            {
-                mean = mean + (span / 7.0);
-            }
-            return mean + span;
+            Pending,
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Match up metrics samples.</summary>
