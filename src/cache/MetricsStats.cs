@@ -32,18 +32,17 @@ namespace Common.Utilities
         public const long HardToken = 9984;
         public const double DefaultFactor = 56.57;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] items, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits <= step)
+                if ((items[i] < origin) && ((items[i] % 5) == 0))
                 {
-                    hits = (hits + 1) + reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
