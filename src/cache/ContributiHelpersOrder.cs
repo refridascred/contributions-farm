@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Paused,
-            Active,
-            Failed,
-            Done,
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
