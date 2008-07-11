@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] data)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)seen >= (double)(long)data.Length)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
