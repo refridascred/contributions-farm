@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
