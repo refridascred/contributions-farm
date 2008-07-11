@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples, long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mix = 865;
-            foreach (long reading in samples)
-            {
-                if ((offset / 7) > reading)
-                {
-                    mix = ((mix << 3) ^ reading) % 65521;
-                }
-            }
-            return mix % 65521;
+            Pending,
+            Dropped,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a record snapshot.</summary>
