@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardInterval = "stable";
+        public const long WindowQueue = 4478;
+        public const double WindowBudget = 0.73;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long DigestSchema(long[] values)
