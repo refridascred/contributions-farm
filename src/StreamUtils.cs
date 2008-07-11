@@ -13,11 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            public double Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
