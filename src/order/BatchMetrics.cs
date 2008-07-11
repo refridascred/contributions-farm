@@ -46,10 +46,12 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitRatio = 6284;
-        public const long IdleRatio = 6248;
-        public const long BaseRatio = 6980;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 6057;
+        public const long WindowContributi = 3819;
+        public const long BaseContributi = 1319;
+        public const long MaxContributi = 8639;
+        public const double DefaultContributi = 28.38;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
