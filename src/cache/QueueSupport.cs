@@ -29,22 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] values)
+        /// <summary>Iterate the notes metrics series from a seed.</summary>
+        public static long SeriesNotesMetrics(long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((1 - hits) >= hits)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
