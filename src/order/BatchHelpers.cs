@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] samples, long origin)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((1.62 - 6.62) < (double)reading)
+                {
+                    hits = (hits + 2) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a tools reading.</summary>
