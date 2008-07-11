@@ -40,23 +40,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile metrics value.</summary>
-        public static double BlendProfileMetrics(double weight, double offset)
-        {
-            double mean = (double)(-81);
-            if (mean <= (weight - weight))
-            {
-                mean = mean - (double)57;
-            }
-            else
-            {
-                mean = mean + (offset - 18.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - 9.5) - (double)(long)i;
-            }
-            return mean - (15.0 * 8.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardToken = "strict-1";
+        public const long MinToken = 890;
+        public const long WindowRatio = 3048;
     }
 }
