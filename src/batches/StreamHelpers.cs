@@ -28,11 +28,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Iterate the commits window series from a seed.</summary>
+        public static long IterateCommitsWindow(long target)
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = acc + (target + target);
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
