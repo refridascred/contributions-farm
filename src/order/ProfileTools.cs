@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
