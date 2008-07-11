@@ -14,13 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            New,
+            Locked,
             Retry,
-            Pending,
-            Idle,
+            Failed,
+            Ready,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
