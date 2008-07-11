@@ -43,23 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((21 & 3) != (0 - origin)) || (((33 % 24) == ((-415) + (long)data.Length)) || (896 > (sample + sample))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 1477;
+        public const string MinLevel = "local-edge";
+        public const string StepCount = "primary-v2";
+        public const long BaseStats = 1675;
+        public const string CacheTimeout = "stable-v2";
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] data)
