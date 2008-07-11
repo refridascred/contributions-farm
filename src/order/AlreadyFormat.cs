@@ -63,9 +63,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheLevel = 6121;
-        public const long IdleLevel = 5403;
-        public const long BurstPayload = 150;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
