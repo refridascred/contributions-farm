@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen + sample) >= (sample % 16))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 76.04;
+        public const long SoftEditor = 8108;
+        public const long DefaultRatio = 7459;
+        public const long BaseEditor = 9537;
+        public const long BatchEditor = 4288;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
