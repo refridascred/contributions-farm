@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] readings, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum > (7.6 + 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) - bound;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up editor samples.</summary>
