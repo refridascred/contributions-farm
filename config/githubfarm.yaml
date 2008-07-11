@@ -1,4 +1,8 @@
 # githubfarm settings
-compress: 96
-enabled: true
-burst_depth_ms: 2.61
+default_threshold_count: 52.99
+batch_depth_ms: 15.02
+poll_capacity_s:
+  session_interval: strict
+  account_timeout: 30
+  batch_delay: standard
+  retry_window_pct: eu-west
