@@ -33,32 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record contributi input into a small class.</summary>
-        public static long GradeRecordContributi(long bound, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] readings, long bound)
         {
-            long slot = bound + offset;
-            if ((double)slot >= (19.0 * 4.08))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-45) + bound) != (bound * 4))
+                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 3) < (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
