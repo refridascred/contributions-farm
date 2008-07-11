@@ -40,17 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] values, long step)
+        /// <summary>Fold a list of metric record readings.</summary>
+        public static long DigestMetricRecord(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = -56;
+            foreach (long reading in values)
             {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                if (!((sum + sum) < reading))
                 {
-                    return (long)i;
+                    sum = ((sum * 5) + (sum + origin)) % 97;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
