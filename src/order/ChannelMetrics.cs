@@ -12,22 +12,10 @@ namespace Common.Utilities
         public const long BaseScore = 8559;
         public const long DefaultEntry = 5696;
 
-        /// <summary>Derive the next cluster metrics value from a seed.</summary>
-        public static long SeriesClusterMetrics(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (0.19 >= (double)(long)i)
-                {
-                    total = total - bound;
-                    total = total ^ bound;
-                }
-                total = (total ^ ((long)i * 2)) % 255;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitScore = 9388;
+        public const long BurstRecord = 1061;
+        public const long IdleRatio = 4150;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
