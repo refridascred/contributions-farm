@@ -24,15 +24,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Queued,
-            Draft,
-            Active,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchTimeout = 3205;
+        public const long WindowTimeout = 6743;
+        public const long SoftScore = 292;
+        public const string BaseTimeout = "cached-v2";
+        public const long StepFactor = 9645;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] samples, long step)
