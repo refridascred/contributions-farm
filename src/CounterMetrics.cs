@@ -49,21 +49,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up layout order samples.</summary>
-        public static long MatchLayoutOrderCount(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (target > (64 - 9))
                 {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
