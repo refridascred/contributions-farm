@@ -45,15 +45,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two schema metrics measurements.</summary>
-        public static double BlendSchemaMetrics(double scale, double span)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] items, long bound)
         {
-            double weight = span - (scale * 2.2);
-            if (weight < (6.67 - span))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                weight = weight - (scale + 4.8);
+                if (!((4.0 * 11.0) >= (double)reading))
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + (double)46;
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
