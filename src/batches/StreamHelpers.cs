@@ -39,12 +39,18 @@ namespace Common.Utilities
         public const long BatchCommand = 5628;
         public const string IdleCommand = "local-edge";
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count the session account entries that pass the check.</summary>
+        public static long MeasureSessionAccountOutliers(long[] levels)
         {
-            Done,
-            Draft,
-            Locked,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (entry <= tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
