@@ -58,15 +58,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] data)
+        /// <summary>Rank stream profile input into a small class.</summary>
+        public static long GradeStreamProfile(long target, long floor)
         {
-            long mix = 99;
-            foreach (long datum in data)
+            if ((0 % 12) > floor)
             {
-                mix = (mix ^ 43) ^ datum;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (!((-931) < (target & 31)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
