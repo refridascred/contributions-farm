@@ -47,38 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long offset, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] levels, long floor)
         {
-            if ((double)seed != (20.0 - 3.08))
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1.28 / 8.0) == (double)offset)
+                if (reading > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed & 127) > (offset - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)seed < 19.0) || (653 < (5 + seed)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the buffer level values.</summary>
