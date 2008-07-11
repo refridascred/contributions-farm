@@ -34,13 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowWidth = 6.51;
+        public const double HardNotes = 43.17;
+        public const long MinNotes = 5749;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
