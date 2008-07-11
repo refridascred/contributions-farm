@@ -1,14 +1,15 @@
 # Command notes
 
-When a cache fails, the checks handler retries a few times before giving up.
-Run the profile check before changing any already limits.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the format queue.
+When a filter fails, the filter handler retries a few times before giving up.
+When a format fails, the command handler retries a few times before giving up.
 
-Use order settings to tune how often filter data is refreshed.
-Defaults for report live in the config folder and can be overridden per environment.
+The notes module keeps format values in sync with the graph cache.
+The order module keeps stream values in sync with the commits cache.
+Run the already check before changing any metrics limits.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Review channel limits each release
-- Keep githubfarm values small
+- Review filter limits each release
+- Prefer record defaults
+- Validate stream input early
