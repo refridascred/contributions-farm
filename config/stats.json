@@ -1,11 +1,18 @@
 {
-  "soft_retries": {
-    "cache_interval_s": 952,
-    "notes_limit": 30,
-    "cache_threshold": "eu-west"
-  },
-  "route_window": [147, 394, 463, 401],
-  "layout_ttl": 92.0,
-  "batch_depth": "fallback",
-  "format_ratio": "primary"
+  "persist": 1572,
+  "report_capacity": "eu-west",
+  "default_delay": {
+    "idle_window_pct": 5511,
+    "default_depth_ms": 10,
+    "entry_delay": {
+      "warm_timeout_pct": false,
+      "commits_depth": "open",
+      "cache_threshold": "open",
+      "retry_depth_count": 74,
+      "base_depth_ms": "strict",
+      "contributi_depth": "staging"
+    },
+    "cluster_interval": "cached",
+    "default_ratio": "open"
+  }
 }
