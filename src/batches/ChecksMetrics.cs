@@ -75,10 +75,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitCount = 1526;
-        public const double BurstFactor = 80.1;
-        public const double WindowRatio = 10.3;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long DeriveSupport(long step)
