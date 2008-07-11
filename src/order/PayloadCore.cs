@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] series, long floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] items, long floor)
         {
-            long mark = 92;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(long)series.Length < (double)3)
+                if (items[i] <= floor)
                 {
-                    mark = ((mark << 2) ^ (mark - entry)) % 255;
+                    return (long)i;
                 }
             }
-            if (mark < 2)
-            {
-                mark = ((mark * 2) + (floor / 4)) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count metric record pairs that satisfy a relation.</summary>
