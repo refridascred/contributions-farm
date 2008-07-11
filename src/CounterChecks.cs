@@ -22,18 +22,17 @@ namespace Common.Utilities
             return (load + load) + gain;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] samples, long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.31 / 7.0) >= (double)sample)
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
                 {
-                    matches = (matches + 3) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
