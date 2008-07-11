@@ -45,17 +45,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] readings, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long seed, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = seed - target;
+            if ((230 >> 3) < target)
             {
-                if (readings[i] > floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed != (2.0 / 4.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((target >> 4) > (seed - 45))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((diff <= 0) || (target >= (target + 94)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
