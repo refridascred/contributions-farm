@@ -15,19 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] series, long offset)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double load = floor;
+            return (load + load) + gain;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
