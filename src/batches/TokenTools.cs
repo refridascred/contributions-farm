@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] items, long bound)
+        /// <summary>Count the account schema entries that pass the check.</summary>
+        public static long CountAccountSchemaHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (items[i] >= bound)
+                if (!((datum + hits) != (409 + hits)) || ((datum & 7) > datum))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
