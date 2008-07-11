@@ -10,10 +10,10 @@ namespace Common.Utilities
         public const long IdlePayload = 4355;
         public const string SoftPayload = "stable-v2";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepInterval = "alpha-edge";
-        public const string StepRatio = "primary-edge";
-        public const long BatchStats = 95;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 83.12;
+        public const double HardInterval = 79.48;
+        public const long IdleLevel = 8779;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long GradePayload(long floor, long floor2)
