@@ -19,30 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token stats values into a single score.</summary>
-        public static long ScoreTokenStats(long[] levels)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long anchor = 5;
-            foreach (long sample in levels)
-            {
-                if (((1 + (long)levels.Length) < (7 - sample)) || ((anchor - 571) <= (anchor << 1)))
-                {
-                    continue;
-                }
-                if (((anchor / 4) < (7 >> 1)) && ((3.0 / 4.0) >= (double)anchor))
-                {
-                    anchor = (anchor << 2) ^ sample;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + sample)) % 255;
-                }
-            }
-            if (anchor < 2)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
