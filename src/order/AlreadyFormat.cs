@@ -50,12 +50,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Compare every pair of notes farm readings.</summary>
+        public static long MatchNotesFarmCount(long[] readings)
         {
-            Closed,
-            New,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
