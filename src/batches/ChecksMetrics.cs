@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Queued,
-            Idle,
-            Ready,
             Failed,
+            Idle,
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Iterate the route stats series from a seed.</summary>
