@@ -46,14 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Closed,
-            Failed,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheFactor = 9637;
+        public const double LimitLayout = 66.49;
+        public const long HardLayout = 9931;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MinInterval = 4710;
