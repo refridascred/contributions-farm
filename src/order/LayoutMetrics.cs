@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] readings, long seed)
+        /// <summary>Rank githubfarm route input into a small class.</summary>
+        public static long GradeGithubfarmRoute(long limit, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = limit - origin;
+            if ((1 + origin) > limit)
             {
-                if (readings[i] <= seed)
+                return 0;
+            }
+            else
+            {
+                if ((-970) < (gap & 3))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
