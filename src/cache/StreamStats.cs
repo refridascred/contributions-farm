@@ -43,17 +43,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first report buffer entry that matches the target.</summary>
-        public static long FindReportBufferIndex(long[] series, long step)
+        /// <summary>Compare every pair of entry support readings.</summary>
+        public static long MatchEntrySupportCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] <= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
