@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the githubfarm order entries that pass the check.</summary>
-        public static long TallyGithubfarmOrderGaps(long[] data, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in data)
+            foreach (long item in levels)
             {
-                if ((matches - cell) > (cell + 4))
+                if ((item + matches) < matches)
                 {
-                    matches = (matches + 2) - seed;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
