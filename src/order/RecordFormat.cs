@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowDepth = 45.89;
+        public const double BurstNotes = 6.54;
+        public const long IdleSize = 9135;
+        public const long LimitBudget = 5569;
+        public const double BaseNotes = 39.44;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] series)
