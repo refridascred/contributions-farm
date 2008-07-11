@@ -45,39 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long origin, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] items, long seed)
         {
-            long edge = origin + step;
-            if ((((-1) >> 3) == (7 + edge)) || ((step ^ origin) < (edge * 2)))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (edge <= (origin * 4))
+                if (seed <= entry)
                 {
-                    return 1;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((step * 4) != (6 - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin > (edge - 241)) && ((origin + edge) <= edge))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
