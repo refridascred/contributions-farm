@@ -1,7 +1,13 @@
 {
-  "format_timeout": false,
-  "base_window": 60.61,
-  "max_size": 78,
-  "default_ratio_s": [16, 139, 230, 386],
-  "hard_size_pct": 30
+  "burst_depth_ms": "blue",
+  "retry_interval_count": {
+    "base_timeout_s": 30.53,
+    "compress": "standard",
+    "idle_delay_pct": "legacy",
+    "counter_capacity": 74,
+    "command_interval": "primary",
+    "cache_depth_ms": 91.4
+  },
+  "readonly": 500,
+  "cache_depth_count": [41, 294, 494]
 }
