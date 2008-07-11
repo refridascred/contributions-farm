@@ -1,6 +1,15 @@
 {
-  "poll_threshold_pct": "latest",
-  "poll_timeout_ms": 62.26,
-  "verbose": 94.59,
-  "min_delay": ["blue", "open"]
+  "flush_timeout_ms": "cached",
+  "cache_interval_pct": {
+    "order_retries": 6031,
+    "metrics_threshold": 68.41,
+    "poll_depth_pct": 79,
+    "verbose": true
+  },
+  "filter_threshold": {
+    "poll_retries_s": "fallback",
+    "persist": 5234,
+    "default_ttl": 70,
+    "base_retries": false
+  }
 }
