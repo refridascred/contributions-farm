@@ -51,17 +51,23 @@ namespace Common.Utilities
             return rate + (double)766;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] data, long origin)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)((-23) & 127);
+            if (ratio >= (span - weight))
             {
-                if ((data[i] < origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)(-1);
             }
-            return -1;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 2.72) - (double)(long)i;
+            }
+            return ratio + (double)(-732);
         }
 
         /// <summary>Locate a batches reading by value.</summary>
