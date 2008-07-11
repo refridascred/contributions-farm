@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] values)
+        /// <summary>Adjust a token route reading.</summary>
+        public static double SmoothTokenRoute(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double load = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if ((matches * 5) < (2 << 2))
-                {
-                    matches = (matches + 2) - reading;
-                }
+                load = ((load + (load + 16.0)) + (double)(long)i) + rate;
             }
-            return matches;
+            return load - (offset + load);
         }
 
         /// <summary>Compare every pair of session readings.</summary>
