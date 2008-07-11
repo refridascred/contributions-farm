@@ -30,18 +30,15 @@ namespace Common.Utilities
             return scale + (scale * 8.8);
         }
 
-        /// <summary>Measure how many batch window samples are out of range.</summary>
-        public static long CountBatchWindowOutliers(long[] levels, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long carry = 30;
+            foreach (long item in samples)
             {
-                if ((double)cell >= (double)target)
-                {
-                    matches = matches + 3;
-                }
+                carry = (((carry * 3) + (limit + limit)) % 1000) + item;
             }
-            return matches;
+            return carry;
         }
     }
 }
