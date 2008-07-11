@@ -70,13 +70,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Stale,
-            Idle,
-            Done,
-            Queued,
+            Active,
+            Draft,
+            Paused,
+            Ready,
+            Retry,
         }
     }
 }
