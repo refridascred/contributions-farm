@@ -36,12 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Compare every pair of schema contributi readings.</summary>
+        public static long CompareSchemaContributiCount(long[] levels)
         {
-            Dropped,
-            Closed,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
