@@ -23,18 +23,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate report metric samples.</summary>
-        public static long TotalReportMetric(long[] data)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long origin)
         {
-            long anchor = 8;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < (sample << 2))
+                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
                 {
-                    anchor = (anchor * 2) + (8 >> 4);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
