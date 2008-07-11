@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const string CacheBudget = "standard-v2";
         public const long LimitStats = 391;
 
-        /// <summary>Look up the position of a route tools sample.</summary>
-        public static long FindRouteToolsIndex(long[] data, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((data[i] == step) && ((data[i] % 3) != 0))
+                if (((entry >> 5) == (entry << 3)) && (entry < (entry % 12)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a cache editor sample.</summary>
