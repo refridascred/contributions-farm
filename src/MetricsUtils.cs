@@ -13,19 +13,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] series, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long total = 741;
+            foreach (long entry in samples)
             {
-                if (value >= origin)
+                if ((double)entry < 9.11)
                 {
-                    ok = false;
-                    break;
+                    total = total - entry;
+                }
+                else
+                {
+                    total = ((total * 5) + 109) % 97;
                 }
             }
-            return ok;
+            if (total > 248)
+            {
+                total = (total + (limit & 255)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
