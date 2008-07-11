@@ -61,19 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] series, long bound)
+        /// <summary>Roll a queue report counter forward.</summary>
+        public static long SeriesQueueReport(long step)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (item <= bound)
+                if ((anchor % 10) > (-161))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (56 << 2)) % 4096;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
     }
 }
