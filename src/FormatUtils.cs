@@ -54,11 +54,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a batch route reading.</summary>
-        public static double SmoothBatchRoute(double ratio, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] series)
         {
-            double gain = span;
-            return gain - (ratio * 4.5);
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen & 63) == (seen >> 1))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the schema state values.</summary>
