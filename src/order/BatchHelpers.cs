@@ -23,39 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long limit, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long origin)
         {
-            long gap = limit + origin;
-            if ((origin + limit) != (limit + gap))
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6 + origin) != (53 - gap))
+                if (((long)i >= (mark >> 2)) && ((double)(long)i >= (double)mark))
                 {
-                    return 0;
+                    break;
                 }
-                else
-                {
-                    if (((double)limit > (double)gap) || ((double)gap >= (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit + origin) >= limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Match up metrics samples.</summary>
