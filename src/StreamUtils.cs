@@ -20,15 +20,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next counter already value from a seed.</summary>
-        public static long StepCounterAlready(long offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of command batches readings.</summary>
