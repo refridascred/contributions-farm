@@ -32,18 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] readings)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] readings, long step)
         {
-            long count = 0;
+            bool ready = true;
             foreach (long datum in readings)
             {
-                if ((double)count <= (double)datum)
+                if (datum <= step)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
