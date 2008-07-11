@@ -1,6 +1,6 @@
 # entry settings
-counter_window: 709
-burst_interval: 42
-warm_size: 7526
-counter_size: 30
-sync_window: edge
+base_delay_ms:
+  - 56
+  - 108
+entry_threshold: latest
+readonly: 500
