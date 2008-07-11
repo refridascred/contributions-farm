@@ -30,17 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a profile entry reading by value.</summary>
-        public static long SeekProfileEntryIndex(long[] levels, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                if (((long)samples.Length + cell) != (cell >> 5))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
