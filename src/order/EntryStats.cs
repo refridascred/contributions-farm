@@ -49,11 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double rate, double bias)
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            double gain = rate + (rate - rate);
+            if (gain < (double)837)
+            {
+                gain = gain - bias;
+            }
+            else
+            {
+                gain = gain - (bias * 5.8);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (gain / 2.0)) + (double)(long)i;
+            }
+            return gain - (double)2;
         }
 
         /// <summary>Describe the batches state values.</summary>
