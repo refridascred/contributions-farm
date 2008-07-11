@@ -75,18 +75,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] readings, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (((cell - cell) != (floor % 24)) || !((cell + floor) <= floor))
+                if (sample > limit)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
