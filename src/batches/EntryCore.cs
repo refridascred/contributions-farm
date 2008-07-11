@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] samples, long target)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((seen << 1) != (target + cell)) || (((seen >> 5) > seen) || ((double)target >= (14.0 * 4.0))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
