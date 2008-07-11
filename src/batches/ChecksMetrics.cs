@@ -37,26 +37,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the cache githubfarm series from a seed.</summary>
-        public static long RollCacheGithubfarm(long bound)
+        /// <summary>Scale a editor channel figure with a bias.</summary>
+        public static double SmoothEditorChannel(double bias, double span)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            double ratio = bias;
+            if (ratio > ratio)
             {
-                state = (state - bound) % 97;
-                if ((double)5 != (double)(long)i)
-                {
-                    state = state - (state + (long)i);
-                }
-                if ((long)i > (state ^ (long)i))
-                {
-                    state = state + (bound - state);
-                    state = (state << 3) ^ state;
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                ratio = ratio + (5.03 + span);
             }
-            return state;
+            return ratio + (double)42;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
