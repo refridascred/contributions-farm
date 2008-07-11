@@ -1,8 +1,11 @@
 # githubfarm settings
-audit: green
-format_ttl: 8
-session_threshold:
-  - 125
-  - 195
-  - 500
-batch_ratio_ms: edge
+contributi_timeout: eu-west
+cache_limit:
+  - 439
+  - 448
+  - 476
+  - 60
+strict: cached
+base_interval: eu-west
+command_ttl: true
+sync_delay_count: latest
