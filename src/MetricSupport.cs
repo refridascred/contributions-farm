@@ -12,14 +12,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Pending,
-            Stale,
-            Paused,
             Retry,
-            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define context limits and defaults.</summary>
