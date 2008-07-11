@@ -52,18 +52,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] values, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin >= 791)
+                if (levels[i] < seed)
                 {
-                    seen = (seen + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
