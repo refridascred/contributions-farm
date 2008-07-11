@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 9879;
-        public const long StepCount = 239;
-        public const double CacheAlready = 35.24;
-        public const string RetryAlready = "fallback-v2";
-        public const long MinAlready = 1136;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long CacheRatio = 8869;
