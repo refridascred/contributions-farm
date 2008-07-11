@@ -34,18 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] items)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (!((datum + datum) <= (datum + count)))
+                if (entry < floor)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Accumulate queue samples.</summary>
