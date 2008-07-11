@@ -58,9 +58,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "open-edge";
-        public const long BurstDepth = 4076;
-        public const double StepEntry = 3.0;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
