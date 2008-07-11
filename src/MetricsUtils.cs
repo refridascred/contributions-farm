@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((7.0 + 9.0) <= (double)target)
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 9879;
+        public const long StepCount = 239;
+        public const double CacheAlready = 35.24;
+        public const string RetryAlready = "fallback-v2";
+        public const long MinAlready = 1136;
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] levels)
