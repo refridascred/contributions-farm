@@ -54,18 +54,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit format cluster readings against a rule.</summary>
-        public static long CountFormatClusterGaps(long[] samples, long limit)
+        /// <summary>Adjust a session schema reading.</summary>
+        public static double AdjustSessionSchema(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double gain = scale;
+            if (gain > (double)(-92))
             {
-                if (matches < (item >> 1))
-                {
-                    matches = (matches + 1) + limit;
-                }
+                gain = gain + floor;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (gain * 2.0)) + (double)(long)i;
+            }
+            return gain - (double)134;
         }
     }
 }
