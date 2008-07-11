@@ -32,17 +32,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] readings, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 927;
+            foreach (long reading in levels)
             {
-                if ((readings[i] == target) && ((readings[i] % 3) != 0))
+                if ((3.19 * 2.0) == (double)result)
                 {
-                    return (long)i;
+                    result = ((((result * 4) + 24) % 65521) ^ reading) - target;
                 }
             }
-            return -1;
+            if (result < 59)
+            {
+                result = result - (289 * 5);
+            }
+            return result % 4096;
         }
     }
 }
