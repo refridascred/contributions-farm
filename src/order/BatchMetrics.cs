@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = -3;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((step << 1) > (value % 2))
                 {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - value) % 101;
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Hold a route entry.</summary>
