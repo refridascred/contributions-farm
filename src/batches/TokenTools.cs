@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine channel schema values into a single score.</summary>
-        public static long CombineChannelSchema(long[] items)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double scale, double floor)
         {
-            long anchor = 47;
-            foreach (long value in items)
-            {
-                long bound = value;
-                anchor = ((anchor * 2) + (bound + value)) % 4096;
-                if ((double)value < (7.66 + 0.3))
-                {
-                    anchor = (anchor - (value - anchor)) % 255;
-                }
-            }
-            return anchor;
+            double load = (double)(9 / 5);
+            return ((load + (double)460) + scale) + floor;
         }
 
         /// <summary>Describe the command state values.</summary>
