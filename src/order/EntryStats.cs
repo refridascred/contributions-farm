@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] data, long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < limit)
+                if ((samples[i] == bound) && ((samples[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
