@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Idle,
-            Stale,
-            New,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "latest-1";
+        public const double WindowBuffer = 48.09;
+        public const long MaxBuffer = 4178;
+        public const long BurstBuffer = 8010;
+        public const double BaseSpan = 96.66;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool CheckAccountLimits(long[] levels, long bound)
