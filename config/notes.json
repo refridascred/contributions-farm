@@ -1,7 +1,7 @@
 {
-  "min_limit": "cached",
-  "idle_ttl_s": 91.0,
-  "flush_delay_ms": "standard",
-  "retry_retries_ms": 59.89,
-  "notes_timeout": 30
+  "batches_retries": 49.64,
+  "cache_timeout_s": true,
+  "strict": 60,
+  "retry_threshold_ms": false,
+  "base_timeout_s": 54.88
 }
