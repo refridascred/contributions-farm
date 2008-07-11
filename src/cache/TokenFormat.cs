@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] series)
+        /// <summary>Audit order record readings against a rule.</summary>
+        public static long CountOrderRecordOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((matches + entry) < (4 & 127))
+                if ((value & 1) > (235 - tally))
                 {
-                    matches = matches + 3;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
