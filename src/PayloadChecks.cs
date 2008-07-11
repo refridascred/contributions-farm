@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (!((14.0 - 4.0) != (double)matches) || !((double)item >= (4.18 - 1.25)))
+                if (!((item << 1) != (seen % 16)))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
