@@ -66,19 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long limit)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
