@@ -28,12 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 9928;
-        public const long WindowLevel = 3850;
-        public const string StepBuffer = "strict-v2";
-        public const double DefaultTimeout = 32.78;
-        public const long CacheBuffer = 7591;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountOutliers(long[] readings)
