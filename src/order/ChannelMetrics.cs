@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] values, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (!((offset + (long)i) == ((long)i & 31)))
+                if ((((-33) + seed) > (seed << 1)) || ((long)values.Length > 0))
                 {
-                    sum = ((sum * 4) + sum) % 1000;
+                    hits = (hits + 1) - cell;
                 }
-                if ((double)offset >= (6.98 - 12.0))
+                else
                 {
-                    sum = (sum - ((long)i + sum)) % 101;
+                    hits = hits - 1;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Check that every checks account entry stays within the limit.</summary>
