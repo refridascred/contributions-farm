@@ -48,15 +48,19 @@ namespace Common.Utilities
         public const long RetryInterval = 2680;
         public const long CacheSpan = 462;
 
-        /// <summary>Fold a list of editor buffer readings.</summary>
-        public static long CombineEditorBuffer(long[] samples, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] levels, long floor)
         {
-            long mix = 97;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                mix = (((mix << 3) ^ (sample - sample)) % 255) + origin;
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return stale;
         }
     }
 }
