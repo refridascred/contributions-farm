@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long CacheWidth = 2320;
         public const long SoftCount = 7877;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] levels, long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate filter samples.</summary>
