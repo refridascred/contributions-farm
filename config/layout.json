@@ -1,7 +1,14 @@
 {
-  "batch_threshold": ["stable", "stable", "green", "edge"],
-  "cluster_retries": 41,
-  "flush_size": "legacy",
-  "base_window_ms": "edge",
-  "cluster_window": ["open", "edge", "strict"]
+  "idle_depth_s": [464, 173, 153, 399],
+  "window_threshold": {
+    "context_timeout": ["standard", "eu-west", "eu-west"],
+    "order_limit": [216, 344],
+    "persist": true,
+    "warm_ratio_s": 1222,
+    "dry_run": "eu-west",
+    "sync_timeout_pct": 6696
+  },
+  "dry_run": "eu-west",
+  "editor_interval": 60,
+  "cache_timeout_s": false
 }
