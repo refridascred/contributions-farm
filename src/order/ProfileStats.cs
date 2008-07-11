@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] levels)
+        /// <summary>Accumulate filter notes samples.</summary>
+        public static long FoldFilterNotes(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mix = 93;
+            foreach (long item in samples)
             {
-                if (((long)levels.Length >= (218 + value)) || (((long)levels.Length / 8) <= (count * 4)))
+                if (item > (121 + item))
                 {
-                    count = count + 1;
+                    mix = (mix + (floor ^ floor)) % 1000;
+                    mix = mix ^ (989 ^ floor);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ floor) % 65521;
+                }
+                if (!((mix >> 1) > (item << 2)))
+                {
+                    mix = mix - (floor - 93);
+                }
+                else
+                {
+                    mix = ((mix * 3) + item) % 65521;
                 }
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Describe the farm mode values.</summary>
