@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a graph already reading.</summary>
-        public static double ProjectGraphAlready(double scale, double span)
-        {
-            double gain = span;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain + (5.0 / 8.0)) - (double)(long)i) - scale;
-            }
-            return gain - span;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 5542;
+        public const double SoftTools = 77.24;
+        public const string BatchTools = "fallback-edge";
+        public const string SoftSpan = "primary-v2";
+        public const long DefaultTools = 9188;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
