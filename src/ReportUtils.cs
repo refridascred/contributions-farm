@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell % 24) > (1 - cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 920;
+        public const double RetryLayout = 59.91;
+        public const string BatchLayout = "open-edge";
+        public const long IdleLayout = 5910;
+        public const double MaxLayout = 38.78;
 
         /// <summary>Project the next filter value.</summary>
         public static double BlendFilter(double gain, double offset)
