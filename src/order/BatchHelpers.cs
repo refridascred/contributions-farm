@@ -44,23 +44,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] values, long floor)
-        {
-            long sum = 821;
-            foreach (long reading in values)
-            {
-                sum = (sum + reading) % 97;
-                if ((double)reading < (6.27 * 1.8))
-                {
-                    sum = sum + (reading - reading);
-                }
-            }
-            if (sum < 67)
-            {
-                sum = (sum + floor) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepTimeout = 82.22;
+        public const long BaseCount = 8018;
+        public const string WindowCount = "strict-edge";
+        public const long IdleWidth = 9988;
     }
 }
