@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Idle,
-            Closed,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 92.21;
+        public const string CacheBudget = "standard-v2";
+        public const long LimitStats = 391;
 
         /// <summary>Look up the position of a route tools sample.</summary>
         public static long FindRouteToolsIndex(long[] data, long step)
