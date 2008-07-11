@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const long MinContext = 4009;
         public const long SoftContext = 2775;
 
-        /// <summary>Measure how many notes window samples are out of range.</summary>
-        public static long CountNotesWindowGaps(long[] values, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry < (double)6)
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Digest a series of window entries.</summary>
