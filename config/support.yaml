@@ -1,8 +1,22 @@
 # support settings
-persist: true
-max_window_ms: 48.67
-sync_ttl_count: 28.21
-hard_retries: 92.13
-enabled:
-  - eu-west
-  - fallback
+sync_interval_s: false
+session_depth:
+  audit: 100
+  persist: false
+  sync_size_ms:
+    - 101
+    - 412
+base_depth_pct:
+  base_ttl_pct: 7625
+  min_capacity_count: true
+  default_capacity_pct:
+    - legacy
+    - stable
+    - green
+order_capacity: standard
+default_threshold_count:
+  - 372
+  - 76
+  - 97
+  - 101
+idle_depth: primary
