@@ -14,12 +14,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Iterate the route stats series from a seed.</summary>
+        public static long SeriesRouteStats(long bound)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc << 3) ^ (acc + (long)i)) % 1000;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the session mode values.</summary>
