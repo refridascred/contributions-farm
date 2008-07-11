@@ -1,6 +1,4 @@
 # githubfarm settings
-token_interval: 250
-cache_depth: 70.18
-soft_size_pct: true
-soft_threshold_pct: 11.62
-idle_threshold_pct: 60
+dry_run: 9236
+base_interval_s: primary
+poll_depth_pct: 4843
