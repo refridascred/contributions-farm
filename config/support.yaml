@@ -1,6 +1,24 @@
 # support settings
-soft_window_s: 2
-default_limit: 60
-burst_timeout_ms: standard
-cache_threshold: true
-max_timeout_ms: open
+burst_ratio:
+  editor_depth: false
+  idle_interval_ms:
+    - 111
+    - 188
+    - 474
+  support_interval: 3
+  retry_window_ms: 71.25
+  compress:
+    flush_delay_pct: cached
+    max_limit_s: latest
+    warm_ratio_pct: 54
+    idle_size_count:
+      - strict
+      - standard
+      - green
+      - latest
+  readonly: false
+commits_depth: standard
+poll_interval_pct: fallback
+warm_timeout_pct: false
+persist: primary
+warm_capacity: 60
