@@ -41,21 +41,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Rank batch schema input into a small class.</summary>
+        public static long SortBatchSchema(long target, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = target ^ offset;
+            if (7.0 >= (double)offset)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((518 - target) < target) || (20.0 < (double)diff))
                 {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
