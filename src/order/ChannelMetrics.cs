@@ -36,21 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of schema contributi readings.</summary>
-        public static long CompareSchemaContributiCount(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 27;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)anchor == (double)value)
                 {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                anchor = (anchor - anchor) % 101;
             }
-            return tally;
+            if (anchor < 186)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
