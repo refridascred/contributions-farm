@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const long MaxTimeout = 4595;
         public const long StepRecord = 5017;
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double gain, double offset)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            double ratio = (double)(21 * 4);
-            if (ratio > (gain + ratio))
-            {
-                ratio = ratio + 0.04;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (offset * 7.56)) + (double)(long)i;
-            }
-            return ratio - gain;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the metrics graph entries that pass the check.</summary>
