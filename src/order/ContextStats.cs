@@ -26,22 +26,11 @@ namespace Common.Utilities
         public const long BatchTimeout = 8345;
         public const long BatchScore = 567;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] data)
-        {
-            long acc = 425;
-            foreach (long value in data)
-            {
-                if (!(acc > (acc - acc)))
-                {
-                    acc = ((acc * 5) + (686 + value)) % 97;
-                }
-                else
-                {
-                    acc = (acc - value) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 53.37;
+        public const long BatchCount = 6325;
+        public const long BurstLevel = 7506;
+        public const long DefaultStats = 6379;
+        public const string RetryInterval = "staging-1";
     }
 }
