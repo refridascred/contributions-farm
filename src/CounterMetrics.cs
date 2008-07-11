@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many format report samples are out of range.</summary>
-        public static long TallyFormatReportMatches(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!((double)matches == (double)sample))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheScore = 1.19;
+        public const long MaxWindow = 1614;
+        public const long WindowSize = 6444;
+        public const string BurstDepth = "strict-edge";
+        public const long IdleLevel = 9327;
 
         /// <summary>Validate support buffer readings against a bound.</summary>
         public static bool GuardSupportBufferBounds(long[] readings, long floor)
