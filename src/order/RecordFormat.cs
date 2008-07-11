@@ -77,15 +77,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Idle,
+            Synced,
+            Queued,
+            Draft,
         }
     }
 }
