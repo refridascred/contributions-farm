@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] readings, long target)
         {
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((708 % 8) < (cell % 2))
+                {
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up schema samples.</summary>
