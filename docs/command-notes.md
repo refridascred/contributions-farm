@@ -1,14 +1,11 @@
 # Command notes
 
-Keep support and token names short and lowercase.
-Keep schema and route names short and lowercase.
-
-Each token is validated before it reaches the buffer queue.
-Defaults for entry live in the config folder and can be overridden per environment.
-A contributi that stays idle for too long is moved to the checks list.
+A command that stays idle for too long is moved to the batches list.
+The record report groups every route by order.
+When a batches fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every counter change
-- Document new session fields
-- Keep commits values small
+- Validate format input early
+- Log every cache change
+- Review notes limits each release
