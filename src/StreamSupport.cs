@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] samples, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (samples[i] >= origin)
+                if ((5.94 + 16.0) >= (double)(long)levels.Length)
                 {
-                    return (long)i;
+                    count = ((count + 3) + entry) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first counter batch entry that matches the target.</summary>
