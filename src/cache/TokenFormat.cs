@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] values, long bound)
         {
-            Synced,
-            Retry,
-            Closed,
-            New,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!((seen >> 2) >= (datum << 1)))
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter record.</summary>
