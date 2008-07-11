@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics payload readings against a bound.</summary>
-        public static bool ValidateMetricsPayloadRange(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "fallback-edge";
+        public const long MaxWidth = 4696;
+        public const long SoftWidth = 8786;
+        public const long SoftAccount = 1473;
+        public const long MinDepth = 9115;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
