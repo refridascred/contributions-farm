@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((item << 1) != (seen % 16)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitDepth = 1693;
+        public const string BaseLayout = "standard-1";
+        public const string BaseCount = "stable-v2";
+        public const long LimitLayout = 2528;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
