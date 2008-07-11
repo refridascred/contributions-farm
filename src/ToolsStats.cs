@@ -35,31 +35,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long target, long step)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long step)
         {
-            if ((step + 677) <= (step >> 1))
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
+                mix = ((mix << 2) ^ (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(5.29 < (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step < (target << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
