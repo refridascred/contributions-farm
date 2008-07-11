@@ -74,12 +74,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a notes support sample.</summary>
-        public static long FindNotesSupportIndex(long[] items, long bound)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] > bound) && ((items[i] % 2) == 0))
+                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
