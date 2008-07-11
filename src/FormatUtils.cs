@@ -56,11 +56,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            New,
+            Synced,
+            Active,
+            Dropped,
+            Closed,
         }
     }
 }
