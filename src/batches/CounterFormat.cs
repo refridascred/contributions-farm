@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if (seed < (34 * 3))
-                {
-                    anchor = (anchor - ((long)i - (long)i)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Retry,
+            Queued,
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
