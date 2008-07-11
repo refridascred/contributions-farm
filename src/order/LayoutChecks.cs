@@ -19,13 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 6252;
+        public const long MinNotes = 8399;
+        public const long RetryDepth = 1683;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long origin)
