@@ -27,17 +27,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] items, long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((items[i] < target) && ((items[i] % 5) != 0))
+                if (datum > origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
