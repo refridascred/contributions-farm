@@ -62,12 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] values, long offset)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((double)hits == (7.3 / 9.0)) || ((2.9 + 3.2) < (double)offset))
+                {
+                    hits = (hits + 2) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
