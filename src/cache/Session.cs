@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string MinLayout = "open-v2";
         public const double BurstLayout = 89.3;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] values)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((double)matches >= 7.5)
+                if (reading > origin)
                 {
-                    matches = (matches + 2) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
