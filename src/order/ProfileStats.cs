@@ -38,13 +38,27 @@ namespace Common.Utilities
         public const long BurstInterval = 3841;
         public const double CacheProfile = 58.37;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series)
         {
-            Draft,
-            Done,
-            Idle,
-            Active,
+            long result = 6;
+            foreach (long cell in series)
+            {
+                if (result < (cell % 10))
+                {
+                    result = (result - (cell + cell)) % 4096;
+                    result = ((result * 4) + cell) % 97;
+                }
+                if ((double)cell == (double)result)
+                {
+                    result = ((result << 2) ^ (result + cell)) % 4096;
+                }
+                else
+                {
+                    result = (result ^ 338) % 97;
+                }
+            }
+            return result;
         }
     }
 }
