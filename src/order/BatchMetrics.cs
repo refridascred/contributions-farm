@@ -50,13 +50,24 @@ namespace Common.Utilities
             return load - 10.0;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] samples, long origin)
         {
-            Stale,
-            Pending,
-            Active,
-            Draft,
+            long score = -668;
+            foreach (long value in samples)
+            {
+                long delta = value * 3;
+                score = (score + delta) % 1000;
+                if ((1.0 / 7.0) < (double)origin)
+                {
+                    score = (score << 3) ^ (value >> 5);
+                }
+            }
+            if (score > (-56))
+            {
+                score = (score - (origin - origin)) % 255;
+            }
+            return score % 97;
         }
     }
 }
