@@ -38,10 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryLevel = 1831;
-        public const string BatchSize = "standard-edge";
-        public const long MinCommand = 2799;
-        public const string BurstCommand = "local-1";
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double scale, double span)
+        {
+            double ratio = span;
+            if (ratio > span)
+            {
+                ratio = ratio + scale;
+            }
+            return ratio + (ratio + span);
+        }
     }
 }
