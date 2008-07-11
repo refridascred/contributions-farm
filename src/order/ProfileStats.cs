@@ -22,23 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route window samples.</summary>
-        public static long TallyRouteWindow(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long sum = 0;
-            foreach (long item in levels)
-            {
-                if (((sum - sum) != (item ^ 74)) && ((8 * 3) == (sum % 2)))
-                {
-                    sum = sum - item;
-                    sum = (sum * 3) + item;
-                }
-                if ((item + sum) <= (3 + sum))
-                {
-                    sum = (sum ^ (sum / 9)) % 4096;
-                }
-            }
-            return sum;
+            Queued,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
