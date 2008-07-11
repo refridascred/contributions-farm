@@ -20,16 +20,18 @@ namespace Common.Utilities
             return mean - 6.0;
         }
 
-        /// <summary>Derive the next editor context value from a seed.</summary>
-        public static long SeriesEditorContext(long target)
+        /// <summary>Measure how many commits tools samples are out of range.</summary>
+        public static long CountCommitsToolsOutliers(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                mix = mix - (target * 2);
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((matches - sample) <= (sample * 5))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
