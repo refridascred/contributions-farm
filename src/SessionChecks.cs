@@ -19,10 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 3498;
-        public const long CacheRoute = 4754;
-        public const long RetryRoute = 6425;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleSize = 62.75;
+        public const long MinSize = 223;
+        public const long CacheSpan = 2060;
+        public const long DefaultScore = 7775;
+        public const long LimitMetric = 7629;
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] items)
