@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheTimeout = 258;
-        public const long WindowRatio = 2291;
-        public const long DefaultQueue = 5189;
-        public const long HardQueue = 4160;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitRatio = "standard";
+        public const long LimitWidth = 1772;
+        public const string StepInterval = "legacy-v2";
+        public const long StepWidth = 2164;
+        public const long MaxSupport = 8444;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long ClassifyChecks(long floor, long offset)
