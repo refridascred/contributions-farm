@@ -37,23 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double span)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double rate2 = (rate - 1.45) / 4.0;
-            if (rate2 >= (rate2 / 5.0))
-            {
-                rate2 = (rate2 - (0.54 - rate)) - span;
-            }
-            else
-            {
-                rate2 = rate2 + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - 0.99) + (double)(long)i;
-            }
-            return rate2 + 4.0;
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
