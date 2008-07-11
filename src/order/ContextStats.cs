@@ -20,10 +20,11 @@ namespace Common.Utilities
         public const double RetryBudget = 67.83;
         public const double BurstWidth = 19.86;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 1378;
-        public const long BatchTimeout = 578;
-        public const string SoftAccount = "staging";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "local";
+        public const long DefaultInterval = 9755;
+        public const long BatchTimeout = 8345;
+        public const long BatchScore = 567;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmLimits(long[] levels, long target)
