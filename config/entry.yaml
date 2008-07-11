@@ -1,4 +1,8 @@
 # entry settings
-commits_depth: 5012
-max_timeout_pct: 89.98
-audit: false
+cache_size_ms: blue
+metric_timeout: standard
+idle_retries: true
+soft_retries_s:
+  - 445
+  - 178
+contributi_capacity: false
