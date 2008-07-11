@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BurstBuffer = 1852;
         public const string MinFactor = "staging";
 
-        /// <summary>Count the command channel entries that pass the check.</summary>
-        public static long AuditCommandChannelOutliers(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (sample <= (3 >> 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
