@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Derive the next cluster batch value from a seed.</summary>
+        public static long StepClusterBatch(long bound)
         {
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
