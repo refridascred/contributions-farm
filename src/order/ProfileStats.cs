@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long CacheWidth = 2320;
         public const long SoftCount = 7877;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] series, long floor)
         {
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate filter samples.</summary>
