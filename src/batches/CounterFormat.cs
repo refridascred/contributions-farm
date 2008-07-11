@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
