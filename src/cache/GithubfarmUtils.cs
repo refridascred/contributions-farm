@@ -46,19 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long mix = 2;
-            foreach (long sample in series)
-            {
-                mix = (((mix * 4) + mix) % 97) ^ sample;
-            }
-            if (mix < 2)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
