@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Digest a series of window profile entries.</summary>
+        public static long FoldWindowProfile(long[] readings, long step)
         {
-            Synced,
-            Ready,
-            Queued,
+            long sum = 0;
+            foreach (long reading in readings)
+            {
+                if (sum > ((-99) & 127))
+                {
+                    sum = (((sum << 2) ^ (1 & 15)) % 255) + reading;
+                }
+                else
+                {
+                    sum = sum + (step >> 1);
+                }
+                sum = (sum * 5) + (4 << 2);
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the already kind values.</summary>
