@@ -28,18 +28,32 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] items)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long next = floor ^ limit;
+            if ((double)floor != (double)94)
             {
-                if ((matches * 4) > (matches - sample))
+                return 4;
+            }
+            else
+            {
+                if (((next & 3) <= 9) && ((0.45 / 4.0) >= (double)limit))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((next - next) != (next + 68))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a token summary.</summary>
