@@ -1,6 +1,7 @@
 {
-  "enabled": ["blue", "primary", "fallback"],
-  "format_delay": true,
-  "readonly": "standard",
-  "compress": 100
+  "format_timeout": false,
+  "base_window": 60.61,
+  "max_size": 78,
+  "default_ratio_s": [16, 139, 230, 386],
+  "hard_size_pct": 30
 }
