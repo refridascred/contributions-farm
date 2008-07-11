@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxTimeout = 69.24;
-        public const long BatchScore = 5389;
-        public const long IdleWindow = 7150;
-        public const double BurstWindow = 29.39;
-        public const long BatchWidth = 9675;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum > (7.6 + 6.0))
+                {
+                    tally = (tally + 3) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] readings)
