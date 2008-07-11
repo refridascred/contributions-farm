@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseFactor = 1501;
+        public const long SoftRoute = 9989;
+        public const long LimitRoute = 1434;
+        public const long CacheRoute = 9267;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextOutliers(long[] values)
