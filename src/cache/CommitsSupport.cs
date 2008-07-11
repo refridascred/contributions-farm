@@ -55,10 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepTimeout = 2567;
-        public const long BatchProfile = 9363;
-        public const double IdleProfile = 41.02;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Ready,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
