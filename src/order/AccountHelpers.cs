@@ -64,17 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 696;
+            foreach (long entry in readings)
             {
-                if (readings[i] > limit)
+                anchor = anchor + (945 % 24);
+                if (((4.12 / 7.0) <= (double)anchor) || ((anchor - 213) > (116 ^ entry)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
