@@ -50,20 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if (limit <= (975 ^ limit))
-                {
-                    break;
-                }
-                mark = ((mark * 2) + 7) % 65521;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
