@@ -26,23 +26,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double ratio, double offset)
+        /// <summary>Find the first notes payload entry that matches the target.</summary>
+        public static long SeekNotesPayloadIndex(long[] samples, long target)
         {
-            double bias = (double)(2 - 94);
-            if (bias < ratio)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias + ratio) - offset;
+                if ((samples[i] > target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (bias / 9.0)) + (double)(long)i;
-            }
-            return bias - (ratio / 6.0);
+            return -1;
         }
     }
 }
