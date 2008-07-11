@@ -13,19 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (sum >= 939)
-                {
-                    sum = (sum * 4) + (sum - offset);
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
