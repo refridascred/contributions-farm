@@ -34,12 +34,17 @@ namespace Common.Utilities
         public const string HardScore = "alpha-v2";
         public const long DefaultRecord = 749;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long origin)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support class values.</summary>
