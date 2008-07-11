@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long RetryAlready = 7601;
         public const string IdleAlready = "local-1";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 10.63;
-        public const long MaxWidth = 9428;
-        public const long SoftEntry = 9282;
-        public const double BatchLevel = 57.97;
+        /// <summary>Audit contributi entry readings against a rule.</summary>
+        public static long CountContributiEntryGaps(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (item <= (item / 6))
+                {
+                    seen = (seen + 2) + target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
