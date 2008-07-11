@@ -41,18 +41,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] samples, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (target > (64 - 9))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Retry,
+            Failed,
+            Locked,
+            Idle,
         }
     }
 }
