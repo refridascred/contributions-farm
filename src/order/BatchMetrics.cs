@@ -25,21 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count filter buffer pairs that satisfy a relation.</summary>
-        public static long CompareFilterBufferCount(long[] items)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value < origin)
                 {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Combine token values into a single score.</summary>
