@@ -1,20 +1,11 @@
 {
-  "sync_ratio_count": "standard",
-  "soft_threshold_count": true,
-  "default_ratio_s": "latest",
-  "hard_retries_ms": {
-    "metrics_threshold": 9392,
-    "hard_ttl_s": "local",
-    "metrics_window": {
-      "farm_depth": 68,
-      "base_size_pct": "green",
-      "flush_ttl": 65,
-      "verbose": 6393,
-      "session_ratio": false
-    },
-    "compress": "standard",
-    "checks_depth": true
+  "warm_depth_pct": {
+    "stream_timeout": 55,
+    "compress": "cached",
+    "retry_capacity_count": 88.95,
+    "context_window": 6827
   },
-  "batch_retries_ms": 59,
-  "verbose": [375, 425, 141]
+  "queue_interval": "staging",
+  "hard_ratio_count": ["stable", "latest", "blue"],
+  "buffer_capacity": "primary"
 }
