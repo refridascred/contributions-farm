@@ -63,19 +63,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double ratio, double span)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] items, long origin)
         {
-            double gain = (double)3 / 7.0;
-            if (gain <= span)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + span) - ratio;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - gain;
+            return -1;
         }
     }
 }
