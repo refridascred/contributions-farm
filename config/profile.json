@@ -1,5 +1,7 @@
 {
-  "max_limit_pct": 60,
-  "format_timeout": true,
-  "idle_depth_s": ["local", "stable", "edge"]
+  "batch_threshold": true,
+  "context_window": true,
+  "hard_interval": 13.77,
+  "enabled": 60.43,
+  "channel_delay": 7.17
 }
