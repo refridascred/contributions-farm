@@ -38,26 +38,39 @@ namespace Common.Utilities
         public const string IdleQueue = "staging-1";
         public const long MaxRatio = 4329;
 
-        /// <summary>Digest a series of channel tools entries.</summary>
-        public static long WeighChannelTools(long[] data)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long origin, long step)
         {
-            long score = 9;
-            foreach (long datum in data)
+            long edge = origin + step;
+            if ((((-1) >> 3) == (7 + edge)) || ((step ^ origin) < (edge * 2)))
             {
-                if ((double)495 >= (double)score)
+                return 4;
+            }
+            else
+            {
+                if (edge <= (origin * 4))
                 {
-                    score = (score ^ (score + datum)) % 255;
+                    return 1;
                 }
-                if (((3.2 + 14.0) >= (double)score) && ((double)0 > (double)score))
+                else
                 {
-                    break;
+                    if ((step * 4) != (6 - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin > (edge - 241)) && ((origin + edge) <= edge))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (score > 701)
-            {
-                score = ((score << 2) ^ (score % 8)) % 101;
-            }
-            return score % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
