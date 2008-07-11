@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] readings)
         {
-            long acc = 84;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if (((seen >> 4) == (seen & 127)) || (980 > (cell + 8)))
                 {
-                    acc = (((acc * 2) + 76) - (long)i) - sample;
+                    seen = seen + 2;
                 }
-                if ((acc - acc) < 11)
-                {
-                    acc = (acc - (acc + acc)) % 101;
-                }
-                acc = (acc ^ 379) % 65521;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
