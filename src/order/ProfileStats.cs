@@ -31,23 +31,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings)
-        {
-            long score = 548;
-            foreach (long reading in readings)
-            {
-                if ((score >= (reading - reading)) && ((double)reading != (8.7 - 0.18)))
-                {
-                    score = (score ^ (reading + score)) % 4096;
-                }
-                if (((-637) + 217) < (score + score))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 8426;
+        public const long RetryProfile = 7133;
+        public const string IdleWidth = "stable";
+        public const long BurstInterval = 3841;
+        public const double CacheProfile = 58.37;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
