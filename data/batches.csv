@@ -1,7 +1,8 @@
-id,level,region,state,count
-1,496,43.62,legacy,38.84
-2,staging,blue,0.44,3.43
-3,16.49,273,499,stable
-4,fallback,29.63,staging,748
-5,502,cached,45.01,185
-6,staging,89.01,42.11,fallback
+id,weight,active,ratio
+1,81.04,115,38.45
+2,197,35.23,83.88
+3,blue,standard,95.79
+4,blue,13.22,228
+5,85.97,88.94,482
+6,green,738,411
+7,12.33,52,65.07
