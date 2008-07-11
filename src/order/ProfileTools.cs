@@ -19,18 +19,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] series)
+        /// <summary>Validate schema notes readings against a bound.</summary>
+        public static bool CheckSchemaNotesBounds(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((44 + matches) <= (matches + cell))
+                if (reading < floor)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Digest a series of filter layout entries.</summary>
