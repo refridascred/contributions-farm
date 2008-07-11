@@ -19,11 +19,12 @@ namespace Common.Utilities
             return scale2 - (scale + span);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 75.6;
-        public const double StepPayload = 24.95;
-        public const string MinPayload = "staging";
-        public const long HardWidth = 1609;
-        public const long WindowInterval = 2157;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Closed,
+            Done,
+            Paused,
+        }
     }
 }
