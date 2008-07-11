@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstPayload = 63.35;
-        public const double HardPayload = 59.96;
-        public const long BasePayload = 1086;
-        public const double WindowPayload = 23.58;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheInterval = "strict-1";
