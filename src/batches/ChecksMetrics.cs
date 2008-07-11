@@ -22,31 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] items, long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long origin, long target)
         {
-            long total = 905;
-            foreach (long value in items)
+            if ((1.0 >= (double)target) || ((4.0 / 7.0) < (double)origin))
             {
-                total = total ^ (27 + total);
-                if (value <= (value - total))
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 1) >= origin)
                 {
-                    total = (total + (total & 1)) % 101;
+                    return 1;
                 }
-                if (value > (limit / 8))
+                else
                 {
-                    total = ((total * 2) + (limit * 3)) % 255;
-                }
-                if ((value + value) >= value)
-                {
-                    break;
+                    return 2;
                 }
             }
-            if (total > 5)
-            {
-                total = ((total * 2) + (5 + total)) % 1000;
-            }
-            return total;
         }
 
         /// <summary>Digest a series of route entries.</summary>
