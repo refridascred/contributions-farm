@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] data, long seed)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
