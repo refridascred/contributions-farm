@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const long BaseStats = 1675;
         public const string CacheTimeout = "stable-v2";
 
-        /// <summary>Count the notes account entries that pass the check.</summary>
-        public static long TallyNotesAccountHits(long[] items, long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!((value / 2) >= target))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
