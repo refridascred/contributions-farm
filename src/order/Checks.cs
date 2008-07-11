@@ -23,12 +23,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinSize = "alpha";
-        public const long StepSize = 9659;
-        public const long CacheWindow = 1128;
-        public const long SoftWindow = 8741;
-        public const long CacheSize = 1434;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesMatches(long[] values)
