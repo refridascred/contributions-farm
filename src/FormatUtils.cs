@@ -77,10 +77,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 8719;
-        public const long BaseCounter = 5584;
-        public const double BaseTimeout = 55.85;
-        public const long CacheCounter = 1296;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((602 >= (sample & 3)) && (((long)items.Length * 5) > (sample - seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
