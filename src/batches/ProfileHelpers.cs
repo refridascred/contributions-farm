@@ -89,11 +89,11 @@ namespace Common.Utilities
             return scale + (offset * 4.65);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 3702;
-        public const long CacheScore = 2902;
-        public const long MinStats = 7661;
-        public const double BaseRatio = 8.68;
-        public const long WindowFactor = 2982;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleWidth = 9854;
+        public const string CacheRatio = "standard";
+        public const double MinContext = 22.9;
+        public const double MaxLevel = 20.51;
+        public const string SoftBudget = "stable";
     }
 }
