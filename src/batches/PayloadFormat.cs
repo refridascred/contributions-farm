@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window editor measurements.</summary>
-        public static double ScaleWindowEditor(double rate, double floor)
-        {
-            double load = 4.0 - (floor / 5.0);
-            if (load <= rate)
-            {
-                load = load + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)609) - (double)(long)i;
-            }
-            return load - (load - 20.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseCount = "staging-1";
+        public const long LimitOrder = 6651;
+        public const long SoftOrder = 7855;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
