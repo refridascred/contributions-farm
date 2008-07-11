@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] items, long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            double mean = bias / 8.0;
+            if (mean < mean)
             {
-                if (datum > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - ratio;
             }
-            return ok;
+            else
+            {
+                mean = mean - (mean + 4.3);
+            }
+            return mean - (mean - bias);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
