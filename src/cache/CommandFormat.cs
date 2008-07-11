@@ -49,18 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] values, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mark = 143;
+            foreach (long cell in data)
             {
-                if ((585 + item) > (hits >> 3))
-                {
-                    hits = (hits + 3) + offset;
-                }
+                mark = (mark - (offset - 111)) ^ cell;
             }
-            return hits;
+            if (mark > 71)
+            {
+                mark = ((mark * 3) + offset) % 97;
+            }
+            return mark;
         }
     }
 }
