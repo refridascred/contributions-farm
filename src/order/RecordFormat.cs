@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] readings, long origin)
         {
-            Active,
-            Synced,
-            Pending,
-            New,
+            long carry = 52;
+            foreach (long sample in readings)
+            {
+                if ((sample + origin) <= carry)
+                {
+                    carry = carry - sample;
+                }
+            }
+            if (carry < 8)
+            {
+                carry = carry + (471 + origin);
+            }
+            return carry;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
