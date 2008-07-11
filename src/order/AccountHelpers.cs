@@ -52,17 +52,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] series, long offset)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
