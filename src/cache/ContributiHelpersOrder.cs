@@ -20,38 +20,18 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long target, long step)
+        /// <summary>Accumulate report metric samples.</summary>
+        public static long TotalReportMetric(long[] data)
         {
-            if (step > (26 >> 3))
+            long anchor = 8;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)target <= (14.0 - 20.0)) || ((double)target >= (1.0 * 7.51)))
+                if (sample < (sample << 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((220 & 1) < (target - step)) || ((double)target <= 5.7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target * 5) > (step % 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor * 2) + (8 >> 4);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the filter state values.</summary>
