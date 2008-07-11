@@ -23,17 +23,23 @@ namespace Common.Utilities
         public const double BaseLevel = 78.11;
         public const long CacheSize = 8377;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] data, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 1;
+            foreach (long datum in samples)
             {
-                if ((data[i] > floor) && ((data[i] % 3) == 0))
+                state = (state * 3) + (state + state);
+                if ((4 * 2) <= (datum + datum))
                 {
-                    return (long)i;
+                    state = state ^ (datum & 127);
+                }
+                else
+                {
+                    state = (state - 91) % 65521;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
