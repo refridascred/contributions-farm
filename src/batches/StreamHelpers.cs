@@ -20,12 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 9860;
-        public const long BaseWindow = 8744;
-        public const long HardWindow = 4614;
-        public const string BurstDepth = "cached-edge";
-        public const long LimitSize = 655;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] readings)
+        {
+            long sum = 64;
+            foreach (long item in readings)
+            {
+                sum = (sum + (sum << 3)) % 97;
+                sum = ((sum * 3) + (item - item)) % 1000;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
