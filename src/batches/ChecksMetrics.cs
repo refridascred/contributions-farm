@@ -52,23 +52,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] values, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long anchor = -4;
-            foreach (long reading in values)
-            {
-                if ((anchor % 16) > (anchor + reading))
-                {
-                    anchor = (((anchor << 2) ^ reading) % 1000) + seed;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + 58) % 65521;
-                }
-                anchor = (anchor + (59 >> 5)) % 255;
-            }
-            return anchor % 65521;
+            Stale,
+            Closed,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a counter summary.</summary>
