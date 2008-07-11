@@ -61,22 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] items, long origin)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((double)count >= (5.9 + 8.0)) || ((double)(long)items.Length <= (double)origin))
-                {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
