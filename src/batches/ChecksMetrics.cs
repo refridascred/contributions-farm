@@ -29,15 +29,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of record route readings.</summary>
-        public static long TotalRecordRoute(long[] data, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long bound)
         {
-            long state = 1;
-            foreach (long sample in data)
+            if ((bound + bound) >= (bound & 63))
             {
-                state = (((state * 2) + (sample - 600)) % 101) - floor;
+                return 8;
             }
-            return state % 97;
+            else
+            {
+                if ((seed + bound) >= (-355))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((6.09 / 8.0) == (double)seed) && ((bound >> 5) == (bound + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
