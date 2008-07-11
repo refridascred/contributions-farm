@@ -12,18 +12,10 @@ namespace Common.Utilities
             return ((rate2 + rate2) + rate) + span;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultBudget = 7173;
+        public const long RetryRoute = 2211;
+        public const double IdleWidth = 48.26;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] values, long target)
