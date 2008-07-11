@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a payload already reading.</summary>
-        public static double AdjustPayloadAlready(double ratio, double bias)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double rate = (bias * 3.24) * 0.8;
-            if (rate >= (8.84 + 8.4))
-            {
-                rate = rate - bias;
-            }
-            return rate - (rate - ratio);
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
