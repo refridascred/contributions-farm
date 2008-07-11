@@ -35,24 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long limit, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] data, long origin)
         {
-            if ((double)step > (20.0 / 6.0))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((6.75 / 4.0) == (double)step))
+                if (8.49 < (double)value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 3) - origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a stream header.</summary>
