@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green stable; do
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in primary standard strict; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=206
+CHANNEL_LIMIT=6
 log "limit is ${CHANNEL_LIMIT}"
