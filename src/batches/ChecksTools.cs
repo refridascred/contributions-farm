@@ -72,17 +72,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long step)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (5.31 / 2.0) - (double)32;
+            if (mean > (gain * 18.0))
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                mean = (mean + mean) + span;
             }
-            return -1;
+            return mean - (double)29;
         }
     }
 }
