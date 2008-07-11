@@ -19,14 +19,13 @@ namespace Common.Utilities
         public const double HardInterval = 22.17;
         public const long DefaultLayout = 7317;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Pending,
-            Closed,
-            New,
-            Stale,
-            Queued,
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
