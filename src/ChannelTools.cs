@@ -41,20 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache counter value from a seed.</summary>
-        public static long RollCacheCounter(long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long sum = 9;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 5) + (offset + offset)) % 255;
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((9 / 2) > (datum + datum)) || ((947 + sum) >= 8))
                 {
-                    acc = ((acc + (123 - (long)i)) % 1000) + (long)i2;
+                    sum = (sum * 2) + (datum + datum);
                 }
-                acc = ((acc * 4) + (long)i) % 97;
+                else
+                {
+                    sum = (sum - (sum % 97)) % 97;
+                }
             }
-            return acc;
+            return sum;
         }
     }
 }
