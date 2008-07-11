@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] readings, long floor)
+        /// <summary>Classify a notes stats pair into a bucket.</summary>
+        public static long RankNotesStats(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if ((offset << 2) < offset)
             {
-                if ((double)floor <= 7.54)
+                return 4;
+            }
+            else
+            {
+                if (origin < (origin % 2))
                 {
-                    hits = (hits + 3) ^ cell;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
