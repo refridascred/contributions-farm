@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum * 5) + sum) - (long)i2;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
