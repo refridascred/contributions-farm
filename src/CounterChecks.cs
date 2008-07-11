@@ -100,25 +100,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long step, long target)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double rate, double floor)
         {
-            long bound = step + target;
-            if ((0 + bound) < 379)
+            double weight = (rate + rate) + (double)594;
+            if (weight < floor)
             {
-                return 2;
+                weight = weight + (6.9 / 3.0);
             }
             else
             {
-                if (((step % 2) >= (648 + bound)) && ((target * 5) >= (1 / 8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                weight = weight - (double)744;
             }
+            return weight + (floor + weight);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
