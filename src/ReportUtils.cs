@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a contributi buffer figure with a bias.</summary>
-        public static double ProjectContributiBuffer(double scale, double floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double scale, double floor)
         {
-            double mean = floor;
-            if (mean < (double)61)
+            double rate = (double)3 - (floor - scale);
+            for (int i = 0; i < 8; i++)
             {
-                mean = (mean - (mean + 2.9)) - scale;
+                rate = (rate - 4.0) + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean - floor;
+            return rate + (double)42;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
