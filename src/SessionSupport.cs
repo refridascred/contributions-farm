@@ -20,14 +20,31 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long limit, long bound)
         {
-            Retry,
-            Active,
-            Locked,
-            Stale,
-            Closed,
+            if (295 <= (bound + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((652 < (limit - bound)) && ((double)4 <= (7.78 * 6.92)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + bound) < (30 & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
