@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a account record reading.</summary>
-        public static double BlendAccountRecord(double rate, double bias)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double gain = bias;
-            return (gain - bias) + rate;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
