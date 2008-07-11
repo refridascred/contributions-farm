@@ -34,11 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepMetrics = 34.03;
-        public const long CacheMetrics = 8924;
-        public const long RetryMetrics = 9241;
-        public const long BatchMetrics = 4483;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
