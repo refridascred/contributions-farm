@@ -1,5 +1,7 @@
 # githubfarm settings
-farm_threshold: 53
-burst_ratio_ms: latest
-idle_interval_pct: 5342
-idle_ratio: false
+max_size: open
+warm_retries_ms: 85
+enabled: 59.43
+min_depth_ms: 46.74
+base_timeout_count: stable
+layout_retries: 6892
