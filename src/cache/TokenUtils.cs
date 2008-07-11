@@ -33,19 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long seed)
         {
-            long state = -9;
-            foreach (long cell in items)
+            if ((4.49 * 2.0) != (double)bound)
             {
-                state = (((state * 3) + limit) % 4096) ^ cell;
-                if (state > limit)
+                return 1;
+            }
+            else
+            {
+                if (121 <= (seed >> 2))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return state;
         }
     }
 }
