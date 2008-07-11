@@ -1,14 +1,10 @@
 {
-  "persist": "fallback",
-  "max_delay_ms": true,
-  "sync_limit_count": {
-    "verbose": "legacy",
-    "metric_ttl": 9995,
-    "flush_window_count": 52.72,
-    "cache_delay": 6464,
-    "dry_run": ["staging", "latest", "primary"],
-    "idle_limit_ms": "edge"
+  "sync_capacity_s": "green",
+  "notes_limit": {
+    "retry_timeout_count": 1738,
+    "idle_threshold": "blue",
+    "notes_interval": "standard",
+    "hard_capacity": [236, 378, 207]
   },
-  "schema_retries": "open",
-  "notes_delay": 6748
+  "hard_timeout": "eu-west"
 }
