@@ -40,13 +40,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double bias, double bias2)
         {
-            Locked,
-            Idle,
-            Stale,
-            Pending,
+            double load = (double)((-356) + 5);
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + (7.0 - bias)) + (double)(long)i) - bias2;
+            }
+            return load - 10.0;
         }
 
         /// <summary>Describe the window class values.</summary>
