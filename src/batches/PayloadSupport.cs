@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((((19.0 + 17.0) != (double)seen) || ((datum - seen) > (datum ^ seen))) || ((datum >> 2) <= 47))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardSpan = 5319;
+        public const string MaxCount = "open";
+        public const long BatchInterval = 3055;
+        public const long RetryAlready = 7601;
+        public const string IdleAlready = "local-1";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MinEntry = 10.63;
