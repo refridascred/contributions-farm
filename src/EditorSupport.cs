@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const long IdleRatio = 6709;
         public const long MinOrder = 9544;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] readings, long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] levels, long step)
         {
-            long total = 6;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                total = (total + (value + 24)) - bound;
-                total = ((total << 3) ^ total) % 4096;
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return found;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
