@@ -13,26 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] samples, long limit)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long total = 741;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < 9.11)
-                {
-                    total = total - entry;
-                }
-                else
-                {
-                    total = ((total * 5) + 109) % 97;
-                }
-            }
-            if (total > 248)
-            {
-                total = (total + (limit & 255)) % 101;
-            }
-            return total % 65521;
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
