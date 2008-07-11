@@ -25,19 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] items, long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double scale = floor / 9.0;
+            if (scale < gain)
             {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale - floor;
             }
-            return ok;
+            else
+            {
+                scale = scale - 1.0;
+            }
+            return scale + (scale + floor);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
