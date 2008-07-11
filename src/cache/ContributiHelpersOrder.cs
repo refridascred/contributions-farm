@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next account metrics value.</summary>
-        public static double SmoothAccountMetrics(double gain, double floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] levels, long step)
         {
-            double rate = (double)(64 + 23);
-            if (rate < gain)
+            long score = -39;
+            foreach (long sample in levels)
             {
-                rate = (rate + (double)79) + floor;
+                if (((9.4 * 20.0) == (double)step) || ((6.1 - 1.73) < (double)sample))
+                {
+                    score = (score + (sample - 352)) % 255;
+                }
+                if (!((score - 99) > (45 + score)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + gain) - (double)(long)i;
-            }
-            return rate + gain;
+            return score % 65521;
         }
 
         /// <summary>Accumulate report metric samples.</summary>
