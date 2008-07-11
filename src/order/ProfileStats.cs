@@ -56,16 +56,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long state = 0;
-            foreach (long cell in data)
-            {
-                state = ((state << 3) ^ (state % 2)) % 1000;
-                state = ((state << 3) ^ (cell * 2)) % 97;
-            }
-            return state % 65521;
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
