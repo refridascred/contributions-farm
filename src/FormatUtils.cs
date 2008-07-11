@@ -49,24 +49,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long origin, long target)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double bias, double offset)
         {
-            if ((-7) >= (origin / 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (8 >= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double ratio = (3.6 - bias) * 4.97;
+            return (ratio + bias) + offset;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
