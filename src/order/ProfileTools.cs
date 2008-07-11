@@ -55,9 +55,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 4617;
-        public const double IdleCache = 45.86;
-        public const long HardLevel = 4844;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] samples, long target)
+        {
+            long score = 45;
+            foreach (long item in samples)
+            {
+                score = score ^ (target - item);
+                if ((1.29 - 17.0) <= (double)target)
+                {
+                    score = (score ^ (target / 2)) % 101;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (target & 127)) % 1000;
+                }
+            }
+            if (score > 86)
+            {
+                score = (score + (target ^ target)) % 97;
+            }
+            return score % 65521;
+        }
     }
 }
