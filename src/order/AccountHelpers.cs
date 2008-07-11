@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
