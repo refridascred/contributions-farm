@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 49.23;
-        public const long LimitSupport = 5932;
-        public const long DefaultSupport = 2161;
-        public const long SoftBudget = 7689;
-        public const long MinSupport = 2143;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowLevel = 9453;
+        public const long CacheFormat = 7046;
+        public const double BatchFormat = 0.11;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] series, long target)
