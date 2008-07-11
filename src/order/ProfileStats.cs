@@ -42,21 +42,13 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Match up checks token samples.</summary>
-        public static long CompareChecksTokenCount(long[] readings)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
