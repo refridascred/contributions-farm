@@ -59,10 +59,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 82.47;
-        public const long BaseAlready = 2165;
-        public const long MinAlready = 1283;
-        public const double IdleInterval = 6.38;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long bound, long seed)
+        {
+            long step = bound + seed;
+            if ((seed ^ bound) < (seed + 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed / 9) == (seed - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step - seed) != (seed % 60))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((19 * 3) < (seed * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
