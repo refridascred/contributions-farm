@@ -36,18 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metric record pairs that satisfy a relation.</summary>
-        public static long MatchMetricRecordCount(long[] readings)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] series, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (offset >= (offset >> 4))
                 {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) - item;
                 }
             }
             return seen;
