@@ -62,32 +62,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a support order pair into a bucket.</summary>
-        public static long GradeSupportOrder(long offset, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values, long floor)
         {
-            long lane = offset + limit;
-            if ((offset % 8) < lane)
+            long carry = 1;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (4.3 <= (double)offset)
+                if ((floor * 3) != (value >> 4))
                 {
-                    return 7;
+                    carry = (carry * 4) + carry;
                 }
                 else
                 {
-                    if ((2.7 * 1.0) >= (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = (carry + value) % 1000;
                 }
             }
+            return carry;
         }
     }
 }
