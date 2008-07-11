@@ -72,19 +72,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format cluster entry stays within the limit.</summary>
-        public static bool ValidateFormatClusterRange(long[] series, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = mark - (bound * 3);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Project the next command stats value.</summary>
