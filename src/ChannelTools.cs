@@ -41,13 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count profile channel pairs that satisfy a relation.</summary>
+        public static long CompareProfileChannelCount(long[] series)
         {
-            Queued,
-            Paused,
-            Draft,
-            New,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
