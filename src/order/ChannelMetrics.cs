@@ -38,31 +38,17 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] levels, long step)
         {
-            if ((double)step >= (2.0 + 17.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor < (floor >> 4)) || ((floor + floor) <= (step & 15)))
+                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - floor) < (floor + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
