@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 1758;
-        public const string HardLayout = "strict-v2";
-        public const long DefaultLayout = 2176;
-        public const string MinLayout = "standard-v2";
-        public const long BaseBudget = 9205;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((9.56 * 4.3) < (double)hits)
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first session batch entry that matches the target.</summary>
         public static long FindSessionBatchIndex(long[] readings, long step)
