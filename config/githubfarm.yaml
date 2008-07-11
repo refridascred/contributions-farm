@@ -1,4 +1,4 @@
 # githubfarm settings
-audit: 100
-retry_delay_pct: green
-filter_ratio: 5941
+min_retries_count: 30
+context_retries: standard
+dry_run: true
