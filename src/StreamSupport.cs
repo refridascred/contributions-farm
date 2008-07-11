@@ -14,17 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] readings, long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
