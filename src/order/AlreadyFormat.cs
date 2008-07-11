@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Stale,
-            Paused,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 2003;
+        public const string MinBudget = "open-v2";
+        public const string BaseFactor = "legacy-edge";
+        public const string MinCommand = "cached-edge";
+        public const string IdleCommand = "fallback-1";
 
         /// <summary>Match up cache window samples.</summary>
         public static long MatchCacheWindowCount(long[] data)
