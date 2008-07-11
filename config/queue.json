@@ -1,8 +1,5 @@
 {
-  "dry_run": 1463,
-  "batch_threshold_count": "staging",
-  "support_capacity": "latest",
-  "layout_interval": "primary",
-  "base_window_ms": 9306,
-  "default_limit": ["open", "eu-west"]
+  "soft_delay_count": [46, 70],
+  "idle_capacity_pct": 26.83,
+  "readonly": 38.11
 }
