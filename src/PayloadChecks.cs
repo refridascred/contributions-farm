@@ -47,18 +47,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] readings, long floor)
+        /// <summary>Iterate the record account series from a seed.</summary>
+        public static long RollRecordAccount(long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((floor - (long)readings.Length) != (4 + reading))
-                {
-                    matches = matches + 3;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
