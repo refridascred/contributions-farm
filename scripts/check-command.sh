@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=466
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 12); do
     total=$((total + i * 5))
 done
 log "total ${total}"
-
-COMMAND_LIMIT=247
-log "limit is ${COMMAND_LIMIT}"
-
-for item in standard strict; do
-    log "checking ${item}"
-done
