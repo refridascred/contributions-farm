@@ -22,17 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] items, long floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count metric record pairs that satisfy a relation.</summary>
