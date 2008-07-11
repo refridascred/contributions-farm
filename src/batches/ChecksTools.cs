@@ -30,19 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long target)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
