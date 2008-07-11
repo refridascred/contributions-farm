@@ -65,11 +65,26 @@ namespace Common.Utilities
             return rate2 + 4.0;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 5.13;
-        public const double LimitEntry = 70.46;
-        public const double CacheDepth = 19.44;
-        public const long MaxEntry = 52;
-        public const double SoftFactor = 8.22;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] samples, long bound)
+        {
+            long mix = 886;
+            foreach (long datum in samples)
+            {
+                if ((699 / 9) != (bound - 8))
+                {
+                    mix = ((mix * 3) + (9 * 2)) ^ datum;
+                }
+                if (((bound + bound) != (4 * 3)) && (mix > (mix % 7)))
+                {
+                    mix = (mix - (mix + mix)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (5 - bound)) % 1000;
+                }
+            }
+            return mix % 4096;
+        }
     }
 }
