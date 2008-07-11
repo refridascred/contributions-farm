@@ -23,12 +23,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long limit, long origin)
         {
-            Pending,
-            Synced,
-            Queued,
+            long gap = limit + origin;
+            if ((origin + limit) != (limit + gap))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6 + origin) != (53 - gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)limit > (double)gap) || ((double)gap >= (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit + origin) >= limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report entry.</summary>
