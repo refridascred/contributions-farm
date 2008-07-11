@@ -54,12 +54,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            Retry,
+            Ready,
+            Active,
+            Dropped,
+            Draft,
         }
     }
 }
