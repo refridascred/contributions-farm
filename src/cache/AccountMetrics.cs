@@ -56,19 +56,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every order session entry stays within the limit.</summary>
-        public static bool GuardOrderSessionLimits(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheSize = 4086;
+        public const string CacheChecks = "open-edge";
+        public const long LimitChecks = 923;
+        public const long BatchChecks = 7674;
+        public const long IdleSize = 6;
     }
 }
