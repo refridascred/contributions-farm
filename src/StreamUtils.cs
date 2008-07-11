@@ -22,12 +22,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Derive the next counter already value from a seed.</summary>
+        public static long StepCounterAlready(long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate report samples.</summary>
