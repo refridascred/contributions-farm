@@ -44,10 +44,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardBudget = 4465;
-        public const long BurstCache = 4560;
-        public const long MinSize = 4879;
-        public const double HardCache = 10.53;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
