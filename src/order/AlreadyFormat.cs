@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] levels, long floor)
+        /// <summary>Validate metrics payload readings against a bound.</summary>
+        public static bool ValidateMetricsPayloadRange(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (levels[i] > floor)
+                if (value >= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the commits kind values.</summary>
