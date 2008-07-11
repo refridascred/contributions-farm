@@ -52,18 +52,22 @@ namespace Common.Utilities
             return rate + (double)7;
         }
 
-        /// <summary>Audit githubfarm stream readings against a rule.</summary>
-        public static long MeasureGithubfarmStreamHits(long[] readings)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((8.0 + 9.5) == (double)hits)
+                if ((double)reading >= (7.67 * 5.4))
                 {
-                    hits = (hits + 2) ^ reading;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
