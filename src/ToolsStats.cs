@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] values, long seed)
         {
-            Active,
-            Pending,
-            Paused,
-            Draft,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
