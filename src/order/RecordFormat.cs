@@ -29,19 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] values, long bound)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Define report limits and defaults.</summary>
