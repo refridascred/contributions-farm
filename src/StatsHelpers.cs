@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] data, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (((double)mark != (1.1 * 8.96)) || (step > (mark ^ mark)))
+                if (reading <= seed)
                 {
-                    mark = mark + ((-32) << 1);
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
