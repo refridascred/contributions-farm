@@ -1,7 +1,15 @@
 {
-  "hard_limit_s": ["staging", "eu-west", "primary"],
-  "buffer_interval": "staging",
-  "poll_limit_pct": 8980,
-  "commits_capacity": 7.18,
-  "format_ratio": true
+  "min_timeout": ["eu-west", "fallback"],
+  "persist": "local",
+  "cache_threshold": 0.91,
+  "max_limit_pct": [88, 125, 214],
+  "retry_delay_s": 500,
+  "hard_depth_pct": {
+    "batch_threshold_s": "fallback",
+    "support_capacity": 17.96,
+    "readonly": [398, 110],
+    "default_depth": 68,
+    "enabled": true,
+    "retry_size_ms": false
+  }
 }
