@@ -32,19 +32,10 @@ namespace Common.Utilities
         public const long WindowContributi = 7997;
         public const long WindowScore = 1899;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "staging-1";
+        public const long RetryScore = 9546;
+        public const string StepOrder = "local-edge";
+        public const string BaseRatio = "strict";
     }
 }
