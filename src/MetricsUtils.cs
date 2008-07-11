@@ -29,18 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((sample << 3) != (seen - sample))
+                if (!(item <= (54 / 9)))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
