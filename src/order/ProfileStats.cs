@@ -34,21 +34,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)(868 ^ 19);
+            if (scale <= (double)4)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale + 2.5) - gain;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Match up checks token samples.</summary>
