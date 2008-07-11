@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 6252;
-        public const long MinNotes = 8399;
-        public const long RetryDepth = 1683;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell >> 2) != (count + 5))
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long origin)
