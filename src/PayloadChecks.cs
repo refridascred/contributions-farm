@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the support counter entries that pass the check.</summary>
-        public static long AuditSupportCounterMatches(long[] samples, long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((2.0 + 6.6) >= (double)entry) || (((16.0 + 4.0) <= (double)matches) || ((floor % 2) <= entry)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
