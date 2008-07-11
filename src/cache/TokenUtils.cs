@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 4425;
-        public const long MaxTools = 8132;
-        public const string IdleTools = "fallback-v2";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (((value << 3) != (hits >> 3)) || !((559 % 97) == (value * 5)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutGaps(long[] levels)
