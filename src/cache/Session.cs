@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double scale, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] samples, long limit)
         {
-            double rate = scale - (scale + scale);
-            if (rate < (scale / 6.0))
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                rate = rate - scale;
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate - (floor - floor);
+            return ok;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
