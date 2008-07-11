@@ -52,10 +52,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCount = "alpha-edge";
-        public const long StepFactor = 8206;
-        public const long HardCount = 4104;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitCount = 1526;
+        public const double BurstFactor = 80.1;
+        public const double WindowRatio = 10.3;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LocateCounterIndex(long[] data, long seed)
