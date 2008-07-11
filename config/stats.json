@@ -1,5 +1,11 @@
 {
-  "idle_delay_count": 15.73,
-  "enabled": 100,
-  "hard_timeout_pct": ["legacy", "edge", "strict", "fallback"]
+  "base_ratio_pct": "cached",
+  "cache_limit_pct": 100,
+  "layout_retries": [350, 301, 436, 59],
+  "readonly": false,
+  "poll_timeout": {
+    "hard_ttl_ms": "green",
+    "support_threshold": 88.14,
+    "schema_ttl": 100
+  }
 }
