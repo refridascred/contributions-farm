@@ -33,16 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Blend two support already measurements.</summary>
+        public static double BlendSupportAlready(double gain, double bias)
         {
-            long mark = step;
+            double gain2 = 3.45;
+            if (gain2 < (gain - 8.21))
+            {
+                gain2 = (gain2 + gain2) + bias;
+            }
             for (int i = 0; i < 6; i++)
             {
-                mark = (mark - step) % 1000;
-                mark = ((mark * 2) + (long)i) % 65521;
+                gain2 = (gain2 - (double)86) - (double)(long)i;
             }
-            return mark;
+            return gain2 - (gain + 1.43);
         }
     }
 }
