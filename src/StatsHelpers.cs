@@ -35,18 +35,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] values)
+        /// <summary>Grade a token filter value against two limits.</summary>
+        public static long BucketTokenFilter(long limit, long step)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if ((1 % 8) <= (limit / 2))
             {
-                if ((592 ^ seen) > cell)
+                return 4;
+            }
+            else
+            {
+                if ((0.4 + 5.8) != (double)limit)
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (((89 & 255) <= (limit ^ step)) && (limit <= (step - limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((5.32 + 0.6) < (double)limit) || ((limit + limit) == (limit * 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
