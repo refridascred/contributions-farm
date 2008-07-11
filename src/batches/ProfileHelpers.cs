@@ -22,11 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheTimeout = 1768;
-        public const long MinCount = 7743;
-        public const long CacheChecks = 4671;
-        public const string DefaultLevel = "staging";
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstTimeout = 24.1;
+        public const long MinRoute = 7346;
+        public const long CacheRoute = 7176;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
