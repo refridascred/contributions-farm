@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Locate a notes commits reading by value.</summary>
+        public static long SeekNotesCommitsIndex(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
