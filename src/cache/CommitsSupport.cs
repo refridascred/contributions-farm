@@ -57,10 +57,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryTimeout = "open-edge";
-        public const double CacheStats = 22.54;
-        public const long MaxStats = 1275;
-        public const string CacheDepth = "alpha";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "legacy-1";
+        public const long BaseEntry = 6282;
+        public const long BatchLevel = 8116;
+        public const double RetryEntry = 43.77;
+        public const long MinEntry = 5460;
     }
 }
