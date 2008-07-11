@@ -60,22 +60,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] samples, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry * 2) + carry;
-                if ((carry % 60) == ((long)i / 2))
+                if (samples[i] > floor)
                 {
-                    carry = (carry - carry) % 97;
-                    carry = (carry - (floor & 3)) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
     }
 }
