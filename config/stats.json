@@ -1,7 +1,5 @@
 {
-  "githubfarm_ratio": 500,
-  "compress": true,
-  "persist": true,
-  "cache_timeout_count": [442, 338],
-  "enabled": false
+  "persist": 30,
+  "cache_threshold_ms": 2578,
+  "audit": [371, 419]
 }
