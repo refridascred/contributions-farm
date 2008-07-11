@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] levels, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((levels[i] > target) && ((levels[i] % 3) != 0))
+                if (entry > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
