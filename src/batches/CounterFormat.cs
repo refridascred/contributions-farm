@@ -30,11 +30,18 @@ namespace Common.Utilities
             return scale + (scale * 8.8);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "strict";
-        public const long SoftRoute = 103;
-        public const long HardRoute = 4028;
-        public const double BurstRoute = 16.29;
-        public const string DefaultInterval = "stable-edge";
+        /// <summary>Measure how many batch window samples are out of range.</summary>
+        public static long CountBatchWindowOutliers(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (double)target)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
