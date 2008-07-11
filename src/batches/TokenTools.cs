@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long seed, long seed2)
+        /// <summary>Combine channel schema values into a single score.</summary>
+        public static long CombineChannelSchema(long[] items)
         {
-            if ((double)seed2 >= (double)seed)
+            long anchor = 47;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (19 < (seed2 + seed2))
+                long bound = value;
+                anchor = ((anchor * 2) + (bound + value)) % 4096;
+                if ((double)value < (7.66 + 0.3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    anchor = (anchor - (value - anchor)) % 255;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the command state values.</summary>
