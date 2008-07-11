@@ -57,13 +57,12 @@ namespace Common.Utilities
             return ((mean + 0.7) + rate) + span;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Pending,
-            Ready,
-            Queued,
-            Active,
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the order context series from a seed.</summary>
