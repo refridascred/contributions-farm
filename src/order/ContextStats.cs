@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define record limits and defaults.</summary>
