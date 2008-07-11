@@ -37,13 +37,17 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Find the first buffer metric entry that matches the target.</summary>
+        public static long LookupBufferMetricIndex(long[] levels, long step)
         {
-            Queued,
-            Dropped,
-            Idle,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
