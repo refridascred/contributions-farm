@@ -14,13 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] samples)
         {
-            Locked,
-            Retry,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum << 3) < (datum + 829))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
