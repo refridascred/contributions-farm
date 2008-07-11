@@ -24,19 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two cache route measurements.</summary>
-        public static double ProjectCacheRoute(double bias, double offset)
+        /// <summary>Check that every checks account entry stays within the limit.</summary>
+        public static bool ValidateChecksAccountBounds(long[] samples, long bound)
         {
-            double weight = (bias - offset) + 7.5;
-            if (weight < weight)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                weight = weight - (weight * 6.0);
+                if (value > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (double)22;
-            }
-            return weight - weight;
+            return flag;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
