@@ -32,10 +32,10 @@ namespace Common.Utilities
         public const double BurstTools = 47.54;
         public const string WindowTools = "open-edge";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitScore = "local";
-        public const long DefaultBudget = 1856;
-        public const double SoftFormat = 91.85;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "stable-1";
+        public const double IdleRoute = 4.14;
+        public const double HardRoute = 87.07;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] items)
