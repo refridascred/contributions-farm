@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank githubfarm route input into a small class.</summary>
-        public static long GradeGithubfarmRoute(long limit, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long gap = limit - origin;
-            if ((1 + origin) > limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((-970) < (gap & 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
