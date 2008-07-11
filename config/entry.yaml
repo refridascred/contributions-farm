@@ -1,10 +1,10 @@
 # entry settings
-readonly: latest
-record_threshold: open
-batches_threshold: 30
-notes_ttl: false
-base_ratio: true
-flush_capacity_pct:
-  - 140
-  - 316
-  - 276
+default_limit_pct: 7.85
+base_retries_s: primary
+flush_threshold_pct:
+  - 70
+  - 56
+  - 38
+flush_ratio: false
+hard_ttl_pct: open
+base_interval: cached
