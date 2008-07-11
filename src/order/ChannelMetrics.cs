@@ -16,19 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every checks account entry stays within the limit.</summary>
-        public static bool ValidateChecksAccountBounds(long[] samples, long bound)
+        /// <summary>Derive the next cluster metrics value from a seed.</summary>
+        public static long SeriesClusterMetrics(long bound)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (value > bound)
+                if (0.19 >= (double)(long)i)
                 {
-                    flag = false;
-                    break;
+                    total = total - bound;
+                    total = total ^ bound;
                 }
+                total = (total ^ ((long)i * 2)) % 255;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Hold a channel summary.</summary>
