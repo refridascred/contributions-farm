@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 3673;
-        public const double StepChecks = 55.68;
-        public const double MinTimeout = 81.93;
-        public const string MinSpan = "stable-edge";
-        public const long IdleChecks = 5561;
+        /// <summary>Fold a list of session batch readings.</summary>
+        public static long FoldSessionBatch(long[] items)
+        {
+            long score = 7;
+            foreach (long cell in items)
+            {
+                if ((score + score) > 5)
+                {
+                    score = (score ^ (cell % 12)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long SeriesCommand(long step)
