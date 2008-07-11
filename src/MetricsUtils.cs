@@ -35,12 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] series)
         {
-            Synced,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample << 3) != (seen - sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate graph samples.</summary>
