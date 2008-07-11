@@ -36,10 +36,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 1474;
-        public const long BatchLayout = 8101;
-        public const long DefaultLayout = 1209;
-        public const double WindowLayout = 68.21;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long floor, long limit)
+        {
+            long edge = floor - limit;
+            if ((edge >> 4) <= edge)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit > (13.0 - 4.3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((18.0 * 4.09) > (double)floor) && ((276 >> 2) <= floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
