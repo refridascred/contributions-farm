@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 8163;
+        public const double CacheDepth = 37.1;
+        public const long IdleCache = 94;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheFactor = "legacy";
