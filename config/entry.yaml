@@ -1,9 +1,24 @@
 # entry settings
-burst_timeout_s: 3005
-retry_size_s: local
-cache_ratio_ms: 41
-cache_retries:
-  - fallback
-  - local
-  - stable
-audit: edge
+warm_depth_s: standard
+enabled:
+  persist:
+    - 47
+    - 264
+  min_depth: 6346
+  strict:
+    strict: 66.17
+    compress:
+      - 383
+      - 283
+      - 353
+    enabled:
+      - 411
+      - 86
+      - 30
+  token_threshold: standard
+  idle_interval:
+    - 74
+    - 197
+    - 282
+retry_window: 13.41
+channel_delay: cached
