@@ -34,39 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token stream value against two limits.</summary>
-        public static long RankTokenStream(long target, long limit)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long edge = target ^ limit;
-            if (edge < ((-68) << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((955 + 314) < limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.68 * 4.0) <= (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + limit) >= ((-309) % 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Retry,
         }
     }
 }
