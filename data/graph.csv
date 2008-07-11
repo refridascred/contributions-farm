@@ -1,8 +1,7 @@
-id,count,weight,ratio
-1,primary,15.66,600
-2,2.08,669,standard
-3,61.5,latest,19.37
-4,20.94,48.92,primary
-5,624,86.44,57
-6,950,111,edge
-7,70,675,fallback
+id,token,level,label,ratio
+1,542,783,standard,fallback
+2,67.31,543,93.44,eu-west
+3,97.08,edge,eu-west,70.6
+4,9.98,66.44,stable,30.1
+5,770,60.06,cached,94.78
+6,691,923,769,18.2
