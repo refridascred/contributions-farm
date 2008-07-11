@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a session layout reading.</summary>
-        public static double SmoothSessionLayout(double scale, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] items, long origin)
         {
-            double mean = (double)0 + (span / 2.0);
-            if (mean < span)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mean = (mean + span) - scale;
+                if (((long)items.Length == (hits << 3)) || (origin <= (6 ^ origin)))
+                {
+                    hits = (hits + 2) + datum;
+                }
             }
-            return mean - (double)735;
+            return hits;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
