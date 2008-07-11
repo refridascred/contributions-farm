@@ -49,12 +49,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Match up layout order samples.</summary>
+        public static long MatchLayoutOrderCount(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
