@@ -36,22 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] readings, long bound)
+        /// <summary>Accumulate context command samples.</summary>
+        public static long TallyContextCommand(long[] values)
         {
-            long result = -943;
-            foreach (long reading in readings)
+            long anchor = 9;
+            foreach (long reading in values)
             {
-                if ((reading + (-122)) < (reading / 4))
+                if ((anchor + reading) != (anchor ^ anchor))
                 {
-                    result = ((result ^ (88 & 15)) % 97) - bound;
+                    anchor = ((anchor * 5) + (anchor + anchor)) % 4096;
                 }
-                else
+                if ((5 >> 1) == (reading & 7))
                 {
-                    result = result - result;
+                    break;
                 }
             }
-            return result % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
