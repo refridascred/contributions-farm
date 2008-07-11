@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Derive the next filter account value from a seed.</summary>
+        public static long IterateFilterAccount(long bound)
         {
-            Paused,
-            Retry,
-            Dropped,
-            Stale,
-            Done,
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((bound * 2) >= (bound + carry))
+                {
+                    carry = ((carry << 3) ^ 96) % 65521;
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit stream tools readings against a rule.</summary>
