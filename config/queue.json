@@ -1,8 +1,6 @@
 {
-  "order_interval": false,
-  "readonly": 23,
-  "profile_limit": 35.46,
-  "min_depth_pct": "open",
-  "min_timeout_s": "local",
-  "cache_timeout_pct": [480, 74]
+  "poll_limit_ms": [161, 393],
+  "hard_limit_pct": "staging",
+  "batch_delay": [397, 490, 230],
+  "soft_threshold_ms": "edge"
 }
