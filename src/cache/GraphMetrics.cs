@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the commits format entries that pass the check.</summary>
-        public static long AuditCommitsFormatMatches(long[] samples, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((seed ^ count) >= (long)samples.Length)
+                if (!((1 + tally) < (datum / 4)) && ((double)tally >= (7.98 / 9.0)))
                 {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
