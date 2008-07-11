@@ -14,13 +14,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Grade a commits githubfarm value against two limits.</summary>
