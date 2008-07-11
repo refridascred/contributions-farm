@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Closed,
-            Retry,
-            Paused,
-            Queued,
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a commits githubfarm value against two limits.</summary>
