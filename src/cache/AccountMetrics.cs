@@ -74,13 +74,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] levels, long floor)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the window mode values.</summary>
