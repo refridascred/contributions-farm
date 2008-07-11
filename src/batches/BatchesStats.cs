@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] items)
         {
-            Ready,
-            Queued,
-            Draft,
+            long acc = 514;
+            foreach (long reading in items)
+            {
+                acc = ((acc ^ (3 + acc)) % 1000) ^ reading;
+            }
+            if (acc < 7)
+            {
+                acc = (acc - (acc * 4)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
