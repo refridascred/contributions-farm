@@ -25,24 +25,21 @@ namespace Common.Utilities
             return rate + (scale - offset);
         }
 
-        /// <summary>Grade a schema token value against two limits.</summary>
-        public static long SortSchemaToken(long offset, long step)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            if (((offset / 7) <= 26) || ((step & 7) == (step - offset)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + offset) != (offset & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
