@@ -27,32 +27,21 @@ namespace Common.Utilities
         public const double HardInterval = 79.48;
         public const long IdleLevel = 8779;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long floor, long floor2)
+        /// <summary>Count metric record pairs that satisfy a relation.</summary>
+        public static long MatchMetricRecordCount(long[] readings)
         {
-            long delta = floor - floor2;
-            if (((delta - floor) >= (floor2 / 9)) && ((double)83 >= (double)floor))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor2 > (floor >> 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.7 * 19.0) != (double)floor2)
+                    if ((readings[i] ^ readings[j]) < 17)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a channel info.</summary>
