@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell ^ cell) > seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
