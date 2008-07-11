@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryScore = 10.02;
-        public const long MinBudget = 7595;
-        public const long StepGraph = 5865;
-        public const string HardGraph = "local";
-        public const string WindowGraph = "cached-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 4750;
+        public const string LimitEditor = "staging";
+        public const long RetryScore = 5786;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long RollCluster(long target)
