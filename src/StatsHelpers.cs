@@ -49,11 +49,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long step)
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            long slot = floor ^ step;
+            if ((11.0 / 5.0) == (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + slot) < ((-3) / 9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)slot < (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
