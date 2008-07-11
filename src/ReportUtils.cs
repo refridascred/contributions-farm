@@ -59,10 +59,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 4291;
-        public const string BurstBudget = "cached-edge";
-        public const string BatchCount = "local-edge";
-        public const long SoftChecks = 8042;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
