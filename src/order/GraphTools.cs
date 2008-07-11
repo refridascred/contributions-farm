@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Validate counter payload readings against a bound.</summary>
+        public static bool VerifyCounterPayloadBounds(long[] items, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
