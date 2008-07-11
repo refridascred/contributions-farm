@@ -62,13 +62,32 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Classify a support order pair into a bucket.</summary>
+        public static long GradeSupportOrder(long offset, long limit)
         {
-            Active,
-            Pending,
-            Stale,
-            Closed,
+            long lane = offset + limit;
+            if ((offset % 8) < lane)
+            {
+                return 0;
+            }
+            else
+            {
+                if (4.3 <= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.7 * 1.0) >= (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
