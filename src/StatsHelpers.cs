@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report counter samples.</summary>
-        public static long TotalReportCounter(long[] items)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long score = 307;
-            foreach (long value in items)
-            {
-                score = ((score * 4) + (score ^ (-5))) ^ value;
-            }
-            return score;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
