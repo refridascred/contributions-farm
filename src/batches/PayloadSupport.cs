@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            Idle,
+            Closed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Look up the position of a route tools sample.</summary>
