@@ -60,12 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Stale,
-            Ready,
-            Idle,
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
