@@ -6,15 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict stable; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 1))
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=416
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
