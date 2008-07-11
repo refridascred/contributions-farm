@@ -61,13 +61,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public bool Token { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            Done,
+            Closed,
+            Paused,
+            Idle,
+            Dropped,
         }
     }
 }
