@@ -49,23 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double rate, double bias)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] samples, long origin)
         {
-            double gain = rate + (rate - rate);
-            if (gain < (double)837)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                gain = gain - bias;
+                if (cell <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (bias * 5.8);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (gain / 2.0)) + (double)(long)i;
-            }
-            return gain - (double)2;
+            return ready;
         }
 
         /// <summary>Describe the batches state values.</summary>
