@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the report payload entries that pass the check.</summary>
-        public static long CountReportPayloadOutliers(long[] data)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double weight = offset;
+            if (weight <= 5.56)
             {
-                if ((tally << 3) >= cell)
-                {
-                    tally = tally + 2;
-                }
+                weight = weight + (gain * 9.64);
             }
-            return tally;
+            return weight - gain;
         }
 
         /// <summary>Derive the next cluster batch value from a seed.</summary>
