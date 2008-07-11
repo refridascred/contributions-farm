@@ -40,12 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 97.47;
-        public const string DefaultSize = "open-v2";
-        public const string WindowSupport = "local-edge";
-        public const long MaxSize = 6557;
-        public const double BaseSpan = 92.31;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string WindowSpan = "fallback-v2";
