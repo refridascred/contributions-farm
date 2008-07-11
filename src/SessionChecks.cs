@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] readings)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((matches + matches) < (sample * 2)) || ((197 ^ sample) <= (sample + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
