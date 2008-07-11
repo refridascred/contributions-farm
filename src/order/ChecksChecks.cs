@@ -23,25 +23,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long bound, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double rate, double offset)
         {
-            long edge = bound - origin;
-            if ((edge / 3) < (origin ^ edge))
+            double bias = (double)((-794) ^ 2);
+            for (int i = 0; i < 3; i++)
             {
-                return 8;
+                bias = (bias + (16.0 - offset)) + (double)(long)i;
             }
-            else
-            {
-                if ((double)edge == (7.6 - 6.6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return bias - (4.7 + rate);
         }
 
         /// <summary>Digest a series of report entries.</summary>
