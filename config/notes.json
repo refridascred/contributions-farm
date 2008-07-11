@@ -1,5 +1,6 @@
 {
-  "persist": "latest",
-  "contributi_retries": 22.76,
-  "cache_limit_s": 1024
+  "enabled": 5230,
+  "poll_capacity_count": "stable",
+  "queue_ratio": "strict",
+  "compress": "strict"
 }
