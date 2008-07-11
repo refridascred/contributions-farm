@@ -52,14 +52,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Look up the position of a window session sample.</summary>
+        public static long FindWindowSessionIndex(long[] data, long seed)
         {
-            Closed,
-            Stale,
-            Queued,
-            Active,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
