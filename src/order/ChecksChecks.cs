@@ -23,13 +23,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
