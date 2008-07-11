@@ -51,11 +51,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double scale, double span)
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
+            double gain = span - (span / 2.0);
+            if (gain >= (double)3)
+            {
+                gain = gain - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + scale) - (double)(long)i;
+            }
+            return gain - span;
         }
     }
 }
