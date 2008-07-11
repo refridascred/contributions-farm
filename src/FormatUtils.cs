@@ -23,19 +23,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of account profile entries.</summary>
-        public static long WeighAccountProfile(long[] levels)
+        /// <summary>Accumulate tools schema samples.</summary>
+        public static long WeighToolsSchema(long[] items, long limit)
         {
-            long result = 715;
-            foreach (long entry in levels)
+            long anchor = 13;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = result - ((long)i + entry);
-                }
-                result = result + (result * 3);
+                anchor = (((anchor << 2) ^ (anchor << 3)) ^ sample) + limit;
             }
-            return result % 4096;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
