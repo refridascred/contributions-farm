@@ -32,39 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long offset)
+        /// <summary>Measure how many command cluster samples are out of range.</summary>
+        public static long TallyCommandClusterOutliers(long[] items)
         {
-            long delta = target ^ offset;
-            if (((delta + 571) < (offset * 4)) || ((double)target < 4.58))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target <= 7.0)
+                if ((entry * 3) <= (entry - (-3)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset ^ delta) < (42 + 609)) || ((double)target > (2.2 * 5.27)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6 << 3) <= delta)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the checks class values.</summary>
