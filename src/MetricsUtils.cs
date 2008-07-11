@@ -54,22 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session githubfarm readings against a rule.</summary>
-        public static long MeasureSessionGithubfarmGaps(long[] values, long limit)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double mean = (double)(691 + 8);
+            for (int i = 0; i < 9; i++)
             {
-                if ((783 / 3) >= (reading + seen))
-                {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (((mean - (mean * 9.54)) + (double)(long)i) + ratio) + span;
             }
-            return seen;
+            return mean + (19.0 - mean);
         }
     }
 }
