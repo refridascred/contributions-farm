@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] data, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (entry != origin)
+                if (reading != step)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
