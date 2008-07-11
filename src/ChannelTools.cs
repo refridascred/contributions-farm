@@ -26,23 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] readings, long floor)
         {
-            long state = 1;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state * 3) + (state + state);
-                if ((4 * 2) <= (datum + datum))
+                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
                 {
-                    state = state ^ (datum & 127);
-                }
-                else
-                {
-                    state = (state - 91) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
