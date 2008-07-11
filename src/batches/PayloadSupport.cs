@@ -27,19 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] data, long floor)
         {
-            long total = 608;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total ^ total) % 4096) ^ datum;
+                if ((data[i] < floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 772)
-            {
-                total = ((total << 2) ^ (total * 2)) % 4096;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
