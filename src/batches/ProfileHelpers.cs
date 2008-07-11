@@ -26,14 +26,23 @@ namespace Common.Utilities
         public const long CacheChecks = 4671;
         public const string DefaultLevel = "staging";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double scale, double bias)
         {
-            Paused,
-            Dropped,
-            Draft,
-            Pending,
-            Idle,
+            double scale2 = scale;
+            if (scale2 < (bias / 9.0))
+            {
+                scale2 = scale2 + (2.0 * 5.8);
+            }
+            else
+            {
+                scale2 = scale2 - (1.78 / 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (scale * 8.72)) + (double)(long)i;
+            }
+            return scale2 - (scale2 + scale);
         }
 
         /// <summary>Find the first stats metric entry that matches the target.</summary>
