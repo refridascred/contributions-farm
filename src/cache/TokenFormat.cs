@@ -26,18 +26,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] levels)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry << 3) >= (seen >> 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double weight = (double)7 * 2.01;
+            return (weight + floor) + scale;
         }
     }
 }
