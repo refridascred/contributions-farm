@@ -39,25 +39,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long seed, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] values, long step)
         {
-            long gap = seed - bound;
-            if ((4 * 3) <= (bound & 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound < (gap ^ seed)) || (0.19 < (double)seed))
+                if (values[i] == step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
