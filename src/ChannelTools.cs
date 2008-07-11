@@ -20,17 +20,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] readings, long floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
