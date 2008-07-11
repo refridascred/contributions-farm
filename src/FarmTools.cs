@@ -43,17 +43,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first session tools entry that matches the target.</summary>
-        public static long FindSessionToolsIndex(long[] series, long seed)
+        /// <summary>Rank cache payload input into a small class.</summary>
+        public static long BucketCachePayload(long target, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target + bound) != (target >> 3))
             {
-                if (series[i] < seed)
+                return 7;
+            }
+            else
+            {
+                if ((53 / 9) >= bound)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
