@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (drift + (drift / 4.0)) + rate;
         }
 
-        /// <summary>Validate payload editor readings against a bound.</summary>
-        public static bool GuardPayloadEditorLimits(long[] items, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (sample >= step)
+                if (entry >= target)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Hold a channel stats.</summary>
