@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long IdleFactor = 3038;
         public const string DefaultCount = "open-1";
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] samples, long offset)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the commits status values.</summary>
