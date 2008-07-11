@@ -1,14 +1,8 @@
 {
-  "schema_capacity": 7499,
-  "route_timeout": [257, 383],
-  "hard_size_count": {
-    "min_threshold_s": [258, 277],
-    "compress": 22,
-    "max_retries": "blue",
-    "sync_threshold": false,
-    "flush_window_pct": 45,
-    "stream_interval": 5014
-  },
-  "poll_interval": 30,
-  "min_threshold": 13.4
+  "min_ttl_pct": 1315,
+  "githubfarm_ratio": "fallback",
+  "enabled": "stable",
+  "batch_delay_s": 64,
+  "tools_delay": 97.59,
+  "soft_limit_ms": false
 }
