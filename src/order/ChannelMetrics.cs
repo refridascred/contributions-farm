@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a counter cache counter forward.</summary>
-        public static long StepCounterCache(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinWidth = 8722;
+        public const long StepTimeout = 5399;
+        public const long WindowScore = 1296;
+        public const long BaseScore = 8559;
+        public const long DefaultEntry = 5696;
 
         /// <summary>Derive the next cluster metrics value from a seed.</summary>
         public static long SeriesClusterMetrics(long bound)
