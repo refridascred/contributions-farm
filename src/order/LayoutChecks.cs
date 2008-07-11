@@ -33,16 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                acc = acc + ((long)i + acc);
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((hits + hits) >= (259 + 0))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Classify a record buffer pair into a bucket.</summary>
