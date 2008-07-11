@@ -54,10 +54,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 8208;
-        public const double CacheGithubfarm = 8.38;
-        public const string HardGithubfarm = "alpha-1";
-        public const long HardLevel = 764;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 1395;
+        public const double LimitSpan = 35.65;
+        public const double MaxCommits = 13.0;
+        public const long StepDepth = 6604;
     }
 }
