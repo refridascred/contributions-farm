@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 8352;
-        public const long IdleRatio = 6709;
-        public const long MinOrder = 9544;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = (carry + ((long)i + carry)) % 101;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamLimits(long[] levels, long step)
