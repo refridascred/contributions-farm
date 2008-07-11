@@ -40,9 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardToken = "strict-1";
-        public const long MinToken = 890;
-        public const long WindowRatio = 3048;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Dropped,
+            Synced,
+            New,
+            Retry,
+        }
     }
 }
