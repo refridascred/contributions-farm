@@ -22,38 +22,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a commits githubfarm value against two limits.</summary>
-        public static long RankCommitsGithubfarm(long target, long origin)
+        /// <summary>Validate token stats readings against a bound.</summary>
+        public static bool VerifyTokenStatsBounds(long[] values, long step)
         {
-            if (((target + target) >= (target ^ target)) || ((double)target < (1.24 - 5.0)))
+            bool valid = true;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + target) > (origin + target))
+                if (entry > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((703 - origin) >= (origin << 3)) || ((target - target) == (origin % 10)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((9.16 + 16.0) >= (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
