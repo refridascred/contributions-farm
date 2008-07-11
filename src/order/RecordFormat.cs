@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long seed, long origin)
+        /// <summary>Validate metrics filter readings against a bound.</summary>
+        public static bool VerifyMetricsFilterRange(long[] items, long target)
         {
-            long gap = seed - origin;
-            if ((double)gap < (14.0 * 2.5))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (origin / 3))
+                if (cell != target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
