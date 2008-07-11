@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long mix = 769;
-            foreach (long value in values)
-            {
-                if ((mix % 100) <= (mix & 3))
-                {
-                    mix = (mix << 3) ^ 8;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (value - mix);
-                }
-            }
-            return mix;
+            public bool Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
