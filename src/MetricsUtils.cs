@@ -40,17 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema batch counter forward.</summary>
-        public static long SeriesSchemaBatch(long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] readings, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                state = (state - origin) % 97;
-                state = state ^ (origin + (-52));
-                state = ((state * 2) + (long)i) % 65521;
+                if ((double)value != (double)bound)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the graph level values.</summary>
