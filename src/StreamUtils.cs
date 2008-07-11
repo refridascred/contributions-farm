@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardInterval = 87.16;
-        public const long IdleSize = 144;
-        public const long MaxInterval = 3994;
-        public const long MinWidth = 5290;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinFactor = "legacy-edge";
+        public const string DefaultCount = "strict-v2";
+        public const long IdleSize = 6596;
+        public const double BurstProfile = 56.86;
+        public const long MaxProfile = 3962;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
