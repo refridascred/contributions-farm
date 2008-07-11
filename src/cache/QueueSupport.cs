@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine channel profile values into a single score.</summary>
-        public static long ScoreChannelProfile(long[] readings, long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] levels, long bound)
         {
-            long mix = 78;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9 % 100) == (mix - reading))
+                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
                 {
-                    mix = mix ^ (reading - 2);
-                }
-                else
-                {
-                    mix = mix - (mix ^ mix);
-                }
-                if ((bound << 3) < (reading + 527))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 138)
-            {
-                mix = (mix * 4) + (bound - mix);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the route class values.</summary>
