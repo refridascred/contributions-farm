@@ -79,10 +79,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 2700;
-        public const double DefaultWindow = 78.35;
-        public const string HardInterval = "strict-1";
-        public const long LimitWindow = 6914;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
