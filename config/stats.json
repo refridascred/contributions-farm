@@ -1,14 +1,11 @@
 {
-  "cache_delay_ms": {
-    "flush_depth_ms": "open",
-    "cache_size_ms": {
-      "farm_delay": 11.08,
-      "burst_retries_s": 8.37,
-      "sync_retries": [306, 143]
-    },
-    "cluster_retries": 41.28
+  "readonly": 98.24,
+  "persist": {
+    "soft_ratio_pct": 65,
+    "warm_threshold": 938,
+    "base_retries_s": 8391,
+    "metrics_size": "open"
   },
-  "persist": "green",
-  "cache_ttl_s": "staging",
-  "soft_retries": true
+  "dry_run": [424, 438],
+  "flush_depth_pct": 48.43
 }
