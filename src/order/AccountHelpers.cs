@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate queue batches readings against a bound.</summary>
-        public static bool CheckQueueBatchesRange(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 1758;
+        public const string HardLayout = "strict-v2";
+        public const long DefaultLayout = 2176;
+        public const string MinLayout = "standard-v2";
+        public const long BaseBudget = 9205;
 
         /// <summary>Check that every batches entry entry stays within the limit.</summary>
         public static bool ValidateBatchesEntryLimits(long[] series, long seed)
