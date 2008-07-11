@@ -44,13 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Audit window command readings against a rule.</summary>
+        public static long AuditWindowCommandHits(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count >> 1) > value)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route class values.</summary>
