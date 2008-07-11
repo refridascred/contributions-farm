@@ -1,11 +1,9 @@
 # support settings
-compress:
-  - 62
-  - 239
-  - 241
-  - 418
-flush_threshold: 60
-idle_window_count: latest
-readonly: true
-retry_delay_ms: 20
-schema_capacity: true
+min_retries: fallback
+default_limit_s:
+  - 105
+  - 287
+  - 417
+  - 250
+flush_size_ms: green
+batch_window: primary
