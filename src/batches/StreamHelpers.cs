@@ -53,13 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Paused,
-            Draft,
-            Dropped,
-            Retry,
+            Failed,
+            Active,
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Locate a cache tools reading by value.</summary>
