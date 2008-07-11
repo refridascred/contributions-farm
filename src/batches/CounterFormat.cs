@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitWidth = 10.51;
-        public const double SoftBudget = 17.43;
-        public const string MaxScore = "strict";
-        public const double DefaultRatio = 1.7;
+        /// <summary>Digest a series of order account entries.</summary>
+        public static long TallyOrderAccount(long[] items)
+        {
+            long mix = 702;
+            foreach (long value in items)
+            {
+                mix = (mix << 3) ^ (value - value);
+                mix = (mix - (mix - 7)) % 1000;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Look up the position of a session stream sample.</summary>
         public static long FindSessionStreamIndex(long[] readings, long bound)
