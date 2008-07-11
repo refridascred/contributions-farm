@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] series, long limit)
         {
-            long mark = 631;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                mark = (((mark * 5) + (mark + mark)) % 97) + cell;
+                if (!((seen % 60) <= (limit + reading)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
