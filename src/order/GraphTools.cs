@@ -37,39 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long origin, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] levels, long limit)
         {
-            long diff = origin - bound;
-            if (bound > (698 - 8))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (diff > (diff & 3))
+                if (datum < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin - diff) > bound) || (diff > (origin / 6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin > (double)31)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
