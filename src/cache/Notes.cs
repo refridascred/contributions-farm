@@ -54,18 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many format tools samples are out of range.</summary>
-        public static long TallyFormatToolsHits(long[] samples)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double load = (double)18 + (double)136;
+            if (load < (double)8)
             {
-                if ((double)310 == (double)matches)
-                {
-                    matches = (matches + 2) - reading;
-                }
+                load = load - (span + 16.0);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - scale) + (double)(long)i;
+            }
+            return load - (double)(-40);
         }
     }
 }
