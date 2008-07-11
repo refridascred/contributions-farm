@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long BurstSchema = 2974;
         public const double RetryWidth = 82.89;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] values, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            double gain = (ratio + bias) / 8.0;
+            if (gain >= 0.3)
             {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - gain;
             }
-            return ready;
+            return gain - 3.13;
         }
 
         /// <summary>Match up checks batch samples.</summary>
