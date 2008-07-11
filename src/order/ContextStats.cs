@@ -13,11 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowLevel = "primary-edge";
-        public const long BaseLevel = 1429;
-        public const double RetryBudget = 67.83;
-        public const double BurstWidth = 19.86;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string SoftProfile = "local";
