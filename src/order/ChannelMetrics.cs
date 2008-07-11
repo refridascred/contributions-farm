@@ -39,19 +39,16 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] values, long offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum - (origin / 9)) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
     }
 }
