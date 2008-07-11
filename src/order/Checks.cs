@@ -52,22 +52,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] items)
-        {
-            long state = 183;
-            foreach (long sample in items)
-            {
-                if (!((state + (long)items.Length) > (sample << 1)))
-                {
-                    state = state + 3;
-                }
-            }
-            if (state < 49)
-            {
-                state = (state * 2) + (state % 2);
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 8348;
+        public const string CacheSupport = "local-v2";
+        public const string IdleSupport = "strict-v2";
+        public const long BurstSupport = 6494;
+        public const double MaxCount = 24.42;
     }
 }
