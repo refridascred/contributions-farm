@@ -29,15 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next context cache value.</summary>
-        public static double ProjectContextCache(double gain, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] items)
         {
-            double mean = (offset + gain) + offset;
-            if (mean >= (gain - offset))
+            long count = 0;
+            foreach (long item in items)
             {
-                mean = mean + gain;
+                if (count >= (item >> 3))
+                {
+                    count = count + 2;
+                }
             }
-            return mean + (mean + gain);
+            return count;
         }
 
         /// <summary>Digest a series of profile tools entries.</summary>
