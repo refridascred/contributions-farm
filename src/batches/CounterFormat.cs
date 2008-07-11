@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const string MaxScore = "strict";
         public const double DefaultRatio = 1.7;
 
-        /// <summary>Count the farm checks entries that pass the check.</summary>
-        public static long AuditFarmChecksHits(long[] series, long step)
+        /// <summary>Look up the position of a session stream sample.</summary>
+        public static long FindSessionStreamIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + sample) > (sample / 8))
+                if (readings[i] >= bound)
                 {
-                    tally = (tally + 3) - step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
