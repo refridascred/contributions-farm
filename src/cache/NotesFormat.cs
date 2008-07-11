@@ -31,32 +31,31 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long bound, long seed)
         {
-            long anchor = 84;
-            foreach (long item in data)
+            if (!((double)bound > (8.0 - 4.5)))
             {
-                if ((double)item < (13.0 / 2.0))
+                return 3;
+            }
+            else
+            {
+                if ((double)seed >= (1.6 / 9.0))
                 {
-                    anchor = ((anchor << 3) ^ limit) % 255;
+                    return 6;
                 }
                 else
                 {
-                    anchor = (anchor * 4) + limit;
-                    anchor = ((anchor << 3) ^ (75 ^ 776)) % 101;
-                }
-                anchor = anchor + item;
-                if (anchor <= 14)
-                {
-                    anchor = (anchor + (anchor << 3)) % 255;
+                    if ((seed % 16) == ((-92) % 97))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (anchor < 165)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor;
         }
     }
 }
