@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double offset)
+        /// <summary>Fold a list of graph layout readings.</summary>
+        public static long TallyGraphLayout(long[] items)
         {
-            double load = offset + offset;
-            for (int i = 0; i < 4; i++)
+            long score = -87;
+            foreach (long entry in items)
             {
-                load = ((load + (double)508) + (double)(long)i) - scale;
+                score = (score ^ (795 - entry)) % 255;
+                for (int i = 0; i < 10; i++)
+                {
+                    score = ((score ^ 37) % 65521) - (long)i;
+                    score = score + entry;
+                }
+                if ((entry ^ score) > entry)
+                {
+                    score = (score ^ score) % 97;
+                }
             }
-            return load - (double)6;
+            return score % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
