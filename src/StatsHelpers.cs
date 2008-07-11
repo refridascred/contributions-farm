@@ -44,15 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window session entries that pass the check.</summary>
-        public static long TallyWindowSessionOutliers(long[] series)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] items)
         {
             long tally = 0;
-            foreach (long value in series)
+            foreach (long value in items)
             {
-                if (value < (tally * 2))
+                if ((tally % 2) <= (tally % 12))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) - value;
                 }
             }
             return tally;
