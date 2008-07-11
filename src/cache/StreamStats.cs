@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const long LimitRoute = 1434;
         public const long CacheRoute = 9267;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
