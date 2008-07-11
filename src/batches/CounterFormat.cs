@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 7461;
-        public const long DefaultLevel = 7653;
-        public const long BaseReport = 9978;
-        public const long BaseWidth = 9498;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long step)
