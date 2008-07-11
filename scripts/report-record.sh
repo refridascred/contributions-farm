@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+mode="${1:-strict}"
 case "${mode}" in
-    legacy)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for item in stable latest cached legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
