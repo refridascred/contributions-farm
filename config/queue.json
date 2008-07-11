@@ -1,8 +1,7 @@
 {
-  "queue_threshold": "stable",
-  "min_ttl": 25.42,
-  "compress": "blue",
-  "default_size": 39.54,
-  "idle_depth": ["green", "latest", "eu-west"],
-  "default_delay_count": true
+  "sync_threshold_ms": [52, 478],
+  "notes_threshold": "fallback",
+  "soft_capacity_count": true,
+  "soft_retries_ms": ["open", "fallback", "staging"],
+  "max_threshold_pct": true
 }
