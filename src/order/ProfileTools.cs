@@ -34,18 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((44 + matches) <= (matches + cell))
                 {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
