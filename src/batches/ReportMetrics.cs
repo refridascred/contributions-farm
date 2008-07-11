@@ -28,33 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long step, long offset)
-        {
-            long bound = step - offset;
-            if ((offset >= (535 - bound)) || ((2.33 - 3.7) >= (double)offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset <= (8.0 - 6.3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step != (1.85 - 2.39))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowSize = 371;
+        public const long BaseTimeout = 155;
+        public const double MaxRatio = 4.31;
+        public const double BaseRatio = 59.06;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LookupPayloadIndex(long[] samples, long bound)
