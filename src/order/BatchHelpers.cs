@@ -41,14 +41,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] values)
         {
-            New,
-            Locked,
-            Ready,
-            Dropped,
-            Done,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum << 1) < datum)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
