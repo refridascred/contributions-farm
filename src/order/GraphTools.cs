@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of support profile entries.</summary>
-        public static long WeighSupportProfile(long[] series, long floor)
+        /// <summary>Look up the position of a commits token sample.</summary>
+        public static long FindCommitsTokenIndex(long[] data, long offset)
         {
-            long mark = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 2) + floor) - sample;
-                if ((floor + floor) != (32 - (-53)))
+                if (data[i] == offset)
                 {
-                    mark = (mark + (mark & 127)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (floor + (-39))) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
