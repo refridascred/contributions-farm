@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long offset, long seed)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double rate, double offset)
         {
-            if (offset > (offset / 8))
+            double gain = offset * 0.8;
+            if (gain < (5.0 - offset))
             {
-                return 2;
+                gain = (gain - gain) - rate;
             }
             else
             {
-                if (20 < (offset << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                gain = gain - offset;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (offset / 2.0)) + (double)(long)i;
+            }
+            return gain + (double)303;
         }
 
         /// <summary>Combine farm route values into a single score.</summary>
