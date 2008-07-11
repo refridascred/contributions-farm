@@ -53,13 +53,11 @@ namespace Common.Utilities
         public const double BatchDepth = 89.31;
         public const long WindowLevel = 3192;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Idle,
-            Synced,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "alpha-edge";
+        public const long StepWidth = 5662;
+        public const long CacheWindow = 6053;
+        public const long StepBudget = 8069;
+        public const long DefaultWindow = 2342;
     }
 }
