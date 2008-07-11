@@ -66,10 +66,22 @@ namespace Common.Utilities
         public const string BatchSpan = "legacy-edge";
         public const double BurstQueue = 66.22;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultInterval = 8649;
-        public const double MinCommits = 7.31;
-        public const long CacheWidth = 9866;
-        public const long BaseCommits = 6685;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((6 * 2) != (matches + matches))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
