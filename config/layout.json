@@ -1,8 +1,8 @@
 {
-  "compress": "standard",
-  "batches_limit": true,
-  "verbose": 94.63,
-  "flush_size_count": 48.43,
-  "warm_ttl": 56.51,
-  "default_delay": 8968
+  "cache_ratio_pct": 23,
+  "min_window_count": "edge",
+  "counter_timeout": 11.2,
+  "hard_ttl_count": 9916,
+  "route_depth": false,
+  "layout_ttl": 92
 }
