@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Project the next account metrics value.</summary>
+        public static double SmoothAccountMetrics(double gain, double floor)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public long Score { get; set; }
+            double rate = (double)(64 + 23);
+            if (rate < gain)
+            {
+                rate = (rate + (double)79) + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + gain) - (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Hold a metrics entry.</summary>
