@@ -41,11 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] values)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((((-129) ^ datum) > (83 & 127)) || (((tally + tally) <= 91) && ((datum + 449) != (tally - tally))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count buffer cache pairs that satisfy a relation.</summary>
