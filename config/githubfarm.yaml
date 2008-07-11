@@ -1,4 +1,23 @@
 # githubfarm settings
-dry_run: 9236
-base_interval_s: primary
-poll_depth_pct: 4843
+readonly:
+  - 223
+  - 117
+  - 346
+retry_interval_count: 70.88
+dry_run:
+  readonly:
+    verbose: 34
+    default_depth_ms: 3
+    warm_retries_ms:
+      - 224
+      - 27
+      - 451
+    max_size_count: true
+    soft_threshold_count: 60
+    min_retries_s: eu-west
+  base_size_s:
+    - 297
+    - 141
+    - 226
+  sync_delay: 36
+  verbose: 250
