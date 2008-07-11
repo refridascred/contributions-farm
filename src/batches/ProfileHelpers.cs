@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload command entries that pass the check.</summary>
-        public static long MeasurePayloadCommandHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((8.76 - 9.0) < (double)tally)
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepTimeout = 8831;
+        public const long HardMetric = 6906;
+        public const double MinSpan = 55.42;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
