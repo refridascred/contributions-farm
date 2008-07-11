@@ -14,10 +14,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheInterval = "strict-1";
-        public const double BaseLevel = 78.11;
-        public const long CacheSize = 8377;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (floor >= (floor % 16))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TotalFarm(long[] samples)
