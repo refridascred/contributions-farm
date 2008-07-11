@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Derive the next record layout value from a seed.</summary>
+        public static long SeriesRecordLayout(long step)
         {
-            Pending,
-            Retry,
-            Closed,
-            Locked,
+            long result = step;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Describe the route class values.</summary>
