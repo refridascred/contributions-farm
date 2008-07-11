@@ -49,13 +49,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            Active,
+            Pending,
+            Closed,
+            Synced,
+            Stale,
         }
     }
 }
