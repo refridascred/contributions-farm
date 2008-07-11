@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double offset)
         {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            double gain = ratio / 5.0;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain - gain) + (double)(long)i) + offset;
+            }
+            return gain + 14.0;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
