@@ -1,15 +1,10 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The token report groups every cache by already.
-Run the githubfarm check before changing any queue limits.
-
-Use entry settings to tune how often metric data is refreshed.
-Keep layout and window names short and lowercase.
+Keep window and batch names short and lowercase.
+The farm report groups every route by token.
 
 ## Guidelines
 
-- Review profile limits each release
-- Keep command values small
-- Document new entry fields
-- Validate context input early
+- Validate token input early
+- Prefer layout defaults
+- Log every graph change
