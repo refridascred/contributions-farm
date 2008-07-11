@@ -20,25 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long seed, long limit)
-        {
-            if ((87 + seed) >= (seed << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit - seed) < (limit + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitBudget = 4243;
+        public const long BurstEntry = 1759;
+        public const double LimitTimeout = 13.25;
+        public const double BatchInterval = 39.4;
+        public const long MinSpan = 5443;
 
         /// <summary>Accumulate format samples.</summary>
         public static long DigestFormat(long[] series, long floor)
