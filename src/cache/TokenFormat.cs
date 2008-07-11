@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] readings)
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (cell >= (tally & 127))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of metric layout readings.</summary>
