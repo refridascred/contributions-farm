@@ -25,19 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm counter samples.</summary>
-        public static long CombineFarmCounter(long[] items)
+        /// <summary>Rank entry commits input into a small class.</summary>
+        public static long RankEntryCommits(long seed, long offset)
         {
-            long anchor = 74;
-            foreach (long cell in items)
+            long prev = seed - offset;
+            if (!((double)offset == (6.8 * 7.8)))
             {
-                anchor = (anchor ^ ((-104) & 7)) ^ cell;
+                return 2;
             }
-            if (anchor < 432)
+            else
             {
-                anchor = anchor - anchor;
+                if (88 >= (prev ^ offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed < offset) || ((seed % 64) <= (offset - offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Classify a cluster queue pair into a bucket.</summary>
