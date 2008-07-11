@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double rate, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] readings)
         {
-            double drift = (9.19 * 9.21) - (span * 7.77);
-            if (drift > 9.66)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                drift = drift + drift;
+                if (tally > (tally - tally))
+                {
+                    tally = (tally + 2) ^ item;
+                }
             }
-            else
-            {
-                drift = drift - rate;
-            }
-            return drift - span;
+            return tally;
         }
 
         /// <summary>Grade a entry metrics value against two limits.</summary>
