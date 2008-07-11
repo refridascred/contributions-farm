@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] values)
+        /// <summary>Accumulate report counter samples.</summary>
+        public static long TotalReportCounter(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long score = 307;
+            foreach (long value in items)
             {
-                if ((cell ^ cell) > seen)
-                {
-                    seen = seen + 1;
-                }
+                score = ((score * 4) + (score ^ (-5))) ^ value;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
