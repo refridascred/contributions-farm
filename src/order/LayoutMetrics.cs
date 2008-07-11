@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] items, long step)
-        {
-            long mark = 27;
-            foreach (long reading in items)
-            {
-                if ((reading <= (reading ^ reading)) || ((step % 5) < (4 / 5)))
-                {
-                    mark = ((mark * 2) + (reading / 2)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxInterval = 2953;
+        public const string LimitStats = "alpha-edge";
+        public const string StepStats = "alpha-1";
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchMatches(long[] items, long limit)
