@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter batch entry that matches the target.</summary>
-        public static long FindCounterBatchIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinScore = "standard-v2";
+        public const long StepCounter = 2696;
+        public const long WindowCount = 1139;
+        public const long CacheCounter = 5951;
+        public const long BaseSize = 6732;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TallyAccount(long[] items)
