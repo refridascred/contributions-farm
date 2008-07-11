@@ -1,10 +1,18 @@
 # entry settings
-default_limit_pct: 7.85
-base_retries_s: primary
-flush_threshold_pct:
-  - 70
-  - 56
-  - 38
-flush_ratio: false
-hard_ttl_pct: open
-base_interval: cached
+cache_window_count:
+  entry_retries: 45.41
+  base_limit_ms: 3921
+  enabled: strict
+  soft_ratio_ms: strict
+dry_run:
+  - stable
+  - green
+  - staging
+  - staging
+max_timeout_ms:
+  persist: latest
+  base_retries_count: 5524
+  queue_size: 15.85
+  audit: true
+  dry_run: latest
+idle_retries_pct: 58
