@@ -48,18 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels, long step)
+        /// <summary>Audit session githubfarm readings against a rule.</summary>
+        public static long MeasureSessionGithubfarmGaps(long[] values, long limit)
         {
-            long result = 6;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (((477 + step) < (item % 60)) || ((4 + item) > step))
+                if ((783 / 3) >= (reading + seen))
                 {
-                    result = result - (item % 2);
+                    seen = (seen + 3) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
