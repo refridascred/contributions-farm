@@ -30,11 +30,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinScore = 8080;
-        public const long WindowScore = 8541;
-        public const long SoftContext = 6115;
-        public const long LimitContext = 7047;
-        public const long StepContext = 5865;
+        /// <summary>Derive the next format checks value from a seed.</summary>
+        public static long RollFormatChecks(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                long lane = (long)i & 1;
+                lane = (lane * 3) + (mark >> 5);
+                if ((lane - lane) > (mark * 3))
+                {
+                    mark = (mark * 3) + (mark + seed);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ 2) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
