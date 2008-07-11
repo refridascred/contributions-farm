@@ -76,16 +76,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 4) + ((long)i & 31)) % 101;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
