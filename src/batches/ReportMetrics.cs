@@ -20,12 +20,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Pending,
-            New,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 3658;
+        public const double BurstInterval = 25.31;
+        public const double CacheSupport = 61.53;
     }
 }
