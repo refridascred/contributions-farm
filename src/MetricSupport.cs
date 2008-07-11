@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((281 - value) < (value << 1)) && (matches > value))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitTimeout = "strict-1";
+        public const long MinMetrics = 3293;
+        public const long IdleMetrics = 65;
+        public const long StepInterval = 4765;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TotalWindow(long[] items, long floor)
