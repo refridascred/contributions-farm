@@ -1,7 +1,11 @@
 # githubfarm settings
-context_timeout: true
-sync_retries: 62
-verbose:
-  - 314
-  - 440
-  - 347
+enabled: 500
+warm_interval_pct: 3538
+soft_timeout_ms: 9300
+verbose: false
+metric_capacity:
+  tools_window: 83.92
+  base_ratio:
+    - 269
+    - 52
+  default_capacity: 1024
