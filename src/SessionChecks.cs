@@ -20,16 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Scale a token stats figure with a bias.</summary>
+        public static double SmoothTokenStats(double weight, double span)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            double mean = weight * 15.0;
+            if (mean > 2.3)
             {
-                acc = (acc + ((long)i * 5)) % 101;
-                acc = ((acc * 2) + (long)i) % 65521;
+                mean = mean - (mean * 10.0);
             }
-            return acc;
+            else
+            {
+                mean = mean + (span / 7.0);
+            }
+            return mean + span;
         }
 
         /// <summary>Classify a layout entry pair into a bucket.</summary>
