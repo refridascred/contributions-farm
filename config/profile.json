@@ -1,6 +1,16 @@
 {
-  "idle_ratio_ms": 38,
-  "enabled": 1024,
-  "idle_retries_count": ["latest", "cached", "local", "stable"],
-  "batch_size_ms": 250
+  "soft_size": "green",
+  "min_threshold": [326, 111],
+  "warm_depth_ms": 30,
+  "max_threshold": {
+    "cache_threshold": {
+      "retry_retries_s": 61.2,
+      "warm_limit_ms": 71.71,
+      "verbose": 1024,
+      "payload_delay": ["fallback", "legacy", "stable"]
+    },
+    "warm_delay": "strict",
+    "cluster_size": false,
+    "compress": [241, 377]
+  }
 }
