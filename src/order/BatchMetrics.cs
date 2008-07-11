@@ -44,15 +44,13 @@ namespace Common.Utilities
             return scale + (scale + floor);
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] levels, long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long result = 759;
-            foreach (long entry in levels)
-            {
-                result = (((result - (result - result)) % 97) ^ entry) - floor;
-            }
-            return result;
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
