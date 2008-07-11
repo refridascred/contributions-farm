@@ -52,22 +52,39 @@ namespace Common.Utilities
             return rate + (double)7;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long origin, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long diff = origin - floor;
+            if ((floor * 3) < (364 % 5))
             {
-                if ((double)reading >= (7.67 * 5.4))
+                return 4;
+            }
+            else
+            {
+                if (floor < (floor >> 1))
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (origin <= (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((diff >> 4) >= (floor + origin)) && (origin < (floor - diff)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
