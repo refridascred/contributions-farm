@@ -32,17 +32,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a support filter reading by value.</summary>
-        public static long LookupSupportFilterIndex(long[] samples, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] == target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
