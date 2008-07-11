@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
             public long Label { get; set; }
-            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first farm notes entry that matches the target.</summary>
