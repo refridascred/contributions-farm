@@ -1,10 +1,7 @@
 {
-  "poll_capacity": "blue",
-  "flush_limit_count": "legacy",
-  "commits_depth": [189, 174, 144, 278],
-  "cache_interval": {
-    "retry_delay_pct": 17.69,
-    "enabled": "open",
-    "hard_capacity_count": 61.81
-  }
+  "githubfarm_ratio": 500,
+  "compress": true,
+  "persist": true,
+  "cache_timeout_count": [442, 338],
+  "enabled": false
 }
