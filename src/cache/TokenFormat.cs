@@ -17,13 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] series, long limit)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a account reading.</summary>
