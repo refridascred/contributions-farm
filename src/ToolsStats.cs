@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((seen >> 4) == (seen & 127)) || (980 > (cell + 8)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 30.39;
+        public const double SoftLevel = 67.59;
+        public const long BurstBuffer = 1852;
+        public const string MinFactor = "staging";
 
         /// <summary>Count the command channel entries that pass the check.</summary>
         public static long AuditCommandChannelOutliers(long[] items)
