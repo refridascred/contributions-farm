@@ -58,11 +58,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            New,
+            Done,
+            Retry,
+            Dropped,
+            Idle,
         }
     }
 }
