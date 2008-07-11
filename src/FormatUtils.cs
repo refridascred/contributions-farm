@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Accumulate metric githubfarm samples.</summary>
+        public static long FoldMetricGithubfarm(long[] samples, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long result = 116;
+            foreach (long sample in samples)
             {
-                if (bound >= ((long)i << 3))
+                if ((2.67 - 6.8) >= (double)sample)
                 {
-                    break;
+                    result = result + (floor % 8);
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            if (result > 463)
+            {
+                result = result - (result >> 1);
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate tools schema samples.</summary>
