@@ -49,19 +49,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long step)
+        /// <summary>Digest a series of filter layout entries.</summary>
+        public static long WeighFilterLayout(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long result = 374;
+            foreach (long cell in series)
             {
-                if (datum > step)
+                if (!((target - cell) < (target + result)))
                 {
-                    flag = false;
-                    break;
+                    result = (result * 5) + (cell - result);
+                }
+                if ((66 / 9) < (target + 2))
+                {
+                    result = (result << 3) ^ (result % 60);
+                }
+                else
+                {
+                    result = (result * 5) + (target >> 5);
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
