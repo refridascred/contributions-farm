@@ -22,19 +22,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i / 4) > 3)
-                {
-                    total = (total - (target + total)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftLevel = 1842;
+        public const long MaxSpan = 8642;
+        public const long WindowSupport = 5977;
     }
 }
