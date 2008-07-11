@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] samples, long floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            long mark = 1;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (floor + floor)) ^ item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
