@@ -1,7 +1,12 @@
 {
-  "batches_retries": 49.64,
-  "cache_timeout_s": true,
-  "strict": 60,
-  "retry_threshold_ms": false,
-  "base_timeout_s": 54.88
+  "enabled": {
+    "soft_interval_pct": "eu-west",
+    "default_threshold_count": "cached",
+    "command_depth": true,
+    "soft_timeout_pct": 7,
+    "profile_delay": 40.98,
+    "warm_timeout_s": 64.84
+  },
+  "readonly": 100,
+  "retry_limit_s": ["eu-west", "open"]
 }
