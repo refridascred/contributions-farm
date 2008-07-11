@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowChecks = 78.24;
-        public const double BaseCount = 38.38;
-        public const long CacheChecks = 6775;
-        public const long StepBudget = 3134;
-        public const long RetryChecks = 1863;
+        /// <summary>Validate payload editor readings against a bound.</summary>
+        public static bool GuardPayloadEditorLimits(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferGaps(long[] items)
