@@ -30,13 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] values)
         {
-            Closed,
-            Retry,
-            Stale,
-            Paused,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item + 375) < item)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
