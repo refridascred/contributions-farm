@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 74.72;
-        public const string BurstWidth = "cached-v2";
-        public const long MaxCount = 6852;
-        public const long CacheBudget = 5147;
-        public const double SoftPayload = 10.08;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 41.04;
+        public const long IdleGraph = 7473;
+        public const long LimitScore = 6523;
+        public const double DefaultGraph = 41.47;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
