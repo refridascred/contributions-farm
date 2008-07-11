@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] samples, long floor)
         {
-            New,
-            Idle,
-            Ready,
+            long acc = -3;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((acc - floor) ^ (long)i) + item;
+                }
+                acc = ((acc * 5) + (acc % 97)) % 101;
+            }
+            if (acc < 178)
+            {
+                acc = acc - (acc * 5);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the queue class values.</summary>
