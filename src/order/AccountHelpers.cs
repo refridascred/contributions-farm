@@ -46,19 +46,13 @@ namespace Common.Utilities
             return (rate - floor) + gain;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] series, long step)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long result = 20;
-            foreach (long entry in series)
-            {
-                result = (result * 3) + (entry ^ result);
-                if (result >= (entry >> 4))
-                {
-                    result = result + (step / 7);
-                }
-            }
-            return result;
+            New,
+            Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define context limits and defaults.</summary>
