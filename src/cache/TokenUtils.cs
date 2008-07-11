@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!((step + datum) <= (7 << 3)) || (datum >= (seen + datum)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 4425;
+        public const long MaxTools = 8132;
+        public const string IdleTools = "fallback-v2";
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ScaleRecord(double ratio, double bias)
