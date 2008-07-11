@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate order contributi samples.</summary>
-        public static long ScoreOrderContributi(long[] data, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] data)
         {
-            long sum = 6;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((9 / 5) == (step - cell))
+                if ((double)tally >= (17.0 - 9.85))
                 {
-                    break;
-                }
-                sum = ((sum * 5) + (sum ^ cell)) % 65521;
-                if (cell < sum)
-                {
-                    sum = (sum ^ (-68)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (sum / 6)) % 97;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a window entry.</summary>
