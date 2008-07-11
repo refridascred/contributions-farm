@@ -12,16 +12,21 @@ namespace Common.Utilities
         public const double BatchSpan = 39.02;
         public const long DefaultCounter = 605;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] samples, long limit)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long limit)
         {
-            long acc = 71;
-            foreach (long item in samples)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (((acc * 5) + 40) % 65521) - limit;
-                acc = (acc ^ (item ^ 33)) % 1000;
+                carry = ((carry << 2) ^ (carry & 255)) % 1000;
+                if ((carry % 10) > (long)i)
+                {
+                    carry = (carry << 2) ^ limit;
+                }
+                carry = (carry - 935) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
