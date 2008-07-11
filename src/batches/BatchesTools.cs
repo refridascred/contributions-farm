@@ -25,15 +25,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double span)
+        /// <summary>Count editor filter pairs that satisfy a relation.</summary>
+        public static long CompareEditorFilterCount(long[] data)
         {
-            double ratio = (double)(70 - 46);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (((ratio + 18.0) + (double)(long)i) - bias) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio - (double)497;
+            return seen;
         }
     }
 }
