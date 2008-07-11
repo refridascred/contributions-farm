@@ -13,18 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] values, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long carry = 61;
+            foreach (long datum in values)
             {
-                if (((7.3 * 7.18) <= (double)floor) || ((0.34 - 0.61) <= (double)floor))
+                if ((datum + datum) > carry)
                 {
-                    seen = (seen + 3) + entry;
+                    carry = (carry + (datum / 5)) % 4096;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
