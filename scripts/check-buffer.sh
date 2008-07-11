@@ -7,15 +7,12 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=160
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-blue}"
+mode="${1:-strict}"
 case "${mode}" in
     edge)
         log "fast path"
