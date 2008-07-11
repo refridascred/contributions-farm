@@ -1,12 +1,10 @@
 # Command notes
 
-The batches report groups every metrics by window.
-When a queue fails, the batches handler retries a few times before giving up.
-A buffer that stays idle for too long is moved to the command list.
+Each command is validated before it reaches the format queue.
+Each profile is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Document new buffer fields
-- Log every tools change
-- Validate order input early
-- Review context limits each release
+- Review already limits each release
+- Document new contributi fields
+- Keep format values small
