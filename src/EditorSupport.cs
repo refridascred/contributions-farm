@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] samples, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] items, long origin)
         {
-            long score = 2;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                score = (score ^ (bound + sample)) % 65521;
-                score = (score + (9 & 31)) % 1000;
-                score = (score - (sample + (long)samples.Length)) % 101;
+                if (((-337) / 8) > origin)
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Match up support samples.</summary>
