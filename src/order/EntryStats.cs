@@ -33,21 +33,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count commits graph pairs that satisfy a relation.</summary>
-        public static long PairCommitsGraphCount(long[] items)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Pending,
+            Stale,
+            Closed,
         }
     }
 }
