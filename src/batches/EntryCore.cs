@@ -24,18 +24,32 @@ namespace Common.Utilities
         public const long CacheDepth = 7355;
         public const long BurstMetrics = 88;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] samples, long limit)
+        /// <summary>Classify a metric route pair into a bucket.</summary>
+        public static long BucketMetricRoute(long offset, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long step = offset ^ target;
+            if ((step - step) == (target - target))
             {
-                if ((datum + tally) < (datum >> 5))
+                return 0;
+            }
+            else
+            {
+                if (!((step + target) < (offset * 4)))
                 {
-                    tally = (tally + 2) - limit;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset >= (double)1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
