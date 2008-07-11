@@ -26,21 +26,22 @@ namespace Common.Utilities
         public const long BatchTimeout = 8345;
         public const long BatchScore = 567;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 425;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(acc > (acc - acc)))
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc * 5) + (686 + value)) % 97;
+                }
+                else
+                {
+                    acc = (acc - value) % 4096;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
