@@ -40,20 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] readings)
-        {
-            long score = 5;
-            foreach (long item in readings)
-            {
-                score = (score ^ ((-29) - item)) % 97;
-            }
-            if (score > 357)
-            {
-                score = ((score << 2) ^ (score << 3)) % 101;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 97.47;
+        public const string DefaultSize = "open-v2";
+        public const string WindowSupport = "local-edge";
+        public const long MaxSize = 6557;
+        public const double BaseSpan = 92.31;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string WindowSpan = "fallback-v2";
