@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] levels, long step)
-        {
-            long score = -3;
-            foreach (long value in levels)
-            {
-                if ((step << 1) > (value % 2))
-                {
-                    score = (score - value) % 101;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 42.34;
+        public const long MaxLevel = 43;
+        public const long SoftSize = 1112;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
