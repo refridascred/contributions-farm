@@ -57,19 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] data, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long mark = 143;
-            foreach (long cell in data)
-            {
-                mark = (mark - (offset - 111)) ^ cell;
-            }
-            if (mark > 71)
-            {
-                mark = ((mark * 3) + offset) % 97;
-            }
-            return mark;
+            public bool Token { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
