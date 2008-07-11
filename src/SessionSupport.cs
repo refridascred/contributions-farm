@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of window context entries.</summary>
-        public static long FoldWindowContext(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long bound)
         {
-            long state = 398;
-            foreach (long reading in samples)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state + (reading + reading)) % 97;
-                if ((double)state < 4.7)
-                {
-                    state = ((state << 3) ^ (283 % 100)) % 1000;
-                    state = ((state * 4) + (reading << 2)) % 1000;
-                }
-                state = ((state << 2) ^ (state >> 3)) % 65521;
+                result = (result << 2) ^ (bound + result);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return state % 1000;
+            return result;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
