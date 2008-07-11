@@ -65,18 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] values, long offset)
+        /// <summary>Locate a counter filter reading by value.</summary>
+        public static long LookupCounterFilterIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)hits == (7.3 / 9.0)) || ((2.9 + 3.2) < (double)offset))
+                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
                 {
-                    hits = (hits + 2) - reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
