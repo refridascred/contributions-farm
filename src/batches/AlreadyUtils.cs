@@ -61,16 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double rate, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            double gain = 9.0;
+            if (gain <= 1.4)
             {
-                total = ((total << 3) ^ ((-653) + (-428))) % 65521;
-                total = ((total * 4) + (long)i) % 1000;
+                gain = (gain + rate) - floor;
             }
-            return total;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + (gain - 7.0);
         }
     }
 }
