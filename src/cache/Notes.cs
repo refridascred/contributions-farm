@@ -13,11 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            Active,
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Accumulate report notes samples.</summary>
