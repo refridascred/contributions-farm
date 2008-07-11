@@ -61,19 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double rate, double floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] items, long origin)
         {
-            double gain = 9.0;
-            if (gain <= 1.4)
+            long count = 0;
+            foreach (long reading in items)
             {
-                gain = (gain + rate) - floor;
+                if (((double)count >= (5.9 + 8.0)) || ((double)(long)items.Length <= (double)origin))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + (gain - 7.0);
+            return count;
         }
     }
 }
