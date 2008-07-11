@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit already batches readings against a rule.</summary>
-        public static long AuditAlreadyBatchesOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum / 9) == (count + count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseSpan = "stable-1";
+        public const long MaxRecord = 6898;
+        public const string DefaultScore = "strict-1";
+        public const string MinSpan = "local-1";
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long floor, long bound)
