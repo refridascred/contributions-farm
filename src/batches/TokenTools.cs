@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
