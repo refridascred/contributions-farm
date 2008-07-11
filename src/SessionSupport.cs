@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - floor) + (double)(long)i;
             }
-            return count;
+            return load - (double)62;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
