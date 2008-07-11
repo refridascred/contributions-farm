@@ -40,12 +40,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
