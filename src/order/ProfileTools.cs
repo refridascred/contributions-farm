@@ -19,14 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinWidth = 8367;
+        public const long MinFormat = 8798;
+        public const string StepFormat = "latest-1";
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] series)
