@@ -1,6 +1,11 @@
 {
-  "batch_retries_s": 3915,
-  "editor_timeout": "edge",
-  "base_limit_count": "latest",
-  "cache_window_s": true
+  "stream_capacity": "latest",
+  "warm_ratio_ms": "green",
+  "max_depth_count": {
+    "dry_run": "open",
+    "flush_delay_ms": ["green", "edge", "green", "local"],
+    "format_ttl": "strict",
+    "commits_size": 500
+  },
+  "hard_limit_pct": true
 }
