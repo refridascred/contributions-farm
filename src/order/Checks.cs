@@ -65,22 +65,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric support entries that pass the check.</summary>
-        public static long CountMetricSupportOutliers(long[] data)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long floor, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if (floor <= (step - 23))
             {
-                if (!!((datum * 5) != (494 + 5)))
+                return 8;
+            }
+            else
+            {
+                if ((8.7 + 8.1) > (double)floor)
                 {
-                    count = count + 2;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((floor ^ floor) < 73) || ((step << 2) <= step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
