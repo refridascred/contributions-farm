@@ -19,19 +19,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double ratio, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] data, long origin)
         {
-            double scale = ratio + ratio;
-            if (scale > (scale / 5.0))
+            long sum = 195;
+            foreach (long sample in data)
             {
-                scale = (scale - (double)3) - offset;
+                sum = (((sum << 3) ^ (sum & 127)) ^ sample) - origin;
             }
-            for (int i = 0; i < 3; i++)
+            if (sum > 2)
             {
-                scale = (scale + ratio) - (double)(long)i;
+                sum = ((sum * 4) + (43 << 2)) % 101;
             }
-            return scale + (scale * 7.67);
+            return sum % 65521;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
