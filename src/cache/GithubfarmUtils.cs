@@ -14,19 +14,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
         {
-            long sum = 65;
-            foreach (long sample in data)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                sum = sum - (32 & 7);
-                if ((double)sample >= (4.0 / 6.0))
-                {
-                    break;
-                }
+                result = (result << 3) ^ floor;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
