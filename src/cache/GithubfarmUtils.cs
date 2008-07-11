@@ -53,15 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema contributi samples are out of range.</summary>
-        public static long TallySchemaContributiOutliers(long[] readings)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
             long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (996 > (tally << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + value;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
