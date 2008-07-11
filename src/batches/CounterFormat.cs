@@ -19,20 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 7461;
+        public const long DefaultLevel = 7653;
+        public const long BaseReport = 9978;
+        public const long BaseWidth = 9498;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long bound)
