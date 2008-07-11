@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] readings, long step)
         {
-            New,
-            Idle,
-            Ready,
-            Paused,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
