@@ -31,39 +31,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long floor, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] readings, long step)
         {
-            long span = floor ^ bound;
-            if ((bound + bound) == (floor - span))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span >> 1) >= 95)
+                if (cell >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (floor <= (span + 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(floor <= bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
