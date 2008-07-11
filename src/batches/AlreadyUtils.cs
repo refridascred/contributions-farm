@@ -32,13 +32,19 @@ namespace Common.Utilities
         public const long WindowContributi = 7997;
         public const long WindowScore = 1899;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] readings, long limit)
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
