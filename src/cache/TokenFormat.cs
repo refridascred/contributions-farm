@@ -26,21 +26,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Fold a list of metric layout readings.</summary>
+        public static long TallyMetricLayout(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 558;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((state + cell) > (569 >> 2))
                 {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 2) ^ (751 / 5)) % 65521;
                 }
             }
-            return tally;
+            return state % 4096;
         }
     }
 }
