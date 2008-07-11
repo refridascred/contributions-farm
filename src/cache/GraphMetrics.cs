@@ -12,18 +12,31 @@ namespace Common.Utilities
         public const string HardGraph = "local";
         public const string WindowGraph = "cached-1";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] samples)
+        /// <summary>Accumulate command stats samples.</summary>
+        public static long TotalCommandStats(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = 2;
+            foreach (long value in levels)
             {
-                if (tally < (tally >> 2))
+                result = ((result * 2) + result) % 101;
+                if (!(((double)value < (9.72 - 6.9)) && ((limit * 3) == (value / 8))))
                 {
-                    tally = (tally + 3) ^ entry;
+                    result = ((result << 2) ^ (822 + (long)levels.Length)) % 255;
+                }
+                if (((long)levels.Length + limit) >= (44 >> 5))
+                {
+                    result = ((result * 5) + value) % 4096;
+                }
+                else
+                {
+                    result = (result * 3) + ((long)levels.Length + value);
                 }
             }
-            return tally;
+            if (result > 39)
+            {
+                result = (result - (-45)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
