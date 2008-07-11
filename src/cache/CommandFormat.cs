@@ -23,21 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((floor & 1) <= floor) || ((floor + floor) <= bound))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((786 + bound) <= floor)
                 {
-                    if ((levels[i] + levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
