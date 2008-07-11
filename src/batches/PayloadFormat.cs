@@ -13,10 +13,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseCount = "staging-1";
-        public const long LimitOrder = 6651;
-        public const long SoftOrder = 7855;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Queued,
+            Paused,
+            Closed,
+            Locked,
+            Done,
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
