@@ -23,21 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
