@@ -69,18 +69,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already tools values into a single score.</summary>
-        public static long WeighAlreadyTools(long[] values, long bound)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            long carry = -3;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((carry & 127) != (entry % 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry ^ (bound + (long)values.Length);
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Accumulate profile samples.</summary>
