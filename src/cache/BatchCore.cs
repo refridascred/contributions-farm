@@ -29,32 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank layout profile input into a small class.</summary>
-        public static long ClassifyLayoutProfile(long offset, long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long prev = offset + limit;
-            if ((prev & 15) >= (1 / 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 127) <= limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.0 + 4.35) == (double)prev)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
