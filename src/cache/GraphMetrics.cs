@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] values, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long mix = -2;
+            foreach (long reading in values)
             {
-                if ((seen >> 3) <= (seen / 2))
+                if ((mix - reading) <= (reading - reading))
                 {
-                    seen = ((seen + 1) - entry) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (mix - mix) % 65521;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a already info.</summary>
