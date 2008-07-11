@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long bound, long seed)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            if (!(seed < bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound > 8.2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.4 >= (double)seed) || ((bound ^ seed) > (bound - 327)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many format report samples are out of range.</summary>
