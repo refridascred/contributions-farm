@@ -1,5 +1,5 @@
 {
-  "max_ratio_ms": "primary",
-  "compress": [263, 149, 14, 249],
-  "default_size": "staging"
+  "burst_limit_s": 100,
+  "poll_depth": 45.74,
+  "base_depth_pct": 47.69
 }
