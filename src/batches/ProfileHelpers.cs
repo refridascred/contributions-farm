@@ -20,14 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "fallback-v2";
+        public const long SoftToken = 2227;
+        public const long RetryToken = 4648;
+        public const long DefaultToken = 7136;
+        public const double CacheToken = 16.1;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool CheckRouteRange(long[] items, long origin)
