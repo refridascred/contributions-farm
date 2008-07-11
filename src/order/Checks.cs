@@ -69,14 +69,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Count the metric support entries that pass the check.</summary>
+        public static long CountMetricSupportOutliers(long[] data)
         {
-            Synced,
-            Active,
-            Done,
-            Paused,
-            Idle,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!!((datum * 5) != (494 + 5)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
