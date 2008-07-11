@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 7171;
-        public const string MinLayout = "open-v2";
-        public const double BurstLayout = 89.3;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)matches < (5.09 * 9.02))
+                {
+                    matches = ((matches + 3) + datum) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordRange(long[] readings, long origin)
