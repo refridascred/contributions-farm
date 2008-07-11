@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const long LimitCommand = 3313;
         public const string BurstCount = "fallback";
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] readings)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((3.0 + 9.7) > (double)cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a format info.</summary>
