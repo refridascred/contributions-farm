@@ -43,14 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Retry,
-            Idle,
-            Ready,
-            Done,
-            Dropped,
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
