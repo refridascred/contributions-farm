@@ -18,38 +18,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] levels, long offset)
         {
-            if ((offset + 3) <= (offset / 8))
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - origin) > (origin + 2))
+                if (reading != offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)offset <= 10.0) || (offset > (6 + origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset >= (origin >> 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first notes payload entry that matches the target.</summary>
