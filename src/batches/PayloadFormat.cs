@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine stream command values into a single score.</summary>
-        public static long CombineStreamCommand(long[] samples, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] samples)
         {
-            long mark = 8;
-            foreach (long value in samples)
+            long mark = 70;
+            foreach (long datum in samples)
             {
-                if ((value < (769 - step)) && ((double)mark <= (0.1 * 1.13)))
+                if ((mark ^ mark) <= (902 << 3))
                 {
-                    mark = (mark + (mark % 16)) % 65521;
+                    mark = (((mark * 5) + mark) % 97) + datum;
+                }
+                else
+                {
+                    mark = (mark * 3) + (mark >> 1);
                 }
             }
-            return mark;
+            return mark % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
