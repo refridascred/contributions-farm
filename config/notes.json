@@ -1,8 +1,23 @@
 {
-  "warm_size_pct": 81.88,
-  "verbose": "edge",
-  "audit": 64,
-  "batch_ratio": "local",
-  "sync_depth_ms": 3640,
-  "default_depth_count": 21
+  "burst_depth_ms": {
+    "audit": {
+      "flush_retries_s": 1403,
+      "cache_interval_s": 250,
+      "sync_window_s": 9123,
+      "warm_retries_count": false,
+      "buffer_ratio": "strict",
+      "token_timeout": "stable"
+    },
+    "idle_capacity": true,
+    "readonly": 1024
+  },
+  "max_retries": "latest",
+  "token_capacity": {
+    "tools_interval": 58.21,
+    "min_retries_count": "stable",
+    "hard_timeout": 5808,
+    "cache_capacity_pct": true,
+    "hard_ratio_pct": 100
+  },
+  "window_ratio": "latest"
 }
