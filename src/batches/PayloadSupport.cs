@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Locate a commits layout reading by value.</summary>
+        public static long FindCommitsLayoutIndex(long[] data, long floor)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
