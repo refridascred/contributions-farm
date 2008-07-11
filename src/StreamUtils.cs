@@ -42,18 +42,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheLevel = "cached";
+        public const long RetryOrder = 9774;
+        public const double WindowDepth = 30.9;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long ClassifyCommand(long origin, long step)
