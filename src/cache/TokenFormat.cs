@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] items, long seed)
         {
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
+            long total = 770;
+            foreach (long cell in items)
+            {
+                total = (((total << 3) ^ (seed - total)) % 65521) ^ cell;
+            }
+            if (total > (-3))
+            {
+                total = total ^ (long)items.Length;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
