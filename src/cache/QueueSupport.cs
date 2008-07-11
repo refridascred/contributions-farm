@@ -23,12 +23,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Draft,
-            Active,
-            Failed,
+            Done,
+            Closed,
+            Queued,
         }
     }
 }
