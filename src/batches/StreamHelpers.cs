@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long WindowQueue = 4478;
         public const double WindowBudget = 0.73;
 
-        /// <summary>Measure how many queue cluster samples are out of range.</summary>
-        public static long CountQueueClusterGaps(long[] items)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((cell - cell) >= (cell >> 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
