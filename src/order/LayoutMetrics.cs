@@ -31,11 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Locate a record batches reading by value.</summary>
+        public static long FindRecordBatchesIndex(long[] levels, long step)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
