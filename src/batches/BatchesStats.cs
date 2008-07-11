@@ -13,12 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            Draft,
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the route state values.</summary>
