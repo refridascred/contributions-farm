@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Stale,
-            Synced,
-            Pending,
+            New,
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
