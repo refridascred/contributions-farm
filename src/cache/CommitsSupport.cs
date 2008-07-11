@@ -12,18 +12,32 @@ namespace Common.Utilities
         public const string HardFilter = "latest-edge";
         public const long BatchWidth = 1835;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] samples, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long gap = origin ^ bound;
+            if ((double)gap < (double)bound)
             {
-                if ((seen + (long)samples.Length) == ((-508) * 2))
+                return 1;
+            }
+            else
+            {
+                if (!((double)bound == (7.2 * 1.93)))
                 {
-                    seen = ((seen + 1) + cell) - step;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound <= (bound * 2)) || (origin <= (72 - origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
