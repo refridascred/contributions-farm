@@ -16,18 +16,10 @@ namespace Common.Utilities
             return rate + (double)42;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepLevel = "local-1";
+        public const long MaxTimeout = 4595;
+        public const long StepRecord = 5017;
 
         /// <summary>Project the next filter value.</summary>
         public static double BlendFilter(double gain, double offset)
