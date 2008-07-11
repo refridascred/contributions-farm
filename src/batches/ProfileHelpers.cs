@@ -27,19 +27,31 @@ namespace Common.Utilities
         public const long DefaultToken = 7136;
         public const double CacheToken = 16.1;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] items, long origin)
+        /// <summary>Classify a stream record pair into a bucket.</summary>
+        public static long BucketStreamRecord(long step, long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            if ((double)origin == (11.0 + 8.81))
             {
-                if (cell < origin)
+                return 1;
+            }
+            else
+            {
+                if ((double)step >= 5.9)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin << 3) > (origin >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Find the first stats metric entry that matches the target.</summary>
