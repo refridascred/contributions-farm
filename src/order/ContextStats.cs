@@ -40,11 +40,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 53.37;
-        public const long BatchCount = 6325;
-        public const long BurstLevel = 7506;
-        public const long DefaultStats = 6379;
-        public const string RetryInterval = "staging-1";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Failed,
+            Queued,
+            Idle,
+            New,
+            Done,
+        }
     }
 }
