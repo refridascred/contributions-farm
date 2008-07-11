@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long mix = 769;
+            foreach (long value in values)
             {
-                carry = (carry + ((long)i + carry)) % 101;
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((mix % 100) <= (mix & 3))
+                {
+                    mix = (mix << 3) ^ 8;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (value - mix);
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Accumulate profile samples.</summary>
