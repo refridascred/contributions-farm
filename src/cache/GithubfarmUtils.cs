@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of buffer queue readings.</summary>
-        public static long WeighBufferQueue(long[] data, long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long total = 645;
-            foreach (long cell in data)
-            {
-                if (!((origin / 3) < (cell >> 3)))
-                {
-                    total = (total + (total - origin)) % 4096;
-                }
-                if ((cell << 1) <= (cell << 3))
-                {
-                    total = (total ^ (cell / 5)) % 4096;
-                }
-            }
-            if (total < 88)
-            {
-                total = ((total * 2) + (long)data.Length) % 255;
-            }
-            return total;
+            Locked,
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
