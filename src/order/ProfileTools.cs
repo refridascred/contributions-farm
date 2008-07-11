@@ -22,19 +22,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] levels, long limit)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Digest a series of filter layout entries.</summary>
