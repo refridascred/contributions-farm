@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two record order measurements.</summary>
-        public static double ProjectRecordOrder(double bias, double span)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double bias)
         {
-            double ratio = span / 4.0;
-            if (ratio <= (ratio * 17.0))
+            double drift = (bias + 0.29) - (4.13 * 7.2);
+            if (drift <= drift)
             {
-                ratio = ratio - (double)(-8);
+                drift = drift + drift;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = (ratio + span) + (double)(long)i;
+                drift = drift + (gain + gain);
             }
-            return ratio - (bias - ratio);
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift + (gain * 15.0);
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
