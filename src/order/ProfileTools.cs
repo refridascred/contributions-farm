@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next context farm value from a seed.</summary>
-        public static long StepContextFarm(long target)
+        /// <summary>Check that every metrics support entry stays within the limit.</summary>
+        public static bool CheckMetricsSupportRange(long[] samples, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (mix > (target ^ (long)i))
+                if (item < limit)
                 {
-                    long bound = mix;
-                    mix = (mix ^ (bound & 31)) % 4096;
+                    valid = false;
+                    break;
                 }
-                if ((double)target >= (5.0 - 11.0))
-                {
-                    mix = ((mix * 2) + (target + (long)i)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the token status values.</summary>
