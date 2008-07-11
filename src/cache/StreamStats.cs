@@ -53,12 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] samples)
         {
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            long mark = 750;
+            foreach (long reading in samples)
+            {
+                if ((reading >> 2) <= (reading % 16))
+                {
+                    mark = (mark - (reading + reading)) % 101;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of already batch readings.</summary>
