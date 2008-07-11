@@ -20,9 +20,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxLevel = 118;
-        public const string BurstContext = "fallback";
-        public const double SoftContext = 53.77;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double span)
+        {
+            double bias = 0.8;
+            if (bias <= (double)77)
+            {
+                bias = bias - span;
+            }
+            return bias - (1.0 - gain);
+        }
     }
 }
