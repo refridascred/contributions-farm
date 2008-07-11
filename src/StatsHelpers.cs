@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long BurstSchema = 2974;
         public const double RetryWidth = 82.89;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double ratio, double bias)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double gain = (ratio + bias) / 8.0;
-            if (gain >= 0.3)
-            {
-                gain = gain - gain;
-            }
-            return gain - 3.13;
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Match up checks batch samples.</summary>
