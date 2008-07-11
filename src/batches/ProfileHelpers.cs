@@ -22,10 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepTimeout = 8831;
-        public const long HardMetric = 6906;
-        public const double MinSpan = 55.42;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
