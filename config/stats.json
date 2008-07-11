@@ -1,10 +1,6 @@
 {
-  "min_delay": "local",
-  "retry_window_count": "edge",
-  "base_window_s": {
-    "strict": "local",
-    "poll_depth": 8733,
-    "enabled": 10
-  },
-  "persist": "fallback"
+  "poll_threshold_pct": "latest",
+  "poll_timeout_ms": 62.26,
+  "verbose": 94.59,
+  "min_delay": ["blue", "open"]
 }
