@@ -1,11 +1,21 @@
 {
-  "readonly": 98.24,
-  "persist": {
-    "soft_ratio_pct": 65,
-    "warm_threshold": 938,
-    "base_retries_s": 8391,
-    "metrics_size": "open"
+  "soft_ttl": {
+    "enabled": "local",
+    "poll_size_s": {
+      "min_threshold": "blue",
+      "base_retries": 1347,
+      "compress": 37,
+      "schema_delay": 80,
+      "window_timeout": 3856
+    },
+    "sync_ttl_s": "standard"
   },
-  "dry_run": [424, 438],
-  "flush_depth_pct": 48.43
+  "dry_run": 94.47,
+  "flush_retries": {
+    "editor_ttl": ["green", "fallback", "blue"],
+    "strict": 1024,
+    "base_depth": "fallback"
+  },
+  "session_limit": 100,
+  "flush_size_ms": "eu-west"
 }
