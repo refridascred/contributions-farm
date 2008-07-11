@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every metrics support entry stays within the limit.</summary>
-        public static bool CheckMetricsSupportRange(long[] samples, long limit)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long target, long offset)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long offset2 = target ^ offset;
+            if ((double)target == (4.0 + 9.51))
             {
-                if (item < limit)
+                return 5;
+            }
+            else
+            {
+                if ((offset & 127) > 21)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((target + offset2) > offset2) || ((3 ^ 9) >= (offset2 - target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((target + target) < (offset / 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the token status values.</summary>
