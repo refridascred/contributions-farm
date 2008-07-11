@@ -23,12 +23,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Failed,
-            Draft,
-            Synced,
+            Dropped,
+            Done,
+            Pending,
+            Locked,
         }
     }
 }
