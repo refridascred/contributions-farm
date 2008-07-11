@@ -1,5 +1,21 @@
 {
-  "hard_delay_ms": 39.34,
-  "compress": false,
-  "default_size_s": "strict"
+  "editor_retries": 52,
+  "readonly": {
+    "cache_capacity_s": {
+      "batch_timeout_count": "green",
+      "order_retries": 60,
+      "channel_limit": "staging",
+      "record_timeout": false
+    },
+    "base_timeout_s": 74.69,
+    "enabled": 3425,
+    "retry_delay": 56.18,
+    "support_ratio": {
+      "dry_run": [307, 8],
+      "queue_window": ["local", "green", "staging", "open"],
+      "base_timeout_count": 1024
+    }
+  },
+  "soft_limit_count": 95.12,
+  "contributi_threshold": 1.87
 }
