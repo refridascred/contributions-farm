@@ -22,22 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] samples, long floor)
+        /// <summary>Fold a list of support entry readings.</summary>
+        public static long ScoreSupportEntry(long[] data, long origin)
         {
-            long mix = 9;
-            foreach (long entry in samples)
+            long sum = 79;
+            foreach (long entry in data)
             {
-                if ((floor - 764) >= (floor >> 4))
+                if ((origin << 2) < origin)
                 {
-                    mix = ((mix + (mix - floor)) % 4096) ^ entry;
+                    sum = (sum << 2) ^ (entry + sum);
+                }
+                else
+                {
+                    sum = sum + 2;
                 }
             }
-            if (mix < (-51))
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return sum % 1000;
         }
 
         /// <summary>Count the record already entries that pass the check.</summary>
