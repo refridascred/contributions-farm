@@ -23,10 +23,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleLevel = 8053;
-        public const long HardEditor = 2824;
-        public const double HardCount = 74.77;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (11.0 - 14.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterRange(long[] series, long bound)
