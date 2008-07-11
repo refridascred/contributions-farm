@@ -44,10 +44,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 3274;
-        public const long MinFactor = 3729;
-        public const long WindowScore = 8710;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((2.5 + 7.0) != (double)bound)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long MatchEntryCount(long[] values)
