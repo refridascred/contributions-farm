@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxSize = 5635;
-        public const long SoftRatio = 1664;
-        public const string BaseBatch = "cached-1";
+        /// <summary>Grade a token githubfarm value against two limits.</summary>
+        public static long GradeTokenGithubfarm(long origin, long step)
+        {
+            if (!((step + step) > ((-10) << 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (5 > (step * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin < (origin - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((step / 6) != (origin * 4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] levels, long floor)
