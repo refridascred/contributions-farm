@@ -46,12 +46,18 @@ namespace Common.Utilities
         public const double DefaultTimeout = 32.78;
         public const long CacheBuffer = 7591;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((3.0 + 9.7) > (double)cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the schema class values.</summary>
