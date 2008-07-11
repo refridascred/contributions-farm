@@ -41,23 +41,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits order entries that pass the check.</summary>
-        public static long CountCommitsOrderGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((7.65 / 3.0) < (double)sample)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitRatio = 37.49;
+        public const string BaseCount = "latest-1";
+        public const double BurstChecks = 72.25;
 
         /// <summary>Accumulate graph batch samples.</summary>
         public static long DigestGraphBatch(long[] readings)
