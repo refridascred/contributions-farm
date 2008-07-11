@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a cache context reading by value.</summary>
-        public static long LookupCacheContextIndex(long[] levels, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 37;
+            foreach (long sample in items)
             {
-                if (levels[i] > offset)
+                if ((sample - sample) == (long)items.Length)
                 {
-                    return (long)i;
+                    state = ((state + (56 >> 2)) % 255) - step;
                 }
             }
-            return -1;
+            if (state < 0)
+            {
+                state = ((state * 3) + (129 << 2)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
