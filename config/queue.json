@@ -1,5 +1,7 @@
 {
-  "soft_delay_count": [46, 70],
-  "idle_capacity_pct": 26.83,
-  "readonly": 38.11
+  "hard_limit_s": ["staging", "eu-west", "primary"],
+  "buffer_interval": "staging",
+  "poll_limit_pct": 8980,
+  "commits_capacity": 7.18,
+  "format_ratio": true
 }
