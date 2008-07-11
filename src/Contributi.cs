@@ -53,13 +53,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double bias, double offset)
         {
-            Draft,
-            Locked,
-            Active,
-            Synced,
+            double drift = (double)(52 ^ 340);
+            if (drift < offset)
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift + (double)2;
+            }
+            return drift + bias;
         }
     }
 }
