@@ -52,19 +52,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] values, long limit)
+        /// <summary>Count buffer cache pairs that satisfy a relation.</summary>
+        public static long MatchBufferCacheCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the context class values.</summary>
