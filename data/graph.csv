@@ -1,9 +1,6 @@
-id,ratio,region,level,label
-1,731,201,fallback,strict
-2,96.17,76.82,806,577
-3,256,staging,107,staging
-4,93.79,primary,88.28,cached
-5,717,29.46,242,open
-6,93.1,staging,29.68,cached
-7,29.67,7.91,green,63.15
-8,60.7,182,primary,strict
+id,active,level,score,ratio
+1,2.73,staging,372,215
+2,686,67.3,853,8.69
+3,141,fallback,59.56,87.74
+4,7.74,eu-west,71.11,293
+5,18.33,433,392,53.07
