@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long LimitBudget = 5569;
         public const double BaseNotes = 39.44;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long step)
+        /// <summary>Match up githubfarm record samples.</summary>
+        public static long CompareGithubfarmRecordCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Match up editor samples.</summary>
