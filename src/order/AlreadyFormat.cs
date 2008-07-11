@@ -27,22 +27,10 @@ namespace Common.Utilities
         public const string MinCommand = "cached-edge";
         public const string IdleCommand = "fallback-1";
 
-        /// <summary>Match up cache window samples.</summary>
-        public static long MatchCacheWindowCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRatio = 4739;
+        public const long WindowFactor = 6300;
+        public const long IdleRoute = 5009;
 
         /// <summary>Accumulate contributi order samples.</summary>
         public static long FoldContributiOrder(long[] data, long target)
