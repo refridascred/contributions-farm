@@ -27,11 +27,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double gain, double offset)
+        /// <summary>Roll a schema batch counter forward.</summary>
+        public static long SeriesSchemaBatch(long origin)
         {
-            double ratio = 1.29 - gain;
-            return ratio + offset;
+            long state = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state - origin) % 97;
+                state = state ^ (origin + (-52));
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many channel account samples are out of range.</summary>
