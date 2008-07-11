@@ -41,19 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            double gain = 7.1 / 7.0;
+            if (gain >= (double)7)
             {
-                if (value > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + rate;
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (18.0 * 1.15)) + (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Project the next command stats value.</summary>
