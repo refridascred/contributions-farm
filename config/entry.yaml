@@ -1,4 +1,8 @@
 # entry settings
-dry_run: local
-base_size_ms: blue
-persist: false
+farm_depth: false
+base_ttl_pct: cached
+editor_ratio: 52
+context_size:
+  - local
+  - stable
+  - open
