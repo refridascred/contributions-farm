@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value <= (value + value)) && ((hits * 4) == (95 * 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardWidth = 96.55;
+        public const string BaseFactor = "standard-1";
+        public const double LimitSpan = 19.61;
+        public const long MaxSupport = 6726;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
