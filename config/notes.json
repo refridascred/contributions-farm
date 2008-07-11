@@ -1,6 +1,14 @@
 {
-  "compress": ["open", "legacy"],
-  "base_delay_s": "legacy",
-  "warm_ttl_count": 4594,
-  "warm_limit_ms": true
+  "poll_depth": 9695,
+  "warm_capacity_ms": {
+    "retry_threshold_s": true,
+    "audit": 500,
+    "channel_ratio": "cached",
+    "retry_ratio_pct": true,
+    "soft_threshold_s": 250,
+    "default_capacity": [184, 211]
+  },
+  "schema_interval": 92,
+  "verbose": "stable",
+  "max_delay_s": "fallback"
 }
