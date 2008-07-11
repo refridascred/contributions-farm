@@ -1,14 +1,13 @@
 # githubfarm settings
-idle_window_pct: open
-cluster_limit: local
-readonly:
-  min_ttl_count: 100
-  checks_interval: 85.43
-  idle_limit_count:
-    - fallback
-    - blue
-    - staging
-  stream_ttl: 23
-  contributi_timeout: 60
-soft_timeout_ms: stable
-channel_ratio: false
+dry_run: 5
+poll_delay_count:
+  batches_threshold: 163
+  notes_size:
+    - 176
+    - 422
+    - 270
+    - 251
+  persist: true
+burst_limit: 11.13
+cache_ratio_pct: 8942
+enabled: 60
