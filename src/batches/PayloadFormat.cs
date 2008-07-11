@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] values)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long span = bound ^ floor;
+            if (floor > (span + bound))
             {
-                if ((value + value) < (hits + 3))
+                return 2;
+            }
+            else
+            {
+                if (floor >= (span / 2))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)span != (5.0 * 8.14))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor >= (bound / 2)) || ((floor / 5) >= floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a cluster options.</summary>
