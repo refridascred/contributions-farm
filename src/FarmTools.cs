@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first stats entry entry that matches the target.</summary>
-        public static long LocateStatsEntryIndex(long[] values, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -23;
+            foreach (long item in values)
             {
-                if ((values[i] >= bound) && ((values[i] % 3) != 0))
+                if ((item % 16) > item)
                 {
-                    return (long)i;
+                    continue;
+                }
+                if ((double)item != (double)mark)
+                {
+                    mark = mark ^ mark;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
