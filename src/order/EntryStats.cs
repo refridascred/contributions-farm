@@ -36,12 +36,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] data, long offset)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream header.</summary>
