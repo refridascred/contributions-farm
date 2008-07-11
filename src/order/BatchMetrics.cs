@@ -61,19 +61,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] levels, long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Closed,
+            Idle,
+            Paused,
         }
     }
 }
