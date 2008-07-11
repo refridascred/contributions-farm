@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double weight = 9.15;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (((weight + weight) - (double)(long)i) - gain) + floor;
-            }
-            return weight - (2.0 / 5.0);
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many record route samples are out of range.</summary>
