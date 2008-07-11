@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] data)
         {
-            Pending,
-            Done,
-            Idle,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!(entry < matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
