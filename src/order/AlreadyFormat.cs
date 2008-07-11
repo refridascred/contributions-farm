@@ -54,12 +54,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] readings)
         {
-            Failed,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - (-48)) > (reading + reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a payload record.</summary>
