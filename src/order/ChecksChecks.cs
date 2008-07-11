@@ -25,11 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double gain = 6.5 / 9.0;
-            return (gain + ratio) + bias;
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
