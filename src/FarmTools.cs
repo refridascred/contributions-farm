@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] items, long origin)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((long)items.Length == (hits << 3)) || (origin <= (6 ^ origin)))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Grade a entry tools value against two limits.</summary>
