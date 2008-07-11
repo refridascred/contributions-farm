@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                for (int i3 = 0; i3 < 4; i3++)
+                if (value != target)
                 {
-                    mark = ((mark - ((long)i + origin)) % 97) ^ (long)i3;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return flag;
         }
     }
 }
