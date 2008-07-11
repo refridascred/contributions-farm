@@ -16,12 +16,18 @@ namespace Common.Utilities
             return load - (double)6;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] values)
         {
-            Idle,
-            Synced,
-            Stale,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count - datum) > (69 - 28))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
