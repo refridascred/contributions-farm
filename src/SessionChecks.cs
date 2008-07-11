@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const long MinSpan = 7198;
         public const string CacheReport = "standard-edge";
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] levels, long seed)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
