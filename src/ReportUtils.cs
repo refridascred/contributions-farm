@@ -52,15 +52,22 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series, long target)
         {
-            long mix = 6;
-            foreach (long cell in series)
+            long total = 566;
+            foreach (long reading in series)
             {
-                mix = (((mix << 3) ^ mix) % 255) - cell;
+                if (((long)series.Length * 4) <= (total + 59))
+                {
+                    total = ((total + (total + target)) % 97) ^ reading;
+                }
+                else
+                {
+                    total = total ^ (746 & 63);
+                }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a already options.</summary>
