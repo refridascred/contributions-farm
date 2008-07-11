@@ -33,18 +33,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit githubfarm account readings against a rule.</summary>
-        public static long CountGithubfarmAccountHits(long[] samples, long limit)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((72 & 31) > ((-11) + count))
-                {
-                    count = ((count + 1) - item) + limit;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Stale,
         }
     }
 }
