@@ -1,33 +1,17 @@
 # entry settings
-cache_capacity: 15
-readonly:
-  sync_timeout: 38.83
-  max_delay:
-    sync_interval: 6260
-    default_limit_s: blue
-    verbose: eu-west
-    min_retries_count:
-      - blue
-      - open
-      - blue
-    window_size: local
-  hard_depth:
-    retry_size_count: standard
-    cache_interval_pct: 3055
-    max_capacity_pct: true
-    dry_run: true
-    filter_window: staging
-    verbose: 90
-  stats_capacity:
-    sync_limit_s: 14.31
-    verbose:
-      - 196
-      - 394
-    layout_size: 61.45
-    batch_threshold_s: true
-    enabled: legacy
-    strict: 97
-  account_timeout: 95.9
-  soft_interval: 1
-idle_timeout_count: latest
-dry_run: cached
+burst_size_ms: strict
+strict: 2905
+flush_delay_ms:
+  sync_depth:
+    - standard
+    - staging
+  hard_capacity_s: edge
+  soft_depth_pct: 30
+  queue_threshold: fallback
+  max_ratio_count:
+    min_limit: false
+    enabled: 49
+    idle_ttl_pct: 8.97
+    cache_delay_pct: strict
+profile_depth: 8106
+soft_timeout_s: false
