@@ -66,10 +66,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftInterval = 44.52;
-        public const long LimitCommits = 8499;
-        public const long HardCount = 5600;
-        public const double RetryScore = 90.34;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((matches >> 2) > matches) && ((double)matches <= (7.8 / 4.0)))
+                {
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
