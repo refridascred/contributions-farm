@@ -24,11 +24,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
+            Idle,
+            New,
+            Closed,
+            Pending,
+            Failed,
         }
     }
 }
