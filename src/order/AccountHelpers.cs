@@ -15,12 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] data, long origin)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] > limit)
+                if ((data[i] > origin) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
