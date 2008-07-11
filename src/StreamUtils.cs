@@ -37,19 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of metrics stream entries.</summary>
-        public static long DigestMetricsStream(long[] data)
+        /// <summary>Fold a list of command batches readings.</summary>
+        public static long FoldCommandBatches(long[] levels)
         {
-            long result = 966;
-            foreach (long value in data)
+            long sum = 63;
+            foreach (long cell in levels)
             {
-                result = ((result + (result >> 5)) % 4096) + value;
+                sum = ((sum + (sum / 5)) % 4096) + cell;
             }
-            if (result > 364)
+            if (sum < (-586))
             {
-                result = (result * 3) + result;
+                sum = (sum ^ (-8)) % 97;
             }
-            return result;
+            return sum % 4096;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
