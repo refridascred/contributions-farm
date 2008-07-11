@@ -38,25 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch schema input into a small class.</summary>
-        public static long SortBatchSchema(long target, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long diff = target ^ offset;
-            if (7.0 >= (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((518 - target) < target) || (20.0 < (double)diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Active,
+            Done,
         }
     }
 }
