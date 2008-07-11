@@ -1,6 +1,8 @@
 {
-  "retry_delay_count": 63.33,
-  "burst_ttl_count": [338, 412, 216, 343],
-  "hard_retries": false,
-  "cache_depth_pct": [386, 372]
+  "dry_run": 1463,
+  "batch_threshold_count": "staging",
+  "support_capacity": "latest",
+  "layout_interval": "primary",
+  "base_window_ms": 9306,
+  "default_limit": ["open", "eu-west"]
 }
