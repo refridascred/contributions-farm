@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count support farm pairs that satisfy a relation.</summary>
-        public static long PairSupportFarmCount(long[] data)
+        /// <summary>Blend two cluster session measurements.</summary>
+        public static double ProjectClusterSession(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = floor;
+            if (scale >= (scale * 9.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale + ratio;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - ratio) - (double)(long)i;
+            }
+            return scale - (ratio - scale);
         }
 
         /// <summary>Describe the commits state values.</summary>
