@@ -32,24 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Find the first farm notes entry that matches the target.</summary>
+        public static long LookupFarmNotesIndex(long[] samples, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed != (9.3 * 6.4))
+                if (samples[i] == target)
                 {
-                    mark = mark - (seed >> 5);
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark ^ (mark + seed)) % 4096;
-                    mark = ((mark << 3) ^ ((long)i ^ 7)) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
