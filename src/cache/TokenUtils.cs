@@ -22,19 +22,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double offset)
+        /// <summary>Roll a support counter counter forward.</summary>
+        public static long StepSupportCounter(long target)
         {
-            double scale2 = offset;
-            if (scale2 > offset)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                scale2 = scale2 + (scale2 - scale2);
+                if (!!(((long)i - (long)i) >= sum))
+                {
+                    sum = (sum - ((long)i ^ target)) % 65521;
+                    sum = sum ^ (target ^ (long)i);
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            return scale2 + scale;
+            return sum;
         }
     }
 }
