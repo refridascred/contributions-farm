@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 41.04;
-        public const long IdleGraph = 7473;
-        public const long LimitScore = 6523;
-        public const double DefaultGraph = 41.47;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Stale,
+            Paused,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Match up cache window samples.</summary>
         public static long MatchCacheWindowCount(long[] data)
