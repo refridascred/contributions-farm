@@ -59,14 +59,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] levels, long target)
         {
-            Failed,
-            Queued,
-            Idle,
-            New,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
