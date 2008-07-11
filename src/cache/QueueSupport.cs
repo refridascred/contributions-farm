@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] data, long offset)
+        /// <summary>Count the cluster account entries that pass the check.</summary>
+        public static long TallyClusterAccountOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((((10.0 + 7.17) >= (double)offset) || ((offset << 1) == (value * 3))) || (((double)value != (3.0 * 1.7)) && ((0.9 - 2.5) == (double)offset)))
+                if ((double)value != (0.62 / 9.0))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
