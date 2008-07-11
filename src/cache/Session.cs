@@ -44,19 +44,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window command readings against a rule.</summary>
-        public static long AuditWindowCommandHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count >> 1) > value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 3274;
+        public const long MinFactor = 3729;
+        public const long WindowScore = 8710;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long FindClusterIndex(long[] readings, long step)
