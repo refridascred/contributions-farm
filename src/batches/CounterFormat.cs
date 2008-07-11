@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] values)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long datum in values)
             {
-                if (((matches / 8) <= (matches - cell)) || ((cell >= (long)values.Length) || ((7 >> 5) > (cell ^ cell))))
+                if (datum > (datum % 16))
                 {
-                    matches = matches + 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
