@@ -34,17 +34,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Locate a metric schema reading by value.</summary>
-        public static long LocateMetricSchemaIndex(long[] values, long step)
+        /// <summary>Measure how many channel account samples are out of range.</summary>
+        public static long AuditChannelAccountMatches(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (values[i] > step)
+                if ((tally - (-56)) < (4 ^ cell))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
