@@ -66,32 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long seed, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] levels, long origin)
         {
-            long diff = seed ^ bound;
-            if ((25 * 3) > diff)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((diff + diff) > (diff - seed))
+                if (datum <= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - 2) <= (bound - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
