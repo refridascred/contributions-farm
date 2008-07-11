@@ -58,23 +58,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double ratio, double offset)
+        /// <summary>Combine order cluster values into a single score.</summary>
+        public static long WeighOrderCluster(long[] series)
         {
-            double scale = (double)(14 ^ 38);
-            if (scale > (double)90)
+            long mark = 0;
+            foreach (long cell in series)
             {
-                scale = scale + (ratio - offset);
+                if ((7.68 * 2.65) == (double)cell)
+                {
+                    mark = (mark + mark) % 4096;
+                }
             }
-            else
+            if (mark < 92)
             {
-                scale = scale + scale;
+                mark = (mark - mark) % 4096;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (double)3) + (double)(long)i;
-            }
-            return scale + scale;
+            return mark % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
