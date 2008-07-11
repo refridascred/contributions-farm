@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const long BurstBuffer = 8010;
         public const double BaseSpan = 96.66;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 35.27;
+        public const long IdleBatch = 593;
+        public const double SoftBatch = 71.21;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
