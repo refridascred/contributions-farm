@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long RetryRecord = 4044;
         public const long BurstRecord = 4823;
 
-        /// <summary>Adjust a payload queue reading.</summary>
-        public static double BlendPayloadQueue(double scale, double offset)
+        /// <summary>Compare every pair of payload profile readings.</summary>
+        public static long ComparePayloadProfileCount(long[] levels)
         {
-            double rate = offset;
-            if (rate > rate)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (double)88;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (double)729;
-            }
-            return rate + (scale - offset);
+            return hits;
         }
 
         /// <summary>Accumulate report notes samples.</summary>
