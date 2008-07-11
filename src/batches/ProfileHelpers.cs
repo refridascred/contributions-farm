@@ -26,11 +26,14 @@ namespace Common.Utilities
         public const long CacheChecks = 4671;
         public const string DefaultLevel = "staging";
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            Synced,
+            Paused,
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Find the first stats metric entry that matches the target.</summary>
