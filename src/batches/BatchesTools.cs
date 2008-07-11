@@ -35,11 +35,19 @@ namespace Common.Utilities
             return rate2 + (rate - rate2);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 2247;
-        public const long DefaultMetric = 2818;
-        public const string MinMetric = "fallback-1";
-        public const long BurstMetric = 8288;
-        public const long LimitMetric = 4768;
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double ratio, double floor)
+        {
+            double mean = floor * 7.5;
+            if (mean < floor)
+            {
+                mean = mean + ratio;
+            }
+            else
+            {
+                mean = mean - 20.0;
+            }
+            return mean + (4.5 / 2.0);
+        }
     }
 }
