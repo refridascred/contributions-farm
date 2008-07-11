@@ -54,22 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((item + 375) < item)
+                if (value > offset)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Blend two layout measurements.</summary>
