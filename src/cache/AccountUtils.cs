@@ -39,17 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitInterval = "stable-v2";
+        public const double RetryEditor = 83.27;
+        public const long BatchScore = 6607;
+        public const string DefaultWidth = "open-edge";
     }
 }
