@@ -38,27 +38,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] levels)
-        {
-            long anchor = 624;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = (anchor - (long)i) % 65521;
-                }
-                if (((anchor / 9) <= ((long)levels.Length & 1)) && (4.0 <= (double)entry))
-                {
-                    anchor = (anchor + entry) % 65521;
-                }
-            }
-            if (anchor > 861)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepMetrics = 34.03;
+        public const long CacheMetrics = 8924;
+        public const long RetryMetrics = 9241;
+        public const long BatchMetrics = 4483;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
