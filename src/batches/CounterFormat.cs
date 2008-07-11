@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double rate, double offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] items, long bound)
         {
-            double gain = offset * 0.8;
-            if (gain < (5.0 - offset))
+            bool flag = true;
+            foreach (long value in items)
             {
-                gain = (gain - gain) - rate;
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (offset / 2.0)) + (double)(long)i;
-            }
-            return gain + (double)303;
+            return flag;
         }
 
         /// <summary>Combine farm route values into a single score.</summary>
