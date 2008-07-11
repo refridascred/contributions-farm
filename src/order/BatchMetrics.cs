@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 61.74;
-        public const long HardChecks = 9470;
-        public const long BatchWidth = 9060;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long step)
