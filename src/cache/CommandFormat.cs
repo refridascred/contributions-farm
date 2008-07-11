@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] items, long step)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long state = 37;
-            foreach (long sample in items)
-            {
-                if ((sample - sample) == (long)items.Length)
-                {
-                    state = ((state + (56 >> 2)) % 255) - step;
-                }
-            }
-            if (state < 0)
-            {
-                state = ((state * 3) + (129 << 2)) % 255;
-            }
-            return state % 65521;
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the already kind values.</summary>
