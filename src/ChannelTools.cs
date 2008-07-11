@@ -41,21 +41,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count profile channel pairs that satisfy a relation.</summary>
-        public static long CompareProfileChannelCount(long[] series)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = bound - target;
+            if ((double)target == (8.2 * 3.2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((cur >> 2) < bound)
                 {
-                    if ((series[i] + series[j]) > 2)
+                    return 4;
+                }
+                else
+                {
+                    if (((cur ^ cur) != (cur + bound)) && ((double)cur >= (9.5 - 1.0)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
     }
 }
