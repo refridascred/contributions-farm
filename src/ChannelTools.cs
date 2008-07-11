@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] items, long floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (floor >= (floor % 16))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
