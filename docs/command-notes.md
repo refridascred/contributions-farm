@@ -1,13 +1,12 @@
 # Command notes
 
-Keep metric and payload names short and lowercase.
-The order helpers are pure functions, so they are safe to call from any thread.
-
-The editor report groups every buffer by profile.
-Run the farm check before changing any batches limits.
+Keep record and metric names short and lowercase.
+Run the cluster check before changing any metrics limits.
+Keep account and cluster names short and lowercase.
 
 ## Guidelines
 
-- Validate tools input early
-- Document new stats fields
-- Review commits limits each release
+- Prefer queue defaults
+- Review format limits each release
+- Log every filter change
+- Validate editor input early
