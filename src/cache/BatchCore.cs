@@ -39,22 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ (carry / 8)) % 97;
-                carry = carry + step;
-                if (!((step - step) >= carry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry ^ (3 + (-78));
-                    carry = (carry ^ ((long)i % 64)) % 101;
+                    if ((data[i] + data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
     }
 }
