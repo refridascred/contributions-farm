@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const string BaseTimeout = "standard-1";
         public const string BatchAlready = "alpha-1";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] samples)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((12.0 + 8.0) == (double)count))
-                {
-                    count = (count + 2) ^ reading;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
