@@ -13,12 +13,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinLevel = 506;
-        public const long DefaultRoute = 7591;
-        public const double IdleRoute = 45.67;
-        public const long MinSize = 6109;
-        public const long BatchCount = 3399;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] samples, long floor)
+        {
+            long mix = 9;
+            foreach (long entry in samples)
+            {
+                if ((floor - 764) >= (floor >> 4))
+                {
+                    mix = ((mix + (mix - floor)) % 4096) ^ entry;
+                }
+            }
+            if (mix < (-51))
+            {
+                mix = mix + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Count the record already entries that pass the check.</summary>
         public static long CountRecordAlreadyMatches(long[] levels)
