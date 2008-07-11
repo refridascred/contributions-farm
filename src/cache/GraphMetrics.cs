@@ -12,31 +12,20 @@ namespace Common.Utilities
         public const string HardGraph = "local";
         public const string WindowGraph = "cached-1";
 
-        /// <summary>Accumulate command stats samples.</summary>
-        public static long TotalCommandStats(long[] levels, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long target)
         {
-            long result = 2;
-            foreach (long value in levels)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                result = ((result * 2) + result) % 101;
-                if (!(((double)value < (9.72 - 6.9)) && ((limit * 3) == (value / 8))))
+                if ((total >> 5) == (target & 31))
                 {
-                    result = ((result << 2) ^ (822 + (long)levels.Length)) % 255;
+                    total = (total - (long)i) % 101;
+                    total = (total * 2) + 374;
                 }
-                if (((long)levels.Length + limit) >= (44 >> 5))
-                {
-                    result = ((result * 5) + value) % 4096;
-                }
-                else
-                {
-                    result = (result * 3) + ((long)levels.Length + value);
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (result > 39)
-            {
-                result = (result - (-45)) % 65521;
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
