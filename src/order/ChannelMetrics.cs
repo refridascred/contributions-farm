@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the contributi metric entries that pass the check.</summary>
-        public static long CountContributiMetricOutliers(long[] levels, long floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum <= 6.3)
-                {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two cache route measurements.</summary>
