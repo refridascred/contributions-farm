@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 42.34;
-        public const long MaxLevel = 43;
-        public const long SoftSize = 1112;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((floor & 255) < (reading + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchMatches(long[] series, long offset)
