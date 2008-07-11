@@ -67,22 +67,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the order context series from a seed.</summary>
-        public static long SeriesOrderContext(long origin)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state + (origin + 77)) % 101;
-                state = (state + (3 ^ origin)) % 4096;
-                if ((state + origin) != (state - state))
-                {
-                    state = state ^ ((long)i ^ origin);
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Idle,
+            Failed,
+            Pending,
         }
     }
 }
