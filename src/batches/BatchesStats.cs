@@ -27,22 +27,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] items, long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((4.0 * 11.0) >= (double)reading))
-                {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Match up cluster samples.</summary>
