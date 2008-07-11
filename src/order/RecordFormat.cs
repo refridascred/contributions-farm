@@ -34,18 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric record readings.</summary>
-        public static long DigestMetricRecord(long[] values, long origin)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] values)
         {
-            long sum = -56;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((sum + sum) < reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 5) + (sum + origin)) % 97;
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
