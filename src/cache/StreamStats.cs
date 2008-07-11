@@ -30,21 +30,15 @@ namespace Common.Utilities
         public const long LimitRoute = 1434;
         public const long CacheRoute = 9267;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
