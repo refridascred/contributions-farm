@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double floor)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            double weight = 9.15;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (((weight + weight) - (double)(long)i) - gain) + floor;
+            }
+            return weight - (2.0 / 5.0);
         }
 
         /// <summary>Measure how many record route samples are out of range.</summary>
