@@ -19,22 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Rank metric commits input into a small class.</summary>
+        public static long ClassifyMetricCommits(long target, long limit)
         {
-            long total = 659;
-            foreach (long datum in samples)
+            long step = target - limit;
+            if ((target + target) >= limit)
             {
-                if ((datum + datum) < (datum >> 3))
+                return 3;
+            }
+            else
+            {
+                if (!((step * 4) < (limit + 38)))
                 {
-                    total = (total << 3) ^ ((-821) % 100);
+                    return 0;
+                }
+                else
+                {
+                    if ((step - target) == (step << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + limit) <= (limit + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (total < 814)
-            {
-                total = (total - (total - total)) % 101;
-            }
-            return total;
         }
 
         /// <summary>Describe the account level values.</summary>
