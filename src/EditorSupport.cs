@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 8352;
+        public const long IdleRatio = 6709;
+        public const long MinOrder = 9544;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] readings)
