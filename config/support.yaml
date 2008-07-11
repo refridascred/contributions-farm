@@ -1,13 +1,10 @@
 # support settings
-retry_retries_pct: legacy
-soft_interval_count:
-  - edge
-  - primary
-  - open
-  - standard
-strict: 100
-warm_window_count: blue
-channel_limit:
-  - local
-  - green
-  - green
+batch_size_ms:
+  - 369
+  - 258
+channel_window: 9313
+flush_depth_s: 46
+idle_depth_count:
+  - 133
+  - 222
+burst_capacity: local
