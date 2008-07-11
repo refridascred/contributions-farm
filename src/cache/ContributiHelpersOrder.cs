@@ -20,13 +20,38 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long target, long step)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            if (step > (26 >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)target <= (14.0 - 20.0)) || ((double)target >= (1.0 * 7.51)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((220 & 1) < (target - step)) || ((double)target <= 5.7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target * 5) > (step % 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter state values.</summary>
