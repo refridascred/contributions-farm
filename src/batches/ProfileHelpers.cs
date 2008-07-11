@@ -58,15 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Compare every pair of cache counter readings.</summary>
+        public static long PairCacheCounterCount(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a buffer info.</summary>
