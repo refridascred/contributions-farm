@@ -25,11 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double rate, double span)
         {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double scale = (double)(8 % 24);
+            if (scale < scale)
+            {
+                scale = (scale - 5.0) + span;
+            }
+            else
+            {
+                scale = scale - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
