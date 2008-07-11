@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long StepStats = 8596;
         public const long CacheCount = 2645;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] levels, long floor)
         {
-            Locked,
-            New,
-            Stale,
-            Idle,
-            Queued,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
