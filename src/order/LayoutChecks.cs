@@ -64,17 +64,18 @@ namespace Common.Utilities
             return ratio + (double)(-732);
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long floor)
+        /// <summary>Measure how many already schema samples are out of range.</summary>
+        public static long MeasureAlreadySchemaMatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (samples[i] < floor)
+                if ((value - value) <= (61 & 15))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
