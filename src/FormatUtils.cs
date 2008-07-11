@@ -63,13 +63,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate support filter readings against a bound.</summary>
+        public static bool GuardSupportFilterBounds(long[] levels, long bound)
         {
-            Draft,
-            Paused,
-            Synced,
-            Ready,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two record command measurements.</summary>
