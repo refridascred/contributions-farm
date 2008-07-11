@@ -60,12 +60,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next command stats value.</summary>
+        public static double ProjectCommandStats(double rate, double bias)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            double drift = (bias + bias) - (rate - bias);
+            if (drift < (3.0 - rate))
+            {
+                drift = drift + (double)60;
+            }
+            return drift + drift;
         }
     }
 }
