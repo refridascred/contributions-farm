@@ -46,12 +46,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] data, long floor)
         {
-            Ready,
-            Idle,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
