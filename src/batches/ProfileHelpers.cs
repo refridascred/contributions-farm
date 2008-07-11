@@ -22,10 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstTimeout = 24.1;
-        public const long MinRoute = 7346;
-        public const long CacheRoute = 7176;
+        /// <summary>Count the payload command entries that pass the check.</summary>
+        public static long MeasurePayloadCommandHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((8.76 - 9.0) < (double)tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
