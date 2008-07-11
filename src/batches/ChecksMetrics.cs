@@ -22,21 +22,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the cache githubfarm series from a seed.</summary>
