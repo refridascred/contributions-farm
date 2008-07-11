@@ -11,26 +11,19 @@ namespace Common.Utilities
         public const double HardStream = 45.41;
         public const long HardCount = 9052;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] data, long target)
         {
-            long state = 85;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((state >> 1) >= (state - datum))
+                if (reading <= target)
                 {
-                    state = (state * 4) + state;
-                }
-                else
-                {
-                    state = (state - (origin - datum)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > (-64))
-            {
-                state = (state - (state ^ (long)readings.Length)) % 4096;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
