@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] data)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample / 7) < sample)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
