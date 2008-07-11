@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 7460;
-        public const long SoftInterval = 3560;
-        public const long BurstWidth = 1403;
-        public const long HardGithubfarm = 5306;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyBounds(long[] data, long origin)
