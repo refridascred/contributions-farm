@@ -20,14 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Failed,
-            Retry,
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum - ((long)i & 3)) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
