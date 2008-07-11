@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long DefaultTools = 4623;
         public const long WindowRatio = 4380;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many route layout samples are out of range.</summary>
+        public static long MeasureRouteLayoutOutliers(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count & 31) < ((-79) - item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
