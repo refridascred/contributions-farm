@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] items)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value <= (value + value)) && ((hits * 4) == (95 * 2)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics entry.</summary>
