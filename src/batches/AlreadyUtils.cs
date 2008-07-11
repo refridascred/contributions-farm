@@ -38,21 +38,10 @@ namespace Common.Utilities
         public const long WindowContributi = 7997;
         public const long WindowScore = 1899;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 8208;
+        public const double CacheGithubfarm = 8.38;
+        public const string HardGithubfarm = "alpha-1";
+        public const long HardLevel = 764;
     }
 }
