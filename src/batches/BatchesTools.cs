@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftScore = 4928;
-        public const long MaxDepth = 2798;
-        public const string DefaultInterval = "stable";
-        public const long HardBudget = 3680;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] items, long seed)
