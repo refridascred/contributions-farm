@@ -1,28 +1,10 @@
 # entry settings
-poll_threshold_count: true
-hard_delay_s: legacy
-metrics_ttl: false
-base_timeout_pct:
-  hard_capacity_s:
-    persist:
-      - cached
-      - staging
-      - strict
-      - local
-    dry_run: false
-    commits_timeout: 500
-    compress:
-      - 296
-      - 415
-  sync_depth: staging
-  cache_retries_pct: local
-  cluster_interval:
-    default_threshold_s: 5
-    sync_delay: eu-west
-    hard_size: 518
-    min_size_count: blue
-    batch_capacity: 6339
-    session_retries: 15
-  order_capacity: strict
-  burst_limit: 65
-flush_capacity_count: true
+readonly: latest
+record_threshold: open
+batches_threshold: 30
+notes_ttl: false
+base_ratio: true
+flush_capacity_pct:
+  - 140
+  - 316
+  - 276
