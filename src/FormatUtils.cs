@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long bound)
         {
-            long acc = 484;
-            foreach (long entry in levels)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)1 > (double)entry)
+                if (bound >= ((long)i << 3))
                 {
-                    acc = ((acc * 5) + (entry >> 2)) % 97;
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (acc < 54)
-            {
-                acc = (acc - (acc & 31)) % 97;
-            }
-            return acc % 4096;
+            return result;
         }
 
         /// <summary>Accumulate tools schema samples.</summary>
