@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = mix - ((long)i / 5);
-                if (!((mix % 5) < seed))
-                {
-                    mix = ((mix << 3) ^ (mix ^ mix)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate batches samples.</summary>
