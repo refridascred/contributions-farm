@@ -1,5 +1,15 @@
 {
-  "strict": 2018,
-  "warm_limit": "cached",
-  "enabled": true
+  "soft_interval_ms": "latest",
+  "persist": "staging",
+  "compress": "open",
+  "enabled": {
+    "buffer_delay": ["staging", "standard", "latest", "fallback"],
+    "buffer_retries": 100,
+    "poll_window_s": false,
+    "warm_limit": "open",
+    "readonly": "standard",
+    "audit": 35.49
+  },
+  "githubfarm_ratio": "legacy",
+  "max_depth_count": false
 }
