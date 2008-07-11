@@ -1,5 +1,20 @@
 # entry settings
-context_ratio: latest
-session_threshold: legacy
-flush_ttl_ms: strict
-hard_threshold_s: stable
+max_window_ms:
+  context_depth: 75.47
+  hard_interval_ms:
+    stats_depth: 9966
+    order_ratio: local
+    stats_ttl: 60
+    soft_depth_ms: false
+    cache_timeout:
+      - 61
+      - 246
+  min_capacity_pct:
+    audit: 30
+    idle_ttl_s: 7259
+    batch_delay_pct: false
+flush_threshold_ms: standard
+verbose: fallback
+flush_depth_count: 250
+command_depth: false
+cache_interval_pct: 8292
