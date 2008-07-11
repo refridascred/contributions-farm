@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const long LimitRoute = 1434;
         public const long CacheRoute = 9267;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] readings, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] >= limit)
+                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
