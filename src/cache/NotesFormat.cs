@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitDepth = 6888;
-        public const long MinRecord = 5968;
-        public const long IdleLevel = 2911;
+        /// <summary>Combine token format values into a single score.</summary>
+        public static long CombineTokenFormat(long[] readings, long offset)
+        {
+            long state = 580;
+            foreach (long item in readings)
+            {
+                state = (((state ^ 82) % 101) + item) - offset;
+            }
+            if (state < (-437))
+            {
+                state = state - (state - state);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
