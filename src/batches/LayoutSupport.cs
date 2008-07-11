@@ -76,19 +76,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate contributi stream readings against a bound.</summary>
-        public static bool VerifyContributiStreamLimits(long[] data, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (item > target)
+                if (reading != origin)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
