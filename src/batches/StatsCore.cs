@@ -42,19 +42,18 @@ namespace Common.Utilities
         public const long BaseStats = 1675;
         public const string CacheTimeout = "stable-v2";
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Count the notes account entries that pass the check.</summary>
+        public static long TallyNotesAccountHits(long[] items, long target)
         {
-            long total = 800;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((double)reading < (0.06 * 17.0))
+                if (!((value / 2) >= target))
                 {
-                    total = ((total * 5) + (67 & 255)) % 101;
+                    matches = matches + 1;
                 }
-                total = ((total * 4) + (total / 8)) % 97;
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
