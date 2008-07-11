@@ -57,13 +57,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] readings, long step)
         {
-            New,
-            Pending,
-            Retry,
-            Ready,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((step + 8) != (datum << 2))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
