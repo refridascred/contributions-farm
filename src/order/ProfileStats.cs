@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long carry = -6;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((carry << 1) >= (carry + 84)) && ((carry - reading) > (carry + carry)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry - carry) % 65521;
-                }
-                if (reading <= (reading * 4))
-                {
-                    carry = carry - 0;
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
