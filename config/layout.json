@@ -1,11 +1,8 @@
 {
-  "flush_timeout_pct": 96.25,
-  "stats_size": 38.98,
-  "idle_ratio": ["local", "legacy", "fallback", "green"],
-  "readonly": "eu-west",
-  "batches_delay": {
-    "payload_size": 7051,
-    "notes_size": "standard",
-    "idle_window": "staging"
-  }
+  "compress": "standard",
+  "batches_limit": true,
+  "verbose": 94.63,
+  "flush_size_count": 48.43,
+  "warm_ttl": 56.51,
+  "default_delay": 8968
 }
