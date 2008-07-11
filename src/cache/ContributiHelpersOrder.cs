@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] values, long step)
+        /// <summary>Match up profile already samples.</summary>
+        public static long MatchProfileAlreadyCount(long[] levels)
         {
-            long state = 91;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (((state + 30) % 101) + cell) + step;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a metrics entry.</summary>
