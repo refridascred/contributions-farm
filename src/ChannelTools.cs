@@ -41,11 +41,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSize = 2348;
+        public const long BatchStream = 5260;
+        public const long MaxStream = 4703;
     }
 }
