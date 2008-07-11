@@ -41,18 +41,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] series, long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long state = 3;
-            foreach (long item in series)
-            {
-                if ((9.12 / 5.0) > (double)item)
-                {
-                    state = ((state << 2) ^ (52 % 7)) - step;
-                }
-            }
-            return state;
+            Draft,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
