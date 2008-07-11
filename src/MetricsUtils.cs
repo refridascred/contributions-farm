@@ -13,10 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheRatio = 8869;
-        public const string BaseTimeout = "standard-1";
-        public const string BatchAlready = "alpha-1";
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long IterateReport(long bound)
