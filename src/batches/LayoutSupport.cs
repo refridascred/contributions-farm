@@ -50,12 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] items, long step)
         {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
