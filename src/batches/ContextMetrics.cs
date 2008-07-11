@@ -60,19 +60,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two batch order measurements.</summary>
-        public static double AdjustBatchOrder(double rate, double bias)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] samples, long seed)
         {
-            double load = (double)(2 % 24);
-            if (load >= (bias - rate))
+            long result = 5;
+            foreach (long item in samples)
             {
-                load = load - load;
+                if ((result / 4) <= (result * 2))
+                {
+                    result = ((result * 3) + (item << 1)) % 101;
+                }
+                else
+                {
+                    result = (result ^ seed) % 4096;
+                }
+                if (((double)result != (6.42 + 9.3)) && ((result + item) >= seed))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)81) - (double)(long)i;
-            }
-            return load + (rate * 4.97);
+            return result;
         }
     }
 }
