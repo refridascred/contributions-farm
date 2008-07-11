@@ -34,18 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile stream samples are out of range.</summary>
-        public static long AuditProfileStreamOutliers(long[] samples)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)tally <= (7.2 * 3.78))
+                if ((values[i] > bound) && ((values[i] % 3) == 0))
                 {
-                    tally = (tally + 2) - datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank batch schema input into a small class.</summary>
