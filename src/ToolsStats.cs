@@ -79,12 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "stable-edge";
-        public const long BatchLevel = 2414;
-        public const string CacheOrder = "local-1";
-        public const long SoftDepth = 192;
-        public const string StepOrder = "primary-v2";
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double ScaleSchema(double bias, double span)
