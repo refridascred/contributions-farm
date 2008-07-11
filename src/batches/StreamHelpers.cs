@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long WindowQueue = 4478;
         public const double WindowBudget = 0.73;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double ratio, double bias)
+        /// <summary>Measure how many queue cluster samples are out of range.</summary>
+        public static long CountQueueClusterGaps(long[] items)
         {
-            double bias2 = ratio;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                bias2 = (bias2 + bias2) + (double)(long)i;
+                if ((cell - cell) >= (cell >> 1))
+                {
+                    count = count + 1;
+                }
             }
-            return bias2 - (bias / 2.0);
+            return count;
         }
 
         /// <summary>Hold a cache entry.</summary>
