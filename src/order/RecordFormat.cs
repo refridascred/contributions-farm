@@ -55,13 +55,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Locked,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowSpan = "fallback-v2";
+        public const string WindowCounter = "stable";
+        public const string IdleLevel = "legacy-1";
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long RollChecks(long origin)
