@@ -48,12 +48,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 52.34;
-        public const double IdlePayload = 14.11;
-        public const string LimitPayload = "strict";
-        public const long MinPayload = 6487;
-        public const double BatchLevel = 46.9;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series)
+        {
+            long mix = 6;
+            foreach (long cell in series)
+            {
+                mix = (((mix << 3) ^ mix) % 255) - cell;
+            }
+            return mix;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 4291;
