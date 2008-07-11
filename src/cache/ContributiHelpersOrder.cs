@@ -23,17 +23,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] readings, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 929;
+            foreach (long entry in levels)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
+                if ((596 - acc) > (entry - bound))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ ((long)levels.Length ^ entry)) % 101;
+                }
+                else
+                {
+                    acc = acc + bound;
+                }
+                if ((acc % 24) > 968)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the filter state values.</summary>
