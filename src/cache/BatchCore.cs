@@ -34,24 +34,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a counter format figure with a bias.</summary>
-        public static double BlendCounterFormat(double weight, double floor)
-        {
-            double bias = (double)((-54) >> 3);
-            if (bias > weight)
-            {
-                bias = bias - weight;
-            }
-            else
-            {
-                bias = bias + (double)203;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (floor * 4.3)) + (double)(long)i;
-            }
-            return bias + floor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardScore = 5361;
+        public const long WindowWidth = 6475;
+        public const string LimitSpan = "staging";
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long bound)
