@@ -19,27 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Count support farm pairs that satisfy a relation.</summary>
+        public static long PairSupportFarmCount(long[] data)
         {
-            long state = -9;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state + cell) % 255;
-                if ((cell ^ cell) > (cell * 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state + (cell & 31);
-                }
-                else
-                {
-                    state = (state + (state >> 4)) % 4096;
-                }
-                if ((13 - cell) < cell)
-                {
-                    break;
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the commits state values.</summary>
