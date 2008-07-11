@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the filter profile entries that pass the check.</summary>
-        public static long MeasureFilterProfileMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (seen > sample)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 1448;
+        public const double HardWidth = 84.81;
+        public const double HardStream = 45.41;
+        public const long HardCount = 9052;
 
         /// <summary>Measure how many counter commits samples are out of range.</summary>
         public static long CountCounterCommitsMatches(long[] items)
