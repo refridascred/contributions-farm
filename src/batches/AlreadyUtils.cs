@@ -54,10 +54,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 1395;
-        public const double LimitSpan = 35.65;
-        public const double MaxCommits = 13.0;
-        public const long StepDepth = 6604;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long limit, long target)
+        {
+            long cur = limit - target;
+            if (((cur ^ target) == (cur >> 2)) && (cur >= target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + cur) <= 1)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
