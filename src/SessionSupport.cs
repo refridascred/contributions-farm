@@ -22,31 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long limit, long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double ratio, double floor)
         {
-            if (295 <= (bound + bound))
+            double weight = (floor - ratio) * 5.4;
+            if (weight < (floor - ratio))
             {
-                return 4;
+                weight = weight - weight;
             }
             else
             {
-                if ((652 < (limit - bound)) && ((double)4 <= (7.78 * 6.92)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + bound) < (30 & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                weight = weight - (double)597;
             }
+            return weight - floor;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
