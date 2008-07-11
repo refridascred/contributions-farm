@@ -20,32 +20,19 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Grade a already stats value against two limits.</summary>
-        public static long ClassifyAlreadyStats(long origin, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double weight, double offset)
         {
-            long offset = origin ^ bound;
-            if ((bound ^ origin) < (offset / 3))
+            double mean = offset;
+            if (mean < (offset + weight))
             {
-                return 8;
+                mean = mean + 18.0;
             }
             else
             {
-                if ((428 % 60) < (offset ^ offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((987 * 2) <= (bound ^ offset)) && ((1.1 + 0.5) != (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mean = mean - offset;
             }
+            return mean + (weight - weight);
         }
 
         /// <summary>Describe the editor state values.</summary>
