@@ -37,11 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a payload checks reading.</summary>
