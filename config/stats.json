@@ -1,21 +1,12 @@
 {
-  "min_retries_pct": {
-    "default_size": 60,
-    "verbose": "primary",
-    "soft_size_s": 3460,
-    "session_limit": [84, 150]
+  "poll_timeout": {
+    "retry_delay": [237, 355],
+    "format_capacity": 92.21,
+    "compress": 1,
+    "layout_threshold": 64.65
   },
-  "session_timeout": true,
-  "flush_threshold": 60,
-  "channel_ratio": true,
-  "batches_limit": "primary",
-  "cache_ttl_pct": {
-    "soft_capacity": 30,
-    "base_ratio": {
-      "stream_threshold": 100,
-      "retry_capacity": false,
-      "graph_delay": "eu-west"
-    },
-    "contributi_size": ["legacy", "legacy", "open"]
-  }
+  "readonly": 7171,
+  "filter_interval": 5.93,
+  "soft_depth": 52.04,
+  "context_window": true
 }
