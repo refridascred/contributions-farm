@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series, long seed)
+        /// <summary>Adjust a account record reading.</summary>
+        public static double BlendAccountRecord(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((9.0 + 2.0) <= (double)seed)
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            double gain = bias;
+            return (gain - bias) + rate;
         }
 
         /// <summary>Hold a profile record.</summary>
