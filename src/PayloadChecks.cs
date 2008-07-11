@@ -63,12 +63,23 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double ratio, double offset)
         {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            double scale = (double)(14 ^ 38);
+            if (scale > (double)90)
+            {
+                scale = scale + (ratio - offset);
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (double)3) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Hold a batches info.</summary>
