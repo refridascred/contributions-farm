@@ -44,19 +44,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double weight, double span)
+        /// <summary>Measure how many cluster queue samples are out of range.</summary>
+        public static long MeasureClusterQueueOutliers(long[] levels)
         {
-            double scale = 7.3 / 9.0;
-            if (scale < weight)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                scale = (scale + (weight - scale)) + span;
+                if (14.0 >= (double)hits)
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            else
-            {
-                scale = scale + (2.2 * 0.6);
-            }
-            return scale + 5.9;
+            return hits;
         }
     }
 }
