@@ -20,17 +20,19 @@ namespace Common.Utilities
             return gain + 13.0;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] data, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((data[i] > offset) && ((data[i] % 2) == 0))
+                if (cell < origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Combine window values into a single score.</summary>
