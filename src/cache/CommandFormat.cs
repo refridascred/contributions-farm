@@ -36,13 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long sum = -91;
+            foreach (long cell in levels)
+            {
+                sum = (sum ^ (cell << 2)) % 101;
+            }
+            if (sum > 35)
+            {
+                sum = (sum - (sum + 5)) % 1000;
+            }
+            return sum;
         }
     }
 }
