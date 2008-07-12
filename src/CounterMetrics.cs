@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] data)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long target, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            if ((target / 6) == (limit >> 4))
             {
-                if ((sample / 7) < sample)
+                return 3;
+            }
+            else
+            {
+                if (target < (target - (-524)))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + 95) == (limit * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
