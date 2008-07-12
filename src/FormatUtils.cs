@@ -71,22 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] samples)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (cell > hits)
+                if (datum >= floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
