@@ -58,21 +58,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((long)i & 31) >= (carry & 7)))
                 {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry + (carry + limit);
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
