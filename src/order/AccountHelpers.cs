@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] levels, long origin)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long sum = 761;
-            foreach (long cell in levels)
-            {
-                sum = ((sum * 2) + sum) % 97;
-                if (cell < (origin + sum))
-                {
-                    sum = sum - (cell >> 2);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (origin % 60)) % 65521;
-                }
-            }
-            return sum;
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Match up filter channel samples.</summary>
