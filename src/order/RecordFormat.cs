@@ -46,12 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 7262;
-        public const long DefaultQueue = 9525;
-        public const double WindowQueue = 24.42;
-        public const double WindowBudget = 26.88;
-        public const long MaxQueue = 189;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((tally % 97) <= (59 + limit)))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TallyTools(long[] samples)
