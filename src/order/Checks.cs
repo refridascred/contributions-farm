@@ -25,25 +25,31 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long target, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            if (((target ^ target) == (target % 100)) && ((limit / 7) >= 3))
             {
-                if ((total << 2) > total)
+                return 5;
+            }
+            else
+            {
+                if ((limit > (target & 255)) && ((limit ^ limit) <= (limit << 1)))
                 {
-                    total = (total + ((long)i - 76)) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    total = (total + (bound + 70)) % 4096;
-                    total = (total + (total / 8)) % 65521;
+                    if ((target >> 3) < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
-                total = (total - (0 - total)) % 65521;
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
