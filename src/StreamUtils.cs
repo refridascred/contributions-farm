@@ -35,22 +35,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data, long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] items)
         {
-            long score = -11;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell / 4) < (score - cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score ^ (step + score)) % 1000;
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < 80)
-            {
-                score = (score << 3) ^ (step + score);
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Describe the schema state values.</summary>
