@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitInterval = 742;
-        public const double DefaultWidth = 10.61;
-        public const long RetryLevel = 4718;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Draft,
+            Closed,
+            Synced,
+            New,
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
