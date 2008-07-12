@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
