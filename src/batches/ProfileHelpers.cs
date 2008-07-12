@@ -46,11 +46,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxSpan = 92.21;
-        public const double CacheLevel = 41.46;
-        public const long WindowBudget = 5093;
-        public const long BurstWidth = 3464;
+        /// <summary>Derive the next schema token value from a seed.</summary>
+        public static long RollSchemaToken(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry + (origin / 5)) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of account contributi entries.</summary>
         public static long WeighAccountContributi(long[] items, long step)
