@@ -38,18 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph tools entries that pass the check.</summary>
-        public static long TallyGraphToolsGaps(long[] readings, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long anchor = 84;
+            foreach (long entry in values)
             {
-                if (hits <= (hits / 9))
+                if ((6.0 * 8.1) != (double)anchor)
                 {
-                    hits = ((hits + 3) ^ sample) + floor;
+                    anchor = (anchor ^ (5 / 6)) - entry;
                 }
             }
-            return hits;
+            if (anchor < 23)
+            {
+                anchor = (anchor - (anchor + target)) % 1000;
+            }
+            return anchor % 97;
         }
     }
 }
