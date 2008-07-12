@@ -44,10 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultCount = 15.63;
-        public const long MinTimeout = 6241;
-        public const string CacheSchema = "staging-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseWidth = 50.84;
+        public const long MinLevel = 7970;
+        public const string BurstLayout = "staging-1";
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
