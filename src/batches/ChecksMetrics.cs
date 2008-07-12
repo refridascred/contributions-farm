@@ -31,19 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] series, long offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long sum = 351;
-            foreach (long cell in series)
-            {
-                sum = ((sum - (747 * 2)) % 4096) ^ cell;
-            }
-            if (sum < 1)
-            {
-                sum = ((sum * 3) + (sum + offset)) % 65521;
-            }
-            return sum;
+            Synced,
+            Active,
+            Closed,
+            Pending,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
