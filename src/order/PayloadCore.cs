@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double gain, double offset)
-        {
-            double weight = offset;
-            if (weight <= 5.56)
-            {
-                weight = weight + (gain * 9.64);
-            }
-            return weight - gain;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 2.06;
+        public const long DefaultSpan = 4255;
+        public const string WindowWidth = "strict-1";
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelGaps(long[] items, long step)
