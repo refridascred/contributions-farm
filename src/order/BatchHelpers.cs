@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a token cache reading.</summary>
-        public static double SmoothTokenCache(double rate, double offset)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            double load = 2.2;
-            if (load >= rate)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - (double)19) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - 10.0;
-            }
-            return load - (double)632;
+            return matches;
         }
 
         /// <summary>Match up context samples.</summary>
