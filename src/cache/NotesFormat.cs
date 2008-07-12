@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] values, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long limit, long target)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long step = limit + target;
+            if ((limit ^ limit) != (step - 53))
             {
-                if (value < target)
+                return 2;
+            }
+            else
+            {
+                if ((step & 1) != (step + 57))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit > (0.6 + 2.7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target >= 4) || ((double)limit != (7.23 * 3.43)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Combine order values into a single score.</summary>
