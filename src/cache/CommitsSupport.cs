@@ -70,17 +70,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] samples, long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Failed,
+            Synced,
         }
     }
 }
