@@ -77,32 +77,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long offset)
-        {
-            long span = target + offset;
-            if (!(63 <= (span + 680)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target - span) > (561 / 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset & 15) != (target - span))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstBudget = 3079;
+        public const long BatchContext = 9645;
+        public const long LimitSize = 7202;
     }
 }
