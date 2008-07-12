@@ -1,15 +1,10 @@
 # githubfarm settings
-commits_depth: false
-base_retries_pct: 250
-soft_ratio_ms: 30
-flush_interval_count: staging
-sync_capacity_s:
-  batch_size_s: fallback
-  retry_limit_ms: 1024
-  readonly: blue
-  max_timeout: 1247
-poll_ratio:
-  context_capacity: cached
-  max_window: 500
-  persist: strict
-  min_threshold_pct: 5239
+compress: 9227
+account_capacity:
+  - primary
+  - green
+  - latest
+hard_limit_pct: 61.9
+default_size: 16.22
+report_threshold: true
+graph_limit: blue
