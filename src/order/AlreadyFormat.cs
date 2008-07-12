@@ -29,22 +29,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] levels, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            long total = 766;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((double)total > (3.46 / 7.0))
+                if (!((double)count != (1.63 * 4.4)))
                 {
-                    total = (((total * 5) + (reading / 4)) % 97) - floor;
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (total < 583)
-            {
-                total = (total << 3) ^ (663 & 1);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
