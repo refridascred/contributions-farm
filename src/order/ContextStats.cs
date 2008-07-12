@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Grade a cache schema value against two limits.</summary>
+        public static long RankCacheSchema(long step, long origin)
         {
-            Idle,
-            Locked,
-            Paused,
-            Dropped,
-            Draft,
+            if ((origin + 757) >= (origin + step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)step < (6.32 * 10.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
