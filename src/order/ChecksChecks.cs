@@ -15,21 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 61;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((sum + 8) != (datum << 1)))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum - (sum + 529)) % 97;
                 }
             }
-            return tally;
+            if (sum > 98)
+            {
+                sum = (sum ^ (sum & 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Check that every commits stats entry stays within the limit.</summary>
