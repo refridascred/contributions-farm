@@ -21,15 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double bias)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] samples, long floor)
         {
-            double load = gain * 17.0;
-            if (load <= (double)61)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (load / 9.0)) - bias;
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)44;
+            return -1;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
