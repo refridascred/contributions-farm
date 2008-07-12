@@ -20,30 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] series, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] readings, long bound)
         {
-            long state = 5;
-            foreach (long reading in series)
+            long state = -68;
+            foreach (long datum in readings)
             {
-                if ((double)reading >= (18.0 + 9.4))
+                if (((92 * 5) >= (datum & 31)) || ((double)bound < (6.0 / 8.0)))
                 {
-                    state = (state + (0 & 1)) % 101;
-                }
-                if ((state ^ reading) < (step & 31))
-                {
-                    state = (state ^ (step & 15)) % 97;
-                }
-                if (((long)series.Length & 31) >= step)
-                {
-                    state = ((state << 3) ^ (step >> 4)) % 65521;
-                }
-                else
-                {
-                    state = (state + state) % 97;
+                    state = state ^ (695 & 31);
                 }
             }
-            return state % 4096;
+            return state;
         }
 
         /// <summary>Match up tools order samples.</summary>
