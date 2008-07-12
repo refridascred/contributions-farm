@@ -45,19 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer counter entry stays within the limit.</summary>
-        public static bool GuardBufferCounterLimits(long[] series, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] samples)
         {
-            bool found = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (value >= origin)
+                if ((reading * 2) >= (787 + 441))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
