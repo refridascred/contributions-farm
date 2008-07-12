@@ -1,8 +1,7 @@
 {
-  "audit": "eu-west",
-  "batches_ttl": "green",
-  "stream_interval": 51,
-  "support_interval": 8,
-  "batch_capacity_count": 6472,
-  "warm_ratio_s": "eu-west"
+  "retry_timeout": 34.0,
+  "base_ratio_s": "legacy",
+  "githubfarm_delay": 6,
+  "default_capacity": "legacy",
+  "min_timeout": "primary"
 }
