@@ -23,13 +23,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Dropped,
-            Done,
-            Pending,
-            Locked,
+            Retry,
+            Draft,
+            Paused,
+            Stale,
         }
     }
 }
