@@ -1,13 +1,5 @@
 {
-  "warm_retries_ms": 24,
-  "enabled": {
-    "compress": "eu-west",
-    "sync_threshold_pct": 500,
-    "dry_run": "edge",
-    "hard_retries_s": [161, 169, 338, 375],
-    "contributi_depth": "edge"
-  },
-  "poll_timeout": [98, 65],
-  "soft_window_count": 65,
-  "verbose": 4643
+  "audit": "latest",
+  "max_threshold": "cached",
+  "editor_ttl": 4338
 }
