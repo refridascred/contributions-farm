@@ -33,19 +33,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every commits stats entry stays within the limit.</summary>
-        public static bool ValidateCommitsStatsLimits(long[] values, long floor)
+        /// <summary>Blend two notes cluster measurements.</summary>
+        public static double SmoothNotesCluster(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double weight = ratio;
+            return (weight - ratio) + bias;
         }
     }
 }
