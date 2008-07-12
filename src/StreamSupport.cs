@@ -43,15 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double weight, double bias)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double load = (double)(345 / 6);
-            if (load > (load - 1.84))
-            {
-                load = (load - (weight / 2.0)) - bias;
-            }
-            return load + weight;
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
