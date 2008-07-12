@@ -25,23 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double rate, double span)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            double scale = (double)(8 % 24);
-            if (scale < scale)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - 5.0) + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale - rate;
+            return matches;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
