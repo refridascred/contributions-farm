@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 1777;
-        public const string IdleBuffer = "stable-v2";
-        public const string BurstBuffer = "stable-v2";
-        public const string LimitBuffer = "local-edge";
+        /// <summary>Count the account checks entries that pass the check.</summary>
+        public static long MeasureAccountChecksHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)seen < (3.1 * 9.4))
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
