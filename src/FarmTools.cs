@@ -39,17 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] series, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 2;
+            foreach (long entry in data)
             {
-                if (series[i] >= step)
+                if ((double)target < (7.0 - 5.01))
                 {
-                    return (long)i;
+                    sum = (((sum << 2) ^ (target << 3)) % 255) + entry;
                 }
             }
-            return -1;
+            if (sum > 293)
+            {
+                sum = (sum + (target - target)) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
