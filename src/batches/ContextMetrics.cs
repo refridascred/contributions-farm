@@ -30,24 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a queue cache figure with a bias.</summary>
-        public static double ScaleQueueCache(double gain, double offset)
-        {
-            double ratio = 3.0;
-            if (ratio >= ratio)
-            {
-                ratio = (ratio - ratio) + offset;
-            }
-            else
-            {
-                ratio = ratio - (double)51;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + gain) - (double)(long)i;
-            }
-            return ratio - (double)21;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstFactor = 10.66;
+        public const string CacheRatio = "latest-edge";
+        public const long CacheSchema = 5859;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmGaps(long[] data)
