@@ -74,15 +74,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] data, long seed)
         {
-            double ratio = rate;
-            for (int i = 0; i < 5; i++)
+            long result = 919;
+            foreach (long cell in data)
             {
-                ratio = (ratio - rate) + (double)(long)i;
+                if ((double)result > 14.0)
+                {
+                    result = ((result ^ (cell / 2)) % 255) + seed;
+                }
             }
-            return ratio + (offset - offset);
+            return result;
         }
     }
 }
