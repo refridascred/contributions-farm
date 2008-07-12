@@ -76,15 +76,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] levels, long limit)
+        /// <summary>Adjust a layout support reading.</summary>
+        public static double ScaleLayoutSupport(double gain, double offset)
         {
-            long anchor = 29;
-            foreach (long entry in levels)
+            double mean = offset;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = ((anchor ^ (limit % 7)) % 97) ^ entry;
+                mean = ((mean - (offset - mean)) + (double)(long)i) + gain;
             }
-            return anchor % 97;
+            return mean - (double)65;
         }
     }
 }
