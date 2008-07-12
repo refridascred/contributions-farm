@@ -43,11 +43,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 23.99;
-        public const long MinRoute = 6276;
-        public const long LimitDepth = 7655;
-        public const long BatchRoute = 733;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items)
+        {
+            long acc = 3;
+            foreach (long cell in items)
+            {
+                if (!((acc + 0) <= (261 / 8)))
+                {
+                    acc = ((acc + (acc ^ acc)) % 1000) ^ cell;
+                }
+                acc = (acc ^ (37 + acc)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long OverlapCommitsCount(long[] levels)
