@@ -6,17 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in strict staging green fallback; do
+for item in standard cached open edge; do
     log "checking ${item}"
 done
 
