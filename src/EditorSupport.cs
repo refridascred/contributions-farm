@@ -49,12 +49,31 @@ namespace Common.Utilities
         public const string BatchSpan = "legacy-edge";
         public const double BurstQueue = 66.22;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long seed, long floor)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            if (((5.28 / 5.0) == (double)floor) && (seed > (seed + floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor >= (9 - floor)) && ((7.72 / 5.0) >= (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor & 127) > floor) && (seed <= (964 + floor)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
