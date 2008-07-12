@@ -16,22 +16,18 @@ namespace Common.Utilities
         public const string LimitFactor = "local-v2";
         public const long BaseReport = 6020;
 
-        /// <summary>Digest a series of context batch entries.</summary>
-        public static long TotalContextBatch(long[] series, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] levels)
         {
-            long anchor = 964;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((4.61 * 8.0) <= (double)cell)
+                if (((double)value < (3.46 * 19.0)) && (count >= (value & 255)))
                 {
-                    anchor = (((anchor * 2) + (anchor - 0)) % 4096) - limit;
-                }
-                if ((cell & 1) >= (anchor << 2))
-                {
-                    anchor = (anchor ^ (anchor << 3)) % 4096;
+                    count = count + 1;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
