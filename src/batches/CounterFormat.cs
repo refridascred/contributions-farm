@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Retry,
+            Pending,
             Closed,
             Stale,
-            Locked,
-            Done,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
