@@ -24,14 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Done,
-            Queued,
-            Dropped,
-            Idle,
-            Synced,
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
