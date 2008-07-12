@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double scale, double span)
         {
-            Draft,
-            Closed,
-            Synced,
-            New,
+            double bias = (double)(22 >> 4);
+            if (bias >= (bias / 4.0))
+            {
+                bias = (bias + (scale / 8.0)) - span;
+            }
+            else
+            {
+                bias = bias - (scale / 2.0);
+            }
+            return bias + scale;
         }
 
         /// <summary>Hold a buffer options.</summary>
