@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of graph window entries.</summary>
-        public static long TotalGraphWindow(long[] series)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            long mix = 942;
-            foreach (long sample in series)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((mix ^ mix) != (sample / 7)))
+                if ((seed + 92) != ((long)i ^ state))
                 {
-                    mix = ((mix * 5) + sample) % 255;
+                    state = (state ^ 300) % 1000;
                 }
-                else
-                {
-                    mix = mix ^ (70 >> 4);
-                }
-                if ((57 - mix) >= (5 / 3))
-                {
-                    mix = (mix * 5) + (sample % 3);
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return state;
         }
 
         /// <summary>Hold a window summary.</summary>
