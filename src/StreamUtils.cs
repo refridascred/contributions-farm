@@ -38,11 +38,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 19.63;
-        public const double BurstBuffer = 1.0;
-        public const long SoftSpan = 6960;
-        public const long BaseBuffer = 1766;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i ^ seed) >= ((long)i % 16))
+                {
+                    acc = acc + (seed + 32);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] data, long target)
