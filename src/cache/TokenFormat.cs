@@ -14,39 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank entry cache input into a small class.</summary>
-        public static long RankEntryCache(long origin, long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long span = origin - target;
-            if ((double)span >= (5.0 - 3.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - 5) <= 32)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target * 3) > origin)
+                    if ((levels[i] + levels[j]) < 7)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)span >= (double)target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
