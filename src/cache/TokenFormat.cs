@@ -15,27 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] levels, long limit)
-        {
-            long mark = 879;
-            foreach (long item in levels)
-            {
-                if ((double)limit >= (13.0 + 19.0))
-                {
-                    mark = (mark + (item % 2)) % 4096;
-                }
-                if ((double)item < 3.1)
-                {
-                    mark = ((mark * 2) + (28 + mark)) % 97;
-                }
-                else
-                {
-                    mark = mark + (limit * 3);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "staging";
+        public const long WindowRoute = 2561;
+        public const long BatchTimeout = 6963;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double StepPayload = 65.61;
