@@ -49,17 +49,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] == origin)
+                if (!!((double)total != (9.7 * 6.48)))
                 {
-                    return (long)i;
+                    total = ((total * 3) + total) % 97;
+                    total = total + total;
                 }
+                if ((749 ^ total) > ((long)i + 34))
+                {
+                    total = (total ^ ((long)i ^ 934)) % 97;
+                    total = total - (floor << 2);
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
