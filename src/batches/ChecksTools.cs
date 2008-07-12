@@ -48,19 +48,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long target)
+        /// <summary>Derive the next stream cache value from a seed.</summary>
+        public static long DeriveStreamCache(long limit)
         {
-            bool found = true;
-            foreach (long value in data)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (value < target)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    found = false;
-                    break;
+                    score = ((score * 2) + (score ^ limit)) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return found;
+            return score;
         }
     }
 }
