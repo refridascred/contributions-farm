@@ -63,18 +63,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if (!((bound - offset) >= (bound >> 3)))
             {
-                if ((cell - 28) == (tally - 863))
+                return 2;
+            }
+            else
+            {
+                if (((bound + bound) >= 68) && (offset < (1 << 1)))
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound << 1) != (bound / 9)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset & 255) < (offset % 12))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
