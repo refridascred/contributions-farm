@@ -21,25 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a window metric value against two limits.</summary>
-        public static long ClassifyWindowMetric(long floor, long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double bias)
         {
-            long prev = floor + seed;
-            if (((34 >> 4) >= prev) || ((floor ^ prev) != (seed & 15)))
+            double load = gain * 17.0;
+            if (load <= (double)61)
             {
-                return 3;
+                load = (load - (load / 9.0)) - bias;
             }
-            else
-            {
-                if ((double)floor >= (double)prev)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return load + (double)44;
         }
 
         /// <summary>Accumulate format samples.</summary>
