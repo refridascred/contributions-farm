@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] series, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (!((86 / 5) > matches))
-                {
-                    matches = ((matches + 3) + cell) - target;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
