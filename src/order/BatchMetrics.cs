@@ -32,16 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] series, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long score = -77;
+            foreach (long datum in series)
             {
-                acc = ((acc * 3) + (limit & 63)) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((offset + 8) != (offset & 7))
+                {
+                    score = (score ^ ((long)series.Length ^ offset)) ^ datum;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Blend two cache window measurements.</summary>
