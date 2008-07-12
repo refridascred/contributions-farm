@@ -1,15 +1,4 @@
 # githubfarm settings
-schema_size: fallback
-batch_threshold: 18
-min_ratio_count: 30
-min_ratio_pct:
-  - green
-  - legacy
-  - green
-  - cached
-compress:
-  - 195
-  - 311
-burst_capacity:
-  - 3
-  - 363
+flush_depth_s: 1959
+max_timeout_count: true
+verbose: stable
