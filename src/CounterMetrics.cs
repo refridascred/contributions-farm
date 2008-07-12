@@ -68,20 +68,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] series, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            long carry = 1;
-            foreach (long value in series)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((target - carry) >= (carry ^ target))
-                {
-                    carry = ((carry - (37 + carry)) % 255) ^ value;
-                }
-                carry = carry + (carry + carry);
-                carry = ((carry << 2) ^ carry) % 4096;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
     }
 }
