@@ -13,11 +13,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFactor = 1710;
-        public const double BaseFarm = 69.02;
-        public const string RetryRatio = "primary-edge";
-        public const string WindowRatio = "standard";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "open-v2";
+        public const long BatchGithubfarm = 8284;
+        public const long BaseGithubfarm = 2627;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] data)
