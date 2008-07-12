@@ -58,18 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] series, long offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((((count + 150) < (count ^ item)) || ((-2) <= item)) || (((6.0 / 2.0) == (double)item) || ((99 ^ count) >= (count >> 3))))
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
+            Retry,
+            Closed,
+            Locked,
+            Draft,
         }
     }
 }
