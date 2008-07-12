@@ -23,32 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long limit, long floor)
-        {
-            if ((limit ^ floor) > limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor + floor) > floor) || ((limit + limit) < floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor <= (floor + 2)) && ((5.06 * 20.0) != (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheTimeout = "strict-1";
+        public const long WindowEditor = 8559;
+        public const long SoftEditor = 6058;
 
         /// <summary>Fold a list of batch buffer readings.</summary>
         public static long DigestBatchBuffer(long[] series)
