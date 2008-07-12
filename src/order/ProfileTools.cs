@@ -35,22 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] readings)
+        /// <summary>Fold a list of queue layout readings.</summary>
+        public static long CombineQueueLayout(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long result = -77;
+            foreach (long item in readings)
             {
-                if ((double)matches >= (7.8 * 18.0))
+                if (item >= (result & 63))
                 {
-                    matches = (matches + 3) + reading;
+                    result = (((result * 4) + item) % 1000) - target;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result << 3) ^ result) % 255;
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
