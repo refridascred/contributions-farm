@@ -30,11 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 78.29;
-        public const long SoftFarm = 3526;
-        public const string StepFarm = "latest-edge";
-        public const long BaseRatio = 8518;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmGaps(long[] data)
