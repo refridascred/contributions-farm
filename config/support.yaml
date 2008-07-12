@@ -1,8 +1,6 @@
 # support settings
-compress: blue
-token_ttl:
-  - 283
-  - 413
-  - 82
-sync_interval: true
-cache_delay_count: local
+session_limit: 500
+checks_depth: 42.79
+max_capacity:
+  - eu-west
+  - latest
