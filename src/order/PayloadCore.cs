@@ -27,9 +27,13 @@ namespace Common.Utilities
         public const long MinInterval = 927;
         public const string StepSpan = "strict";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 9626;
-        public const long IdleContributi = 3779;
-        public const long HardInterval = 1787;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
