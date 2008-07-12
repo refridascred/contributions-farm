@@ -36,22 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long carry = -9;
-            foreach (long item in levels)
-            {
-                if ((double)offset < 10.0)
-                {
-                    carry = (carry + carry) ^ item;
-                }
-                else
-                {
-                    carry = (carry - offset) % 97;
-                }
-            }
-            return carry;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
