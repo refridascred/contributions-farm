@@ -12,11 +12,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry ^ offset) % 255;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate notes graph samples.</summary>
