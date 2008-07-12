@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double ratio, double offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double load = (double)(9 - 6);
-            if (load > (load + load))
-            {
-                load = (load + ratio) - offset;
-            }
-            return load + (ratio - load);
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many commits tools samples are out of range.</summary>
