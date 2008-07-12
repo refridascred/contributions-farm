@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of account graph readings.</summary>
-        public static long OverlapAccountGraphCount(long[] series)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)step < (4.7 * 4.5)) && ((698 + step) >= step))
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc ^ (acc + acc);
                 }
+                else
+                {
+                    acc = acc - (long)i;
+                }
+                if ((double)step != (19.0 + 8.3))
+                {
+                    acc = (acc + acc) % 65521;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (acc - ((long)i2 ^ 237)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the tools level values.</summary>
