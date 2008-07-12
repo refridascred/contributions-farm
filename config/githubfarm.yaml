@@ -1,9 +1,5 @@
 # githubfarm settings
-idle_ratio:
-  - open
-  - open
-  - local
-cache_capacity: 94
-dry_run: 93.04
-strict: true
-soft_timeout_ms: edge
+filter_interval: open
+base_depth_s: 250
+account_delay: true
+batch_ttl_pct: 1024
