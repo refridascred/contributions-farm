@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a graph context pair into a bucket.</summary>
-        public static long BucketGraphContext(long seed, long limit)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            if ((limit ^ seed) < (limit + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((18.0 - 3.24) != (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed + seed) >= 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit * 3) != (seed + limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
