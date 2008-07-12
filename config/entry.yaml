@@ -1,15 +1,11 @@
 # entry settings
-audit: 38
-warm_size_count:
-  default_limit_ms: true
-  route_timeout:
-    max_window: false
-    githubfarm_window: true
-    account_retries: 9450
-  base_ttl:
-    - fallback
-    - strict
-    - staging
-schema_limit:
-  - open
-  - open
+enabled: true
+default_interval_ms: true
+filter_interval:
+  - 289
+  - 28
+editor_timeout:
+  - edge
+  - eu-west
+  - latest
+  - strict
