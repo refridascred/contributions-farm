@@ -71,22 +71,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] values)
+        /// <summary>Iterate the commits graph series from a seed.</summary>
+        public static long RollCommitsGraph(long bound)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((8.7 / 4.0) < (double)item)
+                if ((mix >> 5) < ((long)i + bound))
                 {
-                    tally = tally + 3;
+                    mix = (mix ^ bound) % 255;
+                    mix = mix ^ (mix % 2);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
