@@ -45,21 +45,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)(1 >> 4);
+            if (rate <= weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate + (weight * 1.86)) - floor;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (weight - weight)) + (double)(long)i;
+            }
+            return rate + (rate / 8.0);
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
