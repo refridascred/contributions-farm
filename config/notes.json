@@ -1,5 +1,15 @@
 {
-  "default_capacity_ms": [81, 123, 111, 94],
-  "batch_ttl_pct": true,
-  "batch_size": "legacy"
+  "dry_run": [5, 230, 328],
+  "flush_limit_count": {
+    "batch_delay_count": {
+      "soft_depth_ms": 28.88,
+      "notes_depth": 1024,
+      "max_ratio": [241, 362]
+    },
+    "sync_ttl_ms": 27.72,
+    "sync_depth_count": [407, 12, 452, 235],
+    "cache_retries_count": 30,
+    "soft_window_count": false
+  },
+  "poll_depth_ms": 8741
 }
