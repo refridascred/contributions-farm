@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values, long bound)
         {
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((91 + bound) <= (bound + item))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already summary.</summary>
