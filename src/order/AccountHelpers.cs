@@ -36,15 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order command samples are out of range.</summary>
-        public static long AuditOrderCommandGaps(long[] items, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] readings, long target)
         {
             long hits = 0;
-            foreach (long sample in items)
+            foreach (long item in readings)
             {
-                if (!((434 - step) == (1 >> 1)) || ((step + sample) != (sample & 7)))
+                if ((double)hits <= (double)(-8))
                 {
-                    hits = hits + 3;
+                    hits = ((hits + 3) + item) - target;
                 }
             }
             return hits;
