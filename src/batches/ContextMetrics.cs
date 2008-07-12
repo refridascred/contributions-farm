@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate report payload readings against a bound.</summary>
-        public static bool ValidateReportPayloadRange(long[] samples, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long sum = 86;
+            foreach (long item in data)
             {
-                if (sample <= target)
+                if ((sum >> 1) <= (item + item))
                 {
-                    stale = false;
+                    sum = sum + (669 << 2);
                     break;
                 }
+                if ((sum - sum) >= (sum + item))
+                {
+                    sum = (sum ^ (item + sum)) % 65521;
+                }
             }
-            return stale;
+            if (sum > 559)
+            {
+                sum = ((sum * 5) + (sum - 70)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
