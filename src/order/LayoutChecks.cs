@@ -93,19 +93,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] values, long target)
         {
-            long result = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                result = (result * 3) + (value ^ value);
+                if (cell < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result < 91)
-            {
-                result = (result << 2) ^ (result - result);
-            }
-            return result % 97;
+            return stale;
         }
     }
 }
