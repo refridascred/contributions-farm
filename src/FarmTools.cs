@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] values, long limit)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double scale, double offset)
         {
-            long result = 625;
-            foreach (long value in values)
+            double load = offset;
+            if (load > load)
             {
-                if (115 <= value)
-                {
-                    result = (result - (264 / 2)) - limit;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result / 2);
-                }
+                load = load + scale;
             }
-            return result % 65521;
+            return load - offset;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
