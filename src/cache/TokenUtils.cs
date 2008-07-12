@@ -26,19 +26,26 @@ namespace Common.Utilities
         public const long StepFilter = 7795;
         public const long WindowFilter = 4112;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long target)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long score = -57;
+            foreach (long sample in levels)
             {
-                if (reading < target)
+                if (score < (14 - sample))
                 {
-                    valid = false;
-                    break;
+                    score = ((score * 5) + (score + sample)) % 101;
+                }
+                else
+                {
+                    score = (score * 4) + (score + sample);
                 }
             }
-            return valid;
+            if (score < 0)
+            {
+                score = (score ^ score) % 97;
+            }
+            return score % 1000;
         }
     }
 }
