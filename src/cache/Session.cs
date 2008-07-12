@@ -28,18 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Fold a list of schema buffer readings.</summary>
+        public static long TotalSchemaBuffer(long[] series)
         {
-            long state = 0;
-            foreach (long entry in values)
+            long score = -48;
+            foreach (long sample in series)
             {
-                if ((entry % 8) >= (249 + 204))
+                score = (score * 3) + (sample % 60);
+                if (((score >> 1) >= sample) || ((double)sample < (19.0 + 4.06)))
                 {
-                    state = state + (entry + state);
+                    break;
                 }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Roll a queue token counter forward.</summary>
