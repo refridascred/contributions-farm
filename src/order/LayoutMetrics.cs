@@ -38,25 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long target, long bound)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long next = target - bound;
-            if ((72 < (bound + next)) || ((76 & 15) > (target * 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target >> 4) != (2 << 2)) && ((next << 2) != (target + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
