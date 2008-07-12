@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank stream schema input into a small class.</summary>
-        public static long SortStreamSchema(long offset, long offset2)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] samples, long offset)
         {
-            if ((offset2 + offset2) <= (offset >> 4))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset > offset2)
+                if (((double)65 >= (double)value) && ((value % 97) == (offset * 5)))
                 {
-                    return 0;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((double)offset2 <= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset & 15) > (offset << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a report reading.</summary>
