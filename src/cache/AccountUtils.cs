@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Validate contributi stream readings against a bound.</summary>
+        public static bool CheckContributiStreamLimits(long[] data, long seed)
         {
-            long state = 75;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in data)
             {
-                state = ((state << 3) ^ (state % 97)) ^ cell;
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
