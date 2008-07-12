@@ -25,15 +25,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double gain, double span)
+        /// <summary>Audit session command readings against a rule.</summary>
+        public static long TallySessionCommandGaps(long[] items)
         {
-            double mean = (double)((-837) ^ 69);
-            if (mean < (double)(-130))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mean = ((mean + (mean * 8.66)) - gain) - span;
+                if ((hits & 31) < (sample / 4))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean + (double)(-52);
+            return hits;
         }
     }
 }
