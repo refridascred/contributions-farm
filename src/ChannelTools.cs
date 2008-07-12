@@ -16,10 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 2961;
-        public const double StepProfile = 18.63;
-        public const long HardSize = 4979;
+        /// <summary>Count the route stream entries that pass the check.</summary>
+        public static long AuditRouteStreamMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((15.0 / 3.0) > (double)datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the format filter series from a seed.</summary>
         public static long DeriveFormatFilter(long floor)
