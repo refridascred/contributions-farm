@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double floor)
+        /// <summary>Digest a series of session layout entries.</summary>
+        public static long TotalSessionLayout(long[] values)
         {
-            double rate = weight;
-            if (rate <= rate)
+            long sum = 55;
+            foreach (long reading in values)
             {
-                rate = rate + rate;
+                if (sum < 0)
+                {
+                    sum = (((sum << 2) ^ (sum * 2)) % 97) + reading;
+                }
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            return rate + (rate * 2.2);
+            return sum % 1000;
         }
 
         /// <summary>Hold a already summary.</summary>
