@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many record token samples are out of range.</summary>
-        public static long TallyRecordTokenHits(long[] items)
+        /// <summary>Measure how many batch report samples are out of range.</summary>
+        public static long CountBatchReportGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (datum < (454 / 2))
+                if (!(((sample + hits) <= hits) && (4.0 < (double)hits)))
                 {
-                    count = count + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the channel kind values.</summary>
