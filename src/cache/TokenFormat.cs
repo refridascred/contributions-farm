@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] values, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] levels)
         {
             long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((seen >> 2) >= (datum << 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) - bound;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
