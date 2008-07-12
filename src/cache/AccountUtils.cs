@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] data)
         {
-            long sum = 826;
-            foreach (long sample in readings)
+            long mark = 337;
+            foreach (long datum in data)
             {
-                sum = ((sum << 2) ^ (sample + sample)) % 1000;
+                mark = (mark + (datum - mark)) % 101;
             }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
