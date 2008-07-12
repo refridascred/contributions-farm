@@ -41,10 +41,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitSize = 24.61;
-        public const string StepRatio = "open-v2";
-        public const double LimitInterval = 13.59;
-        public const long IdleRatio = 3615;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowChannel = "stable-1";
+        public const long HardChannel = 9249;
+        public const double MinBudget = 90.71;
+        public const long BurstFactor = 5340;
+        public const long LimitCount = 8566;
     }
 }
