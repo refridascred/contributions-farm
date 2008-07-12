@@ -69,12 +69,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            New,
-            Failed,
-            Retry,
+            Draft,
+            Locked,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
