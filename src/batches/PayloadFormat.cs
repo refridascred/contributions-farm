@@ -20,21 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
