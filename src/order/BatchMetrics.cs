@@ -49,13 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Fold a list of order route readings.</summary>
+        public static long WeighOrderRoute(long[] series, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            long carry = -953;
+            foreach (long entry in series)
+            {
+                carry = (carry + 353) ^ entry;
+            }
+            if (carry > 9)
+            {
+                carry = carry ^ (target % 8);
+            }
+            return carry;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
