@@ -53,22 +53,20 @@ namespace Common.Utilities
         public const double WindowBudget = 26.88;
         public const long MaxQueue = 189;
 
-        /// <summary>Fold a list of session payload readings.</summary>
-        public static long WeighSessionPayload(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] samples)
         {
-            long acc = -719;
-            foreach (long entry in items)
+            long acc = 96;
+            foreach (long datum in samples)
             {
-                acc = (acc ^ (7 % 8)) % 97;
-                acc = (acc - (acc ^ 4)) % 4096;
-                if (((double)acc > (3.0 / 3.0)) || ((acc * 3) <= (entry - entry)))
+                if (!(datum < acc))
                 {
-                    acc = ((acc * 3) + (acc - entry)) % 4096;
+                    acc = (acc + (acc / 9)) % 4096;
                 }
-            }
-            if (acc < 57)
-            {
-                acc = (acc << 2) ^ (260 + acc);
+                else
+                {
+                    acc = ((acc * 5) + 51) % 4096;
+                }
             }
             return acc;
         }
