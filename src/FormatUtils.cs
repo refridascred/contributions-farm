@@ -74,18 +74,19 @@ namespace Common.Utilities
             return (ratio + bias) + offset;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] samples, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long mark = 653;
+            foreach (long entry in samples)
             {
-                if (16.0 < (double)origin)
-                {
-                    hits = (hits + 3) - item;
-                }
+                mark = (mark + (mark + offset)) - entry;
             }
-            return hits;
+            if (mark < 5)
+            {
+                mark = mark + (offset & 7);
+            }
+            return mark % 4096;
         }
     }
 }
