@@ -13,13 +13,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] readings, long limit)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long anchor = 54;
+            foreach (long item in readings)
+            {
+                if (((9.71 - 7.1) < (double)(long)readings.Length) || ((double)limit < 3.1))
+                {
+                    anchor = anchor + (item + anchor);
+                }
+                else
+                {
+                    anchor = anchor - (limit + item);
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = (anchor ^ (7 - limit)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks info.</summary>
