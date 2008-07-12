@@ -66,17 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix - (bound + mix)) % 1000;
-                mix = (mix * 3) + ((long)i ^ mix);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 18.03;
+        public const long MaxFarm = 7764;
+        public const double HardTimeout = 15.55;
+        public const long SoftFarm = 9696;
     }
 }
