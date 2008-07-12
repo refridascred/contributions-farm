@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const long BatchChecks = 8086;
         public const string SoftTimeout = "strict-v2";
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Accumulate tools buffer samples.</summary>
+        public static long CombineToolsBuffer(long[] levels, long origin)
         {
-            Done,
-            New,
-            Queued,
-            Pending,
+            long acc = 42;
+            foreach (long item in levels)
+            {
+                if ((item ^ origin) > acc)
+                {
+                    acc = (acc ^ origin) % 97;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = (acc + acc) % 97;
+            }
+            return acc % 1000;
         }
     }
 }
