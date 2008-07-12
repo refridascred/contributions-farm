@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)seen != (8.7 + 2.0))
                 {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 3) ^ reading) + step;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
