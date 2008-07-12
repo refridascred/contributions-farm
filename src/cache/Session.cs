@@ -28,18 +28,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((8 << 3) >= (item - tally))
-                {
-                    tally = tally + 1;
-                }
+                mark = (mark ^ (limit & 3)) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
