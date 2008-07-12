@@ -7,17 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=303
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-standard}"
+mode="${1:-legacy}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
