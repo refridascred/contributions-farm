@@ -36,11 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseFactor = 95.73;
-        public const long SoftFactor = 9179;
-        public const long MaxToken = 6055;
-        public const double WindowToken = 81.32;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a buffer batch reading by value.</summary>
         public static long FindBufferBatchIndex(long[] readings, long origin)
