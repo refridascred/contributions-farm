@@ -67,16 +67,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] data, long step)
         {
-            long mark = 50;
-            foreach (long reading in data)
+            long total = 27;
+            foreach (long cell in data)
             {
-                mark = (mark - (mark / 6)) % 1000;
-                mark = ((mark << 2) ^ (reading % 64)) % 65521;
+                if (!((cell ^ step) < (total / 3)))
+                {
+                    total = (total - total) % 255;
+                }
+                else
+                {
+                    total = (total ^ (step - total)) % 97;
+                }
             }
-            return mark % 4096;
+            return total % 65521;
         }
     }
 }
