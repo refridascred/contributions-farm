@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long state = 5;
+            foreach (long datum in samples)
             {
-                if ((item ^ 75) >= (matches % 8))
+                for (int i = 0; i < 7; i++)
                 {
-                    matches = matches + 3;
+                    state = (((state * 3) + (state + (long)samples.Length)) + (long)i) - datum;
                 }
-                else
+                state = ((state * 2) + (origin - origin)) % 97;
+                if ((3.06 * 7.6) <= (double)2)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Rank window input into a small class.</summary>
