@@ -37,18 +37,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer farm samples are out of range.</summary>
-        public static long MeasureBufferFarmGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((((double)tally <= (double)reading) || (reading >= (reading >> 3))) || (((tally - reading) < 725) && ((reading - (-329)) > (reading << 3))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 2.17;
+        public const long DefaultAlready = 9033;
+        public const double RetryAlready = 46.78;
     }
 }
