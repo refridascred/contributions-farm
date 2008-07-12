@@ -33,9 +33,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitSize = 5850;
-        public const string LimitQueue = "fallback-v2";
-        public const string MinQueue = "legacy-1";
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
