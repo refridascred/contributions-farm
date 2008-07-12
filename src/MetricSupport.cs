@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches >> 4) > matches)
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "cached-edge";
+        public const long SoftBatches = 233;
+        public const string StepInterval = "alpha-1";
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
