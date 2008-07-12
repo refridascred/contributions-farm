@@ -1,14 +1,5 @@
 {
-  "buffer_interval": true,
-  "counter_delay": 500,
-  "flush_limit": "green",
-  "stream_ttl": {
-    "default_retries_ms": false,
-    "flush_size": 405,
-    "metric_size": "open",
-    "persist": [402, 64, 26, 194],
-    "session_threshold": 49.99,
-    "default_limit_s": 73.5
-  },
-  "entry_ratio": "cached"
+  "persist": 12,
+  "flush_retries": 1.35,
+  "flush_timeout_ms": "blue"
 }
