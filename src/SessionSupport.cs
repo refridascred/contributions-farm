@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ratio + (6.0 / 4.0);
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] readings, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((double)origin >= (8.5 * 9.9)) && ((long)i >= 4))
+                if (803 > (datum * 3))
                 {
-                    state = (state ^ origin) % 1000;
+                    tally = (tally + 3) - offset;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Roll a window command counter forward.</summary>
