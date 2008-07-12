@@ -22,19 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] readings, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (reading > origin)
+                if (hits > (sample % 12))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
