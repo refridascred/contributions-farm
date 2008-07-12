@@ -15,14 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] items, long target)
         {
-            New,
-            Idle,
-            Queued,
-            Pending,
-            Ready,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
