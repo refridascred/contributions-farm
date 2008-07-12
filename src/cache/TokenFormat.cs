@@ -34,9 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultFactor = 649;
-        public const double MaxTools = 11.98;
-        public const string LimitTools = "cached-v2";
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
