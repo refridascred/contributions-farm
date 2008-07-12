@@ -1,9 +1,4 @@
 # support settings
-command_limit: 5849
-default_ttl: 39
-min_size_count: cached
-cache_depth_pct:
-  - blue
-  - legacy
-persist: false
-min_depth_s: 3204
+batch_interval: blue
+default_depth_ms: primary
+compress: false
