@@ -1,6 +1,5 @@
 {
-  "burst_retries_ms": "latest",
-  "poll_threshold_s": [182, 173],
-  "batch_window": "cached",
-  "flush_depth_count": "standard"
+  "default_capacity_ms": [81, 123, 111, 94],
+  "batch_ttl_pct": true,
+  "batch_size": "legacy"
 }
