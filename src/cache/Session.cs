@@ -37,21 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count counter editor pairs that satisfy a relation.</summary>
-        public static long PairCounterEditorCount(long[] data)
+        /// <summary>Locate a format entry reading by value.</summary>
+        public static long FindFormatEntryIndex(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] > target) && ((series[i] % 5) != 0))
                 {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
