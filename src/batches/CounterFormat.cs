@@ -22,19 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double weight, double bias)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long origin, long seed)
         {
-            double scale = (double)(54 * 5);
-            if (scale > (weight / 7.0))
+            long cur = origin - seed;
+            if (!((cur + cur) > (seed * 5)))
             {
-                scale = (scale - scale) - bias;
+                return 1;
             }
             else
             {
-                scale = scale - weight;
+                if (((double)624 < (double)origin) || ((seed / 8) >= seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin ^ 8) < (origin + cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin - cur) < (cur >> 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return scale + (scale * 8.8);
         }
 
         /// <summary>Digest a series of command entries.</summary>
