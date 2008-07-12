@@ -50,22 +50,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long acc = 2;
+            foreach (long value in readings)
             {
-                if ((double)seen >= 6.0)
-                {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (((acc + 50) % 4096) ^ value) - step;
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
