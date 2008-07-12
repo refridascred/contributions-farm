@@ -51,18 +51,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics batches entries that pass the check.</summary>
-        public static long AuditMetricsBatchesGaps(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (matches >= entry)
+                if (reading < target)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
