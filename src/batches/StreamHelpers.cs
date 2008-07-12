@@ -35,15 +35,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mix = 0;
-            foreach (long entry in data)
-            {
-                mix = ((mix * 2) + (entry * 4)) % 101;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
