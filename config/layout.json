@@ -1,8 +1,8 @@
 {
-  "min_timeout_count": ["fallback", "fallback"],
-  "payload_depth": 60,
-  "batch_delay_s": "standard",
-  "batch_depth": ["latest", "cached", "strict"],
-  "checks_timeout": ["fallback", "staging", "eu-west", "fallback"],
-  "report_depth": 250
+  "poll_threshold_count": 60,
+  "dry_run": true,
+  "format_timeout": false,
+  "compress": [27, 45, 200],
+  "strict": 47.13,
+  "hard_capacity_count": 8298
 }
