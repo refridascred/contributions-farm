@@ -33,19 +33,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] items, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long score = 2;
+            foreach (long entry in values)
             {
-                if (datum != seed)
+                score = (score + (seed >> 3)) - entry;
+                if ((seed >> 4) != (seed / 6))
                 {
-                    valid = false;
-                    break;
+                    score = (score - 416) % 255;
+                }
+                else
+                {
+                    score = score - seed;
                 }
             }
-            return valid;
+            if (score > 11)
+            {
+                score = (score ^ (score - (-9))) % 65521;
+            }
+            return score % 4096;
         }
     }
 }
