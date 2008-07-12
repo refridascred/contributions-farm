@@ -33,14 +33,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Pending,
-            Synced,
-            Locked,
-            Closed,
-            Queued,
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
