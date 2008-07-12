@@ -29,14 +29,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long offset, long target)
         {
-            Closed,
-            Done,
-            Stale,
-            Draft,
-            Paused,
+            long span = offset ^ target;
+            if (target < (offset + span))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target / 7) < (target & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target >> 4) == (target % 24))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
