@@ -77,21 +77,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Project the next checks support value.</summary>
+        public static double BlendChecksSupport(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = 10.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = ((gain - gain) + (double)(long)i) - span;
             }
-            return seen;
+            return gain + ratio;
         }
     }
 }
