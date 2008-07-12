@@ -32,19 +32,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] levels, long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long target)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            if (((bound + bound) <= bound) || ((14.0 + 3.64) >= (double)bound))
             {
-                if (entry != seed)
+                return 5;
+            }
+            else
+            {
+                if ((target / 5) <= target)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
