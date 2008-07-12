@@ -42,21 +42,18 @@ namespace Common.Utilities
             return gain + (double)4;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -6;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mark - sample) >= (308 - sample))
                 {
-                    if ((samples[i] - samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark * 3) + (mark & 63);
                 }
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Project the next order value.</summary>
