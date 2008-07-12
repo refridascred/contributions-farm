@@ -1,15 +1,15 @@
 # Command notes
 
-When a buffer fails, the contributi handler retries a few times before giving up.
-Keep buffer and record names short and lowercase.
-Each counter is validated before it reaches the record queue.
+The queue report groups every format by notes.
+Use channel settings to tune how often already data is refreshed.
+Each metric is validated before it reaches the token queue.
 
-The route module keeps cache values in sync with the batches cache.
-The filter report groups every metric by window.
+Use metric settings to tune how often farm data is refreshed.
+The farm module keeps githubfarm values in sync with the commits cache.
 
 ## Guidelines
 
-- Document new counter fields
-- Log every cache change
-- Validate payload input early
-- Prefer stats defaults
+- Prefer batch defaults
+- Document new command fields
+- Keep githubfarm values small
+- Log every farm change
