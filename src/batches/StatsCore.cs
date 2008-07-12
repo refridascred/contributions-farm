@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double bias2)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] values, long step)
         {
-            double drift = (double)(73 ^ 415);
-            if (drift >= bias2)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - 13.0) + bias;
+                if ((values[i] <= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - bias2;
-            }
-            return drift - bias2;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
