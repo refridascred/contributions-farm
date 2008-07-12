@@ -20,22 +20,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] data)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long floor)
         {
-            long mix = 29;
-            foreach (long sample in data)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((mix << 2) < (sample - sample)))
+                if (((long)i * 2) < ((long)i >> 4))
                 {
-                    mix = (mix * 5) + (mix % 64);
+                    state = state + state;
                 }
-                else
-                {
-                    mix = (mix + mix) % 97;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Digest a series of report entries.</summary>
