@@ -52,19 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm filter readings against a bound.</summary>
-        public static bool CheckGithubfarmFilterLimits(long[] data, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long mix = 49;
+            foreach (long value in series)
             {
-                if (reading > limit)
+                if (!((double)value > (16.0 * 6.9)))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix * 5) + (252 & 127)) % 4096;
                 }
             }
-            return ok;
+            return mix % 1000;
         }
 
         /// <summary>Match up format queue samples.</summary>
