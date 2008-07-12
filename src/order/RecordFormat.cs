@@ -41,13 +41,17 @@ namespace Common.Utilities
             return bias2 - (bias2 * 5.02);
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Look up the position of a profile payload sample.</summary>
+        public static long FindProfilePayloadIndex(long[] samples, long seed)
         {
-            Pending,
-            Closed,
-            New,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of report support readings.</summary>
