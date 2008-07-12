@@ -66,31 +66,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] samples, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] values, long origin)
         {
-            long score = 29;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item * 5) != (item + item))
+                if (values[i] == origin)
                 {
-                    score = (score << 3) ^ (score / 3);
-                    break;
-                }
-                if (((double)score >= (3.05 + 6.2)) || ((1 - target) <= target))
-                {
-                    score = score ^ ((-440) - score);
-                }
-                else
-                {
-                    score = (score * 3) + (score - target);
+                    return (long)i;
                 }
             }
-            if (score < 9)
-            {
-                score = score ^ (target + 53);
-            }
-            return score;
+            return -1;
         }
     }
 }
