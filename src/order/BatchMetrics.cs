@@ -32,22 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] series, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            long result = 19;
-            foreach (long sample in series)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((result % 97) > (floor + 630))
-                {
-                    result = ((result << 3) ^ (result + floor)) + sample;
-                }
+                acc = ((acc * 3) + (limit & 63)) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (result > 70)
-            {
-                result = (result ^ (long)series.Length) % 255;
-            }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Blend two cache window measurements.</summary>
