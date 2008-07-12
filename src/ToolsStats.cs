@@ -66,22 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] values)
         {
-            long score = 72;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((83 & 1) <= ((long)values.Length % 8))
+                if ((8.7 / 4.0) < (double)item)
                 {
-                    score = ((((score * 5) + (score % 8)) % 65521) + datum) + origin;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (score < 666)
-            {
-                score = score - 4;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
