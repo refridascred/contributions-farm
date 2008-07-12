@@ -1,6 +1,6 @@
 {
-  "batch_ttl_s": "staging",
-  "cache_delay_pct": true,
-  "batch_capacity": 7455,
-  "cache_capacity_pct": 92
+  "burst_retries_ms": "latest",
+  "poll_threshold_s": [182, 173],
+  "batch_window": "cached",
+  "flush_depth_count": "standard"
 }
