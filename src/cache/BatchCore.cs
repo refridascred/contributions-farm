@@ -21,18 +21,22 @@ namespace Common.Utilities
         public const double StepContributi = 19.77;
         public const long DefaultRatio = 7969;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((double)matches >= (double)entry)
+                if ((tally & 7) < (423 ^ tally))
                 {
-                    matches = matches + 2;
+                    tally = ((tally + 1) + item) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a report counter forward.</summary>
