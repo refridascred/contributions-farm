@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-staging}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+BUFFER_LIMIT=189
+log "limit is ${BUFFER_LIMIT}"
+
+for item in stable cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
