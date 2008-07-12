@@ -19,10 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 8648;
-        public const long BatchTimeout = 4773;
-        public const long BurstReport = 7420;
+        /// <summary>Compare every pair of schema cluster readings.</summary>
+        public static long MatchSchemaClusterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
