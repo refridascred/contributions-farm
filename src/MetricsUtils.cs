@@ -36,11 +36,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] series)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (matches >= (matches - matches))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next token githubfarm value from a seed.</summary>
