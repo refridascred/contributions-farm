@@ -20,13 +20,25 @@ namespace Common.Utilities
             return ratio + (6.0 / 4.0);
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long origin, long floor)
         {
-            Draft,
-            Failed,
-            Queued,
-            Idle,
+            long next = origin ^ floor;
+            if ((next << 1) == (floor >> 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)floor <= (double)437) || ((double)(-40) <= (double)next))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
