@@ -65,15 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] samples, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((double)offset < 5.5)
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
