@@ -35,13 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the counter metrics entries that pass the check.</summary>
+        public static long MeasureCounterMetricsGaps(long[] data)
         {
-            Stale,
-            Ready,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches * 4) < (24 << 2))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
