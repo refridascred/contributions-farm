@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many cache layout samples are out of range.</summary>
-        public static long AuditCacheLayoutHits(long[] samples)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (count < (count - value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a report reading by value.</summary>
