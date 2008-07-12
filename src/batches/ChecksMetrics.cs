@@ -46,22 +46,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] readings, long step)
+        /// <summary>Grade a command editor value against two limits.</summary>
+        public static long RankCommandEditor(long step, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long gap = step - bound;
+            if (gap > (gap + bound))
             {
-                if ((step + 8) != (datum << 2))
+                return 1;
+            }
+            else
+            {
+                if (550 < (step ^ 539))
                 {
-                    seen = seen + 3;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a metric header.</summary>
