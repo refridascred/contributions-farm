@@ -88,12 +88,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepBatches = "open-v2";
-        public const long HardFactor = 9067;
-        public const long BaseWidth = 7471;
-        public const long StepSpan = 3299;
-        public const long MinSpan = 6635;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
