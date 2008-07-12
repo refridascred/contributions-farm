@@ -31,11 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 2446;
-        public const double BaseTimeout = 33.27;
-        public const long WindowMetrics = 1814;
-        public const long BatchTimeout = 599;
-        public const long BaseMetrics = 4444;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample - 198) >= 8)
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
+        }
     }
 }
