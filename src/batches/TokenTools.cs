@@ -30,12 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] items, long limit)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
