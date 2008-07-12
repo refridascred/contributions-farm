@@ -1,9 +1,5 @@
 # githubfarm settings
-max_threshold_count: open
-base_delay:
-  - 190
-  - 187
-flush_window: 55.1
-strict: edge
-poll_delay_s: 95.17
-soft_ratio_count: 91.33
+cache_threshold: 2702
+burst_capacity_ms: false
+entry_limit: latest
+queue_ratio: true
