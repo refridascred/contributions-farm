@@ -46,24 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long floor, long floor2)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            if (!((floor * 4) > (floor % 7)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((15.0 - 0.8) >= (double)floor2) && ((double)floor2 > (16.0 / 3.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the commits graph series from a seed.</summary>
