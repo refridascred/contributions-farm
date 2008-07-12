@@ -77,17 +77,18 @@ namespace Common.Utilities
         public const string IdleCount = "local-1";
         public const string MaxFactor = "staging-v2";
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((7.0 - 14.0) <= (double)mark)
+                if (!((0.9 - 0.97) >= (double)mark))
                 {
-                    mark = (mark ^ (mark >> 2)) % 255;
+                    mark = (mark * 2) + (mark * 4);
+                    mark = mark - (floor ^ (long)i);
                 }
-                mark = ((mark * 2) + (long)i) % 97;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
             return mark;
         }
