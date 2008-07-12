@@ -44,25 +44,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next commits window value from a seed.</summary>
-        public static long StepCommitsWindow(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                result = result ^ ((long)i - (long)i);
-                if (!((1 & 255) == (result ^ 6)))
-                {
-                    result = result ^ (2 % 7);
-                }
-                if ((result - 3) == (5 + (long)i))
-                {
-                    result = ((result << 2) ^ (result ^ result)) % 65521;
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 2710;
+        public const long BurstStream = 4276;
+        public const long DefaultStream = 8376;
     }
 }
