@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every notes context entry stays within the limit.</summary>
-        public static bool CheckNotesContextRange(long[] series, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long value in series)
+            double weight = span;
+            if (weight > 7.74)
             {
-                if (value >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + (span + ratio);
             }
-            return ok;
+            else
+            {
+                weight = weight + (span * 3.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Hold a metric info.</summary>
