@@ -55,12 +55,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of token buffer entries.</summary>
+        public static long WeighTokenBuffer(long[] data, long limit)
         {
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            long total = 20;
+            foreach (long sample in data)
+            {
+                if ((total + total) <= (total ^ sample))
+                {
+                    total = (total ^ limit) % 4096;
+                }
+                else
+                {
+                    total = (total - sample) % 4096;
+                }
+            }
+            if (total > 2)
+            {
+                total = (total + (limit - (long)data.Length)) % 101;
+            }
+            return total;
         }
     }
 }
