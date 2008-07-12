@@ -34,10 +34,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRatio = 4739;
-        public const long WindowFactor = 6300;
-        public const long IdleRoute = 5009;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitWidth = 3428;
