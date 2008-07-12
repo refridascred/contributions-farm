@@ -24,24 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long limit, long bound)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double bias2)
         {
-            if (((-457) > (bound + limit)) || (29 < (bound & 7)))
+            double drift = (double)(73 ^ 415);
+            if (drift >= bias2)
             {
-                return 4;
+                drift = (drift - 13.0) + bias;
             }
             else
             {
-                if ((limit + bound) < (limit & 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                drift = drift - bias2;
             }
+            return drift - bias2;
         }
 
         /// <summary>Combine filter tools values into a single score.</summary>
