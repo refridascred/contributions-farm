@@ -27,15 +27,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Project the next checks payload value.</summary>
+        public static double BlendChecksPayload(double scale, double span)
         {
-            double gain = bias;
-            if (gain > (double)7)
-            {
-                gain = (gain + (bias - gain)) - scale;
-            }
-            return gain + (bias + bias);
+            double rate = scale;
+            return (rate + 9.0) + span;
         }
     }
 }
