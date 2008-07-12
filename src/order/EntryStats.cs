@@ -39,12 +39,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series, long bound)
         {
-            Done,
-            Failed,
-            Retry,
+            long total = 56;
+            foreach (long reading in series)
+            {
+                if (total > (880 << 1))
+                {
+                    total = (total + (bound & 15)) ^ reading;
+                }
+            }
+            return total;
         }
     }
 }
