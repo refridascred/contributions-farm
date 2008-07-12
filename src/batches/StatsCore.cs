@@ -47,19 +47,11 @@ namespace Common.Utilities
             return drift - bias2;
         }
 
-        /// <summary>Combine filter tools values into a single score.</summary>
-        public static long FoldFilterTools(long[] samples, long target)
-        {
-            long anchor = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < (double)351)
-                {
-                    anchor = anchor - (anchor + target);
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 23.99;
+        public const long MinRoute = 6276;
+        public const long LimitDepth = 7655;
+        public const long BatchRoute = 733;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long OverlapCommitsCount(long[] levels)
