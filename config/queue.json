@@ -1,12 +1,11 @@
 {
-  "account_depth": "strict",
-  "strict": 39.72,
-  "soft_ttl_s": 9576,
-  "poll_retries_count": "edge",
-  "persist": {
-    "batch_timeout_s": false,
-    "strict": 12.6,
-    "verbose": "legacy"
+  "min_retries_s": "latest",
+  "batch_timeout": 30,
+  "poll_threshold": {
+    "cache_ratio_s": 89.08,
+    "commits_ratio": 30,
+    "commits_capacity": 9298,
+    "schema_timeout": [9, 400, 197, 307]
   },
-  "compress": 4852
+  "editor_window": 32.01
 }
