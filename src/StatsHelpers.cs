@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((value + count) != (long)series.Length)
+                if (((datum + datum) > datum) || ((datum % 24) == (datum & 63)))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of metric schema readings.</summary>
