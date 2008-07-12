@@ -35,16 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] readings, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long acc = 743;
-            foreach (long datum in readings)
-            {
-                acc = ((acc ^ acc) % 101) - step;
-                acc = acc + ((-622) + datum);
-            }
-            return acc % 1000;
+            New,
+            Retry,
+            Active,
+            Done,
+            Locked,
         }
     }
 }
