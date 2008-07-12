@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a farm cluster pair into a bucket.</summary>
-        public static long GradeFarmCluster(long bound, long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long span = bound + limit;
-            if ((7.01 / 5.0) == (double)span)
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound >= (limit % 24))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit + limit) < (bound + bound)) || ((limit + limit) == (bound + bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
