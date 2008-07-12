@@ -25,17 +25,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a githubfarm token sample.</summary>
-        public static long LocateGithubfarmTokenIndex(long[] values, long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] values)
         {
+            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every record cluster entry stays within the limit.</summary>
