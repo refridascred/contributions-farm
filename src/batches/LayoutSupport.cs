@@ -57,24 +57,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series)
-        {
-            long sum = 776;
-            foreach (long item in series)
-            {
-                if ((2.43 + 5.0) <= (double)sum)
-                {
-                    sum = (((sum * 3) + (sum & 1)) % 65521) ^ item;
-                }
-                sum = (sum * 3) + (sum * 5);
-                if ((double)(long)series.Length == (3.8 * 10.0))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultChecks = "cached-v2";
+        public const long BaseBudget = 4352;
+        public const double SoftChecks = 68.46;
+        public const string MinWidth = "latest-v2";
+        public const long WindowChecks = 1516;
 
         /// <summary>Digest a series of buffer stats entries.</summary>
         public static long FoldBufferStats(long[] items, long target)
