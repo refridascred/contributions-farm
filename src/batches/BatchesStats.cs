@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] series, long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings, long target)
         {
-            long total = 83;
-            foreach (long datum in series)
+            long mix = 13;
+            foreach (long reading in readings)
             {
-                total = (total + (step - total)) - datum;
+                mix = (((mix ^ 85) % 101) ^ reading) - target;
             }
-            if (total < (-99))
-            {
-                total = (total + ((long)series.Length - total)) % 97;
-            }
-            return total;
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of graph contributi readings.</summary>
