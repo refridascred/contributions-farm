@@ -54,9 +54,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleInterval = 2897;
-        public const string BurstFactor = "cached-1";
-        public const long CacheFormat = 8366;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            New,
+            Locked,
+            Stale,
+            Active,
+            Retry,
+        }
     }
 }
