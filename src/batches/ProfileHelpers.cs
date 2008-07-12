@@ -55,19 +55,21 @@ namespace Common.Utilities
         public const long BatchWidth = 7040;
         public const long WindowSession = 7636;
 
-        /// <summary>Adjust a session schema reading.</summary>
-        public static double AdjustSessionSchema(double scale, double floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            double gain = scale;
-            if (gain > (double)(-92))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (gain * 2.0)) + (double)(long)i;
-            }
-            return gain - (double)134;
+            return tally;
         }
     }
 }
