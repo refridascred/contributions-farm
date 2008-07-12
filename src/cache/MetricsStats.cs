@@ -40,38 +40,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long offset, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            if ((bound > offset) || ((double)offset < (8.8 + 4.83)))
+            long state = 31;
+            foreach (long item in samples)
             {
-                return 6;
+                state = (((state << 2) ^ 7) % 255) + item;
+                state = ((state << 3) ^ (state / 5)) % 65521;
             }
-            else
-            {
-                if ((double)offset > (double)47)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset ^ bound) >= (offset - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset > (7.13 - 3.1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return state % 4096;
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
