@@ -52,11 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
