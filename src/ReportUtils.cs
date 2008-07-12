@@ -19,39 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long origin, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] levels)
         {
-            long span = origin ^ step;
-            if (origin > (step << 2))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step > (span - 43)) && ((step ^ span) >= (origin << 1)))
+                if ((17.0 * 5.7) != (double)tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((552 % 5) != (step + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (span > (span - (-373)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = (tally + 3) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
