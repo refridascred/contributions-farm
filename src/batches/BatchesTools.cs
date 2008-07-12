@@ -22,11 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate route samples.</summary>
