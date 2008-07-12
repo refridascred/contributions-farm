@@ -49,22 +49,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many token layout samples are out of range.</summary>
-        public static long TallyTokenLayoutGaps(long[] data)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (!((seen >> 1) >= (seen * 3)))
+                if (!(((hits + cell) > (target - target)) && ((target - cell) == (target + hits))))
                 {
-                    seen = (seen + 3) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Blend two cache measurements.</summary>
