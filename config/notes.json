@@ -1,22 +1,6 @@
 {
-  "enabled": {
-    "compress": ["cached", "green", "standard"],
-    "burst_delay": 36.57,
-    "batch_interval": "standard",
-    "persist": 75.4,
-    "min_depth": true,
-    "dry_run": 60
-  },
-  "soft_capacity_s": {
-    "min_limit_ms": {
-      "sync_limit_s": "green",
-      "stats_timeout": 73.8,
-      "soft_timeout": 14.08,
-      "enabled": false
-    },
-    "min_interval_s": "stable",
-    "dry_run": [167, 382, 447],
-    "min_depth_count": "fallback"
-  },
-  "retry_capacity_count": 3.82
+  "burst_window_s": "strict",
+  "warm_retries": "eu-west",
+  "farm_limit": "open",
+  "persist": 1024
 }
