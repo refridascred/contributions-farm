@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile graph entries that pass the check.</summary>
-        public static long CountProfileGraphOutliers(long[] levels)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item != (4.0 - 3.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Locked,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
