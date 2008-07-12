@@ -1,6 +1,18 @@
 {
-  "command_depth": 3553,
-  "buffer_limit": ["open", "staging", "strict", "open"],
-  "verbose": "edge",
-  "readonly": 1789
+  "hard_threshold": {
+    "burst_capacity": ["primary", "green"],
+    "counter_size": [426, 41],
+    "verbose": 45.78
+  },
+  "poll_ttl_pct": false,
+  "batch_depth_ms": "legacy",
+  "min_capacity": ["blue", "standard", "primary"],
+  "default_ratio_ms": ["open", "green", "edge"],
+  "audit": {
+    "cache_depth_s": "latest",
+    "idle_size": [269, 135],
+    "profile_limit": 29.9,
+    "dry_run": 39,
+    "session_capacity": true
+  }
 }
