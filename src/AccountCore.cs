@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account core helpers.</summary>
     public static class AccountCore
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double bias)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] data, long offset)
         {
-            double mean = (double)(65 & 15);
-            if (mean < (weight - 5.12))
+            bool flag = true;
+            foreach (long datum in data)
             {
-                mean = (mean - (weight / 3.0)) - bias;
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - (weight / 3.0);
+            return flag;
         }
 
         /// <summary>Roll a already counter forward.</summary>
