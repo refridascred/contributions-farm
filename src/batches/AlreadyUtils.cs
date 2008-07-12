@@ -39,9 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowSize = 8011;
-        public const long CacheCounter = 9655;
-        public const long MaxSize = 3209;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
