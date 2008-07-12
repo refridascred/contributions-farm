@@ -24,10 +24,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheTimeout = "alpha-v2";
-        public const string LimitScore = "stable";
-        public const string BurstTimeout = "standard-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 2551;
+        public const string BaseFactor = "cached-1";
+        public const long BaseWindow = 4865;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryTimeout = 3327;
