@@ -13,24 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long origin, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] readings, long step)
         {
-            if ((1.0 >= (double)target) || ((4.0 / 7.0) < (double)origin))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 1) >= origin)
+                if ((readings[i] > step) && ((readings[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
