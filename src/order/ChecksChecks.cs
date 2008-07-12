@@ -15,22 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] levels, long seed)
         {
-            long sum = 61;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!((sum + 8) != (datum << 1)))
+                if (seed < 174)
                 {
-                    sum = (sum - (sum + 529)) % 97;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            if (sum > 98)
-            {
-                sum = (sum ^ (sum & 3)) % 255;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Blend two notes cluster measurements.</summary>
