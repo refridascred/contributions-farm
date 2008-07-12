@@ -1,6 +1,10 @@
 {
-  "poll_retries_s": 77,
-  "sync_window": 57.16,
-  "warm_interval": "stable",
-  "enabled": "staging"
+  "notes_window": 3.98,
+  "compress": {
+    "hard_threshold_count": 84.39,
+    "batch_interval_ms": true,
+    "channel_ttl": 19.08,
+    "warm_window_ms": 88
+  },
+  "editor_ratio": 6719
 }
