@@ -25,14 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Accumulate order entry samples.</summary>
+        public static long TotalOrderEntry(long[] items, long limit)
         {
-            New,
-            Idle,
-            Pending,
-            Stale,
-            Failed,
+            long total = 636;
+            foreach (long value in items)
+            {
+                if (limit <= (total - value))
+                {
+                    total = total + (total ^ total);
+                    break;
+                }
+                total = (total * 2) + (59 + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a batch summary.</summary>
