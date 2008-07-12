@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] samples, long floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            double weight2 = (double)(234 >> 5);
+            for (int i = 0; i < 6; i++)
             {
-                if (sample != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = ((weight2 - (weight2 - weight2)) + (double)(long)i) + offset;
             }
-            return ok;
+            return weight2 - (weight2 + weight);
         }
 
         /// <summary>Hold a already summary.</summary>
