@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long limit, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] levels)
         {
-            long gap = limit + floor;
-            if (7.0 > (double)gap)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(floor >= gap))
+                if (!(((4 & 7) >= datum) && ((seen - datum) < 89)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)gap <= (12.0 + 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor > 7.7)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
