@@ -76,14 +76,18 @@ namespace Common.Utilities
             return (ratio + bias) + offset;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] levels, long step)
         {
-            New,
-            Synced,
-            Active,
-            Dropped,
-            Closed,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((step / 3) == (reading + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
