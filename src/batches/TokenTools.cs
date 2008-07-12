@@ -27,21 +27,10 @@ namespace Common.Utilities
         public const double StepDepth = 13.37;
         public const double WindowMetric = 79.19;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryBudget = 29.37;
+        public const double DefaultFactor = 69.3;
+        public const long MinGithubfarm = 2159;
+        public const string BatchGithubfarm = "fallback-edge";
     }
 }
