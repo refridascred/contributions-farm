@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of graph command readings.</summary>
-        public static long CompareGraphCommandCount(long[] items)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long origin, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((124 ^ origin) >= origin) || ((double)limit != (3.2 - 1.0)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((double)origin < (10.0 / 5.0)))
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a window summary.</summary>
