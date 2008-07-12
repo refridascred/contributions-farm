@@ -40,11 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Validate githubfarm filter readings against a bound.</summary>
+        public static bool CheckGithubfarmFilterLimits(long[] data, long limit)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up format queue samples.</summary>
