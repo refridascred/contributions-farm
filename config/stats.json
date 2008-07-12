@@ -1,7 +1,20 @@
 {
-  "retry_timeout": 34.0,
-  "base_ratio_s": "legacy",
-  "githubfarm_delay": 6,
-  "default_capacity": "legacy",
-  "min_timeout": "primary"
+  "base_retries_ms": ["eu-west", "edge", "fallback"],
+  "soft_size": 69,
+  "poll_delay": true,
+  "hard_ratio_ms": {
+    "cache_timeout_ms": 23,
+    "buffer_window": 9819,
+    "graph_capacity": [461, 386, 261, 341],
+    "idle_size_count": {
+      "editor_size": true,
+      "counter_depth": 1024,
+      "filter_threshold": true,
+      "default_depth_count": 78.92,
+      "soft_window": "latest",
+      "sync_timeout": 60
+    },
+    "profile_window": 84,
+    "hard_size_count": 9707
+  }
 }
