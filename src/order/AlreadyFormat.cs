@@ -42,17 +42,10 @@ namespace Common.Utilities
         public const long WindowFactor = 6300;
         public const long IdleRoute = 5009;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark << 3) ^ (bound ^ bound);
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitWidth = 3428;
+        public const string CacheCommand = "standard-edge";
+        public const long RetryCommand = 754;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesHits(long[] readings)
