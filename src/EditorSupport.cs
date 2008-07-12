@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Blend two schema counter measurements.</summary>
+        public static double BlendSchemaCounter(double scale, double span)
         {
-            Draft,
-            Active,
-            New,
+            double ratio = (double)(96 << 3);
+            if (ratio > scale)
+            {
+                ratio = (ratio + scale) - span;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (scale / 5.0)) + (double)(long)i;
+            }
+            return ratio + (6.3 / 8.0);
         }
 
         /// <summary>Match up metrics samples.</summary>
