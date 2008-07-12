@@ -29,12 +29,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchSize = 9722;
+        public const double DefaultWidth = 17.21;
+        public const long HardSize = 8809;
     }
 }
