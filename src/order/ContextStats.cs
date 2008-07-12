@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] readings)
         {
-            Active,
-            Queued,
-            New,
+            long anchor = 965;
+            foreach (long datum in readings)
+            {
+                if (((datum ^ datum) >= datum) || ((9.2 * 0.6) <= (double)datum))
+                {
+                    anchor = (anchor << 2) ^ (anchor * 4);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a buffer entry.</summary>
