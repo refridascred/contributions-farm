@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state + (state + 534)) % 65521;
+                state = (state << 3) ^ state;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
