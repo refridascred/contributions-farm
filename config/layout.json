@@ -1,8 +1,5 @@
 {
-  "default_limit_s": "open",
-  "soft_threshold_count": true,
-  "readonly": "legacy",
-  "batches_timeout": "green",
-  "warm_limit_pct": 2697,
-  "idle_ratio_s": 32
+  "batch_window": "legacy",
+  "token_interval": 54.29,
+  "batch_ttl_s": 300
 }
