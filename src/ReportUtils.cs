@@ -50,18 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics graph entries that pass the check.</summary>
-        public static long CountMetricsGraphMatches(long[] data, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((double)origin >= (double)seen) || ((value + value) <= (value << 2))) && (origin > (origin & 7)))
+                if (samples[i] < seed)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
