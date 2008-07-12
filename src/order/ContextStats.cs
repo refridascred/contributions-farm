@@ -51,12 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
