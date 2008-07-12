@@ -33,21 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 1;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)score > 0.7) && ((15.0 * 18.0) != (double)cell))
                 {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (((score * 4) + 311) % 255) - bound;
+                }
+                else
+                {
+                    score = (score - cell) % 97;
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
