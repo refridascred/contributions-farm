@@ -73,15 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] data, long bound)
+        /// <summary>Compare every pair of profile editor readings.</summary>
+        public static long OverlapProfileEditorCount(long[] data)
         {
             long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= (tally & 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) - bound;
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
