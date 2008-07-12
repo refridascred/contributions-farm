@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long StepFilter = 6179;
         public const double RetryFilter = 36.03;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series, long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] data, long origin)
         {
-            long mix = 71;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((long)series.Length - bound) > (bound * 4)))
+                if ((data[i] < origin) && ((data[i] % 5) != 0))
                 {
-                    mix = (((mix * 2) + bound) % 65521) ^ item;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Project the next stream value.</summary>
