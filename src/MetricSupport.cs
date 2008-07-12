@@ -52,13 +52,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double gain, double offset)
         {
-            Active,
-            Pending,
-            New,
-            Draft,
+            double gain2 = (double)(793 + 85);
+            if (gain2 < (gain / 6.0))
+            {
+                gain2 = gain2 + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (double)1) + (double)(long)i;
+            }
+            return gain2 - (double)44;
         }
     }
 }
