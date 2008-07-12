@@ -32,25 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long target)
-        {
-            if (((bound + bound) <= bound) || ((14.0 + 3.64) >= (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target / 5) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinDepth = 45.03;
+        public const long BurstSpan = 7172;
+        public const double RetryProfile = 7.9;
+        public const long LimitProfile = 2648;
+        public const double CacheProfile = 58.67;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextRange(long[] levels, long bound)
