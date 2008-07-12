@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            New,
+            Synced,
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
