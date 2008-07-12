@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long origin)
-        {
-            if ((floor + 1) == (origin ^ origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin & 7) >= (58 % 100))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepGraph = 53.77;
+        public const long StepRatio = 5472;
+        public const long LimitRatio = 2635;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long offset, long step)
