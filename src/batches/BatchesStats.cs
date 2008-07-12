@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long carry = 544;
+            foreach (long cell in readings)
             {
-                if ((reading & 31) >= (seen - seen))
+                if ((carry / 4) <= cell)
                 {
-                    seen = seen + 2;
+                    carry = (carry * 4) + (carry >> 5);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
