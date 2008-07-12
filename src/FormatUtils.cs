@@ -71,11 +71,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double bias, double offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] items, long bound)
         {
-            double ratio = (3.6 - bias) * 4.97;
-            return (ratio + bias) + offset;
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((bound >> 3) == (count - sample))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate commits samples.</summary>
