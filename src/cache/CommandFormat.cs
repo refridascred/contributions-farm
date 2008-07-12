@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 86.95;
-        public const long BurstFarm = 1696;
-        public const long RetryFarm = 6294;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterGaps(long[] readings, long floor)
