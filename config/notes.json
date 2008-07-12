@@ -1,13 +1,5 @@
 {
-  "min_capacity_pct": 30,
-  "audit": 2675,
-  "already_ratio": false,
-  "layout_capacity": {
-    "token_size": 21.07,
-    "verbose": [423, 307, 288, 386],
-    "soft_size": 37,
-    "farm_threshold": false
-  },
-  "poll_threshold": "staging",
-  "burst_window_ms": "stable"
+  "layout_window": "strict",
+  "idle_depth_pct": 3399,
+  "max_limit_s": 67.72
 }
