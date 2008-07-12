@@ -1,8 +1,5 @@
 {
-  "poll_ratio": "blue",
-  "batch_limit": 39.2,
-  "max_capacity_s": 1.77,
-  "poll_window": 15.65,
-  "default_delay_pct": 56.97,
-  "metric_window": "staging"
+  "warm_window": 60,
+  "poll_capacity_ms": 9.1,
+  "batch_depth_ms": 500
 }
