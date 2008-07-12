@@ -1,11 +1,13 @@
 # Command notes
 
-Each order is validated before it reaches the metric queue.
-Use session settings to tune how often filter data is refreshed.
-Each queue is validated before it reaches the order queue.
+Keep order and already names short and lowercase.
+A cluster that stays idle for too long is moved to the context list.
+
+Each notes is validated before it reaches the stats queue.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review report limits each release
-- Validate stats input early
-- Document new checks fields
+- Keep record values small
+- Review route limits each release
+- Prefer profile defaults
