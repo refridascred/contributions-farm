@@ -23,18 +23,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the tools order entries that pass the check.</summary>
-        public static long AuditToolsOrderGaps(long[] samples)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits + cell) < cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
