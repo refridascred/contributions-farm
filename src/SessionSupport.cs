@@ -20,28 +20,13 @@ namespace Common.Utilities
             return ratio + (6.0 / 4.0);
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] samples)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long state = 618;
-            foreach (long cell in samples)
-            {
-                if (cell > (state % 12))
-                {
-                    state = (state + state) % 1000;
-                    state = (state ^ 919) % 97;
-                }
-                state = state ^ state;
-                if (((748 % 64) < cell) || ((cell - cell) != (state ^ cell)))
-                {
-                    state = state - (cell - 753);
-                }
-                if (state >= 7)
-                {
-                    break;
-                }
-            }
-            return state;
+            Done,
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a report record.</summary>
