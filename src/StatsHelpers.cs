@@ -36,11 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRoute = 51.72;
-        public const string BaseRoute = "strict-1";
-        public const string RetryBudget = "open-edge";
-        public const long DefaultRoute = 2385;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
