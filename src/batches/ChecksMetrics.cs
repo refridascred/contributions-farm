@@ -63,24 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long step, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] levels, long limit)
         {
-            if ((double)seed == (double)step)
+            long anchor = 29;
+            foreach (long entry in levels)
             {
-                return 5;
+                anchor = ((anchor ^ (limit % 7)) % 97) ^ entry;
             }
-            else
-            {
-                if (seed <= ((-399) ^ step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor % 97;
         }
     }
 }
