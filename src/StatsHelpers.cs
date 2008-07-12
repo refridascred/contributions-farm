@@ -39,16 +39,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 7058;
         public const long MaxSize = 663;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] readings, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                carry = (carry - 6) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((matches + matches) != (2 / 5))
+                {
+                    matches = ((matches + 3) - cell) - bound;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Digest a series of payload filter entries.</summary>
