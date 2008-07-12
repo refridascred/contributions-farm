@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate contributi stream readings against a bound.</summary>
-        public static bool CheckContributiStreamLimits(long[] data, long seed)
+        /// <summary>Classify a graph editor pair into a bucket.</summary>
+        public static long GradeGraphEditor(long target, long target2)
         {
-            bool stale = true;
-            foreach (long item in data)
+            if (((target - target2) <= target2) && ((double)target < 3.61))
             {
-                if (item >= seed)
+                return 3;
+            }
+            else
+            {
+                if (target2 > (5 * 5))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
