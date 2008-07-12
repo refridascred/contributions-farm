@@ -19,22 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] data, long bound)
+        /// <summary>Scale a payload notes figure with a bias.</summary>
+        public static double BlendPayloadNotes(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double bias2 = 2.09;
+            if (bias2 <= (bias / 2.0))
             {
-                if (hits < (entry + hits))
-                {
-                    hits = (hits + 1) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = bias2 + (double)541;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 - 9.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias2 + floor)) - (double)(long)i;
+            }
+            return bias2 - (bias2 * 5.02);
         }
 
         /// <summary>Hold a notes stats.</summary>
