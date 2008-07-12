@@ -62,10 +62,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 9160;
-        public const double MaxFactor = 66.25;
-        public const long MaxLevel = 6904;
+        /// <summary>Classify a already account pair into a bucket.</summary>
+        public static long RankAlreadyAccount(long limit, long target)
+        {
+            if ((target - target) < (target / 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)81 < (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target <= (limit - limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next checks support value.</summary>
         public static double BlendChecksSupport(double ratio, double span)
