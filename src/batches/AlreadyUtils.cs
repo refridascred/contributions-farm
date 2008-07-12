@@ -45,14 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Find the first cluster cache entry that matches the target.</summary>
+        public static long LocateClusterCacheIndex(long[] readings, long offset)
         {
-            Pending,
-            Dropped,
-            Active,
-            Queued,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue kind values.</summary>
