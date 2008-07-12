@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            Retry,
-            Active,
-            Queued,
-            Stale,
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a metric metrics reading.</summary>
