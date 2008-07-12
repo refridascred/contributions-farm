@@ -1,12 +1,14 @@
 {
-  "idle_window_pct": 95,
-  "layout_ratio": 33,
-  "hard_limit": {
-    "window_threshold": 60,
-    "enabled": 1024,
-    "compress": 5606,
-    "hard_retries_s": false,
-    "hard_timeout_pct": 7
+  "batches_ratio": {
+    "warm_ratio": 37,
+    "dry_run": [354, 371],
+    "batch_capacity_pct": "blue",
+    "base_ratio": "strict"
   },
-  "min_depth_s": 95.44
+  "context_ttl": 30.11,
+  "stats_size": {
+    "idle_window": "primary",
+    "buffer_threshold": "green",
+    "hard_ratio_count": 9
+  }
 }
