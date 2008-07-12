@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] samples, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)target != (double)item)
+                if (!(5.55 > (double)bound))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the buffer level values.</summary>
