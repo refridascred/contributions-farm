@@ -47,12 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long step)
         {
-            Closed,
-            Idle,
-            Retry,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a window filter counter forward.</summary>
