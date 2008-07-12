@@ -38,13 +38,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double gain, double span)
         {
-            Paused,
-            Closed,
-            Stale,
-            Active,
+            double ratio = span;
+            if (ratio >= span)
+            {
+                ratio = ratio - (double)(-5);
+            }
+            else
+            {
+                ratio = ratio + (double)56;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
