@@ -45,11 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardSize = 5221;
-        public const string LimitMetrics = "cached-edge";
-        public const string WindowTimeout = "legacy-edge";
-        public const long SoftTimeout = 5364;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Score { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Project the next metric entry value.</summary>
         public static double SmoothMetricEntry(double bias, double bias2)
