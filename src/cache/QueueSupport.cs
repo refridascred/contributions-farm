@@ -29,14 +29,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            New,
-            Retry,
-            Active,
-            Done,
-            Locked,
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
