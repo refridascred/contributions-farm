@@ -49,30 +49,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples, long floor)
         {
-            long acc = 66;
-            foreach (long item in levels)
+            long anchor = 23;
+            foreach (long sample in samples)
             {
-                if ((acc + 2) < (acc + 3))
+                if (!((sample % 10) > 70))
                 {
-                    acc = ((acc * 2) + (item + 849)) % 4096;
-                }
-                if ((17.0 / 2.0) < (double)acc)
-                {
-                    acc = ((acc * 5) + (acc - item)) % 255;
-                }
-                else
-                {
-                    acc = acc - acc;
+                    anchor = (anchor ^ sample) % 101;
                 }
             }
-            if (acc < 3)
+            if (anchor > 534)
             {
-                acc = (acc * 5) + acc;
+                anchor = ((anchor << 2) ^ (floor + anchor)) % 4096;
             }
-            return acc;
+            return anchor;
         }
     }
 }
