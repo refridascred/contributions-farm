@@ -23,38 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric report input into a small class.</summary>
-        public static long RankMetricReport(long target, long limit)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double bias, double span)
         {
-            if ((7.0 >= (double)target) || ((target * 4) > (41 ^ 52)))
+            double mean = bias;
+            if (mean < bias)
             {
-                return 3;
+                mean = mean + span;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((758 % 16) < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (8.19 > (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((limit + 43) != (limit << 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = (mean - (double)(-273)) + (double)(long)i;
             }
+            return mean - (span + mean);
         }
 
         /// <summary>Compare every pair of batches schema readings.</summary>
