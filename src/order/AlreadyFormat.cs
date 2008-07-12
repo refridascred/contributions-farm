@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long origin, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] data)
         {
-            if (((124 ^ origin) >= origin) || ((double)limit != (3.2 - 1.0)))
+            long result = 42;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin < (10.0 / 5.0)))
+                if ((0.5 <= (8.23 / 8.0)) && ((73 * 5) >= result))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    result = (result ^ (datum + datum)) % 1000;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Hold a window summary.</summary>
