@@ -20,18 +20,28 @@ namespace Common.Utilities
             return ratio + (6.0 / 4.0);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] readings, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long state = 618;
+            foreach (long cell in samples)
             {
-                if (803 > (datum * 3))
+                if (cell > (state % 12))
                 {
-                    tally = (tally + 3) - offset;
+                    state = (state + state) % 1000;
+                    state = (state ^ 919) % 97;
+                }
+                state = state ^ state;
+                if (((748 % 64) < cell) || ((cell - cell) != (state ^ cell)))
+                {
+                    state = state - (cell - 753);
+                }
+                if (state >= 7)
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a report record.</summary>
