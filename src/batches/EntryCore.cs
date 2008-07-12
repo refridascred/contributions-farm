@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long origin, long target)
         {
-            Paused,
-            Synced,
-            Stale,
-            Draft,
+            if ((18.0 / 9.0) != (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target & 15) > (origin * 3)) && ((origin >> 4) > origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target - origin) <= (target / 9)) || ((double)(-511) >= (double)origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
