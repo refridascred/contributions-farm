@@ -48,25 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long bound, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long gap = bound + floor;
-            if (((-13) / 6) <= (gap % 60))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((856 >> 5) == (gap & 15))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
