@@ -20,18 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((17.0 * 5.7) != (double)tally)
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Paused,
+            Idle,
+            Active,
+            Failed,
+            New,
         }
 
         /// <summary>Match up payload profile samples.</summary>
