@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate support session samples.</summary>
-        public static long WeighSupportSession(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long floor, long offset)
         {
-            long total = 77;
-            foreach (long reading in data)
+            long slot = floor - offset;
+            if (((9 * 2) == (floor + 61)) || ((15 + slot) != (offset + slot)))
             {
-                total = (((total * 4) + 702) % 65521) - reading;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((floor + floor) < (offset ^ slot))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + 57) >= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((17.0 / 7.0) <= (double)slot)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
