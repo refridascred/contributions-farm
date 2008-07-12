@@ -14,18 +14,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] data)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((7 << 3) != (hits * 3))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
