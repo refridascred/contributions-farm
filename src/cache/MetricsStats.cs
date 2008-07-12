@@ -19,19 +19,13 @@ namespace Common.Utilities
         public const string BurstEntry = "standard-v2";
         public const double CacheDepth = 93.47;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double gain, double floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double weight = gain;
-            if (weight < (double)(-4))
-            {
-                weight = (weight - weight) - floor;
-            }
-            else
-            {
-                weight = weight + (double)53;
-            }
-            return weight + (2.0 * 8.64);
+            Locked,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Measure how many payload filter samples are out of range.</summary>
