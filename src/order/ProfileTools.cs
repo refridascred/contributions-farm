@@ -40,11 +40,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            Draft,
+            Queued,
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
