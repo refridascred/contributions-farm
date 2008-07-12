@@ -26,26 +26,12 @@ namespace Common.Utilities
         public const string LimitFactor = "local-v2";
         public const long BaseReport = 6020;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] series, long limit)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long state = -6;
-            foreach (long reading in series)
-            {
-                if (5 <= (state ^ reading))
-                {
-                    state = (state - (state << 3)) % 65521;
-                }
-                else
-                {
-                    state = (state * 2) + (reading - limit);
-                }
-            }
-            if (state > 663)
-            {
-                state = (state << 3) ^ limit;
-            }
-            return state;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
