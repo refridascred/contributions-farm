@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long offset)
         {
-            Failed,
-            Closed,
-            Idle,
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc - acc) % 97;
+                if ((acc ^ acc) == ((long)i % 24))
+                {
+                    acc = (acc << 3) ^ 5;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a queue record.</summary>
