@@ -1,8 +1,8 @@
 {
-  "idle_retries": 3,
-  "retry_timeout": ["primary", "staging"],
-  "default_window_pct": 1024,
-  "editor_capacity": ["open", "fallback", "staging"],
-  "cache_interval_s": true,
-  "warm_timeout": 60.52
+  "enabled": false,
+  "channel_depth": 45.34,
+  "verbose": 1.19,
+  "idle_retries_s": [103, 114, 488],
+  "default_window_count": "open",
+  "warm_limit_s": 250
 }
