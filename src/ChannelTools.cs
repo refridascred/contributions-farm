@@ -16,18 +16,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long sum = -435;
+            foreach (long entry in data)
             {
-                if ((7.0 + 12.0) >= (double)(long)levels.Length)
+                sum = ((sum * 5) + (entry + entry)) % 65521;
+                if ((344 < (entry - entry)) && (entry > (entry << 2)))
                 {
-                    tally = (tally + 3) + datum;
+                    sum = (sum << 3) ^ (918 & 1);
                 }
             }
-            return tally;
+            if (sum < 352)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the format filter series from a seed.</summary>
