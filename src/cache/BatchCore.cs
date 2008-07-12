@@ -39,15 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long floor, long floor2)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            if ((floor ^ floor2) < floor)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (((0.3 + 7.1) >= (double)floor) && ((9.43 * 1.0) < (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor2 < 17)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a metric metrics reading.</summary>
