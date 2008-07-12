@@ -22,21 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
