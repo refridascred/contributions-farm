@@ -31,14 +31,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Retry,
-            Active,
-            Failed,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitSize = 24.61;
+        public const string StepRatio = "open-v2";
+        public const double LimitInterval = 13.59;
+        public const long IdleRatio = 3615;
     }
 }
