@@ -31,10 +31,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowWidth = 6.51;
-        public const double HardNotes = 43.17;
-        public const long MinNotes = 5749;
+        /// <summary>Check that every cache profile entry stays within the limit.</summary>
+        public static bool CheckCacheProfileBounds(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
