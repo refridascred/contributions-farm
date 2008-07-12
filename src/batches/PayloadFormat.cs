@@ -31,21 +31,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin ^ step) > (origin + origin))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= 4.28)
                 {
-                    if ((values[i] ^ values[j]) != 11)
+                    return 8;
+                }
+                else
+                {
+                    if (((step + origin) == (step % 8)) && ((step + 211) == (origin & 127)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((282 - step) <= (step ^ origin)) && ((step - step) >= step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
