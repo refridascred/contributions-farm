@@ -13,18 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit buffer command readings against a rule.</summary>
-        public static long CountBufferCommandMatches(long[] data)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (tally > (tally % 8))
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
