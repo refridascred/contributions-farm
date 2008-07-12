@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double scale, double bias)
         {
-            Dropped,
-            Ready,
-            Pending,
-            Closed,
+            double bias2 = bias;
+            if (bias2 > (double)3)
+            {
+                bias2 = (bias2 + (bias / 7.0)) - scale;
+            }
+            else
+            {
+                bias2 = bias2 - (11.0 / 6.0);
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
