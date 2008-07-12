@@ -67,11 +67,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinInterval = 4710;
-        public const long MinDepth = 8995;
-        public const string IdleCount = "local-1";
-        public const string MaxFactor = "staging-v2";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series)
+        {
+            long sum = 776;
+            foreach (long item in series)
+            {
+                if ((2.43 + 5.0) <= (double)sum)
+                {
+                    sum = (((sum * 3) + (sum & 1)) % 65521) ^ item;
+                }
+                sum = (sum * 3) + (sum * 5);
+                if ((double)(long)series.Length == (3.8 * 10.0))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long TallyFormatGaps(long[] items)
