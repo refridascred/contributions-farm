@@ -44,11 +44,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "staging-1";
-        public const long StepCount = 7382;
-        public const double DefaultChecks = 81.38;
-        public const long WindowScore = 390;
-        public const string SoftFactor = "strict-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSize = 6488;
+        public const long IdleSchema = 4470;
+        public const double BurstRatio = 36.79;
     }
 }
