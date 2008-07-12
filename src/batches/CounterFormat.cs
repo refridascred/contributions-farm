@@ -36,13 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double bias, double bias2)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Label { get; set; }
+            double mean = (double)(47 << 3);
+            if (mean > bias)
+            {
+                mean = mean + (mean - 2.6);
+            }
+            return mean + bias2;
         }
     }
 }
