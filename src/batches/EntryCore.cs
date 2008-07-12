@@ -31,11 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Match up report commits samples.</summary>
+        public static long CompareReportCommitsCount(long[] readings)
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
