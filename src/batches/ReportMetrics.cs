@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardTimeout = 7246;
-        public const long CacheLevel = 2965;
-        public const long WindowSize = 9383;
-        public const long RetryProfile = 7886;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] levels)
