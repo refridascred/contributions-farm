@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinSpan = 50.45;
-        public const double IdleAccount = 7.76;
-        public const long StepAccount = 5305;
-        public const string BurstAccount = "standard";
-        public const double SoftAccount = 43.15;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    state = ((state + state) % 97) ^ (long)i3;
+                }
+                state = (state + (long)i) % 65521;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstWidth = 5946;
