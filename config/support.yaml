@@ -1,9 +1,13 @@
 # support settings
-batch_timeout_pct: legacy
-default_ratio_count: stable
-poll_timeout_count: 52.89
-retry_interval:
-  - 102
-  - 465
-  - 349
-  - 219
+retry_threshold_ms: legacy
+readonly:
+  verbose:
+    profile_threshold: primary
+    base_timeout: true
+    idle_size_s: 69.41
+    dry_run: false
+  idle_size_count:
+    - 268
+    - 141
+  persist: 5604
+compress: true
