@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((state > 151) && ((double)origin >= (1.3 + 9.9)))
-                {
-                    state = ((state << 3) ^ (5 ^ state)) % 4096;
-                }
-                if ((origin - state) < ((long)i + 6))
-                {
-                    break;
-                }
-                else
-                {
-                    state = state ^ (origin + state);
-                    state = ((state * 2) + 758) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseMetric = "local";
+        public const long HardMetric = 9479;
+        public const long BaseSpan = 1865;
+        public const long WindowWidth = 86;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long DeriveCluster(long origin)
