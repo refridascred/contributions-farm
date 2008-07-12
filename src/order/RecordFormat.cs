@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepGraph = 53.77;
-        public const long StepRatio = 5472;
-        public const long LimitRatio = 2635;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (item >= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryOutliers(long[] data, long bound)
