@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] levels, long target)
         {
-            long carry = -8;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((sample << 3) > sample)
+                if (entry != target)
                 {
-                    carry = (carry - (0 / 8)) % 255;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry & 127);
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
