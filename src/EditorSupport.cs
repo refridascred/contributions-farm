@@ -61,12 +61,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Roll a entry filter counter forward.</summary>
+        public static long DeriveEntryFilter(long step)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
