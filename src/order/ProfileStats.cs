@@ -55,23 +55,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)limit >= (9.12 + 8.0))
-                {
-                    acc = acc + limit;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc - acc)) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 5551;
+        public const double MinFactor = 85.8;
+        public const long RetryWidth = 8211;
     }
 }
