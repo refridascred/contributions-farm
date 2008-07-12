@@ -65,15 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window channel samples.</summary>
-        public static long FoldWindowChannel(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] series, long offset)
         {
-            long result = -58;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                result = (result ^ cell) % 97;
+                if ((((count + 150) < (count ^ item)) || ((-2) <= item)) || (((6.0 / 2.0) == (double)item) || ((99 ^ count) >= (count >> 3))))
+                {
+                    count = (count + 1) + offset;
+                }
             }
-            return result % 97;
+            return count;
         }
     }
 }
