@@ -29,13 +29,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long offset)
         {
-            Ready,
-            Queued,
-            Paused,
-            Retry,
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
