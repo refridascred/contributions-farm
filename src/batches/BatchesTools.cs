@@ -12,16 +12,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Digest a series of editor cache entries.</summary>
+        public static long TotalEditorCache(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            long mark = 442;
+            foreach (long cell in data)
             {
-                carry = (carry ^ offset) % 255;
-                carry = ((carry * 2) + (long)i) % 97;
+                mark = (((mark * 5) + mark) % 101) + cell;
             }
-            return carry;
+            if (mark > 339)
+            {
+                mark = mark + (mark << 1);
+            }
+            return mark;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
