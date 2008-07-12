@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token support samples.</summary>
-        public static long TallyTokenSupport(long[] items)
+        /// <summary>Compare every pair of support buffer readings.</summary>
+        public static long PairSupportBufferCount(long[] values)
         {
-            long total = -771;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (0.57 < (double)sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total << 2) ^ (total >> 2)) % 101;
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
