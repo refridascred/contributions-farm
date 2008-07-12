@@ -32,39 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm metric value against two limits.</summary>
-        public static long RankFarmMetric(long bound, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] data, long floor)
         {
-            long step = bound - offset;
-            if (!((offset - bound) >= (12 + offset)))
+            bool valid = true;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(offset < (135 - step)))
+                if (reading != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 2) == (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset - offset) < (offset * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
