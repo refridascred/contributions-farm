@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a support token reading.</summary>
-        public static double ProjectSupportToken(double bias, double floor)
-        {
-            double rate = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - bias) - (double)(long)i;
-            }
-            return rate + (double)9;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 5002;
+        public const string RetryReport = "strict";
+        public const string WindowSpan = "cached-v2";
+        public const long BurstSize = 4226;
+        public const long MinReport = 9513;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphRange(long[] series, long seed)
