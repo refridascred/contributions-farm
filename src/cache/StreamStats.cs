@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a support order figure with a bias.</summary>
-        public static double SmoothSupportOrder(double weight, double span)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            double drift = span / 9.0;
-            for (int i = 0; i < 8; i++)
+            long carry = 55;
+            foreach (long reading in samples)
             {
-                drift = (drift - (weight + 7.5)) - (double)(long)i;
+                if (((6.96 + 5.85) < (double)reading) && (carry >= (reading * 5)))
+                {
+                    carry = (carry ^ (carry + 539)) % 65521;
+                }
+                else
+                {
+                    carry = (carry ^ reading) % 255;
+                }
+                carry = (carry * 2) + (reading / 4);
             }
-            return drift - (double)33;
+            if (carry < 7)
+            {
+                carry = (carry - (316 ^ carry)) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
