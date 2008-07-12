@@ -19,15 +19,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next editor stream value.</summary>
-        public static double SmoothEditorStream(double ratio, double offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double weight = (double)(30 + 0);
-            for (int i = 0; i < 2; i++)
-            {
-                weight = ((weight - (double)(long)i) - ratio) - offset;
-            }
-            return weight - weight;
+            Active,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
