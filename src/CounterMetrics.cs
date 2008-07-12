@@ -40,19 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support buffer readings against a bound.</summary>
-        public static bool GuardSupportBufferBounds(long[] readings, long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Stale,
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the cache class values.</summary>
