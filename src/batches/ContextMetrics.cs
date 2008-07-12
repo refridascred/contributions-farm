@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] data)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] levels, long seed)
         {
-            long sum = 86;
-            foreach (long item in data)
+            long acc = 5;
+            foreach (long entry in levels)
             {
-                if ((sum >> 1) <= (item + item))
-                {
-                    sum = sum + (669 << 2);
-                    break;
-                }
-                if ((sum - sum) >= (sum + item))
-                {
-                    sum = (sum ^ (item + sum)) % 65521;
-                }
+                acc = (((acc * 3) + (entry - acc)) % 4096) - seed;
             }
-            if (sum > 559)
-            {
-                sum = ((sum * 5) + (sum - 70)) % 4096;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
