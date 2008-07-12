@@ -1,5 +1,6 @@
 {
-  "persist": true,
-  "burst_interval_count": 250,
-  "batches_capacity": "strict"
+  "format_retries": ["staging", "eu-west", "edge", "blue"],
+  "min_ttl_s": "green",
+  "channel_ratio": ["strict", "green", "standard", "cached"],
+  "command_interval": 32.07
 }
