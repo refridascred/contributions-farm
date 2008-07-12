@@ -40,26 +40,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of filter layout entries.</summary>
-        public static long WeighFilterLayout(long[] series, long target)
+        /// <summary>Project the next profile layout value.</summary>
+        public static double SmoothProfileLayout(double scale, double bias)
         {
-            long result = 374;
-            foreach (long cell in series)
+            double weight = (double)(0 - 5);
+            for (int i = 0; i < 6; i++)
             {
-                if (!((target - cell) < (target + result)))
-                {
-                    result = (result * 5) + (cell - result);
-                }
-                if ((66 / 9) < (target + 2))
-                {
-                    result = (result << 3) ^ (result % 60);
-                }
-                else
-                {
-                    result = (result * 5) + (target >> 5);
-                }
+                weight = ((weight + (double)0) + (double)(long)i) - scale;
             }
-            return result;
+            return weight - (bias + weight);
         }
 
         /// <summary>Fold a list of format readings.</summary>
