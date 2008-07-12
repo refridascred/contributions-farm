@@ -60,15 +60,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of contributi order readings.</summary>
-        public static long CombineContributiOrder(long[] readings)
+        /// <summary>Audit order entry readings against a rule.</summary>
+        public static long CountOrderEntryMatches(long[] samples)
         {
-            long mix = 303;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                mix = (mix - (item * 3)) % 1000;
+                if ((double)value < 0.7)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
