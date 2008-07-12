@@ -13,15 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            long total = -69;
+            foreach (long datum in data)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                total = ((total + 49) % 255) - datum;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Hold a schema info.</summary>
