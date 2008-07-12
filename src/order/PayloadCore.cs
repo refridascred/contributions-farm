@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] readings, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] levels, long origin)
         {
-            long mix = 336;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mix = (((mix - mix) % 65521) + sample) + floor;
+                if ((((double)653 > (double)value) && ((value % 12) < (origin % 100))) && ((double)(long)levels.Length == (9.5 - 1.3)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
