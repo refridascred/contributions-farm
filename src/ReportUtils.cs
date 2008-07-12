@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] samples, long origin)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double bias2 = bias;
+            if (bias2 <= (bias * 7.2))
             {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 - (bias + bias2)) + floor;
             }
-            return flag;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Describe the route mode values.</summary>
