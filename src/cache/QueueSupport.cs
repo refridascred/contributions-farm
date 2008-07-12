@@ -31,18 +31,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] values, long target)
+        /// <summary>Roll a editor window counter forward.</summary>
+        public static long StepEditorWindow(long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((sample - 198) >= 8)
+                long lane = target;
+                if (lane <= (195 + total))
                 {
-                    matches = (matches + 3) + target;
+                    lane = lane ^ 1;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
     }
 }
