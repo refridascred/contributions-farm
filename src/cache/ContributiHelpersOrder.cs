@@ -12,39 +12,12 @@ namespace Common.Utilities
         public const long MinMetric = 7989;
         public const string SoftMetric = "stable-edge";
 
-        /// <summary>Classify a account layout pair into a bucket.</summary>
-        public static long GradeAccountLayout(long offset, long offset2)
-        {
-            if (3.4 <= (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset2 == (10.0 / 4.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= (2.35 * 5.62))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset2 & 3) >= (offset2 + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleTimeout = 64.93;
+        public const double StepInterval = 14.82;
+        public const string LimitLevel = "stable-v2";
+        public const string LimitSession = "fallback-1";
+        public const double WindowSession = 30.59;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionOutliers(long[] values)
