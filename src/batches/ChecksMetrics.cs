@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile stream entries that pass the check.</summary>
-        public static long TallyProfileStreamMatches(long[] items, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] samples, long offset)
         {
             long matches = 0;
-            foreach (long datum in items)
+            foreach (long datum in samples)
             {
-                if (5 >= (seed ^ 512))
+                if ((datum + datum) != (matches % 100))
                 {
-                    matches = (matches + 2) - datum;
+                    matches = (matches + 1) + offset;
                 }
             }
             return matches;
