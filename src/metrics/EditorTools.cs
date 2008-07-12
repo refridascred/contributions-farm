@@ -12,22 +12,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseScore = 91.37;
+        public const long WindowMetrics = 9048;
+        public const double BatchMetrics = 75.06;
+        public const double LimitBudget = 54.88;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool ValidateOrderLimits(long[] levels, long offset)
