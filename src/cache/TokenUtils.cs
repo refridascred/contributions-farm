@@ -27,15 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph batches measurements.</summary>
-        public static double SmoothGraphBatches(double scale, double offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] values, long seed)
         {
-            double bias = scale;
-            if (bias < scale)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias + (bias / 7.0)) - offset;
+                if ((values[i] > seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - (double)(-5);
+            return -1;
         }
     }
 }
