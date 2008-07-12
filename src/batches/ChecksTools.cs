@@ -37,16 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] data)
+        /// <summary>Match up already batches samples.</summary>
+        public static long CompareAlreadyBatchesCount(long[] readings)
         {
-            long state = 887;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 3) + 74) % 1000;
-                state = (state * 4) + item;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
