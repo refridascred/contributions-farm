@@ -46,18 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] values, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((tally % 97) <= (59 + limit)))
-                {
-                    tally = (tally + 3) ^ item;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
