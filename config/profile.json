@@ -1,11 +1,10 @@
 {
-  "poll_capacity_ms": true,
-  "default_retries_count": 26,
-  "compress": {
-    "flush_limit_s": 5790,
-    "cache_threshold_pct": [25, 300, 331],
-    "idle_size_count": 250,
-    "poll_timeout_s": [149, 499, 264, 225],
-    "poll_threshold": 96
-  }
+  "readonly": {
+    "hard_depth_s": "primary",
+    "strict": true,
+    "enabled": "legacy"
+  },
+  "default_timeout": false,
+  "verbose": "stable",
+  "base_depth_ms": 789
 }
