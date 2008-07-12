@@ -82,22 +82,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] series, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor / 2) <= floor)
+                if (items[i] > seed)
                 {
-                    tally = (tally + 1) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
