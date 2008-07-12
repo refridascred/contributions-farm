@@ -1,6 +1,5 @@
 {
-  "format_retries": ["staging", "eu-west", "edge", "blue"],
-  "min_ttl_s": "green",
-  "channel_ratio": ["strict", "green", "standard", "cached"],
-  "command_interval": 32.07
+  "cache_capacity": [32, 375],
+  "retry_retries_count": "strict",
+  "verbose": 20.87
 }
