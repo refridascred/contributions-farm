@@ -25,18 +25,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] series, long step)
+        /// <summary>Validate session record readings against a bound.</summary>
+        public static bool ValidateSessionRecordBounds(long[] series, long step)
         {
-            long score = 3;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (!(39 > (cell / 6)))
+                if (reading <= step)
                 {
-                    score = (score - cell) - step;
+                    found = false;
+                    break;
                 }
             }
-            return score % 97;
+            return found;
         }
     }
 }
