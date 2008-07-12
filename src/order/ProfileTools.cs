@@ -35,13 +35,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Done,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultRatio = 7424;
+        public const long SoftMetrics = 9386;
+        public const long DefaultMetrics = 1867;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
