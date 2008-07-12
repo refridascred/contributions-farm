@@ -39,18 +39,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series, long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double scale, double span)
         {
-            long total = 56;
-            foreach (long reading in series)
+            double mean = (double)(11 + (-59));
+            if (mean < (scale - mean))
             {
-                if (total > (880 << 1))
-                {
-                    total = (total + (bound & 15)) ^ reading;
-                }
+                mean = mean - (16.0 + span);
             }
-            return total;
+            else
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (scale * 7.3)) - (double)(long)i;
+            }
+            return mean - 9.2;
         }
     }
 }
