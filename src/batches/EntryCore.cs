@@ -63,17 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] series, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            New,
+            Locked,
         }
     }
 }
