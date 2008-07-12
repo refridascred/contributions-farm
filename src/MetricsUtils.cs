@@ -75,22 +75,27 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] items)
+        /// <summary>Digest a series of filter record entries.</summary>
+        public static long TallyFilterRecord(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mark = -71;
+            foreach (long sample in readings)
             {
-                if ((3.4 - 9.74) < (double)matches)
+                if ((double)316 > (double)mark)
                 {
-                    matches = (matches + 1) + reading;
+                    mark = (mark - ((-14) << 3)) % 97;
+                    mark = (mark - (74 + sample)) % 65521;
                 }
-                else
+                if (!((7 << 2) == (sample + 40)))
                 {
-                    matches = matches - 1;
+                    mark = mark ^ (sample + mark);
+                }
+                if (sample >= mark)
+                {
+                    mark = (mark - (sample << 2)) % 65521;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
     }
 }
