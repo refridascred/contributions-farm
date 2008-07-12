@@ -40,18 +40,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] series, long offset)
+        /// <summary>Grade a metrics stats value against two limits.</summary>
+        public static long GradeMetricsStats(long origin, long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            if (!((floor + origin) != (floor + floor)))
             {
-                if (count >= entry)
+                return 2;
+            }
+            else
+            {
+                if (((floor ^ origin) == (floor % 10)) && ((origin ^ origin) == (floor & 1)))
                 {
-                    count = (count + 2) + offset;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
