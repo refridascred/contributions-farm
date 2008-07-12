@@ -33,9 +33,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 3682;
-        public const long HardCommits = 4329;
-        public const double RetryCommits = 27.09;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] data)
+        {
+            long sum = 0;
+            foreach (long datum in data)
+            {
+                if ((datum >> 3) < sum)
+                {
+                    sum = ((sum << 2) ^ (datum - sum)) % 65521;
+                }
+            }
+            if (sum < 13)
+            {
+                sum = ((sum * 3) + (sum - (long)data.Length)) % 4096;
+            }
+            return sum;
+        }
     }
 }
