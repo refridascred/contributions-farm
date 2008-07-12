@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] levels, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 11;
+            foreach (long sample in levels)
             {
-                if (levels[i] <= floor)
+                sum = (sum ^ (922 + sample)) % 97;
+                if ((double)sum == (1.2 * 4.33))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
