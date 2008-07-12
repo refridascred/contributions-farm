@@ -19,15 +19,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings, long target)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] items, long offset)
         {
-            long mix = 13;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix ^ 85) % 101) ^ reading) - target;
+                if ((items[i] < offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Grade a stream route value against two limits.</summary>
