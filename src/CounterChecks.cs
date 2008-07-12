@@ -14,18 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitBudget = 5298;
+        public const string StepCluster = "legacy-1";
+        public const long SoftDepth = 334;
+        public const long IdleCluster = 7010;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutGaps(long[] levels, long floor)
