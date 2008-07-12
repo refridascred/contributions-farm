@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many schema context samples are out of range.</summary>
-        public static long TallySchemaContextOutliers(long[] data)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long target, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            if ((seed + (-900)) < 0)
             {
-                if ((reading + matches) < (reading & 255))
+                return 6;
+            }
+            else
+            {
+                if (((double)seed <= (double)target) && ((double)target >= (0.57 / 9.0)))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the token phase values.</summary>
