@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const long RetryDepth = 9847;
         public const long SoftFilter = 5052;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] items, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] data, long target)
         {
-            long anchor = -4;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                anchor = (((anchor * 5) + 5) ^ entry) - target;
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor % 65521;
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
