@@ -30,19 +30,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long sum = -637;
-            foreach (long reading in items)
+            long mix = 923;
+            foreach (long datum in items)
             {
-                sum = sum - (reading + sum);
+                if (((datum + mix) != (41 + mix)) && (mix <= datum))
+                {
+                    mix = ((mix * 4) + (datum / 6)) % 4096;
+                }
+                else
+                {
+                    mix = mix - (mix ^ datum);
+                }
             }
-            if (sum < 742)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Roll a support counter forward.</summary>
