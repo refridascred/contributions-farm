@@ -1,7 +1,10 @@
-id,ratio,label,state
-1,31.83,523,stable
-2,154,standard,40.86
-3,921,180,eu-west
-4,55.25,623,494
-5,stable,64,87.87
-6,47.16,fallback,fallback
+id,score,state,rank,owner
+1,508,open,strict,strict
+2,fallback,828,629,7
+3,24.22,49.79,93,317
+4,fallback,24.8,41.05,strict
+5,4,green,851,latest
+6,71.42,723,90.24,47.84
+7,stable,fallback,53.86,577
+8,935,88.32,758,stable
+9,fallback,green,82.6,strict
