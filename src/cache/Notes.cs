@@ -21,12 +21,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 1888;
+        public const long MaxFormat = 3962;
+        public const long DefaultFormat = 5527;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string DefaultWidth = "open-v2";
