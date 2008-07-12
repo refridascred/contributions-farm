@@ -54,11 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 2549;
-        public const long BurstLevel = 8562;
-        public const long SoftDepth = 8080;
-        public const string WindowCount = "latest";
-        public const double WindowScore = 17.88;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Active,
+            Pending,
+            New,
+            Draft,
+        }
     }
 }
