@@ -35,18 +35,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many notes batch samples are out of range.</summary>
-        public static long TallyNotesBatchHits(long[] series)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((datum ^ hits) >= (datum >> 4)) && (((hits / 9) == (12 - hits)) || ((double)hits != (3.1 / 2.0))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            New,
+            Locked,
+            Dropped,
         }
     }
 }
