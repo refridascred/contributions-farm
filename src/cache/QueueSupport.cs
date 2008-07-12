@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] readings, long limit)
+        /// <summary>Iterate the session account series from a seed.</summary>
+        public static long StepSessionAccount(long floor)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading < limit)
+                if (((2.39 * 7.21) != (double)acc) && ((double)acc < 3.5))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - ((long)i << 3)) % 65521;
                 }
+                acc = acc + floor;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Find the first editor stats entry that matches the target.</summary>
