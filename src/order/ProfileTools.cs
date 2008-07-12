@@ -34,16 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next profile layout value.</summary>
-        public static double SmoothProfileLayout(double scale, double bias)
-        {
-            double weight = (double)(0 - 5);
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + (double)0) + (double)(long)i) - scale;
-            }
-            return weight - (bias + weight);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 73.26;
+        public const double SoftPayload = 98.57;
+        public const long IdlePayload = 6053;
+        public const string MinPayload = "strict";
+        public const long WindowPayload = 9127;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long CombineFormat(long[] samples, long target)
