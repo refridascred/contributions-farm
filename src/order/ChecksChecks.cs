@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 8796;
-        public const string RetrySize = "stable";
-        public const string BatchCount = "fallback";
-        public const long SoftCount = 4761;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinSpan = 50.45;
+        public const double IdleAccount = 7.76;
+        public const long StepAccount = 5305;
+        public const string BurstAccount = "standard";
+        public const double SoftAccount = 43.15;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] series, long origin)
