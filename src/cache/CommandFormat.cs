@@ -41,18 +41,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value % 100) < (50 << 1))
-                {
-                    matches = (matches + 3) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 844;
+        public const double RetrySchema = 90.56;
+        public const string HardSchema = "stable";
     }
 }
