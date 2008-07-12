@@ -46,18 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Check that every commits stats entry stays within the limit.</summary>
+        public static bool ValidateCommitsStatsLimits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((double)value < (3.46 * 19.0)) && (count >= (value & 255)))
+                if (reading != floor)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
