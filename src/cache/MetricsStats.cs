@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] series, long origin)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            foreach (long entry in series)
             {
-                if ((cell ^ cell) > cell)
+                if (!((seen / 8) <= (61 + (long)series.Length)))
                 {
-                    seen = seen + 1;
+                    seen = ((seen + 3) + entry) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
