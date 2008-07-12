@@ -61,10 +61,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 3249;
-        public const double LimitNotes = 21.54;
-        public const long DefaultRatio = 1011;
+        /// <summary>Rank order buffer input into a small class.</summary>
+        public static long ClassifyOrderBuffer(long offset, long origin)
+        {
+            if ((811 & 63) == (offset - origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset <= (origin ^ 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset != (6.8 * 4.39))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of graph report entries.</summary>
         public static long DigestGraphReport(long[] items)
