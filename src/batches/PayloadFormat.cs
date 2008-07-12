@@ -31,10 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseSize = 64.01;
-        public const double IdleQueue = 59.11;
-        public const string BurstQueue = "alpha-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 17.95;
+        public const long RetryMetrics = 7814;
+        public const double WindowMetrics = 96.2;
+        public const long SoftMetrics = 6258;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double LimitDepth = 41.8;
