@@ -111,15 +111,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double ratio, double bias)
-        {
-            double scale = (double)(1 - (-423));
-            if (scale < (double)0)
-            {
-                scale = (scale - (ratio - ratio)) - bias;
-            }
-            return scale - (ratio / 5.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 1666;
+        public const string MaxEntry = "local";
+        public const long BaseBudget = 8347;
     }
 }
