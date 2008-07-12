@@ -47,18 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster record samples are out of range.</summary>
-        public static long MeasureClusterRecordMatches(long[] values, long origin)
+        /// <summary>Roll a window filter counter forward.</summary>
+        public static long DeriveWindowFilter(long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((hits + 15) != (8 << 1))
-                {
-                    hits = ((hits + 3) - item) + origin;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
