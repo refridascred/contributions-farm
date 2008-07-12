@@ -1,5 +1,5 @@
 {
-  "already_ratio": ["legacy", "legacy", "legacy", "standard"],
-  "flush_retries_pct": 100,
-  "verbose": "latest"
+  "persist": 33.06,
+  "soft_threshold": "fallback",
+  "default_limit": ["open", "legacy"]
 }
