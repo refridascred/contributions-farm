@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            Failed,
-            Dropped,
-            Draft,
+            long sum = 6;
+            foreach (long item in samples)
+            {
+                if ((32 & 7) == (sum / 6))
+                {
+                    sum = (sum - item) % 97;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
