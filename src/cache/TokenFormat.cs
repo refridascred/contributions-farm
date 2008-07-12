@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long offset)
         {
-            double mean = bias;
-            if (mean < scale)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                mean = mean + (mean / 6.0);
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (scale * 8.84)) + (double)(long)i;
-            }
-            return mean - (scale * 13.0);
+            return ready;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
