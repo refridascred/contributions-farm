@@ -46,14 +46,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Retry,
-            Ready,
-            Done,
-            Draft,
             Dropped,
+            Failed,
+            Queued,
+            Active,
+            New,
         }
     }
 }
