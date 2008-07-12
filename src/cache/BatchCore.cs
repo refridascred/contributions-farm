@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardScore = "cached-v2";
+        public const string DefaultInterval = "fallback-edge";
+        public const string BurstMetric = "alpha";
+        public const long MaxWidth = 1130;
+        public const long CacheMetric = 6349;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 1008;
