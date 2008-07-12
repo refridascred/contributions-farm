@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)hits < (6.61 + 3.1))
+                {
+                    hits = (hits + 2) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
