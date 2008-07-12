@@ -76,18 +76,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] items)
+        /// <summary>Digest a series of buffer stats entries.</summary>
+        public static long FoldBufferStats(long[] items, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = 27;
+            foreach (long value in items)
             {
-                if ((double)count <= (4.1 / 7.0))
-                {
-                    count = (count + 1) ^ datum;
-                }
+                mix = ((mix - mix) + value) + target;
             }
-            return count;
+            if (mix > 476)
+            {
+                mix = (mix - (18 >> 5)) % 101;
+            }
+            return mix;
         }
     }
 }
