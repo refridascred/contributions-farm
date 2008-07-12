@@ -68,31 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order buffer input into a small class.</summary>
-        public static long ClassifyOrderBuffer(long offset, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] data)
         {
-            if ((811 & 63) == (offset - origin))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset <= (origin ^ 1))
+                if (!((count / 6) <= cell))
                 {
-                    return 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((double)offset != (6.8 * 4.39))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
