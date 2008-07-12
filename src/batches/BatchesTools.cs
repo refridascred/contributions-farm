@@ -20,18 +20,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((8.55 * 7.33) >= (double)tally)
+                if ((hits + limit) == (limit % 64))
                 {
-                    tally = (tally + 2) + sample;
+                    hits = (hits + 1) + item;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
