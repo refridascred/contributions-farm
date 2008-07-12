@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 5938;
-        public const long BurstStream = 1437;
-        public const long WindowStream = 8163;
-        public const long DefaultStream = 5149;
-        public const string HardStream = "legacy-v2";
+        /// <summary>Check that every support batch entry stays within the limit.</summary>
+        public static bool ValidateSupportBatchLimits(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleFarm = 368;
