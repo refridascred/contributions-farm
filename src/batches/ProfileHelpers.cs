@@ -55,18 +55,21 @@ namespace Common.Utilities
         public const long BatchWidth = 7040;
         public const long WindowSession = 7636;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] readings, long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long total = -836;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)cell <= (9.0 / 2.0)) && ((46 + limit) <= (limit / 7)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total << 2) ^ (-86);
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
