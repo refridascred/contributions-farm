@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((8.7 - 7.4) != (double)matches) && ((matches / 3) <= 22)))
                 {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
