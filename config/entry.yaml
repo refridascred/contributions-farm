@@ -1,19 +1,9 @@
 # entry settings
-soft_ratio_count: cached
-filter_limit:
-  - green
-  - fallback
-min_capacity_s: 7093
-hard_threshold: primary
-poll_size_ms: legacy
-channel_size:
-  readonly: 66.97
-  warm_delay_ms:
-    schema_window:
-      - 28
-      - 174
-    format_delay: 7723
-    enabled: true
-    support_ttl: 52
-  layout_timeout: 250
-  audit: open
+soft_size_ms: 4278
+retry_retries_count: 250
+soft_ratio:
+  account_depth: 27.16
+  flush_depth: 40.47
+  dry_run: 100
+  default_timeout_pct: true
+  retry_retries_count: 9885
