@@ -20,11 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double ratio, double floor)
+        /// <summary>Compare every pair of stats payload readings.</summary>
+        public static long MatchStatsPayloadCount(long[] items)
         {
-            double mean = floor;
-            return (mean + mean) + ratio;
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the format filter series from a seed.</summary>
