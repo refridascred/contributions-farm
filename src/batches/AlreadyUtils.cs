@@ -58,13 +58,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long bound, long seed)
         {
-            Failed,
-            Queued,
-            Synced,
-            Done,
+            if (((4.0 + 6.47) >= (double)seed) || ((bound % 16) < (bound + seed)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((5.62 / 6.0) < (double)bound) || ((-9) <= seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound >= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
