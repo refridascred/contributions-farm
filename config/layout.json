@@ -1,17 +1,6 @@
 {
-  "base_window": 9668,
-  "schema_size": "green",
-  "cache_delay_ms": {
-    "warm_threshold": {
-      "max_size": ["cached", "stable"],
-      "retry_interval_ms": 96.56,
-      "retry_limit_s": 6161,
-      "max_retries": [269, 430],
-      "poll_timeout_pct": 7649,
-      "contributi_retries": 25
-    },
-    "burst_window_ms": 500,
-    "cache_retries": 8430
-  },
-  "stats_retries": 12.06
+  "enabled": 100,
+  "soft_ratio_ms": 54,
+  "default_interval_pct": 38,
+  "max_limit_pct": "edge"
 }
