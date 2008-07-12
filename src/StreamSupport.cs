@@ -12,25 +12,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Classify a window filter pair into a bucket.</summary>
-        public static long SortWindowFilter(long target, long target2)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series, long offset)
         {
-            long cur = target + target2;
-            if ((cur <= (5 & 255)) && ((target + 14) == (cur * 4)))
+            long mix = 3;
+            foreach (long sample in series)
             {
-                return 0;
+                mix = ((mix - (sample ^ 15)) % 1000) + offset;
             }
-            else
-            {
-                if ((cur >> 2) == (target << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
