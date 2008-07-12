@@ -17,19 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate schema stats readings against a bound.</summary>
-        public static bool VerifySchemaStatsBounds(long[] samples, long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Level { get; set; }
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
