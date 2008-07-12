@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 1263;
+        public const string CacheDepth = "strict";
+        public const long WindowLevel = 7467;
+        public const long StepRecord = 1468;
+        public const long IdleRecord = 7591;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxRatio = 4739;
