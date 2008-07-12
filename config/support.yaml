@@ -1,5 +1,7 @@
 # support settings
-warm_depth_ms: 39
-entry_capacity: 30.76
-flush_delay: eu-west
-layout_interval: 82.78
+default_ttl_ms: true
+retry_ttl_s: true
+strict: false
+dry_run: false
+burst_window_ms: 83.54
+graph_ratio: 5316
