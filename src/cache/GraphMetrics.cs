@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate support session samples.</summary>
+        public static long WeighSupportSession(long[] data)
         {
-            Draft,
-            Queued,
-            Idle,
+            long total = 77;
+            foreach (long reading in data)
+            {
+                total = (((total * 4) + 702) % 65521) - reading;
+            }
+            return total;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
