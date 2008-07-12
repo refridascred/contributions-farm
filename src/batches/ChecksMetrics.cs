@@ -48,22 +48,17 @@ namespace Common.Utilities
             return gain2 + 8.0;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] samples)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading * 2) >= (787 + 441))
+                if (levels[i] >= offset)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
