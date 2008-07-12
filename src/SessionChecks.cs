@@ -46,19 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double bias, double span)
+        /// <summary>Check that every graph support entry stays within the limit.</summary>
+        public static bool ValidateGraphSupportRange(long[] readings, long origin)
         {
-            double load = span - span;
-            if (load < (6.86 + bias))
+            bool found = true;
+            foreach (long sample in readings)
             {
-                load = load - (double)260;
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + span;
-            }
-            return load + bias;
+            return found;
         }
     }
 }
