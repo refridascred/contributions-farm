@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen << 3) < (801 * 3))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
