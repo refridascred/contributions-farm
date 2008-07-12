@@ -44,12 +44,18 @@ namespace Common.Utilities
         public const long RetryDepth = 9847;
         public const long SoftFilter = 5052;
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] readings, long step)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally + 81) >= (418 / 8))
+                {
+                    tally = ((tally + 1) ^ cell) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster entry.</summary>
