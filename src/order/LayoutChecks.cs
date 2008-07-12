@@ -40,10 +40,33 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 3256;
-        public const long BurstLevel = 8434;
-        public const double BatchOrder = 71.14;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long bound, long offset)
+        {
+            long diff = bound - offset;
+            if (!(offset > (17 - offset)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)diff > (7.59 + 2.68)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)bound <= (double)(-73)) && (37 >= offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank order buffer input into a small class.</summary>
         public static long ClassifyOrderBuffer(long offset, long origin)
