@@ -31,13 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the profile stream entries that pass the check.</summary>
+        public static long TallyProfileStreamMatches(long[] items, long seed)
         {
-            Synced,
-            Active,
-            Closed,
-            Pending,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (5 >= (seed ^ 512))
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
