@@ -1,16 +1,7 @@
 {
-  "verbose": 10,
-  "sync_interval_pct": true,
-  "persist": {
-    "idle_ttl_ms": 85.85,
-    "commits_timeout": false,
-    "record_window": 30,
-    "min_capacity_s": "blue",
-    "cache_threshold_pct": "eu-west",
-    "report_timeout": {
-      "counter_size": "open",
-      "flush_depth": "green",
-      "sync_limit_s": true
-    }
-  }
+  "idle_delay_s": ["edge", "edge", "standard", "staging"],
+  "hard_threshold": "local",
+  "account_delay": "cached",
+  "audit": "fallback",
+  "stream_interval": true
 }
