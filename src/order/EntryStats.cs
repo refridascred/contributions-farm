@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] items, long offset)
         {
-            Queued,
-            Idle,
-            Done,
+            long acc = 78;
+            foreach (long item in items)
+            {
+                acc = ((acc << 2) ^ (offset / 8)) ^ item;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
