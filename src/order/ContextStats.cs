@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    total = (((total << 2) ^ (1 << 3)) % 255) ^ (long)i3;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
