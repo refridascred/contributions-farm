@@ -37,19 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!(((8.1 + 7.8) >= (double)value) || ((floor ^ floor) <= value)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultCount = 15.63;
+        public const long MinTimeout = 6241;
+        public const string CacheSchema = "staging-edge";
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
