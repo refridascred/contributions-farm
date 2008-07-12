@@ -18,22 +18,31 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 8284;
         public const long BaseGithubfarm = 2627;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long offset, long step)
         {
-            long sum = 0;
-            foreach (long datum in data)
+            if ((5.9 > (double)offset) && ((offset ^ step) < (334 - offset)))
             {
-                if ((datum >> 3) < sum)
+                return 7;
+            }
+            else
+            {
+                if ((offset / 7) < (step / 5))
                 {
-                    sum = ((sum << 2) ^ (datum - sum)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    if (offset <= (step - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (sum < 13)
-            {
-                sum = ((sum * 3) + (sum - (long)data.Length)) % 4096;
-            }
-            return sum;
         }
     }
 }
