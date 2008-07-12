@@ -53,12 +53,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a tools entry sample.</summary>
+        public static long LocateToolsEntryIndex(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
+                if ((values[i] < limit) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
