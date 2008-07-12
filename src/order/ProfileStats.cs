@@ -33,15 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double bias, double span)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double load = (double)17 + bias;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load - span;
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a checks graph figure with a bias.</summary>
