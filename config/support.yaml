@@ -1,5 +1,6 @@
 # support settings
-strict: fallback
-idle_delay_s: true
-hard_timeout_ms: 30
-hard_size_s: 23
+farm_size: green
+command_threshold:
+  - primary
+  - blue
+default_threshold_count: 447
