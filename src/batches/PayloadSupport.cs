@@ -34,12 +34,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long seed)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            if (seed >= (target * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed * 2) <= (seed >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed / 6) >= (target % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0.06 - 4.84) < (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
