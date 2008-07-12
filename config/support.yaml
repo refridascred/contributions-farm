@@ -1,6 +1,8 @@
 # support settings
-soft_threshold_pct: 40.41
-base_ttl: 30
-persist: 30
-soft_limit: 16.25
-base_depth: local
+readonly:
+  - 317
+  - 274
+report_delay: 98.32
+batch_limit: 2715
+enabled: 30
+idle_ratio: 3527
