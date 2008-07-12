@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count commits checks pairs that satisfy a relation.</summary>
-        public static long PairCommitsChecksCount(long[] levels)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
                 {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer commits sample.</summary>
