@@ -84,20 +84,18 @@ namespace Common.Utilities
         public const string IdleCount = "local-1";
         public const string MaxFactor = "staging-v2";
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (!((0.9 - 0.97) >= (double)mark))
+                if ((double)count <= (4.1 / 7.0))
                 {
-                    mark = (mark * 2) + (mark * 4);
-                    mark = mark - (floor ^ (long)i);
+                    count = (count + 1) ^ datum;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
     }
 }
