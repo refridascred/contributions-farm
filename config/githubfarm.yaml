@@ -1,14 +1,30 @@
 # githubfarm settings
-verbose:
-  metrics_interval: 30
-  default_window_pct:
-    - open
-    - fallback
-    - standard
-  hard_depth: 30
-metric_window:
-  - primary
-  - local
-  - fallback
-  - stable
-batch_size: true
+min_interval_pct:
+  poll_window: 91
+  cluster_interval:
+    dry_run: 100
+    cache_ratio_s: 8514
+    soft_depth_s: 500
+    filter_ttl: false
+    batch_delay_s:
+      - 227
+      - 170
+      - 353
+      - 223
+  poll_timeout_s:
+    - 452
+    - 164
+  min_delay_ms:
+    - 324
+    - 229
+    - 5
+    - 219
+  warm_window_s: 500
+compress: 20.61
+base_retries:
+  - 17
+  - 221
+  - 11
+enabled: 64
+poll_threshold: 60
+cache_limit_count: strict
