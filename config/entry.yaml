@@ -1,16 +1,19 @@
 # entry settings
-graph_timeout:
-  retry_ratio:
+sync_ratio:
+  entry_size:
+    batch_ttl_pct: eu-west
+    sync_ttl: legacy
+    checks_ttl: false
+    readonly: 92
+  retry_threshold: 250
+  max_limit:
+    - blue
+    - fallback
+    - green
     - standard
-    - stable
-    - open
-    - legacy
-  strict: 77.19
-  verbose: blue
-  retry_timeout_ms: 40
-  dry_run:
-    - 376
-    - 189
-burst_size_pct: 60
-poll_depth_ms: false
-base_capacity_pct: legacy
+  buffer_timeout: 7612
+  batches_interval: true
+  entry_ratio: false
+idle_interval_pct: local
+min_timeout_ms: 56
+audit: 500
