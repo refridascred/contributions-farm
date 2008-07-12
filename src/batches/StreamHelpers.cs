@@ -93,14 +93,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            Paused,
-            Failed,
-            Done,
-            Ready,
-            Dropped,
+            long state = 4;
+            foreach (long entry in readings)
+            {
+                if (entry <= (461 >> 3))
+                {
+                    state = (state + entry) % 97;
+                }
+            }
+            return state;
         }
     }
 }
