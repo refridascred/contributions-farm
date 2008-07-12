@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 7327;
-        public const long BaseSize = 5610;
-        public const string SoftInterval = "primary-1";
-        public const string MaxQueue = "stable-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitRatio = 87.6;
+        public const double MaxSpan = 82.1;
+        public const double RetryToken = 59.01;
+        public const long HardToken = 9935;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutLimits(long[] samples, long step)
