@@ -52,18 +52,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of account contributi entries.</summary>
-        public static long WeighAccountContributi(long[] items, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] items)
         {
-            long total = 620;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)total != (9.0 - 0.71)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (((total ^ (87 % 5)) % 255) + cell) + step;
+                    if ((items[i] ^ items[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Project the next checks support value.</summary>
