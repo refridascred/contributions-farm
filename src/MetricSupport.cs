@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor window value from a seed.</summary>
-        public static long StepEditorWindow(long bound)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark << 3) ^ (mark - (long)i);
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
