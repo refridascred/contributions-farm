@@ -23,30 +23,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] samples, long offset)
         {
-            long anchor = 193;
-            foreach (long value in values)
+            long result = 876;
+            foreach (long value in samples)
             {
-                if ((0.19 >= (double)anchor) && ((value + 42) == (anchor + 35)))
-                {
-                    anchor = ((anchor * 2) + (anchor << 3)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor + value)) % 4096;
-                }
-                if (anchor <= (anchor + anchor))
-                {
-                    break;
-                }
+                result = (result + (offset >> 2)) % 4096;
+                result = result ^ (22 - value);
+                result = result ^ (value * 4);
             }
-            if (anchor > 4)
-            {
-                anchor = ((anchor << 3) ^ (anchor << 3)) % 65521;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
