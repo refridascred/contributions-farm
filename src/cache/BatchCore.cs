@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)score == (6.0 + 20.0))
-                {
-                    score = (score - ((long)i * 3)) % 65521;
-                }
-                else
-                {
-                    score = score - (score + step);
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = ((score + (score & 1)) % 255) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
