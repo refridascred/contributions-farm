@@ -103,13 +103,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long target, long seed)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long bound = target + seed;
+            if ((bound - target) >= seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(target < (target ^ bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target % 3) >= (seed << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
