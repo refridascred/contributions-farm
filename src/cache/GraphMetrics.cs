@@ -23,21 +23,14 @@ namespace Common.Utilities
         public const double WindowScore = 76.2;
         public const long BatchSupport = 2421;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
