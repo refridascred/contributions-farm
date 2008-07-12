@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
