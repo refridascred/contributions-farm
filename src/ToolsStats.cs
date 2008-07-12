@@ -82,13 +82,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long step, long origin)
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long span = step + origin;
+            if (((double)span >= (7.85 + 0.1)) && ((span * 4) > origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)span <= 10.0) && (span <= (step - origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step - step) > step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
