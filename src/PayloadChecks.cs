@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] readings, long bound)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            long state = -68;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((92 * 5) >= (datum & 31)) || ((double)bound < (6.0 / 8.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state ^ (695 & 31);
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
