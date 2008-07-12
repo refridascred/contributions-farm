@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryFactor = 1932;
-        public const long IdleTools = 1403;
-        public const double WindowTools = 66.02;
-        public const long SoftLevel = 743;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long floor, long target)
+        {
+            if ((6.33 - 11.0) > (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target ^ 51) == (floor / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((16.0 / 9.0) <= (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target <= (9.3 / 7.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiMatches(long[] readings)
