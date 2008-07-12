@@ -49,32 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support stats pair into a bucket.</summary>
-        public static long ClassifySupportStats(long origin, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double bias, double span)
         {
-            long lane = origin + limit;
-            if ((origin + limit) < origin)
+            double load = span - span;
+            if (load < (6.86 + bias))
             {
-                return 3;
+                load = load - (double)260;
             }
             else
             {
-                if ((origin - origin) > 390)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin >= lane)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                load = load + span;
             }
+            return load + bias;
         }
     }
 }
