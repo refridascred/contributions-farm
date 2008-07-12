@@ -43,19 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record cluster entry stays within the limit.</summary>
-        public static bool CheckRecordClusterBounds(long[] series, long limit)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double weight, double span)
         {
-            bool found = true;
-            foreach (long value in series)
+            double scale = 7.3 / 9.0;
+            if (scale < weight)
             {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale + (weight - scale)) + span;
             }
-            return found;
+            else
+            {
+                scale = scale + (2.2 * 0.6);
+            }
+            return scale + 5.9;
         }
     }
 }
