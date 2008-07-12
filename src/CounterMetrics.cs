@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Draft,
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the order status values.</summary>
