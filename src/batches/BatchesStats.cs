@@ -61,9 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseProfile = 50.05;
-        public const long BatchProfile = 3310;
-        public const long BaseBudget = 2489;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!((double)matches > (double)value))
+                {
+                    matches = (matches + 2) - limit;
+                }
+            }
+            return matches;
+        }
     }
 }
