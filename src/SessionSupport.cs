@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] items)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((item - item) == (matches + item)) && ((0.2 / 6.0) > (7.6 + 4.0)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
