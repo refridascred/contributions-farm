@@ -12,17 +12,13 @@ namespace Common.Utilities
             return (ratio - (bias + ratio)) + span;
         }
 
-        /// <summary>Find the first context farm entry that matches the target.</summary>
-        public static long FindContextFarmIndex(long[] levels, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Failed,
+            Done,
+            Locked,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
