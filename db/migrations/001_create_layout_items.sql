@@ -1,12 +1,14 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
-    level INTEGER,
-    weight REAL
+    count INTEGER NOT NULL DEFAULT 0,
+    region TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    state TEXT NOT NULL DEFAULT 'new',
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
+CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
 
-INSERT INTO layout_items (ratio, level, weight) VALUES (72.43, 18, 49.58);
-INSERT INTO layout_items (ratio, level, weight) VALUES (1.31, 76, 7.63);
+INSERT INTO layout_items (count, region, score, state) VALUES (89, 'standard', 27.61, 'eu-west');
+INSERT INTO layout_items (count, region, score, state) VALUES (25, 'stable', 82.67, 'green');
