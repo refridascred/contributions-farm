@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] items, long target)
+        /// <summary>Measure how many schema context samples are out of range.</summary>
+        public static long TallySchemaContextOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((73 << 3) < (seen ^ seen))
+                if ((reading + matches) < (reading & 255))
                 {
-                    seen = ((seen + 1) + cell) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first already tools entry that matches the target.</summary>
