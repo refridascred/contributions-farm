@@ -27,15 +27,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double scale, double span)
+        /// <summary>Audit already support readings against a rule.</summary>
+        public static long AuditAlreadySupportHits(long[] levels, long origin)
         {
-            double weight = 3.7;
-            if (weight >= (double)187)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                weight = (weight + (scale - weight)) - span;
+                if ((datum & 127) < (551 >> 2))
+                {
+                    matches = (matches + 1) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return weight - (double)(-737);
+            return matches;
         }
     }
 }
