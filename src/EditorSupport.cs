@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] levels)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((3 + hits) < cell)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
