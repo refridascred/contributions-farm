@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the session token series from a seed.</summary>
-        public static long StepSessionToken(long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state + (24 + (long)i);
-                state = ((state * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a profile summary.</summary>
