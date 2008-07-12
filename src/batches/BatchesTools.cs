@@ -27,22 +27,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit already support readings against a rule.</summary>
-        public static long AuditAlreadySupportHits(long[] levels, long origin)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double gain = bias;
+            if (gain > (double)7)
             {
-                if ((datum & 127) < (551 >> 2))
-                {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = (gain + (bias - gain)) - scale;
             }
-            return matches;
+            return gain + (bias + bias);
         }
     }
 }
