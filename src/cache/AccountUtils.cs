@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate filter buffer readings against a bound.</summary>
-        public static bool VerifyFilterBufferRange(long[] series, long target)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
+                acc = ((acc * 2) + target) % 255;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
