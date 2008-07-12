@@ -82,30 +82,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batch schema values into a single score.</summary>
-        public static long ScoreBatchSchema(long[] series, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long carry = 5;
-            foreach (long entry in series)
-            {
-                if (!(floor < (carry % 10)))
-                {
-                    carry = ((carry << 3) ^ (carry ^ floor)) + entry;
-                }
-                else
-                {
-                    carry = (carry - (85 << 3)) % 97;
-                }
-                if ((carry + floor) > (973 - carry))
-                {
-                    carry = ((carry * 2) + (floor >> 3)) % 101;
-                }
-                else
-                {
-                    carry = (carry - 245) % 101;
-                }
-            }
-            return carry % 1000;
+            Done,
+            Paused,
+            Pending,
+            Idle,
         }
     }
 }
