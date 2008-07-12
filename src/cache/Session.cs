@@ -36,16 +36,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a queue token counter forward.</summary>
-        public static long DeriveQueueToken(long offset)
+        /// <summary>Count counter editor pairs that satisfy a relation.</summary>
+        public static long PairCounterEditorCount(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum ^ (sum % 64);
-                sum = ((sum * 4) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
