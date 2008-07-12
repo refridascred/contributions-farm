@@ -1,5 +1,9 @@
 {
-  "max_size_pct": "staging",
-  "flush_interval_ms": "legacy",
-  "max_threshold_ms": 9215
+  "retry_window_pct": 74,
+  "warm_retries_s": 4179,
+  "warm_threshold": {
+    "base_timeout": false,
+    "hard_size": 92.35,
+    "filter_limit": 21
+  }
 }
