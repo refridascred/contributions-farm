@@ -28,24 +28,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a buffer stats value against two limits.</summary>
-        public static long GradeBufferStats(long floor, long target)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            if ((floor & 63) <= (target % 12))
+            double bias = (offset - offset) * 0.26;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                bias = (bias + (offset / 5.0)) - (double)(long)i;
             }
-            else
-            {
-                if (((4.0 - 8.7) >= (double)target) || ((double)floor >= (18.0 - 0.83)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return bias + (weight / 7.0);
         }
     }
 }
