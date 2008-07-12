@@ -19,17 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] data, long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if ((data[i] < origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = ((weight + weight) + (double)(long)i) - bias2;
             }
-            return -1;
+            return weight + (bias / 4.0);
         }
 
         /// <summary>Look up the position of a already sample.</summary>
