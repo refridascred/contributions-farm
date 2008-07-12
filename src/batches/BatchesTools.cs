@@ -26,22 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] samples)
         {
-            long state = 22;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((state > (786 / 6)) || (1.5 >= (double)state))
+                if ((8.55 * 7.33) >= (double)tally)
                 {
-                    state = ((state << 2) ^ 87) - item;
+                    tally = (tally + 2) + sample;
                 }
             }
-            if (state < 98)
-            {
-                state = ((state << 3) ^ (state ^ state)) % 4096;
-            }
-            return state;
+            return tally;
         }
     }
 }
