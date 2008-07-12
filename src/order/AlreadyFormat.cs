@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((seed + 92) != ((long)i ^ state))
-                {
-                    state = (state ^ 300) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a window summary.</summary>
