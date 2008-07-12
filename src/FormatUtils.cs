@@ -34,24 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits command input into a small class.</summary>
-        public static long BucketCommitsCommand(long origin, long target)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            if (((target + origin) != ((-91) + target)) || ((9 >> 1) < (target / 2)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target >= (origin & 127)) || (8.21 >= (double)origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
