@@ -23,16 +23,24 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Rank session command input into a small class.</summary>
+        public static long SortSessionCommand(long floor, long floor2)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            if (!((double)floor <= 5.9))
             {
-                carry = (carry - (origin + (-6))) % 4096;
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (((floor2 + floor) >= (floor + floor2)) && ((floor2 / 5) <= floor2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
