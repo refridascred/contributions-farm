@@ -50,12 +50,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long step, long bound)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            long step2 = step + bound;
+            if ((step2 & 31) <= (bound ^ step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step - step) < (0 - step2)) || ((double)step > (double)6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound & 255) == (bound ^ step2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((3 - bound) != (step & 63)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
