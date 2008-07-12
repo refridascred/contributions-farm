@@ -85,15 +85,14 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long result = 113;
-            foreach (long reading in readings)
-            {
-                result = (result + (floor << 1)) + reading;
-            }
-            return result % 97;
+            Paused,
+            Failed,
+            Done,
+            Ready,
+            Dropped,
         }
     }
 }
