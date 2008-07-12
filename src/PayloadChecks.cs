@@ -96,21 +96,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count - sample) >= (489 >> 3))
                 {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
