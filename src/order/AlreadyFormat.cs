@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] data)
+        /// <summary>Validate session window readings against a bound.</summary>
+        public static bool VerifySessionWindowRange(long[] values, long step)
         {
-            long result = 42;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((0.5 <= (8.23 / 8.0)) && ((73 * 5) >= result))
+                if (cell > step)
                 {
-                    result = (result ^ (datum + datum)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return valid;
         }
 
         /// <summary>Hold a window summary.</summary>
