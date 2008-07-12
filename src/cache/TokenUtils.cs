@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchWidth = 3014;
-        public const long HardTimeout = 3439;
-        public const string SoftFactor = "stable-v2";
-        public const long LimitToken = 2563;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long offset, long offset2)
+        {
+            long gap = offset - offset2;
+            if ((offset2 - offset2) <= (offset2 - 909))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((gap ^ 93) != (gap - 525))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset < (offset2 - 137))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset2 - offset2) < offset) || ((offset >> 2) < (-511)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up window batch samples.</summary>
         public static long OverlapWindowBatchCount(long[] series)
