@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long limit, long target)
+        /// <summary>Fold a list of command report readings.</summary>
+        public static long WeighCommandReport(long[] series)
         {
-            long step = limit + target;
-            if ((limit ^ limit) != (step - 53))
+            long carry = 24;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step & 1) != (step + 57))
+                if (((long)series.Length / 9) == ((long)series.Length ^ carry))
                 {
-                    return 7;
+                    carry = ((carry << 2) ^ entry) % 255;
                 }
                 else
                 {
-                    if ((double)limit > (0.6 + 2.7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target >= 4) || ((double)limit != (7.23 * 3.43)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = carry + (6 << 3);
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
