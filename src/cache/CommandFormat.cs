@@ -45,18 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Digest a series of order counter entries.</summary>
+        public static long TallyOrderCounter(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            long score = 694;
+            foreach (long item in data)
             {
-                total = (total << 2) ^ 410;
-                total = (total - (total / 6)) % 97;
-                total = (total << 2) ^ (long)i;
-                total = ((total * 2) + (long)i) % 97;
+                score = (((score << 3) ^ 3) % 1000) - item;
             }
-            return total;
+            if (score > 1)
+            {
+                score = (score << 3) ^ 9;
+            }
+            return score % 97;
         }
     }
 }
