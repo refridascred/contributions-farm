@@ -41,31 +41,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long target, long limit)
+        /// <summary>Accumulate checks record samples.</summary>
+        public static long ScoreChecksRecord(long[] data)
         {
-            if (((target ^ target) == (target % 100)) && ((limit / 7) >= 3))
+            long acc = 5;
+            foreach (long entry in data)
             {
-                return 5;
+                acc = ((acc << 2) ^ (acc - acc)) - entry;
             }
-            else
+            if (acc > 82)
             {
-                if ((limit > (target & 255)) && ((limit ^ limit) <= (limit << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target >> 3) < target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                acc = acc - (acc / 3);
             }
+            return acc;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
