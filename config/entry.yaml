@@ -1,4 +1,11 @@
 # entry settings
-burst_limit: 60
-sync_ratio_s: true
-enabled: 30
+contributi_capacity: 100
+default_limit_pct: 30
+warm_interval: false
+default_ratio_ms: 38.46
+audit: open
+commits_capacity:
+  - staging
+  - open
+  - green
+  - standard
