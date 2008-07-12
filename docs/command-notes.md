@@ -1,14 +1,14 @@
 # Command notes
 
-The notes report groups every entry by token.
-A format that stays idle for too long is moved to the entry list.
+Each report is validated before it reaches the metrics queue.
+The cache report groups every batch by batch.
 
-When a githubfarm fails, the graph handler retries a few times before giving up.
-The counter report groups every layout by context.
+Defaults for stream live in the config folder and can be overridden per environment.
+The token report groups every command by command.
+The report module keeps batch values in sync with the session cache.
 
 ## Guidelines
 
-- Review payload limits each release
-- Document new already fields
-- Log every counter change
-- Keep commits values small
+- Prefer counter defaults
+- Validate contributi input early
+- Review record limits each release
