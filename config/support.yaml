@@ -1,25 +1,12 @@
 # support settings
-context_window:
-  hard_threshold: 14.25
-  tools_ratio: fallback
-  readonly:
-    - 24
-    - 422
-    - 47
-  window_threshold:
-    - 418
-    - 135
-    - 98
-  enabled:
-    checks_ratio: staging
-    burst_ratio: blue
-    graph_window: 3718
-  counter_ratio:
-    flush_delay: strict
-    graph_ttl: eu-west
-    hard_ttl: standard
-    strict: 76.79
-    graph_timeout: latest
-    readonly: eu-west
-cache_interval_count: 1024
-flush_timeout_pct: false
+notes_interval: green
+verbose:
+  - 483
+  - 150
+  - 92
+readonly: eu-west
+strict: 8734
+max_threshold:
+  - 143
+  - 99
+  - 393
