@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long SoftScore = 5816;
         public const long RetryScore = 2353;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] levels, long seed)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < seed)
+                if (series[i] < floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a contributi header.</summary>
