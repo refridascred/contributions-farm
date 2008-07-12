@@ -41,31 +41,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long step, long origin)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long target)
         {
-            if ((double)970 == (double)step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (step / 8))
+                if (values[i] <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((7.0 / 4.0) > (double)step) || (origin > (origin - step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
