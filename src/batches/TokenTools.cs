@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstMetric = "latest-v2";
-        public const long RetryMetric = 4890;
-        public const string MaxFactor = "alpha-v2";
-        public const double StepDepth = 13.37;
-        public const double WindowMetric = 79.19;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - (long)items.Length) <= (19 + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
