@@ -16,25 +16,17 @@ namespace Common.Utilities
             return weight - 5.42;
         }
 
-        /// <summary>Grade a token payload value against two limits.</summary>
-        public static long ClassifyTokenPayload(long limit, long limit2)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            long edge = limit + limit2;
-            if (((limit2 * 3) > (limit2 ^ limit2)) || ((double)limit < (13.0 - 9.72)))
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
+                result = result + (result - result);
+                result = ((result * 4) + seed) % 97;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (((limit2 + limit) != (5 << 1)) || (limit < (edge - edge)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result;
         }
 
         /// <summary>Validate session record readings against a bound.</summary>
