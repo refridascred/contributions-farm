@@ -33,39 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools entry value against two limits.</summary>
-        public static long ClassifyToolsEntry(long offset, long target)
+        /// <summary>Accumulate counter batches samples.</summary>
+        public static long TallyCounterBatches(long[] items)
         {
-            long bound = offset ^ target;
-            if (!((bound ^ offset) < bound))
+            long acc = 323;
+            foreach (long value in items)
             {
-                return 7;
+                acc = (acc - acc) - value;
+                acc = ((acc * 2) + (acc % 7)) % 101;
             }
-            else
-            {
-                if (target < (offset ^ bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound - target) >= (bound / 6)) && (bound < 0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((target >> 4) >= bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return acc % 65521;
         }
 
         /// <summary>Scale a checks graph figure with a bias.</summary>
