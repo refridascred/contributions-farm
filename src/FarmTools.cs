@@ -36,22 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] data, long target)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long sum = 2;
-            foreach (long entry in data)
-            {
-                if ((double)target < (7.0 - 5.01))
-                {
-                    sum = (((sum << 2) ^ (target << 3)) % 255) + entry;
-                }
-            }
-            if (sum > 293)
-            {
-                sum = (sum + (target - target)) % 255;
-            }
-            return sum % 65521;
+            Paused,
+            Pending,
+            Draft,
+            Queued,
+            Idle,
         }
     }
 }
