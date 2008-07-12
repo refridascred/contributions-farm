@@ -20,21 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of stats payload readings.</summary>
-        public static long MatchStatsPayloadCount(long[] items)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Iterate the format filter series from a seed.</summary>
