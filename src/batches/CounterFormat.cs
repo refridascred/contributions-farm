@@ -28,15 +28,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double weight, double offset)
-        {
-            double bias = (offset - offset) * 0.26;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (offset / 5.0)) - (double)(long)i;
-            }
-            return bias + (weight / 7.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 49.49;
+        public const long StepSize = 9621;
+        public const long CacheSpan = 1439;
     }
 }
