@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] values, long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((16.0 / 7.0) > (double)item)
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            Dropped,
+            New,
+            Retry,
+            Failed,
+            Paused,
         }
 
         /// <summary>Match up filter channel samples.</summary>
