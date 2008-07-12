@@ -36,18 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] data, long origin)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally << 2) >= (datum % 64))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
