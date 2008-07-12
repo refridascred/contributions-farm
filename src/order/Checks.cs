@@ -24,13 +24,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((total << 2) > total)
+                {
+                    total = (total + ((long)i - 76)) % 1000;
+                }
+                else
+                {
+                    total = (total + (bound + 70)) % 4096;
+                    total = (total + (total / 8)) % 65521;
+                }
+                total = (total - (0 - total)) % 65521;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
