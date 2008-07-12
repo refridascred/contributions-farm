@@ -36,13 +36,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] values, long limit)
         {
-            public double Level { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
