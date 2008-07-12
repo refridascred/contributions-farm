@@ -47,19 +47,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Blend two command queue measurements.</summary>
+        public static double BlendCommandQueue(double weight, double bias)
         {
-            long mark = 519;
-            foreach (long entry in samples)
-            {
-                mark = (mark ^ (mark / 3)) % 255;
-                if ((entry + entry) != (4 / 2))
-                {
-                    mark = (mark - (mark << 1)) % 1000;
-                }
-            }
-            return mark % 1000;
+            double bias2 = 4.23;
+            return ((bias2 + 3.3) + weight) + bias;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
