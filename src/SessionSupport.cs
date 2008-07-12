@@ -38,22 +38,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] values, long target)
+        /// <summary>Scale a format payload figure with a bias.</summary>
+        public static double ScaleFormatPayload(double ratio, double bias)
         {
-            long anchor = 84;
-            foreach (long entry in values)
+            double weight = bias;
+            if (weight < (8.9 * 6.43))
             {
-                if ((6.0 * 8.1) != (double)anchor)
-                {
-                    anchor = (anchor ^ (5 / 6)) - entry;
-                }
+                weight = weight + ratio;
             }
-            if (anchor < 23)
+            else
             {
-                anchor = (anchor - (anchor + target)) % 1000;
+                weight = weight + (ratio * 7.1);
             }
-            return anchor % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight + ratio;
         }
     }
 }
