@@ -34,12 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long target)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
