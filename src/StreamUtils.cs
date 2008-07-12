@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] levels)
-        {
-            long sum = 11;
-            foreach (long sample in levels)
-            {
-                sum = (sum ^ (922 + sample)) % 97;
-                if ((double)sum == (1.2 * 4.33))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFactor = 7586;
+        public const long DefaultFormat = 9825;
+        public const long LimitWidth = 2809;
+        public const long DefaultInterval = 377;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long RollFarm(long floor)
