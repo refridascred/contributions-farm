@@ -1,8 +1,9 @@
-id,ratio,rank,owner
-1,open,latest,113
-2,cached,136,680
-3,48.23,120,primary
-4,47.4,776,legacy
-5,6.82,86.87,57
-6,83.25,strict,open
-7,310,50.2,stable
+id,label,token,count
+1,480,64.04,351
+2,latest,primary,primary
+3,eu-west,844,342
+4,564,63.06,272
+5,strict,standard,33.87
+6,962,local,39.67
+7,edge,851,95.29
+8,233,178,cached
