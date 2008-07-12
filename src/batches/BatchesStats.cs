@@ -47,14 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Roll a context layout counter forward.</summary>
+        public static long RollContextLayout(long floor)
         {
-            New,
-            Locked,
-            Stale,
-            Active,
-            Retry,
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (floor > (state ^ state))
+                {
+                    state = state - (floor << 1);
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
