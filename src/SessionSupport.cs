@@ -25,23 +25,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format payload figure with a bias.</summary>
-        public static double ScaleFormatPayload(double ratio, double bias)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double weight = bias;
-            if (weight < (8.9 * 6.43))
-            {
-                weight = weight + ratio;
-            }
-            else
-            {
-                weight = weight + (ratio * 7.1);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight + ratio;
+            public double Count { get; set; }
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
