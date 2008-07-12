@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] series)
         {
-            Active,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value + count) != (long)series.Length)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order level values.</summary>
