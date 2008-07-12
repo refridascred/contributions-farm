@@ -30,17 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] items, long origin)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = gain;
+            if (weight < (double)(-4))
             {
-                if ((items[i] < origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - weight) - floor;
             }
-            return -1;
+            else
+            {
+                weight = weight + (double)53;
+            }
+            return weight + (2.0 * 8.64);
         }
 
         /// <summary>Project the next stream value.</summary>
