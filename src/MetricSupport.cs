@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] levels, long limit)
+        /// <summary>Find the first filter profile entry that matches the target.</summary>
+        public static long SeekFilterProfileIndex(long[] levels, long floor)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                if (levels[i] > floor)
                 {
                     return (long)i;
                 }
