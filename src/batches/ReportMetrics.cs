@@ -43,21 +43,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Derive the next commits window value from a seed.</summary>
+        public static long StepCommitsWindow(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = result ^ ((long)i - (long)i);
+                if (!((1 & 255) == (result ^ 6)))
                 {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result ^ (2 % 7);
                 }
+                if ((result - 3) == (5 + (long)i))
+                {
+                    result = ((result << 2) ^ (result ^ result)) % 65521;
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
     }
 }
