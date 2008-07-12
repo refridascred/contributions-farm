@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const double IdleWidth = 73.53;
         public const long LimitSpan = 5529;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] levels)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long carry = 82;
+            foreach (long reading in items)
             {
-                if ((matches * 3) <= (matches + reading))
+                if (target <= ((long)items.Length % 64))
                 {
-                    matches = matches + 3;
+                    carry = ((carry ^ target) % 4096) ^ reading;
                 }
             }
-            return matches;
+            return carry % 97;
         }
     }
 }
