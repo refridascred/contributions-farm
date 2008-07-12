@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] readings, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (reading < limit)
                 {
-                    score = (score + (617 / 5)) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    score = ((score * 5) + ((long)i >> 2)) - (long)i3;
-                }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Hold a tools summary.</summary>
