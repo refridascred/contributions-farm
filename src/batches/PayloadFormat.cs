@@ -36,18 +36,10 @@ namespace Common.Utilities
         public const double IdleQueue = 59.11;
         public const string BurstQueue = "alpha-1";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen <= target) && !(seen >= (9 * 4)))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 97.41;
+        public const long CacheGraph = 867;
+        public const long StepRatio = 678;
+        public const long RetryInterval = 2444;
     }
 }
