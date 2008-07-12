@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 9358;
-        public const long DefaultAlready = 5546;
-        public const double BurstAlready = 12.48;
-        public const long RetryRatio = 9728;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Paused,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Grade a stream route value against two limits.</summary>
         public static long GradeStreamRoute(long origin, long target)
