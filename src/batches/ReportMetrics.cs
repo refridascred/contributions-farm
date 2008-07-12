@@ -12,17 +12,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
