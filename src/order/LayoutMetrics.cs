@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] samples)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((((-4) * 4) < matches) && (cell >= matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine already values into a single score.</summary>
