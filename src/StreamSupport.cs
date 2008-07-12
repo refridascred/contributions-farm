@@ -36,12 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double weight, double bias)
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            double load = (double)(345 / 6);
+            if (load > (load - 1.84))
+            {
+                load = (load - (weight / 2.0)) - bias;
+            }
+            return load + weight;
         }
     }
 }
