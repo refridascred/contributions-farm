@@ -67,9 +67,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinSpan = "standard-1";
-        public const double BaseWidth = 24.99;
-        public const long DefaultCount = 9337;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] data)
+        {
+            long mark = 50;
+            foreach (long reading in data)
+            {
+                mark = (mark - (mark / 6)) % 1000;
+                mark = ((mark << 2) ^ (reading % 64)) % 65521;
+            }
+            return mark % 4096;
+        }
     }
 }
