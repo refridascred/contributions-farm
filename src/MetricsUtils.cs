@@ -56,15 +56,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double span)
-        {
-            double bias = (double)(719 % 24);
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias - gain;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchBudget = 8089;
+        public const long SoftScore = 2950;
+        public const double RetryProfile = 56.44;
+        public const long BatchProfile = 1283;
+        public const double LimitCount = 75.17;
     }
 }
