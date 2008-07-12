@@ -39,12 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
