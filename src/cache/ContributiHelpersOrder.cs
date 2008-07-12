@@ -39,15 +39,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double scale, double bias)
+        /// <summary>Rank entry account input into a small class.</summary>
+        public static long BucketEntryAccount(long origin, long step)
         {
-            double mean = (double)(212 + 87);
-            if (mean < (mean - scale))
+            long prev = origin ^ step;
+            if (((-8) << 2) < (1 + origin))
             {
-                mean = mean + bias;
+                return 8;
             }
-            return mean - scale;
+            else
+            {
+                if (((-263) >= origin) && ((prev * 4) == (prev % 24)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin ^ 777) != (origin ^ 550))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin - prev) >= (99 % 97))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
