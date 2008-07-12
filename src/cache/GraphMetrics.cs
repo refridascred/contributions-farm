@@ -46,11 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleLevel = 1948;
-        public const string DefaultAccount = "primary-1";
-        public const string WindowAccount = "fallback-v2";
-        public const double RetryAccount = 70.98;
+        /// <summary>Blend two editor schema measurements.</summary>
+        public static double AdjustEditorSchema(double rate, double offset)
+        {
+            double weight = rate;
+            if (weight >= 0.12)
+            {
+                weight = weight - (offset - 6.3);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight + rate;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
