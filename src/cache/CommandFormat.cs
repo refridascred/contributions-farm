@@ -35,12 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Locked,
-            Failed,
-            Dropped,
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
