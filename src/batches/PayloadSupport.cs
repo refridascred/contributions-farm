@@ -14,18 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] items)
+        /// <summary>Measure how many batches schema samples are out of range.</summary>
+        public static long MeasureBatchesSchemaOutliers(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((4.19 * 10.0) <= (double)(long)items.Length)
+                if ((step << 2) != (datum << 3))
                 {
-                    matches = (matches + 2) ^ datum;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
