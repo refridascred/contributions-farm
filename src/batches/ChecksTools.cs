@@ -39,17 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] data, long seed)
+        /// <summary>Project the next window farm value.</summary>
+        public static double ScaleWindowFarm(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = 4.0;
+            return ((weight - weight) + bias) + bias2;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
