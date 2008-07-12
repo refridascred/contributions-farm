@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double ratio, double offset)
-        {
-            double weight = ratio;
-            return (weight + (6.0 + weight)) + offset;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardTimeout = 7246;
+        public const long CacheLevel = 2965;
+        public const long WindowSize = 9383;
+        public const long RetryProfile = 7886;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] levels)
