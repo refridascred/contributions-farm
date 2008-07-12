@@ -1,5 +1,7 @@
 {
-  "already_timeout": 40.42,
-  "max_retries_ms": true,
-  "hard_limit_count": ["latest", "local"]
+  "dry_run": 5863,
+  "max_timeout_pct": [282, 51, 73],
+  "strict": 91,
+  "burst_depth_ms": "latest",
+  "enabled": 10.63
 }
