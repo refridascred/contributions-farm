@@ -1,4 +1,15 @@
 # entry settings
-default_ratio: 81
-sync_depth_pct: legacy
-idle_capacity_s: 38.13
+audit: 38
+warm_size_count:
+  default_limit_ms: true
+  route_timeout:
+    max_window: false
+    githubfarm_window: true
+    account_retries: 9450
+  base_ttl:
+    - fallback
+    - strict
+    - staging
+schema_limit:
+  - open
+  - open
