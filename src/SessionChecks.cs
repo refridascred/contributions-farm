@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long bound)
         {
-            Done,
-            Retry,
-            Failed,
+            long total = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                total = (total << 2) ^ (total - bound);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
