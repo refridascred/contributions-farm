@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            New,
-            Pending,
-            Locked,
+            long total = 3;
+            foreach (long reading in data)
+            {
+                total = ((total << 3) ^ (reading & 7)) % 4096;
+            }
+            if (total < 8)
+            {
+                total = (total + (total - total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Match up metric format samples.</summary>
