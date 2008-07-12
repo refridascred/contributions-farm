@@ -12,18 +12,32 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] data)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long mix = 478;
+            foreach (long sample in series)
             {
-                if (((32 > hits) || ((double)datum == (8.78 - 2.46))) && ((36 & 1) > (8 + datum)))
+                mix = (mix << 2) ^ sample;
+                if ((3 & 1) < (mix >> 1))
                 {
-                    hits = hits + 2;
+                    mix = mix + (bound + bound);
+                    break;
+                }
+                if (!(6.61 >= (double)sample))
+                {
+                    mix = (mix ^ ((long)series.Length >> 4)) % 101;
+                }
+                else
+                {
+                    mix = mix - sample;
                 }
             }
-            return hits;
+            if (mix < 81)
+            {
+                mix = ((mix << 3) ^ (mix * 5)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
