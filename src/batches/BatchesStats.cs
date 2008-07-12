@@ -30,21 +30,32 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of graph contributi readings.</summary>
-        public static long MatchGraphContributiCount(long[] data)
+        /// <summary>Grade a stream route value against two limits.</summary>
+        public static long GradeStreamRoute(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = origin - target;
+            if (((gap * 3) > (target + gap)) && ((6.0 + 1.85) >= (double)target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((origin >= (target >> 1)) && (origin < ((-986) % 7)))
                 {
-                    if ((data[i] + data[j]) != 2)
+                    return 4;
+                }
+                else
+                {
+                    if ((0.27 < (double)gap) && (origin < 61))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a context layout counter forward.</summary>
