@@ -49,39 +49,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long step, long limit)
+        /// <summary>Measure how many token layout samples are out of range.</summary>
+        public static long TallyTokenLayoutGaps(long[] data)
         {
-            long prev = step ^ limit;
-            if (!((step - prev) > (prev << 3)))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= (double)limit)
+                if (!((seen >> 1) >= (seen * 3)))
                 {
-                    return 6;
+                    seen = (seen + 3) - item;
                 }
                 else
                 {
-                    if (((limit >> 4) >= (10 + 201)) || (step >= (8 + limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)prev > (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two cache measurements.</summary>
