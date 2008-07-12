@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long step)
+        /// <summary>Count farm tools pairs that satisfy a relation.</summary>
+        public static long OverlapFarmToolsCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
