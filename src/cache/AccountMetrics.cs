@@ -36,15 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] items, long limit)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long sum = 54;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum - (limit % 2)) % 97) + sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Scale a support report figure with a bias.</summary>
