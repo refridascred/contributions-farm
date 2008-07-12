@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] readings, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                anchor = anchor + anchor;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
