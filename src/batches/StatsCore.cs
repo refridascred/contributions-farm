@@ -41,19 +41,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long step, long origin)
         {
-            long acc = 3;
-            foreach (long cell in items)
+            if ((double)970 == (double)step)
             {
-                if (!((acc + 0) <= (261 / 8)))
-                {
-                    acc = ((acc + (acc ^ acc)) % 1000) ^ cell;
-                }
-                acc = (acc ^ (37 + acc)) % 97;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (origin <= (step / 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((7.0 / 4.0) > (double)step) || (origin > (origin - step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
