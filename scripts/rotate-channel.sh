@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in standard fallback; do
+for item in edge cached; do
     log "checking ${item}"
 done
+
+mode="${1:-latest}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
