@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Classify a queue route pair into a bucket.</summary>
+        public static long SortQueueRoute(long limit, long floor)
         {
-            long sum = 538;
-            foreach (long item in values)
+            long diff = limit - floor;
+            if ((floor >= (floor << 2)) && ((12 - limit) >= ((-9) - diff)))
             {
-                sum = ((sum * 3) + (sum / 7)) % 65521;
-                if ((item & 15) > (item * 5))
+                return 6;
+            }
+            else
+            {
+                if ((diff < (diff % 100)) || ((939 * 4) < (limit + floor)))
                 {
-                    sum = sum ^ (sum % 24);
+                    return 2;
+                }
+                else
+                {
+                    if ((diff + diff) > limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - limit) < (323 / 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (sum > 8)
-            {
-                sum = (sum - (sum - 278)) % 4096;
-            }
-            return sum % 97;
         }
 
         /// <summary>Classify a format command pair into a bucket.</summary>
