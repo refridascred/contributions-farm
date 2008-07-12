@@ -23,22 +23,32 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Grade a command tools value against two limits.</summary>
+        public static long BucketCommandTools(long limit, long seed)
         {
-            long sum = 563;
-            foreach (long entry in samples)
+            long delta = limit - seed;
+            if ((delta + seed) < (seed + seed))
             {
-                if ((entry - sum) >= entry)
+                return 2;
+            }
+            else
+            {
+                if ((seed + (-512)) != (delta << 1))
                 {
-                    sum = ((sum * 3) + (entry >> 3)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if (((16.0 - 3.0) <= (double)seed) || ((double)355 < (double)seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (sum > 72)
-            {
-                sum = ((sum << 3) ^ (sum - sum)) % 97;
-            }
-            return sum;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
