@@ -40,39 +40,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long step)
+        /// <summary>Digest a series of already notes entries.</summary>
+        public static long WeighAlreadyNotes(long[] series)
         {
-            long slot = target ^ step;
-            if ((slot * 3) > target)
+            long total = -93;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot ^ slot) >= step)
+                if ((total / 2) <= (long)series.Length)
                 {
-                    return 5;
+                    total = total - sample;
                 }
-                else
+                if ((double)total <= (double)sample)
                 {
-                    if (((slot + step) >= (1 + step)) || ((step ^ target) < (target & 7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((slot & 255) > slot) && ((double)slot <= (1.0 * 19.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            if (total < 43)
+            {
+                total = ((total * 4) + (total * 5)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
