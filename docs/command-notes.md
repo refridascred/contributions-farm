@@ -1,11 +1,11 @@
 # Command notes
 
-The commits module keeps report values in sync with the command cache.
-A queue that stays idle for too long is moved to the schema list.
-Run the batches check before changing any notes limits.
+Each order is validated before it reaches the metric queue.
+Use session settings to tune how often filter data is refreshed.
+Each queue is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Log every payload change
-- Prefer support defaults
-- Validate context input early
+- Review report limits each release
+- Validate stats input early
+- Document new checks fields
