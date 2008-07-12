@@ -32,18 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] series, long offset)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long score = -77;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset + 8) != (offset & 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score ^ ((long)series.Length ^ offset)) ^ datum;
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a stream stats.</summary>
