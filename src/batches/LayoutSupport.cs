@@ -49,19 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] levels, long bound)
+        /// <summary>Roll a tools cache counter forward.</summary>
+        public static long StepToolsCache(long offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell >= bound)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry * 4) + (offset << 3)) - (long)i2;
                 }
+                if ((double)carry > (0.4 + 1.5))
+                {
+                    carry = ((carry << 3) ^ (88 ^ offset)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Count the batches contributi entries that pass the check.</summary>
