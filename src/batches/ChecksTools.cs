@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            New,
+            Retry,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
