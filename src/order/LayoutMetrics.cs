@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
