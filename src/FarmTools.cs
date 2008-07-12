@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] values)
         {
-            Active,
-            Synced,
-            Stale,
+            long mix = -34;
+            foreach (long value in values)
+            {
+                if (2.64 > (double)value)
+                {
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix + 918)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
