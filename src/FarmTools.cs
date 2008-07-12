@@ -38,18 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((10.0 / 8.0) < (double)tally)
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
