@@ -71,12 +71,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many schema tools samples are out of range.</summary>
+        public static long MeasureSchemaToolsGaps(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + cell) >= cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
