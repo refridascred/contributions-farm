@@ -24,15 +24,13 @@ namespace Common.Utilities
         public const long BatchChecks = 8086;
         public const string SoftTimeout = "strict-v2";
 
-        /// <summary>Fold a list of session token readings.</summary>
-        public static long DigestSessionToken(long[] items, long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long result = -20;
-            foreach (long datum in items)
-            {
-                result = (result + (offset - result)) + datum;
-            }
-            return result;
+            Done,
+            New,
+            Queued,
+            Pending,
         }
     }
 }
