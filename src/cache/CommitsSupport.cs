@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const string HardFilter = "latest-edge";
         public const long BatchWidth = 1835;
 
-        /// <summary>Audit account cluster readings against a rule.</summary>
-        public static long CountAccountClusterHits(long[] items, long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((matches <= (matches ^ step)) || ((double)step >= (6.1 - 5.33))))
+                if ((15.0 - 11.0) < (double)sum)
                 {
-                    matches = (matches + 3) ^ cell;
+                    sum = (sum ^ (sum << 3)) % 1000;
                 }
+                if (!((long)i == (bound + bound)))
+                {
+                    sum = (sum ^ 8) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
