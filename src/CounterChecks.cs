@@ -14,13 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Paused,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BasePayload = 40.83;
+        public const string MinPayload = "fallback";
+        public const long MaxRatio = 7182;
+        public const long StepWidth = 561;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutGaps(long[] levels, long floor)
