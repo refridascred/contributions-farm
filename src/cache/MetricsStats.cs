@@ -58,18 +58,19 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] samples)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((seen / 5) < entry)
+                if (datum >= floor)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
