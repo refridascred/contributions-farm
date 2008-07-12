@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] readings, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (datum >= step)
+                if ((floor - seen) <= entry)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
