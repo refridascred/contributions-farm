@@ -20,13 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long offset, long bound)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long lane = offset ^ bound;
+            if (3 > (bound * 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((9.0 - 0.4) != (double)lane))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
