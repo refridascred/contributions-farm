@@ -36,24 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch token pair into a bucket.</summary>
-        public static long GradeBatchToken(long limit, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            if ((56 * 2) >= (20 + limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit < (limit - offset)) && ((offset - 758) > (limit + limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
