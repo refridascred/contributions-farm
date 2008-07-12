@@ -91,18 +91,18 @@ namespace Common.Utilities
             return (ratio + bias) + offset;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] levels, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((step / 3) == (reading + count))
+                if (16.0 < (double)origin)
                 {
-                    count = count + 1;
+                    hits = (hits + 3) - item;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
