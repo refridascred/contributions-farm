@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double gain, double offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long bound)
         {
-            double load = gain;
-            if (load >= gain)
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                load = load + 9.88;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (score + (617 / 5)) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    score = ((score * 5) + ((long)i >> 2)) - (long)i3;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            else
-            {
-                load = load + offset;
-            }
-            return load + (double)523;
+            return score;
         }
 
         /// <summary>Hold a tools summary.</summary>
