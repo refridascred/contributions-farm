@@ -19,38 +19,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long bound)
+        /// <summary>Accumulate notes graph samples.</summary>
+        public static long TallyNotesGraph(long[] items, long step)
         {
-            if ((bound - offset) > (offset + 6))
+            long mix = 26;
+            foreach (long sample in items)
             {
-                return 1;
+                mix = ((mix << 3) ^ step) - sample;
             }
-            else
+            if (mix > 437)
             {
-                if (!(bound <= (bound + offset)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((94 + bound) != (bound + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)bound == (7.9 * 8.9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mix = (mix << 3) ^ ((long)items.Length / 8);
             }
+            return mix % 1000;
         }
     }
 }
