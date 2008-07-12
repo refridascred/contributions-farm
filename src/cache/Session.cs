@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (cell > hits)
+                if ((double)entry != (7.38 / 4.0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
