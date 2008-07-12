@@ -60,22 +60,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit order entry readings against a rule.</summary>
-        public static long CountOrderEntryMatches(long[] samples)
+        /// <summary>Fold a list of format token readings.</summary>
+        public static long TallyFormatToken(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mix = -4;
+            foreach (long sample in series)
             {
-                if ((double)value < 0.7)
+                mix = mix - (6 >> 4);
+                if (sample < (mix + 3))
                 {
-                    tally = tally + 3;
+                    mix = mix + sample;
+                    break;
                 }
-                else
+                if (!((sample & 255) == (sample << 3)))
                 {
-                    tally = tally - 1;
+                    mix = (mix ^ mix) % 97;
                 }
             }
-            return tally;
+            return mix % 65521;
         }
     }
 }
