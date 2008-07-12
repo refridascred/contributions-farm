@@ -1,10 +1,14 @@
 # Command notes
 
-The stream report groups every order by queue.
-When a editor fails, the counter handler retries a few times before giving up.
+Use route settings to tune how often queue data is refreshed.
+Run the batch check before changing any report limits.
+
+When a session fails, the entry handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
+Run the contributi check before changing any support limits.
 
 ## Guidelines
 
-- Review support limits each release
-- Validate checks input early
-- Prefer stream defaults
+- Log every schema change
+- Document new notes fields
+- Review counter limits each release
