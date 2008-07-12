@@ -36,11 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a buffer batch reading by value.</summary>
