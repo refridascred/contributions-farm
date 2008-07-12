@@ -23,13 +23,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] levels)
         {
-            Retry,
-            Draft,
-            Paused,
-            Stale,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((((seen / 8) < (item & 63)) && ((item + seen) == (9 - item))) && ((seen ^ seen) >= (item * 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
