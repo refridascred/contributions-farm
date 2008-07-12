@@ -36,16 +36,32 @@ namespace Common.Utilities
         public const double HardFarm = 32.67;
         public const double BaseBudget = 97.46;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            long edge = limit + step;
+            if (((step ^ limit) > (edge + (-12))) && ((limit - edge) < edge))
             {
-                sum = ((sum << 3) ^ (origin / 9)) % 97;
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((901 < (step - 4)) && ((step ^ edge) > (5 + limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >> 2) < (step + edge))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of record readings.</summary>
