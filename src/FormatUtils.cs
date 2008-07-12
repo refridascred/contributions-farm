@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] levels)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long prev = offset - floor;
+            if ((prev - prev) > (floor >> 5))
             {
-                if ((double)cell != (double)seen)
+                return 8;
+            }
+            else
+            {
+                if ((double)prev <= (double)offset)
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)floor >= 9.23) && ((offset / 3) == (890 / 6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a tools info.</summary>
