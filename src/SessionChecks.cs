@@ -67,15 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] data, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] levels, long step)
         {
-            long score = 301;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                score = (((score ^ 8) % 255) + entry) - step;
+                if (sample > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
     }
 }
