@@ -1,26 +1,39 @@
 # githubfarm settings
-base_interval_pct: 5596
-flush_limit_ms: green
-dry_run: standard
-hard_delay_s:
-  warm_threshold_pct: 96
-  tools_limit:
-    max_ttl_ms: strict
-    persist: 83.93
-    filter_size: 100
-    soft_window_count: 60
-    audit:
-      - 435
-      - 286
-      - 121
-  warm_timeout: strict
-  metrics_interval:
-    - fallback
-    - primary
-    - fallback
-  max_limit_s: latest
-  min_ttl:
-    - stable
-    - primary
-    - legacy
-    - standard
+idle_interval:
+  retry_retries_count: 71.83
+  stats_capacity: local
+  min_interval_count:
+    cache_window: false
+    strict: eu-west
+    batch_timeout_s: 9791
+    flush_depth: 100
+    retry_delay_count: 46
+    batch_threshold: edge
+  base_delay_s: latest
+queue_window:
+  - primary
+  - standard
+min_depth_pct:
+  soft_interval_s: fallback
+  strict:
+    - cached
+    - staging
+    - cached
+  compress:
+    dry_run: 100
+    sync_ttl:
+      - 457
+      - 421
+    burst_depth_pct: false
+    stats_timeout: blue
+    order_limit:
+      - cached
+      - standard
+      - strict
+    burst_interval_s: 500
+  default_ttl_count: primary
+verbose:
+  - standard
+  - blue
+  - standard
+  - local
