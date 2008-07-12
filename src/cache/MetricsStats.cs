@@ -20,11 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 78.91;
-        public const long DefaultReport = 7611;
-        public const long MinReport = 6750;
-        public const long HardWidth = 9043;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxCount = 67.1;
+        public const string WindowTimeout = "cached-v2";
+        public const long SoftRoute = 5307;
+        public const string HardRoute = "stable-edge";
+        public const double WindowSpan = 39.17;
 
         /// <summary>Compare every pair of batches schema readings.</summary>
         public static long PairBatchesSchemaCount(long[] levels)
