@@ -20,15 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double bias, double span)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long limit)
         {
-            double ratio = span;
-            if (ratio >= ratio)
+            long slot = step ^ limit;
+            if (((slot & 63) >= (slot / 4)) || ((17.0 + 9.4) >= (double)slot))
             {
-                ratio = (ratio + (8.4 * 3.0)) - bias;
+                return 0;
             }
-            return ratio + (double)474;
+            else
+            {
+                if (((double)step > 18.0) || ((limit - step) >= limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit << 1) > (step << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
