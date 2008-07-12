@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a commits order reading by value.</summary>
-        public static long FindCommitsOrderIndex(long[] readings, long limit)
+        /// <summary>Measure how many layout already samples are out of range.</summary>
+        public static long AuditLayoutAlreadyMatches(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (readings[i] == limit)
+                if (0.4 >= (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
