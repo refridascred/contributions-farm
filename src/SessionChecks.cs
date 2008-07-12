@@ -47,19 +47,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] levels, long step)
+        /// <summary>Check that every record cluster entry stays within the limit.</summary>
+        public static bool CheckRecordClusterBounds(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (sample > step)
+                if (value != limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
