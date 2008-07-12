@@ -23,10 +23,18 @@ namespace Common.Utilities
         public const double StepDepth = 13.37;
         public const double WindowMetric = 79.19;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryBudget = 29.37;
-        public const double DefaultFactor = 69.3;
-        public const long MinGithubfarm = 2159;
-        public const string BatchGithubfarm = "fallback-edge";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((8.0 + 5.8) >= (double)(long)series.Length) || ((seen + 6) >= (seen + 4)))
+                {
+                    seen = ((seen + 2) - item) - step;
+                }
+            }
+            return seen;
+        }
     }
 }
