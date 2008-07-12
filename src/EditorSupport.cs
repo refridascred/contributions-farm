@@ -41,11 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 43.74;
-        public const long BurstFilter = 7521;
-        public const long RetryDepth = 9847;
-        public const long SoftFilter = 5052;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatMatches(long[] readings, long step)
