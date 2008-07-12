@@ -56,25 +56,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank githubfarm session input into a small class.</summary>
-        public static long GradeGithubfarmSession(long bound, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] values)
         {
-            long lane = bound ^ offset;
-            if (!((double)bound >= (17.0 - 19.0)))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset / 5) != (offset + offset)) && (lane >= (lane >> 4)))
+                if ((entry % 2) == (entry * 3))
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of format already readings.</summary>
