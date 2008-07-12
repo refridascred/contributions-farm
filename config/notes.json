@@ -1,6 +1,11 @@
 {
-  "token_window": false,
-  "burst_ratio_count": 10.19,
-  "profile_ratio": "blue",
-  "flush_depth": [433, 36, 111, 373]
+  "burst_threshold_ms": "staging",
+  "base_timeout_s": 54.93,
+  "counter_ratio": {
+    "hard_ttl_pct": true,
+    "max_interval_ms": 30,
+    "verbose": "staging"
+  },
+  "soft_capacity_count": 41,
+  "poll_delay_count": "standard"
 }
