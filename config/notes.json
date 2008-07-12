@@ -1,6 +1,6 @@
 {
-  "burst_window_s": "strict",
-  "warm_retries": "eu-west",
-  "farm_limit": "open",
-  "persist": 1024
+  "base_window_ms": "strict",
+  "batches_window": "open",
+  "soft_ttl_pct": 62,
+  "window_threshold": ["primary", "blue", "green"]
 }
