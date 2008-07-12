@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Queued,
-            New,
-            Retry,
-            Closed,
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a command sample.</summary>
