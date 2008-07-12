@@ -1,5 +1,12 @@
 {
-  "flush_window_count": true,
-  "enabled": 52,
-  "default_ttl": true
+  "idle_window_pct": 95,
+  "layout_ratio": 33,
+  "hard_limit": {
+    "window_threshold": 60,
+    "enabled": 1024,
+    "compress": 5606,
+    "hard_retries_s": false,
+    "hard_timeout_pct": 7
+  },
+  "min_depth_s": 95.44
 }
