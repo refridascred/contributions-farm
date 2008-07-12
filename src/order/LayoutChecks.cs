@@ -52,12 +52,12 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Active,
-            Retry,
-            Stale,
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank order buffer input into a small class.</summary>
