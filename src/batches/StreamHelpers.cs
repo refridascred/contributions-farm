@@ -46,11 +46,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "open-edge";
-        public const string RetryLevel = "fallback-1";
-        public const long SoftFactor = 6055;
-        public const string RetrySession = "latest-edge";
+        /// <summary>Validate support profile readings against a bound.</summary>
+        public static bool GuardSupportProfileRange(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Scale a account githubfarm figure with a bias.</summary>
         public static double ProjectAccountGithubfarm(double bias, double floor)
