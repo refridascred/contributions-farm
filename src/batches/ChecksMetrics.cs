@@ -24,19 +24,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] values, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long origin, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            if ((target << 1) < target)
             {
-                if (datum <= step)
+                return 0;
+            }
+            else
+            {
+                if ((2.8 > (double)target) || ((target / 7) >= origin))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
