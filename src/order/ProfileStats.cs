@@ -30,12 +30,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxSpan = 40.09;
-        public const long BurstProfile = 3412;
-        public const long BurstDepth = 6992;
-        public const string SoftProfile = "staging-edge";
-        public const long IdleSpan = 9858;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
