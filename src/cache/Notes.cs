@@ -21,13 +21,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Grade a window metric value against two limits.</summary>
+        public static long ClassifyWindowMetric(long floor, long seed)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            long prev = floor + seed;
+            if (((34 >> 4) >= prev) || ((floor ^ prev) != (seed & 15)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor >= (double)prev)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate format samples.</summary>
