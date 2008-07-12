@@ -20,24 +20,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long mix = 29;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (!((mix << 2) < (sample - sample)))
                 {
-                    carry = ((carry << 2) ^ carry) ^ (long)i2;
+                    mix = (mix * 5) + (mix % 64);
                 }
-                if ((double)(long)i >= (2.85 / 7.0))
+                else
                 {
-                    carry = (carry ^ 118) % 65521;
-                    continue;
+                    mix = (mix + mix) % 97;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Audit metrics layout readings against a rule.</summary>
