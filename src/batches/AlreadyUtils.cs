@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long BurstStream = 9205;
         public const long MinStream = 1536;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Compare every pair of checks queue readings.</summary>
+        public static long PairChecksQueueCount(long[] series)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up stream samples.</summary>
