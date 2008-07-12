@@ -50,18 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] items, long target)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)target > (4.0 - 5.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) ^ cell;
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
