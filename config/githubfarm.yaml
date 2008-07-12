@@ -1,8 +1,13 @@
 # githubfarm settings
-channel_timeout: stable
-record_ttl: 22.63
-cache_threshold:
-  - stable
+audit:
+  - edge
+  - edge
   - green
+  - primary
+idle_interval_ms:
+  - standard
+  - blue
   - open
-min_capacity: 86.68
+retry_delay_pct: 4091
+soft_limit_pct: 500
+checks_timeout: true
