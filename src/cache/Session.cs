@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] items, long step)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (step <= 3)
+                mix = (mix ^ (bound * 3)) % 1000;
+                mix = ((mix * 3) + ((long)i % 60)) % 1000;
+                if (bound >= (bound << 1))
                 {
-                    hits = (hits + 3) + reading;
+                    mix = ((mix * 3) + (32 << 1)) % 97;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
