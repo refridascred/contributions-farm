@@ -45,39 +45,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long step, long seed)
-        {
-            if ((step * 3) != (step & 63))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step ^ seed) < (step / 6)) && (step <= (seed + step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step < (9.13 + 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)seed >= (double)step) && (step >= (seed / 9)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 4518;
+        public const long BurstSupport = 930;
+        public const long MinDepth = 6852;
+        public const string DefaultCount = "latest";
 
         /// <summary>Measure how many schema tools samples are out of range.</summary>
         public static long MeasureSchemaToolsGaps(long[] samples)
