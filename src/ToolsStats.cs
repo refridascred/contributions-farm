@@ -82,31 +82,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long target)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            if (((origin - 77) > (target * 4)) && ((6.3 - 9.0) < (double)target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 2) <= (origin + 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.9 - 16.0) != (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
