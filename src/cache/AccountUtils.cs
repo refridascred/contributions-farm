@@ -18,14 +18,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] readings, long seed)
         {
-            Paused,
-            Pending,
-            Synced,
-            Stale,
-            New,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
