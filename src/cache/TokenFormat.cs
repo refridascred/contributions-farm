@@ -33,19 +33,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools order entry stays within the limit.</summary>
-        public static bool VerifyToolsOrderLimits(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultFactor = 649;
+        public const double MaxTools = 11.98;
+        public const string LimitTools = "cached-v2";
     }
 }
