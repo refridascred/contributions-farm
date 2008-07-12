@@ -1,13 +1,11 @@
 # Command notes
 
-The metric report groups every githubfarm by batch.
-A payload that stays idle for too long is moved to the batch list.
-
-The queue report groups every contributi by layout.
-Use stats settings to tune how often format data is refreshed.
+When a profile fails, the queue handler retries a few times before giving up.
+Defaults for layout live in the config folder and can be overridden per environment.
+Keep filter and layout names short and lowercase.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Validate session input early
-- Document new support fields
+- Keep checks values small
+- Validate metric input early
+- Prefer graph defaults
