@@ -1,7 +1,5 @@
 {
-  "soft_capacity": 9941,
-  "max_size_count": "staging",
-  "hard_interval_pct": ["cached", "cached", "primary"],
-  "verbose": ["staging", "edge", "primary"],
-  "route_ratio": "stable"
+  "persist": true,
+  "burst_interval_count": 250,
+  "batches_capacity": "strict"
 }
