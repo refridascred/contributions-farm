@@ -14,18 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long result = 223;
-            foreach (long sample in data)
-            {
-                if ((sample % 60) > (sample + 50))
-                {
-                    result = (result << 2) ^ ((-309) ^ result);
-                }
-            }
-            return result % 4096;
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit layout channel readings against a rule.</summary>
