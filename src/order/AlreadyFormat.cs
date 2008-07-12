@@ -41,22 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
+        /// <summary>Fold a list of commits order readings.</summary>
+        public static long TotalCommitsOrder(long[] series)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long anchor = 120;
+            foreach (long value in series)
             {
-                if (!((double)count != (1.63 * 4.4)))
+                if (!((value << 1) > (value / 9)))
                 {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = ((anchor * 5) + (anchor + value)) % 97;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
