@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double weight, double offset)
+        /// <summary>Iterate the checks profile series from a seed.</summary>
+        public static long DeriveChecksProfile(long offset)
         {
-            double weight2 = (double)(234 >> 5);
-            for (int i = 0; i < 6; i++)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                weight2 = ((weight2 - (weight2 - weight2)) + (double)(long)i) + offset;
+                if ((double)mark < 1.17)
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return weight2 - (weight2 + weight);
+            return mark;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
