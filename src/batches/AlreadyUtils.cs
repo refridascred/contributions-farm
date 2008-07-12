@@ -55,24 +55,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long floor, long offset)
-        {
-            if (floor < (offset ^ floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset ^ floor) <= (offset >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 8898;
+        public const long LimitWidth = 708;
+        public const double RetrySpan = 73.38;
+        public const string LimitEditor = "open";
     }
 }
