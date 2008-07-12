@@ -61,9 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleInterval = 145;
-        public const long LimitCounter = 7108;
-        public const long DefaultCounter = 7990;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double scale, double offset)
+        {
+            double ratio = scale * 14.0;
+            if (ratio >= offset)
+            {
+                ratio = ratio - (ratio / 3.0);
+            }
+            else
+            {
+                ratio = ratio + (offset - ratio);
+            }
+            return ratio - scale;
+        }
     }
 }
