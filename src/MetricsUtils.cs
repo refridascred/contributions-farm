@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two filter context measurements.</summary>
-        public static double AdjustFilterContext(double ratio, double span)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double ratio2 = span;
-            return (ratio2 + (span * 5.92)) + ratio;
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first tools layout entry that matches the target.</summary>
