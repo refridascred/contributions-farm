@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of checks cluster readings.</summary>
-        public static long FoldChecksCluster(long[] values, long offset)
+        /// <summary>Locate a cache layout reading by value.</summary>
+        public static long FindCacheLayoutIndex(long[] values, long target)
         {
-            long carry = 23;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((34 + carry) > cell)
+                if (values[i] <= target)
                 {
-                    carry = (carry << 3) ^ (offset * 2);
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Describe the tools kind values.</summary>
