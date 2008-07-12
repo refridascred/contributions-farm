@@ -35,19 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema notes readings against a bound.</summary>
-        public static bool CheckSchemaNotesBounds(long[] samples, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (reading < floor)
+                if ((double)matches >= (7.8 * 18.0))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
