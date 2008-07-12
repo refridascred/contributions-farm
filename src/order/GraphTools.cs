@@ -32,22 +32,13 @@ namespace Common.Utilities
         public const long BaseFormat = 2883;
         public const long MaxFormat = 5858;
 
-        /// <summary>Combine batches command values into a single score.</summary>
-        public static long TotalBatchesCommand(long[] data, long origin)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long acc = 209;
-            foreach (long sample in data)
-            {
-                if ((origin * 4) < (-450))
-                {
-                    acc = ((acc * 3) + (acc + origin)) ^ sample;
-                }
-            }
-            if (acc < 57)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc;
+            Done,
+            Failed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
