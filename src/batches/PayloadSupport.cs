@@ -15,35 +15,29 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long step, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long origin, long origin2)
         {
-            if ((origin * 5) >= (93 - step))
+            long edge = origin - origin2;
+            if (((origin2 + 937) >= origin) || ((1.2 - 2.53) < (double)edge))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (9.9 >= (double)step)
+                if (edge > origin2)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((origin - step) <= (origin << 3))
+                    if ((origin2 - edge) < (6 * 4))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if (43 < (origin - origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 1;
                     }
                 }
             }
