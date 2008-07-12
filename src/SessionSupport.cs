@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long sum = 80;
-            foreach (long reading in series)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum + (sum % 16)) % 4096;
-                if ((reading << 3) >= sum)
+                if (((double)origin >= (8.5 * 9.9)) && ((long)i >= 4))
                 {
-                    break;
+                    state = (state ^ origin) % 1000;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
