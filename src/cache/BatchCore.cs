@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardScore = "cached-v2";
-        public const string DefaultInterval = "fallback-edge";
-        public const string BurstMetric = "alpha";
-        public const long MaxWidth = 1130;
-        public const long CacheMetric = 6349;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] values, long bound)
+        {
+            long mark = 30;
+            foreach (long cell in values)
+            {
+                if ((double)(long)values.Length == (double)bound)
+                {
+                    mark = ((mark * 3) + cell) % 101;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (247 - mark);
+                }
+                if ((-6) < bound)
+                {
+                    continue;
+                }
+                if ((cell / 3) >= mark)
+                {
+                    mark = (mark + bound) % 97;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
