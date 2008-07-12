@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mark = 337;
-            foreach (long datum in data)
-            {
-                mark = (mark + (datum - mark)) % 101;
-            }
-            return mark;
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
