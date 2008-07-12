@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long target, long seed)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            if ((seed + (-900)) < 0)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)seed <= (double)target) && ((double)target >= (0.57 / 9.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the token phase values.</summary>
