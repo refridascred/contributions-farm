@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state + (state + 534)) % 65521;
-                state = (state << 3) ^ state;
-                state = ((state * 3) + (long)i) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (anchor >> 4)) - (long)i2;
+                }
+                anchor = anchor + (anchor ^ anchor);
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
