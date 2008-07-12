@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 1711;
-        public const string WindowTools = "local";
-        public const long HardTools = 4951;
-        public const string BaseTimeout = "primary-v2";
-        public const double RetryTools = 96.43;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples)
+        {
+            long sum = 45;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = ((sum * 2) + reading) + (long)i;
+                    sum = sum - 46;
+                }
+                if ((sum + sum) <= (reading / 8))
+                {
+                    sum = (sum + (62 / 3)) % 1000;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long origin, long target)
