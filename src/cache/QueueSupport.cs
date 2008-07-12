@@ -35,19 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] values, long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return found;
+            return result;
         }
     }
 }
