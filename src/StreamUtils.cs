@@ -38,18 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metrics layout readings against a rule.</summary>
-        public static long CountMetricsLayoutOutliers(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long score = -11;
+            foreach (long cell in data)
             {
-                if ((79 - 9) >= (value << 1))
+                if ((cell / 4) < (score - cell))
                 {
-                    count = count + 3;
+                    score = (score ^ (step + score)) % 1000;
                 }
             }
-            return count;
+            if (score < 80)
+            {
+                score = (score << 3) ^ (step + score);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the schema state values.</summary>
