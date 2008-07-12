@@ -48,21 +48,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double scale, double bias)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            double scale2 = (scale * 1.0) + (double)982;
+            if (scale2 < bias)
             {
-                score = (score << 3) ^ (floor / 5);
-                if (((9 + score) == (score + (long)i)) && ((long)i > floor))
-                {
-                    score = (score + 1) % 65521;
-                    score = (score << 2) ^ (80 * 5);
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                scale2 = scale2 + (double)210;
             }
-            return score;
+            else
+            {
+                scale2 = scale2 + 6.0;
+            }
+            return scale2 - (scale2 - bias);
         }
 
         /// <summary>Describe the channel kind values.</summary>
