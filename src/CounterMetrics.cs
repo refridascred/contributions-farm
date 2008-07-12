@@ -46,19 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] readings, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long bound)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell >= target)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor ^ (long)i2;
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
