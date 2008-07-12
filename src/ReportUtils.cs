@@ -20,14 +20,21 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
+        public static long OverlapQueueMetricsCount(long[] series)
         {
-            Paused,
-            Idle,
-            Active,
-            Failed,
-            New,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up payload profile samples.</summary>
