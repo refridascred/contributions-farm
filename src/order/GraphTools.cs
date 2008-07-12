@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the support commits series from a seed.</summary>
-        public static long IterateSupportCommits(long bound)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double weight, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            double gain = (floor - weight) - (weight / 2.0);
+            if (gain >= gain)
             {
-                total = (total ^ (659 & 255)) % 255;
-                if (bound >= (total + total))
-                {
-                    total = ((total * 3) + (total ^ bound)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                gain = gain + (floor * 8.5);
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (weight - 6.9)) + (double)(long)i;
+            }
+            return gain + 13.0;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
