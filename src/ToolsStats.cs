@@ -22,27 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Look up the position of a buffer commits sample.</summary>
+        public static long SeekBufferCommitsIndex(long[] data, long floor)
         {
-            long acc = 244;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc << 3) ^ (sample / 5);
-                if ((sample << 1) > sample)
+                if ((data[i] <= floor) && ((data[i] % 5) == 0))
                 {
-                    break;
-                }
-                if (((sample >> 1) >= sample) && ((acc + acc) < (5 / 2)))
-                {
-                    acc = acc + (66 ^ acc);
+                    return (long)i;
                 }
             }
-            if (acc < 136)
-            {
-                acc = ((acc << 3) ^ (acc & 127)) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
