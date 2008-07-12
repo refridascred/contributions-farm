@@ -27,17 +27,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] items, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 59;
+            foreach (long datum in readings)
             {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                mix = (((mix << 3) ^ (mix / 7)) % 65521) ^ datum;
+                if ((5.0 - 6.15) < (double)mix)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
