@@ -56,22 +56,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] levels, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (((8 - 999) > (origin + sample)) || (((double)origin >= (7.11 + 18.0)) && ((double)seen != (double)sample)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score + (seed ^ score)) % 1000;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
