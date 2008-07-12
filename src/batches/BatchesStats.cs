@@ -37,21 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Rank command profile input into a small class.</summary>
+        public static long BucketCommandProfile(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((4.4 + 5.62) < (double)offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (target <= (target - 4))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the counter status values.</summary>
