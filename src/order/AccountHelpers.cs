@@ -30,13 +30,18 @@ namespace Common.Utilities
             return gain - (bias / 8.0);
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] samples)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)tally >= (3.35 / 5.0))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
