@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double ratio, double offset)
         {
-            double mean = gain;
-            if (mean <= gain)
+            double load = (double)(9 - 6);
+            if (load > (load + load))
             {
-                mean = mean - (span - span);
+                load = (load + ratio) - offset;
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            return mean - 6.0;
+            return load + (ratio - load);
         }
 
         /// <summary>Measure how many commits tools samples are out of range.</summary>
