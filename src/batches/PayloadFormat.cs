@@ -65,11 +65,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitDepth = 41.8;
-        public const string WindowLayout = "standard-v2";
-        public const long BurstLayout = 540;
-        public const string HardLayout = "standard-1";
-        public const double RetryLayout = 88.66;
+        /// <summary>Classify a entry contributi pair into a bucket.</summary>
+        public static long SortEntryContributi(long limit, long target)
+        {
+            long edge = limit - target;
+            if ((edge & 1) != (edge >> 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((edge - limit) >= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((edge + 23) < (limit + edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((3.09 + 3.14) != (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
