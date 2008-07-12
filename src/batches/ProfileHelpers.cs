@@ -77,9 +77,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryWidth = 55.52;
-        public const long BatchFarm = 8547;
-        public const double BurstTimeout = 51.73;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Done,
+            Dropped,
+            Synced,
+            Locked,
+        }
     }
 }
