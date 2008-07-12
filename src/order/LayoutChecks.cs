@@ -46,12 +46,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            Dropped,
+            Closed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Rank order buffer input into a small class.</summary>
