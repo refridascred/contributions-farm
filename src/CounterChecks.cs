@@ -27,21 +27,21 @@ namespace Common.Utilities
         public const long MaxRatio = 7182;
         public const long StepWidth = 561;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Compare every pair of account commits readings.</summary>
+        public static long OverlapAccountCommitsCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] + series[j]) > 14)
+                    if ((values[i] ^ values[j]) > 3)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
