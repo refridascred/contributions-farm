@@ -23,18 +23,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] series, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long limit, long offset)
         {
-            long total = 9;
-            foreach (long sample in series)
+            if (((double)offset < (17.0 + 2.51)) && ((8.55 + 4.7) >= (double)offset))
             {
-                if ((sample + 8) >= (total - total))
+                return 8;
+            }
+            else
+            {
+                if ((4 * 4) > limit)
                 {
-                    total = (total ^ (3 << 3)) - target;
+                    return 0;
+                }
+                else
+                {
+                    if ((16.0 + 6.6) > (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Hold a format entry.</summary>
