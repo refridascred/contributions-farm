@@ -13,31 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long bound, long origin)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if ((origin - bound) <= (bound ^ origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound & 15) > bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.58 * 4.33) == (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of token readings.</summary>
