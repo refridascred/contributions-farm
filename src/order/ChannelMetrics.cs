@@ -33,18 +33,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] levels, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((980 > (seed << 1)) || ((double)hits < (double)seed))
+                if (datum != seed)
                 {
-                    hits = (hits + 3) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
