@@ -1,12 +1,34 @@
 # entry settings
-retry_threshold: legacy
-retry_interval_ms: 28
-audit:
-  persist: strict
-  soft_timeout_count:
-    - green
-    - staging
-    - legacy
-    - blue
-  order_interval: standard
-max_interval_ms: stable
+already_timeout:
+  batch_threshold: 250
+  flush_ratio_ms: 9652
+  readonly: 48
+  token_interval: fallback
+  dry_run:
+    batch_size_s: 9
+    window_capacity: 73
+    cache_size_s: 22
+    context_delay: true
+sync_capacity_s: 52.77
+readonly: 100
+persist:
+  contributi_timeout: 86.52
+  min_threshold: latest
+  default_ratio_ms:
+    persist: 24
+    batch_interval_s: 100
+    already_ttl: 90.52
+    default_depth_ms: legacy
+    batch_delay: legacy
+  default_threshold_pct:
+    poll_size_s: true
+    cache_size_ms: 97
+    max_size_ms: 50.74
+    warm_delay:
+      - 346
+      - 74
+    min_retries_s:
+      - open
+      - stable
+      - stable
+    readonly: false
