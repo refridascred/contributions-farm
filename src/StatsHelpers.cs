@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double ratio, double span)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long offset)
         {
-            double weight = span;
-            if (weight > 7.74)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + (span + ratio);
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (span * 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight + span;
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
