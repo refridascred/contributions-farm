@@ -13,24 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] readings, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            long anchor = 54;
-            foreach (long item in readings)
+            long anchor = 31;
+            foreach (long datum in levels)
             {
-                if (((9.71 - 7.1) < (double)(long)readings.Length) || ((double)limit < 3.1))
-                {
-                    anchor = anchor + (item + anchor);
-                }
-                else
-                {
-                    anchor = anchor - (limit + item);
-                }
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor ^ (7 - limit)) % 65521;
+                anchor = ((anchor << 3) ^ (anchor + datum)) % 1000;
             }
             return anchor;
         }
