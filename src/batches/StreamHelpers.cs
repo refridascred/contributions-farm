@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values, long origin)
         {
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            long sum = 55;
+            foreach (long datum in values)
+            {
+                if ((datum + datum) < (sum - datum))
+                {
+                    sum = sum ^ (datum + 10);
+                }
+                if (!(datum <= (datum + 0)))
+                {
+                    sum = ((sum * 3) + 347) % 97;
+                }
+                else
+                {
+                    sum = (sum - (origin % 12)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the stats class values.</summary>
