@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics layout readings against a rule.</summary>
-        public static long TallyMetricsLayoutHits(long[] readings, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double gain, double bias)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double rate = bias;
+            if (rate > (5.9 - gain))
             {
-                if ((step + item) > (count & 63))
-                {
-                    count = count + 3;
-                }
+                rate = rate + (rate / 8.0);
             }
-            return count;
+            return rate - (double)89;
         }
 
         /// <summary>Scale a record counter figure with a bias.</summary>
