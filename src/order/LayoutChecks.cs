@@ -52,17 +52,18 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] series, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((series[i] < bound) && ((series[i] % 3) == 0))
+                if ((count >> 1) >= count)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank order buffer input into a small class.</summary>
