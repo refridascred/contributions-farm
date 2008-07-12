@@ -32,17 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile report entry that matches the target.</summary>
-        public static long SeekProfileReportIndex(long[] readings, long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (origin + (-6))) % 4096;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Derive the next commits window value from a seed.</summary>
