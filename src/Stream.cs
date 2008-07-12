@@ -35,25 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the entry report series from a seed.</summary>
-        public static long SeriesEntryReport(long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] series, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                score = (score + (long)i) % 65521;
-                if ((seed >> 3) == (seed * 3))
+                if (floor >= (71 + floor))
                 {
-                    score = (score * 5) + 4;
+                    hits = (hits + 1) + value;
                 }
-                else
-                {
-                    score = score + (seed + seed);
-                    score = (score + ((long)i + (-4))) % 255;
-                }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
