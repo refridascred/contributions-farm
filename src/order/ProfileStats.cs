@@ -23,13 +23,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Grade a tools entry value against two limits.</summary>
+        public static long ClassifyToolsEntry(long offset, long target)
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            long bound = offset ^ target;
+            if (!((bound ^ offset) < bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target < (offset ^ bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound - target) >= (bound / 6)) && (bound < 0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((target >> 4) >= bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
