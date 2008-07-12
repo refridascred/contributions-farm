@@ -38,38 +38,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long seed, long offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            if ((seed % 8) == (seed / 2))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset - offset) < (seed << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (offset >= (offset + 39))
+                    if ((items[i] + items[j]) > 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed < (offset << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a graph stats.</summary>
