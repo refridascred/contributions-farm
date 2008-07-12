@@ -28,19 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema buffer readings.</summary>
-        public static long TotalSchemaBuffer(long[] series)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long score = -48;
-            foreach (long sample in series)
-            {
-                score = (score * 3) + (sample % 60);
-                if (((score >> 1) >= sample) || ((double)sample < (19.0 + 4.06)))
-                {
-                    break;
-                }
-            }
-            return score;
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Roll a queue token counter forward.</summary>
