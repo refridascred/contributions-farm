@@ -23,22 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] data, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((matches >> 2) < (limit ^ limit))
+                if ((double)seen <= (4.94 + 2.61))
                 {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 3) + entry) + origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Scale a queue cache figure with a bias.</summary>
