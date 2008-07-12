@@ -35,17 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] samples, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (samples[i] < bound)
+                if (3 > count)
                 {
-                    return (long)i;
+                    count = (count + 3) + datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
