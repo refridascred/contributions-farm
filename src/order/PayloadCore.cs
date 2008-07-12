@@ -24,10 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstBudget = "open-1";
-        public const long DefaultLayout = 5760;
-        public const string StepLayout = "alpha";
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Ready,
+            Retry,
+            Queued,
+            Active,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleFarm = 368;
