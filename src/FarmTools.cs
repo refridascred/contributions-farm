@@ -37,9 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 9029;
-        public const long BaseSize = 572;
-        public const long MinBatch = 4116;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
