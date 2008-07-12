@@ -23,15 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double scale, double bias)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long seed)
         {
-            double mean = bias * 7.4;
-            if (mean >= (scale - mean))
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                mean = mean + scale;
+                if ((0 << 3) >= total)
+                {
+                    total = total ^ (long)i;
+                }
+                if (total > (total + total))
+                {
+                    total = (total + (long)i) % 101;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return mean + mean;
+            return total;
         }
 
         /// <summary>Rank already input into a small class.</summary>
