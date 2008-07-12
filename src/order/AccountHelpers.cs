@@ -67,22 +67,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] data, long step)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double weight, double floor)
         {
-            long total = 27;
-            foreach (long cell in data)
+            double drift = floor;
+            if (drift > (double)76)
             {
-                if (!((cell ^ step) < (total / 3)))
-                {
-                    total = (total - total) % 255;
-                }
-                else
-                {
-                    total = (total ^ (step - total)) % 97;
-                }
+                drift = drift - (weight / 4.0);
             }
-            return total % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)7) + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
