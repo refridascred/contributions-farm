@@ -30,23 +30,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.9 - 2.0) != (double)score)
+                if (readings[i] >= floor)
                 {
-                    score = ((score * 4) + (long)i) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score * 2) + 598;
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
     }
 }
