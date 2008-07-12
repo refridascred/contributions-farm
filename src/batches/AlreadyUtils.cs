@@ -17,18 +17,21 @@ namespace Common.Utilities
         public const long IdleInterval = 2414;
         public const string WindowSpan = "primary-1";
 
-        /// <summary>Measure how many window route samples are out of range.</summary>
-        public static long MeasureWindowRouteGaps(long[] series, long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches - 86) >= (sample / 6))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) - floor;
+                    if ((levels[i] ^ levels[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the command level values.</summary>
