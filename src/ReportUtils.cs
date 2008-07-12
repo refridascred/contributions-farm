@@ -63,38 +63,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long bound, long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] levels, long seed)
         {
-            if (!((bound - offset) >= (bound >> 3)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound + bound) >= 68) && (offset < (1 << 1)))
+                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound << 1) != (bound / 9)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset & 255) < (offset % 12))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
