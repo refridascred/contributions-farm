@@ -39,12 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Draft,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 79.59;
+        public const double MinFilter = 7.51;
+        public const long BaseFilter = 3568;
+        public const double RetryWidth = 83.1;
+        public const string IdleWidth = "fallback-1";
     }
 }
