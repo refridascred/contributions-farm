@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many layout already samples are out of range.</summary>
-        public static long AuditLayoutAlreadyMatches(long[] data)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (0.4 >= (double)seen)
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
