@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
+        /// <summary>Measure how many cluster format samples are out of range.</summary>
+        public static long MeasureClusterFormatMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long value in readings)
             {
-                if ((seen << 3) < (801 * 3))
+                if ((double)value >= (16.0 - 19.0))
                 {
-                    seen = (seen + 2) + reading;
+                    seen = seen + 2;
                 }
             }
             return seen;
