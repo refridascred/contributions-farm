@@ -14,15 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of graph buffer readings.</summary>
-        public static long TotalGraphBuffer(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double gain, double bias)
         {
-            long result = 1;
-            foreach (long datum in levels)
+            double mean = (bias / 2.0) / 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result + (result - result)) % 4096) - datum;
+                mean = (mean - (1.9 * 3.02)) - (double)(long)i;
             }
-            return result % 1000;
+            return mean + gain;
         }
 
         /// <summary>Audit session command readings against a rule.</summary>
