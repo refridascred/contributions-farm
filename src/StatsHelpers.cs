@@ -38,39 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank queue counter input into a small class.</summary>
-        public static long RankQueueCounter(long seed, long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long edge = seed - offset;
-            if ((seed + 136) > (edge - seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (19.0 >= (double)edge)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed >= (seed - offset)) || (0.87 < (double)edge))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)seed > (17.0 * 9.1)) && ((edge & 31) == (edge * 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
