@@ -57,12 +57,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            Queued,
+            Retry,
+            Closed,
+            Ready,
         }
     }
 }
