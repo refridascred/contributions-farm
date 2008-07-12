@@ -1,7 +1,28 @@
 # support settings
-window_depth:
-  - eu-west
-  - open
-  - open
-burst_threshold_count: 38.46
-dry_run: 78.67
+max_threshold_s:
+  layout_depth: 28.6
+  sync_ratio_s: false
+  enabled: 86.26
+  retry_delay:
+    hard_delay_ms: 8457
+    burst_ttl: blue
+    default_ttl_pct:
+      - blue
+      - fallback
+      - local
+      - latest
+verbose: 2.64
+poll_delay_ms:
+  burst_ratio_count: 779
+  warm_delay:
+    window_limit: true
+    retry_limit: 11.39
+    enabled: 500
+  persist:
+    - edge
+    - latest
+    - green
+    - stable
+checks_ttl: false
+burst_ratio_count: staging
+retry_window: latest
