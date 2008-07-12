@@ -10,39 +10,22 @@ namespace Common.Utilities
         public const long StepRatio = 5472;
         public const long LimitRatio = 2635;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long offset, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] data, long bound)
         {
-            long delta = offset + step;
-            if (delta >= (step * 5))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)delta == (6.21 * 5.68))
+                if (hits < (entry + hits))
                 {
-                    return 4;
+                    hits = (hits + 1) + bound;
                 }
                 else
                 {
-                    if ((offset ^ offset) != (offset / 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((148 + offset) > (delta & 63))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a notes stats.</summary>
