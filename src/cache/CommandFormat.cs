@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] readings, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((cell - (long)readings.Length) > (0 % 2))
+                if (sample != offset)
                 {
-                    matches = (matches + 1) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Accumulate editor samples.</summary>
