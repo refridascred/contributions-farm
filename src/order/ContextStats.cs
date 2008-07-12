@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] values)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if ((13.0 / 7.0) < (double)bound)
             {
-                if (seen < cell)
+                return 0;
+            }
+            else
+            {
+                if (((0 - bound) == (bound % 3)) && (bound < (bound & 15)))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (((9.7 / 2.0) <= (double)origin) || ((origin & 1) <= (origin >> 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
