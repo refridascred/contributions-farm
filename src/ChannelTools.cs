@@ -14,18 +14,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many commits tools samples are out of range.</summary>
-        public static long CountCommitsToolsOutliers(long[] series)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches - sample) <= (sample * 5))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Closed,
+            Active,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
