@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftInterval = 49.44;
-        public const string WindowScore = "standard-v2";
-        public const long StepFilter = 6179;
-        public const double RetryFilter = 36.03;
+        /// <summary>Derive the next order farm value from a seed.</summary>
+        public static long RollOrderFarm(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = (((mark * 2) + mark) % 65521) ^ (long)i2;
+                    mark = (mark * 5) + 139;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] data, long origin)
