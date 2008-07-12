@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=343
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in latest strict legacy edge; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 8 ]; do
