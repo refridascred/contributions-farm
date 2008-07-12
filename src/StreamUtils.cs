@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const double BurstSize = 13.16;
         public const double DefaultLevel = 63.19;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public double Size { get; set; }
-            public bool Weight { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
