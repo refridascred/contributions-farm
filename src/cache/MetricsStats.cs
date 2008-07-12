@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] samples)
         {
-            long sum = 6;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((32 & 7) == (sum / 6))
+                if ((cell ^ cell) > cell)
                 {
-                    sum = (sum - item) % 97;
+                    seen = seen + 1;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
