@@ -48,17 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] values, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Match up queue samples.</summary>
