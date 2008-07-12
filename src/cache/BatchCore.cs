@@ -21,22 +21,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] series, long offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally & 7) < (423 ^ tally))
-                {
-                    tally = ((tally + 1) + item) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
