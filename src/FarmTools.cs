@@ -38,11 +38,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 9029;
+        public const long BaseSize = 572;
+        public const long MinBatch = 4116;
     }
 }
