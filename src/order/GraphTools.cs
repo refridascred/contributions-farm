@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] levels)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches / 3) > (matches / 6))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
