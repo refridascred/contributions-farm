@@ -16,14 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Ready,
-            Retry,
-            Queued,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftFactor = "strict";
+        public const string RetrySpan = "local-v2";
+        public const long BatchRatio = 1665;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 6352;
