@@ -1,11 +1,11 @@
 {
-  "min_retries_s": "latest",
-  "batch_timeout": 30,
-  "poll_threshold": {
-    "cache_ratio_s": 89.08,
-    "commits_ratio": 30,
-    "commits_capacity": 9298,
-    "schema_timeout": [9, 400, 197, 307]
-  },
-  "editor_window": 32.01
+  "already_window": "local",
+  "batch_window": "staging",
+  "retry_threshold_s": {
+    "max_window_s": 95.64,
+    "default_threshold_ms": ["legacy", "edge", "local"],
+    "soft_ttl": 6761,
+    "max_interval_pct": 4506,
+    "flush_window_count": 85
+  }
 }
