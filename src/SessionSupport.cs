@@ -34,23 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window command counter forward.</summary>
-        public static long RollWindowCommand(long seed)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((acc << 2) > ((long)i - 67))
-                {
-                    acc = (acc ^ (seed - (long)i)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (seed >> 2)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            Active,
+            Pending,
+            Done,
+            Stale,
         }
     }
 }
