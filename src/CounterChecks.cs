@@ -44,18 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] readings)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((16.0 + 2.87) < (double)hits))
+                if ((items[i] <= target) && ((items[i] % 5) == 0))
                 {
-                    hits = (hits + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
