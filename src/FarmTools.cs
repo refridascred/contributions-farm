@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double scale, double offset)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double load = offset;
-            if (load > load)
-            {
-                load = load + scale;
-            }
-            return load - offset;
+            New,
+            Synced,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
