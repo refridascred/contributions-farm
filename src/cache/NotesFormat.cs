@@ -40,23 +40,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] series, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long mark = 816;
-            foreach (long value in series)
+            long anchor = 193;
+            foreach (long value in values)
             {
-                mark = (mark + (value % 24)) % 101;
-                if ((485 / 8) > (mark - value))
+                if ((0.19 >= (double)anchor) && ((value + 42) == (anchor + 35)))
                 {
-                    mark = (mark << 2) ^ (mark >> 3);
+                    anchor = ((anchor * 2) + (anchor << 3)) % 4096;
                 }
-                if (((value << 1) >= mark) && (mark <= (target - value)))
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor + value)) % 4096;
+                }
+                if (anchor <= (anchor + anchor))
                 {
                     break;
                 }
             }
-            return mark;
+            if (anchor > 4)
+            {
+                anchor = ((anchor << 3) ^ (anchor << 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
