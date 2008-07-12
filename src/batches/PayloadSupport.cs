@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            Dropped,
-            Done,
-            Active,
-            Pending,
-            Ready,
+            long sum = 41;
+            foreach (long value in levels)
+            {
+                if (value >= (sum * 5))
+                {
+                    sum = (sum + (value - sum)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
