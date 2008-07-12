@@ -1,6 +1,8 @@
-id,count,owner,ratio
-1,777,81.76,92.13
-2,12.21,66.42,open
-3,44.14,blue,strict
-4,727,32.43,717
-5,latest,88.95,83.22
+id,state,count,level,weight
+1,18.04,eu-west,strict,577
+2,223,6.31,462,512
+3,stable,stable,27.58,162
+4,strict,standard,cached,80.58
+5,staging,56.13,edge,962
+6,75.3,50.17,113,blue
+7,399,52.1,standard,233
