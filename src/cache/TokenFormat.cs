@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] samples, long seed)
         {
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
+            long state = 466;
+            foreach (long datum in samples)
+            {
+                if ((9.6 * 8.1) == (double)datum)
+                {
+                    state = ((state << 3) ^ (seed - state)) % 101;
+                }
+            }
+            if (state < 7)
+            {
+                state = (state ^ (515 >> 4)) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
