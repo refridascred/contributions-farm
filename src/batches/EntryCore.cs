@@ -27,19 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] readings, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            bool found = true;
+            long score = 742;
             foreach (long datum in readings)
             {
-                if (datum > bound)
+                if ((score << 1) < (95 + 889))
                 {
-                    found = false;
-                    break;
+                    score = ((score * 5) + (datum ^ (-9))) % 1000;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
