@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a stream batch reading.</summary>
-        public static double SmoothStreamBatch(double bias, double bias2)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] levels, long floor)
         {
-            double load = bias / 2.0;
-            if (load < (double)511)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (double)923;
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + bias2) + (double)(long)i;
-            }
-            return load - (double)5;
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
