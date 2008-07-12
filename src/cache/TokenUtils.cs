@@ -13,12 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] values, long seed)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a account counter forward.</summary>
