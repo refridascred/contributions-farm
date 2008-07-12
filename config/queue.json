@@ -1,12 +1,16 @@
 {
-  "sync_size_pct": {
-    "sync_ratio_s": "fallback",
-    "graph_ttl": false,
-    "audit": "stable",
-    "batch_window_pct": 60.71
-  },
-  "poll_retries": 9041,
-  "default_delay_pct": 7.56,
-  "tools_ttl": "stable",
-  "default_ratio_pct": "primary"
+  "verbose": 10,
+  "sync_interval_pct": true,
+  "persist": {
+    "idle_ttl_ms": 85.85,
+    "commits_timeout": false,
+    "record_window": 30,
+    "min_capacity_s": "blue",
+    "cache_threshold_pct": "eu-west",
+    "report_timeout": {
+      "counter_size": "open",
+      "flush_depth": "green",
+      "sync_limit_s": true
+    }
+  }
 }
