@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double scale, double span)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double drift = span;
-            if (drift > (double)624)
-            {
-                drift = drift + (scale / 6.0);
-            }
-            return drift - (scale * 2.0);
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
