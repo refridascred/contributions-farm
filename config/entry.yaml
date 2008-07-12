@@ -1,5 +1,12 @@
 # entry settings
-hard_window: 7060
-record_capacity: 60
-verbose: primary
-persist: 2908
+retry_threshold: legacy
+retry_interval_ms: 28
+audit:
+  persist: strict
+  soft_timeout_count:
+    - green
+    - staging
+    - legacy
+    - blue
+  order_interval: standard
+max_interval_ms: stable
