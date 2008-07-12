@@ -1,9 +1,9 @@
 # githubfarm settings
-warm_window_s: false
-retry_threshold_s: standard
-counter_capacity: 11
-flush_capacity_pct: strict
-verbose:
-  - 96
-  - 355
-  - 349
+idle_ratio:
+  - open
+  - open
+  - local
+cache_capacity: 94
+dry_run: 93.04
+strict: true
+soft_timeout_ms: edge
