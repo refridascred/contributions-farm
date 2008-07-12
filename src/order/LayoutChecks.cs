@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] values, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            long carry = 738;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                carry = ((carry * 4) + carry) - reading;
+                if ((double)cell >= (double)818)
+                {
+                    tally = tally + 3;
+                }
             }
-            if (carry > (-851))
-            {
-                carry = carry + (limit >> 2);
-            }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
