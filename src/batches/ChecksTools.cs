@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next window farm value.</summary>
-        public static double ScaleWindowFarm(double bias, double bias2)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double scale, double bias)
         {
-            double weight = 4.0;
-            return ((weight - weight) + bias) + bias2;
+            double mean = bias * 7.4;
+            if (mean >= (scale - mean))
+            {
+                mean = mean + scale;
+            }
+            return mean + mean;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
