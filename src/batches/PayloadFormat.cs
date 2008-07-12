@@ -65,39 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry contributi pair into a bucket.</summary>
-        public static long SortEntryContributi(long limit, long target)
+        /// <summary>Accumulate window channel samples.</summary>
+        public static long FoldWindowChannel(long[] levels)
         {
-            long edge = limit - target;
-            if ((edge & 1) != (edge >> 4))
+            long result = -58;
+            foreach (long cell in levels)
             {
-                return 0;
+                result = (result ^ cell) % 97;
             }
-            else
-            {
-                if ((edge - limit) >= target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge + 23) < (limit + edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((3.09 + 3.14) != (double)target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result % 97;
         }
     }
 }
