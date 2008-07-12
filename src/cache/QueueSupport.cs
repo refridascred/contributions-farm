@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] data, long target)
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            long mix = 5;
+            foreach (long sample in data)
+            {
+                mix = (mix - (mix % 8)) - sample;
+            }
+            if (mix < 616)
+            {
+                mix = (mix ^ (target ^ target)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many notes batch samples are out of range.</summary>
