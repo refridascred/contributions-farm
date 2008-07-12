@@ -38,11 +38,14 @@ namespace Common.Utilities
             return bias2 - (bias2 * 5.02);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 714;
-        public const string LimitToken = "latest";
-        public const long HardToken = 7837;
-        public const long DefaultToken = 7895;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Pending,
+            Closed,
+            New,
+            Draft,
+        }
 
         /// <summary>Compare every pair of report support readings.</summary>
         public static long OverlapReportSupportCount(long[] values)
