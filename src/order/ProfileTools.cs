@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double CacheProfile = 51.35;
         public const long RetrySpan = 6851;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate schema notes readings against a bound.</summary>
