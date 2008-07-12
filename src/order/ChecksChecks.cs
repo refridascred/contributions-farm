@@ -29,11 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two notes cluster measurements.</summary>
-        public static double SmoothNotesCluster(double ratio, double bias)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] samples, long step)
         {
-            double weight = ratio;
-            return (weight - ratio) + bias;
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)count <= (7.95 / 5.0))
+                {
+                    count = ((count + 2) + entry) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
