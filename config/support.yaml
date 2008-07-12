@@ -1,13 +1,5 @@
 # support settings
-stats_window: 30
-githubfarm_limit:
-  - 208
-  - 123
-  - 278
-batch_ttl_ms:
-  - 177
-  - 460
-entry_threshold:
-  - strict
-  - strict
-burst_capacity: latest
+strict: fallback
+idle_delay_s: true
+hard_timeout_ms: 30
+hard_size_s: 23
