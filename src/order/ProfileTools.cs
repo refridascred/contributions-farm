@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardWidth = 96.55;
-        public const string BaseFactor = "standard-1";
-        public const double LimitSpan = 19.61;
-        public const long MaxSupport = 6726;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = mix - mix;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
