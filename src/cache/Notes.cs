@@ -50,19 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double scale, double bias)
+        /// <summary>Adjust a session metric reading.</summary>
+        public static double SmoothSessionMetric(double bias, double floor)
         {
-            double scale2 = (scale * 1.0) + (double)982;
-            if (scale2 < bias)
-            {
-                scale2 = scale2 + (double)210;
-            }
-            else
-            {
-                scale2 = scale2 + 6.0;
-            }
-            return scale2 - (scale2 - bias);
+            double scale = bias;
+            return scale + floor;
         }
 
         /// <summary>Describe the channel kind values.</summary>
