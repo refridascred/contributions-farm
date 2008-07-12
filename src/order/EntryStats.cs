@@ -51,9 +51,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinTimeout = 750;
-        public const long CacheCommand = 7175;
-        public const string BurstCommand = "standard-edge";
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double bias, double floor)
+        {
+            double weight = (double)(93 - 8);
+            if (weight < floor)
+            {
+                weight = weight + bias;
+            }
+            else
+            {
+                weight = weight + (weight + 1.7);
+            }
+            return weight + 3.4;
+        }
     }
 }
