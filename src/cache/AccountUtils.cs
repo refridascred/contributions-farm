@@ -37,15 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double ratio = bias;
-            if (ratio >= ratio)
-            {
-                ratio = ratio - rate;
-            }
-            return ratio - (double)425;
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
