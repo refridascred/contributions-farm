@@ -40,20 +40,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate graph channel readings against a bound.</summary>
-        public static bool ValidateGraphChannelRange(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 3256;
+        public const long BurstLevel = 8434;
+        public const double BatchOrder = 71.14;
 
         /// <summary>Rank order buffer input into a small class.</summary>
         public static long ClassifyOrderBuffer(long offset, long origin)
