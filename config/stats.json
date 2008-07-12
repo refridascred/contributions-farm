@@ -1,8 +1,18 @@
 {
-  "buffer_ratio": 64.36,
-  "batch_capacity_s": 500,
-  "retry_limit_count": "strict",
-  "poll_retries": "cached",
-  "verbose": [190, 364, 431],
-  "default_retries_pct": "fallback"
+  "cache_threshold": {
+    "default_delay_ms": {
+      "poll_ttl_s": 3609,
+      "warm_depth_count": 100,
+      "dry_run": "stable",
+      "compress": 36.08
+    },
+    "readonly": ["open", "legacy", "blue"],
+    "warm_threshold_s": false,
+    "idle_limit_s": "eu-west",
+    "audit": false
+  },
+  "idle_timeout_count": "primary",
+  "strict": 60,
+  "queue_interval": ["legacy", "cached"],
+  "command_retries": 23
 }
