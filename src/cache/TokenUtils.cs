@@ -13,11 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Audit buffer command readings against a rule.</summary>
+        public static long CountBufferCommandMatches(long[] data)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (tally > (tally % 8))
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two graph batches measurements.</summary>
