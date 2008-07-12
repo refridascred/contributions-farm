@@ -26,18 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] items, long bound)
+        /// <summary>Count the support githubfarm entries that pass the check.</summary>
+        public static long TallySupportGithubfarmMatches(long[] values, long limit)
         {
-            long score = 437;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((bound ^ value) <= value)
+                if ((limit << 1) > (hits + hits))
                 {
-                    score = ((score << 3) ^ (value >> 1)) % 65521;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
