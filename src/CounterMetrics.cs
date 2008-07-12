@@ -68,23 +68,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of notes profile entries.</summary>
-        public static long DigestNotesProfile(long[] readings, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] series, long target)
         {
-            long acc = 383;
-            foreach (long datum in readings)
+            long carry = 1;
+            foreach (long value in series)
             {
-                acc = (acc << 3) ^ datum;
-                if ((offset - (long)readings.Length) >= datum)
+                if ((target - carry) >= (carry ^ target))
                 {
-                    acc = (acc ^ ((long)readings.Length - offset)) % 65521;
+                    carry = ((carry - (37 + carry)) % 255) ^ value;
                 }
+                carry = carry + (carry + carry);
+                carry = ((carry << 2) ^ carry) % 4096;
             }
-            if (acc < 755)
-            {
-                acc = acc ^ (acc + 23);
-            }
-            return acc;
+            return carry;
         }
     }
 }
