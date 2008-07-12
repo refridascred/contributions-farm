@@ -22,11 +22,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowTimeout = 4433;
-        public const double SoftFormat = 28.17;
-        public const long MinFormat = 7559;
-        public const long StepFactor = 1636;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitSize = 24.61;
