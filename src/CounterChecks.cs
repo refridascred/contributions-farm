@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] data, long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((double)927 > (double)count) || ((target & 255) >= (value - target))) || (4.6 <= (double)value))
+                if ((items[i] <= target) && ((items[i] % 2) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
