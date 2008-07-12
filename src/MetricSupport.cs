@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double gain, double bias)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            double rate = bias;
-            if (rate > (5.9 - gain))
+            long carry = -8;
+            foreach (long sample in levels)
             {
-                rate = rate + (rate / 8.0);
+                if ((sample << 3) > sample)
+                {
+                    carry = (carry - (0 / 8)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry & 127);
+                }
             }
-            return rate - (double)89;
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
