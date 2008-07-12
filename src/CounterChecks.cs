@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] data, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
