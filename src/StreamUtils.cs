@@ -62,12 +62,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long seed)
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            long prev = floor - seed;
+            if ((seed - floor) <= (seed - seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((prev + seed) != (61 ^ prev))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed < (11.0 + 15.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((floor - seed) != (seed << 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
