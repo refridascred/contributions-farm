@@ -86,17 +86,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] series, long limit)
+        /// <summary>Measure how many graph route samples are out of range.</summary>
+        public static long TallyGraphRouteOutliers(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (series[i] > limit)
+                if ((double)sample < (double)11)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
