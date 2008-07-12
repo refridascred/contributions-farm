@@ -33,16 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter batches samples.</summary>
-        public static long TallyCounterBatches(long[] items)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double bias, double span)
         {
-            long acc = 323;
-            foreach (long value in items)
+            double load = (double)17 + bias;
+            for (int i = 0; i < 3; i++)
             {
-                acc = (acc - acc) - value;
-                acc = ((acc * 2) + (acc % 7)) % 101;
+                load = (load + bias) + (double)(long)i;
             }
-            return acc % 65521;
+            return load - span;
         }
 
         /// <summary>Scale a checks graph figure with a bias.</summary>
