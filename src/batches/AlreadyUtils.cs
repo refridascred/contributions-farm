@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long SoftScore = 5816;
         public const long RetryScore = 2353;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] items, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((6 & 15) >= (reading >> 5))
+                if (reading < seed)
                 {
-                    matches = (matches + 1) - step;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a contributi header.</summary>
