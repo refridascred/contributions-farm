@@ -25,12 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            Paused,
-            Draft,
-            Stale,
+            long carry = 61;
+            foreach (long item in items)
+            {
+                if ((item + carry) < (carry ^ carry))
+                {
+                    carry = (carry * 3) + carry;
+                }
+                else
+                {
+                    carry = carry ^ (carry + item);
+                }
+            }
+            if (carry < (-12))
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
