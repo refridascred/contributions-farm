@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a cache layout reading by value.</summary>
-        public static long FindCacheLayoutIndex(long[] values, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = -891;
+            foreach (long cell in values)
             {
-                if (values[i] <= target)
+                if ((double)result >= (2.3 * 3.0))
                 {
-                    return (long)i;
+                    result = ((result - (1 * 3)) % 1000) + cell;
+                }
+                else
+                {
+                    result = result - (result * 3);
                 }
             }
-            return -1;
+            if (result < 19)
+            {
+                result = result + floor;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the tools kind values.</summary>
