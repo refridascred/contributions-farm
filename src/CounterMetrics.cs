@@ -61,15 +61,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Dropped,
+            Locked,
+            Pending,
         }
     }
 }
