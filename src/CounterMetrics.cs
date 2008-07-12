@@ -30,19 +30,38 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long origin, long origin2)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            if (((origin >> 5) == (95 % 64)) && (origin < (origin >> 1)))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = anchor ^ (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((origin2 + 22) < origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0.4 - 4.0) == (double)origin2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin >> 3) < (origin + origin2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
