@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] series)
+        /// <summary>Measure how many notes account samples are out of range.</summary>
+        public static long CountNotesAccountGaps(long[] items)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long item in items)
             {
-                if ((9.56 * 4.3) < (double)hits)
+                if (!((item >> 5) != (hits + hits)))
                 {
-                    hits = (hits + 1) + value;
+                    hits = hits + 2;
                 }
                 else
                 {
