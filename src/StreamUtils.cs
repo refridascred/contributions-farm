@@ -53,18 +53,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] data, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item - item) <= item)
-                {
-                    matches = (matches + 2) + target;
-                }
-            }
-            return matches;
+            Closed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Roll a window filter counter forward.</summary>
