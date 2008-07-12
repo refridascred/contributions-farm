@@ -16,12 +16,33 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowTimeout = 2719;
-        public const long LimitSize = 3836;
-        public const long BurstWidth = 4883;
-        public const long StepRatio = 376;
-        public const double CacheWidth = 49.74;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long limit, long step)
+        {
+            long diff = limit - step;
+            if ((9.0 - 9.58) < (double)diff)
+            {
+                return 0;
+            }
+            else
+            {
+                if (4.7 < (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + limit) < (73 ^ limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string IdleChecks = "staging-1";
