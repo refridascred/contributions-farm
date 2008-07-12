@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            Retry,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
