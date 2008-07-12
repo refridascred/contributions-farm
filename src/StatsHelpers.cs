@@ -20,23 +20,36 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long step, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long target)
         {
-            long lane = step ^ bound;
-            if ((lane & 1) > (bound + bound))
+            if ((target * 4) < (offset & 127))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (step <= (bound + bound))
+                if ((offset ^ offset) >= (offset + 476))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    return 8;
+                    if ((offset >> 5) >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target ^ target) != (target + 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
