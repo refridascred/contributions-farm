@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long floor)
         {
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = ((carry << 2) ^ carry) ^ (long)i2;
+                }
+                if ((double)(long)i >= (2.85 / 7.0))
+                {
+                    carry = (carry ^ 118) % 65521;
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
