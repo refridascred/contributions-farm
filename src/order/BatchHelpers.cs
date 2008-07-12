@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const double IdleWidth = 73.53;
         public const long LimitSpan = 5529;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] items, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] data, long step)
         {
-            long carry = 82;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (target <= ((long)items.Length % 64))
+                if (reading < step)
                 {
-                    carry = ((carry ^ target) % 4096) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return stale;
         }
     }
 }
