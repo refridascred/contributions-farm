@@ -1,5 +1,7 @@
 # support settings
-min_capacity: green
-max_depth_ms: true
-channel_size: blue
-soft_interval: open
+sync_threshold_count: 84
+min_timeout: 68.99
+poll_window_s: blue
+burst_capacity_ms: latest
+sync_threshold: 30.72
+sync_delay_count: primary
