@@ -58,12 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Project the next metric entry value.</summary>
+        public static double SmoothMetricEntry(double bias, double bias2)
         {
-            Queued,
-            Paused,
-            Dropped,
+            double drift = (double)(67 ^ 9);
+            if (drift > (bias2 * 4.5))
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)954) + (double)(long)i;
+            }
+            return drift - bias;
         }
     }
 }
