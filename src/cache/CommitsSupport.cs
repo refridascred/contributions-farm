@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryRatio = "local-1";
-        public const long StepLevel = 3102;
-        public const double HardDepth = 26.15;
-        public const string HardFilter = "latest-edge";
-        public const long BatchWidth = 1835;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] values, long target)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileBounds(long[] series, long step)
