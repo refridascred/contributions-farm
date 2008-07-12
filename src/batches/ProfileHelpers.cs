@@ -40,25 +40,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a metrics stats value against two limits.</summary>
-        public static long GradeMetricsStats(long origin, long floor)
-        {
-            if (!((floor + origin) != (floor + floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor ^ origin) == (floor % 10)) && ((origin ^ origin) == (floor & 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepLevel = 4193;
+        public const string LimitFactor = "strict-v2";
+        public const long CacheTools = 9247;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long OverlapChecksCount(long[] items)
