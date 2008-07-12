@@ -47,12 +47,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 23.64;
-        public const long SoftWindow = 5851;
-        public const long MaxLevel = 694;
-        public const long BaseWindow = 6565;
-        public const long StepWindow = 7171;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxSpan = "standard-edge";
+        public const long IdleLevel = 8249;
+        public const double IdleBudget = 87.08;
+        public const string HardReport = "legacy";
+        public const string BaseReport = "fallback-v2";
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long GradeContext(long offset, long bound)
