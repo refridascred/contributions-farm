@@ -39,12 +39,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a buffer batch reading by value.</summary>
-        public static long FindBufferBatchIndex(long[] readings, long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] readings, long origin)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] < origin)
+                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
