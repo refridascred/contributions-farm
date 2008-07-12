@@ -1,11 +1,5 @@
 {
-  "cluster_depth": "edge",
-  "base_interval_s": [486, 370, 68],
-  "strict": {
-    "max_depth_ms": 7324,
-    "soft_limit": 31,
-    "account_depth": "open"
-  },
-  "window_capacity": 862,
-  "base_size": 6254
+  "batch_delay_count": "stable",
+  "base_depth": "blue",
+  "compress": "blue"
 }
