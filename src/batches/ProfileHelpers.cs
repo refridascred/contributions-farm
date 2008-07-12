@@ -33,14 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Synced,
-            Paused,
-            Stale,
-            Draft,
-            Done,
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a farm summary.</summary>
