@@ -1,22 +1,15 @@
 # entry settings
-editor_timeout: 11.11
-githubfarm_timeout:
-  filter_ttl: fallback
-  warm_delay: 6091
-  readonly:
-    verbose:
-      - latest
-      - fallback
-      - staging
-      - legacy
-    max_threshold_s:
-      - 413
-      - 453
-    hard_delay: 1448
-    flush_depth: 42.92
-  batch_ratio: 42
-  format_retries: 34.63
-  notes_limit: 95
-poll_ratio_ms: 55.55
-persist: false
-commits_delay: 87.83
+hard_timeout: 3771
+default_delay_s: true
+batches_timeout:
+  max_interval_count:
+    - primary
+    - legacy
+  editor_timeout: local
+  persist: 1024
+  token_capacity: edge
+  route_interval: false
+  sync_ttl_s:
+    - eu-west
+    - fallback
+    - eu-west
