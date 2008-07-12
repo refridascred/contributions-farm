@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Digest a series of window notes entries.</summary>
+        public static long TallyWindowNotes(long[] levels, long step)
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
+            long carry = 76;
+            foreach (long reading in levels)
+            {
+                if ((step ^ 98) == (reading - carry))
+                {
+                    carry = (carry + (reading << 3)) % 4096;
+                }
+            }
+            if (carry > 6)
+            {
+                carry = (carry - (carry + carry)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
