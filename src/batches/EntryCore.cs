@@ -55,21 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up report commits samples.</summary>
-        public static long CompareReportCommitsCount(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < bound)
                 {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the support kind values.</summary>
