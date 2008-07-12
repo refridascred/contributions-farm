@@ -19,18 +19,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] items, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)seen != (8.7 + 2.0))
-                {
-                    seen = ((seen + 3) ^ reading) + step;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the cache mode values.</summary>
