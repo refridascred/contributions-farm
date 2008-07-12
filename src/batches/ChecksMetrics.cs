@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Active,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 63.31;
+        public const long StepScore = 1132;
+        public const long StepFactor = 1213;
+        public const double MaxTools = 98.53;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LookupEntryIndex(long[] readings, long step)
