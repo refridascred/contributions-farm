@@ -21,10 +21,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 1888;
-        public const long MaxFormat = 3962;
-        public const long DefaultFormat = 5527;
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] values)
+        {
+            long anchor = 9;
+            foreach (long item in values)
+            {
+                if ((991 < anchor) && (item < anchor))
+                {
+                    anchor = (anchor ^ (anchor % 5)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (item ^ (long)values.Length)) % 4096;
+                }
+                if (((double)anchor > 16.0) || ((double)anchor <= (12.0 + 5.0)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 26)
+            {
+                anchor = anchor ^ (anchor ^ anchor);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long PairClusterCount(long[] data)
