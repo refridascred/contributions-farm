@@ -73,22 +73,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long target)
         {
-            long acc = 702;
-            foreach (long reading in levels)
+            if (((origin - 77) > (target * 4)) && ((6.3 - 9.0) < (double)target))
             {
-                if ((acc >= (acc / 6)) && ((reading % 10) <= reading))
+                return 4;
+            }
+            else
+            {
+                if ((target >> 2) <= (origin + 1))
                 {
-                    acc = acc - (575 >> 3);
+                    return 3;
+                }
+                else
+                {
+                    if ((6.9 - 16.0) != (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (acc > 0)
-            {
-                acc = acc + (742 / 5);
-            }
-            return acc % 65521;
         }
     }
 }
