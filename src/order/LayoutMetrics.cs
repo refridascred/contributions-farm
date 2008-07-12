@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every counter batch entry stays within the limit.</summary>
-        public static bool ValidateCounterBatchBounds(long[] data, long target)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Ready,
+            Pending,
+            Closed,
         }
 
         /// <summary>Combine already values into a single score.</summary>
