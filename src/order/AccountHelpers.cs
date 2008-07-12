@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] values, long offset)
         {
-            Dropped,
-            New,
-            Retry,
-            Failed,
-            Paused,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((-172) < hits)
+                {
+                    hits = ((hits + 2) ^ reading) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many entry commits samples are out of range.</summary>
