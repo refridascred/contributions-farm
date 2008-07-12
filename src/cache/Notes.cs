@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] samples, long origin)
         {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate checks counter readings against a bound.</summary>
