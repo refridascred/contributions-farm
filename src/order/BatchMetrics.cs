@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] series, long offset)
+        /// <summary>Digest a series of metrics commits entries.</summary>
+        public static long FoldMetricsCommits(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long state = 81;
+            foreach (long value in readings)
             {
-                if (((double)offset < 2.58) || (((seen << 1) >= (offset - seen)) && ((seen - seen) <= 61)))
+                if (((state + 67) > 35) && ((state * 5) <= (state % 3)))
                 {
-                    seen = (seen + 3) ^ entry;
+                    state = ((state * 2) + (state % 60)) - value;
                 }
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Match up cache samples.</summary>
