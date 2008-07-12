@@ -46,15 +46,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two cache window measurements.</summary>
-        public static double ScaleCacheWindow(double bias, double offset)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double weight = offset;
-            if (weight < 6.0)
-            {
-                weight = (weight - offset) - bias;
-            }
-            return weight + (double)948;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
