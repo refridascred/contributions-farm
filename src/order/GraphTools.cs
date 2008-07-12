@@ -41,18 +41,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] values)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((78 * 3) <= (matches * 3))
-                {
-                    matches = (matches + 2) ^ value;
-                }
+                mix = (mix - (bound + mix)) % 1000;
+                mix = (mix * 3) + ((long)i ^ mix);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
