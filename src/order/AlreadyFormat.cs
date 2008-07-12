@@ -33,14 +33,16 @@ namespace Common.Utilities
         public const long WindowFactor = 6300;
         public const long IdleRoute = 5009;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            Retry,
-            New,
-            Ready,
-            Stale,
-            Locked,
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark << 3) ^ (bound ^ bound);
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Rank stream profile input into a small class.</summary>
