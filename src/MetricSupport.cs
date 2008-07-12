@@ -53,15 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
