@@ -1,7 +1,6 @@
 {
-  "burst_ttl": false,
-  "window_window": 100,
-  "verbose": ["local", "blue"],
-  "warm_size_s": ["strict", "strict", "cached", "standard"],
-  "default_depth": 30
+  "command_depth": 3553,
+  "buffer_limit": ["open", "staging", "strict", "open"],
+  "verbose": "edge",
+  "readonly": 1789
 }
