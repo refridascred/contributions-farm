@@ -12,18 +12,17 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] readings, long limit)
+        /// <summary>Locate a report entry reading by value.</summary>
+        public static long FindReportEntryIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(149 > (0 + tally)))
+                if (data[i] == limit)
                 {
-                    tally = ((tally + 1) ^ cell) + limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two stats metrics measurements.</summary>
