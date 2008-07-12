@@ -50,11 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a session metric reading.</summary>
-        public static double SmoothSessionMetric(double bias, double floor)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double scale = bias;
-            return scale + floor;
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the channel kind values.</summary>
