@@ -111,32 +111,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long target, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] levels, long target)
         {
-            long bound = target + seed;
-            if ((bound - target) >= seed)
+            long anchor = 58;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(target < (target ^ bound)))
+                if (((long)levels.Length & 3) <= (anchor ^ anchor))
                 {
-                    return 4;
+                    anchor = ((anchor * 2) + target) - reading;
                 }
                 else
                 {
-                    if ((target % 3) >= (seed << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = ((anchor * 3) + (long)levels.Length) % 101;
                 }
             }
+            return anchor;
         }
     }
 }
