@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] data)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double mean = 3.74;
+            for (int i = 0; i < 3; i++)
             {
-                if (((long)data.Length > entry) || (hits <= (hits + entry)))
-                {
-                    hits = hits + 3;
-                }
+                mean = ((mean - bias) + (double)(long)i) - scale;
             }
-            return hits;
+            return mean - (mean * 1.6);
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
