@@ -42,22 +42,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Roll a queue token counter forward.</summary>
+        public static long DeriveQueueToken(long offset)
         {
-            long acc = 6;
-            foreach (long entry in series)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((acc / 2) == (entry - acc))
-                {
-                    acc = ((acc * 2) + (50 + entry)) % 101;
-                }
+                sum = sum ^ (sum % 64);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            if (acc > 223)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            return sum;
         }
     }
 }
