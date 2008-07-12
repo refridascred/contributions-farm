@@ -47,13 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Closed,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 6610;
+        public const long HardFactor = 8833;
+        public const long BurstBatch = 542;
+        public const string BatchWidth = "alpha";
+        public const double HardDepth = 63.77;
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] samples)
