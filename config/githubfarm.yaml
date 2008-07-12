@@ -1,19 +1,8 @@
 # githubfarm settings
-persist: 5871
-report_timeout: strict
-max_threshold_ms: 9.54
-min_timeout_count:
-  max_size_ms:
-    burst_ratio_ms: 48.47
-    burst_limit_count: 250
-    hard_timeout_pct: true
-    channel_capacity: 48.98
-    flush_depth_ms: legacy
-  retry_capacity_pct: standard
-  farm_ratio: 78
-  dry_run:
-    base_ttl: 64.34
-    farm_timeout: false
-    idle_threshold:
-      - stable
-      - edge
+entry_limit: green
+max_retries_count: 64
+hard_depth:
+  - 277
+  - 309
+  - 221
+readonly: 1519
