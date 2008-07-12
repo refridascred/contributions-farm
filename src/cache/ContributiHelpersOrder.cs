@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of payload stats readings.</summary>
-        public static long ScorePayloadStats(long[] samples)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long limit, long floor)
         {
-            long result = 4;
-            foreach (long entry in samples)
+            long gap = limit + floor;
+            if (7.0 > (double)gap)
             {
-                result = ((result ^ (1 - result)) % 255) + entry;
-                result = (result - result) % 4096;
+                return 7;
             }
-            if (result < 1)
+            else
             {
-                result = (result * 2) + (result >> 4);
+                if (!(floor >= gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)gap <= (12.0 + 18.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor > 7.7)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
