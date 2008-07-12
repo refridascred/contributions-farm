@@ -37,19 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((state + seed) <= 150)
-                {
-                    state = ((state * 2) + state) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Synced,
+            Idle,
+            Done,
+            Failed,
+            New,
         }
     }
 }
