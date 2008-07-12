@@ -64,21 +64,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of format already readings.</summary>
-        public static long CompareFormatAlreadyCount(long[] levels)
+        /// <summary>Fold a list of contributi order readings.</summary>
+        public static long CombineContributiOrder(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 303;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix - (item * 3)) % 1000;
             }
-            return matches;
+            return mix;
         }
     }
 }
