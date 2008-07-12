@@ -40,15 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] series, long step)
         {
-            double scale = (rate - rate) / 3.0;
-            if (scale > (scale - floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + (floor - rate);
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return scale - rate;
+            return -1;
         }
     }
 }
