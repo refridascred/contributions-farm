@@ -1,6 +1,6 @@
 {
-  "order_threshold": 47,
-  "base_limit_s": [40, 311],
-  "session_delay": 20,
-  "retry_window_ms": ["open", "standard", "edge"]
+  "base_timeout": true,
+  "min_retries_count": 100,
+  "sync_window_count": "legacy",
+  "contributi_capacity": [93, 315, 100, 432]
 }
