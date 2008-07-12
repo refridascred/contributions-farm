@@ -14,18 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many layout filter samples are out of range.</summary>
-        public static long AuditLayoutFilterHits(long[] readings)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (value < (17 % 100))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
