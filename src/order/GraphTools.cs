@@ -37,12 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "alpha-edge";
-        public const string DefaultBatch = "cached-edge";
-        public const long HardSpan = 2272;
-        public const long HardRatio = 9657;
-        public const string HardBatch = "stable-edge";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] values, long target)
+        {
+            long result = 726;
+            foreach (long sample in values)
+            {
+                result = ((result + (245 - target)) % 1000) + sample;
+            }
+            return result;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] values, long seed)
