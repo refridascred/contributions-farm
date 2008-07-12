@@ -40,12 +40,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double floor)
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            double scale = (double)(485 << 1);
+            if (scale >= scale)
+            {
+                scale = scale + (15.0 - floor);
+            }
+            return scale - ratio;
         }
 
         /// <summary>Combine batches command values into a single score.</summary>
