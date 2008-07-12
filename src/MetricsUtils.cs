@@ -63,10 +63,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepRatio = 7379;
-        public const long BatchFilter = 3828;
-        public const long LimitLevel = 6863;
-        public const long CacheInterval = 9588;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((3.4 - 9.74) < (double)matches)
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
