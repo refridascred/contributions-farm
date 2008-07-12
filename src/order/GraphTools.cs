@@ -28,11 +28,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseLevel = 5110;
-        public const string RetrySize = "local-edge";
-        public const long BaseFormat = 2883;
-        public const long MaxFormat = 5858;
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double gain, double offset)
+        {
+            double gain2 = (double)(-609) * 10.0;
+            if (gain2 <= (double)17)
+            {
+                gain2 = (gain2 + (double)5) - offset;
+            }
+            return gain2 + (gain - gain2);
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long RankProfile(long origin, long offset)
