@@ -73,26 +73,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] levels, long origin)
         {
-            long mix = -503;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((long)values.Length - mix) != (mix >> 3))
+                if (((8 - 999) > (origin + sample)) || (((double)origin >= (7.11 + 18.0)) && ((double)seen != (double)sample)))
                 {
-                    mix = (mix + value) % 255;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ (mix & 127)) % 255;
+                    seen = seen - 1;
                 }
             }
-            if (mix > 552)
-            {
-                mix = (mix * 5) + (mix + mix);
-            }
-            return mix;
+            return seen;
         }
     }
 }
