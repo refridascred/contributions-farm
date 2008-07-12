@@ -12,18 +12,26 @@ namespace Common.Utilities
         public const long MinMetrics = 8281;
         public const long IdleWidth = 7527;
 
-        /// <summary>Count the metric already entries that pass the check.</summary>
-        public static long MeasureMetricAlreadyGaps(long[] items, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] series)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long acc = 3;
+            foreach (long sample in series)
             {
-                if ((-450) >= (offset * 5))
+                if ((sample % 5) <= 108)
                 {
-                    count = (count + 2) - cell;
+                    acc = (acc * 2) + (acc + (long)series.Length);
+                }
+                else
+                {
+                    acc = acc ^ (acc + acc);
                 }
             }
-            return count;
+            if (acc > 0)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
