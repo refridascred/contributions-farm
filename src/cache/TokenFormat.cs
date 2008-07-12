@@ -35,14 +35,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Locked,
-            New,
-            Idle,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchInterval = 127;
+        public const long WindowSize = 5464;
+        public const double SoftLayout = 90.22;
     }
 }
