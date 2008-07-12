@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const long MaxRatio = 7182;
         public const long StepWidth = 561;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] levels, long floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading > (11.0 / 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) - floor;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
