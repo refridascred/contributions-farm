@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((((long)levels.Length + datum) <= count) || (1.4 <= (double)datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
