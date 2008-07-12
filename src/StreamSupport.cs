@@ -17,12 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Validate schema stats readings against a bound.</summary>
+        public static bool VerifySchemaStatsBounds(long[] samples, long bound)
         {
-            Dropped,
-            Failed,
-            Ready,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
