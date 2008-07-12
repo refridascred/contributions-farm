@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const long BatchTimeout = 4773;
         public const long BurstReport = 7420;
 
-        /// <summary>Validate notes schema readings against a bound.</summary>
-        public static bool VerifyNotesSchemaRange(long[] samples, long floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
