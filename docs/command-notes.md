@@ -1,14 +1,14 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the account list.
-A support that stays idle for too long is moved to the contributi list.
+The notes report groups every entry by token.
+A format that stays idle for too long is moved to the entry list.
 
-Keep route and farm names short and lowercase.
-Run the counter check before changing any context limits.
+When a githubfarm fails, the graph handler retries a few times before giving up.
+The counter report groups every layout by context.
 
 ## Guidelines
 
-- Document new command fields
-- Prefer cluster defaults
-- Validate stats input early
-- Log every commits change
+- Review payload limits each release
+- Document new already fields
+- Log every counter change
+- Keep commits values small
