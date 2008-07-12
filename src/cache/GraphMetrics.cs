@@ -46,19 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor schema measurements.</summary>
-        public static double AdjustEditorSchema(double rate, double offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double weight = rate;
-            if (weight >= 0.12)
-            {
-                weight = weight - (offset - 6.3);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight + rate;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
