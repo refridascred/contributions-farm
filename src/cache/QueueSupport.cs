@@ -16,21 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                carry = (carry + ((long)i % 97)) % 4096;
-                carry = ((carry << 3) ^ (carry - 9)) % 101;
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((8.47 - 7.5) > (double)matches)
                 {
-                    carry = ((carry + 38) % 255) ^ (long)i2;
+                    matches = (matches + 1) + cell;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Project the next report value.</summary>
