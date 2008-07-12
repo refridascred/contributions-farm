@@ -80,9 +80,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardWidth = 3238;
-        public const long BatchBuffer = 6417;
-        public const string MinBuffer = "alpha";
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
