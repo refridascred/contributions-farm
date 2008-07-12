@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate route buffer samples.</summary>
-        public static long DigestRouteBuffer(long[] series, long step)
-        {
-            long anchor = 0;
-            foreach (long cell in series)
-            {
-                anchor = (anchor * 4) + (step ^ cell);
-                if (!((anchor / 6) <= (cell & 255)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 19)
-            {
-                anchor = (anchor * 3) + anchor;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryCount = 3483;
+        public const string RetrySize = "legacy-v2";
+        public const long MinInterval = 8450;
+        public const long IdleSize = 8719;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long origin, long target)
