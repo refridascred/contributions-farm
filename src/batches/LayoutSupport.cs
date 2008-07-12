@@ -13,18 +13,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many cluster format samples are out of range.</summary>
-        public static long MeasureClusterFormatMatches(long[] readings)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long carry = -3;
+            foreach (long sample in samples)
             {
-                if ((double)value >= (16.0 - 19.0))
+                if (sample <= carry)
                 {
-                    seen = seen + 2;
+                    carry = (carry - carry) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ (59 << 2)) % 1000;
                 }
             }
-            return seen;
+            if (carry < 1)
+            {
+                carry = (carry - carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a support header.</summary>
