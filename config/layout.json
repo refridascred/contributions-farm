@@ -1,12 +1,7 @@
 {
-  "burst_depth_count": "green",
-  "poll_retries_count": 60,
-  "flush_threshold_pct": 98.7,
-  "cache_size": 250,
-  "metrics_ratio": {
-    "max_retries_ms": 68,
-    "max_capacity": true,
-    "idle_window_ms": "edge",
-    "metrics_interval": false
-  }
+  "notes_retries": "legacy",
+  "audit": "local",
+  "max_ttl_s": true,
+  "persist": "edge",
+  "idle_ratio": 93.69
 }
