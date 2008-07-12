@@ -25,17 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] samples, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 427;
+            foreach (long cell in levels)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) != 0))
+                if ((acc > (cell * 3)) && ((2.71 * 4.9) != (double)cell))
                 {
-                    return (long)i;
+                    acc = (acc ^ (95 ^ (long)levels.Length)) % 101;
+                }
+                else
+                {
+                    acc = (acc - (acc - cell)) % 101;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Describe the context state values.</summary>
