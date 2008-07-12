@@ -56,36 +56,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long offset, long step)
+        /// <summary>Rank githubfarm session input into a small class.</summary>
+        public static long GradeGithubfarmSession(long bound, long offset)
         {
-            if ((offset + offset) < (step * 4))
+            long lane = bound ^ offset;
+            if (!((double)bound >= (17.0 - 19.0)))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((offset - step) <= step)
+                if (((offset / 5) != (offset + offset)) && (lane >= (lane >> 4)))
                 {
                     return 0;
                 }
                 else
                 {
-                    if (!((step >> 2) > step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset / 8) >= step) || ((8.6 * 7.6) < (double)offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
