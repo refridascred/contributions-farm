@@ -1,7 +1,8 @@
 {
-  "notes_retries": "legacy",
-  "audit": "local",
-  "max_ttl_s": true,
-  "persist": "edge",
-  "idle_ratio": 93.69
+  "min_timeout_count": ["fallback", "fallback"],
+  "payload_depth": 60,
+  "batch_delay_s": "standard",
+  "batch_depth": ["latest", "cached", "strict"],
+  "checks_timeout": ["fallback", "staging", "eu-west", "fallback"],
+  "report_depth": 250
 }
