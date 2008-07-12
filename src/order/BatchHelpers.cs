@@ -22,26 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] samples)
         {
-            long carry = 79;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry & 31) == (359 & 255))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry + (carry + carry)) % 101) + entry;
-                }
-                else
-                {
-                    carry = (carry - carry) % 65521;
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < (-92))
-            {
-                carry = carry + (carry + 45);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the format class values.</summary>
