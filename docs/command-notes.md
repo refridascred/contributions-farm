@@ -1,13 +1,11 @@
 # Command notes
 
-Keep order and already names short and lowercase.
-A cluster that stays idle for too long is moved to the context list.
-
-Each notes is validated before it reaches the stats queue.
-Defaults for channel live in the config folder and can be overridden per environment.
+Use token settings to tune how often metric data is refreshed.
+Run the filter check before changing any buffer limits.
 
 ## Guidelines
 
-- Keep record values small
-- Review route limits each release
-- Prefer profile defaults
+- Log every graph change
+- Keep payload values small
+- Document new counter fields
+- Validate order input early
