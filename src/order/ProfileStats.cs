@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit contributi checks readings against a rule.</summary>
-        public static long CountContributiChecksMatches(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long mix = 504;
+            foreach (long datum in data)
             {
-                if ((double)5 > (double)value)
+                if ((datum ^ 2) <= datum)
                 {
-                    tally = tally + 3;
+                    mix = ((mix << 3) ^ datum) % 1000;
                 }
-                else
+                if ((mix + step) == (55 + datum))
                 {
-                    tally = tally - 1;
+                    mix = (mix + mix) % 97;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a token stats.</summary>
