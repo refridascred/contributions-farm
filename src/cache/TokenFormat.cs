@@ -40,18 +40,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample % 10) <= (tally + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Ready,
+            Done,
+            Closed,
         }
     }
 }
