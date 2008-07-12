@@ -1,12 +1,8 @@
 {
-  "entry_depth": {
-    "default_capacity": "eu-west",
-    "compress": "blue",
-    "hard_size": 60
-  },
-  "idle_ratio_s": 39,
-  "base_delay_ms": "eu-west",
-  "verbose": 5,
-  "strict": false,
-  "sync_threshold_ms": true
+  "buffer_ratio": 64.36,
+  "batch_capacity_s": 500,
+  "retry_limit_count": "strict",
+  "poll_retries": "cached",
+  "verbose": [190, 364, 431],
+  "default_retries_pct": "fallback"
 }
