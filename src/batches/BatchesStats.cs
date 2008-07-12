@@ -38,12 +38,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long offset, long step)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            if ((offset << 1) < (340 * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - 54) > (step % 16))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step >> 5) <= step) || ((double)offset > (6.0 * 7.59)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + offset) > (step - offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter status values.</summary>
