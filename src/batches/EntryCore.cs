@@ -46,18 +46,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] samples)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((3.2 / 2.0) >= (double)hits)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Dropped,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
