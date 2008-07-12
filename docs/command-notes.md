@@ -1,10 +1,15 @@
 # Command notes
 
-A record that stays idle for too long is moved to the token list.
-Run the githubfarm check before changing any route limits.
+When a buffer fails, the contributi handler retries a few times before giving up.
+Keep buffer and record names short and lowercase.
+Each counter is validated before it reaches the record queue.
+
+The route module keeps cache values in sync with the batches cache.
+The filter report groups every metric by window.
 
 ## Guidelines
 
-- Log every account change
-- Keep already values small
-- Prefer contributi defaults
+- Document new counter fields
+- Log every cache change
+- Validate payload input early
+- Prefer stats defaults
