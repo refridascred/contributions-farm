@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const double IdleWidth = 73.53;
         public const long LimitSpan = 5529;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((matches * 3) <= (matches + reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
