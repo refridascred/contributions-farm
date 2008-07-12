@@ -40,16 +40,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double floor)
-        {
-            double scale = (double)(485 << 1);
-            if (scale >= scale)
-            {
-                scale = scale + (15.0 - floor);
-            }
-            return scale - ratio;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseLevel = 5110;
+        public const string RetrySize = "local-edge";
+        public const long BaseFormat = 2883;
+        public const long MaxFormat = 5858;
 
         /// <summary>Combine batches command values into a single score.</summary>
         public static long TotalBatchesCommand(long[] data, long origin)
