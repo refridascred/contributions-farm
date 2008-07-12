@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] series, long step)
         {
-            Queued,
-            Synced,
-            Active,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!(step >= (701 + hits)) || !((979 - hits) > ((-647) / 7)))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
