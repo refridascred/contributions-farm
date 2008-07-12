@@ -65,13 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long seed)
         {
-            Pending,
-            Synced,
-            Paused,
-            New,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
