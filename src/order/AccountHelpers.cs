@@ -52,17 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] readings, long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
+                if (sample > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
