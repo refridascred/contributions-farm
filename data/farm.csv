@@ -1,6 +1,9 @@
-id,owner,count,level
-1,863,651,13.94
-2,standard,881,primary
-3,102,27.4,548
-4,612,486,0.78
-5,58.9,blue,26.34
+id,active,score
+1,98,18.32
+2,stable,standard
+3,894,26.65
+4,70.49,688
+5,staging,218
+6,standard,323
+7,89.91,fallback
+8,906,461
