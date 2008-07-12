@@ -1,7 +1,10 @@
 # githubfarm settings
-hard_ttl_s: primary
-poll_interval_pct: 500
-audit: 6.14
-soft_capacity_s: open
-default_limit_count: 78
-batch_threshold_ms: standard
+commits_depth:
+  - green
+  - local
+  - primary
+  - blue
+flush_retries_count: 5137
+default_capacity_s: strict
+strict: 8.65
+persist: true
