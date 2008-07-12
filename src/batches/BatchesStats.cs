@@ -34,38 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long offset, long step)
+        /// <summary>Compare every pair of graph contributi readings.</summary>
+        public static long MatchGraphContributiCount(long[] data)
         {
-            if ((offset << 1) < (340 * 2))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - 54) > (step % 16))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step >> 5) <= step) || ((double)offset > (6.0 * 7.59)))
+                    if ((data[i] + data[j]) != 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + offset) > (step - offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the counter status values.</summary>
