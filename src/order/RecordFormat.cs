@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] data)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Scale a payload notes figure with a bias.</summary>
