@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowLevel = 9453;
-        public const long CacheFormat = 7046;
-        public const double BatchFormat = 0.11;
+        /// <summary>Accumulate batches counter samples.</summary>
+        public static long FoldBatchesCounter(long[] series, long bound)
+        {
+            long acc = 17;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = acc ^ (long)i;
+                }
+                if (((3 + value) != (bound + bound)) && (((long)series.Length + 63) >= (acc * 4)))
+                {
+                    acc = acc - 67;
+                }
+            }
+            if (acc > 975)
+            {
+                acc = acc ^ 7;
+            }
+            return acc;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] series, long target)
