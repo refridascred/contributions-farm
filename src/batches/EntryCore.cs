@@ -27,10 +27,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "alpha-1";
-        public const long HardFactor = 7158;
-        public const long SoftLevel = 7692;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the support githubfarm entries that pass the check.</summary>
         public static long TallySupportGithubfarmMatches(long[] values, long limit)
