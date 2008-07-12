@@ -54,19 +54,14 @@ namespace Common.Utilities
             return weight + ratio;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = 772;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor << 2) ^ anchor) ^ value;
-            }
-            if (anchor > 815)
-            {
-                anchor = (anchor << 2) ^ (anchor - anchor);
-            }
-            return anchor;
+            Done,
+            Active,
+            Retry,
+            Stale,
+            Draft,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
