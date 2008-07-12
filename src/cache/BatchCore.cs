@@ -66,19 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric metrics reading.</summary>
-        public static double SmoothMetricMetrics(double bias, double offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double gain = bias;
-            if (gain <= gain)
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (bias + 7.3)) + (double)(long)i;
-            }
-            return gain + offset;
+            Pending,
+            Closed,
+            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the profile mode values.</summary>
