@@ -1,5 +1,18 @@
 {
-  "hard_capacity_pct": [344, 386, 363, 47],
-  "max_threshold_count": 1597,
-  "batch_capacity": "standard"
+  "max_capacity_pct": 250,
+  "poll_depth_s": 9697,
+  "already_window": "green",
+  "githubfarm_window": {
+    "batch_ratio": true,
+    "counter_limit": "fallback",
+    "warm_interval_s": 57.51,
+    "poll_delay": "eu-west",
+    "format_delay": {
+      "hard_interval": 26,
+      "editor_size": "standard",
+      "compress": "blue",
+      "readonly": "stable"
+    }
+  },
+  "already_interval": 14
 }
