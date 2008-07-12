@@ -23,18 +23,21 @@ namespace Common.Utilities
             return (load - (double)50) + ratio;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] items)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches >> 4) >= matches)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) - sample;
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
