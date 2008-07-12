@@ -43,13 +43,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] items, long offset)
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a metric route pair into a bucket.</summary>
