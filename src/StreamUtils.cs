@@ -47,16 +47,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] data, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                anchor = (anchor * 2) + (-4);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((item - item) <= item)
+                {
+                    matches = (matches + 2) + target;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a channel options.</summary>
