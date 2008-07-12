@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] levels, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long acc = 608;
+            foreach (long sample in values)
             {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc ^ (sample - sample)) % 97;
+                acc = (acc - 83) % 1000;
             }
-            return valid;
+            if (acc < 8)
+            {
+                acc = acc - origin;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the window mode values.</summary>
