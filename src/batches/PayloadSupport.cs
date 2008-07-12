@@ -15,32 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long origin, long origin2)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long edge = origin - origin2;
-            if (((origin2 + 937) >= origin) || ((1.2 - 2.53) < (double)edge))
-            {
-                return 8;
-            }
-            else
-            {
-                if (edge > origin2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin2 - edge) < (6 * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            New,
+            Idle,
+            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
