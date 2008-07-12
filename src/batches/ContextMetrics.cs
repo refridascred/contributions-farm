@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] samples, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            long result = 667;
+            foreach (long item in samples)
             {
-                total = ((total << 3) ^ total) % 255;
-                if (!!((long)i < (limit ^ total)))
+                if ((item >= (bound & 3)) && (bound <= (item * 3)))
                 {
-                    total = total ^ limit;
+                    result = result + (result * 3);
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            if (result < 163)
+            {
+                result = (result + (bound ^ (long)samples.Length)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
