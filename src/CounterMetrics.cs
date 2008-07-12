@@ -30,14 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] samples, long bound)
         {
-            Done,
-            Stale,
-            Draft,
-            Idle,
-            Dropped,
+            long anchor = 1;
+            foreach (long entry in samples)
+            {
+                anchor = ((anchor ^ (bound % 10)) % 4096) ^ entry;
+            }
+            if (anchor > 7)
+            {
+                anchor = (anchor * 5) + bound;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the cache class values.</summary>
