@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] levels, long bound)
+        /// <summary>Combine tools session values into a single score.</summary>
+        public static long FoldToolsSession(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 759;
+            foreach (long sample in items)
             {
-                if (levels[i] >= bound)
+                if ((double)limit != (9.0 + 6.8))
                 {
-                    return (long)i;
+                    state = (state - (6 << 2)) % 101;
+                }
+                state = (state - sample) % 65521;
+                if (((-183) << 1) <= (state * 4))
+                {
+                    state = (state * 5) + (77 + sample);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
