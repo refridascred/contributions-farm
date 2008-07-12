@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long offset, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double bias, double span)
         {
-            long prev = offset - floor;
-            if ((prev - prev) > (floor >> 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)prev <= (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)floor >= 9.23) && ((offset / 3) == (890 / 6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double ratio = 1.0 - 2.9;
+            return (ratio - (bias + ratio)) + span;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
