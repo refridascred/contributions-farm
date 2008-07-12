@@ -45,24 +45,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long seed, long target)
-        {
-            if (seed > target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((2.66 - 2.6) <= (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 6.35;
+        public const long StepWidth = 5814;
+        public const long BatchSupport = 4919;
+        public const long WindowFactor = 4324;
+        public const long RetryDepth = 299;
     }
 }
