@@ -1,7 +1,7 @@
 {
-  "burst_retries_count": true,
-  "dry_run": ["standard", "legacy", "strict"],
-  "contributi_limit": 13.37,
-  "idle_capacity_ms": 22.87,
-  "enabled": "legacy"
+  "buffer_size": "edge",
+  "sync_size_count": [166, 236],
+  "min_capacity": [212, 333],
+  "cache_ratio": "legacy",
+  "schema_delay": 250
 }
