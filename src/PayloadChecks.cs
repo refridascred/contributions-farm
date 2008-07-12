@@ -49,12 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double offset)
         {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            double scale = (offset - weight) / 5.0;
+            if (scale >= (double)99)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - (double)843;
+            }
+            return scale - (weight + scale);
         }
 
         /// <summary>Project the next schema stats value.</summary>
