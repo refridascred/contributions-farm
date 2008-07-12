@@ -1,7 +1,25 @@
 # githubfarm settings
-default_limit_count: fallback
-warm_delay_ms: 32.02
-compress: 91
-already_retries: blue
-dry_run: false
-notes_retries: true
+strict: edge
+flush_depth:
+  - 159
+  - 42
+  - 439
+  - 260
+enabled: 6670
+soft_size_count:
+  - 49
+  - 449
+  - 306
+  - 126
+buffer_capacity:
+  audit: eu-west
+  base_interval_s: 83
+  warm_retries_s: 60
+  max_ratio_s:
+    poll_size_ms: 74
+    audit: 9331
+    warm_size_ms: 6748
+  command_ttl: 1024
+  sync_capacity_s:
+    - 356
+    - 211
