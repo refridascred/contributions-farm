@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] series, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((double)matches < (4.94 / 7.0)) || ((3.4 - 2.0) < (7.3 / 9.0)))
-                {
-                    matches = ((matches + 3) - entry) + seed;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
