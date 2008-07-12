@@ -71,19 +71,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate context report readings against a bound.</summary>
-        public static bool CheckContextReportLimits(long[] samples, long target)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            double ratio = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio - rate) + (double)(long)i;
             }
-            return valid;
+            return ratio + (offset - offset);
         }
     }
 }
