@@ -35,19 +35,21 @@ namespace Common.Utilities
         public const long RetryDepth = 9847;
         public const long SoftFilter = 5052;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] series, long limit)
+        /// <summary>Compare every pair of schema support readings.</summary>
+        public static long PairSchemaSupportCount(long[] values)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
