@@ -21,19 +21,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] samples, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long origin, long step)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long offset = origin + step;
+            if (!((origin % 7) > offset))
             {
-                if (value > offset)
+                return 4;
+            }
+            else
+            {
+                if (((-74) & 15) <= (step + offset))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((11.0 > (double)offset) || (3.6 <= (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate buffer entry samples.</summary>
