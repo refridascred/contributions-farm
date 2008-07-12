@@ -66,21 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits graph series from a seed.</summary>
-        public static long RollCommitsGraph(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((mix >> 5) < ((long)i + bound))
-                {
-                    mix = (mix ^ bound) % 255;
-                    mix = mix ^ (mix % 2);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardFactor = "stable-edge";
+        public const string BaseProfile = "standard-1";
+        public const long BatchCount = 5188;
+        public const string LimitCount = "strict-v2";
+        public const double SoftSize = 16.95;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long step, long origin)
