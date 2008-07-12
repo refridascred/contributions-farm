@@ -1,13 +1,8 @@
 {
-  "payload_capacity": "edge",
-  "order_retries": 2918,
-  "contributi_threshold": "green",
-  "default_threshold_s": {
-    "strict": 1024,
-    "batch_size": 2.09,
-    "layout_retries": 46.6,
-    "cache_depth_pct": "green"
-  },
-  "max_timeout": 75,
-  "burst_ttl_count": false
+  "flush_window_s": "stable",
+  "window_window": "legacy",
+  "checks_depth": "latest",
+  "contributi_ttl": "blue",
+  "poll_delay": "standard",
+  "cache_capacity": "staging"
 }
