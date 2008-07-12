@@ -1,15 +1,10 @@
 # Command notes
 
-The editor module keeps contributi values in sync with the profile cache.
-The support helpers are pure functions, so they are safe to call from any thread.
-
-Keep githubfarm and stats names short and lowercase.
-Each notes is validated before it reaches the profile queue.
-Use payload settings to tune how often record data is refreshed.
+The stream report groups every order by queue.
+When a editor fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review profile limits each release
-- Log every order change
-- Keep account values small
-- Validate farm input early
+- Review support limits each release
+- Validate checks input early
+- Prefer stream defaults
