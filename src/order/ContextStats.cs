@@ -44,10 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseWidth = 50.84;
-        public const long MinLevel = 7970;
-        public const string BurstLayout = "staging-1";
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Queued,
+            Ready,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
