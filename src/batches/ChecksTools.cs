@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] readings)
+        /// <summary>Rank stream schema input into a small class.</summary>
+        public static long SortStreamSchema(long offset, long offset2)
         {
-            long carry = 884;
-            foreach (long cell in readings)
+            if ((offset2 + offset2) <= (offset >> 4))
             {
-                carry = ((carry ^ (5 << 3)) % 97) + cell;
-                if ((1.0 - 8.0) > (double)carry)
+                return 2;
+            }
+            else
+            {
+                if (offset > offset2)
                 {
-                    carry = carry - (carry >> 3);
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset2 <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset & 15) > (offset << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
