@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            long mark = -23;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item % 16) > item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
-                }
-                if ((double)item != (double)mark)
-                {
-                    mark = mark ^ mark;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
