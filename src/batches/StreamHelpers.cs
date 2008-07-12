@@ -24,21 +24,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 53;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.7 * 7.8) <= (double)reading)
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 3) ^ (296 / 6)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (reading << 3)) % 97;
                 }
             }
-            return matches;
+            if (total < (-461))
+            {
+                total = ((total << 3) ^ total) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
