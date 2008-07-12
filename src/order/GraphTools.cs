@@ -28,15 +28,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double gain, double offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] data, long limit)
         {
-            double gain2 = (double)(-609) * 10.0;
-            if (gain2 <= (double)17)
+            long mark = 361;
+            foreach (long item in data)
             {
-                gain2 = (gain2 + (double)5) - offset;
+                if ((mark & 1) > (40 & 15))
+                {
+                    mark = ((((mark * 3) + (mark & 7)) % 255) - item) - limit;
+                }
             }
-            return gain2 + (gain - gain2);
+            if (mark < 2)
+            {
+                mark = mark + ((-3) / 3);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
