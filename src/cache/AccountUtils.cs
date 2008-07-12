@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
+            New,
+            Queued,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
