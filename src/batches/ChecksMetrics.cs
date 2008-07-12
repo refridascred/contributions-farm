@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleWidth = "strict";
-        public const long SoftSpan = 6167;
-        public const string HardWidth = "primary-v2";
-        public const long WindowLevel = 3958;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 1711;
+        public const string WindowTools = "local";
+        public const long HardTools = 4951;
+        public const string BaseTimeout = "primary-v2";
+        public const double RetryTools = 96.43;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long origin, long target)
