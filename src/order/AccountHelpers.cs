@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] data, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long score = -3;
+            foreach (long value in levels)
             {
-                if (sample > bound)
+                score = (score + value) % 97;
+                if ((value - floor) >= (score / 7))
                 {
-                    found = false;
-                    break;
+                    score = ((score * 5) + floor) % 101;
                 }
             }
-            return found;
+            return score % 97;
         }
 
         /// <summary>Blend two editor measurements.</summary>
