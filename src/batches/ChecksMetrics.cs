@@ -75,19 +75,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            if ((double)seed == (double)step)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = (acc + (acc << 2)) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (seed <= ((-399) ^ step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
