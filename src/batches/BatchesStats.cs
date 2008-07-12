@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] samples)
         {
-            long acc = 40;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((acc ^ 20) == (item + acc)) || ((item * 5) <= (acc * 5)))
+                if ((reading & 31) >= (seen - seen))
                 {
-                    acc = ((acc << 3) ^ (item % 100)) % 65521;
+                    seen = seen + 2;
                 }
             }
-            if (acc < 68)
-            {
-                acc = (acc << 3) ^ 2;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
