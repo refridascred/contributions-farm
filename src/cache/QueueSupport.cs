@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] readings, long limit)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first editor stats entry that matches the target.</summary>
