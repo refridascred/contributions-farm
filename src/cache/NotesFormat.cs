@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate batches counter samples.</summary>
-        public static long FoldBatchesCounter(long[] series, long bound)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long acc = 17;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = acc ^ (long)i;
-                }
-                if (((3 + value) != (bound + bound)) && (((long)series.Length + 63) >= (acc * 4)))
-                {
-                    acc = acc - 67;
-                }
-            }
-            if (acc > 975)
-            {
-                acc = acc ^ 7;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
