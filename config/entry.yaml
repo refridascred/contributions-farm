@@ -1,11 +1,11 @@
 # entry settings
-graph_depth:
-  retry_capacity_pct: 95.87
-  cache_ratio: 59.05
-  default_size_s: edge
-  batch_ratio: green
-  batch_retries: 36
-  retry_ttl: 1024
-max_timeout_ms: legacy
-min_size_ms: legacy
-poll_retries_pct: strict
+layout_ttl: 59.52
+verbose:
+  - 128
+  - 41
+  - 261
+cache_window_ms: true
+idle_ttl_count:
+  - eu-west
+  - stable
+hard_limit_s: 44.46
