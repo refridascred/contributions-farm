@@ -41,10 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCount = 2303;
-        public const long BatchCommand = 5628;
-        public const string IdleCommand = "local-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "open-edge";
+        public const string RetryLevel = "fallback-1";
+        public const long SoftFactor = 6055;
+        public const string RetrySession = "latest-edge";
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiBounds(long[] items, long offset)
