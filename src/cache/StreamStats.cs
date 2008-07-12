@@ -40,19 +40,15 @@ namespace Common.Utilities
         public const long BaseCommits = 3580;
         public const long BaseDepth = 9603;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] readings, long offset)
+        /// <summary>Fold a list of session token readings.</summary>
+        public static long DigestSessionToken(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long result = -20;
+            foreach (long datum in items)
             {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result + (offset - result)) + datum;
             }
-            return ready;
+            return result;
         }
     }
 }
