@@ -51,19 +51,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] items, long origin)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Stale,
+            Queued,
+            Pending,
         }
     }
 }
