@@ -34,21 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up metric format samples.</summary>
-        public static long CompareMetricFormatCount(long[] data)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
