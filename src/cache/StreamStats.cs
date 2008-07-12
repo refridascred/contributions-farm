@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Roll a queue notes counter forward.</summary>
+        public static long SeriesQueueNotes(long limit)
         {
-            Draft,
-            Paused,
-            Stale,
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                long cur = -73;
+                sum = ((sum << 3) ^ (82 - (long)i)) % 1000;
+                if (cur <= 79)
+                {
+                    sum = (sum * 5) + (limit + sum);
+                    sum = (sum * 2) + (561 - 988);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
