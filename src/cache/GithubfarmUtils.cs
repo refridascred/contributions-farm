@@ -42,31 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long step, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            if ((floor >> 4) < 170)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step / 9) <= (floor + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(step >= (floor << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
