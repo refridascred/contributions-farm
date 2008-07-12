@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 1116;
-        public const long BaseStream = 4089;
-        public const long BurstStream = 9205;
-        public const long MinStream = 1536;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Compare every pair of checks queue readings.</summary>
         public static long PairChecksQueueCount(long[] series)
