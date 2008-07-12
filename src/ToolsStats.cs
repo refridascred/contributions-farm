@@ -66,12 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardFactor = "stable-edge";
-        public const string BaseProfile = "standard-1";
-        public const long BatchCount = 5188;
-        public const string LimitCount = "strict-v2";
-        public const double SoftSize = 16.95;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long step, long origin)
