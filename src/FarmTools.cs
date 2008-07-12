@@ -38,17 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first order batch entry that matches the target.</summary>
-        public static long FindOrderBatchIndex(long[] data, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (data[i] < target)
+                if ((10.0 / 8.0) < (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
