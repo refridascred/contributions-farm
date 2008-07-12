@@ -20,16 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] readings)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long sum = 64;
-            foreach (long item in readings)
-            {
-                sum = (sum + (sum << 3)) % 97;
-                sum = ((sum * 3) + (item - item)) % 1000;
-            }
-            return sum % 65521;
+            Synced,
+            Failed,
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
