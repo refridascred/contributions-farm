@@ -23,18 +23,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] samples, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((count + 840) >= (166 * 4))
+                if ((matches >> 2) < (limit ^ limit))
                 {
-                    count = ((count + 1) + sample) + origin;
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a queue cache figure with a bias.</summary>
