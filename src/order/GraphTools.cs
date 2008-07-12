@@ -64,19 +64,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double rate, double offset)
-        {
-            double mean = (double)(353 + 474);
-            if (mean > offset)
-            {
-                mean = mean + (offset - rate);
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + (offset / 7.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleFactor = 9.96;
+        public const double BaseInterval = 86.22;
+        public const double StepCommits = 33.5;
     }
 }
