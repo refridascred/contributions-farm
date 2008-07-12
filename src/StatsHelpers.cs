@@ -36,22 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up checks batch samples.</summary>
-        public static long MatchChecksBatchCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinRoute = 51.72;
+        public const string BaseRoute = "strict-1";
+        public const string RetryBudget = "open-edge";
+        public const long DefaultRoute = 2385;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
