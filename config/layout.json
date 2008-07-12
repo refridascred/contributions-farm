@@ -1,8 +1,13 @@
 {
-  "editor_retries": false,
-  "audit": ["green", "fallback", "strict", "green"],
-  "flush_depth_ms": "local",
-  "cache_ttl": ["latest", "cached", "blue"],
-  "metric_interval": 2098,
-  "verbose": true
+  "cache_retries": 100,
+  "retry_ttl_s": {
+    "queue_ttl": "staging",
+    "burst_capacity": "staging",
+    "persist": "latest",
+    "max_limit_count": 86.38
+  },
+  "min_depth_pct": 25.98,
+  "graph_interval": "stable",
+  "batch_depth": true,
+  "batches_timeout": 500
 }
