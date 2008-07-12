@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of editor cache entries.</summary>
-        public static long TotalEditorCache(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items, long floor)
         {
-            long mark = 442;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                mark = (((mark * 5) + mark) % 101) + cell;
+                if ((double)cell > 4.83)
+                {
+                    matches = (matches + 3) + floor;
+                }
             }
-            if (mark > 339)
-            {
-                mark = mark + (mark << 1);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
