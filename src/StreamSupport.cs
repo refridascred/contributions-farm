@@ -16,12 +16,25 @@ namespace Common.Utilities
             return weight - 5.42;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Grade a token payload value against two limits.</summary>
+        public static long ClassifyTokenPayload(long limit, long limit2)
         {
-            public double Level { get; set; }
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            long edge = limit + limit2;
+            if (((limit2 * 3) > (limit2 ^ limit2)) || ((double)limit < (13.0 - 9.72)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit2 + limit) != (5 << 1)) || (limit < (edge - edge)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate session record readings against a bound.</summary>
