@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a filter farm reading.</summary>
-        public static double BlendFilterFarm(double rate, double span)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double drift = span / 6.0;
-            return (drift + (drift / 4.0)) + rate;
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
