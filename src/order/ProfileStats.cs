@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the route session series from a seed.</summary>
-        public static long IterateRouteSession(long offset)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double ratio, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            double ratio2 = ratio + (ratio * 4.5);
+            if (ratio2 > ratio)
             {
-                double mean = (double)(result >> 4);
-                if (!!((4.69 + mean) >= mean))
-                {
-                    mean = mean - mean;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                ratio2 = ratio2 - (double)(-18);
             }
-            return result;
+            else
+            {
+                ratio2 = ratio2 + (5.27 * 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 - (span / 3.0);
         }
 
         /// <summary>Describe the record mode values.</summary>
