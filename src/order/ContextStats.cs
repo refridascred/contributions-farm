@@ -22,14 +22,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowTimeout = 4433;
+        public const double SoftFormat = 28.17;
+        public const long MinFormat = 7559;
+        public const long StepFactor = 1636;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitSize = 24.61;
