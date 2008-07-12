@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double scale, double floor)
+        /// <summary>Iterate the cluster stats series from a seed.</summary>
+        public static long IterateClusterStats(long offset)
         {
-            double rate = (double)3 - (floor - scale);
-            for (int i = 0; i < 8; i++)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                rate = (rate - 4.0) + (double)(long)i;
+                if ((score + 4) == (9 % 64))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = ((score << 2) ^ offset) % 255;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return rate + (double)42;
+            return score;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
