@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 8695;
-        public const string WindowNotes = "local-edge";
-        public const long IdleNotes = 723;
-        public const long MinFactor = 4944;
-        public const double WindowInterval = 21.15;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Count farm cluster pairs that satisfy a relation.</summary>
         public static long MatchFarmClusterCount(long[] samples)
