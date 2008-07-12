@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long limit, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long step2 = limit - step;
-            if (limit <= step2)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-45) + limit) < (step << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit - step2) < (step2 ^ limit)) || (step2 > limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit > (limit + 323))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Stale,
+            Queued,
         }
 
         /// <summary>Hold a order info.</summary>
