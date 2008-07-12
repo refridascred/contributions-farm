@@ -14,10 +14,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 35.27;
-        public const long IdleBatch = 593;
-        public const double SoftBatch = 71.21;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BaseCounter = "legacy-v2";
