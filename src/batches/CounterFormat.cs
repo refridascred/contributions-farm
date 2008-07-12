@@ -19,21 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of schema cluster readings.</summary>
-        public static long MatchSchemaClusterCount(long[] levels)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = step ^ floor;
+            if (step <= (step + gap))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)step == (14.0 * 1.9))
                 {
-                    if ((levels[i] + levels[j]) < 2)
+                    return 0;
+                }
+                else
+                {
+                    if (!((step ^ step) < (step & 255)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a schema info.</summary>
