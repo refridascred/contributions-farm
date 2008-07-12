@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const long BatchSpan = 5666;
         public const long CacheEntry = 483;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Dropped,
-            Locked,
-            Ready,
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
