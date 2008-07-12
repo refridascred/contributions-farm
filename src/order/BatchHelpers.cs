@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Paused,
             Pending,
-            Ready,
-            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
