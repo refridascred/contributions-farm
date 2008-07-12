@@ -44,13 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Queued,
-            Ready,
-            Draft,
-            Idle,
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the editor level values.</summary>
