@@ -26,21 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 572;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample - state) != (sample & 63))
                 {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state + state) % 97;
+                }
+                else
+                {
+                    state = (state ^ (sample % 64)) % 255;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Project the next farm value.</summary>
