@@ -16,20 +16,12 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 5938;
+        public const long BurstStream = 1437;
+        public const long WindowStream = 8163;
+        public const long DefaultStream = 5149;
+        public const string HardStream = "legacy-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleFarm = 368;
