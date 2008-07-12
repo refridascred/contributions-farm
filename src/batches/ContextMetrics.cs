@@ -57,19 +57,39 @@ namespace Common.Utilities
         public const long BaseWindow = 6565;
         public const long StepWindow = 7171;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double ratio, double span)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long offset, long bound)
         {
-            double mean = (double)7 + span;
-            if (mean >= (1.71 / 4.0))
+            long span = offset - bound;
+            if (((bound * 2) < 22) && ((double)span == (8.0 - 17.0)))
             {
-                mean = mean - (ratio * 17.0);
+                return 8;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean - 11.0) + (double)(long)i;
+                if (offset < (span * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((span ^ span) == (offset + offset)) && ((span + 8) < (span % 16)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((422 / 4) != (span + span))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mean + ratio;
         }
     }
 }
