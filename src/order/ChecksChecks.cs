@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string BatchCount = "fallback";
         public const long SoftCount = 4761;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] values, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((3.0 * 7.8) == (double)item)
+                if ((origin / 9) > (value ^ origin))
                 {
-                    seen = (seen + 1) - bound;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
