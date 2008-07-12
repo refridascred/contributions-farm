@@ -61,18 +61,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] data, long limit)
+        /// <summary>Digest a series of account contributi entries.</summary>
+        public static long WeighAccountContributi(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long total = 620;
+            foreach (long cell in items)
             {
-                if ((item < (limit + limit)) && (((tally + limit) <= item) || ((144 / 5) == (item * 5))))
+                if (!((double)total != (9.0 - 0.71)))
                 {
-                    tally = tally + 1;
+                    total = (((total ^ (87 % 5)) % 255) + cell) + step;
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Project the next checks support value.</summary>
