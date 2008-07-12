@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long offset, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            if ((889 / 8) >= (step + offset))
             {
-                mix = (mix ^ (bound * 3)) % 1000;
-                mix = ((mix * 3) + ((long)i % 60)) % 1000;
-                if (bound >= (bound << 1))
-                {
-                    mix = ((mix * 3) + (32 << 1)) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((offset <= (offset + offset)) && ((step % 2) != (offset + offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step ^ 75) > (step - 40))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)35 == (double)step) && ((offset >> 3) < (340 % 7)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account kind values.</summary>
