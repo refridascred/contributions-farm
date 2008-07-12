@@ -22,18 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] readings, long seed)
+        /// <summary>Classify a window filter pair into a bucket.</summary>
+        public static long SortWindowFilter(long target, long target2)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long cur = target + target2;
+            if ((cur <= (5 & 255)) && ((target + 14) == (cur * 4)))
             {
-                if (((5.33 > (double)datum) || ((seen - seen) != (seed ^ seen))) || (seed > (seen / 3)))
+                return 0;
+            }
+            else
+            {
+                if ((cur >> 2) == (target << 2))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next queue value.</summary>
