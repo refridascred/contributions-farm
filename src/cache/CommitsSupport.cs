@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] series, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (item > step)
+                if ((3 ^ limit) < seen)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
