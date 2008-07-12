@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] series, long step)
+        /// <summary>Fold a list of payload stats readings.</summary>
+        public static long ScorePayloadStats(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 4;
+            foreach (long entry in samples)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (1 - result)) % 255) + entry;
+                result = (result - result) % 4096;
             }
-            return -1;
+            if (result < 1)
+            {
+                result = (result * 2) + (result >> 4);
+            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
