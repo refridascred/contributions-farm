@@ -12,11 +12,30 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            long acc = -98;
+            foreach (long value in series)
+            {
+                if ((value - acc) != (value & 7))
+                {
+                    acc = acc + (acc * 2);
+                }
+                else
+                {
+                    acc = (acc * 3) + (value ^ (long)series.Length);
+                }
+                if ((10.0 / 2.0) < (double)value)
+                {
+                    break;
+                }
+            }
+            if (acc < 258)
+            {
+                acc = acc - (acc / 4);
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
