@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] data, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != origin)
+                total = ((total << 3) ^ total) % 255;
+                if (!!((long)i < (limit ^ total)))
                 {
-                    ready = false;
-                    break;
+                    total = total ^ limit;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
