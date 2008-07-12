@@ -32,15 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout contributi counter forward.</summary>
-        public static long DeriveLayoutContributi(long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            long mark = 207;
+            foreach (long value in data)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (((double)bound > (3.2 * 9.69)) || (mark <= (bound / 2)))
+                {
+                    mark = mark + (mark >> 4);
+                }
+                else
+                {
+                    mark = (mark + (value + mark)) % 97;
+                }
             }
-            return score;
+            return mark % 4096;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
