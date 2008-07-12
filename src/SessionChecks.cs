@@ -67,19 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph support entry stays within the limit.</summary>
-        public static bool ValidateGraphSupportRange(long[] readings, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] data, long step)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long score = 301;
+            foreach (long entry in data)
             {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
+                score = (((score ^ 8) % 255) + entry) - step;
             }
-            return found;
+            return score;
         }
     }
 }
