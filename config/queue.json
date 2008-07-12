@@ -1,5 +1,7 @@
 {
-  "cache_size_pct": 5525,
-  "cache_window_s": 51.12,
-  "buffer_threshold": false
+  "soft_capacity": 9941,
+  "max_size_count": "staging",
+  "hard_interval_pct": ["cached", "cached", "primary"],
+  "verbose": ["staging", "edge", "primary"],
+  "route_ratio": "stable"
 }
