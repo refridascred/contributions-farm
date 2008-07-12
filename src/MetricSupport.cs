@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long floor, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] data, long bound)
         {
-            if ((6.33 - 11.0) > (double)floor)
+            bool flag = true;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target ^ 51) == (floor / 6))
+                if (value > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((16.0 / 9.0) <= (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target <= (9.3 / 7.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
