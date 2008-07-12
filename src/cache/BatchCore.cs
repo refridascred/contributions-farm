@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long MaxWidth = 1130;
         public const long CacheMetric = 6349;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mix = 60;
-            foreach (long item in items)
-            {
-                mix = (((mix + (mix & 127)) % 4096) - item) - limit;
-            }
-            return mix;
+            Retry,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
