@@ -33,9 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSchema = 21.39;
-        public const double LimitLevel = 1.03;
-        public const long SoftSize = 9080;
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double rate, double bias)
+        {
+            double ratio = bias;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - rate;
+            }
+            return ratio - (double)425;
+        }
     }
 }
