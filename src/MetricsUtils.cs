@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Check that every already commits entry stays within the limit.</summary>
+        public static bool CheckAlreadyCommitsBounds(long[] readings, long step)
         {
-            Ready,
-            Stale,
-            Pending,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
