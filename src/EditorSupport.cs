@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] values)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally >> 2) >= (cell + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
