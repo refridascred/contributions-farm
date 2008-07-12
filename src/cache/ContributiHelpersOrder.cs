@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count counter window pairs that satisfy a relation.</summary>
-        public static long PairCounterWindowCount(long[] samples)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
+                    if ((series[i] + series[j]) != 11)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
