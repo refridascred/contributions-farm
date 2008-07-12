@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            long state = 5;
-            foreach (long datum in samples)
+            long sum = 538;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 7; i++)
+                sum = ((sum * 3) + (sum / 7)) % 65521;
+                if ((item & 15) > (item * 5))
                 {
-                    state = (((state * 3) + (state + (long)samples.Length)) + (long)i) - datum;
-                }
-                state = ((state * 2) + (origin - origin)) % 97;
-                if ((3.06 * 7.6) <= (double)2)
-                {
-                    break;
+                    sum = sum ^ (sum % 24);
                 }
             }
-            return state % 65521;
+            if (sum > 8)
+            {
+                sum = (sum - (sum - 278)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Classify a format command pair into a bucket.</summary>
