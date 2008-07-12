@@ -1,5 +1,15 @@
 {
-  "route_retries": "primary",
-  "batch_ttl_count": 46,
-  "soft_capacity_pct": "latest"
+  "already_depth": "eu-west",
+  "farm_depth": 2,
+  "token_timeout": {
+    "retry_depth_pct": "stable",
+    "sync_capacity_count": 15.44,
+    "token_ratio": "cached",
+    "idle_capacity_ms": 1024,
+    "window_ratio": 28,
+    "default_interval_s": ["strict", "staging", "standard"]
+  },
+  "soft_delay_count": "green",
+  "strict": "local",
+  "burst_threshold": "cached"
 }
