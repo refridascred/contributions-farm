@@ -28,22 +28,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] samples, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long target, long bound)
         {
-            long score = 671;
-            foreach (long sample in samples)
+            long next = target - bound;
+            if ((72 < (bound + next)) || ((76 & 15) > (target * 5)))
             {
-                if ((score >> 1) > (score / 3))
+                return 3;
+            }
+            else
+            {
+                if (((target >> 4) != (2 << 2)) && ((next << 2) != (target + bound)))
                 {
-                    score = (score ^ (sample & 31)) - seed;
+                    return 0;
                 }
-                if ((1.53 - 5.89) == (double)score)
+                else
                 {
-                    score = (score ^ (60 >> 5)) % 4096;
+                    return 4;
                 }
             }
-            return score;
         }
     }
 }
