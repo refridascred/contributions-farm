@@ -23,23 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] values, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((0 << 3) >= total)
+                if (datum > origin)
                 {
-                    total = total ^ (long)i;
+                    valid = false;
+                    break;
                 }
-                if (total > (total + total))
-                {
-                    total = (total + (long)i) % 101;
-                }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Rank already input into a small class.</summary>
