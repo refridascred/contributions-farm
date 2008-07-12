@@ -37,26 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long seed)
         {
-            long score = -57;
-            foreach (long sample in levels)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (score < (14 - sample))
+                if ((state + seed) <= 150)
                 {
-                    score = ((score * 5) + (score + sample)) % 101;
+                    state = ((state * 2) + state) % 4096;
                 }
-                else
-                {
-                    score = (score * 4) + (score + sample);
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            if (score < 0)
-            {
-                score = (score ^ score) % 97;
-            }
-            return score % 1000;
+            return state;
         }
     }
 }
