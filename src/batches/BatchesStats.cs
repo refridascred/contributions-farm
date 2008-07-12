@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 1912;
-        public const double IdleRoute = 74.55;
-        public const long MinBudget = 1020;
-        public const long DefaultSpan = 3721;
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorMatches(long[] items)
