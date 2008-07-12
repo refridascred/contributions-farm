@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Look up the position of a cluster payload sample.</summary>
+        public static long LookupClusterPayloadIndex(long[] data, long bound)
         {
-            Stale,
-            Active,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a filter stats.</summary>
