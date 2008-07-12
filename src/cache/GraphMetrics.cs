@@ -37,39 +37,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long seed, long target)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long diff = seed - target;
-            if ((230 >> 3) < target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed != (2.0 / 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target >> 4) > (seed - 45))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((diff <= 0) || (target >= (target + 94)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
