@@ -21,19 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every context window entry stays within the limit.</summary>
-        public static bool ValidateContextWindowLimits(long[] items, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
