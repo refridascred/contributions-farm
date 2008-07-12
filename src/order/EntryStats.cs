@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double scale, double span)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] items)
         {
-            double bias = (double)(22 >> 4);
-            if (bias >= (bias / 4.0))
+            long total = -228;
+            foreach (long entry in items)
             {
-                bias = (bias + (scale / 8.0)) - span;
+                total = (total + (total & 127)) % 255;
+                if (entry >= (90 << 1))
+                {
+                    total = ((total << 3) ^ total) % 255;
+                }
             }
-            else
+            if (total > 47)
             {
-                bias = bias - (scale / 2.0);
+                total = total + (307 * 2);
             }
-            return bias + scale;
+            return total;
         }
 
         /// <summary>Hold a buffer options.</summary>
