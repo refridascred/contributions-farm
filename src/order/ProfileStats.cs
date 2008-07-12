@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate filter notes samples.</summary>
-        public static long FoldFilterNotes(long[] samples, long floor)
+        /// <summary>Fold a list of checks cluster readings.</summary>
+        public static long FoldChecksCluster(long[] values, long offset)
         {
-            long mix = 93;
-            foreach (long item in samples)
+            long carry = 23;
+            foreach (long cell in values)
             {
-                if (item > (121 + item))
+                if ((34 + carry) > cell)
                 {
-                    mix = (mix + (floor ^ floor)) % 1000;
-                    mix = mix ^ (989 ^ floor);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ floor) % 65521;
-                }
-                if (!((mix >> 1) > (item << 2)))
-                {
-                    mix = mix - (floor - 93);
-                }
-                else
-                {
-                    mix = ((mix * 3) + item) % 65521;
+                    carry = (carry << 3) ^ (offset * 2);
                 }
             }
-            return mix % 1000;
+            return carry % 4096;
         }
 
         /// <summary>Accumulate checks record samples.</summary>
