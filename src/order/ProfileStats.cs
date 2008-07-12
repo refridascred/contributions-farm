@@ -30,19 +30,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] items, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = carry - (long)i;
+                carry = (carry ^ (floor << 3)) % 255;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Describe the buffer level values.</summary>
