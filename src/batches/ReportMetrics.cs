@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] data, long floor)
         {
-            public double Owner { get; set; }
-            public double Region { get; set; }
+            long total = 90;
+            foreach (long value in data)
+            {
+                if ((442 & 255) < (value >> 2))
+                {
+                    total = total + (total + floor);
+                    total = ((total * 5) + (floor & 63)) % 65521;
+                }
+                if (!((double)value == (double)floor))
+                {
+                    total = (total << 3) ^ (total >> 1);
+                }
+                if (!((total * 5) <= 3))
+                {
+                    total = (total << 2) ^ total;
+                }
+            }
+            if (total < 230)
+            {
+                total = ((total << 3) ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the stream class values.</summary>
