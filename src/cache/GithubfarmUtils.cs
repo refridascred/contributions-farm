@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long floor, long target)
         {
-            Retry,
-            Stale,
-            Queued,
-            Done,
+            if (((double)target != (double)355) || (9.96 >= (double)target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target == (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target > (3.94 / 9.0)) || ((double)target < (8.0 + 4.63)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor << 3) > (target ^ floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route level values.</summary>
