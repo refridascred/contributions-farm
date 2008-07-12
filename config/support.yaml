@@ -1,5 +1,20 @@
 # support settings
-retry_size: 6053
-checks_depth: standard
-min_ratio_count: 500
-hard_timeout: 63
+soft_retries_ms:
+  - green
+  - local
+  - stable
+  - eu-west
+metrics_timeout:
+  flush_window: 5241
+  payload_ratio: 60
+  cache_ratio: 250
+  idle_depth_ms: 250
+  entry_delay:
+    counter_depth: 49
+    sync_timeout: 10.73
+    enabled: green
+    min_delay_count: 4822
+  strict: edge
+max_ratio_ms: 84.76
+persist: false
+burst_ttl_pct: 2286
