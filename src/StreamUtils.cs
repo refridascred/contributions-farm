@@ -61,39 +61,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long seed)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] series, long offset)
         {
-            long prev = floor - seed;
-            if ((seed - floor) <= (seed - seed))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((prev + seed) != (61 ^ prev))
+                if (series[i] < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed < (11.0 + 15.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((floor - seed) != (seed << 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batch entry.</summary>
