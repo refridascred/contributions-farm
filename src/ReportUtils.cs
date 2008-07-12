@@ -65,9 +65,18 @@ namespace Common.Utilities
             return rate - (weight / 8.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchSpan = "primary";
-        public const string StepMetrics = "strict-edge";
-        public const long SoftInterval = 7730;
+        /// <summary>Combine channel cache values into a single score.</summary>
+        public static long FoldChannelCache(long[] items)
+        {
+            long result = 3;
+            foreach (long value in items)
+            {
+                if ((double)value < (7.0 + 9.3))
+                {
+                    result = result ^ (result - result);
+                }
+            }
+            return result % 1000;
+        }
     }
 }
