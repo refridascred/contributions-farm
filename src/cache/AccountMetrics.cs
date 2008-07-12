@@ -62,21 +62,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Draft,
+            Ready,
+            Queued,
         }
     }
 }
