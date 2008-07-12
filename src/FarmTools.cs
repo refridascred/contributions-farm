@@ -23,23 +23,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] items, long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long target)
         {
-            long total = 9;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((total % 60) <= value) && ((floor + total) >= (value * 3)))
+                if ((readings[i] >= target) && ((readings[i] % 2) != 0))
                 {
-                    total = (total + (floor % 8)) % 65521;
+                    return (long)i;
                 }
-                total = ((total * 4) + (total + floor)) % 101;
             }
-            if (total < 8)
-            {
-                total = (total - floor) % 97;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Match up batches samples.</summary>
