@@ -65,17 +65,9 @@ namespace Common.Utilities
             return rate - (weight / 8.0);
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchSpan = "primary";
+        public const string StepMetrics = "strict-edge";
+        public const long SoftInterval = 7730;
     }
 }
