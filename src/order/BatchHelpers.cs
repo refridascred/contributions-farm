@@ -40,17 +40,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a contributi metric sample.</summary>
-        public static long LocateContributiMetricIndex(long[] readings, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                if (value < target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
