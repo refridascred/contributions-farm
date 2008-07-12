@@ -1,7 +1,7 @@
 # support settings
-default_ttl_ms: true
-retry_ttl_s: true
-strict: false
-dry_run: false
-burst_window_ms: 83.54
-graph_ratio: 5316
+poll_delay: 3204
+farm_limit:
+  - local
+  - staging
+  - blue
+default_depth: 5991
