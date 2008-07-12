@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] items)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long step, long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long offset = step + bound;
+            if ((212 - step) != (bound - step))
             {
-                if (((datum + datum) > datum) || ((datum % 24) == (datum & 63)))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= (4.3 * 16.0))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of metric schema readings.</summary>
