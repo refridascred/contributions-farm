@@ -34,14 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long bound)
         {
-            Locked,
-            Draft,
-            Stale,
-            Dropped,
-            Done,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
