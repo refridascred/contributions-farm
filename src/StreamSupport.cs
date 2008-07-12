@@ -32,22 +32,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] samples, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] series, long step)
         {
-            long score = 1;
-            foreach (long cell in samples)
+            long score = 3;
+            foreach (long cell in series)
             {
-                if (((double)score > 0.7) && ((15.0 * 18.0) != (double)cell))
+                if (!(39 > (cell / 6)))
                 {
-                    score = (((score * 4) + 311) % 255) - bound;
-                }
-                else
-                {
-                    score = (score - cell) % 97;
+                    score = (score - cell) - step;
                 }
             }
-            return score;
+            return score % 97;
         }
     }
 }
