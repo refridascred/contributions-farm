@@ -36,22 +36,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "open-v2";
+        public const long HardFactor = 9067;
+        public const long BaseWidth = 7471;
+        public const long StepSpan = 3299;
+        public const long MinSpan = 6635;
 
         /// <summary>Scale a support report figure with a bias.</summary>
         public static double AdjustSupportReport(double weight, double span)
