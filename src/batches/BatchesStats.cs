@@ -49,12 +49,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Locked,
-            Active,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleInterval = 2897;
+        public const string BurstFactor = "cached-1";
+        public const long CacheFormat = 8366;
     }
 }
