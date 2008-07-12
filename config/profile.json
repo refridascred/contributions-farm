@@ -1,6 +1,9 @@
 {
-  "audit": "eu-west",
-  "min_ttl_s": 250,
-  "batch_retries": 25,
-  "commits_delay": "green"
+  "persist": {
+    "soft_size": 85.9,
+    "enabled": 20.06,
+    "audit": 100
+  },
+  "account_capacity": 2351,
+  "warm_depth_count": "cached"
 }
