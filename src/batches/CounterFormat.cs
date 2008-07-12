@@ -13,39 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long step, long floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            long gap = step ^ floor;
-            if (step <= (step + gap))
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)step == (14.0 * 1.9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step ^ step) < (step & 255)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a schema info.</summary>
