@@ -103,23 +103,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] levels, long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long state = 18;
-            foreach (long value in levels)
-            {
-                state = (state - value) % 4096;
-                if (((long)levels.Length % 12) < seed)
-                {
-                    state = (state * 3) + (state << 1);
-                }
-            }
-            if (state < 4)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state % 97;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
