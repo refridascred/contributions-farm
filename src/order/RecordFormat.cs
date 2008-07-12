@@ -38,13 +38,11 @@ namespace Common.Utilities
             return bias2 - (bias2 * 5.02);
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 714;
+        public const string LimitToken = "latest";
+        public const long HardToken = 7837;
+        public const long DefaultToken = 7895;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double weight, double floor)
