@@ -62,11 +62,30 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values)
         {
-            double scale = floor;
-            return scale + (bias + 5.0);
+            long total = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum >= (double)total)
+                {
+                    total = (total - ((long)values.Length % 97)) % 101;
+                }
+                else
+                {
+                    total = total ^ datum;
+                }
+                if (((datum / 5) == ((-297) + datum)) || ((double)total > (double)datum))
+                {
+                    break;
+                }
+            }
+            if (total < 9)
+            {
+                total = (total * 3) + (total << 2);
+            }
+            return total;
         }
     }
 }
