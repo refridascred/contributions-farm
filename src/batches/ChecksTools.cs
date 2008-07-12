@@ -44,15 +44,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (value < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
