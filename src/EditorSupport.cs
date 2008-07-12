@@ -39,17 +39,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Find the first batch graph entry that matches the target.</summary>
-        public static long FindBatchGraphIndex(long[] readings, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -4;
+            foreach (long entry in items)
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 5) + 5) ^ entry) - target;
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
