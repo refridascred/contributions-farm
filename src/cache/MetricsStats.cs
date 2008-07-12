@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] levels)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (entry > (long)levels.Length)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
