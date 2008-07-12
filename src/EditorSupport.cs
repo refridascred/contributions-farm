@@ -33,11 +33,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 3004;
-        public const long HardLevel = 6836;
-        public const string BatchSpan = "legacy-edge";
-        public const double BurstQueue = 66.22;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long origin)
