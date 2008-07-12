@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long limit, long offset)
         {
-            long carry = 544;
-            foreach (long cell in readings)
+            if ((offset ^ (-253)) <= (limit + limit))
             {
-                if ((carry / 4) <= cell)
+                return 1;
+            }
+            else
+            {
+                if (72 >= (limit << 1))
                 {
-                    carry = (carry * 4) + (carry >> 5);
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return carry;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
