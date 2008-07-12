@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] series)
+        /// <summary>Classify a cache entry pair into a bucket.</summary>
+        public static long ClassifyCacheEntry(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            if (origin <= limit)
             {
-                if ((4.1 + 5.38) == (double)(long)series.Length)
+                return 3;
+            }
+            else
+            {
+                if ((922 - limit) < (origin + limit))
                 {
-                    matches = (matches + 3) ^ item;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin > (8.38 + 2.0)) && ((0.7 - 5.5) > (double)origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next route value.</summary>
