@@ -15,12 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] readings, long floor)
         {
-            public double Owner { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long mix = 798;
+            foreach (long datum in readings)
+            {
+                mix = ((mix - (mix ^ floor)) % 101) - datum;
+            }
+            if (mix > 604)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Match up session samples.</summary>
