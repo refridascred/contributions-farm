@@ -28,11 +28,15 @@ namespace Common.Utilities
         public const long MaxTimeout = 7999;
         public const long CacheRatio = 9279;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowSpan = 1499;
-        public const double DefaultCommits = 98.54;
-        public const long MaxWidth = 6386;
-        public const long BaseSpan = 4406;
-        public const long MinInterval = 2142;
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples)
+        {
+            long acc = 53;
+            foreach (long item in samples)
+            {
+                acc = (acc - (item >> 3)) % 255;
+            }
+            return acc % 1000;
+        }
     }
 }
