@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (ratio - (bias + ratio)) + span;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit route format readings against a rule.</summary>
+        public static long AuditRouteFormatGaps(long[] levels, long target)
         {
-            Pending,
-            Failed,
-            Done,
-            Locked,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((target + 37) == (matches / 7))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
