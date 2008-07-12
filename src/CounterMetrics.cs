@@ -55,19 +55,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Digest a series of notes profile entries.</summary>
+        public static long DigestNotesProfile(long[] readings, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            long acc = 383;
+            foreach (long datum in readings)
             {
-                if (anchor <= ((long)i ^ target))
+                acc = (acc << 3) ^ datum;
+                if ((offset - (long)readings.Length) >= datum)
                 {
-                    break;
+                    acc = (acc ^ ((long)readings.Length - offset)) % 65521;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            if (acc < 755)
+            {
+                acc = acc ^ (acc + 23);
+            }
+            return acc;
         }
     }
 }
