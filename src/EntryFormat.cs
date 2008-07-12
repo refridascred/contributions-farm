@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Validate batches cache readings against a bound.</summary>
-        public static bool ValidateBatchesCacheBounds(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxLevel = 6983;
+        public const string DefaultAlready = "standard";
+        public const string BaseWidth = "alpha-1";
+        public const long MaxTimeout = 6960;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
