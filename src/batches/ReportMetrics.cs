@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
+            double weight = ratio;
+            return (weight + (6.0 + weight)) + offset;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
