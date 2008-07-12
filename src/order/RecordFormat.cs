@@ -44,19 +44,21 @@ namespace Common.Utilities
         public const long HardToken = 7837;
         public const long DefaultToken = 7895;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double weight, double floor)
+        /// <summary>Compare every pair of report support readings.</summary>
+        public static long OverlapReportSupportCount(long[] values)
         {
-            double rate = (double)(1 >> 4);
-            if (rate <= weight)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate + (weight * 1.86)) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (weight - weight)) + (double)(long)i;
-            }
-            return rate + (rate / 8.0);
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
