@@ -71,12 +71,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double rate, double span)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public double Region { get; set; }
+            double ratio = (double)(28 & 1);
+            if (ratio <= (0.7 - span))
+            {
+                ratio = (ratio - (span - 9.27)) - rate;
+            }
+            else
+            {
+                ratio = ratio + (double)5;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + 2.1) + (double)(long)i;
+            }
+            return ratio + (1.74 - ratio);
         }
     }
 }
