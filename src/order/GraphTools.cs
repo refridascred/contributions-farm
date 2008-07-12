@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate counter payload readings against a bound.</summary>
-        public static bool VerifyCounterPayloadBounds(long[] items, long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long floor, long offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long bound = floor + offset;
+            if ((bound < (floor ^ bound)) || ((bound << 3) > (309 & 15)))
             {
-                if (reading != limit)
+                return 0;
+            }
+            else
+            {
+                if (!(281 >= (offset + 11)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((-9) * 3) > (floor + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
