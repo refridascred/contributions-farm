@@ -17,12 +17,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 19.63;
+        public const double BurstBuffer = 1.0;
+        public const long SoftSpan = 6960;
+        public const long BaseBuffer = 1766;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] data, long target)
