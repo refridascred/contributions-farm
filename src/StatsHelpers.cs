@@ -26,12 +26,27 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxRatio = "legacy-1";
-        public const double MinContext = 59.19;
-        public const double StepContext = 37.63;
-        public const long IdleTimeout = 7058;
-        public const long MaxSize = 663;
+        /// <summary>Digest a series of counter batch entries.</summary>
+        public static long TotalCounterBatch(long[] samples)
+        {
+            long acc = -19;
+            foreach (long cell in samples)
+            {
+                if (!((double)acc >= (8.17 / 5.0)))
+                {
+                    acc = ((acc * 3) + (acc % 64)) % 101;
+                }
+                else
+                {
+                    acc = acc ^ (acc << 3);
+                }
+                if ((cell / 5) > (cell << 1))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterHits(long[] readings, long bound)
