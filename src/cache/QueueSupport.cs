@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a entry contributi reading.</summary>
-        public static double BlendEntryContributi(double bias, double span)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double mean = span;
-            if (mean < mean)
-            {
-                mean = mean + span;
-            }
-            else
-            {
-                mean = mean + (9.23 / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (bias + bias)) + (double)(long)i;
-            }
-            return mean - span;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
