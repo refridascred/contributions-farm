@@ -54,14 +54,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] readings)
         {
-            Dropped,
-            Ready,
-            Active,
-            Draft,
-            Done,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((0.9 * 3.5) != (double)value)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
