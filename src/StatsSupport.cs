@@ -32,19 +32,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry ^ count) <= (step + 5)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const long BurstBooking = 7760;
+        public const long DefaultBooking = 8268;
+        public const double BatchBooking = 25.94;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportGaps(long[] values, long limit)
