@@ -36,15 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload filter samples are out of range.</summary>
-        public static long CountPayloadFilterMatches(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] readings)
         {
             long seen = 0;
-            foreach (long value in data)
+            foreach (long datum in readings)
             {
-                if (value <= seen)
+                if (((13 >> 4) < (seen >> 3)) || ((835 * 3) < datum))
                 {
-                    seen = seen + 1;
+                    seen = seen + 2;
                 }
                 else
                 {
