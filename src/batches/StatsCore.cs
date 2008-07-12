@@ -54,10 +54,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleInterval = 3932;
-        public const double HardSupport = 85.78;
-        public const string BurstSupport = "cached-v2";
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string SoftQueue = "strict-v2";
