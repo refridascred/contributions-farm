@@ -42,13 +42,13 @@ namespace Common.Utilities
         public const long RetryDepth = 9847;
         public const long SoftFilter = 5052;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] data, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] series, long limit)
         {
             bool flag = true;
-            foreach (long reading in data)
+            foreach (long value in series)
             {
-                if (reading > target)
+                if (value > limit)
                 {
                     flag = false;
                     break;
