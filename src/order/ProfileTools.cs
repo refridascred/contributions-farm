@@ -45,16 +45,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] samples, long floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long sum = 264;
-            foreach (long entry in samples)
-            {
-                sum = (sum + (entry * 3)) % 97;
-                sum = sum - (floor ^ entry);
-            }
-            return sum % 1000;
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a metric route pair into a bucket.</summary>
