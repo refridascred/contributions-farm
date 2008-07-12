@@ -54,15 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token githubfarm value from a seed.</summary>
-        public static long SeriesTokenGithubfarm(long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long carry = 5;
+            foreach (long cell in levels)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((carry - cell) <= (carry << 3))
+                {
+                    carry = (carry * 5) + (cell % 16);
+                }
             }
-            return state;
+            if (carry > 558)
+            {
+                carry = carry - (carry & 127);
+            }
+            return carry;
         }
     }
 }
