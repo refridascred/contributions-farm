@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)target == (3.67 + 4.0))
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((4.0 + 16.0) < (double)target)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a buffer commits sample.</summary>
