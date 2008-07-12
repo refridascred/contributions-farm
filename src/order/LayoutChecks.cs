@@ -52,18 +52,12 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] levels)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count >> 1) >= count)
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Rank order buffer input into a small class.</summary>
