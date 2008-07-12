@@ -21,11 +21,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] data, long offset)
         {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
