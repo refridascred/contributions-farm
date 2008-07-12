@@ -1,6 +1,9 @@
 # support settings
-session_limit: 500
-checks_depth: 42.79
-max_capacity:
-  - eu-west
-  - latest
+batch_timeout_pct: legacy
+default_ratio_count: stable
+poll_timeout_count: 52.89
+retry_interval:
+  - 102
+  - 465
+  - 349
+  - 219
