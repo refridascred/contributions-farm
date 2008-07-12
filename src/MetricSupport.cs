@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] series, long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(step >= (701 + hits)) || !((979 - hits) > ((-647) / 7)))
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
                 {
-                    hits = (hits + 3) + item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
