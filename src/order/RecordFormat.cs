@@ -39,17 +39,24 @@ namespace Common.Utilities
         public const double WindowBudget = 26.88;
         public const long MaxQueue = 189;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] levels, long seed)
+        /// <summary>Fold a list of session payload readings.</summary>
+        public static long WeighSessionPayload(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -719;
+            foreach (long entry in items)
             {
-                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
+                acc = (acc ^ (7 % 8)) % 97;
+                acc = (acc - (acc ^ 4)) % 4096;
+                if (((double)acc > (3.0 / 3.0)) || ((acc * 3) <= (entry - entry)))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + (acc - entry)) % 4096;
                 }
             }
-            return -1;
+            if (acc < 57)
+            {
+                acc = (acc << 2) ^ (260 + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
