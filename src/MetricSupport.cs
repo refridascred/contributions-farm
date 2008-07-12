@@ -32,12 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            Draft,
+            Active,
+            Done,
+            Pending,
         }
     }
 }
