@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] levels, long offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
