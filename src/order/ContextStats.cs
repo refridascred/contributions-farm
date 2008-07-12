@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            Idle,
+            Locked,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
