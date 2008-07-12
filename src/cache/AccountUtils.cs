@@ -14,11 +14,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 9597;
-        public const long MinWidth = 3725;
-        public const long SoftEntry = 9489;
-        public const string HardWidth = "stable";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardDepth = 1667;
+        public const double RetryCluster = 20.38;
+        public const double BurstInterval = 82.92;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsBounds(long[] values, long limit)
