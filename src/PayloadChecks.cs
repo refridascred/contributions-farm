@@ -20,13 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Accumulate order graph samples.</summary>
+        public static long ScoreOrderGraph(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            long total = 6;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) < (long)series.Length)
+                {
+                    total = total + ((long)series.Length + datum);
+                }
+            }
+            if (total < 778)
+            {
+                total = (total ^ (total * 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up tools order samples.</summary>
