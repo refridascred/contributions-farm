@@ -25,13 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Grade a counter cluster value against two limits.</summary>
+        public static long BucketCounterCluster(long limit, long floor)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            if (!(floor >= (floor * 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor < 755)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
