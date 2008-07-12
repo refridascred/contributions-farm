@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const double IdleWidth = 73.53;
         public const long LimitSpan = 5529;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
