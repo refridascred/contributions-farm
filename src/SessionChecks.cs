@@ -32,21 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Count the format graph entries that pass the check.</summary>
+        public static long CountFormatGraphMatches(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)seen <= 7.6) && (((0 << 2) > (bound << 2)) && ((78 >> 3) <= bound)))
                 {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - datum;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Project the next buffer value.</summary>
