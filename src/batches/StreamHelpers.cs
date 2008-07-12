@@ -27,12 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] levels)
         {
-            Stale,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)matches >= (1.7 + 0.16))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a order header.</summary>
