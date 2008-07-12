@@ -44,19 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] readings, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (sample >= bound)
+                if (!((16.0 + 2.87) < (double)hits))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
