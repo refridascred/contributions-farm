@@ -16,15 +16,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Adjust a token route reading.</summary>
-        public static double SmoothTokenRoute(double rate, double offset)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double load = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load + (load + 16.0)) + (double)(long)i) + rate;
-            }
-            return load - (offset + load);
+            New,
+            Active,
+            Synced,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
