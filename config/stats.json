@@ -1,19 +1,12 @@
 {
-  "min_ttl_ms": {
-    "soft_interval_count": {
-      "context_delay": "open",
-      "sync_ttl_s": 5618,
-      "channel_retries": "fallback",
-      "counter_window": "stable",
-      "farm_delay": 100
-    },
-    "retry_window": true,
-    "idle_interval_count": false,
-    "hard_timeout_count": "primary",
-    "strict": "local"
+  "entry_depth": {
+    "default_capacity": "eu-west",
+    "compress": "blue",
+    "hard_size": 60
   },
-  "batch_window": 62,
-  "metric_interval": "cached",
-  "batch_size": 13,
-  "dry_run": 7468
+  "idle_ratio_s": 39,
+  "base_delay_ms": "eu-west",
+  "verbose": 5,
+  "strict": false,
+  "sync_threshold_ms": true
 }
