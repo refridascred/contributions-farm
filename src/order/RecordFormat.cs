@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] levels, long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((((double)41 == (double)value) || ((count >> 1) == (value - count))) && (66 <= value))
+                if (item < floor)
                 {
-                    count = (count + 2) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the window mode values.</summary>
