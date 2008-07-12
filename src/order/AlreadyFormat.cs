@@ -27,12 +27,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 1263;
-        public const string CacheDepth = "strict";
-        public const long WindowLevel = 7467;
-        public const long StepRecord = 1468;
-        public const long IdleRecord = 7591;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxRatio = 4739;
