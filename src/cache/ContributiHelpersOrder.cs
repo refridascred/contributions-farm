@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((4 & 7) >= datum) && ((seen - datum) < 89)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetryWidth = "stable-1";
+        public const double MinLevel = 34.57;
+        public const long CacheSupport = 3833;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long MatchProfileCount(long[] samples)
