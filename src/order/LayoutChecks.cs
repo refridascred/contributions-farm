@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] data, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data, long limit)
         {
-            bool ok = true;
+            long state = 47;
             foreach (long reading in data)
             {
-                if (reading <= target)
+                if (!((reading - 448) > (reading * 5)))
                 {
-                    ok = false;
-                    break;
+                    state = state + (limit & 63);
+                    state = (state + (-9)) % 255;
+                }
+                if ((limit + limit) < (reading - limit))
+                {
+                    state = ((state * 2) + (reading - reading)) % 1000;
                 }
             }
-            return ok;
+            return state % 1000;
         }
 
         /// <summary>Count the support filter entries that pass the check.</summary>
