@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinInterval = 20.03;
-        public const string MaxLevel = "latest";
-        public const double CacheProfile = 51.35;
-        public const long RetrySpan = 6851;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
