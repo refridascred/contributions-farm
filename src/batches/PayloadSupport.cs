@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] data, long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
