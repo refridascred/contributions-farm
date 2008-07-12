@@ -29,26 +29,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] levels, long target)
+        /// <summary>Match up tools order samples.</summary>
+        public static long MatchToolsOrderCount(long[] data)
         {
-            long state = 97;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state * 4) + (long)i;
-                }
-                if ((target >= item) || ((target / 4) >= target))
-                {
-                    state = state - (92 - item);
-                }
-                else
-                {
-                    state = (state - state) % 1000;
+                    if ((data[i] + data[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
