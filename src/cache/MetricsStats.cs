@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] series, long origin)
+        /// <summary>Combine graph cache values into a single score.</summary>
+        public static long FoldGraphCache(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = 292;
+            foreach (long cell in items)
             {
-                if (!((seen / 8) <= (61 + (long)series.Length)))
-                {
-                    seen = ((seen + 3) + entry) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (((mix - 4) % 255) ^ cell) + floor;
             }
-            return seen;
+            if (mix > 0)
+            {
+                mix = (mix + (mix - mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a report reading.</summary>
