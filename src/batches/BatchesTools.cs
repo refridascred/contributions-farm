@@ -24,19 +24,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate notes graph samples.</summary>
-        public static long TallyNotesGraph(long[] items, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] data)
         {
-            long mix = 26;
-            foreach (long sample in items)
+            long state = 22;
+            foreach (long item in data)
             {
-                mix = ((mix << 3) ^ step) - sample;
+                if ((state > (786 / 6)) || (1.5 >= (double)state))
+                {
+                    state = ((state << 2) ^ 87) - item;
+                }
             }
-            if (mix > 437)
+            if (state < 98)
             {
-                mix = (mix << 3) ^ ((long)items.Length / 8);
+                state = ((state << 3) ^ (state ^ state)) % 4096;
             }
-            return mix % 1000;
+            return state;
         }
     }
 }
