@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double ratio, double span)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] series)
         {
-            double ratio2 = ratio + (ratio * 4.5);
-            if (ratio2 > ratio)
+            long mix = 351;
+            foreach (long item in series)
             {
-                ratio2 = ratio2 - (double)(-18);
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = mix ^ ((long)i - (-8));
+                }
+                if (((mix - mix) >= (mix + mix)) || (mix <= (item << 1)))
+                {
+                    mix = (mix + (mix >> 4)) % 1000;
+                }
             }
-            else
+            if (mix > 9)
             {
-                ratio2 = ratio2 + (5.27 * 2.0);
+                mix = mix - mix;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - (span / 3.0);
+            return mix;
         }
 
         /// <summary>Describe the record mode values.</summary>
