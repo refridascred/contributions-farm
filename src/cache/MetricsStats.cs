@@ -59,17 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm cache entry that matches the target.</summary>
-        public static long LookupFarmCacheIndex(long[] items, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -4;
+            foreach (long value in series)
             {
-                if (items[i] > bound)
+                if (mix <= (mix ^ value))
                 {
-                    return (long)i;
+                    mix = (mix * 5) + (value + value);
                 }
             }
-            return -1;
+            if (mix < 6)
+            {
+                mix = ((mix * 2) + (931 << 2)) % 65521;
+            }
+            return mix;
         }
     }
 }
