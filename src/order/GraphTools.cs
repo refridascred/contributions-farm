@@ -65,19 +65,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Project the next metric entry value.</summary>
-        public static double SmoothMetricEntry(double bias, double bias2)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double rate, double offset)
         {
-            double drift = (double)(67 ^ 9);
-            if (drift > (bias2 * 4.5))
+            double mean = (double)(353 + 474);
+            if (mean > offset)
             {
-                drift = drift + drift;
+                mean = mean + (offset - rate);
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift + (double)954) + (double)(long)i;
+                mean = mean + mean;
             }
-            return drift - bias;
+            return mean + (offset / 7.0);
         }
     }
 }
