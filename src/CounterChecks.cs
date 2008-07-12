@@ -45,18 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "legacy-1";
+        public const string BaseWidth = "legacy-v2";
+        public const string CacheTimeout = "standard-edge";
+        public const long BurstOrder = 2839;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long StepChecks(long bound)
