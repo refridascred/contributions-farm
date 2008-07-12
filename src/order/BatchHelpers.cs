@@ -26,13 +26,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            long mix = 332;
+            foreach (long item in samples)
+            {
+                if ((item * 3) == (item / 4))
+                {
+                    mix = mix ^ (item - mix);
+                }
+            }
+            return mix % 97;
         }
     }
 }
