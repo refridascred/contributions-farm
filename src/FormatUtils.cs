@@ -34,18 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] levels)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally / 4) <= reading)
+                if ((items[i] < limit) && ((items[i] % 3) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the batch mode values.</summary>
