@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] samples, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((double)reading != (3.51 * 13.0))
+                {
+                    hits = (hits + 2) + limit;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Classify a batch token pair into a bucket.</summary>
