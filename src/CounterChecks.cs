@@ -72,9 +72,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 88.38;
-        public const double BurstSchema = 47.66;
-        public const double CacheScore = 48.99;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
