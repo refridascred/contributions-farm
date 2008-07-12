@@ -82,19 +82,12 @@ namespace Common.Utilities
         public const long StepSpan = 3299;
         public const long MinSpan = 6635;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] values, long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the report mode values.</summary>
