@@ -49,12 +49,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            Done,
-            Pending,
-            Stale,
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)limit >= (9.12 + 8.0))
+                {
+                    acc = acc + limit;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc - acc)) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
