@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultBudget = 34.04;
-        public const long IdleNotes = 4049;
-        public const string BatchInterval = "cached";
-        public const long BurstNotes = 6985;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Dropped,
+            Active,
+            Queued,
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
