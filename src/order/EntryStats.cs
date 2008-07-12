@@ -14,22 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] levels)
+        /// <summary>Measure how many layout filter samples are out of range.</summary>
+        public static long AuditLayoutFilterHits(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (((((-9) ^ entry) > (entry - entry)) && ((20.0 * 8.88) >= (double)entry)) && ((4.5 * 7.5) != (double)count))
+                if (value < (17 % 100))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
