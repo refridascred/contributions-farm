@@ -1,6 +1,6 @@
 {
-  "burst_limit": ["standard", "green", "latest"],
-  "cache_interval_count": "standard",
-  "enabled": ["primary", "open"],
-  "channel_window": 24.72
+  "min_depth_count": 27.68,
+  "persist": 27.2,
+  "poll_interval_pct": "cached",
+  "batch_size_s": 58
 }
