@@ -1,21 +1,14 @@
 # githubfarm settings
-min_interval_count:
-  - 320
-  - 97
-  - 21
-  - 55
-burst_depth_count:
-  - 139
-  - 415
-  - 276
-base_retries_pct: 89.35
-cache_interval: 52
-window_limit:
-  - 39
-  - 210
-  - 200
-  - 242
-strict:
-  - strict
+verbose:
+  metrics_interval: 30
+  default_window_pct:
+    - open
+    - fallback
+    - standard
+  hard_depth: 30
+metric_window:
+  - primary
+  - local
+  - fallback
   - stable
-  - cached
+batch_size: true
