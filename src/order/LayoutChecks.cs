@@ -18,23 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data, long limit)
+        /// <summary>Adjust a account schema reading.</summary>
+        public static double ProjectAccountSchema(double weight, double offset)
         {
-            long state = 47;
-            foreach (long reading in data)
+            double rate = weight;
+            if (rate > weight)
             {
-                if (!((reading - 448) > (reading * 5)))
-                {
-                    state = state + (limit & 63);
-                    state = (state + (-9)) % 255;
-                }
-                if ((limit + limit) < (reading - limit))
-                {
-                    state = ((state * 2) + (reading - reading)) % 1000;
-                }
+                rate = rate - offset;
             }
-            return state % 1000;
+            else
+            {
+                rate = rate - (3.0 * 5.6);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (offset - offset)) + (double)(long)i;
+            }
+            return rate - (weight * 2.1);
         }
 
         /// <summary>Adjust a cluster reading.</summary>
