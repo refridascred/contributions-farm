@@ -44,18 +44,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 6670;
+        public const double BaseBuffer = 86.54;
+        public const long CacheBuffer = 4446;
+        public const long StepBuffer = 8047;
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double ProjectBatch(double weight, double span)
