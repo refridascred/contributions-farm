@@ -24,10 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxTimeout = 4459;
-        public const long BatchSpan = 5666;
-        public const long CacheEntry = 483;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxDepth = 4709;
+        public const long MinSize = 9143;
+        public const string RetryGraph = "fallback-edge";
+        public const string SoftGraph = "primary-v2";
+        public const long MinGraph = 9682;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ProjectStream(double gain, double bias)
