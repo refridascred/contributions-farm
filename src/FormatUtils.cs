@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double bias, double span)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] values, long floor)
         {
-            double ratio = 1.0 - 2.9;
-            return (ratio - (bias + ratio)) + span;
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit route format readings against a rule.</summary>
