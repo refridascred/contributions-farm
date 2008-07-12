@@ -1,6 +1,6 @@
 {
-  "layout_retries": 292,
-  "cache_timeout": 86.49,
-  "min_ttl": 6341,
-  "already_capacity": "latest"
+  "order_threshold": 47,
+  "base_limit_s": [40, 311],
+  "session_delay": 20,
+  "retry_window_ms": ["open", "standard", "edge"]
 }
