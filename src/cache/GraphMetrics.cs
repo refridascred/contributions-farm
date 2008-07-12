@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a route farm value against two limits.</summary>
-        public static long BucketRouteFarm(long floor, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] readings)
         {
-            long diff = floor ^ offset;
-            if ((double)floor < (8.0 * 7.82))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset > (offset - 897))
+                if ((tally * 2) != (entry % 97))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset ^ diff) >= (diff + 511))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank context input into a small class.</summary>
