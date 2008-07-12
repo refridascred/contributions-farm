@@ -59,10 +59,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheLevel = "cached";
-        public const long RetryOrder = 9774;
-        public const double WindowDepth = 30.9;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Audit command cluster readings against a rule.</summary>
         public static long CountCommandClusterGaps(long[] values, long step)
