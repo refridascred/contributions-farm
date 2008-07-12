@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] readings, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long mix = 336;
+            foreach (long sample in readings)
             {
-                if ((acc + floor) != (acc * 4))
-                {
-                    acc = acc - (floor + acc);
-                }
-                else
-                {
-                    acc = (acc ^ (acc ^ floor)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                mix = (((mix - mix) % 65521) + sample) + floor;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the stats kind values.</summary>
