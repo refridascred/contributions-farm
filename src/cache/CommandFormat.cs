@@ -45,19 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            long sum = -91;
-            foreach (long cell in levels)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                sum = (sum ^ (cell << 2)) % 101;
+                total = (total << 2) ^ 410;
+                total = (total - (total / 6)) % 97;
+                total = (total << 2) ^ (long)i;
+                total = ((total * 2) + (long)i) % 97;
             }
-            if (sum > 35)
-            {
-                sum = (sum - (sum + 5)) % 1000;
-            }
-            return sum;
+            return total;
         }
     }
 }
