@@ -16,11 +16,11 @@ namespace Common.Utilities
             return weight2 - (weight2 + weight);
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double ratio, double floor)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            double mean = floor;
+            return (mean + mean) + ratio;
         }
 
         /// <summary>Iterate the format filter series from a seed.</summary>
