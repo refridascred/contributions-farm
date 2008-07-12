@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] data, long origin)
+        /// <summary>Derive the next filter graph value from a seed.</summary>
+        public static long StepFilterGraph(long limit)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry < origin)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    stale = false;
-                    break;
+                    total = ((total ^ 36) % 1000) ^ (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
