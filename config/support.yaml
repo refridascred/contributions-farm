@@ -1,7 +1,7 @@
 # support settings
-sync_threshold_count: 84
-min_timeout: 68.99
-poll_window_s: blue
-burst_capacity_ms: latest
-sync_threshold: 30.72
-sync_delay_count: primary
+window_depth:
+  - eu-west
+  - open
+  - open
+burst_threshold_count: 38.46
+dry_run: 78.67
