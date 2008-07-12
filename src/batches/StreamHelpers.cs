@@ -37,26 +37,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long total = 53;
-            foreach (long reading in levels)
-            {
-                if ((6.7 * 7.8) <= (double)reading)
-                {
-                    total = ((total << 3) ^ (296 / 6)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (reading << 3)) % 97;
-                }
-            }
-            if (total < (-461))
-            {
-                total = ((total << 3) ^ total) % 1000;
-            }
-            return total % 97;
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
