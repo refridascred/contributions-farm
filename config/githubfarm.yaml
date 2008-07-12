@@ -1,5 +1,7 @@
 # githubfarm settings
-min_threshold_count: 58
-batch_interval_ms: open
-warm_limit: open
-idle_ratio_ms: 36
+max_interval_count: edge
+soft_limit_pct: true
+verbose:
+  flush_interval_ms: green
+  dry_run: false
+  sync_retries_count: true
