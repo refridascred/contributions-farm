@@ -34,13 +34,31 @@ namespace Common.Utilities
         public const long BaseFormat = 2883;
         public const long MaxFormat = 5858;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long origin, long offset)
         {
-            Done,
-            Failed,
-            Pending,
-            Dropped,
+            if ((12.0 * 5.0) == (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((9.92 + 9.9) >= (double)origin) && ((double)offset <= (5.7 + 6.3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin % 64) < origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
