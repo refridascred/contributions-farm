@@ -40,19 +40,13 @@ namespace Common.Utilities
         public const long DefaultWidth = 6340;
         public const long DefaultFarm = 7314;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
