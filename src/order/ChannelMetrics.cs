@@ -25,21 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Idle,
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a batch summary.</summary>
