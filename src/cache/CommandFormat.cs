@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseSpan = "stable-1";
-        public const long MaxRecord = 6898;
-        public const string DefaultScore = "strict-1";
-        public const string MinSpan = "local-1";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ScaleOrder(double gain, double bias)
