@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double ratio, double floor)
-        {
-            double weight = 2.9 / 2.0;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + (double)(long)i) + ratio) - floor;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstMetric = "latest-v2";
+        public const long RetryMetric = 4890;
+        public const string MaxFactor = "alpha-v2";
+        public const double StepDepth = 13.37;
+        public const double WindowMetric = 79.19;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long MatchSupportCount(long[] values)
