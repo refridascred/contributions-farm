@@ -18,13 +18,11 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 8284;
         public const long BaseGithubfarm = 2627;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 2549;
+        public const long BurstLevel = 8562;
+        public const long SoftDepth = 8080;
+        public const string WindowCount = "latest";
+        public const double WindowScore = 17.88;
     }
 }
