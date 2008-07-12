@@ -14,26 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long carry = -3;
-            foreach (long sample in samples)
-            {
-                if (sample <= carry)
-                {
-                    carry = (carry - carry) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ (59 << 2)) % 1000;
-                }
-            }
-            if (carry < 1)
-            {
-                carry = (carry - carry) % 97;
-            }
-            return carry;
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
