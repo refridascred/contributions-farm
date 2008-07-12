@@ -46,20 +46,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardFactor = "open-1";
+        public const long WindowCluster = 4150;
+        public const long BurstCluster = 9125;
 
         /// <summary>Digest a series of account contributi entries.</summary>
         public static long WeighAccountContributi(long[] items, long step)
