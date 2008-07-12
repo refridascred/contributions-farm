@@ -46,13 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long step, long floor)
         {
-            New,
-            Ready,
-            Queued,
-            Draft,
+            if ((floor >> 4) < 170)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step / 9) <= (floor + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(step >= (floor << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
