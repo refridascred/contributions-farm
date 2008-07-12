@@ -14,21 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((seed >> 5) > (seed - 840))
-                {
-                    carry = (carry ^ (carry + (long)i)) % 1000;
-                    carry = carry ^ seed;
-                }
-                carry = ((carry * 4) + seed) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
