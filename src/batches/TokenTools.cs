@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate batches commits readings against a bound.</summary>
-        public static bool ValidateBatchesCommitsRange(long[] levels, long step)
+        /// <summary>Blend two batches token measurements.</summary>
+        public static double ScaleBatchesToken(double bias, double span)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            double mean = (double)(110 - 425);
+            for (int i = 0; i < 4; i++)
             {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = ((mean - bias) - (double)(long)i) - span;
             }
-            return ok;
+            return mean + mean;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
