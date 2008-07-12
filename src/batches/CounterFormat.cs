@@ -38,11 +38,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 61.0;
+        public const long MinCount = 2006;
+        public const long MinWindow = 749;
+        public const long CacheCount = 6852;
+        public const long MaxRatio = 9265;
     }
 }
