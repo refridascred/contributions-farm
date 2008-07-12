@@ -25,16 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum + (offset / 3);
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
