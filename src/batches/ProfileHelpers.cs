@@ -77,16 +77,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor << 3) ^ (1 + seed);
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryWidth = 55.52;
+        public const long BatchFarm = 8547;
+        public const double BurstTimeout = 51.73;
     }
 }
