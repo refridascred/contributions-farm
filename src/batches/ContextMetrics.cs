@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] levels, long seed)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            long acc = 5;
-            foreach (long entry in levels)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                acc = (((acc * 3) + (entry - acc)) % 4096) - seed;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
