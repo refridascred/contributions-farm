@@ -46,22 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] levels, long seed)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (5.4 > (double)matches)
-                {
-                    matches = ((matches + 2) ^ cell) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
