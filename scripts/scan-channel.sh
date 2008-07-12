@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy staging fallback; do
+CHANNEL_LIMIT=148
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in staging blue edge cached; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
