@@ -59,12 +59,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit command cluster readings against a rule.</summary>
