@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] levels)
         {
-            long sum = 41;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (value >= (sum * 5))
+                if (296 < (reading - reading))
                 {
-                    sum = (sum + (value - sum)) % 4096;
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
