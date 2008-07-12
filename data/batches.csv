@@ -1,8 +1,8 @@
-id,state,region
-1,staging,74.56
-2,10.58,primary
-3,stable,6.78
-4,576,eu-west
-5,19.05,435
-6,edge,90.41
-7,primary,62.73
+id,level,label,count
+1,84.71,12.12,535
+2,26,492,latest
+3,442,local,green
+4,legacy,2.87,eu-west
+5,847,44.2,625
+6,167,15,26.4
+7,716,84.74,953
