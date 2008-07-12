@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((9.45 + 4.73) > (double)offset) && ((2 + sum) == (offset % 16)))
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum + (offset ^ offset)) % 65521;
                 }
+                if ((sum - 8) <= (73 + sum))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of queue layout readings.</summary>
