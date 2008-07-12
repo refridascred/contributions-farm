@@ -1,10 +1,7 @@
 # githubfarm settings
-compress: 9227
-account_capacity:
-  - primary
-  - green
-  - latest
-hard_limit_pct: 61.9
-default_size: 16.22
-report_threshold: true
-graph_limit: blue
+default_size: 3884
+readonly: 1523
+layout_window:
+  persist: stable
+  max_timeout_ms: false
+  default_ttl_ms: 9.47
