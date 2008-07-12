@@ -26,10 +26,15 @@ namespace Common.Utilities
         public const long MaxFormat = 3962;
         public const long DefaultFormat = 5527;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultWidth = "open-v2";
-        public const string SoftSpan = "strict-v2";
-        public const long StepCount = 5181;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Idle,
+            Ready,
+            Locked,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
