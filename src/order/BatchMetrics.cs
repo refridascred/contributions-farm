@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double weight, double floor)
+        /// <summary>Accumulate token support samples.</summary>
+        public static long TallyTokenSupport(long[] items)
         {
-            double ratio = floor - (weight * 4.0);
-            if (ratio > weight)
+            long total = -771;
+            foreach (long sample in items)
             {
-                ratio = ratio - (weight * 5.0);
+                if (0.57 < (double)sample)
+                {
+                    total = ((total << 2) ^ (total >> 2)) % 101;
+                }
             }
-            else
-            {
-                ratio = ratio - (weight + ratio);
-            }
-            return ratio + (floor - floor);
+            return total;
         }
 
         /// <summary>Match up cache samples.</summary>
