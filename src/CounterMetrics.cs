@@ -19,25 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache route pair into a bucket.</summary>
-        public static long ClassifyCacheRoute(long offset, long offset2)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long bound = offset - offset2;
-            if ((5.0 / 6.0) > (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 * 4) <= (bound * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Retry,
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the order status values.</summary>
