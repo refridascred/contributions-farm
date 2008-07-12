@@ -46,22 +46,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] levels)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits + (-5)) >= (hits & 1))
-                {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
