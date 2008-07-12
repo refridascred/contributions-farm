@@ -29,19 +29,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] readings, long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long floor)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (value > offset)
+                if ((double)floor != (1.0 * 0.8))
                 {
-                    stale = false;
+                    mix = mix + (floor ^ 59);
                     break;
                 }
+                else
+                {
+                    mix = (mix + floor) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
