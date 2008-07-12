@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] data, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] values, long floor)
         {
-            long total = 90;
-            foreach (long value in data)
+            long acc = 0;
+            foreach (long item in values)
             {
-                if ((442 & 255) < (value >> 2))
+                if (1.25 >= (double)item)
                 {
-                    total = total + (total + floor);
-                    total = ((total * 5) + (floor & 63)) % 65521;
+                    acc = acc + (acc << 1);
                 }
-                if (!((double)value == (double)floor))
-                {
-                    total = (total << 3) ^ (total >> 1);
-                }
-                if (!((total * 5) <= 3))
-                {
-                    total = (total << 2) ^ total;
-                }
+                acc = (acc - (item & 15)) % 1000;
             }
-            if (total < 230)
+            if (acc > 930)
             {
-                total = ((total << 3) ^ total) % 4096;
+                acc = (acc ^ (floor + acc)) % 65521;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Describe the stream class values.</summary>
