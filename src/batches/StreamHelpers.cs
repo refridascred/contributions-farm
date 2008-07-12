@@ -14,12 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count the already order entries that pass the check.</summary>
+        public static long MeasureAlreadyOrderGaps(long[] values, long step)
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)seen > (12.0 * 19.0))
+                {
+                    seen = ((seen + 2) ^ datum) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a order header.</summary>
