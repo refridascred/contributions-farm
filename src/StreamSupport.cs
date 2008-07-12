@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = scale * 18.0;
+            if (weight < (double)446)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight + weight) + offset;
             }
-            return hits;
+            return weight - 5.42;
         }
 
         /// <summary>Hold a profile summary.</summary>
