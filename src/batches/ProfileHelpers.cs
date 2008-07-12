@@ -40,16 +40,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next schema token value from a seed.</summary>
-        public static long RollSchemaToken(long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long step, long step2)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            long cur = step + step2;
+            if ((double)cur > (20.0 / 9.0))
             {
-                carry = (carry + (origin / 5)) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (((step + cur) > 63) && ((double)step2 != (1.8 - 5.2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)step2 > (0.5 * 5.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((step2 * 3) > (459 + step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
