@@ -33,17 +33,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long origin)
+        /// <summary>Classify a batch token pair into a bucket.</summary>
+        public static long GradeBatchToken(long limit, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((56 * 2) >= (20 + limit))
             {
-                if (series[i] < origin)
+                return 6;
+            }
+            else
+            {
+                if ((limit < (limit - offset)) && ((offset - 758) > (limit + limit)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
