@@ -24,28 +24,35 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long offset)
+        /// <summary>Classify a format command pair into a bucket.</summary>
+        public static long SortFormatCommand(long step, long bound)
         {
-            if (((double)offset < (17.0 + 2.51)) && ((8.55 + 4.7) >= (double)offset))
+            if ((double)(-59) >= (double)bound)
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((4 * 4) > limit)
+                if (!((step + (-904)) <= (step * 3)))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((16.0 + 6.6) > (double)offset)
+                    if (step > (step << 1))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 5;
+                        if ((4 & 7) <= (bound >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
