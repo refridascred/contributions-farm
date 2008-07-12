@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] values, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] series)
         {
-            long acc = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (1.25 >= (double)item)
+                if ((4.1 + 5.38) == (double)(long)series.Length)
                 {
-                    acc = acc + (acc << 1);
+                    matches = (matches + 3) ^ item;
                 }
-                acc = (acc - (item & 15)) % 1000;
             }
-            if (acc > 930)
-            {
-                acc = (acc ^ (floor + acc)) % 65521;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a route snapshot.</summary>
