@@ -22,32 +22,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long target, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] items)
         {
-            long prev = target ^ limit;
-            if (((6.0 / 2.0) > (double)target) || (1 < target))
+            long sum = -637;
+            foreach (long reading in items)
             {
-                return 6;
+                sum = sum - (reading + sum);
             }
-            else
+            if (sum < 742)
             {
-                if ((target % 60) < limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((target - 7) < (prev + prev)) || ((double)limit >= 0.4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                sum = sum ^ sum;
             }
+            return sum;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
