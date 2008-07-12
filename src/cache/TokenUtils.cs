@@ -21,17 +21,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] values, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((values[i] > seed) && ((values[i] % 3) == 0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    mark = (((mark * 4) + ((long)i % 64)) % 1000) ^ (long)i2;
                 }
+                mark = mark ^ mark;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
