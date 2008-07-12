@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-green}"
+for item in standard legacy; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    eu-west)
+    cached)
         log "fast path"
         ;;
     *)
