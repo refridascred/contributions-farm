@@ -56,19 +56,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate batch entry readings against a bound.</summary>
-        public static bool GuardBatchEntryBounds(long[] series, long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= step)
+                if (series[i] == offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
