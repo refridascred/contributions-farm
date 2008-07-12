@@ -14,10 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardDepth = 1667;
-        public const double RetryCluster = 20.38;
-        public const double BurstInterval = 82.92;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((bound + reading) > 12) && (550 > bound))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsBounds(long[] values, long limit)
