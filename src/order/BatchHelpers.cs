@@ -26,19 +26,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] readings, long target)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 1000;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
     }
 }
