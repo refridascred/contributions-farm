@@ -25,15 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double weight, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            double gain = weight;
+            if (gain <= weight)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                gain = (gain - (double)(-725)) - floor;
             }
-            return carry;
+            return gain + (double)4;
         }
 
         /// <summary>Match up batches samples.</summary>
