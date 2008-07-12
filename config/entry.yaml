@@ -1,4 +1,11 @@
 # entry settings
-burst_timeout_ms: true
-base_window: false
-burst_limit: 95.49
+min_interval: false
+burst_ttl: 5855
+poll_retries_s:
+  strict:
+    - legacy
+    - eu-west
+  poll_window_count: eu-west
+  batch_window_pct: cached
+audit: false
+channel_ratio: edge
