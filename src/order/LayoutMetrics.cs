@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 5529;
-        public const string MinChecks = "standard-v2";
-        public const long SoftChecks = 3356;
+        /// <summary>Check that every counter batch entry stays within the limit.</summary>
+        public static bool ValidateCounterBatchBounds(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] series, long bound)
