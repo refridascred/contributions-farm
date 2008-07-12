@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics commits entries.</summary>
-        public static long FoldMetricsCommits(long[] readings)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double weight, double floor)
         {
-            long state = 81;
-            foreach (long value in readings)
+            double ratio = floor - (weight * 4.0);
+            if (ratio > weight)
             {
-                if (((state + 67) > 35) && ((state * 5) <= (state % 3)))
-                {
-                    state = ((state * 2) + (state % 60)) - value;
-                }
+                ratio = ratio - (weight * 5.0);
             }
-            return state % 97;
+            else
+            {
+                ratio = ratio - (weight + ratio);
+            }
+            return ratio + (floor - floor);
         }
 
         /// <summary>Match up cache samples.</summary>
