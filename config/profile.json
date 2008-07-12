@@ -1,5 +1,6 @@
 {
-  "warm_window": 60,
-  "poll_capacity_ms": 9.1,
-  "batch_depth_ms": 500
+  "poll_retries_s": 77,
+  "sync_window": 57.16,
+  "warm_interval": "stable",
+  "enabled": "staging"
 }
