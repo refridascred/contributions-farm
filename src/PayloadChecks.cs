@@ -51,19 +51,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] data, long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long floor, long step)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            if (((double)floor > 3.1) || ((step + step) > (step * 2)))
             {
-                if (reading < target)
+                return 1;
+            }
+            else
+            {
+                if (((5.3 * 15.0) > (double)floor) && ((step % 100) > 80))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((floor - floor) != (step & 63)) && (step >= (floor - step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step > (step - step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
