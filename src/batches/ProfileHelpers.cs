@@ -62,31 +62,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a already account pair into a bucket.</summary>
-        public static long RankAlreadyAccount(long limit, long target)
+        /// <summary>Locate a batches command reading by value.</summary>
+        public static long FindBatchesCommandIndex(long[] samples, long limit)
         {
-            if ((target - target) < (target / 6))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)81 < (double)target)
+                if (samples[i] == limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target <= (limit - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next checks support value.</summary>
