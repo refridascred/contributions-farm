@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            New,
-            Failed,
-            Done,
-            Pending,
+            Paused,
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
