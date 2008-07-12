@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] levels)
         {
-            long state = 124;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > (item % 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state ^ (state >> 5);
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
