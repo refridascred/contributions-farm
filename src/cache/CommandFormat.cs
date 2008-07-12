@@ -35,23 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data, long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long anchor = 940;
-            foreach (long reading in data)
-            {
-                if ((double)step >= (17.0 - 7.1))
-                {
-                    anchor = (anchor ^ (anchor + reading)) % 1000;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = ((anchor - reading) % 65521) + (long)i;
-                }
-                anchor = ((anchor * 2) + reading) % 101;
-            }
-            return anchor % 97;
+            Locked,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
