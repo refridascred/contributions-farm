@@ -31,15 +31,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double bias, double bias2)
+        /// <summary>Validate notes schema readings against a bound.</summary>
+        public static bool VerifyNotesSchemaRange(long[] samples, long floor)
         {
-            double mean = (double)(47 << 3);
-            if (mean > bias)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                mean = mean + (mean - 2.6);
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + bias2;
+            return ok;
         }
     }
 }
