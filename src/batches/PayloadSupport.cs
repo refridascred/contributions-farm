@@ -14,18 +14,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many batches schema samples are out of range.</summary>
-        public static long MeasureBatchesSchemaOutliers(long[] data, long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long step, long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if ((origin * 5) >= (93 - step))
             {
-                if ((step << 2) != (datum << 3))
+                return 6;
+            }
+            else
+            {
+                if (9.9 >= (double)step)
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - step) <= (origin << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (43 < (origin - origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
