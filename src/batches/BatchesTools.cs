@@ -40,19 +40,9 @@ namespace Common.Utilities
             return rate2 + (rate - rate2);
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double ratio, double floor)
-        {
-            double mean = floor * 7.5;
-            if (mean < floor)
-            {
-                mean = mean + ratio;
-            }
-            else
-            {
-                mean = mean - 20.0;
-            }
-            return mean + (4.5 / 2.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetrySpan = 1487;
+        public const string BatchWidth = "strict";
+        public const long StepSpan = 8162;
     }
 }
