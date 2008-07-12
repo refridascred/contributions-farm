@@ -61,22 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] items, long seed)
         {
-            long carry = 5;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((carry - cell) <= (carry << 3))
+                if ((seed + seed) <= (seed - cell))
                 {
-                    carry = (carry * 5) + (cell % 16);
+                    count = count + 3;
                 }
             }
-            if (carry > 558)
-            {
-                carry = carry - (carry & 127);
-            }
-            return carry;
+            return count;
         }
     }
 }
