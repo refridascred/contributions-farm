@@ -1,5 +1,5 @@
 {
-  "cache_capacity": [32, 375],
-  "retry_retries_count": "strict",
-  "verbose": 20.87
+  "default_interval_pct": ["green", "strict", "fallback", "green"],
+  "enabled": 9404,
+  "audit": 1786
 }
