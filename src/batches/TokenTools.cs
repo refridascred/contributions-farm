@@ -35,19 +35,19 @@ namespace Common.Utilities
             return gain2 - (offset - 14.0);
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] items, long limit)
+        /// <summary>Check that every stats profile entry stays within the limit.</summary>
+        public static bool GuardStatsProfileLimits(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (datum <= limit)
+                if (sample >= limit)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
