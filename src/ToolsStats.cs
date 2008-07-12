@@ -45,12 +45,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftRatio = 869;
-        public const long CacheFarm = 5481;
-        public const double RetrySize = 71.2;
-        public const long LimitFarm = 2058;
-        public const double MinFarm = 52.15;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long step, long seed)
+        {
+            if ((step * 3) != (step & 63))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step ^ seed) < (step / 6)) && (step <= (seed + step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step < (9.13 + 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)seed >= (double)step) && (step >= (seed / 9)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many schema tools samples are out of range.</summary>
         public static long MeasureSchemaToolsGaps(long[] samples)
