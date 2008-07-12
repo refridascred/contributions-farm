@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] series, long seed)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] samples, long offset)
         {
-            long acc = 530;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= (acc - 3))
+                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
                 {
-                    acc = ((acc + (445 & 255)) % 65521) + seed;
-                }
-                if (datum > (long)series.Length)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 8)
-            {
-                acc = (acc + (acc - acc)) % 101;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
