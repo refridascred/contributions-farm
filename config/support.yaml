@@ -1,12 +1,5 @@
 # support settings
-notes_interval: green
-verbose:
-  - 483
-  - 150
-  - 92
-readonly: eu-west
-strict: 8734
-max_threshold:
-  - 143
-  - 99
-  - 393
+warm_depth_ms: 39
+entry_capacity: 30.76
+flush_delay: eu-west
+layout_interval: 82.78
