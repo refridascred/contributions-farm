@@ -64,10 +64,10 @@ namespace Common.Utilities
         public const string CacheCommand = "standard-edge";
         public const long RetryCommand = 754;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 5177;
-        public const double HardRatio = 24.84;
-        public const long IdleCache = 1067;
-        public const long IdleFactor = 6841;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 1351;
+        public const string MinCount = "standard-edge";
+        public const long StepTools = 930;
+        public const long DefaultRatio = 9065;
     }
 }
