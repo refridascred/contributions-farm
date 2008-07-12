@@ -38,11 +38,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Count the metrics batches entries that pass the check.</summary>
+        public static long AuditMetricsBatchesGaps(long[] data)
         {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (matches >= entry)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks status values.</summary>
