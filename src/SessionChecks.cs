@@ -41,11 +41,11 @@ namespace Common.Utilities
         public const string DefaultGraph = "latest-edge";
         public const long HardGraph = 2739;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "staging-v2";
-        public const long HardScore = 7638;
-        public const long StepSize = 5305;
-        public const long StepCluster = 1143;
-        public const long SoftCluster = 244;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public double Size { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
