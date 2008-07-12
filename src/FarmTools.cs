@@ -46,19 +46,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (item != floor)
+                if ((hits + (-5)) >= (hits & 1))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
