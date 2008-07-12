@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=26
-log "limit is ${COMMAND_LIMIT}"
-
-for item in cached edge open staging; do
+for item in standard fallback edge staging; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-strict}"
 case "${mode}" in
-    local)
+    standard)
         log "fast path"
         ;;
     *)
