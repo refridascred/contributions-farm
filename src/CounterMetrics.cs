@@ -48,12 +48,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] items, long seed)
         {
-            Dropped,
-            Locked,
-            Pending,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (((seed <= ((-73) & 15)) || ((value + value) > value)) || !((double)hits > 17.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
