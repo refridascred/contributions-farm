@@ -33,11 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 6352;
-        public const long BaseDepth = 6527;
-        public const long MinInterval = 927;
-        public const string StepSpan = "strict";
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
