@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] values, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((floor - seen) <= entry)
+                if (entry > floor)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
