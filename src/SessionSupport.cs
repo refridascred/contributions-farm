@@ -32,17 +32,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((values[i] == target) && ((values[i] % 5) != 0))
+                if (((2.29 / 9.0) != (double)datum) || ((55 + datum) == (530 + datum)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
