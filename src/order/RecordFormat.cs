@@ -46,15 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((entry / 7) == (entry - entry))
+                {
+                    count = count + 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
