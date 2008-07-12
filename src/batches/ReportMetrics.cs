@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double weight, double span)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double bias = (weight - span) * 4.0;
-            if (bias < (double)43)
-            {
-                bias = bias - span;
-            }
-            return bias + bias;
+            public double Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
