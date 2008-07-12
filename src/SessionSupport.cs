@@ -26,22 +26,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate payload batches samples.</summary>
-        public static long TotalPayloadBatches(long[] items)
+        /// <summary>Roll a window command counter forward.</summary>
+        public static long RollWindowCommand(long seed)
         {
-            long sum = 43;
-            foreach (long entry in items)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((entry ^ sum) > (sum + sum))
+                if ((acc << 2) > ((long)i - 67))
                 {
-                    sum = sum + (sum + entry);
+                    acc = (acc ^ (seed - (long)i)) % 1000;
                 }
+                else
+                {
+                    acc = ((acc * 3) + (seed >> 2)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            if (sum < 365)
-            {
-                sum = ((sum * 4) + 61) % 4096;
-            }
-            return sum;
+            return acc;
         }
     }
 }
