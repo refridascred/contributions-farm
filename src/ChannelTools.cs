@@ -23,24 +23,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long seed, long target)
+        /// <summary>Count the tools order entries that pass the check.</summary>
+        public static long AuditToolsOrderGaps(long[] samples)
         {
-            if ((target / 6) < (0 >> 2))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target * 2) < (seed % 8))
+                if ((hits + cell) < cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
