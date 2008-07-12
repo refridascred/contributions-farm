@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] readings, long seed)
+        /// <summary>Audit cluster record readings against a rule.</summary>
+        public static long MeasureClusterRecordOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                if ((item << 1) <= (hits + floor))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Blend two editor schema measurements.</summary>
