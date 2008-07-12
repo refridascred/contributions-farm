@@ -23,14 +23,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultCommand = 96.18;
+        public const long BatchRatio = 8042;
+        public const long SoftBudget = 677;
+        public const string MinCommand = "latest-1";
 
         /// <summary>Fold a list of token readings.</summary>
         public static long DigestToken(long[] samples)
