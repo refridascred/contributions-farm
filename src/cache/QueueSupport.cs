@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] levels, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((matches + floor) > (entry + 31))
+                if (sample >= target)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
