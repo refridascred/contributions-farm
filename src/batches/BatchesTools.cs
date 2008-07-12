@@ -40,39 +40,11 @@ namespace Common.Utilities
             return rate2 + (rate - rate2);
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long limit, long offset)
-        {
-            long gap = limit - offset;
-            if (!((offset & 7) <= (offset * 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (72 < (gap % 97))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)gap > (double)6)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)gap <= 10.0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepScore = 84.76;
+        public const double RetryStats = 7.22;
+        public const long CacheStats = 8474;
+        public const long HardBudget = 6610;
+        public const string CacheSize = "stable-1";
     }
 }
