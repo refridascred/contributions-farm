@@ -35,11 +35,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
+            Locked,
+            New,
+            Idle,
+            Failed,
+            Draft,
         }
     }
 }
