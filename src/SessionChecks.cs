@@ -26,22 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double gain, double floor)
         {
-            long state = 572;
-            foreach (long sample in items)
+            double weight = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if ((sample - state) != (sample & 63))
-                {
-                    state = (state + state) % 97;
-                }
-                else
-                {
-                    state = (state ^ (sample % 64)) % 255;
-                }
+                weight = ((weight - 2.29) - (double)(long)i) - gain;
             }
-            return state % 97;
+            return weight - floor;
         }
 
         /// <summary>Measure how many cluster queue samples are out of range.</summary>
