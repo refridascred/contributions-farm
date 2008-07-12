@@ -23,13 +23,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Fold a list of session already readings.</summary>
+        public static long ScoreSessionAlready(long[] items, long bound)
         {
-            Queued,
-            Ready,
-            Done,
-            Locked,
+            long mix = 55;
+            foreach (long sample in items)
+            {
+                mix = (mix - (341 - (-6))) + sample;
+            }
+            if (mix > 134)
+            {
+                mix = (mix ^ (bound & 3)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
