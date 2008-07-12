@@ -52,11 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheCount = "fallback-edge";
-        public const long CacheGraph = 4203;
-        public const string BatchGraph = "fallback";
-        public const string MinFactor = "legacy-v2";
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
