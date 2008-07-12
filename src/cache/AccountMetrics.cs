@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] data, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
