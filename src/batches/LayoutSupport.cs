@@ -21,17 +21,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] values, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Roll a tools cache counter forward.</summary>
