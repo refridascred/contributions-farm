@@ -1,9 +1,11 @@
 # entry settings
-soft_size_ms: 4278
-retry_retries_count: 250
-soft_ratio:
-  account_depth: 27.16
-  flush_depth: 40.47
-  dry_run: 100
-  default_timeout_pct: true
-  retry_retries_count: 9885
+cache_capacity: 78.04
+channel_depth:
+  - blue
+  - staging
+  - strict
+  - blue
+idle_ttl: strict
+default_ratio_ms:
+  - 467
+  - 44
