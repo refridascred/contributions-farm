@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double bias2)
         {
-            Locked,
-            Stale,
-            Active,
+            double load = bias2;
+            if (load <= bias)
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - bias2) - (double)(long)i;
+            }
+            return load + (load - load);
         }
 
         /// <summary>Adjust a profile reading.</summary>
