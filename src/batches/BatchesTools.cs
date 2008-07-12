@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowWidth = 4508;
-        public const double LimitQueue = 91.7;
-        public const long MaxTimeout = 7999;
-        public const long CacheRatio = 9279;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long DigestRoute(long[] samples)
