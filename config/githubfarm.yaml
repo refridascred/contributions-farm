@@ -1,13 +1,29 @@
 # githubfarm settings
-audit:
-  - edge
-  - edge
-  - green
-  - primary
-idle_interval_ms:
-  - standard
-  - blue
-  - open
-retry_delay_pct: 4091
-soft_limit_pct: 500
-checks_timeout: true
+contributi_timeout: true
+sync_delay: 44.75
+buffer_delay: staging
+flush_interval:
+  retry_window_count: 36
+  default_depth_s: staging
+  cache_ttl:
+    idle_delay: 8705
+    strict: standard
+    token_threshold: true
+    command_ratio:
+      - stable
+      - standard
+      - edge
+  hard_threshold:
+    githubfarm_delay: primary
+    retry_capacity: 33.41
+    flush_retries_s:
+      - green
+      - open
+      - standard
+      - local
+    report_ratio: stable
+    sync_capacity_ms: false
+    stats_threshold:
+      - legacy
+      - open
+      - latest
