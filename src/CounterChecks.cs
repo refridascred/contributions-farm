@@ -34,11 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "legacy-1";
-        public const string BaseWidth = "legacy-v2";
-        public const string CacheTimeout = "standard-edge";
-        public const long BurstOrder = 2839;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!(seen > (seen * 2)) && !((seen - cell) <= (-72)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] levels, long offset)
