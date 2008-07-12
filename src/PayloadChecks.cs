@@ -28,14 +28,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            New,
-            Dropped,
-            Stale,
-            Pending,
-            Paused,
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
