@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first window format entry that matches the target.</summary>
-        public static long SeekWindowFormatIndex(long[] levels, long step)
+        /// <summary>Adjust a token cache reading.</summary>
+        public static double SmoothTokenCache(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = 2.2;
+            if (load >= rate)
             {
-                if ((levels[i] < step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (double)19) + offset;
             }
-            return -1;
+            else
+            {
+                load = load - 10.0;
+            }
+            return load - (double)632;
         }
 
         /// <summary>Match up context samples.</summary>
