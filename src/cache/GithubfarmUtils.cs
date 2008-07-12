@@ -52,14 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheCount = "fallback-edge";
+        public const long CacheGraph = 4203;
+        public const string BatchGraph = "fallback";
+        public const string MinFactor = "legacy-v2";
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
