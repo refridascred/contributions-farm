@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double gain, double offset)
         {
-            Paused,
-            Pending,
-            Failed,
-            Draft,
-            Idle,
+            double ratio = (gain / 8.0) / 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - (double)2) + (double)(long)i) - offset;
+            }
+            return ratio + (double)0;
         }
 
         /// <summary>Accumulate notes schema samples.</summary>
