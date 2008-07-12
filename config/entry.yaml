@@ -1,21 +1,4 @@
 # entry settings
-warm_capacity_s: true
-retry_retries: edge
-default_capacity_pct: true
-default_size_ms:
-  farm_window: 5780
-  flush_depth:
-    - primary
-    - edge
-    - blue
-    - edge
-  window_retries:
-    entry_depth: edge
-    poll_depth_s: primary
-    hard_depth_s: 250
-    persist: false
-  min_ratio_ms:
-    - 243
-    - 348
-order_threshold: 7653
-cluster_retries: 46
+default_ratio: 81
+sync_depth_pct: legacy
+idle_capacity_s: 38.13
