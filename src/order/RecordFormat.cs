@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] readings, long origin)
-        {
-            long carry = 52;
-            foreach (long sample in readings)
-            {
-                if ((sample + origin) <= carry)
-                {
-                    carry = carry - sample;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = carry + (471 + origin);
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 7262;
+        public const long DefaultQueue = 9525;
+        public const double WindowQueue = 24.42;
+        public const double WindowBudget = 26.88;
+        public const long MaxQueue = 189;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] levels, long seed)
