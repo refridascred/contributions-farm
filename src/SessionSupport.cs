@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseMetric = "local";
-        public const long HardMetric = 9479;
-        public const long BaseSpan = 1865;
-        public const long WindowWidth = 86;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double weight, double span)
+        {
+            double ratio = (double)(99 + 92);
+            if (ratio < 7.0)
+            {
+                ratio = ((ratio - (ratio + ratio)) + weight) - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (6.0 / 4.0);
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long DeriveCluster(long origin)
