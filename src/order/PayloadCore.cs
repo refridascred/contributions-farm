@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long floor)
         {
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((acc + floor) != (acc * 4))
+                {
+                    acc = acc - (floor + acc);
+                }
+                else
+                {
+                    acc = (acc ^ (acc ^ floor)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Check that every support batch entry stays within the limit.</summary>
