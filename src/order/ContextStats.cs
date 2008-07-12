@@ -23,38 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] values)
         {
-            if (seed < (floor + floor))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.83 - 8.53) >= (double)seed)
+                if (seen < cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) < 4)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0.01 * 6.4) <= (double)seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
