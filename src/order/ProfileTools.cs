@@ -18,23 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((9.45 + 4.73) > (double)offset) && ((2 + sum) == (offset % 16)))
-                {
-                    sum = (sum + (offset ^ offset)) % 65521;
-                }
-                if ((sum - 8) <= (73 + sum))
-                {
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            Locked,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the entry kind values.</summary>
