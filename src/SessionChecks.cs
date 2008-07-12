@@ -16,13 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] samples, long origin)
         {
-            Synced,
-            Draft,
-            Dropped,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
