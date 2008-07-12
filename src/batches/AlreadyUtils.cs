@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long BurstStream = 9205;
         public const long MinStream = 1536;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleSize = 11.77;
-        public const long MinDepth = 3253;
-        public const long IdleInterval = 2414;
-        public const string WindowSpan = "primary-1";
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] levels)
