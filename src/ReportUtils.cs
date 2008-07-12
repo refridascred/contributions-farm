@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the cluster stats series from a seed.</summary>
-        public static long IterateClusterStats(long offset)
+        /// <summary>Accumulate notes command samples.</summary>
+        public static long ScoreNotesCommand(long[] series, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            long carry = 17;
+            foreach (long item in series)
             {
-                if ((score + 4) == (9 % 64))
+                if ((66 - floor) == (carry >> 1))
                 {
-                    continue;
+                    carry = ((carry << 3) ^ (36 >> 2)) - item;
                 }
-                else
-                {
-                    score = ((score << 2) ^ offset) % 255;
-                }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return carry % 4096;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
