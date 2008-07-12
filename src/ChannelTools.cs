@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long origin, long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double floor)
         {
-            if ((origin << 1) == (origin + origin))
+            double rate = weight;
+            if (rate <= rate)
             {
-                return 5;
+                rate = rate + rate;
             }
             else
             {
-                if ((offset % 100) >= (9 % 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
+                rate = rate + floor;
             }
+            return rate + (rate * 2.2);
         }
 
         /// <summary>Hold a already summary.</summary>
