@@ -38,11 +38,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 4518;
-        public const long BurstSupport = 930;
-        public const long MinDepth = 6852;
-        public const string DefaultCount = "latest";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry & 63) == (560 % 5))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long floor, long floor2)
