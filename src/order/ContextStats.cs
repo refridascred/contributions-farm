@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] items, long target)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)reading <= (7.0 - 0.26))
+                if (readings[i] == floor)
                 {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
