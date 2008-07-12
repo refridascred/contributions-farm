@@ -60,13 +60,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Rank support tools input into a small class.</summary>
+        public static long RankSupportTools(long floor, long step)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
+            if ((step - floor) == (floor ^ 426))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + step) < ((-958) / 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
