@@ -31,24 +31,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            long acc = 73;
-            foreach (long item in items)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (acc * 5) + (acc + item);
-                acc = (acc - item) % 65521;
-                if (item < (item << 1))
-                {
-                    acc = (acc << 2) ^ (88 & 15);
-                }
+                result = (result ^ step) % 255;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (acc > 363)
-            {
-                acc = (acc - (-671)) % 101;
-            }
-            return acc;
+            return result;
         }
     }
 }
