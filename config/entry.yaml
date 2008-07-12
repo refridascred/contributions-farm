@@ -1,14 +1,22 @@
 # entry settings
-batch_ttl_pct:
-  compress: 789
-  burst_capacity: 3520
-  batches_limit:
-    - 324
-    - 450
-idle_depth_pct: eu-west
-default_size_count: 1024
-cache_capacity_count:
-  - 160
-  - 154
-burst_window_ms: true
-audit: 1417
+editor_timeout: 11.11
+githubfarm_timeout:
+  filter_ttl: fallback
+  warm_delay: 6091
+  readonly:
+    verbose:
+      - latest
+      - fallback
+      - staging
+      - legacy
+    max_threshold_s:
+      - 413
+      - 453
+    hard_delay: 1448
+    flush_depth: 42.92
+  batch_ratio: 42
+  format_retries: 34.63
+  notes_limit: 95
+poll_ratio_ms: 55.55
+persist: false
+commits_delay: 87.83
