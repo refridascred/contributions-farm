@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 5;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((datum - total) >= total) || ((offset / 6) == (datum % 100)))
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total - (datum + offset);
                 }
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Describe the record level values.</summary>
