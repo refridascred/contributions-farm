@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardRatio = "fallback-1";
-        public const string DefaultLevel = "open";
-        public const long BaseInterval = 4069;
-        public const long MinInterval = 6802;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((item - item) == (matches + item)) && ((0.2 / 6.0) > (7.6 + 4.0)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TotalContributi(long[] series)
