@@ -61,17 +61,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a batches command reading by value.</summary>
-        public static long FindBatchesCommandIndex(long[] samples, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (samples[i] == limit)
+                if ((item < (limit + limit)) && (((tally + limit) <= item) || ((144 / 5) == (item * 5))))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Project the next checks support value.</summary>
