@@ -42,17 +42,25 @@ namespace Common.Utilities
         public const long RetryEntry = 7642;
         public const double BaseInterval = 30.38;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] readings, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound2 = bound ^ limit;
+            if (limit <= (bound % 16))
             {
-                if (readings[i] <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((5.0 * 13.0) != (double)bound2)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
