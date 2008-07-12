@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-            public bool Size { get; set; }
+            Stale,
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
