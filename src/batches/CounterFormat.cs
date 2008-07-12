@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] levels, long floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((9.87 * 1.0) <= (double)floor)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Adjust a payload reading.</summary>
