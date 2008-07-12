@@ -34,19 +34,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] data, long floor)
+        /// <summary>Look up the position of a githubfarm token sample.</summary>
+        public static long LocateGithubfarmTokenIndex(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != floor)
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Check that every record cluster entry stays within the limit.</summary>
