@@ -25,12 +25,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Done,
-            New,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "staging-1";
+        public const long StepCount = 7382;
+        public const double DefaultChecks = 81.38;
+        public const long WindowScore = 390;
+        public const string SoftFactor = "strict-1";
     }
 }
