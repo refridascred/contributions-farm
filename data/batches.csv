@@ -1,11 +1,6 @@
-id,level,ratio,state,score
-1,primary,cached,latest,43.88
-2,272,stable,75.83,35
-3,cached,461,56.83,19.5
-4,local,1.18,fallback,29
-5,616,601,stable,824
-6,legacy,eu-west,blue,388
-7,78.81,green,948,strict
-8,83.67,green,strict,71.48
-9,16.3,740,314,344
-10,964,cached,72.84,staging
+id,active,weight,token,owner
+1,standard,518,70.06,24.73
+2,744,266,56.07,480
+3,203,edge,558,948
+4,69,862,939,eu-west
+5,legacy,staging,647,585
