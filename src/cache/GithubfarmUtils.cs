@@ -14,12 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public bool Label { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a schema stats.</summary>
