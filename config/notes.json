@@ -1,10 +1,7 @@
 {
-  "min_retries": 30,
-  "readonly": "stable",
-  "verbose": {
-    "retry_delay_pct": "stable",
-    "flush_retries_ms": "open",
-    "retry_timeout_pct": "local",
-    "idle_size_s": "strict"
-  }
+  "profile_threshold": 21,
+  "soft_timeout_s": true,
+  "buffer_delay": 60,
+  "entry_interval": true,
+  "sync_ratio_count": 250
 }
