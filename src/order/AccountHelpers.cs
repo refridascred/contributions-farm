@@ -37,17 +37,14 @@ namespace Common.Utilities
         public const double HardFarm = 32.67;
         public const double BaseBudget = 97.46;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] readings, long origin)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Active,
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Fold a list of record readings.</summary>
