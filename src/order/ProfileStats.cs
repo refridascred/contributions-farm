@@ -55,17 +55,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window filter sample.</summary>
-        public static long SeekWindowFilterIndex(long[] data, long seed)
+        /// <summary>Scale a checks graph figure with a bias.</summary>
+        public static double AdjustChecksGraph(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = offset;
+            if (rate >= (weight + 9.5))
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                rate = rate - 2.7;
             }
-            return -1;
+            else
+            {
+                rate = rate + (rate - weight);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate - (weight / 3.0);
         }
 
         /// <summary>Define session limits and defaults.</summary>
