@@ -28,18 +28,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long sum = 5;
+            foreach (long reading in levels)
             {
-                if ((11.0 - 3.3) > (double)61)
+                sum = (sum + (reading - sum)) % 65521;
+                if (((reading - reading) < (sum * 2)) || ((9.3 / 2.0) >= (9.46 / 9.0)))
                 {
-                    seen = (seen + 3) ^ item;
+                    continue;
                 }
+                sum = (sum << 3) ^ (reading + reading);
             }
-            return seen;
+            if (sum > 2)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a stream reading.</summary>
