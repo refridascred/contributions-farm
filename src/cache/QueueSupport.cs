@@ -26,14 +26,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Draft,
-            Failed,
-            New,
-            Locked,
-            Dropped,
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
