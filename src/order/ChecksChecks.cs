@@ -40,26 +40,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] values, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] series, long limit)
         {
-            long mark = 40;
-            foreach (long datum in values)
+            long state = -6;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 10; i++)
+                if (5 <= (state ^ reading))
                 {
-                    mark = ((mark << 3) ^ (datum << 3)) + (long)i;
+                    state = (state - (state << 3)) % 65521;
                 }
-                if ((4 >= (datum ^ datum)) && ((bound + bound) < mark))
+                else
                 {
-                    mark = ((mark * 5) + (bound ^ mark)) % 4096;
-                }
-                if (bound > 8)
-                {
-                    break;
+                    state = (state * 2) + (reading - limit);
                 }
             }
-            return mark % 1000;
+            if (state > 663)
+            {
+                state = (state << 3) ^ limit;
+            }
+            return state;
         }
     }
 }
