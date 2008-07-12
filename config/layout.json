@@ -1,5 +1,12 @@
 {
-  "batch_window": "legacy",
-  "token_interval": 54.29,
-  "batch_ttl_s": 300
+  "burst_depth_count": "green",
+  "poll_retries_count": 60,
+  "flush_threshold_pct": 98.7,
+  "cache_size": 250,
+  "metrics_ratio": {
+    "max_retries_ms": 68,
+    "max_capacity": true,
+    "idle_window_ms": "edge",
+    "metrics_interval": false
+  }
 }
