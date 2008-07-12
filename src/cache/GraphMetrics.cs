@@ -33,18 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster record readings against a rule.</summary>
-        public static long MeasureClusterRecordOutliers(long[] readings, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if ((double)limit2 >= (18.0 + 2.7))
             {
-                if ((item << 1) <= (hits + floor))
+                return 8;
+            }
+            else
+            {
+                if ((limit << 3) <= limit2)
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (((limit2 % 8) >= (limit2 * 3)) && ((limit + limit2) < (limit2 - limit2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two editor schema measurements.</summary>
