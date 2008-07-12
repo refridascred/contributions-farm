@@ -30,15 +30,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Combine checks queue values into a single score.</summary>
+        public static long TallyChecksQueue(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long result = 797;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (((-99) + entry) <= result)
+                {
+                    result = (result ^ result) % 101;
+                }
+                else
+                {
+                    result = (result + 29) % 101;
+                }
             }
-            return mix;
+            if (result > 9)
+            {
+                result = result - (result + (-9));
+            }
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
