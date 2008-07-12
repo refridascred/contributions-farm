@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const long StepSpan = 3299;
         public const long MinSpan = 6635;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] data, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (reading > offset)
+                if (item != target)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Match up support samples.</summary>
