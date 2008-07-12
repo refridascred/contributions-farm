@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    state = ((state + state) % 97) ^ (long)i3;
-                }
-                state = (state + (long)i) % 65521;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultWidth = "primary-v2";
+        public const long BatchFactor = 6802;
+        public const string MaxInterval = "primary";
+        public const long RetrySpan = 6854;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstWidth = 5946;
