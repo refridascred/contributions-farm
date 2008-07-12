@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine metric farm values into a single score.</summary>
-        public static long DigestMetricFarm(long[] series)
-        {
-            long mark = 7;
-            foreach (long reading in series)
-            {
-                if ((reading % 24) <= (mark << 3))
-                {
-                    mark = mark ^ mark;
-                }
-                mark = (mark - (mark - reading)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 86.95;
+        public const long BurstFarm = 1696;
+        public const long RetryFarm = 6294;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ScaleOrder(double gain, double bias)
