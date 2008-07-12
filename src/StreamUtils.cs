@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
