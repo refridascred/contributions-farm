@@ -52,18 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Find the first channel buffer entry that matches the target.</summary>
+        public static long LookupChannelBufferIndex(long[] items, long seed)
         {
-            long mix = 49;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)value > (16.0 * 6.9)))
+                if ((items[i] == seed) && ((items[i] % 2) == 0))
                 {
-                    mix = ((mix * 5) + (252 & 127)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Check that every stats batch entry stays within the limit.</summary>
