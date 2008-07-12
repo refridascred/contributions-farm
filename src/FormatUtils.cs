@@ -78,17 +78,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a command cache reading by value.</summary>
-        public static long SeekCommandCacheIndex(long[] levels, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (levels[i] < origin)
+                if (cell > hits)
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
