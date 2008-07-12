@@ -33,19 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + datum) != (matches % 100))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxTimeout = 4459;
+        public const long BatchSpan = 5666;
+        public const long CacheEntry = 483;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyGaps(long[] data)
