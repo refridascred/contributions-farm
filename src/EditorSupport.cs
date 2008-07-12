@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two schema counter measurements.</summary>
-        public static double BlendSchemaCounter(double scale, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] values)
         {
-            double ratio = (double)(96 << 3);
-            if (ratio > scale)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                ratio = (ratio + scale) - span;
+                if ((tally >> 2) >= (cell + tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (scale / 5.0)) + (double)(long)i;
-            }
-            return ratio + (6.3 / 8.0);
+            return tally;
         }
 
         /// <summary>Match up metrics samples.</summary>
