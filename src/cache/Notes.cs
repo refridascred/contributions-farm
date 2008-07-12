@@ -64,23 +64,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Match up format queue samples.</summary>
+        public static long PairFormatQueueCount(long[] series)
         {
-            double ratio = (double)(28 & 1);
-            if (ratio <= (0.7 - span))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio - (span - 9.27)) - rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (double)5;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + 2.1) + (double)(long)i;
-            }
-            return ratio + (1.74 - ratio);
+            return count;
         }
     }
 }
