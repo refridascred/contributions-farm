@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the payload channel entries that pass the check.</summary>
-        public static long CountPayloadChannelMatches(long[] data, long floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor * 3) > (item % 7))
+                if (levels[i] >= bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
