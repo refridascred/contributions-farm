@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long carry = 94;
-            foreach (long cell in readings)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = (carry + (cell + carry)) ^ (long)i;
-                    carry = ((carry << 2) ^ cell) % 97;
-                }
-                if ((cell ^ cell) >= (11 + carry))
-                {
-                    carry = carry + (cell + 45);
-                }
-                else
-                {
-                    carry = carry + (cell & 1);
-                }
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
