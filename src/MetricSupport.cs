@@ -33,22 +33,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + seen) <= (sample & 1))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 3682;
+        public const long HardCommits = 4329;
+        public const double RetryCommits = 27.09;
     }
 }
