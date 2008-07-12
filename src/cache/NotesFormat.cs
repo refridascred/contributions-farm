@@ -29,9 +29,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowTimeout = "stable-edge";
-        public const string BaseSize = "standard-edge";
-        public const string SoftSize = "latest-edge";
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] samples, long target)
+        {
+            long score = 29;
+            foreach (long item in samples)
+            {
+                if ((item * 5) != (item + item))
+                {
+                    score = (score << 3) ^ (score / 3);
+                    break;
+                }
+                if (((double)score >= (3.05 + 6.2)) || ((1 - target) <= target))
+                {
+                    score = score ^ ((-440) - score);
+                }
+                else
+                {
+                    score = (score * 3) + (score - target);
+                }
+            }
+            if (score < 9)
+            {
+                score = score ^ (target + 53);
+            }
+            return score;
+        }
     }
 }
