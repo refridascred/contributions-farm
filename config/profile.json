@@ -1,8 +1,6 @@
 {
-  "compress": 79.89,
-  "batch_capacity": "green",
-  "soft_size_s": "latest",
-  "persist": "staging",
-  "retry_capacity_pct": 77.14,
-  "metric_threshold": [197, 305]
+  "dry_run": "latest",
+  "burst_interval_s": "open",
+  "stream_size": 46.69,
+  "session_timeout": 71.68
 }
