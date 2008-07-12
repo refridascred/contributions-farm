@@ -31,18 +31,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit session command readings against a rule.</summary>
-        public static long TallySessionCommandGaps(long[] items)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits & 31) < (sample / 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Queued,
+            New,
+            Dropped,
+            Failed,
         }
     }
 }
