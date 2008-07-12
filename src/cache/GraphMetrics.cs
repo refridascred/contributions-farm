@@ -46,15 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Locked,
-            Done,
-            Active,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleLevel = 1948;
+        public const string DefaultAccount = "primary-1";
+        public const string WindowAccount = "fallback-v2";
+        public const double RetryAccount = 70.98;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
