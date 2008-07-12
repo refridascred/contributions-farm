@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools token samples.</summary>
-        public static long TallyToolsToken(long[] series, long bound)
+        /// <summary>Compare every pair of already queue readings.</summary>
+        public static long PairAlreadyQueueCount(long[] samples)
         {
-            long acc = 60;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (((acc - (829 & 63)) % 97) - entry) - bound;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Match up commits samples.</summary>
