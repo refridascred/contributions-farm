@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            long sum = -6;
-            foreach (long sample in readings)
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((4.6 + 1.2) > (double)(long)readings.Length)
-                {
-                    sum = ((sum ^ 9) % 97) ^ sample;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (sum > (-3))
-            {
-                sum = (sum + (sum >> 4)) % 1000;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
