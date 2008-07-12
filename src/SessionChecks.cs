@@ -49,17 +49,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a farm contributi reading by value.</summary>
-        public static long LookupFarmContributiIndex(long[] items, long floor)
+        /// <summary>Classify a support stats pair into a bucket.</summary>
+        public static long ClassifySupportStats(long origin, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = origin + limit;
+            if ((origin + limit) < origin)
             {
-                if (items[i] == floor)
+                return 3;
+            }
+            else
+            {
+                if ((origin - origin) > 390)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (origin >= lane)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
