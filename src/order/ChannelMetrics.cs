@@ -25,27 +25,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] values, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = 2;
-            foreach (long entry in values)
-            {
-                score = (score + (seed >> 3)) - entry;
-                if ((seed >> 4) != (seed / 6))
-                {
-                    score = (score - 416) % 255;
-                }
-                else
-                {
-                    score = score - seed;
-                }
-            }
-            if (score > 11)
-            {
-                score = (score ^ (score - (-9))) % 65521;
-            }
-            return score % 4096;
+            Done,
+            New,
+            Paused,
         }
     }
 }
