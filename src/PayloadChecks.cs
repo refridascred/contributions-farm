@@ -49,19 +49,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] samples, long origin)
         {
-            long carry = 22;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                carry = carry + (carry + carry);
-                if (value <= ((-9) + value))
+                if ((long)samples.Length == (hits / 4))
                 {
-                    carry = (carry ^ (value & 31)) % 255;
+                    hits = ((hits + 2) ^ cell) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Project the next schema stats value.</summary>
