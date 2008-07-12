@@ -62,14 +62,12 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Failed,
-            Closed,
-            New,
-            Synced,
-            Idle,
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
