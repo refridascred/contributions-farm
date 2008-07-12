@@ -30,20 +30,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] samples, long bound)
-        {
-            long anchor = 1;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor ^ (bound % 10)) % 4096) ^ entry;
-            }
-            if (anchor > 7)
-            {
-                anchor = (anchor * 5) + bound;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardDepth = 4748;
+        public const double StepInterval = 48.73;
+        public const long BurstScore = 4415;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long DeriveBatches(long target)
