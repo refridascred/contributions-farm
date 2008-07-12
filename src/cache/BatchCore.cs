@@ -29,13 +29,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Active,
-            Pending,
-            Dropped,
-            Paused,
+            Ready,
+            Queued,
+            Done,
+            New,
         }
     }
 }
