@@ -16,13 +16,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long bound, long step)
         {
-            Ready,
-            Synced,
-            Failed,
-            Idle,
+            long next = bound - step;
+            if ((step + bound) != (26 - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((next + step) != (bound / 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step % 60) <= (step >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
