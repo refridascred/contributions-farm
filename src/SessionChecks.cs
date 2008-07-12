@@ -32,18 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format graph entries that pass the check.</summary>
-        public static long CountFormatGraphMatches(long[] readings, long bound)
+        /// <summary>Count farm commits pairs that satisfy a relation.</summary>
+        public static long MatchFarmCommitsCount(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)seen <= 7.6) && (((0 << 2) > (bound << 2)) && ((78 >> 3) <= bound)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) - datum;
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every graph support entry stays within the limit.</summary>
