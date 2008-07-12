@@ -56,19 +56,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] levels, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (reading > seed)
+                if (sample > seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
