@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (anchor >> 4)) - (long)i2;
-                }
-                anchor = anchor + (anchor ^ anchor);
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Synced,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
