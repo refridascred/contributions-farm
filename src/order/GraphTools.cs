@@ -35,22 +35,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] data, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long floor, long limit)
         {
-            long mark = 361;
-            foreach (long item in data)
+            if (1.02 >= (double)limit)
             {
-                if ((mark & 1) > (40 & 15))
+                return 3;
+            }
+            else
+            {
+                if ((69 % 64) < floor)
                 {
-                    mark = ((((mark * 3) + (mark & 7)) % 255) - item) - limit;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit == (3.14 - 1.7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit ^ 2) != (limit + limit)) || (((-53) - floor) < floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mark < 2)
-            {
-                mark = mark + ((-3) / 3);
-            }
-            return mark % 65521;
         }
 
         /// <summary>Combine order values into a single score.</summary>
