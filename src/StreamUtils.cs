@@ -38,19 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Audit metrics layout readings against a rule.</summary>
+        public static long CountMetricsLayoutOutliers(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (((long)i ^ seed) >= ((long)i % 16))
+                if ((79 - 9) >= (value << 1))
                 {
-                    acc = acc + (seed + 32);
+                    count = count + 3;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the batch class values.</summary>
