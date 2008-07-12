@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] items, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((-337) / 8) > origin)
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Closed,
+            Queued,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
