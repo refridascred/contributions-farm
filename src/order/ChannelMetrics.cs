@@ -42,12 +42,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            long mark = target;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
