@@ -23,12 +23,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Iterate the format filter series from a seed.</summary>
+        public static long DeriveFormatFilter(long floor)
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!(((-63) + floor) > (sum & 63)))
+                {
+                    continue;
+                }
+                sum = sum - (sum << 2);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
