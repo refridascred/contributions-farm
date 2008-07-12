@@ -90,19 +90,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] samples, long offset)
+        /// <summary>Locate a command cache reading by value.</summary>
+        public static long SeekCommandCacheIndex(long[] levels, long origin)
         {
-            long mark = 653;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + (mark + offset)) - entry;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 5)
-            {
-                mark = mark + (offset & 7);
-            }
-            return mark % 4096;
+            return -1;
         }
     }
 }
