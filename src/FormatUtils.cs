@@ -34,30 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long offset, long target)
+        /// <summary>Rank commits command input into a small class.</summary>
+        public static long BucketCommitsCommand(long origin, long target)
         {
-            long span = offset ^ target;
-            if (target < (offset + span))
+            if (((target + origin) != ((-91) + target)) || ((9 >> 1) < (target / 2)))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((target / 7) < (target & 1))
+                if ((target >= (origin & 127)) || (8.21 >= (double)origin))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((target >> 4) == (target % 24))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 8;
                 }
             }
         }
