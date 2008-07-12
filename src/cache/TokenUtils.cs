@@ -20,11 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 4207;
-        public const long StepSize = 4860;
-        public const long StepFilter = 7795;
-        public const long WindowFilter = 4112;
+        /// <summary>Match up window batch samples.</summary>
+        public static long OverlapWindowBatchCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long ScoreCache(long[] levels)
