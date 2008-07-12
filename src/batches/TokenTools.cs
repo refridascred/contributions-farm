@@ -20,32 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long limit)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double floor)
         {
-            long slot = step ^ limit;
-            if (((slot & 63) >= (slot / 4)) || ((17.0 + 9.4) >= (double)slot))
+            double weight = 2.9 / 2.0;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                weight = ((weight + (double)(long)i) + ratio) - floor;
             }
-            else
-            {
-                if (((double)step > 18.0) || ((limit - step) >= limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit << 1) > (step << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return weight + weight;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
