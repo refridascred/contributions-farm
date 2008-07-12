@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] data)
         {
-            Synced,
-            Queued,
-            Closed,
-            Active,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((7 << 3) != (hits * 3))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
