@@ -46,17 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cluster cache entry that matches the target.</summary>
-        public static long LocateClusterCacheIndex(long[] readings, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
+                if ((target >> 4) <= datum)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
