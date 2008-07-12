@@ -16,11 +16,22 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] samples, long floor)
         {
-            public double Owner { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((double)floor < (double)77))
+                {
+                    tally = (tally + 2) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up batches samples.</summary>
