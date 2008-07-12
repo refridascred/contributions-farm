@@ -1,5 +1,7 @@
 {
-  "default_interval_pct": ["green", "strict", "fallback", "green"],
-  "enabled": 9404,
-  "audit": 1786
+  "buffer_threshold": false,
+  "counter_size": ["staging", "standard"],
+  "report_capacity": 89.2,
+  "idle_depth": "eu-west",
+  "compress": [40, 432]
 }
