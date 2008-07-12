@@ -45,19 +45,21 @@ namespace Common.Utilities
             return weight + (2.0 * 8.64);
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double ratio, double offset)
+        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
+        public static long CompareStatsChecksCount(long[] data)
         {
-            double drift = ratio;
-            if (drift < (double)5)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (double)42;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift - offset;
+            return hits;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
