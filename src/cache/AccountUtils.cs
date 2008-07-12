@@ -32,19 +32,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 21.39;
+        public const double LimitLevel = 1.03;
+        public const long SoftSize = 9080;
     }
 }
