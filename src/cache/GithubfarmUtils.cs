@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long floor, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] series, long seed)
         {
-            if (((double)target != (double)355) || (9.96 >= (double)target))
+            long acc = 530;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target == (double)floor)
+                if (datum <= (acc - 3))
                 {
-                    return 2;
+                    acc = ((acc + (445 & 255)) % 65521) + seed;
                 }
-                else
+                if (datum > (long)series.Length)
                 {
-                    if (((double)target > (3.94 / 9.0)) || ((double)target < (8.0 + 4.63)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor << 3) > (target ^ floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (acc < 8)
+            {
+                acc = (acc + (acc - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the route level values.</summary>
