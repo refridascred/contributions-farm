@@ -1,19 +1,21 @@
 # entry settings
-sync_ratio:
-  entry_size:
-    batch_ttl_pct: eu-west
-    sync_ttl: legacy
-    checks_ttl: false
-    readonly: 92
-  retry_threshold: 250
-  max_limit:
+warm_capacity_s: true
+retry_retries: edge
+default_capacity_pct: true
+default_size_ms:
+  farm_window: 5780
+  flush_depth:
+    - primary
+    - edge
     - blue
-    - fallback
-    - green
-    - standard
-  buffer_timeout: 7612
-  batches_interval: true
-  entry_ratio: false
-idle_interval_pct: local
-min_timeout_ms: 56
-audit: 500
+    - edge
+  window_retries:
+    entry_depth: edge
+    poll_depth_s: primary
+    hard_depth_s: 250
+    persist: false
+  min_ratio_ms:
+    - 243
+    - 348
+order_threshold: 7653
+cluster_retries: 46
