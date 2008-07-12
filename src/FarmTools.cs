@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine counter record values into a single score.</summary>
-        public static long FoldCounterRecord(long[] data)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] values, long limit)
         {
-            long sum = 9;
-            foreach (long item in data)
+            long result = 625;
+            foreach (long value in values)
             {
-                if ((item + sum) >= (item % 2))
+                if (115 <= value)
                 {
-                    sum = (sum * 3) + (item + sum);
+                    result = (result - (264 / 2)) - limit;
+                }
+                else
+                {
+                    result = (result << 3) ^ (result / 2);
                 }
             }
-            return sum % 97;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
