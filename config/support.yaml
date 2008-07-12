@@ -1,11 +1,5 @@
 # support settings
-default_ratio_count: 76.83
-filter_ttl:
-  - stable
-  - fallback
-  - staging
-cache_limit: 79
-persist:
-  - edge
-  - standard
-  - blue
+min_capacity: green
+max_depth_ms: true
+channel_size: blue
+soft_interval: open
