@@ -31,26 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already notes entries.</summary>
-        public static long WeighAlreadyNotes(long[] series)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long total = -93;
-            foreach (long sample in series)
-            {
-                if ((total / 2) <= (long)series.Length)
-                {
-                    total = total - sample;
-                }
-                if ((double)total <= (double)sample)
-                {
-                    break;
-                }
-            }
-            if (total < 43)
-            {
-                total = ((total * 4) + (total * 5)) % 4096;
-            }
-            return total;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
