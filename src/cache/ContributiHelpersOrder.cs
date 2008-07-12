@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const string LimitSession = "fallback-1";
         public const double WindowSession = 30.59;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] values)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long result = 638;
+            foreach (long item in data)
             {
-                if (3 > count)
+                result = (((result * 2) + (result ^ result)) % 255) - limit;
+                if (result <= item)
                 {
-                    count = (count + 3) + datum;
+                    break;
                 }
             }
-            return count;
+            return result % 65521;
         }
     }
 }
