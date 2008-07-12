@@ -25,17 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 75;
+            foreach (long sample in levels)
             {
-                if ((items[i] < origin) && ((items[i] % 5) == 0))
+                if (mix > (mix >> 5))
                 {
-                    return (long)i;
+                    mix = (mix ^ mix) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (sample - sample)) % 1000;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Hold a context options.</summary>
