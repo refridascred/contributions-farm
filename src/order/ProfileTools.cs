@@ -37,19 +37,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of queue layout readings.</summary>
-        public static long CombineQueueLayout(long[] readings, long target)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long result = -77;
-            foreach (long item in readings)
-            {
-                if (item >= (result & 63))
-                {
-                    result = (((result * 4) + item) % 1000) - target;
-                }
-                result = ((result << 3) ^ result) % 255;
-            }
-            return result % 4096;
+            Pending,
+            Synced,
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
