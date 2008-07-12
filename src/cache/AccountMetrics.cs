@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a queue route pair into a bucket.</summary>
-        public static long SortQueueRoute(long limit, long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long diff = limit - floor;
-            if ((floor >= (floor << 2)) && ((12 - limit) >= ((-9) - diff)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((diff < (diff % 100)) || ((939 * 4) < (limit + floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff + diff) > limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit - limit) < (323 / 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Retry,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Classify a format command pair into a bucket.</summary>
