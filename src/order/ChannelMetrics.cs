@@ -25,20 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order entry samples.</summary>
-        public static long TotalOrderEntry(long[] items, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long total = 636;
-            foreach (long value in items)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (limit <= (total - value))
+                if (!(((12.0 - 6.03) < (double)(long)i) || ((0.1 + 1.04) < (double)target)))
                 {
-                    total = total + (total ^ total);
-                    break;
+                    acc = acc - (target - acc);
+                    acc = (acc << 3) ^ (long)i;
                 }
-                total = (total * 2) + (59 + total);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return total % 97;
+            return acc;
         }
 
         /// <summary>Hold a batch summary.</summary>
