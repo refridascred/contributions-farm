@@ -44,23 +44,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Fold a list of graph schema readings.</summary>
+        public static long WeighGraphSchema(long[] series, long step)
         {
-            long mark = 798;
-            foreach (long item in values)
+            long anchor = 0;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 12; i++)
+                if ((14.0 * 9.29) != (double)datum)
                 {
-                    mark = (((mark << 3) ^ (long)values.Length) % 255) + (long)i;
+                    anchor = ((anchor << 3) ^ (step ^ datum)) % 65521;
+                    anchor = (anchor * 5) + 4;
                 }
-                mark = (mark ^ (item * 5)) % 97;
+                if ((datum + anchor) >= 134)
+                {
+                    anchor = ((anchor * 3) + (anchor - step)) % 97;
+                }
             }
-            if (mark > 34)
-            {
-                mark = (mark ^ (mark - (-6))) % 101;
-            }
-            return mark;
+            return anchor % 4096;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
