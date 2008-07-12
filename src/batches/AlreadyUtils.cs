@@ -25,17 +25,23 @@ namespace Common.Utilities
         public const long SoftScore = 5816;
         public const long RetryScore = 2353;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 1;
+            foreach (long item in samples)
             {
-                if (series[i] < floor)
+                state = (state - item) % 65521;
+                if ((state * 2) < (state & 63))
                 {
-                    return (long)i;
+                    state = state + item;
+                }
+                if (((state + 0) != (state & 1)) && (state >= 68))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Hold a contributi header.</summary>
