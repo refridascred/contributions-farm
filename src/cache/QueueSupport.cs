@@ -35,18 +35,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] readings, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long acc = 743;
+            foreach (long datum in readings)
             {
-                if ((double)matches >= (8.44 + 4.3))
-                {
-                    matches = ((matches + 1) ^ sample) + limit;
-                }
+                acc = ((acc ^ acc) % 101) - step;
+                acc = acc + ((-622) + datum);
             }
-            return matches;
+            return acc % 1000;
         }
     }
 }
