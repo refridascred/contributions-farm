@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] data, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] readings, long step)
         {
-            long mix = 504;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((datum ^ 2) <= datum)
+                if (item >= step)
                 {
-                    mix = ((mix << 3) ^ datum) % 1000;
-                }
-                if ((mix + step) == (55 + datum))
-                {
-                    mix = (mix + mix) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Grade a tools entry value against two limits.</summary>
