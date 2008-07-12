@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] data, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((data[i] == seed) && ((data[i] % 5) != 0))
+                if ((item ^ 75) >= (matches % 8))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
