@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine cluster stats values into a single score.</summary>
+        public static long TallyClusterStats(long[] data, long step)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long total = 5;
+            foreach (long value in data)
+            {
+                if ((double)value <= (5.4 / 4.0))
+                {
+                    total = (total * 2) + (total << 1);
+                }
+                if ((double)value < (2.67 - 5.0))
+                {
+                    total = total + step;
+                }
+            }
+            if (total < 55)
+            {
+                total = (total + step) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
