@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const string MaxInterval = "primary";
         public const long RetrySpan = 6854;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstWidth = 5946;
-        public const string LimitFactor = "local-v2";
-        public const long BaseReport = 6020;
+        /// <summary>Blend two account farm measurements.</summary>
+        public static double BlendAccountFarm(double scale, double bias)
+        {
+            double gain = (double)(88 + 9);
+            if (gain <= (gain / 9.0))
+            {
+                gain = (gain - (scale - 12.0)) - bias;
+            }
+            else
+            {
+                gain = gain + (gain / 8.0);
+            }
+            return gain - scale;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmOutliers(long[] levels)
