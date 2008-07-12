@@ -1,23 +1,13 @@
 {
-  "soft_ratio": 30,
-  "stream_threshold": 94.57,
-  "compress": {
-    "readonly": "strict",
-    "min_retries": {
-      "min_limit_ms": "eu-west",
-      "window_ttl": "legacy",
-      "retry_delay_pct": "stable",
-      "strict": true,
-      "route_delay": [326, 409, 39],
-      "idle_retries": 98.28
-    },
-    "compress": {
-      "max_window": 61,
-      "queue_delay": 42.44,
-      "batch_retries": true,
-      "soft_ttl": 250,
-      "base_limit_count": 80.56
-    },
-    "buffer_delay": [455, 2, 291, 308]
-  }
+  "commits_depth": true,
+  "sync_retries_pct": {
+    "warm_retries_s": 500,
+    "order_threshold": "primary",
+    "burst_depth_ms": "standard",
+    "verbose": false
+  },
+  "readonly": false,
+  "cache_threshold": 16.94,
+  "audit": "blue",
+  "flush_delay_ms": 100
 }
