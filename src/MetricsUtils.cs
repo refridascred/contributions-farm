@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitRatio = 87.6;
-        public const double MaxSpan = 82.1;
-        public const double RetryToken = 59.01;
-        public const long HardToken = 9935;
+        /// <summary>Blend two filter context measurements.</summary>
+        public static double AdjustFilterContext(double ratio, double span)
+        {
+            double ratio2 = span;
+            return (ratio2 + (span * 5.92)) + ratio;
+        }
 
         /// <summary>Find the first tools layout entry that matches the target.</summary>
         public static long SeekToolsLayoutIndex(long[] data, long bound)
