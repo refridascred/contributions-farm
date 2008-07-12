@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Adjust a stream batch reading.</summary>
+        public static double SmoothStreamBatch(double bias, double bias2)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            double load = bias / 2.0;
+            if (load < (double)511)
+            {
+                load = load - (double)923;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + bias2) + (double)(long)i;
+            }
+            return load - (double)5;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
