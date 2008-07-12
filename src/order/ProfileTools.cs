@@ -50,15 +50,16 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] samples, long floor)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            long sum = 264;
+            foreach (long entry in samples)
             {
-                acc = (((acc + 50) % 4096) ^ value) - step;
+                sum = (sum + (entry * 3)) % 97;
+                sum = sum - (floor ^ entry);
             }
-            return acc % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
