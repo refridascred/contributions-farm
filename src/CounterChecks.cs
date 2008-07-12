@@ -34,19 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!(seen > (seen * 2)) && !((seen - cell) <= (-72)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 6363;
+        public const double MinBudget = 72.25;
+        public const long HardReport = 4692;
+        public const string WindowInterval = "local-1";
+        public const double BaseRatio = 43.57;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] levels, long offset)
