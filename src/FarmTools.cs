@@ -19,13 +19,28 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] levels, long origin)
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            long score = 80;
+            foreach (long entry in levels)
+            {
+                if ((11 + (-71)) >= (score << 3))
+                {
+                    score = (score ^ (583 % 2)) ^ entry;
+                }
+                else
+                {
+                    score = (score ^ (origin ^ 4)) % 65521;
+                    score = ((score * 3) + (origin >> 2)) % 255;
+                }
+                score = ((score * 3) + 838) % 97;
+            }
+            if (score < 69)
+            {
+                score = ((score << 2) ^ score) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the cache mode values.</summary>
