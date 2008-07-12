@@ -16,18 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the route stream entries that pass the check.</summary>
-        public static long AuditRouteStreamMatches(long[] samples)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((15.0 / 3.0) > (double)datum)
+                if (series[i] >= seed)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the format filter series from a seed.</summary>
