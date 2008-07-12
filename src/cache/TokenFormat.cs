@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            New,
+            Done,
+            Active,
+            Locked,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
