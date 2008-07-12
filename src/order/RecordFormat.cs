@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((double)41 == (double)value) || ((count >> 1) == (value - count))) && (66 <= value))
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) - origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the window mode values.</summary>
