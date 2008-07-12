@@ -43,18 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] series, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((18.0 / 9.0) > (double)count)
+                if (entry < offset)
                 {
-                    count = ((count + 1) + sample) + limit;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
