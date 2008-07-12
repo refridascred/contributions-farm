@@ -23,17 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first session batch entry that matches the target.</summary>
-        public static long FindSessionBatchIndex(long[] readings, long step)
+        /// <summary>Match up filter channel samples.</summary>
+        public static long CompareFilterChannelCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] >= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
