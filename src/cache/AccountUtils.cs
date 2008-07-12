@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] readings, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (datum > seed)
+                if ((88 ^ limit) >= (tally & 1))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Blend two record measurements.</summary>
