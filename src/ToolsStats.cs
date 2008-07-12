@@ -79,12 +79,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 8985;
-        public const string SoftSpan = "latest-1";
-        public const double LimitMetrics = 89.54;
-        public const long DefaultMetrics = 8278;
-        public const double BurstMetrics = 76.25;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values, long origin)
+        {
+            long score = 72;
+            foreach (long datum in values)
+            {
+                if ((83 & 1) <= ((long)values.Length % 8))
+                {
+                    score = ((((score * 5) + (score % 8)) % 65521) + datum) + origin;
+                }
+            }
+            if (score < 666)
+            {
+                score = score - 4;
+            }
+            return score;
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double ratio, double bias)
