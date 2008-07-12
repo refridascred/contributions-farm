@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 4825;
-        public const string IdleCount = "latest-edge";
-        public const long MinFormat = 9165;
-        public const long BatchFormat = 6045;
-        public const long CacheInterval = 5675;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total ^ (28 - total)) % 65521;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
