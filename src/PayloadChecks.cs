@@ -34,10 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 3809;
-        public const long CacheDepth = 33;
-        public const long StepInterval = 8363;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Locked,
+            Draft,
+            Stale,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long SortProfile(long floor, long step)
