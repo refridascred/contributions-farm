@@ -36,19 +36,16 @@ namespace Common.Utilities
         public const double HardFarm = 32.67;
         public const double BaseBudget = 97.46;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] values, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            long anchor = 8;
-            foreach (long value in values)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = ((anchor * 2) + value) % 65521;
-                if ((value & 255) > (seed ^ seed))
-                {
-                    anchor = anchor + value;
-                }
+                sum = ((sum << 3) ^ (origin / 9)) % 97;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Fold a list of record readings.</summary>
