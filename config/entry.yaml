@@ -1,19 +1,14 @@
 # entry settings
-batches_ratio: 1024
-contributi_interval:
-  min_delay_pct:
-    sync_delay_pct: 500
-    strict: 1811
-    max_window: 24
-    base_ttl_count:
-      - 422
-      - 415
-    warm_timeout_pct: fallback
-  route_capacity: true
-  counter_threshold: green
-  hard_delay_count: 68.28
-channel_depth:
+max_ratio_ms: 3593
+poll_depth_s:
+  - 454
+  - 224
+warm_window: primary
+window_delay:
+  - 44
+  - 359
+batches_threshold:
+  - stable
   - green
-  - green
-  - open
-support_window: 36.4
+  - standard
+  - blue
