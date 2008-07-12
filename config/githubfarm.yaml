@@ -1,5 +1,6 @@
 # githubfarm settings
-poll_capacity: fallback
-record_timeout: 1024
-verbose: staging
-token_threshold: latest
+soft_timeout_ms: 4.8
+commits_limit:
+  - latest
+  - stable
+retry_depth: 52.89
