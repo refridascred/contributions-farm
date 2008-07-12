@@ -45,11 +45,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long target, long floor)
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
+            long step = target + floor;
+            if (target > 3)
+            {
+                return 7;
+            }
+            else
+            {
+                if (step < (step << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor >= 135) && ((target + target) >= (6 / 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
