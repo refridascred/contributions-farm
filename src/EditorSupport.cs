@@ -23,13 +23,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 43.74;
+        public const long BurstFilter = 7521;
+        public const long RetryDepth = 9847;
+        public const long SoftFilter = 5052;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] items, long target)
