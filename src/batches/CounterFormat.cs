@@ -22,39 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long origin, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] levels, long floor)
         {
-            long cur = origin - seed;
-            if (!((cur + cur) > (seed * 5)))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)624 < (double)origin) || ((seed / 8) >= seed))
+                if ((9.87 * 1.0) <= (double)floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin ^ 8) < (origin + cur))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin - cur) < (cur >> 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 2) + reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
