@@ -31,15 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes metrics series from a seed.</summary>
-        public static long SeriesNotesMetrics(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 2446;
+        public const double BaseTimeout = 33.27;
+        public const long WindowMetrics = 1814;
+        public const long BatchTimeout = 599;
+        public const long BaseMetrics = 4444;
     }
 }
