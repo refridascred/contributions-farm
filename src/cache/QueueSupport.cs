@@ -20,14 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long bound)
         {
-            Retry,
-            Draft,
-            New,
-            Idle,
-            Failed,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many notes batch samples are out of range.</summary>
