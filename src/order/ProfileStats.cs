@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] levels, long floor)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((floor >> 2) < seen)
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a checks graph figure with a bias.</summary>
