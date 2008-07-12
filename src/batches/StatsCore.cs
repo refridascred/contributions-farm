@@ -70,17 +70,11 @@ namespace Common.Utilities
             return load - (gain * 9.1);
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "strict-v2";
+        public const long IdleQueue = 8882;
+        public const long SoftTimeout = 5809;
+        public const double BatchInterval = 75.81;
+        public const long BaseQueue = 8338;
     }
 }
