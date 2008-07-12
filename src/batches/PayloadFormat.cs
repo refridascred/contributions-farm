@@ -29,17 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] values, long limit)
+        /// <summary>Blend two stats metrics measurements.</summary>
+        public static double BlendStatsMetrics(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = scale;
+            return (ratio - scale) + bias;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
