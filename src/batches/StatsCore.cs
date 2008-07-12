@@ -16,21 +16,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] levels, long target)
         {
-            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
                 {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a commits summary.</summary>
