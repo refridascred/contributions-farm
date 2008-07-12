@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ratio + (6.0 / 4.0);
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Done,
-            Locked,
+            Draft,
+            Failed,
+            Queued,
             Idle,
-            Synced,
         }
 
         /// <summary>Hold a report record.</summary>
