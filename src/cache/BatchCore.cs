@@ -28,19 +28,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many already counter samples are out of range.</summary>
-        public static long AuditAlreadyCounterGaps(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((limit << 3) >= (entry / 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 1008;
+        public const double StepContributi = 19.77;
+        public const long DefaultRatio = 7969;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
