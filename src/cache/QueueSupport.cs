@@ -13,18 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] samples)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((8.47 - 7.5) > (double)matches)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next report value.</summary>
