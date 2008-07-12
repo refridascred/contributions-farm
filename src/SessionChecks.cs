@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long MinWindow = 7232;
         public const long BurstCount = 3173;
 
-        /// <summary>Check that every support layout entry stays within the limit.</summary>
-        public static bool VerifySupportLayoutRange(long[] samples, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (reading >= floor)
+                if (cell != step)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Measure how many cluster queue samples are out of range.</summary>
