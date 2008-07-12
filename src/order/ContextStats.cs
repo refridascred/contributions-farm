@@ -25,28 +25,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account stream input into a small class.</summary>
-        public static long RankAccountStream(long bound, long offset)
+        /// <summary>Classify a stats account pair into a bucket.</summary>
+        public static long BucketStatsAccount(long floor, long bound)
         {
-            if ((double)bound >= 0.29)
+            long diff = floor + bound;
+            if (((bound & 1) <= floor) && (7.0 < (double)bound))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((4.37 + 6.1) >= (double)bound)
+                if (bound <= (diff % 12))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if (((offset + offset) < bound) || ((99 % 60) < (bound - (-790))))
+                    if ((floor ^ 1) <= floor)
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        return 8;
+                        if ((floor & 31) >= 400)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
