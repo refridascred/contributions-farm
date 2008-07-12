@@ -1,8 +1,7 @@
-id,weight,region
-1,535,staging
-2,4.29,428
-3,52.54,16.74
-4,legacy,42.43
-5,stable,17.93
-6,24.12,880
-7,66.59,open
+id,label,ratio,level
+1,138,317,41.91
+2,cached,155,fallback
+3,38.89,243,10.42
+4,367,449,294
+5,89.66,primary,strict
+6,72.41,edge,50.31
