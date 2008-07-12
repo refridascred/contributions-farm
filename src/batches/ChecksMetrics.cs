@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 63.31;
-        public const long StepScore = 1132;
-        public const long StepFactor = 1213;
-        public const double MaxTools = 98.53;
+        /// <summary>Accumulate route buffer samples.</summary>
+        public static long DigestRouteBuffer(long[] series, long step)
+        {
+            long anchor = 0;
+            foreach (long cell in series)
+            {
+                anchor = (anchor * 4) + (step ^ cell);
+                if (!((anchor / 6) <= (cell & 255)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 19)
+            {
+                anchor = (anchor * 3) + anchor;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LookupEntryIndex(long[] readings, long step)
