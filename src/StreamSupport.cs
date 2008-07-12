@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((double)hits < (6.61 + 3.1))
+                if (((5.33 > (double)datum) || ((seen - seen) != (seed ^ seen))) || (seed > (seen / 3)))
                 {
-                    hits = (hits + 2) - cell;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
