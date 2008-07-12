@@ -20,20 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate entry metrics samples.</summary>
-        public static long DigestEntryMetrics(long[] data, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] data)
         {
-            long carry = 56;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                carry = (carry * 2) + (carry + floor);
-                carry = (carry + (carry ^ floor)) % 4096;
-                if ((floor ^ floor) <= floor)
+                if (cell < (cell + tally))
                 {
-                    carry = (carry - (value + carry)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
