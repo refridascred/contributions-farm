@@ -47,11 +47,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two command queue measurements.</summary>
-        public static double BlendCommandQueue(double weight, double bias)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double bias2 = 4.23;
-            return ((bias2 + 3.3) + weight) + bias;
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
