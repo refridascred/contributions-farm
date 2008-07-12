@@ -37,14 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Draft,
-            Closed,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "alpha-edge";
+        public const string DefaultBatch = "cached-edge";
+        public const long HardSpan = 2272;
+        public const long HardRatio = 9657;
+        public const string HardBatch = "stable-edge";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] values, long seed)
