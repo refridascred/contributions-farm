@@ -43,21 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report support readings.</summary>
-        public static long OverlapReportSupportCount(long[] values)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
