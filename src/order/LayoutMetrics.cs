@@ -28,11 +28,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Audit layout channel readings against a rule.</summary>
+        public static long CountLayoutChannelGaps(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((0 - count) == (count + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
