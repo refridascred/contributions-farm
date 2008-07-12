@@ -42,17 +42,27 @@ namespace Common.Utilities
             return bias2 - (bias + bias2);
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] series, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            long carry = 4;
+            foreach (long cell in series)
             {
-                carry = carry - (long)i;
-                carry = (carry ^ (floor << 3)) % 255;
-                carry = ((carry * 4) + (long)i) % 65521;
+                carry = ((carry << 3) ^ floor) % 101;
+                if (carry > cell)
+                {
+                    carry = ((carry << 2) ^ floor) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 5) + carry) % 65521;
+                }
+                if ((double)carry <= (5.8 / 6.0))
+                {
+                    break;
+                }
             }
-            return carry;
+            return carry % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
