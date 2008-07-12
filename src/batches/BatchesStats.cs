@@ -36,18 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits queue entries that pass the check.</summary>
-        public static long MeasureCommitsQueueGaps(long[] readings)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.7 + 9.0) > (double)seen)
+                if (levels[i] < seed)
                 {
-                    seen = (seen + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
