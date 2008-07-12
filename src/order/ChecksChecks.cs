@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string MaxInterval = "primary";
         public const long RetrySpan = 6854;
 
-        /// <summary>Blend two account farm measurements.</summary>
-        public static double BlendAccountFarm(double scale, double bias)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double gain = (double)(88 + 9);
-            if (gain <= (gain / 9.0))
-            {
-                gain = (gain - (scale - 12.0)) - bias;
-            }
-            else
-            {
-                gain = gain + (gain / 8.0);
-            }
-            return gain - scale;
+            public double Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
