@@ -30,17 +30,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] readings, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 5;
+            foreach (long sample in data)
             {
-                if (readings[i] >= floor)
+                state = state ^ (step + step);
+                if ((step + state) >= sample)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state < 195)
+            {
+                state = (state << 2) ^ (state - step);
+            }
+            return state;
         }
     }
 }
