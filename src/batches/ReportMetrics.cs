@@ -24,9 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 2710;
-        public const long BurstStream = 4276;
-        public const long DefaultStream = 8376;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((18.0 / 9.0) > (double)count)
+                {
+                    count = ((count + 1) + sample) + limit;
+                }
+            }
+            return count;
+        }
     }
 }
