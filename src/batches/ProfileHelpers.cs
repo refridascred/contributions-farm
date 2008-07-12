@@ -46,10 +46,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardFactor = "open-1";
-        public const long WindowCluster = 4150;
-        public const long BurstCluster = 9125;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxSpan = 92.21;
+        public const double CacheLevel = 41.46;
+        public const long WindowBudget = 5093;
+        public const long BurstWidth = 3464;
 
         /// <summary>Digest a series of account contributi entries.</summary>
         public static long WeighAccountContributi(long[] items, long step)
