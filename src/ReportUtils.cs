@@ -51,13 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Iterate the format cache series from a seed.</summary>
+        public static long RollFormatCache(long step)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total << 2) ^ (2 - step);
+                total = (total ^ (total + total)) % 97;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the metrics graph entries that pass the check.</summary>
