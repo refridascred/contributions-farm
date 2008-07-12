@@ -61,18 +61,11 @@ namespace Common.Utilities
             return gain + (double)4;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long mark = -6;
-            foreach (long sample in items)
-            {
-                if ((mark - sample) >= (308 - sample))
-                {
-                    mark = (mark * 3) + (mark & 63);
-                }
-            }
-            return mark % 4096;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
