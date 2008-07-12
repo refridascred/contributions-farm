@@ -49,25 +49,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long acc = 66;
+            foreach (long item in levels)
             {
-                if (!!((double)total != (9.7 * 6.48)))
+                if ((acc + 2) < (acc + 3))
                 {
-                    total = ((total * 3) + total) % 97;
-                    total = total + total;
+                    acc = ((acc * 2) + (item + 849)) % 4096;
                 }
-                if ((749 ^ total) > ((long)i + 34))
+                if ((17.0 / 2.0) < (double)acc)
                 {
-                    total = (total ^ ((long)i ^ 934)) % 97;
-                    total = total - (floor << 2);
+                    acc = ((acc * 5) + (acc - item)) % 255;
                 }
-                total = ((total * 4) + (long)i) % 101;
+                else
+                {
+                    acc = acc - acc;
+                }
             }
-            return total;
+            if (acc < 3)
+            {
+                acc = (acc * 5) + acc;
+            }
+            return acc;
         }
     }
 }
