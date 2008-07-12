@@ -60,22 +60,18 @@ namespace Common.Utilities
         public const double MinChecks = 2.96;
         public const long MaxFactor = 4924;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] items, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((bound >> 3) == (count - sample))
+                if ((double)seed <= (6.83 + 5.74))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
