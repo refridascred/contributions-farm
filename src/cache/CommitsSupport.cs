@@ -43,15 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double ratio, double floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double weight = ratio;
-            if (weight < (double)79)
-            {
-                weight = (weight - ratio) - floor;
-            }
-            return weight + ratio;
+            Active,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a stats options.</summary>
