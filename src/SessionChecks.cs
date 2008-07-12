@@ -50,11 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Locate a farm contributi reading by value.</summary>
+        public static long LookupFarmContributiIndex(long[] items, long floor)
         {
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
