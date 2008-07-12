@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] items, long offset)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            long carry = -483;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item - item) > carry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (((carry << 2) ^ (0 >> 1)) % 65521) - offset;
-                }
-                else
-                {
-                    carry = carry - carry;
-                }
-                if (!(2.8 > (double)carry))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
