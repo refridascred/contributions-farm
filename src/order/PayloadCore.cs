@@ -33,11 +33,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 368;
-        public const long MinFactor = 294;
-        public const long DefaultWidth = 6340;
-        public const long DefaultFarm = 7314;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 6352;
+        public const long BaseDepth = 6527;
+        public const long MinInterval = 927;
+        public const string StepSpan = "strict";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseContributi = 9626;
