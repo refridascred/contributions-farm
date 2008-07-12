@@ -1,8 +1,7 @@
-id,ratio,active,state,region
-1,582,86,53.88,green
-2,422,668,67.31,914
-3,local,57.07,279,66.91
-4,89,2.22,staging,40.14
-5,49.63,strict,primary,580
-6,eu-west,412,432,cached
-7,eu-west,staging,blue,48.54
+id,level,count
+1,194,staging
+2,407,strict
+3,cached,751
+4,primary,blue
+5,893,864
+6,84.62,legacy
