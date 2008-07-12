@@ -24,20 +24,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every support batch entry stays within the limit.</summary>
-        public static bool ValidateSupportBatchLimits(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstBudget = "open-1";
+        public const long DefaultLayout = 5760;
+        public const string StepLayout = "alpha";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleFarm = 368;
