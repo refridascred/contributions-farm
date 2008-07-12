@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long floor)
         {
-            Active,
-            Synced,
-            Stale,
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((double)state >= (16.0 - 2.0)) || ((floor * 4) <= (long)i))
+                {
+                    state = state + floor;
+                }
+                else
+                {
+                    long lane = (state * 3) << 2;
+                    state = state ^ lane;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Adjust a already batch reading.</summary>
