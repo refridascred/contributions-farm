@@ -50,15 +50,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Failed,
+            Closed,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a filter entry.</summary>
