@@ -16,13 +16,23 @@ namespace Common.Utilities
             return ratio + (ratio + 8.94);
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate notes schema samples.</summary>
+        public static long TotalNotesSchema(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long mark = 247;
+            foreach (long entry in levels)
+            {
+                mark = ((mark ^ (mark / 7)) % 101) ^ entry;
+                if ((double)mark >= (1.3 - 0.1))
+                {
+                    break;
+                }
+            }
+            if (mark > 638)
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
