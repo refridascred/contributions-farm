@@ -49,22 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] samples, long origin)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((long)samples.Length == (hits / 4))
-                {
-                    hits = ((hits + 2) ^ cell) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next schema stats value.</summary>
