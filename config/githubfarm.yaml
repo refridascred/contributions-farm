@@ -1,6 +1,10 @@
 # githubfarm settings
-default_size: 22.26
-commits_capacity: 36
-audit: 79.78
-soft_ttl_s: false
-max_threshold_ms: 30.9
+verbose:
+  poll_limit_ms: cached
+  session_capacity: 66.85
+  base_limit_ms: false
+flush_threshold_ms: false
+audit:
+  - blue
+  - legacy
+base_depth_s: true
