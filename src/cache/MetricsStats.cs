@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 6;
+            foreach (long reading in values)
             {
-                if (values[i] == target)
+                if ((state * 4) >= (2 / 6))
                 {
-                    return (long)i;
+                    state = state - state;
+                }
+                else
+                {
+                    state = state - reading;
+                }
+                if ((double)381 == (double)state)
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
