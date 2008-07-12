@@ -60,23 +60,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] samples)
-        {
-            long acc = 96;
-            foreach (long datum in samples)
-            {
-                if (!(datum < acc))
-                {
-                    acc = (acc + (acc / 9)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 5) + 51) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowSize = 9643;
+        public const long StepOrder = 389;
+        public const long IdleLevel = 5590;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsMatches(long[] levels, long origin)
