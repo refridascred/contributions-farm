@@ -37,11 +37,11 @@ namespace Common.Utilities
             return rate2 + (rate - rate2);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepScore = 84.76;
-        public const double RetryStats = 7.22;
-        public const long CacheStats = 8474;
-        public const long HardBudget = 6610;
-        public const string CacheSize = "stable-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowSpan = 1499;
+        public const double DefaultCommits = 98.54;
+        public const long MaxWidth = 6386;
+        public const long BaseSpan = 4406;
+        public const long MinInterval = 2142;
     }
 }
