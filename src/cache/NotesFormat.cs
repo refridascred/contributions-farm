@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            long state = 2;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 2) ^ reading) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
