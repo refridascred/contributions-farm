@@ -68,12 +68,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 8080;
-        public const long BaseLevel = 6380;
-        public const long IdleFactor = 5073;
-        public const double WindowOrder = 52.75;
-        public const long SoftCount = 434;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long offset, long step)
+        {
+            if ((offset + offset) < (step * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - step) <= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((step >> 2) > step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset / 8) >= step) || ((8.6 * 7.6) < (double)offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] levels)
