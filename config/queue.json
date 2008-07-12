@@ -1,6 +1,21 @@
 {
-  "verbose": 60,
-  "counter_ratio": "staging",
-  "retry_ttl": ["primary", "eu-west", "open"],
-  "batch_window": ["legacy", "primary", "cached"]
+  "compress": 5996,
+  "dry_run": 500,
+  "max_threshold_pct": true,
+  "entry_interval": 60,
+  "cache_timeout": {
+    "burst_delay_ms": [187, 393, 44, 433],
+    "idle_window_ms": {
+      "schema_limit": "strict",
+      "batch_capacity": "open",
+      "cache_ratio_s": 67.81,
+      "graph_limit": ["cached", "green"],
+      "default_capacity_ms": "eu-west",
+      "default_limit_ms": 250
+    },
+    "readonly": "local",
+    "default_threshold_pct": 56,
+    "flush_threshold": 91
+  },
+  "verbose": true
 }
