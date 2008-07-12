@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Iterate the session token series from a seed.</summary>
+        public static long StepSessionToken(long step)
         {
-            Draft,
-            Active,
-            Paused,
-            Locked,
+            long state = step;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state + (24 + (long)i);
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of session readings.</summary>
