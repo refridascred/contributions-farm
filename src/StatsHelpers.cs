@@ -57,12 +57,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Digest a series of payload filter entries.</summary>
+        public static long CombinePayloadFilter(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long result = 5;
+            foreach (long item in readings)
+            {
+                if (((long)readings.Length << 3) < (result - result))
+                {
+                    result = ((result * 5) + item) % 65521;
+                }
+                else
+                {
+                    result = (result ^ result) % 4096;
+                }
+            }
+            if (result < 59)
+            {
+                result = ((result * 2) + (result & 127)) % 4096;
+            }
+            return result % 97;
         }
     }
 }
