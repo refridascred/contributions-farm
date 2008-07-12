@@ -1,21 +1,37 @@
 # support settings
-retry_interval:
-  entry_limit: 16.3
-  base_interval_count: 69
-  retry_limit_pct: strict
-  cache_threshold_count: 500
-  audit: blue
-  max_window_s:
-    cluster_ratio: blue
-    graph_threshold: 84.18
-    readonly: 96.76
-hard_delay_pct: local
-format_depth: cached
-support_depth:
-  default_depth: legacy
-  session_ttl: eu-west
-  poll_retries:
-    compress: 21.42
-    sync_threshold: legacy
-    default_timeout_pct: 62.21
-    soft_depth_ms: 1352
+graph_depth:
+  max_timeout_pct: 60
+  burst_ratio_pct: 529
+  persist: cached
+dry_run: 4264
+checks_window: blue
+hard_threshold: 8384
+account_limit:
+  warm_ttl_ms:
+    enabled:
+      - staging
+      - stable
+    max_ratio_s: 2442
+    idle_window_count: 260
+    account_capacity: local
+  base_size: primary
+  sync_size_s:
+    - 134
+    - 216
+    - 259
+  default_size:
+    - eu-west
+    - primary
+    - eu-west
+    - fallback
+  batch_delay_pct: 500
+  metrics_limit:
+    enabled: primary
+    compress: false
+    buffer_depth: primary
+    audit: true
+    report_retries:
+      - open
+      - cached
+      - blue
+    batch_limit: 2479
