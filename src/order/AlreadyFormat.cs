@@ -45,24 +45,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank stream profile input into a small class.</summary>
-        public static long GradeStreamProfile(long target, long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            if ((0 % 12) > floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((-931) < (target & 31)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Ready,
+            Active,
+            Draft,
+            Done,
         }
     }
 }
