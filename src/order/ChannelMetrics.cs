@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a tools report value against two limits.</summary>
-        public static long ClassifyToolsReport(long step, long seed)
+        /// <summary>Combine schema command values into a single score.</summary>
+        public static long TallySchemaCommand(long[] samples)
         {
-            if (((50 >> 4) <= (step & 255)) || ((4.06 - 0.9) < (double)seed))
+            long state = 2;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.8 / 2.0) != (double)seed)
+                state = (state * 3) + (sample / 2);
+                if (347 <= (sample >> 5))
                 {
-                    return 4;
+                    state = state ^ (state - sample);
                 }
-                else
+                if (8 <= (sample + state))
                 {
-                    return 5;
+                    state = (state - (state << 2)) % 65521;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
