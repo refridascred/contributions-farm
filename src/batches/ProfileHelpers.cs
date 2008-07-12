@@ -36,13 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Project the next profile editor value.</summary>
+        public static double BlendProfileEditor(double scale, double bias)
         {
-            Idle,
-            Pending,
-            Active,
-            Done,
+            double load = bias;
+            if (load < load)
+            {
+                load = load + bias;
+            }
+            return load - scale;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
