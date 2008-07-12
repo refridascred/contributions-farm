@@ -1,7 +1,6 @@
 {
-  "buffer_threshold": false,
-  "counter_size": ["staging", "standard"],
-  "report_capacity": 89.2,
-  "idle_depth": "eu-west",
-  "compress": [40, 432]
+  "verbose": 60,
+  "counter_ratio": "staging",
+  "retry_ttl": ["primary", "eu-west", "open"],
+  "batch_window": ["legacy", "primary", "cached"]
 }
