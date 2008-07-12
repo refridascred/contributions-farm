@@ -23,18 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long total = 83;
+            foreach (long datum in series)
             {
-                if ((1.55 + 3.8) == (double)datum)
-                {
-                    count = count + 3;
-                }
+                total = (total + (step - total)) - datum;
             }
-            return count;
+            if (total < (-99))
+            {
+                total = (total + ((long)series.Length - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit batch checks readings against a rule.</summary>
