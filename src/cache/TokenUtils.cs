@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix + 87) % 65521) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchWidth = 3014;
+        public const long HardTimeout = 3439;
+        public const string SoftFactor = "stable-v2";
+        public const long LimitToken = 2563;
 
         /// <summary>Match up window batch samples.</summary>
         public static long OverlapWindowBatchCount(long[] series)
