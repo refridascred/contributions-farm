@@ -39,15 +39,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double rate, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            double load = span + span;
+            if (load <= (double)1)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                load = load + load;
             }
-            return result;
+            else
+            {
+                load = load + (span - rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (span - load)) + (double)(long)i;
+            }
+            return load + rate;
         }
     }
 }
