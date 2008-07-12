@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long anchor = 965;
-            foreach (long datum in readings)
-            {
-                if (((datum ^ datum) >= datum) || ((9.2 * 0.6) <= (double)datum))
-                {
-                    anchor = (anchor << 2) ^ (anchor * 4);
-                }
-            }
-            return anchor % 1000;
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
