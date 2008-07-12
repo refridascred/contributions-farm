@@ -39,19 +39,9 @@ namespace Common.Utilities
         public const long LimitProfile = 2648;
         public const double CacheProfile = 58.67;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstStream = 62.41;
+        public const long RetryFactor = 841;
+        public const string IdleSize = "primary-1";
     }
 }
