@@ -22,13 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
