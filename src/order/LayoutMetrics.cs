@@ -14,21 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the session stream series from a seed.</summary>
-        public static long IterateSessionStream(long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long result = 223;
+            foreach (long sample in data)
             {
-                mark = mark + (mark & 255);
-                if (54 >= (bound % 7))
+                if ((sample % 60) > (sample + 50))
                 {
-                    mark = ((mark * 3) + (bound + bound)) % 255;
+                    result = (result << 2) ^ ((-309) ^ result);
                 }
-                mark = (mark ^ mark) % 97;
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return result % 4096;
         }
 
         /// <summary>Describe the stream status values.</summary>
