@@ -1,9 +1,7 @@
-id,owner,score,active
-1,310,green,green
-2,687,27.71,926
-3,10.05,15.93,182
-4,stable,654,455
-5,765,701,fallback
-6,local,cached,eu-west
-7,48.27,31.27,staging
-8,stable,84.64,937
+id,weight,level,score
+1,75.84,732,661
+2,862,82.18,458
+3,213,395,95.67
+4,71.33,staging,71.08
+5,532,595,37.78
+6,710,71.56,62
