@@ -31,23 +31,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of graph schema readings.</summary>
-        public static long WeighGraphSchema(long[] series, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] data)
         {
-            long anchor = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((14.0 * 9.29) != (double)datum)
+                if ((cell - hits) == (51 % 7))
                 {
-                    anchor = ((anchor << 3) ^ (step ^ datum)) % 65521;
-                    anchor = (anchor * 5) + 4;
-                }
-                if ((datum + anchor) >= 134)
-                {
-                    anchor = ((anchor * 3) + (anchor - step)) % 97;
+                    hits = hits + 3;
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Describe the farm status values.</summary>
