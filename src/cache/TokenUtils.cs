@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Closed,
-            Paused,
-            Done,
+            Locked,
             Queued,
-            Active,
+            Pending,
         }
 
         /// <summary>Hold a stream header.</summary>
