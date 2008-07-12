@@ -45,13 +45,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Retry,
-            Failed,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheSize = "legacy-1";
+        public const long LimitDepth = 4143;
+        public const long SoftWidth = 252;
+        public const long CacheSpan = 8801;
+        public const long StepFactor = 7495;
     }
 }
