@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long target, long bound)
+        /// <summary>Grade a route farm value against two limits.</summary>
+        public static long BucketRouteFarm(long floor, long offset)
         {
-            long prev = target ^ bound;
-            if ((prev - prev) >= bound)
+            long diff = floor ^ offset;
+            if ((double)floor < (8.0 * 7.82))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((prev % 3) > prev)
+                if (offset > (offset - 897))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((99 << 3) >= (prev >> 4))
+                    if ((offset ^ diff) >= (diff + 511))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 6;
+                        return 5;
                     }
                 }
             }
