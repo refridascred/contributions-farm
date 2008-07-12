@@ -26,21 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric schema readings.</summary>
-        public static long OverlapMetricSchemaCount(long[] data)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long step, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = step ^ bound;
+            if ((lane & 1) > (bound + bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (step <= (bound + bound))
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the account state values.</summary>
