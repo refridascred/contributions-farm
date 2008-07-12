@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the account schema entries that pass the check.</summary>
-        public static long CountAccountSchemaHits(long[] levels)
+        /// <summary>Adjust a support token reading.</summary>
+        public static double ProjectSupportToken(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double rate = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((datum + hits) != (409 + hits)) || ((datum & 7) > datum))
-                {
-                    hits = hits + 1;
-                }
+                rate = (rate - bias) - (double)(long)i;
             }
-            return hits;
+            return rate + (double)9;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
