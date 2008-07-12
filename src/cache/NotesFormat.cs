@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] samples, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double scale, double span)
         {
-            long result = 876;
-            foreach (long value in samples)
+            double drift = span;
+            if (drift > (double)624)
             {
-                result = (result + (offset >> 2)) % 4096;
-                result = result ^ (22 - value);
-                result = result ^ (value * 4);
+                drift = drift + (scale / 6.0);
             }
-            return result;
+            return drift - (scale * 2.0);
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
