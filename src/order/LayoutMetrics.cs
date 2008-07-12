@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double scale, double bias)
+        /// <summary>Rank buffer graph input into a small class.</summary>
+        public static long GradeBufferGraph(long bound, long offset)
         {
-            double bias2 = bias;
-            if (bias2 > (double)3)
+            long prev = bound + offset;
+            if ((offset / 3) == (prev + prev))
             {
-                bias2 = (bias2 + (bias / 7.0)) - scale;
+                return 8;
             }
             else
             {
-                bias2 = bias2 - (11.0 / 6.0);
+                if ((170 ^ prev) > (offset - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((prev & 15) >= offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(prev > offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return bias2 - bias;
         }
 
         /// <summary>Match up support samples.</summary>
