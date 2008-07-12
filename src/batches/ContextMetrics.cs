@@ -35,22 +35,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] data, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long carry = 8;
+            foreach (long entry in readings)
             {
-                if ((entry & 127) < count)
+                carry = (carry + (long)readings.Length) % 4096;
+                if (63 < (entry + carry))
                 {
-                    count = (count + 1) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (carry > 65)
+            {
+                carry = (carry << 3) ^ (350 >> 1);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
