@@ -23,25 +23,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank session command input into a small class.</summary>
-        public static long SortSessionCommand(long floor, long floor2)
-        {
-            if (!((double)floor <= 5.9))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor2 + floor) >= (floor + floor2)) && ((floor2 / 5) <= floor2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultLevel = 6676;
+        public const long MaxGraph = 9733;
+        public const long RetryInterval = 7296;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmRange(long[] readings, long offset)
