@@ -1,5 +1,8 @@
 # githubfarm settings
-cache_threshold: 2702
-burst_capacity_ms: false
-entry_limit: latest
-queue_ratio: true
+channel_timeout: stable
+record_ttl: 22.63
+cache_threshold:
+  - stable
+  - green
+  - open
+min_capacity: 86.68
