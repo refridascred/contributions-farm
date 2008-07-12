@@ -36,15 +36,31 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of already batch readings.</summary>
-        public static long WeighAlreadyBatch(long[] levels, long bound)
+        /// <summary>Grade a buffer tools value against two limits.</summary>
+        public static long GradeBufferTools(long seed, long offset)
         {
-            long acc = 7;
-            foreach (long entry in levels)
+            if (seed > (offset - offset))
             {
-                acc = (((acc * 2) + (acc - 825)) + entry) - bound;
+                return 3;
             }
-            return acc % 97;
+            else
+            {
+                if ((190 >> 2) != (seed + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((3 % 64) < (seed + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
