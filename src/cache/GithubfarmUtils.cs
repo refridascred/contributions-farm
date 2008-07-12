@@ -69,13 +69,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] data, long bound)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (entry >= (tally & 1))
+                {
+                    tally = (tally + 2) - bound;
+                }
+            }
+            return tally;
         }
     }
 }
