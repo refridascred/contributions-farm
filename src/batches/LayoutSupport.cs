@@ -68,10 +68,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheDepth = 8543;
-        public const long HardFactor = 870;
-        public const double SoftLevel = 57.42;
-        public const long CacheWindow = 7326;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double weight, double span)
+        {
+            double weight2 = (weight * 20.0) * 2.98;
+            if (weight2 >= weight2)
+            {
+                weight2 = weight2 - (weight2 + 9.3);
+            }
+            else
+            {
+                weight2 = weight2 - (weight + weight2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - (span + span)) + (double)(long)i;
+            }
+            return weight2 + span;
+        }
     }
 }
