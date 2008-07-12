@@ -24,21 +24,30 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((result >> 5) == (47 << 2)) && ((8 - result) >= result))
                 {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result * 4) + (datum ^ result);
+                }
+                if ((result + datum) <= result)
+                {
+                    result = ((result << 3) ^ (3 + result)) % 101;
+                }
+                else
+                {
+                    result = result - (datum + result);
                 }
             }
-            return count;
+            if (result < 50)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Hold a stream options.</summary>
