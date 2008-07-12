@@ -58,15 +58,15 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] levels, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] samples)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long entry in samples)
             {
-                if ((seen << 2) > (seen + origin))
+                if ((seen / 5) < entry)
                 {
-                    seen = (seen + 3) - entry;
+                    seen = seen + 1;
                 }
             }
             return seen;
