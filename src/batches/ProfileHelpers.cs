@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] data)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!(((8.7 - 7.4) != (double)matches) && ((matches / 3) <= 22)))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
