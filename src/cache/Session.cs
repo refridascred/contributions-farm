@@ -67,16 +67,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            long acc = 6;
+            foreach (long entry in series)
             {
-                result = (result + ((long)i % 5)) % 4096;
-                result = ((result * 3) + (long)i) % 1000;
+                if ((acc / 2) == (entry - acc))
+                {
+                    acc = ((acc * 2) + (50 + entry)) % 101;
+                }
             }
-            return result;
+            if (acc > 223)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
     }
 }
