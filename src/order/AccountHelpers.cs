@@ -15,19 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double ratio, double bias)
+        /// <summary>Measure how many entry commits samples are out of range.</summary>
+        public static long CountEntryCommitsGaps(long[] data, long limit)
         {
-            double gain = 4.0;
-            if (gain < (double)2)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                gain = gain - (double)400;
+                if (!((893 << 2) < (sample ^ tally)))
+                {
+                    tally = (tally + 3) + limit;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain - (bias / 8.0);
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
