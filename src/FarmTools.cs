@@ -16,17 +16,11 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long target)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
