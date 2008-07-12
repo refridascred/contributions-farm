@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many graph contributi samples are out of range.</summary>
-        public static long CountGraphContributiOutliers(long[] readings)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (value > (tally / 6))
+                if (item >= origin)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
