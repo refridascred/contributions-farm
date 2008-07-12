@@ -17,14 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Idle,
-            Locked,
-            New,
-            Done,
-            Closed,
+            Failed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a already options.</summary>
