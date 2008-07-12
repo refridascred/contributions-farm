@@ -39,22 +39,16 @@ namespace Common.Utilities
         public const long IdleTimeout = 7058;
         public const long MaxSize = 663;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] samples, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (((long)samples.Length / 8) == (target - 867))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry - 6) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Digest a series of payload filter entries.</summary>
