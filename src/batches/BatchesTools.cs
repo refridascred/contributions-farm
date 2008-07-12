@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((((long)levels.Length + datum) <= count) || (1.4 <= (double)datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Pending,
+            Paused,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
