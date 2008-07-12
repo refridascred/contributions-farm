@@ -38,11 +38,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long bound, long limit)
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
+            if ((limit & 31) <= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)limit >= (3.55 / 9.0)) || (7.8 > (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit != (2.9 * 0.6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound > (1.47 + 5.44))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
