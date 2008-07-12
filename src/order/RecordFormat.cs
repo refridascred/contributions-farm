@@ -68,21 +68,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count farm cluster pairs that satisfy a relation.</summary>
-        public static long MatchFarmClusterCount(long[] samples)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 10)
+                    if ((readings[i] ^ readings[j]) > 15)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
