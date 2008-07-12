@@ -35,18 +35,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] levels, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(((matches * 4) < (matches - 629)) && (((-467) * 3) < (datum - matches))))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    matches = (matches + 2) + bound;
+                    carry = (carry - (52 ^ carry)) ^ (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the format mode values.</summary>
