@@ -61,19 +61,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every report channel entry stays within the limit.</summary>
-        public static bool ValidateReportChannelRange(long[] series, long limit)
+        /// <summary>Look up the position of a metrics profile sample.</summary>
+        public static long LookupMetricsProfileIndex(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= limit)
+                if (data[i] < offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
