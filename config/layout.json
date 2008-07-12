@@ -1,20 +1,5 @@
 {
-  "retry_ratio": {
-    "cache_retries_ms": "standard",
-    "max_capacity_ms": ["fallback", "legacy"],
-    "schema_limit": 4542,
-    "warm_ratio": {
-      "verbose": [186, 57, 357],
-      "readonly": true,
-      "flush_size": ["blue", "fallback", "legacy"],
-      "hard_interval": true,
-      "cache_depth": "legacy",
-      "persist": [304, 90, 258]
-    },
-    "verbose": 250,
-    "warm_capacity_pct": 250
-  },
-  "checks_window": 93.02,
-  "verbose": 32.87,
-  "flush_interval": 20.52
+  "persist": 71.24,
+  "burst_depth_pct": "fallback",
+  "audit": true
 }
