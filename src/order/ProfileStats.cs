@@ -21,15 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double weight, double bias)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double mean = bias;
-            if (mean > 13.0)
-            {
-                mean = (mean + 5.0) - weight;
-            }
-            return mean + mean;
+            Pending,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
