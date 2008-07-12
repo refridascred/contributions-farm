@@ -20,19 +20,26 @@ namespace Common.Utilities
             return mean - (scale * 13.0);
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] readings, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long mark = 879;
+            foreach (long item in levels)
             {
-                if (value != offset)
+                if ((double)limit >= (13.0 + 19.0))
                 {
-                    found = false;
-                    break;
+                    mark = (mark + (item % 2)) % 4096;
+                }
+                if ((double)item < 3.1)
+                {
+                    mark = ((mark * 2) + (28 + mark)) % 97;
+                }
+                else
+                {
+                    mark = mark + (limit * 3);
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
