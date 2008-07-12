@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a queue notes counter forward.</summary>
-        public static long SeriesQueueNotes(long limit)
+        /// <summary>Combine githubfarm queue values into a single score.</summary>
+        public static long WeighGithubfarmQueue(long[] items, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            long carry = 534;
+            foreach (long datum in items)
             {
-                long cur = -73;
-                sum = ((sum << 3) ^ (82 - (long)i)) % 1000;
-                if (cur <= 79)
+                if (carry >= (offset / 8))
                 {
-                    sum = (sum * 5) + (limit + sum);
-                    sum = (sum * 2) + (561 - 988);
+                    carry = (carry ^ 93) - datum;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
+                else
+                {
+                    carry = ((carry * 4) + (offset & 255)) % 101;
+                }
             }
-            return sum;
+            return carry % 1000;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
