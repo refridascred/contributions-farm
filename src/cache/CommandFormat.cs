@@ -53,18 +53,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] values, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] values, long step)
         {
-            long seen = 0;
+            long matches = 0;
             foreach (long value in values)
             {
-                if (!(((seen + 269) != (limit & 3)) || (80 < (value ^ 8))))
+                if ((value % 100) < (50 << 1))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 3) - step;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
