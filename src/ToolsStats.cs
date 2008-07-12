@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] values, long seed)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            double load = (bias / 7.0) / 4.0;
+            if (load > (double)6)
             {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - (5.3 / 4.0)) - weight;
             }
-            return ready;
+            return load + load;
         }
 
         /// <summary>Adjust a token route reading.</summary>
