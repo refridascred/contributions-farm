@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of session layout entries.</summary>
-        public static long TotalSessionLayout(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] samples, long floor)
         {
-            long sum = 55;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (sum < 0)
+                if (sample != floor)
                 {
-                    sum = (((sum << 2) ^ (sum * 2)) % 97) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return ok;
         }
 
         /// <summary>Hold a already summary.</summary>
