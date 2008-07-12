@@ -1,8 +1,8 @@
-id,state,count,level,weight
-1,18.04,eu-west,strict,577
-2,223,6.31,462,512
-3,stable,stable,27.58,162
-4,strict,standard,cached,80.58
-5,staging,56.13,edge,962
-6,75.3,50.17,113,blue
-7,399,52.1,standard,233
+id,ratio,rank,owner
+1,open,latest,113
+2,cached,136,680
+3,48.23,120,primary
+4,47.4,776,legacy
+5,6.82,86.87,57
+6,83.25,strict,open
+7,310,50.2,stable
