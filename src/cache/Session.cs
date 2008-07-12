@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] samples)
         {
-            Paused,
-            Draft,
-            New,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (cell > hits)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
