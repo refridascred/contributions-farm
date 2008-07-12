@@ -1,39 +1,5 @@
 # githubfarm settings
-idle_interval:
-  retry_retries_count: 71.83
-  stats_capacity: local
-  min_interval_count:
-    cache_window: false
-    strict: eu-west
-    batch_timeout_s: 9791
-    flush_depth: 100
-    retry_delay_count: 46
-    batch_threshold: edge
-  base_delay_s: latest
-queue_window:
-  - primary
-  - standard
-min_depth_pct:
-  soft_interval_s: fallback
-  strict:
-    - cached
-    - staging
-    - cached
-  compress:
-    dry_run: 100
-    sync_ttl:
-      - 457
-      - 421
-    burst_depth_pct: false
-    stats_timeout: blue
-    order_limit:
-      - cached
-      - standard
-      - strict
-    burst_interval_s: 500
-  default_ttl_count: primary
-verbose:
-  - standard
-  - blue
-  - standard
-  - local
+min_threshold_count: 58
+batch_interval_ms: open
+warm_limit: open
+idle_ratio_ms: 36
