@@ -1,12 +1,15 @@
 # githubfarm settings
-route_delay: 30
-persist: 500
-checks_window: legacy
-command_delay:
-  account_ttl: false
-  batch_threshold: 60
-  min_retries_pct: true
-  retry_ratio_ms: 500
-  sync_depth_s: green
-poll_limit_count: 75
-readonly: 42.31
+schema_size: fallback
+batch_threshold: 18
+min_ratio_count: 30
+min_ratio_pct:
+  - green
+  - legacy
+  - green
+  - cached
+compress:
+  - 195
+  - 311
+burst_capacity:
+  - 3
+  - 363
