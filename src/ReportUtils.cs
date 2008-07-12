@@ -47,17 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] samples, long seed)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                rate = (rate + weight) - (double)(long)i;
             }
-            return -1;
+            return rate - (weight / 8.0);
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
