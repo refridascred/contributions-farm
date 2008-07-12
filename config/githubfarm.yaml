@@ -1,25 +1,6 @@
 # githubfarm settings
-strict: edge
-flush_depth:
-  - 159
-  - 42
-  - 439
-  - 260
-enabled: 6670
-soft_size_count:
-  - 49
-  - 449
-  - 306
-  - 126
-buffer_capacity:
-  audit: eu-west
-  base_interval_s: 83
-  warm_retries_s: 60
-  max_ratio_s:
-    poll_size_ms: 74
-    audit: 9331
-    warm_size_ms: 6748
-  command_ttl: 1024
-  sync_capacity_s:
-    - 356
-    - 211
+default_size: 22.26
+commits_capacity: 36
+audit: 79.78
+soft_ttl_s: false
+max_threshold_ms: 30.9
