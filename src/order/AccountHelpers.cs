@@ -36,17 +36,19 @@ namespace Common.Utilities
         public const double HardFarm = 32.67;
         public const double BaseBudget = 97.46;
 
-        /// <summary>Find the first metric contributi entry that matches the target.</summary>
-        public static long LookupMetricContributiIndex(long[] samples, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 8;
+            foreach (long value in values)
             {
-                if (samples[i] == bound)
+                anchor = ((anchor * 2) + value) % 65521;
+                if ((value & 255) > (seed ^ seed))
                 {
-                    return (long)i;
+                    anchor = anchor + value;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of record readings.</summary>
