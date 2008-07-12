@@ -1,5 +1,5 @@
 {
-  "idle_ratio_pct": 82.13,
-  "warm_timeout": 60,
-  "poll_threshold_s": 549
+  "cache_delay_count": [376, 347, 457],
+  "default_delay": "eu-west",
+  "enabled": "edge"
 }
