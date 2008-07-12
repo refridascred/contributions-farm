@@ -1,6 +1,5 @@
 {
-  "hard_limit_pct": 6373,
-  "default_size_count": true,
-  "warm_window": 98.65,
-  "burst_limit_pct": [455, 385, 276]
+  "flush_window_count": true,
+  "enabled": 52,
+  "default_ttl": true
 }
