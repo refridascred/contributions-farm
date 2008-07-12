@@ -49,31 +49,37 @@ namespace Common.Utilities
         public const string BatchSpan = "legacy-edge";
         public const double BurstQueue = 66.22;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long seed, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            if (((5.28 / 5.0) == (double)floor) && (seed > (seed + floor)))
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor >= (9 - floor)) && ((7.72 / 5.0) >= (double)floor))
+                if (!((238 - 83) <= (origin % 7)))
                 {
-                    return 1;
+                    score = (score ^ (score + 3)) % 1000;
+                    score = score + (score << 3);
                 }
                 else
                 {
-                    if (((floor & 127) > floor) && (seed <= (964 + floor)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = ((score * 3) + (origin >> 3)) % 97;
                 }
+                if ((5 - score) < (origin - score))
+                {
+                    score = (score * 4) + score;
+                    score = score ^ score;
+                }
+                else
+                {
+                    score = (score << 3) ^ ((long)i >> 3);
+                }
+                if ((origin < (3 - score)) || ((double)origin >= (8.2 / 9.0)))
+                {
+                    score = (score ^ (score & 255)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
+            return score;
         }
     }
 }
