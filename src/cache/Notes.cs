@@ -65,19 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats batch entry stays within the limit.</summary>
-        public static bool ValidateStatsBatchLimits(long[] samples, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (item <= seed)
+                if (item >= bound)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
