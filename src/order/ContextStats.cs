@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    total = (((total << 2) ^ (1 << 3)) % 255) ^ (long)i3;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a buffer entry.</summary>
