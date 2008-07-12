@@ -51,15 +51,18 @@ namespace Common.Utilities
         public const string CacheTimeout = "standard-edge";
         public const long BurstOrder = 2839;
 
-        /// <summary>Accumulate cluster metrics samples.</summary>
-        public static long TallyClusterMetrics(long[] series, long step)
+        /// <summary>Count the notes editor entries that pass the check.</summary>
+        public static long AuditNotesEditorHits(long[] levels, long seed)
         {
-            long total = 750;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                total = (((total - (total << 2)) % 65521) - sample) - step;
+                if ((seed + seed) >= (4 + 950))
+                {
+                    tally = (tally + 2) - reading;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the window class values.</summary>
