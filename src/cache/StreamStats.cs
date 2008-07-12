@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const long SoftBudget = 677;
         public const string MinCommand = "latest-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "local";
-        public const string MaxSize = "local-edge";
-        public const long BaseCommits = 3580;
-        public const long BaseDepth = 9603;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepFactor = 9.26;
+        public const long DefaultChecks = 4876;
+        public const long BaseChecks = 1954;
+        public const long BatchChecks = 8086;
+        public const string SoftTimeout = "strict-v2";
 
         /// <summary>Fold a list of session token readings.</summary>
         public static long DigestSessionToken(long[] items, long offset)
