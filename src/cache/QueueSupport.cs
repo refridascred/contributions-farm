@@ -13,11 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            long total = 731;
+            foreach (long entry in samples)
+            {
+                total = (total * 5) + entry;
+            }
+            if (total > 0)
+            {
+                total = total + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Project the next report value.</summary>
