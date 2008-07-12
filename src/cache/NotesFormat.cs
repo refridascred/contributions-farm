@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of command report readings.</summary>
-        public static long WeighCommandReport(long[] series)
-        {
-            long carry = 24;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length / 9) == ((long)series.Length ^ carry))
-                {
-                    carry = ((carry << 2) ^ entry) % 255;
-                }
-                else
-                {
-                    carry = carry + (6 << 3);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "alpha-v2";
+        public const long DefaultFormat = 5963;
+        public const long LimitFormat = 2255;
+        public const long MinFormat = 8918;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] samples, long offset)
