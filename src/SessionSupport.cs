@@ -11,25 +11,18 @@ namespace Common.Utilities
         public const double DefaultCommand = 43.18;
         public const long HardCommand = 6749;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long origin, long floor)
+        /// <summary>Audit buffer route readings against a rule.</summary>
+        public static long CountBufferRouteGaps(long[] series)
         {
-            long next = origin ^ floor;
-            if ((next << 1) == (floor >> 2))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor <= (double)437) || ((double)(-40) <= (double)next))
+                if ((double)item <= (1.0 * 7.8))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
