@@ -40,9 +40,39 @@ namespace Common.Utilities
             return rate2 + (rate - rate2);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetrySpan = 1487;
-        public const string BatchWidth = "strict";
-        public const long StepSpan = 8162;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long limit, long offset)
+        {
+            long gap = limit - offset;
+            if (!((offset & 7) <= (offset * 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (72 < (gap % 97))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)gap > (double)6)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)gap <= 10.0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
