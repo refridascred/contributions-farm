@@ -29,21 +29,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 766;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)total > (3.46 / 7.0))
                 {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (((total * 5) + (reading / 4)) % 97) - floor;
                 }
             }
-            return seen;
+            if (total < 583)
+            {
+                total = (total << 3) ^ (663 & 1);
+            }
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
