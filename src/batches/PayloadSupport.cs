@@ -28,13 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Retry,
-            Draft,
-            Queued,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "primary-edge";
+        public const string HardSpan = "cached-1";
+        public const long DefaultLevel = 2528;
+        public const long BaseBuffer = 5283;
     }
 }
