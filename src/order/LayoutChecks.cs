@@ -45,32 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long bound, long offset)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] items)
         {
-            long diff = bound - offset;
-            if (!(offset > (17 - offset)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)diff > (7.59 + 2.68)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)bound <= (double)(-73)) && (37 >= offset))
+                    if ((items[i] + items[j]) < 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
