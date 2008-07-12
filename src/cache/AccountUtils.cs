@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 9597;
+        public const long MinWidth = 3725;
+        public const long SoftEntry = 9489;
+        public const string HardWidth = "stable";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string LimitInterval = "stable-v2";
