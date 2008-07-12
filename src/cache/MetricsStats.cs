@@ -58,11 +58,18 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] levels, long origin)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen << 2) > (seen + origin))
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
         }
     }
 }
