@@ -28,12 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinDepth = 45.03;
-        public const long BurstSpan = 7172;
-        public const double RetryProfile = 7.9;
-        public const long LimitProfile = 2648;
-        public const double CacheProfile = 58.67;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((8 << 3) >= (item - tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double BurstStream = 62.41;
