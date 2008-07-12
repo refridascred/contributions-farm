@@ -19,19 +19,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate checks record samples.</summary>
-        public static long TotalChecksRecord(long[] readings, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long mark = 90;
-            foreach (long value in readings)
-            {
-                mark = (((mark ^ (mark / 2)) % 4096) - value) + seed;
-                if ((mark - mark) > (442 - 68))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Paused,
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
