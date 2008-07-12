@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] values, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((5.8 + 4.0) > (double)matches)
+                {
+                    matches = ((matches + 3) ^ value) + offset;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Roll a session counter forward.</summary>
