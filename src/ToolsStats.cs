@@ -28,22 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] readings)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry & 63) == (560 % 5))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            New,
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a graph summary.</summary>
