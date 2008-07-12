@@ -1,15 +1,17 @@
 {
-  "dry_run": [5, 230, 328],
-  "flush_limit_count": {
-    "batch_delay_count": {
-      "soft_depth_ms": 28.88,
-      "notes_depth": 1024,
-      "max_ratio": [241, 362]
-    },
-    "sync_ttl_ms": 27.72,
-    "sync_depth_count": [407, 12, 452, 235],
-    "cache_retries_count": 30,
-    "soft_window_count": false
+  "min_capacity_count": false,
+  "format_capacity": "eu-west",
+  "idle_window_pct": {
+    "poll_timeout": 60,
+    "max_depth_count": "eu-west",
+    "base_ttl": "primary",
+    "idle_ratio": 32,
+    "layout_timeout": 30
   },
-  "poll_depth_ms": 8741
+  "default_depth": {
+    "retry_ttl_count": true,
+    "command_retries": false,
+    "cache_limit_s": false,
+    "hard_delay_count": "green"
+  }
 }
