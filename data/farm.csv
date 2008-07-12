@@ -1,6 +1,7 @@
-id,count,rank
-1,latest,158
-2,1.72,591
-3,711,86.49
-4,1,383
-5,green,421
+id,rank,score,ratio,weight
+1,24.43,891,80.45,legacy
+2,606,953,815,56.34
+3,latest,773,edge,442
+4,925,strict,59.6,strict
+5,414,29.91,540,858
+6,standard,local,primary,322
