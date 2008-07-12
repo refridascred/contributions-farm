@@ -45,19 +45,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((long)values.Length % 5) <= (value ^ 52))
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardSize = 5221;
+        public const string LimitMetrics = "cached-edge";
+        public const string WindowTimeout = "legacy-edge";
+        public const long SoftTimeout = 5364;
 
         /// <summary>Project the next metric entry value.</summary>
         public static double SmoothMetricEntry(double bias, double bias2)
