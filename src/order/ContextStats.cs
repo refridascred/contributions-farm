@@ -44,12 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public bool Rank { get; set; }
             public long Token { get; set; }
-            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the editor level values.</summary>
