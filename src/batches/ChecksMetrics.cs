@@ -31,18 +31,12 @@ namespace Common.Utilities
         public const long BatchSpan = 5666;
         public const long CacheEntry = 483;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] data)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((3.28 - 8.96) >= (double)count)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Ready,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
