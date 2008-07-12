@@ -14,18 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] levels)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)matches >= (1.7 + 0.16))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a order header.</summary>
