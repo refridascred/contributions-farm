@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "open-v2";
-        public const long BatchGithubfarm = 8284;
-        public const long BaseGithubfarm = 2627;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches >> 4) > matches)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 2549;
