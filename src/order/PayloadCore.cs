@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] levels, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long carry = -86;
+            foreach (long datum in samples)
             {
-                if ((((double)653 > (double)value) && ((value % 12) < (origin % 100))) && ((double)(long)levels.Length == (9.5 - 1.3)))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry - (datum << 3)) % 4096;
             }
-            return hits;
+            if (carry > 856)
+            {
+                carry = ((carry << 3) ^ (carry % 10)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
