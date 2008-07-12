@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double weight, double bias)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] series)
         {
-            double weight2 = bias;
-            if (weight2 <= (double)31)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                weight2 = (weight2 + (9.48 * 0.3)) + weight;
+                if ((((39 - datum) == (datum - 12)) && ((datum >> 5) >= datum)) || ((934 - datum) > tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return weight2 - weight2;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
