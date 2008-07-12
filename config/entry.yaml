@@ -1,9 +1,8 @@
 # entry settings
-idle_size_count: 2.47
-channel_capacity:
-  - eu-west
-  - staging
-  - standard
-readonly: 79.57
-audit: true
-hard_threshold_pct: 72.47
+hard_timeout_count: 1024
+min_size:
+  - 333
+  - 48
+  - 137
+  - 54
+batch_capacity: green
