@@ -20,21 +20,19 @@ namespace Common.Utilities
             return weight - (scale + scale);
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 85;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry + target) + (long)i) - reading;
                 }
+                carry = carry - carry;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
