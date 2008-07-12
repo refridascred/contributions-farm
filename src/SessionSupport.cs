@@ -34,13 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Active,
-            Pending,
-            Done,
-            Stale,
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
         }
     }
 }
