@@ -1,10 +1,6 @@
 # support settings
-batch_size_ms:
-  - 369
-  - 258
-channel_window: 9313
-flush_depth_s: 46
-idle_depth_count:
-  - 133
-  - 222
-burst_capacity: local
+sync_depth_pct: false
+strict: 3728
+cache_timeout_ms: 57
+verbose: false
+audit: 250
