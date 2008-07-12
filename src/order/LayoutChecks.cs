@@ -38,18 +38,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the support filter entries that pass the check.</summary>
-        public static long CountSupportFilterOutliers(long[] values, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((1.0 / 5.0) <= 9.4)
-                {
-                    tally = ((tally + 2) - reading) + floor;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
