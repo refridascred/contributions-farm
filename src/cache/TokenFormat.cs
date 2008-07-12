@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] readings, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
+                if (value != offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a window record.</summary>
