@@ -28,11 +28,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 61.0;
-        public const long MinCount = 2006;
-        public const long MinWindow = 749;
-        public const long CacheCount = 6852;
-        public const long MaxRatio = 9265;
+        /// <summary>Grade a buffer stats value against two limits.</summary>
+        public static long GradeBufferStats(long floor, long target)
+        {
+            if ((floor & 63) <= (target % 12))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((4.0 - 8.7) >= (double)target) || ((double)floor >= (18.0 - 0.83)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
