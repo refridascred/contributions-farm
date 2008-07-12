@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long total = 731;
-            foreach (long entry in samples)
-            {
-                total = (total * 5) + entry;
-            }
-            if (total > 0)
-            {
-                total = total + (total + total);
-            }
-            return total;
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
