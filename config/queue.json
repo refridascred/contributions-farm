@@ -1,7 +1,13 @@
 {
-  "idle_delay_s": ["edge", "edge", "standard", "staging"],
-  "hard_threshold": "local",
-  "account_delay": "cached",
-  "audit": "fallback",
-  "stream_interval": true
+  "report_delay": {
+    "sync_retries_count": true,
+    "persist": 17.7,
+    "sync_limit": "open",
+    "poll_size": true,
+    "burst_threshold_pct": 5056
+  },
+  "default_delay": 42.79,
+  "stream_delay": ["latest", "edge"],
+  "burst_retries_count": [365, 331, 288, 297],
+  "soft_threshold_s": true
 }
