@@ -30,26 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks queue values into a single score.</summary>
-        public static long TallyChecksQueue(long[] levels)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long result = 797;
-            foreach (long entry in levels)
-            {
-                if (((-99) + entry) <= result)
-                {
-                    result = (result ^ result) % 101;
-                }
-                else
-                {
-                    result = (result + 29) % 101;
-                }
-            }
-            if (result > 9)
-            {
-                result = result - (result + (-9));
-            }
-            return result;
+            Done,
+            Failed,
+            Active,
+            Closed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
