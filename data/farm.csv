@@ -1,7 +1,9 @@
-id,region,ratio,token
-1,906,685,legacy
-2,65.15,887,403
-3,695,primary,82.74
-4,legacy,624,977
-5,77.75,60.4,45
-6,47.58,422,61
+id,owner,score,active
+1,310,green,green
+2,687,27.71,926
+3,10.05,15.93,182
+4,stable,654,455
+5,765,701,fallback
+6,local,cached,eu-west
+7,48.27,31.27,staging
+8,stable,84.64,937
