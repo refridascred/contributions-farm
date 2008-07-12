@@ -54,14 +54,13 @@ namespace Common.Utilities
             return weight + ratio;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Done,
-            Active,
-            Retry,
-            Stale,
-            Draft,
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
