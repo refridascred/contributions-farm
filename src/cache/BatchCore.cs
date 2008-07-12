@@ -39,9 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 2.17;
-        public const long DefaultAlready = 9033;
-        public const double RetryAlready = 46.78;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Active,
+            Pending,
+            Dropped,
+            Paused,
+        }
     }
 }
