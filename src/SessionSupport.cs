@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double scale, double floor)
-        {
-            double scale2 = scale;
-            if (scale2 > 4.5)
-            {
-                scale2 = scale2 + (scale * 9.4);
-            }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 + (scale2 - floor);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 8487;
+        public const long DefaultSchema = 1421;
+        public const string CacheScore = "fallback-v2";
+        public const string WindowSpan = "legacy-1";
 
         /// <summary>Audit buffer route readings against a rule.</summary>
         public static long CountBufferRouteGaps(long[] series)
