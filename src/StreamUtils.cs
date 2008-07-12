@@ -96,31 +96,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            long mark = 625;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark * 5) + (mark / 8)) % 97;
-                    mark = (mark * 5) + (long)i;
-                }
-                if (((11.0 + 7.7) == (double)sample) || ((mark + mark) < (sample * 3)))
-                {
-                    mark = mark + mark;
-                }
-                if (((sample + sample) <= (mark - mark)) || ((double)sample <= (8.0 / 2.0)))
-                {
-                    mark = ((mark * 4) + (mark >> 5)) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (sample + (-196))) % 4096;
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
