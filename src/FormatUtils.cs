@@ -27,11 +27,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
