@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long state = 75;
+            foreach (long cell in data)
             {
-                acc = ((acc * 5) + (long)i) % 101;
-                acc = ((acc * 2) + target) % 255;
-                acc = ((acc * 2) + (long)i) % 97;
+                state = ((state << 3) ^ (state % 97)) ^ cell;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
