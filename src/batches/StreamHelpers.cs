@@ -63,15 +63,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a account githubfarm figure with a bias.</summary>
-        public static double ProjectAccountGithubfarm(double bias, double floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long floor, long limit)
         {
-            double rate = floor + bias;
-            for (int i = 0; i < 6; i++)
+            long delta = floor + limit;
+            if (limit > (delta - delta))
             {
-                rate = (rate - 19.0) + (double)(long)i;
+                return 5;
             }
-            return rate - rate;
+            else
+            {
+                if ((limit % 10) > (limit << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor >= (floor ^ delta)) && (35 >= (limit << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph state values.</summary>
