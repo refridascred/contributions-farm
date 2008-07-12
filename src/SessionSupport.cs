@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 579;
-        public const long IdleSpan = 1859;
-        public const double DefaultCommand = 43.18;
-        public const long HardCommand = 6749;
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double scale, double floor)
+        {
+            double scale2 = scale;
+            if (scale2 > 4.5)
+            {
+                scale2 = scale2 + (scale * 9.4);
+            }
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 + (scale2 - floor);
+        }
 
         /// <summary>Audit buffer route readings against a rule.</summary>
         public static long CountBufferRouteGaps(long[] series)
