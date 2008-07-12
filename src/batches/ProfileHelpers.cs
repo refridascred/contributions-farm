@@ -40,39 +40,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long step, long step2)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] series, long offset)
         {
-            long cur = step + step2;
-            if ((double)cur > (20.0 / 9.0))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step + cur) > 63) && ((double)step2 != (1.8 - 5.2)))
+                if (count >= entry)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)step2 > (0.5 * 5.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step2 * 3) > (459 + step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 2) + offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
