@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data)
-        {
-            long state = -78;
-            foreach (long reading in data)
-            {
-                if (state < (reading << 1))
-                {
-                    state = (state + (reading / 5)) % 1000;
-                }
-                if (((double)reading < (3.6 + 5.85)) || ((606 / 3) > reading))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 8796;
+        public const string RetrySize = "stable";
+        public const string BatchCount = "fallback";
+        public const long SoftCount = 4761;
 
         /// <summary>Grade a command tools value against two limits.</summary>
         public static long BucketCommandTools(long limit, long seed)
