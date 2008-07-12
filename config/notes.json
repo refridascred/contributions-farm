@@ -1,5 +1,5 @@
 {
-  "warm_ttl_count": 5653,
-  "strict": 3323,
-  "dry_run": "stable"
+  "max_size_pct": "staging",
+  "flush_interval_ms": "legacy",
+  "max_threshold_ms": 9215
 }
