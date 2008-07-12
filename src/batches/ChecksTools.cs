@@ -68,12 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            Done,
+            Failed,
+            Locked,
         }
     }
 }
