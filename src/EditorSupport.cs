@@ -63,18 +63,18 @@ namespace Common.Utilities
         public const string BatchSpan = "legacy-edge";
         public const double BurstQueue = 66.22;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] items, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = 97;
+            foreach (long entry in items)
             {
-                if ((value <= origin) && (origin >= (origin % 60)))
+                if ((double)limit != (8.35 * 17.0))
                 {
-                    matches = matches + 3;
+                    result = (result * 5) + entry;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
