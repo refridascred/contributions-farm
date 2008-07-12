@@ -21,17 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first editor stats entry that matches the target.</summary>
-        public static long LookupEditorStatsIndex(long[] values, long step)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] > step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
