@@ -19,16 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Count the profile graph entries that pass the check.</summary>
+        public static long CountProfileGraphOutliers(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                carry = (carry + (floor / 9)) % 97;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if ((double)item != (4.0 - 3.0))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the metric kind values.</summary>
