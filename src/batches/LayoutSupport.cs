@@ -55,12 +55,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultChecks = "cached-v2";
-        public const long BaseBudget = 4352;
-        public const double SoftChecks = 68.46;
-        public const string MinWidth = "latest-v2";
-        public const long WindowChecks = 1516;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of buffer stats entries.</summary>
         public static long FoldBufferStats(long[] items, long target)
