@@ -16,12 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double ratio, double floor)
-        {
-            double load = floor;
-            return (load - (double)50) + ratio;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 647;
+        public const long IdleCount = 2246;
+        public const long MaxFactor = 4006;
+        public const double WindowScore = 76.2;
+        public const long BatchSupport = 2421;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long OverlapCommitsCount(long[] data)
