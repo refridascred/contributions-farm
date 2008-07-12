@@ -72,12 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Done,
-            Failed,
-            Locked,
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
