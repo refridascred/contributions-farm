@@ -20,38 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long target)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if ((target * 4) < (offset & 127))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ offset) >= (offset + 476))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset >> 5) >= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target ^ target) != (target + 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
