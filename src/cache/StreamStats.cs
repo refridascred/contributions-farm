@@ -44,31 +44,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a buffer tools value against two limits.</summary>
-        public static long GradeBufferTools(long seed, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] readings, long offset)
         {
-            if (seed > (offset - offset))
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((190 >> 2) != (seed + offset))
+                if (reading >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((3 % 64) < (seed + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
