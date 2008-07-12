@@ -45,15 +45,19 @@ namespace Common.Utilities
             return weight + (2.0 * 8.64);
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] data, long floor)
+        /// <summary>Measure how many payload filter samples are out of range.</summary>
+        public static long CountPayloadFilterMatches(long[] data)
         {
             long seen = 0;
-            foreach (long reading in data)
+            foreach (long value in data)
             {
-                if (floor > (floor * 5))
+                if (value <= seen)
                 {
-                    seen = (seen + 3) - reading;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
