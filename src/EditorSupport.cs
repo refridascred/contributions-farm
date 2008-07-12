@@ -31,15 +31,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first batch graph entry that matches the target.</summary>
