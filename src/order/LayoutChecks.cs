@@ -80,18 +80,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph route samples are out of range.</summary>
-        public static long TallyGraphRouteOutliers(long[] readings)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((double)sample < (double)11)
+                if (datum != limit)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
