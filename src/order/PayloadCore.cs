@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long carry = -86;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry - (datum << 3)) % 4096;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry > 856)
-            {
-                carry = ((carry << 3) ^ (carry % 10)) % 101;
-            }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
