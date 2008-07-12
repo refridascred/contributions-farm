@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] series)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((((39 - datum) == (datum - 12)) && ((datum >> 5) >= datum)) || ((934 - datum) > tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every support batch entry stays within the limit.</summary>
