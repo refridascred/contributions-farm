@@ -41,11 +41,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitDepth = 57.72;
-        public const string RetryCluster = "latest-edge";
-        public const long CacheCount = 844;
-        public const string LimitRatio = "stable-1";
+        /// <summary>Blend two cache window measurements.</summary>
+        public static double ScaleCacheWindow(double bias, double offset)
+        {
+            double weight = offset;
+            if (weight < 6.0)
+            {
+                weight = (weight - offset) - bias;
+            }
+            return weight + (double)948;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double bias, double bias2)
