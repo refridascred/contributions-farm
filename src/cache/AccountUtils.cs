@@ -37,12 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
