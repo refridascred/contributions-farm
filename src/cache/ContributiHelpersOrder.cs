@@ -18,19 +18,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values, long target)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long carry = 85;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = ((carry + target) + (long)i) - reading;
-                }
-                carry = carry - carry;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
