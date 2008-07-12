@@ -56,30 +56,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] items, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] samples, long target)
         {
-            long sum = 740;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (sum > 30)
+                if (((long)samples.Length / 8) == (target - 867))
                 {
-                    sum = (sum * 5) + (sum - sum);
+                    matches = (matches + 3) ^ datum;
                 }
                 else
                 {
-                    sum = ((sum * 4) + (sum + sum)) % 101;
-                }
-                if (value < (sum + step))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (sum > 6)
-            {
-                sum = ((sum << 3) ^ (0 << 3)) % 65521;
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
