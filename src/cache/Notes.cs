@@ -48,17 +48,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] series, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (series[i] == offset)
+                if ((hits - (long)values.Length) <= (bound ^ bound))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
