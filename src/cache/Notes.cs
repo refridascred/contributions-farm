@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate checks counter readings against a bound.</summary>
+        public static bool GuardChecksCounterLimits(long[] items, long offset)
         {
-            Ready,
-            Failed,
-            Synced,
-            Retry,
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up cluster samples.</summary>
