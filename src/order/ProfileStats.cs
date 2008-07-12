@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Paused,
-            Retry,
-            New,
-            Draft,
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
