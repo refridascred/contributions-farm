@@ -62,12 +62,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxSpan = "standard-edge";
-        public const long IdleLevel = 8249;
-        public const double IdleBudget = 87.08;
-        public const string HardReport = "legacy";
-        public const string BaseReport = "fallback-v2";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen - 8) > (entry * 4))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long GradeContext(long offset, long bound)
