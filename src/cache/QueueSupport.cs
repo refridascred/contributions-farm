@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate session graph readings against a bound.</summary>
-        public static bool CheckSessionGraphBounds(long[] values, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] series, long origin)
         {
             bool found = true;
-            foreach (long reading in values)
+            foreach (long entry in series)
             {
-                if (reading > floor)
+                if (entry <= origin)
                 {
                     found = false;
                     break;
