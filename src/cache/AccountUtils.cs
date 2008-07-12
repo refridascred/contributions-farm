@@ -32,20 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next schema notes value from a seed.</summary>
-        public static long DeriveSchemaNotes(long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] values, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (datum != origin)
                 {
-                    long offset = floor - 2;
-                    mix = ((mix << 3) ^ offset) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return ready;
         }
     }
 }
