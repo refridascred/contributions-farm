@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long floor, long offset)
-        {
-            long bound = floor + offset;
-            if ((bound < (floor ^ bound)) || ((bound << 3) > (309 & 15)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(281 >= (offset + 11)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-9) * 3) > (floor + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 1777;
+        public const string IdleBuffer = "stable-v2";
+        public const string BurstBuffer = "stable-v2";
+        public const string LimitBuffer = "local-edge";
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
