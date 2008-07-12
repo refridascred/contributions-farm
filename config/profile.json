@@ -1,10 +1,15 @@
 {
-  "readonly": {
-    "hard_depth_s": "primary",
-    "strict": true,
-    "enabled": "legacy"
-  },
-  "default_timeout": false,
-  "verbose": "stable",
-  "base_depth_ms": 789
+  "max_threshold_count": false,
+  "contributi_window": [242, 328, 133, 3],
+  "counter_size": 93.84,
+  "dry_run": {
+    "enabled": {
+      "account_capacity": 7361,
+      "enabled": 72.93,
+      "audit": "blue"
+    },
+    "verbose": [368, 18, 441],
+    "max_delay_s": ["strict", "green", "strict"],
+    "commits_size": "staging"
+  }
 }
