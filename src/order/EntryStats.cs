@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long step, long offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] items, long floor)
         {
-            if ((offset + offset) >= (step - step))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step / 6) == (22 << 3))
+                if (items[i] > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step & 63) >= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
