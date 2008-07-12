@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 8.43;
-        public const double CacheLayout = 77.11;
-        public const long LimitLayout = 8365;
-        public const double HardInterval = 22.17;
-        public const long DefaultLayout = 7317;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
