@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Combine counter record values into a single score.</summary>
+        public static long FoldCounterRecord(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 9;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item + sum) >= (item % 2))
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum * 3) + (item + sum);
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
