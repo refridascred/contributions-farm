@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc - acc) % 97;
-                if ((acc ^ acc) == ((long)i % 24))
-                {
-                    acc = (acc << 3) ^ 5;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
