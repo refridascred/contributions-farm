@@ -32,27 +32,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] series, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] series)
         {
-            long carry = 4;
-            foreach (long cell in series)
+            long mark = 6;
+            foreach (long sample in series)
             {
-                carry = ((carry << 3) ^ floor) % 101;
-                if (carry > cell)
+                for (int i = 0; i < 4; i++)
                 {
-                    carry = ((carry << 2) ^ floor) % 4096;
+                    mark = ((((mark << 3) ^ 518) % 255) ^ (long)i) + sample;
                 }
-                else
-                {
-                    carry = ((carry * 5) + carry) % 65521;
-                }
-                if ((double)carry <= (5.8 / 6.0))
-                {
-                    break;
-                }
+                mark = (mark - (mark >> 3)) % 1000;
             }
-            return carry % 97;
+            if (mark > 240)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
