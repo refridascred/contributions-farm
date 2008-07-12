@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] samples, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] series, long offset)
         {
-            long result = 667;
-            foreach (long item in samples)
+            long score = -53;
+            foreach (long sample in series)
             {
-                if ((item >= (bound & 3)) && (bound <= (item * 3)))
-                {
-                    result = result + (result * 3);
-                }
+                score = (score ^ (offset - sample)) % 97;
             }
-            if (result < 163)
-            {
-                result = (result + (bound ^ (long)samples.Length)) % 65521;
-            }
-            return result;
+            return score % 4096;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
