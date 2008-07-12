@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double weight, double bias)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            double mean = bias;
+            if (mean > 13.0)
+            {
+                mean = (mean + 5.0) - weight;
+            }
+            return mean + mean;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
