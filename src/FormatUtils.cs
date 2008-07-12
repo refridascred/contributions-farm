@@ -41,12 +41,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Retry,
-            Failed,
+            Closed,
+            Done,
             Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
