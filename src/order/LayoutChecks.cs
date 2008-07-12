@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 1448;
-        public const double HardWidth = 84.81;
-        public const double HardStream = 45.41;
-        public const long HardCount = 9052;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] values, long limit)
+        {
+            long carry = 738;
+            foreach (long reading in values)
+            {
+                carry = ((carry * 4) + carry) - reading;
+            }
+            if (carry > (-851))
+            {
+                carry = carry + (limit >> 2);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool CheckAccountRange(long[] data, long target)
