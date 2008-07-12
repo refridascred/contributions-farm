@@ -1,6 +1,9 @@
 # githubfarm settings
-soft_timeout_ms: 4.8
-commits_limit:
-  - latest
-  - stable
-retry_depth: 52.89
+max_threshold_count: open
+base_delay:
+  - 190
+  - 187
+flush_window: 55.1
+strict: edge
+poll_delay_s: 95.17
+soft_ratio_count: 91.33
