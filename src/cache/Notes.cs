@@ -45,18 +45,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] items, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long floor)
         {
-            long total = 3;
-            foreach (long sample in items)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((13.0 - 0.7) < (double)(long)items.Length)
+                score = (score << 3) ^ (floor / 5);
+                if (((9 + score) == (score + (long)i)) && ((long)i > floor))
                 {
-                    total = ((total ^ (sample << 3)) % 101) + step;
+                    score = (score + 1) % 65521;
+                    score = (score << 2) ^ (80 * 5);
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return total % 97;
+            return score;
         }
 
         /// <summary>Describe the channel kind values.</summary>
