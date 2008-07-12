@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Pending,
             Dropped,
-            Draft,
-            Synced,
+            Done,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
