@@ -37,13 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] levels, long step)
         {
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
