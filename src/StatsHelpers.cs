@@ -38,18 +38,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] items)
+        /// <summary>Rank queue counter input into a small class.</summary>
+        public static long RankQueueCounter(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long edge = seed - offset;
+            if ((seed + 136) > (edge - seed))
             {
-                if ((tally % 2) <= (tally % 12))
+                return 6;
+            }
+            else
+            {
+                if (19.0 >= (double)edge)
                 {
-                    tally = (tally + 3) - value;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed >= (seed - offset)) || (0.87 < (double)edge))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)seed > (17.0 * 9.1)) && ((edge & 31) == (edge * 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the editor level values.</summary>
