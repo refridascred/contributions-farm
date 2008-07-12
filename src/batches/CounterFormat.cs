@@ -22,27 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] items, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (((37 + (long)i) < ((long)i + offset)) || ((8.5 * 7.0) > (double)(long)i))
+                if (cell <= target)
                 {
-                    acc = (acc * 3) + (444 + (-681));
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc ^ (acc % 7)) % 101;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (acc - (acc & 127)) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
