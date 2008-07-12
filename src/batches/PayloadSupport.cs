@@ -19,19 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            long score = 65;
-            foreach (long entry in series)
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
             {
-                score = (score - entry) % 65521;
+                carry = (carry + (floor / 9)) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            if (score < 21)
-            {
-                score = (score + (85 * 3)) % 65521;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the metric kind values.</summary>
