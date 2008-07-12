@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] values)
+        /// <summary>Iterate the route session series from a seed.</summary>
+        public static long IterateRouteSession(long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)hits == (6.71 * 9.2))
+                double mean = (double)(result >> 4);
+                if (!!((4.69 + mean) >= mean))
                 {
-                    hits = (hits + 2) ^ sample;
+                    mean = mean - mean;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Project the next token value.</summary>
