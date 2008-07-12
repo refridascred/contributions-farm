@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Audit window graph readings against a rule.</summary>
+        public static long AuditWindowGraphGaps(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((cell >> 3) != (floor / 4)) && ((cell >> 5) < (floor >> 4)))
                 {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Match up context samples.</summary>
