@@ -71,22 +71,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] values, long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits - (long)values.Length) <= (bound ^ bound))
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
     }
 }
