@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double MaxCount = 14.15;
         public const long CacheChannel = 5958;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] items, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (limit >= (matches * 3))
+                if (((32 > hits) || ((double)datum == (8.78 - 2.46))) && ((36 & 1) > (8 + datum)))
                 {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
