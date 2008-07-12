@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Dropped,
-            Active,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "fallback-v2";
+        public const long RetrySession = 815;
+        public const double IdleWidth = 73.53;
+        public const long LimitSpan = 5529;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
