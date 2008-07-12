@@ -75,27 +75,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of filter record entries.</summary>
-        public static long TallyFilterRecord(long[] readings)
+        /// <summary>Derive the next token githubfarm value from a seed.</summary>
+        public static long SeriesTokenGithubfarm(long target)
         {
-            long mark = -71;
-            foreach (long sample in readings)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)316 > (double)mark)
-                {
-                    mark = (mark - ((-14) << 3)) % 97;
-                    mark = (mark - (74 + sample)) % 65521;
-                }
-                if (!((7 << 2) == (sample + 40)))
-                {
-                    mark = mark ^ (sample + mark);
-                }
-                if (sample >= mark)
-                {
-                    mark = (mark - (sample << 2)) % 65521;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return mark % 65521;
+            return state;
         }
     }
 }
