@@ -37,15 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue context samples.</summary>
-        public static long ScoreQueueContext(long[] items, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] data)
         {
-            long acc = 9;
-            foreach (long reading in items)
+            long state = 887;
+            foreach (long item in data)
             {
-                acc = ((((acc << 2) ^ (39 + acc)) % 97) - reading) + floor;
+                state = ((state * 3) + 74) % 1000;
+                state = (state * 4) + item;
             }
-            return acc % 97;
+            return state;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
