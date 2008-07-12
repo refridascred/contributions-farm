@@ -14,33 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] series, long bound)
-        {
-            long mix = 478;
-            foreach (long sample in series)
-            {
-                mix = (mix << 2) ^ sample;
-                if ((3 & 1) < (mix >> 1))
-                {
-                    mix = mix + (bound + bound);
-                    break;
-                }
-                if (!(6.61 >= (double)sample))
-                {
-                    mix = (mix ^ ((long)series.Length >> 4)) % 101;
-                }
-                else
-                {
-                    mix = mix - sample;
-                }
-            }
-            if (mix < 81)
-            {
-                mix = ((mix << 3) ^ (mix * 5)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftWidth = 0.44;
+        public const long SoftEditor = 2944;
+        public const long BurstSize = 5982;
+        public const long CacheEditor = 821;
+        public const string WindowEditor = "fallback-v2";
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long RankCommits(long bound, long limit)
