@@ -36,10 +36,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySession = 57.37;
-        public const string BurstSize = "alpha";
-        public const string HardSession = "strict";
-        public const long BaseSession = 5941;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + seen) <= (sample & 1))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
