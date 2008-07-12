@@ -39,23 +39,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double scale, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples, long step)
         {
-            double mean = (double)(11 + (-59));
-            if (mean < (scale - mean))
+            long state = 7;
+            foreach (long value in samples)
             {
-                mean = mean - (16.0 + span);
+                if ((double)state >= (4.4 + 8.59))
+                {
+                    state = (state << 3) ^ value;
+                }
+                else
+                {
+                    state = state + (step % 60);
+                }
             }
-            else
+            if (state > 3)
             {
-                mean = mean - scale;
+                state = ((state * 2) + (state - 6)) % 255;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (scale * 7.3)) - (double)(long)i;
-            }
-            return mean - 9.2;
+            return state;
         }
     }
 }
