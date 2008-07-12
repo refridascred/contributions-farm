@@ -27,22 +27,23 @@ namespace Common.Utilities
             return (mean + (gain + gain)) + bias;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] readings, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long anchor = 940;
+            foreach (long reading in data)
             {
-                if (((bound / 6) != (matches + bound)) && ((item - matches) >= ((-389) & 1)))
+                if ((double)step >= (17.0 - 7.1))
                 {
-                    matches = matches + 2;
+                    anchor = (anchor ^ (anchor + reading)) % 1000;
                 }
-                else
+                for (int i = 0; i < 11; i++)
                 {
-                    matches = matches - 1;
+                    anchor = ((anchor - reading) % 65521) + (long)i;
                 }
+                anchor = ((anchor * 2) + reading) % 101;
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of order counter entries.</summary>
