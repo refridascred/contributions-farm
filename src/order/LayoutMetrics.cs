@@ -29,18 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit layout channel readings against a rule.</summary>
-        public static long CountLayoutChannelGaps(long[] readings)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((0 - count) == (count + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Paused,
+            Retry,
         }
     }
 }
