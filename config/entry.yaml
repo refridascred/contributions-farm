@@ -1,11 +1,9 @@
 # entry settings
-enabled: true
-default_interval_ms: true
-filter_interval:
-  - 289
-  - 28
-editor_timeout:
-  - edge
+idle_size_count: 2.47
+channel_capacity:
   - eu-west
-  - latest
-  - strict
+  - staging
+  - standard
+readonly: 79.57
+audit: true
+hard_threshold_pct: 72.47
