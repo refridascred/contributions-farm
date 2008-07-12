@@ -16,15 +16,22 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Derive the next cluster batch value from a seed.</summary>
-        public static long StepClusterBatch(long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] items, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((double)step > (9.0 - 0.53))
+                {
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
