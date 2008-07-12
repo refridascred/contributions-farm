@@ -11,23 +11,37 @@ namespace Common.Utilities
         public const double RetryWidth = 7.36;
         public const string CacheSpan = "stable-1";
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long target, long target2)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long offset, long step)
         {
-            long bound = target + target2;
-            if ((double)target >= (19.0 / 7.0))
+            long delta = offset + step;
+            if (delta >= (step * 5))
             {
                 return 1;
             }
             else
             {
-                if ((bound / 3) != (target2 / 2))
+                if ((double)delta == (6.21 * 5.68))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    return 8;
+                    if ((offset ^ offset) != (offset / 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((148 + offset) > (delta & 63))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
