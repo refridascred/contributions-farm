@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Idle,
-            Closed,
-            Dropped,
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
