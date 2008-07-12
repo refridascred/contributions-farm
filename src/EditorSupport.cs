@@ -69,10 +69,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 9.67;
-        public const long StepSize = 2665;
-        public const double MinScore = 56.04;
-        public const string HardLevel = "latest-1";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] items, long floor)
+        {
+            long mix = 70;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((mix - ((long)items.Length + 421)) % 97) + (long)i;
+                }
+                mix = mix ^ (entry * 2);
+                mix = (mix ^ (floor + mix)) % 101;
+            }
+            if (mix > 3)
+            {
+                mix = (mix * 5) + (floor + floor);
+            }
+            return mix;
+        }
     }
 }
