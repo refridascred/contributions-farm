@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 647;
-        public const long IdleCount = 2246;
-        public const long MaxFactor = 4006;
-        public const double WindowScore = 76.2;
-        public const long BatchSupport = 2421;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
