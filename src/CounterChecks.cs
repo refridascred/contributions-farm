@@ -76,19 +76,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double scale, double offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double ratio = scale * 14.0;
-            if (ratio >= offset)
-            {
-                ratio = ratio - (ratio / 3.0);
-            }
-            else
-            {
-                ratio = ratio + (offset - ratio);
-            }
-            return ratio - scale;
+            Failed,
+            Paused,
+            Idle,
+            New,
+            Closed,
         }
     }
 }
