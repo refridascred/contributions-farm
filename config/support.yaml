@@ -1,7 +1,5 @@
 # support settings
-poll_delay: 3204
-farm_limit:
-  - local
-  - staging
-  - blue
-default_depth: 5991
+retry_size: 6053
+checks_depth: standard
+min_ratio_count: 500
+hard_timeout: 63
