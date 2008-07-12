@@ -62,15 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a entry filter counter forward.</summary>
-        public static long DeriveEntryFilter(long step)
+        /// <summary>Check that every report session entry stays within the limit.</summary>
+        public static bool ValidateReportSessionRange(long[] items, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (item >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
