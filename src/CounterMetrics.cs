@@ -33,21 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 3) ^ seed) % 4096;
-                if ((7.6 <= (double)result) && ((seed + result) >= seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result - 80;
-                    continue;
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
