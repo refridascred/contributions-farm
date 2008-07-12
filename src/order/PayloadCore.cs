@@ -37,31 +37,13 @@ namespace Common.Utilities
         public const long DefaultWidth = 6340;
         public const long DefaultFarm = 7314;
 
-        /// <summary>Digest a series of queue tools entries.</summary>
-        public static long WeighQueueTools(long[] samples)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long sum = 74;
-            foreach (long item in samples)
-            {
-                if ((1.19 * 7.9) > (double)item)
-                {
-                    sum = (sum ^ (item & 15)) % 1000;
-                }
-                sum = (sum - item) % 255;
-                if ((double)sum == (4.04 / 5.0))
-                {
-                    sum = (sum - (sum / 5)) % 101;
-                }
-                else
-                {
-                    sum = sum - sum;
-                }
-            }
-            if (sum > 97)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
