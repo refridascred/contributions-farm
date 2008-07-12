@@ -73,11 +73,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitCount = 95.41;
-        public const double SoftGraph = 41.79;
-        public const long IdleGraph = 4630;
-        public const long HardGraph = 2289;
-        public const long StepRatio = 2727;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] values)
+        {
+            long mix = -503;
+            foreach (long value in values)
+            {
+                if (((long)values.Length - mix) != (mix >> 3))
+                {
+                    mix = (mix + value) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix & 127)) % 255;
+                }
+            }
+            if (mix > 552)
+            {
+                mix = (mix * 5) + (mix + mix);
+            }
+            return mix;
+        }
     }
 }
