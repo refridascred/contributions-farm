@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] samples, long floor)
+        /// <summary>Combine metric farm values into a single score.</summary>
+        public static long DigestMetricFarm(long[] series)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long mark = 7;
+            foreach (long reading in series)
             {
-                if (value < floor)
+                if ((reading % 24) <= (mark << 3))
                 {
-                    stale = false;
-                    break;
+                    mark = mark ^ mark;
                 }
+                mark = (mark - (mark - reading)) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
