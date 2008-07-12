@@ -26,21 +26,22 @@ namespace Common.Utilities
         public const string LimitFactor = "local-v2";
         public const long BaseReport = 6020;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Digest a series of context batch entries.</summary>
+        public static long TotalContextBatch(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 964;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((4.61 * 8.0) <= (double)cell)
                 {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (((anchor * 2) + (anchor - 0)) % 4096) - limit;
+                }
+                if ((cell & 1) >= (anchor << 2))
+                {
+                    anchor = (anchor ^ (anchor << 3)) % 4096;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
