@@ -22,22 +22,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] items)
-        {
-            long carry = -9;
-            foreach (long cell in items)
-            {
-                if (carry > (cell + carry))
-                {
-                    carry = carry - (carry >> 5);
-                }
-            }
-            if (carry < 16)
-            {
-                carry = ((carry * 2) + (carry * 4)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardWidth = "legacy-edge";
+        public const long MinSpan = 302;
+        public const long IdleContributi = 7056;
+        public const long MinContributi = 7304;
+        public const long CacheWidth = 4773;
     }
 }
