@@ -25,20 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (!(((12.0 - 6.03) < (double)(long)i) || ((0.1 + 1.04) < (double)target)))
+                if (reading >= origin)
                 {
-                    acc = acc - (target - acc);
-                    acc = (acc << 3) ^ (long)i;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Hold a batch summary.</summary>
