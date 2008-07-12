@@ -30,39 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry account input into a small class.</summary>
-        public static long BucketEntryAccount(long origin, long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] series, long seed)
         {
-            long prev = origin ^ step;
-            if (((-8) << 2) < (1 + origin))
+            long score = 649;
+            foreach (long entry in series)
             {
-                return 8;
+                score = ((score ^ (score >> 5)) ^ entry) - seed;
             }
-            else
-            {
-                if (((-263) >= origin) && ((prev * 4) == (prev % 24)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin ^ 777) != (origin ^ 550))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin - prev) >= (99 % 97))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score % 1000;
         }
     }
 }
