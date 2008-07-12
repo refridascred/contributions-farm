@@ -19,18 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] series, long step)
+        /// <summary>Rank metric report input into a small class.</summary>
+        public static long RankMetricReport(long target, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if ((7.0 >= (double)target) || ((target * 4) > (41 ^ 52)))
             {
-                if (21 <= (step + step))
+                return 3;
+            }
+            else
+            {
+                if ((758 % 16) < target)
                 {
-                    count = (count + 1) + sample;
+                    return 0;
+                }
+                else
+                {
+                    if (8.19 > (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((limit + 43) != (limit << 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of batches schema readings.</summary>
