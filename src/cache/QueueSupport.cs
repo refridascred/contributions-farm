@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] samples, long seed)
+        /// <summary>Validate session graph readings against a bound.</summary>
+        public static bool CheckSessionGraphBounds(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (datum > seed)
+                if (reading > floor)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Hold a filter summary.</summary>
