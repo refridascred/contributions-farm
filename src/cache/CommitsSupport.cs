@@ -53,17 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] samples, long offset)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(582 << 1);
+            if (mean <= (scale + span))
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (span - mean);
             }
-            return -1;
+            return mean + (3.6 * 10.0);
         }
 
         /// <summary>Hold a stats options.</summary>
