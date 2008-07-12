@@ -16,17 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (series[i] >= seed)
+                if ((7.0 + 12.0) >= (double)(long)levels.Length)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the format filter series from a seed.</summary>
