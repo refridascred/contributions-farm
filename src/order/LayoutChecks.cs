@@ -74,19 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] values, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long acc = 0;
+            foreach (long item in items)
             {
-                if (cell < target)
+                if (((862 + (-53)) > (item & 1)) && ((item + offset) <= (acc % 2)))
                 {
-                    stale = false;
-                    break;
+                    acc = acc - (offset * 5);
+                }
+                else
+                {
+                    acc = (acc + (item & 15)) % 1000;
                 }
             }
-            return stale;
+            return acc % 97;
         }
     }
 }
