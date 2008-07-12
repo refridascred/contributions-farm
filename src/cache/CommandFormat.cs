@@ -25,19 +25,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of session already readings.</summary>
-        public static long ScoreSessionAlready(long[] items, long bound)
+        /// <summary>Find the first graph window entry that matches the target.</summary>
+        public static long LocateGraphWindowIndex(long[] items, long offset)
         {
-            long mix = 55;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix - (341 - (-6))) + sample;
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 134)
-            {
-                mix = (mix ^ (bound & 3)) % 1000;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
