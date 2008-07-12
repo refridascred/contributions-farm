@@ -19,11 +19,17 @@ namespace Common.Utilities
             return (load - (double)50) + ratio;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] levels, long bound)
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
