@@ -1,10 +1,26 @@
 # githubfarm settings
-commits_depth:
-  - green
-  - local
-  - primary
-  - blue
-flush_retries_count: 5137
-default_capacity_s: strict
-strict: 8.65
-persist: true
+base_interval_pct: 5596
+flush_limit_ms: green
+dry_run: standard
+hard_delay_s:
+  warm_threshold_pct: 96
+  tools_limit:
+    max_ttl_ms: strict
+    persist: 83.93
+    filter_size: 100
+    soft_window_count: 60
+    audit:
+      - 435
+      - 286
+      - 121
+  warm_timeout: strict
+  metrics_interval:
+    - fallback
+    - primary
+    - fallback
+  max_limit_s: latest
+  min_ttl:
+    - stable
+    - primary
+    - legacy
+    - standard
