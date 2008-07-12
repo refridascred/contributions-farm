@@ -74,22 +74,14 @@ namespace Common.Utilities
             return (rate + rate) + offset;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] levels, long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count - sample) >= (489 >> 3))
-                {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            New,
+            Synced,
+            Done,
         }
     }
 }
