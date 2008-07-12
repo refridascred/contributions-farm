@@ -56,13 +56,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] items, long step)
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long sum = 740;
+            foreach (long value in items)
+            {
+                if (sum > 30)
+                {
+                    sum = (sum * 5) + (sum - sum);
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum + sum)) % 101;
+                }
+                if (value < (sum + step))
+                {
+                    break;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = ((sum << 3) ^ (0 << 3)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate batch samples.</summary>
