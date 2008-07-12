@@ -1,6 +1,8 @@
 {
-  "audit": 76,
-  "default_delay_count": true,
-  "poll_delay_pct": 2764,
-  "githubfarm_depth": 93
+  "idle_retries": 3,
+  "retry_timeout": ["primary", "staging"],
+  "default_window_pct": 1024,
+  "editor_capacity": ["open", "fallback", "staging"],
+  "cache_interval_s": true,
+  "warm_timeout": 60.52
 }
