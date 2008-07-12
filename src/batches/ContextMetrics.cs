@@ -36,23 +36,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Accumulate buffer entry samples.</summary>
+        public static long ScoreBufferEntry(long[] levels, long bound)
         {
-            long carry = 8;
-            foreach (long entry in readings)
+            long mark = 674;
+            foreach (long sample in levels)
             {
-                carry = (carry + (long)readings.Length) % 4096;
-                if (63 < (entry + carry))
-                {
-                    break;
-                }
+                mark = ((mark ^ (6 >> 3)) ^ sample) + bound;
             }
-            if (carry > 65)
-            {
-                carry = (carry << 3) ^ (350 >> 1);
-            }
-            return carry % 1000;
+            return mark % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
