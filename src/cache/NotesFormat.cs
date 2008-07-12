@@ -49,22 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] readings, long offset)
         {
-            long anchor = 23;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (!((sample % 10) > 70))
+                if (value != offset)
                 {
-                    anchor = (anchor ^ sample) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 534)
-            {
-                anchor = ((anchor << 2) ^ (floor + anchor)) % 4096;
-            }
-            return anchor;
+            return ok;
         }
     }
 }
