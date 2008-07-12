@@ -28,20 +28,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = (((mark * 4) + ((long)i % 64)) % 1000) ^ (long)i2;
-                }
-                mark = mark ^ mark;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
