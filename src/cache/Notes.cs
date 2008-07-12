@@ -14,30 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] levels, long target)
         {
-            long anchor = 9;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((991 < anchor) && (item < anchor))
+                if (datum >= target)
                 {
-                    anchor = (anchor ^ (anchor % 5)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (item ^ (long)values.Length)) % 4096;
-                }
-                if (((double)anchor > 16.0) || ((double)anchor <= (12.0 + 5.0)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (anchor < 26)
-            {
-                anchor = anchor ^ (anchor ^ anchor);
-            }
-            return anchor % 1000;
+            return valid;
         }
 
         /// <summary>Match up cluster samples.</summary>
