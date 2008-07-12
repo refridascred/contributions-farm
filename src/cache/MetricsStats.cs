@@ -63,22 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long mix = -4;
-            foreach (long value in series)
-            {
-                if (mix <= (mix ^ value))
-                {
-                    mix = (mix * 5) + (value + value);
-                }
-            }
-            if (mix < 6)
-            {
-                mix = ((mix * 2) + (931 << 2)) % 65521;
-            }
-            return mix;
+            Retry,
+            Dropped,
+            Ready,
+            Idle,
         }
     }
 }
