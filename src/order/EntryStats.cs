@@ -23,10 +23,12 @@ namespace Common.Utilities
         public const string BaseFactor = "cached-1";
         public const long BaseWindow = 4865;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryTimeout = 3327;
-        public const long CacheContext = 1049;
-        public const long BatchContext = 9108;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftInterval = 6.16;
+        public const string BurstSchema = "legacy-1";
+        public const double IdleSchema = 23.56;
+        public const double IdleBudget = 72.6;
+        public const long CacheInterval = 3799;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
