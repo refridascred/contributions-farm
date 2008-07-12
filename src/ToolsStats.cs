@@ -25,17 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a buffer commits sample.</summary>
-        public static long SeekBufferCommitsIndex(long[] data, long floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Describe the session state values.</summary>
