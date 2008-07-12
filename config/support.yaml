@@ -1,6 +1,17 @@
 # support settings
-farm_size: green
-command_threshold:
-  - primary
-  - blue
-default_threshold_count: 447
+enabled:
+  - local
+  - cached
+max_capacity: 22
+counter_ttl:
+  strict: local
+  record_size: green
+  compress: 7770
+  layout_timeout: 96
+  cache_limit_s: 1753
+sync_ratio: green
+readonly:
+  - open
+  - green
+  - strict
+queue_interval: 89.39
