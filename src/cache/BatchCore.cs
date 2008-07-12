@@ -39,21 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] readings, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                double load = 14.0;
-                if (((double)(-574) < (load * 20.0)) && ((99 << 1) < (limit << 3)))
+                if (sample > offset)
                 {
-                    load = load - load;
-                    load = load - load;
+                    ready = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return ready;
         }
     }
 }
