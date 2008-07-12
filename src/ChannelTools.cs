@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the checks profile series from a seed.</summary>
-        public static long DeriveChecksProfile(long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] levels, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long state = 792;
+            foreach (long sample in levels)
             {
-                if ((double)mark < 1.17)
-                {
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                state = (state - sample) + origin;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
