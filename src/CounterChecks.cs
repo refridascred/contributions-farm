@@ -41,12 +41,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 6363;
-        public const double MinBudget = 72.25;
-        public const long HardReport = 4692;
-        public const string WindowInterval = "local-1";
-        public const double BaseRatio = 43.57;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] levels, long offset)
