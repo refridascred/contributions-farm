@@ -35,23 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double rate, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] readings, long limit)
         {
-            double load = span + span;
-            if (load <= (double)1)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                load = load + load;
+                if ((double)matches >= (8.44 + 4.3))
+                {
+                    matches = ((matches + 1) ^ sample) + limit;
+                }
             }
-            else
-            {
-                load = load + (span - rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (span - load)) + (double)(long)i;
-            }
-            return load + rate;
+            return matches;
         }
     }
 }
