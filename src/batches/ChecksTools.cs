@@ -63,12 +63,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Failed,
-            Queued,
-            Done,
+            public double Score { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
