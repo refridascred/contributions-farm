@@ -22,10 +22,17 @@ namespace Common.Utilities
         public const long SoftEntry = 9489;
         public const string HardWidth = "stable";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitInterval = "stable-v2";
-        public const double RetryEditor = 83.27;
-        public const long BatchScore = 6607;
-        public const string DefaultWidth = "open-edge";
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
