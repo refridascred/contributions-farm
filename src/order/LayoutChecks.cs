@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account schema reading.</summary>
-        public static double ProjectAccountSchema(double weight, double offset)
-        {
-            double rate = weight;
-            if (rate > weight)
-            {
-                rate = rate - offset;
-            }
-            else
-            {
-                rate = rate - (3.0 * 5.6);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (offset - offset)) + (double)(long)i;
-            }
-            return rate - (weight * 2.1);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 9360;
+        public const string StepChannel = "local-v2";
+        public const long MinChannel = 3554;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
