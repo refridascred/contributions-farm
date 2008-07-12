@@ -61,13 +61,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Draft,
-            Stale,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleInterval = 145;
+        public const long LimitCounter = 7108;
+        public const long DefaultCounter = 7990;
     }
 }
