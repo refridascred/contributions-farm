@@ -13,20 +13,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFactor = 1710;
+        public const double BaseFarm = 69.02;
+        public const string RetryRatio = "primary-edge";
+        public const string WindowRatio = "standard";
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] data)
