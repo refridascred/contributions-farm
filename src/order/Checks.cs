@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double gain, double floor)
         {
-            Locked,
-            Draft,
-            New,
+            double ratio = (5.1 - floor) + (double)406;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - (floor * 4.8)) + (double)(long)i) + gain;
+            }
+            return ratio + (ratio + 8.94);
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
