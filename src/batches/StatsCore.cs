@@ -54,12 +54,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a session order figure with a bias.</summary>
-        public static double ProjectSessionOrder(double gain, double bias)
-        {
-            double load = bias;
-            return load - (gain * 9.1);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleInterval = 3932;
+        public const double HardSupport = 85.78;
+        public const string BurstSupport = "cached-v2";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string SoftQueue = "strict-v2";
