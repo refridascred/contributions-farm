@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long origin, long bound)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long slot = origin - bound;
-            if (((slot >> 5) <= (slot ^ slot)) && (6 <= (bound << 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((slot & 63) != (4 + slot)) || ((bound / 4) == (bound & 255)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin > bound) && (bound < (origin % 100)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((slot ^ origin) <= origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
