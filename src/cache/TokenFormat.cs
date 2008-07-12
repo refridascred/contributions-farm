@@ -42,9 +42,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchInterval = 127;
-        public const long WindowSize = 5464;
-        public const double SoftLayout = 90.22;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 65.61;
+        public const long MinDepth = 3208;
+        public const long IdlePayload = 9554;
+        public const long LimitWidth = 6692;
     }
 }
