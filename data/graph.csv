@@ -1,7 +1,10 @@
-id,level,count
-1,194,staging
-2,407,strict
-3,cached,751
-4,primary,blue
-5,893,864
-6,84.62,legacy
+id,rank,level,label
+1,17.8,95.01,229
+2,75.57,45.94,46.91
+3,347,67.23,57.8
+4,23.3,21.71,eu-west
+5,63.57,stable,718
+6,352,2.64,53.85
+7,267,latest,latest
+8,510,latest,711
+9,9.92,14.17,937
