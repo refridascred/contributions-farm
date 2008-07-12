@@ -20,31 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long bound, long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((13.0 / 7.0) < (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((0 - bound) == (bound % 3)) && (bound < (bound & 15)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((9.7 / 2.0) <= (double)origin) || ((origin & 1) <= (origin >> 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
