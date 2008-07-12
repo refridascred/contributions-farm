@@ -22,14 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] readings, long limit)
         {
-            Queued,
-            Paused,
-            Closed,
-            Locked,
-            Done,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!(149 > (0 + tally)))
+                {
+                    tally = ((tally + 1) ^ cell) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
