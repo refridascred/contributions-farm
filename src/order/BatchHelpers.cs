@@ -44,10 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepTimeout = 82.22;
-        public const long BaseCount = 8018;
-        public const string WindowCount = "strict-edge";
-        public const long IdleWidth = 9988;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Draft,
+            Failed,
+            Retry,
+        }
     }
 }
