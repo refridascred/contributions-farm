@@ -19,17 +19,18 @@ namespace Common.Utilities
             return (load - (double)50) + ratio;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] levels, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
+                if ((matches >> 4) >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
