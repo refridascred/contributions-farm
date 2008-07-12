@@ -62,23 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + 422) > (sample - hits))
-                {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinCount = 6024;
+        public const long StepRatio = 9111;
+        public const double MinChecks = 2.96;
+        public const long MaxFactor = 4924;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteMatches(long[] items, long bound)
