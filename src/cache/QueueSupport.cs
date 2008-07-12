@@ -21,21 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] < seed) && ((values[i] % 5) == 0))
                 {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
