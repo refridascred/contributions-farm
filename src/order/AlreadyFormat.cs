@@ -55,10 +55,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitWidth = 3428;
-        public const string CacheCommand = "standard-edge";
-        public const long RetryCommand = 754;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstTools = 1351;
