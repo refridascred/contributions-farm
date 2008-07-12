@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const long StepSpan = 3299;
         public const long MinSpan = 6635;
 
-        /// <summary>Scale a support report figure with a bias.</summary>
-        public static double AdjustSupportReport(double weight, double span)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] data, long offset)
         {
-            double scale = (double)55 + 8.4;
-            if (scale > (span + scale))
+            bool valid = true;
+            foreach (long reading in data)
             {
-                scale = scale - (double)3;
+                if (reading > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (span + weight)) + (double)(long)i;
-            }
-            return scale - weight;
+            return valid;
         }
 
         /// <summary>Match up support samples.</summary>
