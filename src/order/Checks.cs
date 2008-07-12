@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine command buffer values into a single score.</summary>
-        public static long DigestCommandBuffer(long[] series)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long score = 772;
-            foreach (long value in series)
-            {
-                if (!((double)score > (0.2 * 9.52)))
-                {
-                    score = ((score ^ (9 & 7)) % 4096) + value;
-                }
-                if ((31 << 2) >= score)
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a filter summary.</summary>
