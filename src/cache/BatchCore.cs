@@ -5,30 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] values, long bound)
+        /// <summary>Classify a graph context pair into a bucket.</summary>
+        public static long BucketGraphContext(long seed, long limit)
         {
-            long mark = 30;
-            foreach (long cell in values)
+            if ((limit ^ seed) < (limit + limit))
             {
-                if ((double)(long)values.Length == (double)bound)
+                return 8;
+            }
+            else
+            {
+                if ((18.0 - 3.24) != (double)seed)
                 {
-                    mark = ((mark * 3) + cell) % 101;
+                    return 7;
                 }
                 else
                 {
-                    mark = (mark << 2) ^ (247 - mark);
-                }
-                if ((-6) < bound)
-                {
-                    continue;
-                }
-                if ((cell / 3) >= mark)
-                {
-                    mark = (mark + bound) % 97;
+                    if (!((seed + seed) >= 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit * 3) != (seed + limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Describe the layout state values.</summary>
