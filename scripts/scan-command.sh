@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
-    latest)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard stable fallback; do
+for item in eu-west stable; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
