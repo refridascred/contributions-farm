@@ -51,15 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer entry samples.</summary>
-        public static long ScoreBufferEntry(long[] levels, long bound)
+        /// <summary>Scale a queue cache figure with a bias.</summary>
+        public static double ScaleQueueCache(double gain, double offset)
         {
-            long mark = 674;
-            foreach (long sample in levels)
+            double ratio = 3.0;
+            if (ratio >= ratio)
             {
-                mark = ((mark ^ (6 >> 3)) ^ sample) + bound;
+                ratio = (ratio - ratio) + offset;
             }
-            return mark % 4096;
+            else
+            {
+                ratio = ratio - (double)51;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + gain) - (double)(long)i;
+            }
+            return ratio - (double)21;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
