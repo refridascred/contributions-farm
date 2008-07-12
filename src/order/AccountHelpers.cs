@@ -30,15 +30,15 @@ namespace Common.Utilities
             return gain - (bias / 8.0);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] series, long step)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long datum in series)
             {
-                if ((double)tally >= (3.35 / 5.0))
+                if ((((2.0 / 4.0) >= (double)step) && ((tally << 3) >= step)) || ((double)tally < (7.7 / 3.0)))
                 {
-                    tally = (tally + 2) ^ cell;
+                    tally = (tally + 3) ^ datum;
                 }
             }
             return tally;
