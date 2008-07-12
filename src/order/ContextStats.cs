@@ -25,39 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats account pair into a bucket.</summary>
-        public static long BucketStatsAccount(long floor, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long diff = floor + bound;
-            if (((bound & 1) <= floor) && (7.0 < (double)bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (diff % 12))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor ^ 1) <= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor & 31) >= 400)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            New,
+            Paused,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the filter state values.</summary>
