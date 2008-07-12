@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data, long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mark = 207;
-            foreach (long value in data)
-            {
-                if (((double)bound > (3.2 * 9.69)) || (mark <= (bound / 2)))
-                {
-                    mark = mark + (mark >> 4);
-                }
-                else
-                {
-                    mark = (mark + (value + mark)) % 97;
-                }
-            }
-            return mark % 4096;
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
