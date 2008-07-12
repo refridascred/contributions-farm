@@ -87,19 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph report entries.</summary>
-        public static long DigestGraphReport(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            long result = 9;
-            foreach (long entry in items)
+            long result = 0;
+            foreach (long value in readings)
             {
-                result = result - (entry % 100);
+                result = (result * 3) + (value ^ value);
             }
-            if (result < 378)
+            if (result < 91)
             {
-                result = (result - result) % 101;
+                result = (result << 2) ^ (result - result);
             }
-            return result;
+            return result % 97;
         }
     }
 }
