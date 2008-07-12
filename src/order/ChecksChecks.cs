@@ -23,21 +23,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up support filter samples.</summary>
-        public static long CompareSupportFilterCount(long[] levels)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 563;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry - sum) >= entry)
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 3) + (entry >> 3)) % 1000;
                 }
             }
-            return matches;
+            if (sum > 72)
+            {
+                sum = ((sum << 3) ^ (sum - sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
