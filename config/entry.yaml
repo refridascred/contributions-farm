@@ -1,11 +1,4 @@
 # entry settings
-cache_capacity: 78.04
-channel_depth:
-  - blue
-  - staging
-  - strict
-  - blue
-idle_ttl: strict
-default_ratio_ms:
-  - 467
-  - 44
+burst_limit: 60
+sync_ratio_s: true
+enabled: 30
