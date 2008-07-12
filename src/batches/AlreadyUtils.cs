@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long SoftScore = 5816;
         public const long RetryScore = 2353;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] items, long step)
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((6 & 15) >= (reading >> 5))
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
