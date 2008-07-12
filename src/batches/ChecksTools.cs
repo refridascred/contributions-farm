@@ -45,18 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] samples, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell << 2) == (87 / 4))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            Failed,
+            Queued,
+            Done,
         }
     }
 }
