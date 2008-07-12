@@ -1,7 +1,13 @@
 {
-  "audit": true,
-  "report_depth": 16,
-  "cache_timeout_ms": "eu-west",
-  "readonly": "staging",
-  "record_delay": true
+  "readonly": "fallback",
+  "dry_run": {
+    "min_timeout": ["blue", "standard"],
+    "max_depth": "fallback",
+    "burst_ttl": "fallback",
+    "readonly": [437, 192, 45, 107]
+  },
+  "max_interval": "standard",
+  "audit": 87.22,
+  "metrics_interval": "fallback",
+  "cache_capacity": "local"
 }
