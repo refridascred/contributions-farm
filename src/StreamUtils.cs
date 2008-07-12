@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseBudget = 7673;
+        public const double BurstSize = 13.16;
+        public const double DefaultLevel = 63.19;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
