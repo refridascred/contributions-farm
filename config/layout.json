@@ -1,8 +1,5 @@
 {
-  "poll_threshold_count": 60,
-  "dry_run": true,
-  "format_timeout": false,
-  "compress": [27, 45, 200],
-  "strict": 47.13,
-  "hard_capacity_count": 8298
+  "filter_capacity": "cached",
+  "graph_ratio": "latest",
+  "readonly": 5280
 }
