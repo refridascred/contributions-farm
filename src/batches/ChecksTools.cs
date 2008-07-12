@@ -37,24 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Accumulate queue context samples.</summary>
+        public static long ScoreQueueContext(long[] items, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long acc = 9;
+            foreach (long reading in items)
             {
-                if ((double)floor != (1.0 * 0.8))
-                {
-                    mix = mix + (floor ^ 59);
-                    break;
-                }
-                else
-                {
-                    mix = (mix + floor) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                acc = ((((acc << 2) ^ (39 + acc)) % 97) - reading) + floor;
             }
-            return mix;
+            return acc % 97;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
