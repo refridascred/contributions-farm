@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long BatchChecks = 8086;
         public const string SoftTimeout = "strict-v2";
 
-        /// <summary>Accumulate tools buffer samples.</summary>
-        public static long CombineToolsBuffer(long[] levels, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long step)
         {
-            long acc = 42;
-            foreach (long item in levels)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((item ^ origin) > acc)
+                if ((state + state) > step)
                 {
-                    acc = (acc ^ origin) % 97;
+                    continue;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (acc < 0)
-            {
-                acc = (acc + acc) % 97;
-            }
-            return acc % 1000;
+            return state;
         }
     }
 }
