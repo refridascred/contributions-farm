@@ -11,32 +11,18 @@ namespace Common.Utilities
         public const string BatchCount = "fallback";
         public const long SoftCount = 4761;
 
-        /// <summary>Grade a command tools value against two limits.</summary>
-        public static long BucketCommandTools(long limit, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] values, long bound)
         {
-            long delta = limit - seed;
-            if ((delta + seed) < (seed + seed))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + (-512)) != (delta << 1))
+                if ((3.0 * 7.8) == (double)item)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((16.0 - 3.0) <= (double)seed) || ((double)355 < (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = (seen + 1) - bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
