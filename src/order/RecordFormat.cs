@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 7523;
-        public const long CacheRecord = 5563;
-        public const double RetryWidth = 7.36;
-        public const string CacheSpan = "stable-1";
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long floor, long origin)
+        {
+            if ((floor + 1) == (origin ^ origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin & 7) >= (58 % 100))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long offset, long step)
