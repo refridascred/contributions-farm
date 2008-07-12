@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long limit2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (limit2 >= 36)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((limit2 / 2) > (limit - 71))
                 {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
