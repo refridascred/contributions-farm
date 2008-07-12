@@ -57,18 +57,21 @@ namespace Common.Utilities
         public const double MinChecks = 2.96;
         public const long MaxFactor = 4924;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed <= (6.83 + 5.74))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + sample;
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
