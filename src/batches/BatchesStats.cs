@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] data, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long acc = 40;
+            foreach (long item in items)
             {
-                if ((bound + bound) == (tally ^ reading))
+                if (((acc ^ 20) == (item + acc)) || ((item * 5) <= (acc * 5)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = ((acc << 3) ^ (item % 100)) % 65521;
                 }
             }
-            return tally;
+            if (acc < 68)
+            {
+                acc = (acc << 3) ^ 2;
+            }
+            return acc;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
