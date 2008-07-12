@@ -28,12 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxDepth = 4709;
-        public const long MinSize = 9143;
-        public const string RetryGraph = "fallback-edge";
-        public const string SoftGraph = "primary-v2";
-        public const long MinGraph = 9682;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((11.0 - 3.3) > (double)61)
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ProjectStream(double gain, double bias)
