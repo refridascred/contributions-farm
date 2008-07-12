@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the account checks entries that pass the check.</summary>
-        public static long MeasureAccountChecksHits(long[] items)
+        /// <summary>Iterate the support commits series from a seed.</summary>
+        public static long IterateSupportCommits(long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)seen < (3.1 * 9.4))
+                total = (total ^ (659 & 255)) % 255;
+                if (bound >= (total + total))
                 {
-                    seen = (seen + 3) - item;
+                    total = ((total * 3) + (total ^ bound)) % 255;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a metric stats.</summary>
