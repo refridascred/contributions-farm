@@ -20,22 +20,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate order graph samples.</summary>
-        public static long ScoreOrderGraph(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] series, long step)
         {
-            long total = 6;
-            foreach (long datum in series)
+            long state = 5;
+            foreach (long reading in series)
             {
-                if ((datum - datum) < (long)series.Length)
+                if ((double)reading >= (18.0 + 9.4))
                 {
-                    total = total + ((long)series.Length + datum);
+                    state = (state + (0 & 1)) % 101;
+                }
+                if ((state ^ reading) < (step & 31))
+                {
+                    state = (state ^ (step & 15)) % 97;
+                }
+                if (((long)series.Length & 31) >= step)
+                {
+                    state = ((state << 3) ^ (step >> 4)) % 65521;
+                }
+                else
+                {
+                    state = (state + state) % 97;
                 }
             }
-            if (total < 778)
-            {
-                total = (total ^ (total * 3)) % 65521;
-            }
-            return total;
+            return state % 4096;
         }
 
         /// <summary>Match up tools order samples.</summary>
