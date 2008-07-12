@@ -47,22 +47,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] values)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long state = 0;
+            foreach (long entry in values)
             {
-                if ((((double)datum != (8.33 / 9.0)) || (count >= (count - (-641)))) && ((datum - count) != (8 + count)))
+                if ((entry % 8) >= (249 + 204))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = state + (entry + state);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
