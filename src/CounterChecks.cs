@@ -59,23 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (45 > (state % 64))
-                {
-                    state = (state + (411 / 5)) % 4096;
-                }
-                else
-                {
-                    state = (state * 3) + (276 & 1);
-                }
-                state = ((state * 2) + (long)i) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
