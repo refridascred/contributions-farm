@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many stream editor samples are out of range.</summary>
+        public static long AuditStreamEditorHits(long[] readings, long target)
         {
-            New,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item > 5.39)
+                {
+                    seen = (seen + 1) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
