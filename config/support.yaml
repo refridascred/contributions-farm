@@ -1,37 +1,6 @@
 # support settings
-graph_depth:
-  max_timeout_pct: 60
-  burst_ratio_pct: 529
-  persist: cached
-dry_run: 4264
-checks_window: blue
-hard_threshold: 8384
-account_limit:
-  warm_ttl_ms:
-    enabled:
-      - staging
-      - stable
-    max_ratio_s: 2442
-    idle_window_count: 260
-    account_capacity: local
-  base_size: primary
-  sync_size_s:
-    - 134
-    - 216
-    - 259
-  default_size:
-    - eu-west
-    - primary
-    - eu-west
-    - fallback
-  batch_delay_pct: 500
-  metrics_limit:
-    enabled: primary
-    compress: false
-    buffer_depth: primary
-    audit: true
-    report_retries:
-      - open
-      - cached
-      - blue
-    batch_limit: 2479
+soft_threshold_pct: 40.41
+base_ttl: 30
+persist: 30
+soft_limit: 16.25
+base_depth: local
