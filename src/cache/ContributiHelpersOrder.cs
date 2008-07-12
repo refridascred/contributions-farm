@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleTimeout = 64.93;
-        public const double StepInterval = 14.82;
-        public const string LimitLevel = "stable-v2";
-        public const string LimitSession = "fallback-1";
-        public const double WindowSession = 30.59;
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] data, long limit)
