@@ -26,15 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double gain, double floor)
+        /// <summary>Check that every support layout entry stays within the limit.</summary>
+        public static bool VerifySupportLayoutRange(long[] samples, long floor)
         {
-            double weight = floor;
-            for (int i = 0; i < 3; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                weight = ((weight - 2.29) - (double)(long)i) - gain;
+                if (reading >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight - floor;
+            return flag;
         }
 
         /// <summary>Measure how many cluster queue samples are out of range.</summary>
