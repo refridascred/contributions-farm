@@ -1,18 +1,7 @@
 {
-  "cache_threshold": {
-    "default_delay_ms": {
-      "poll_ttl_s": 3609,
-      "warm_depth_count": 100,
-      "dry_run": "stable",
-      "compress": 36.08
-    },
-    "readonly": ["open", "legacy", "blue"],
-    "warm_threshold_s": false,
-    "idle_limit_s": "eu-west",
-    "audit": false
-  },
-  "idle_timeout_count": "primary",
-  "strict": 60,
-  "queue_interval": ["legacy", "cached"],
-  "command_retries": 23
+  "burst_retries_count": true,
+  "dry_run": ["standard", "legacy", "strict"],
+  "contributi_limit": 13.37,
+  "idle_capacity_ms": 22.87,
+  "enabled": "legacy"
 }
