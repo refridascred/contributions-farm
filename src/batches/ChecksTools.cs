@@ -50,21 +50,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Digest a series of githubfarm metric entries.</summary>
+        public static long TotalGithubfarmMetric(long[] values)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            long total = 6;
+            foreach (long datum in values)
             {
-                state = (state ^ state) % 1000;
-                double rate = (double)(offset + offset);
-                if (!(((double)offset >= rate) || (offset <= (offset % 8))))
-                {
-                    rate = rate + 5.0;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                total = (((total * 5) + (319 >> 2)) % 255) ^ datum;
             }
-            return state;
+            return total % 97;
         }
 
         /// <summary>Hold a filter options.</summary>
