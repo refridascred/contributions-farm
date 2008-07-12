@@ -38,12 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
