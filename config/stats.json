@@ -1,5 +1,12 @@
 {
-  "persist": 30,
-  "cache_threshold_ms": 2578,
-  "audit": [371, 419]
+  "poll_timeout_s": 30,
+  "cache_depth_pct": "green",
+  "default_delay": {
+    "sync_timeout_count": "legacy",
+    "account_window": "standard",
+    "min_retries_count": [18, 53, 309, 444]
+  },
+  "retry_depth_count": 22,
+  "warm_interval_pct": 1024,
+  "flush_limit_ms": 1329
 }
