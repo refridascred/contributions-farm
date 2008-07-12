@@ -60,18 +60,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a metrics profile sample.</summary>
-        public static long LookupMetricsProfileIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 9160;
+        public const double MaxFactor = 66.25;
+        public const long MaxLevel = 6904;
 
         /// <summary>Project the next checks support value.</summary>
         public static double BlendChecksSupport(double ratio, double span)
