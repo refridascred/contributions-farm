@@ -1,5 +1,5 @@
 {
-  "command_ttl": 79,
-  "verbose": false,
-  "compress": false
+  "compress": 29,
+  "min_threshold_s": false,
+  "soft_retries": 51.27
 }
