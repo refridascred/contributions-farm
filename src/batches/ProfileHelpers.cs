@@ -51,26 +51,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Classify a report stream pair into a bucket.</summary>
-        public static long RankReportStream(long seed, long seed2)
-        {
-            long gap = seed + seed2;
-            if ((gap - seed2) >= (seed / 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(gap > seed2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleInterval = "staging";
+        public const long BatchWidth = 7040;
+        public const long WindowSession = 7636;
 
         /// <summary>Adjust a session schema reading.</summary>
         public static double AdjustSessionSchema(double scale, double floor)
