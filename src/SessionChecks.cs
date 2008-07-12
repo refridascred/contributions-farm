@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] data)
+        /// <summary>Locate a format token reading by value.</summary>
+        public static long SeekFormatTokenIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)item == (10.0 * 6.78))
+                if (data[i] == offset)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
