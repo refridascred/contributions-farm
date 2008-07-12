@@ -56,12 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a metrics profile sample.</summary>
