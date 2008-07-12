@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next layout record value from a seed.</summary>
-        public static long DeriveLayoutRecord(long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                score = score ^ 0;
-                score = (score ^ score) % 65521;
-                score = ((score * 4) + (long)i) % 65521;
+                if (9 > value)
+                {
+                    count = count + 2;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
