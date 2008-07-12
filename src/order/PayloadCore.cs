@@ -45,13 +45,9 @@ namespace Common.Utilities
         public const long DefaultWidth = 6340;
         public const long DefaultFarm = 7314;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 9626;
+        public const long IdleContributi = 3779;
+        public const long HardInterval = 1787;
     }
 }
