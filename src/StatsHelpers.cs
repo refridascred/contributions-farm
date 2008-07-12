@@ -41,21 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report format value from a seed.</summary>
-        public static long StepReportFormat(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((267 << 2) != (long)i))
-                {
-                    acc = ((acc * 5) + 3) % 4096;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxRatio = "legacy-1";
+        public const double MinContext = 59.19;
+        public const double StepContext = 37.63;
+        public const long IdleTimeout = 7058;
+        public const long MaxSize = 663;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheOutliers(long[] samples, long target)
