@@ -39,19 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] readings, long offset)
+        /// <summary>Measure how many buffer farm samples are out of range.</summary>
+        public static long MeasureBufferFarmGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (sample > offset)
+                if ((((double)tally <= (double)reading) || (reading >= (reading >> 3))) || (((tally - reading) < 725) && ((reading - (-329)) > (reading << 3))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
