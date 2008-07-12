@@ -33,22 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseSize = 64.01;
+        public const double IdleQueue = 59.11;
+        public const string BurstQueue = "alpha-1";
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
