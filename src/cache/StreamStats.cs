@@ -22,18 +22,14 @@ namespace Common.Utilities
         public const long SoftBudget = 677;
         public const string MinCommand = "latest-1";
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mark = 750;
-            foreach (long reading in samples)
-            {
-                if ((reading >> 2) <= (reading % 16))
-                {
-                    mark = (mark - (reading + reading)) % 101;
-                }
-            }
-            return mark % 1000;
+            Stale,
+            Queued,
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Grade a buffer tools value against two limits.</summary>
