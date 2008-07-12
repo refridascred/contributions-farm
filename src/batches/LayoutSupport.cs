@@ -53,18 +53,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches contributi entries that pass the check.</summary>
-        public static long TallyBatchesContributiGaps(long[] data, long floor)
+        /// <summary>Grade a stats schema value against two limits.</summary>
+        public static long RankStatsSchema(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long gap = floor ^ bound;
+            if ((6.6 - 8.3) == (double)bound)
             {
-                if ((double)reading < (3.1 - 6.0))
+                return 7;
+            }
+            else
+            {
+                if (floor < (gap >> 1))
                 {
-                    tally = (tally + 2) - floor;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + bound) > gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
