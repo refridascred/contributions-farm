@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long limit2)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] data, long bound)
         {
-            if (limit2 >= 36)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit2 / 2) > (limit - 71))
+                if ((bound + bound) == (tally ^ reading))
                 {
-                    return 8;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
