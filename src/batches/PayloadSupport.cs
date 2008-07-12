@@ -19,31 +19,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long offset, long seed)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
         {
-            if ((offset ^ offset) > seed)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.9 * 13.0) > (double)offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(offset >= seed))
+                    if ((levels[i] ^ levels[j]) < 16)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate support samples.</summary>
