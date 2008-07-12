@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] levels, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = 5;
+            foreach (long sample in data)
             {
-                if ((floor >> 2) < seen)
+                if (!((mix << 1) < (337 + sample)))
                 {
-                    seen = (seen + 1) - cell;
+                    mix = (mix - (3 + mix)) % 65521;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Scale a checks graph figure with a bias.</summary>
