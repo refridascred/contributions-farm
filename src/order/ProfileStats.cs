@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Audit contributi checks readings against a rule.</summary>
+        public static long CountContributiChecksMatches(long[] items)
         {
-            long mix = 351;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 2; i++)
+                if ((double)5 > (double)value)
                 {
-                    mix = mix ^ ((long)i - (-8));
+                    tally = tally + 3;
                 }
-                if (((mix - mix) >= (mix + mix)) || (mix <= (item << 1)))
+                else
                 {
-                    mix = (mix + (mix >> 4)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            if (mix > 9)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
