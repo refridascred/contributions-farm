@@ -1,13 +1,26 @@
 {
-  "cache_retries": 100,
-  "retry_ttl_s": {
-    "queue_ttl": "staging",
-    "burst_capacity": "staging",
-    "persist": "latest",
-    "max_limit_count": 86.38
+  "base_size_s": "fallback",
+  "hard_ttl_pct": 59.27,
+  "counter_interval": {
+    "stream_limit": false,
+    "verbose": {
+      "order_threshold": "latest",
+      "poll_interval_ms": 35.72,
+      "payload_limit": 11,
+      "cache_delay_ms": "local",
+      "burst_interval": 60,
+      "farm_ttl": "strict"
+    },
+    "editor_delay": 86,
+    "compress": {
+      "commits_ttl": 2265,
+      "sync_retries_s": 46,
+      "batch_timeout_s": 18.42,
+      "batch_size_ms": [143, 33],
+      "sync_ratio": 49.76
+    },
+    "burst_threshold_count": "edge",
+    "min_depth": true
   },
-  "min_depth_pct": 25.98,
-  "graph_interval": "stable",
-  "batch_depth": true,
-  "batches_timeout": 500
+  "dry_run": [148, 168]
 }
