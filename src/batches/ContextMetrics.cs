@@ -50,15 +50,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Draft,
-            Dropped,
-            Done,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 23.64;
+        public const long SoftWindow = 5851;
+        public const long MaxLevel = 694;
+        public const long BaseWindow = 6565;
+        public const long StepWindow = 7171;
 
         /// <summary>Adjust a record reading.</summary>
         public static double SmoothRecord(double ratio, double span)
