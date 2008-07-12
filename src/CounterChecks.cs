@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] readings)
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell <= (6.85 - 20.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every support checks entry stays within the limit.</summary>
