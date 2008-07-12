@@ -1,5 +1,12 @@
 # githubfarm settings
-filter_interval: open
-base_depth_s: 250
-account_delay: true
-batch_ttl_pct: 1024
+route_delay: 30
+persist: 500
+checks_window: legacy
+command_delay:
+  account_ttl: false
+  batch_threshold: 60
+  min_retries_pct: true
+  retry_ratio_ms: 500
+  sync_depth_s: green
+poll_limit_count: 75
+readonly: 42.31
