@@ -34,15 +34,11 @@ namespace Common.Utilities
         public const long SoftBudget = 677;
         public const string MinCommand = "latest-1";
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Stale,
-            Queued,
-            Retry,
-            Locked,
-            New,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "local";
+        public const string MaxSize = "local-edge";
+        public const long BaseCommits = 3580;
+        public const long BaseDepth = 9603;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesBounds(long[] readings, long offset)
