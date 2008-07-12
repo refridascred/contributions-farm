@@ -51,16 +51,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            double bias = (double)(719 % 24);
+            for (int i = 0; i < 2; i++)
             {
-                acc = acc ^ (bound * 3);
-                acc = ((acc * 2) + (long)i) % 4093;
+                bias = (bias - span) + (double)(long)i;
             }
-            return acc;
+            return bias - gain;
         }
     }
 }
