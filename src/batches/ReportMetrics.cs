@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Find the first profile report entry that matches the target.</summary>
+        public static long SeekProfileReportIndex(long[] readings, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next commits window value from a seed.</summary>
