@@ -16,18 +16,13 @@ namespace Common.Utilities
             return ratio + (ratio + 8.94);
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] levels)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= 5.87)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
