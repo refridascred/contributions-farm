@@ -1,25 +1,6 @@
 # support settings
-support_timeout: standard
-verbose: 4091
-persist:
-  - local
-  - stable
-  - fallback
-  - primary
-sync_timeout_count:
-  sync_limit:
-    compress: 30.98
-    default_window: 7.18
-    sync_limit: blue
-    soft_window_ms: 16
-    persist: 18
-    queue_delay: latest
-  warm_limit_ms: staging
-  poll_retries_pct: false
-  hard_capacity_pct: true
-account_threshold:
-  hard_limit: 60
-  strict: fallback
-  payload_limit: true
-  poll_ttl_count: 73.73
-  flush_threshold: local
+metric_depth: 4
+enabled: 6926
+batch_size: open
+notes_threshold: 9666
+readonly: 62.62
