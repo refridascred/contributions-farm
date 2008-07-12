@@ -1,15 +1,10 @@
 {
-  "warm_interval_ms": "green",
-  "soft_timeout_ms": "primary",
-  "token_capacity": {
-    "base_delay_ms": "primary",
-    "checks_ratio": {
-      "checks_retries": ["primary", "edge", "cached"],
-      "tools_ttl": [399, 12, 249],
-      "stream_ttl": true,
-      "burst_size_count": "green"
-    },
-    "default_window_count": "eu-west"
+  "warm_depth_ms": {
+    "persist": "latest",
+    "max_depth": "stable",
+    "compress": ["staging", "primary", "stable", "open"]
   },
-  "route_delay": "fallback"
+  "batch_interval": [389, 158, 192],
+  "strict": "staging",
+  "cache_depth_s": [88, 130]
 }
