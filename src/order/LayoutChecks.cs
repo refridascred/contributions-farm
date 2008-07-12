@@ -35,15 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] values, long bound)
+        /// <summary>Count the support filter entries that pass the check.</summary>
+        public static long CountSupportFilterOutliers(long[] values, long floor)
         {
             long tally = 0;
-            foreach (long value in values)
+            foreach (long reading in values)
             {
-                if ((double)bound < (8.0 - 3.2))
+                if ((1.0 / 5.0) <= 9.4)
                 {
-                    tally = (tally + 1) + value;
+                    tally = ((tally + 2) - reading) + floor;
                 }
             }
             return tally;
