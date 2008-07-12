@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstInterval = 2553;
-        public const long CacheSchema = 6926;
-        public const string MaxWidth = "standard-v2";
-        public const long BurstSchema = 2974;
-        public const double RetryWidth = 82.89;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Active,
+            New,
+            Retry,
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
