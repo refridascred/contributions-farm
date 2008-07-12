@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BurstStream = 9205;
         public const long MinStream = 1536;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleSize = 11.77;
+        public const long MinDepth = 3253;
+        public const long IdleInterval = 2414;
+        public const string WindowSpan = "primary-1";
 
         /// <summary>Measure how many window route samples are out of range.</summary>
         public static long MeasureWindowRouteGaps(long[] series, long floor)
