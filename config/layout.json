@@ -1,5 +1,5 @@
 {
-  "persist": 71.24,
-  "burst_depth_pct": "fallback",
-  "audit": true
+  "default_capacity": "edge",
+  "farm_ratio": "stable",
+  "cache_delay": 250
 }
