@@ -36,17 +36,18 @@ namespace Common.Utilities
         public const double IdleQueue = 59.11;
         public const string BurstQueue = "alpha-1";
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] data, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (data[i] <= bound)
+                if ((seen <= target) && !(seen >= (9 * 4)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + value;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
