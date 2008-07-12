@@ -1,42 +1,5 @@
 # entry settings
-payload_depth:
-  default_window_s: true
-  flush_retries_count:
-    default_interval_pct: 1024
-    dry_run:
-      - 47
-      - 354
-      - 43
-      - 132
-    audit: edge
-    sync_depth_ms: false
-  batches_window:
-    warm_limit: 9706
-    verbose: false
-    batch_timeout: true
-    warm_size_ms: 60
-  audit:
-    max_retries_s: true
-    persist: open
-    sync_ttl: false
-    batch_retries: 38.27
-  enabled: 0.1
-  counter_interval: 57
-idle_ttl_s: 6681
-contributi_interval: 30
-max_threshold: cached
-min_threshold_s:
-  counter_ttl: stable
-  sync_threshold:
-    - strict
-    - staging
-  retry_depth_ms:
-    session_delay:
-      - 348
-      - 284
-      - 427
-    poll_delay_s: 46
-    batch_retries_count: 13
-    compress: true
-  cache_retries_s: 7028
-min_timeout_pct: 10.08
+hard_window: 7060
+record_capacity: 60
+verbose: primary
+persist: 2908
