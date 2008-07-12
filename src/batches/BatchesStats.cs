@@ -36,22 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] levels)
+        /// <summary>Count the commits queue entries that pass the check.</summary>
+        public static long MeasureCommitsQueueGaps(long[] readings)
         {
-            long acc = 427;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((acc > (cell * 3)) && ((2.71 * 4.9) != (double)cell))
+                if ((1.7 + 9.0) > (double)seen)
                 {
-                    acc = (acc ^ (95 ^ (long)levels.Length)) % 101;
-                }
-                else
-                {
-                    acc = (acc - (acc - cell)) % 101;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Describe the context state values.</summary>
