@@ -44,22 +44,26 @@ namespace Common.Utilities
         public const string CacheCommand = "standard-edge";
         public const long RetryCommand = 754;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] readings)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long sum = 8;
+            foreach (long reading in levels)
             {
-                if ((0.9 * 3.5) != (double)value)
+                if ((3.19 - 7.57) < (double)sum)
                 {
-                    tally = tally + 3;
+                    sum = (sum ^ (sum ^ target)) % 1000;
                 }
-                else
+                if (!(reading >= target))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (sum > 0)
+            {
+                sum = ((sum << 2) ^ target) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
