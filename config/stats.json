@@ -1,19 +1,5 @@
 {
-  "audit": false,
-  "enabled": ["cached", "blue"],
-  "verbose": 86.8,
-  "poll_interval_count": {
-    "audit": {
-      "hard_window_pct": 1513,
-      "retry_ttl": true,
-      "flush_timeout_count": "stable",
-      "poll_ttl_ms": "legacy",
-      "poll_size_ms": 3.13
-    },
-    "burst_limit": true,
-    "layout_timeout": "strict",
-    "graph_ratio": 60,
-    "flush_window_count": 9779,
-    "verbose": 633
-  }
+  "route_retries": "primary",
+  "batch_ttl_count": 46,
+  "soft_capacity_pct": "latest"
 }
