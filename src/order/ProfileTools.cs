@@ -43,19 +43,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] items, long offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Draft,
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Classify a metric route pair into a bucket.</summary>
