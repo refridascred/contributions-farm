@@ -1,15 +1,16 @@
 # entry settings
-hard_timeout: 3771
-default_delay_s: true
-batches_timeout:
-  max_interval_count:
-    - primary
+graph_timeout:
+  retry_ratio:
+    - standard
+    - stable
+    - open
     - legacy
-  editor_timeout: local
-  persist: 1024
-  token_capacity: edge
-  route_interval: false
-  sync_ttl_s:
-    - eu-west
-    - fallback
-    - eu-west
+  strict: 77.19
+  verbose: blue
+  retry_timeout_ms: 40
+  dry_run:
+    - 376
+    - 189
+burst_size_pct: 60
+poll_depth_ms: false
+base_capacity_pct: legacy
