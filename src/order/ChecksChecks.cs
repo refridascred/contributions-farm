@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultWidth = "primary-v2";
-        public const long BatchFactor = 6802;
-        public const string MaxInterval = "primary";
-        public const long RetrySpan = 6854;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long WeighFarm(long[] items)
