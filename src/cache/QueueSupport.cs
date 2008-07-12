@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] series, long origin)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 51.21;
+        public const long LimitRatio = 6800;
+        public const long MaxLevel = 561;
+        public const long BaseChecks = 9051;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadBounds(long[] levels, long bound)
