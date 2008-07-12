@@ -53,24 +53,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry metrics value against two limits.</summary>
-        public static long BucketEntryMetrics(long target, long step)
-        {
-            if ((double)step != (2.6 / 7.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)target > (double)step) || (target <= (step * 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseScore = "legacy-edge";
+        public const string SoftSize = "latest";
+        public const long StepCount = 3273;
+        public const string DefaultEditor = "local-1";
     }
 }
