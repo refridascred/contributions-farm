@@ -19,17 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format token reading by value.</summary>
-        public static long SeekFormatTokenIndex(long[] data, long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
