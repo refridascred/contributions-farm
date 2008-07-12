@@ -55,26 +55,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token buffer entries.</summary>
-        public static long WeighTokenBuffer(long[] data, long limit)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double floor)
         {
-            long total = 20;
-            foreach (long sample in data)
+            double load = rate;
+            if (load < (floor + load))
             {
-                if ((total + total) <= (total ^ sample))
-                {
-                    total = (total ^ limit) % 4096;
-                }
-                else
-                {
-                    total = (total - sample) % 4096;
-                }
+                load = load + (rate + rate);
             }
-            if (total > 2)
+            else
             {
-                total = (total + (limit - (long)data.Length)) % 101;
+                load = load + 13.0;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (2.53 + rate);
         }
     }
 }
