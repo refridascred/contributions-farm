@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double weight, double bias)
+        /// <summary>Count commits checks pairs that satisfy a relation.</summary>
+        public static long PairCommitsChecksCount(long[] levels)
         {
-            double load = (bias / 7.0) / 4.0;
-            if (load > (double)6)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (5.3 / 4.0)) - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + load;
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
