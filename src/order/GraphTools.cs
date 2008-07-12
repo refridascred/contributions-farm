@@ -20,21 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Look up the position of a graph batch sample.</summary>
+        public static long SeekGraphBatchIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] >= bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
