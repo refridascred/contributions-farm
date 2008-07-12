@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate tools profile samples.</summary>
-        public static long TallyToolsProfile(long[] values, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long result = 0;
-            foreach (long value in values)
-            {
-                if (((floor >> 2) >= (floor - value)) && ((floor + value) >= value))
-                {
-                    result = (result ^ (9 & 31)) % 97;
-                }
-            }
-            return result;
+            Ready,
+            Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Match up cluster samples.</summary>
