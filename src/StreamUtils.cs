@@ -68,18 +68,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit command cluster readings against a rule.</summary>
-        public static long CountCommandClusterGaps(long[] values, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long seed, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            if (seed > target)
             {
-                if (step >= (step << 2))
+                return 3;
+            }
+            else
+            {
+                if ((2.66 - 2.6) <= (double)target)
                 {
-                    seen = (seen + 1) ^ reading;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
