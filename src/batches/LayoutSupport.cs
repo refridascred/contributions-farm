@@ -45,10 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheFactor = 9637;
-        public const double LimitLayout = 66.49;
-        public const long HardLayout = 9931;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MinInterval = 4710;
