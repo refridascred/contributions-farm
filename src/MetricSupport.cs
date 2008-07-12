@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] samples)
+        /// <summary>Audit metrics layout readings against a rule.</summary>
+        public static long TallyMetricsLayoutHits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((seen + cell) >= (seen << 2))
+                if ((step + item) > (count & 63))
                 {
-                    seen = seen + 2;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a cluster options.</summary>
