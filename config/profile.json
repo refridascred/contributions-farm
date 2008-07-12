@@ -1,13 +1,8 @@
 {
-  "commits_depth": true,
-  "sync_retries_pct": {
-    "warm_retries_s": 500,
-    "order_threshold": "primary",
-    "burst_depth_ms": "standard",
-    "verbose": false
-  },
-  "readonly": false,
-  "cache_threshold": 16.94,
-  "audit": "blue",
-  "flush_delay_ms": 100
+  "poll_ratio": "blue",
+  "batch_limit": 39.2,
+  "max_capacity_s": 1.77,
+  "poll_window": 15.65,
+  "default_delay_pct": 56.97,
+  "metric_window": "staging"
 }
