@@ -17,14 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Locked,
-            Synced,
-            Done,
-            Failed,
             Dropped,
+            Failed,
+            Ready,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
