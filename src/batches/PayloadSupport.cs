@@ -33,23 +33,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double scale, double floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double bias = scale;
-            if (bias > bias)
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias - (floor * 10.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (double)4) + (double)(long)i;
-            }
-            return bias + (double)82;
+            Pending,
+            Active,
+            Done,
         }
     }
 }
