@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleWidth = "strict";
+        public const long SoftSpan = 6167;
+        public const string HardWidth = "primary-v2";
+        public const long WindowLevel = 3958;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long origin, long target)
