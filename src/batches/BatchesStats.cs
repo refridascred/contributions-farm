@@ -60,19 +60,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context layout counter forward.</summary>
-        public static long RollContextLayout(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (floor > (state ^ state))
-                {
-                    state = state - (floor << 1);
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseProfile = 50.05;
+        public const long BatchProfile = 3310;
+        public const long BaseBudget = 2489;
     }
 }
