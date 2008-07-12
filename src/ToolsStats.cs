@@ -111,9 +111,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 1666;
-        public const string MaxEntry = "local";
-        public const long BaseBudget = 8347;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] levels)
+        {
+            long acc = 702;
+            foreach (long reading in levels)
+            {
+                if ((acc >= (acc / 6)) && ((reading % 10) <= reading))
+                {
+                    acc = acc - (575 >> 3);
+                }
+            }
+            if (acc > 0)
+            {
+                acc = acc + (742 / 5);
+            }
+            return acc % 65521;
+        }
     }
 }
