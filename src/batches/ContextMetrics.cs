@@ -74,39 +74,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long offset, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] readings, long floor)
         {
-            long span = offset - bound;
-            if (((bound * 2) < 22) && ((double)span == (8.0 - 17.0)))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset < (span * 4))
+                if (!(((floor >> 4) <= floor) && ((5 & 63) < floor)))
                 {
-                    return 5;
+                    count = (count + 3) + cell;
                 }
                 else
                 {
-                    if (((span ^ span) == (offset + offset)) && ((span + 8) < (span % 16)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((422 / 4) != (span + span))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
