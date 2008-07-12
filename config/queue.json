@@ -1,20 +1,6 @@
 {
-  "dry_run": 41.0,
-  "base_ttl": 50.74,
-  "cache_delay": 17.44,
-  "enabled": {
-    "retry_ttl_pct": {
-      "poll_retries_ms": 2.53,
-      "verbose": 70.44,
-      "hard_timeout": false,
-      "enabled": [434, 3, 14],
-      "min_size_count": 8677,
-      "compress": false
-    },
-    "format_capacity": 60,
-    "audit": "stable",
-    "max_delay_ms": 56.67,
-    "base_ratio_ms": true,
-    "retry_interval_pct": [423, 399, 56, 319]
-  }
+  "retry_threshold": ["eu-west", "edge", "open", "strict"],
+  "command_window": "open",
+  "idle_retries_pct": 500,
+  "dry_run": false
 }
