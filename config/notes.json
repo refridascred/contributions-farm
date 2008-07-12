@@ -1,18 +1,10 @@
 {
-  "checks_threshold": "open",
-  "format_limit": "standard",
-  "burst_depth_pct": 36.56,
-  "tools_depth": {
-    "dry_run": ["green", "latest"],
-    "max_interval_s": "eu-west",
-    "flush_threshold_count": [137, 200, 442],
-    "cache_depth": "stable"
-  },
-  "contributi_window": "standard",
-  "idle_delay_pct": {
-    "soft_window_s": ["stable", "strict", "strict", "blue"],
-    "report_size": "legacy",
-    "soft_timeout_pct": "local",
-    "batch_size": 90.14
+  "min_retries": 30,
+  "readonly": "stable",
+  "verbose": {
+    "retry_delay_pct": "stable",
+    "flush_retries_ms": "open",
+    "retry_timeout_pct": "local",
+    "idle_size_s": "strict"
   }
 }
