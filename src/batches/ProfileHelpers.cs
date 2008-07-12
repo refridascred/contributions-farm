@@ -54,10 +54,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleInterval = "staging";
-        public const long BatchWidth = 7040;
-        public const long WindowSession = 7636;
+        /// <summary>Check that every report channel entry stays within the limit.</summary>
+        public static bool ValidateReportChannelRange(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] items)
