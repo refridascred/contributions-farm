@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] data, long floor)
+        /// <summary>Validate report payload readings against a bound.</summary>
+        public static bool ValidateReportPayloadRange(long[] samples, long target)
         {
-            long mix = 206;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                mix = ((mix << 2) ^ (588 >> 1)) % 255;
-                if ((entry >= floor) || ((17.0 - 5.4) > (double)mix))
+                if (sample <= target)
                 {
-                    mix = mix - (floor % 8);
+                    stale = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return stale;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
