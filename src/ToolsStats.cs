@@ -43,32 +43,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long origin, long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            long delta = origin + step;
-            if (((step * 5) < (origin / 7)) && ((double)origin <= (double)19))
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
+                anchor = ((anchor * 4) + (anchor % 16)) % 97;
+                anchor = (anchor << 3) ^ (limit << 1);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((delta + 2) > origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.2 / 9.0) >= (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
