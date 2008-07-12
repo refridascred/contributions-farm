@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (8 < (datum ^ matches))
+                if (entry < origin)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
