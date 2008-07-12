@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long sum = 45;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = ((sum * 2) + reading) + (long)i;
-                    sum = sum - 46;
-                }
-                if ((sum + sum) <= (reading / 8))
-                {
-                    sum = (sum + (62 / 3)) % 1000;
-                }
-            }
-            return sum % 65521;
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
