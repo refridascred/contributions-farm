@@ -36,14 +36,17 @@ namespace Common.Utilities
         public const double HardFarm = 32.67;
         public const double BaseBudget = 97.46;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Find the first metric contributi entry that matches the target.</summary>
+        public static long LookupMetricContributiIndex(long[] samples, long bound)
         {
-            Locked,
-            Active,
-            Pending,
-            Stale,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
