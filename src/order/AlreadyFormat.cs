@@ -52,26 +52,10 @@ namespace Common.Utilities
         public const string CacheCommand = "standard-edge";
         public const long RetryCommand = 754;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] levels, long target)
-        {
-            long sum = 8;
-            foreach (long reading in levels)
-            {
-                if ((3.19 - 7.57) < (double)sum)
-                {
-                    sum = (sum ^ (sum ^ target)) % 1000;
-                }
-                if (!(reading >= target))
-                {
-                    break;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = ((sum << 2) ^ target) % 65521;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 5177;
+        public const double HardRatio = 24.84;
+        public const long IdleCache = 1067;
+        public const long IdleFactor = 6841;
     }
 }
