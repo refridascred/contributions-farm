@@ -35,18 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long mix = 332;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item * 3) == (item / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = mix ^ (item - mix);
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return matches;
         }
     }
 }
