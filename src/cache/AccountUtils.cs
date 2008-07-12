@@ -18,18 +18,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] levels, long bound)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((bound + reading) > 12) && (550 > bound))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Pending,
+            Synced,
+            Stale,
+            New,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
