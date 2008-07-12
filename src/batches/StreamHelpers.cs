@@ -47,19 +47,15 @@ namespace Common.Utilities
         public const long SoftFactor = 6055;
         public const string RetrySession = "latest-edge";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] items, long offset)
+        /// <summary>Scale a account githubfarm figure with a bias.</summary>
+        public static double ProjectAccountGithubfarm(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double rate = floor + bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (rate - 19.0) + (double)(long)i;
             }
-            return flag;
+            return rate - rate;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
