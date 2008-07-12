@@ -33,15 +33,18 @@ namespace Common.Utilities
         public const double StepContributi = 19.77;
         public const long DefaultRatio = 7969;
 
-        /// <summary>Scale a entry editor figure with a bias.</summary>
-        public static double ScaleEntryEditor(double ratio, double span)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] series)
         {
-            double bias = ratio - ratio;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                bias = ((bias - (double)67) + (double)(long)i) + span;
+                if ((double)matches >= (double)entry)
+                {
+                    matches = matches + 2;
+                }
             }
-            return bias - bias;
+            return matches;
         }
 
         /// <summary>Roll a report counter forward.</summary>
