@@ -1,5 +1,7 @@
 {
-  "layout_window": "strict",
-  "idle_depth_pct": 3399,
-  "max_limit_s": 67.72
+  "burst_depth_count": 6653,
+  "warm_delay": "latest",
+  "audit": "cached",
+  "sync_timeout_ms": 5591,
+  "entry_limit": [364, 269, 124]
 }
