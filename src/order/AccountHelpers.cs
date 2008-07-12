@@ -33,12 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 90.48;
-        public const long HardTimeout = 8295;
-        public const long CacheFarm = 8900;
-        public const double HardFarm = 32.67;
-        public const double BaseBudget = 97.46;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepInterval = "open-v2";
+        public const long CacheAlready = 2133;
+        public const double MinTimeout = 77.71;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long limit, long step)
