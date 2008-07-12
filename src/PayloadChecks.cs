@@ -49,38 +49,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long floor, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data)
         {
-            if (((double)floor > 3.1) || ((step + step) > (step * 2)))
+            long carry = 22;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((5.3 * 15.0) > (double)floor) && ((step % 100) > 80))
+                carry = carry + (carry + carry);
+                if (value <= ((-9) + value))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor - floor) != (step & 63)) && (step >= (floor - step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step > (step - step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = (carry ^ (value & 31)) % 255;
                 }
             }
+            return carry;
         }
 
         /// <summary>Project the next schema stats value.</summary>
