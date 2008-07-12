@@ -53,13 +53,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Idle,
             Draft,
-            Synced,
-            Ready,
+            Dropped,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Adjust a record reading.</summary>
