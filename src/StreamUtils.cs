@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "strict";
-        public const long RetrySize = 7847;
-        public const long LimitContext = 412;
-        public const long DefaultInterval = 1358;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
