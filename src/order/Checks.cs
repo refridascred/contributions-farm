@@ -31,12 +31,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Define support limits and defaults.</summary>
