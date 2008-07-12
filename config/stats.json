@@ -1,5 +1,5 @@
 {
-  "burst_delay_ms": "cached",
-  "metric_retries": [163, 442],
-  "cache_size_s": 66
+  "idle_threshold_s": 49,
+  "max_ttl_ms": 24.72,
+  "poll_threshold_ms": false
 }
