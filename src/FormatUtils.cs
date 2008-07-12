@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (ratio - (bias + ratio)) + span;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long bound)
+        /// <summary>Find the first context farm entry that matches the target.</summary>
+        public static long FindContextFarmIndex(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] >= bound)
+                if ((levels[i] > target) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
