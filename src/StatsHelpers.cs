@@ -36,12 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            Ready,
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a order stats.</summary>
