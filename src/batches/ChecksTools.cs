@@ -38,21 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Scale a window support figure with a bias.</summary>
+        public static double ProjectWindowSupport(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)7 / 5.0;
+            if (load < (load * 6.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - ratio;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - 0.49) + (double)(long)i;
+            }
+            return load - (ratio - span);
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
