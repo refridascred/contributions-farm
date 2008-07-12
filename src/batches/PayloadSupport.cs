@@ -36,23 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] data, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long state = 5;
-            foreach (long sample in data)
-            {
-                state = state ^ (step + step);
-                if ((step + state) >= sample)
-                {
-                    break;
-                }
-            }
-            if (state < 195)
-            {
-                state = (state << 2) ^ (state - step);
-            }
-            return state;
+            Draft,
+            Locked,
+            Stale,
+            Synced,
         }
     }
 }
