@@ -1,11 +1,37 @@
 # entry settings
-min_interval: false
-burst_ttl: 5855
-poll_retries_s:
-  strict:
-    - legacy
-    - eu-west
-  poll_window_count: eu-west
-  batch_window_pct: cached
-audit: false
-channel_ratio: edge
+flush_retries_ms: 500
+graph_depth:
+  max_size_ms:
+    base_window: standard
+    default_interval: 1080
+    cache_retries: primary
+    min_window_pct: staging
+    poll_delay_pct: standard
+  flush_retries:
+    default_timeout: 7892
+    verbose: 61.19
+    dry_run: open
+    burst_depth:
+      - 160
+      - 148
+      - 260
+      - 243
+    persist: 1024
+    batch_interval: true
+  max_threshold_count:
+    default_retries:
+      - staging
+      - stable
+      - eu-west
+      - edge
+    retry_delay_pct: open
+    readonly: true
+  cache_size: primary
+  default_depth_pct: 7610
+  min_limit:
+    - 190
+    - 141
+    - 292
+warm_window_pct: 100
+support_depth: latest
+record_retries: true
