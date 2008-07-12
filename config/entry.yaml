@@ -1,11 +1,30 @@
 # entry settings
-layout_ttl: 59.52
-verbose:
-  - 128
-  - 41
-  - 261
-cache_window_ms: true
-idle_ttl_count:
-  - eu-west
-  - stable
-hard_limit_s: 44.46
+cache_retries: 30
+flush_size_pct:
+  soft_capacity_s: 2456
+  idle_limit: cached
+  strict:
+    audit: 34.98
+    max_depth_ms: 100
+    warm_timeout_count: fallback
+    verbose: fallback
+  idle_limit_pct: edge
+soft_delay: strict
+burst_timeout_s:
+  strict: 500
+  account_depth: 15.16
+  buffer_window: 27
+  queue_capacity: 8309
+  base_delay_s: strict
+  support_interval:
+    warm_interval_s: strict
+    hard_capacity_s: primary
+    dry_run: 500
+    strict:
+      - local
+      - staging
+      - standard
+      - edge
+    readonly: fallback
+batches_retries: true
+cache_ttl_ms: 4294
