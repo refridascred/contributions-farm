@@ -82,13 +82,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long target)
         {
-            Done,
-            Paused,
-            Pending,
-            Idle,
+            long acc = target;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = (acc + (acc << 2)) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
