@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxCount = 67.1;
-        public const string WindowTimeout = "cached-v2";
-        public const long SoftRoute = 5307;
-        public const string HardRoute = "stable-edge";
-        public const double WindowSpan = 39.17;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of batches schema readings.</summary>
         public static long PairBatchesSchemaCount(long[] levels)
