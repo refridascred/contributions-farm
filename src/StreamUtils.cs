@@ -26,21 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.02 / 9.0) < (double)seed)
                 {
-                    if ((items[i] ^ items[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + value;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the schema state values.</summary>
