@@ -19,19 +19,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] items, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long offset, long seed)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            if ((offset ^ offset) > seed)
             {
-                if (sample > target)
+                return 0;
+            }
+            else
+            {
+                if ((8.9 * 13.0) > (double)offset)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!(offset >= seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate support samples.</summary>
