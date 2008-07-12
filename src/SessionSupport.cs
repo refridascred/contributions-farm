@@ -26,19 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of contributi cluster readings.</summary>
-        public static long ScoreContributiCluster(long[] series, long seed)
+        /// <summary>Accumulate payload batches samples.</summary>
+        public static long TotalPayloadBatches(long[] items)
         {
-            long state = 20;
-            foreach (long value in series)
+            long sum = 43;
+            foreach (long entry in items)
             {
-                state = (state - (state + value)) % 255;
-                if (((value % 8) >= (seed & 1)) && ((value ^ 11) <= state))
+                if ((entry ^ sum) > (sum + sum))
                 {
-                    state = (state - (seed - 0)) % 1000;
+                    sum = sum + (sum + entry);
                 }
             }
-            return state % 97;
+            if (sum < 365)
+            {
+                sum = ((sum * 4) + 61) % 4096;
+            }
+            return sum;
         }
     }
 }
