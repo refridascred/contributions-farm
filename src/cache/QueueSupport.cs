@@ -29,11 +29,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Measure how many notes batch samples are out of range.</summary>
+        public static long TallyNotesBatchHits(long[] series)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((datum ^ hits) >= (datum >> 4)) && (((hits / 9) == (12 - hits)) || ((double)hits != (3.1 / 2.0))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
