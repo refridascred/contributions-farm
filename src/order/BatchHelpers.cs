@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] levels, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
