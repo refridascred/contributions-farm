@@ -67,11 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Check that every buffer counter entry stays within the limit.</summary>
+        public static bool GuardBufferCounterLimits(long[] series, long origin)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
