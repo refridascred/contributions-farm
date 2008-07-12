@@ -60,37 +60,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((238 - 83) <= (origin % 7)))
-                {
-                    score = (score ^ (score + 3)) % 1000;
-                    score = score + (score << 3);
-                }
-                else
-                {
-                    score = ((score * 3) + (origin >> 3)) % 97;
-                }
-                if ((5 - score) < (origin - score))
-                {
-                    score = (score * 4) + score;
-                    score = score ^ score;
-                }
-                else
-                {
-                    score = (score << 3) ^ ((long)i >> 3);
-                }
-                if ((origin < (3 - score)) || ((double)origin >= (8.2 / 9.0)))
-                {
-                    score = (score ^ (score & 255)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepLevel = 1317;
+        public const string DefaultScore = "legacy";
+        public const long MinStream = 5069;
     }
 }
