@@ -22,15 +22,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((sample % 10) <= (tally + tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
