@@ -1,8 +1,7 @@
 # githubfarm settings
-idle_retries_count: true
-hard_ttl_ms: cached
-max_delay: 23.11
-route_timeout: blue
-flush_size:
-  - edge
-  - cached
+default_limit_count: fallback
+warm_delay_ms: 32.02
+compress: 91
+already_retries: blue
+dry_run: false
+notes_retries: true
