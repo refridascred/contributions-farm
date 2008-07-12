@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            Locked,
-            Stale,
-            Retry,
+            long sum = 826;
+            foreach (long sample in readings)
+            {
+                sum = ((sum << 2) ^ (sample + sample)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
