@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = mix - mix;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinInterval = 20.03;
+        public const string MaxLevel = "latest";
+        public const double CacheProfile = 51.35;
+        public const long RetrySpan = 6851;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
