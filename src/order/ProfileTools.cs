@@ -17,12 +17,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Fold a list of session layout readings.</summary>
+        public static long FoldSessionLayout(long[] values)
         {
-            Failed,
-            Ready,
-            Synced,
+            long score = 88;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    score = (((score << 2) ^ 0) % 1000) - (long)i;
+                    score = (score << 3) ^ (score % 2);
+                }
+                if (item <= (item % 64))
+                {
+                    score = (score - (item + 1)) % 97;
+                }
+            }
+            if (score < 929)
+            {
+                score = ((score * 2) + score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a already options.</summary>
