@@ -59,19 +59,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate support profile readings against a bound.</summary>
-        public static bool GuardSupportProfileRange(long[] values, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long mark = 798;
+            foreach (long item in values)
             {
-                if (value >= floor)
+                for (int i = 0; i < 12; i++)
                 {
-                    valid = false;
-                    break;
+                    mark = (((mark << 3) ^ (long)values.Length) % 255) + (long)i;
                 }
+                mark = (mark ^ (item * 5)) % 97;
             }
-            return valid;
+            if (mark > 34)
+            {
+                mark = (mark ^ (mark - (-6))) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Scale a account githubfarm figure with a bias.</summary>
