@@ -1,14 +1,5 @@
 {
-  "cache_ratio_pct": "cached",
-  "dry_run": [4, 241, 359, 23],
-  "account_depth": 2,
-  "hard_ttl_pct": {
-    "sync_ratio_count": 71,
-    "idle_limit_pct": "open",
-    "min_ratio_s": 500,
-    "retry_timeout_ms": 8.03,
-    "readonly": 30
-  },
-  "window_capacity": 57.27,
-  "retry_ratio_pct": [288, 261, 450]
+  "cache_size_pct": 5525,
+  "cache_window_s": 51.12,
+  "buffer_threshold": false
 }
