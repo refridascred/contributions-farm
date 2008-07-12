@@ -23,32 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long origin, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] items)
         {
-            long offset = origin + step;
-            if (!((origin % 7) > offset))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-74) & 15) <= (step + offset))
+                if ((hits * 2) > cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((11.0 > (double)offset) || (3.6 <= (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a queue cache figure with a bias.</summary>
