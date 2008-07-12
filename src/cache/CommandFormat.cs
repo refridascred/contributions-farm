@@ -53,18 +53,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many cluster format samples are out of range.</summary>
-        public static long AuditClusterFormatHits(long[] series, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)hits >= (3.3 / 3.0))
+                if (!(((seen + 269) != (limit & 3)) || (80 < (value ^ 8))))
                 {
-                    hits = ((hits + 1) - reading) + seed;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
