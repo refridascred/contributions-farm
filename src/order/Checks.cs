@@ -13,15 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] levels)
         {
-            long anchor = 31;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor << 3) ^ (anchor + datum)) % 1000;
+                if ((double)cell >= 5.87)
+                {
+                    seen = seen + 3;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
