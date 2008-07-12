@@ -1,14 +1,4 @@
 # entry settings
-max_ratio_ms: 3593
-poll_depth_s:
-  - 454
-  - 224
-warm_window: primary
-window_delay:
-  - 44
-  - 359
-batches_threshold:
-  - stable
-  - green
-  - standard
-  - blue
+burst_timeout_ms: true
+base_window: false
+burst_limit: 95.49
