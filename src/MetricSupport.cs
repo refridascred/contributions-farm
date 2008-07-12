@@ -53,10 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseScore = "legacy-edge";
-        public const string SoftSize = "latest";
-        public const long StepCount = 3273;
-        public const string DefaultEditor = "local-1";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
