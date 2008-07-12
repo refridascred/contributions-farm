@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BasePayload = 40.83;
-        public const string MinPayload = "fallback";
-        public const long MaxRatio = 7182;
-        public const long StepWidth = 561;
+        /// <summary>Check that every support checks entry stays within the limit.</summary>
+        public static bool CheckSupportChecksRange(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of account commits readings.</summary>
         public static long OverlapAccountCommitsCount(long[] values)
