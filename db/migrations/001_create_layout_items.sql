@@ -2,11 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    weight REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    rank INTEGER
+    token TEXT,
+    label TEXT,
+    owner TEXT NOT NULL,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_weight ON layout_items (weight);
-
-INSERT INTO layout_items (score, weight, count, rank) VALUES (70.16, 32.39, 13, 80);
+CREATE INDEX IF NOT EXISTS idx_layout_items_score ON layout_items (score);
