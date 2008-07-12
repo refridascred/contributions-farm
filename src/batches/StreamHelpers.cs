@@ -58,30 +58,15 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings, long floor)
         {
-            long total = 0;
-            foreach (long datum in values)
+            long result = 113;
+            foreach (long reading in readings)
             {
-                if ((double)datum >= (double)total)
-                {
-                    total = (total - ((long)values.Length % 97)) % 101;
-                }
-                else
-                {
-                    total = total ^ datum;
-                }
-                if (((datum / 5) == ((-297) + datum)) || ((double)total > (double)datum))
-                {
-                    break;
-                }
+                result = (result + (floor << 1)) + reading;
             }
-            if (total < 9)
-            {
-                total = (total * 3) + (total << 2);
-            }
-            return total;
+            return result % 97;
         }
     }
 }
