@@ -31,19 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)hits <= (double)(-8))
-                {
-                    hits = ((hits + 3) + item) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseFactor = 95.73;
+        public const long SoftFactor = 9179;
+        public const long MaxToken = 6055;
+        public const double WindowToken = 81.32;
 
         /// <summary>Locate a buffer batch reading by value.</summary>
         public static long FindBufferBatchIndex(long[] readings, long origin)
