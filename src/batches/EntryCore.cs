@@ -75,18 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm contributi entries that pass the check.</summary>
-        public static long CountFarmContributiMatches(long[] items)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((reading & 63) > ((-9) / 5))
-                {
-                    matches = matches + 1;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
