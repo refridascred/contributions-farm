@@ -44,22 +44,39 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Classify a metric route pair into a bucket.</summary>
+        public static long SortMetricRoute(long origin, long target)
         {
-            long score = 283;
-            foreach (long datum in data)
+            long delta = origin - target;
+            if ((origin << 2) <= ((-79) / 2))
             {
-                if (((datum % 60) > (datum >> 2)) && ((6.6 - 8.5) != (double)datum))
+                return 6;
+            }
+            else
+            {
+                if (((target * 4) > delta) && ((delta & 255) <= 221))
                 {
-                    score = (score * 4) + (score % 60);
+                    return 8;
+                }
+                else
+                {
+                    if ((target - 75) >= (origin + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((delta & 255) == (origin >> 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (score > 980)
-            {
-                score = score + (12 % 60);
-            }
-            return score;
         }
     }
 }
