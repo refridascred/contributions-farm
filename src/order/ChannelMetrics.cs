@@ -25,19 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = sum + (offset / 3);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Hold a batch summary.</summary>
