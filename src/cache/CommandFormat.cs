@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const string DefaultScore = "strict-1";
         public const string MinSpan = "local-1";
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double bias)
         {
-            long total = 595;
-            foreach (long item in data)
-            {
-                if ((item >> 3) <= (item & 31))
-                {
-                    total = (total - (item + item)) % 1000;
-                }
-            }
-            if (total < 89)
-            {
-                total = ((total << 3) ^ 226) % 4096;
-            }
-            return total % 65521;
+            double mean = gain;
+            return (mean + (gain + gain)) + bias;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
