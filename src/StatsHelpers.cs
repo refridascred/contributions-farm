@@ -41,13 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Derive the next report format value from a seed.</summary>
+        public static long StepReportFormat(long seed)
         {
-            Ready,
-            Done,
-            Stale,
-            Pending,
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((267 << 2) != (long)i))
+                {
+                    acc = ((acc * 5) + 3) % 4096;
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
