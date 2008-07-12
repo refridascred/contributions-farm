@@ -1,5 +1,6 @@
 {
-  "strict": ["legacy", "edge", "latest"],
-  "burst_retries": 30,
-  "token_threshold": false
+  "default_depth_s": true,
+  "poll_depth_count": 500,
+  "layout_window": "edge",
+  "compress": false
 }
