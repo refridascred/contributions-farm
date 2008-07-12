@@ -45,11 +45,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 6670;
-        public const double BaseBuffer = 86.54;
-        public const long CacheBuffer = 4446;
-        public const long StepBuffer = 8047;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the batches contributi entries that pass the check.</summary>
         public static long TallyBatchesContributiGaps(long[] data, long floor)
