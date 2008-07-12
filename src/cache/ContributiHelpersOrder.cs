@@ -12,19 +12,38 @@ namespace Common.Utilities
         public const long MinMetric = 7989;
         public const string SoftMetric = "stable-edge";
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Classify a account layout pair into a bucket.</summary>
+        public static long GradeAccountLayout(long offset, long offset2)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            if (3.4 <= (double)offset)
             {
-                if (((0.63 - 7.0) > (double)floor) || ((total ^ (long)i) < floor))
-                {
-                    total = total - ((long)i ^ total);
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((double)offset2 == (10.0 / 4.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset <= (2.35 * 5.62))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset2 & 3) >= (offset2 + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
