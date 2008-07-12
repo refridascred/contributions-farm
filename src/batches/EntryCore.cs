@@ -42,15 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the support githubfarm entries that pass the check.</summary>
-        public static long TallySupportGithubfarmMatches(long[] values, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] samples)
         {
             long hits = 0;
-            foreach (long cell in values)
+            foreach (long reading in samples)
             {
-                if ((limit << 1) > (hits + hits))
+                if ((3.2 / 2.0) >= (double)hits)
                 {
-                    hits = (hits + 3) - cell;
+                    hits = (hits + 1) + reading;
                 }
             }
             return hits;
