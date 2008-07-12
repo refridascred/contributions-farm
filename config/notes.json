@@ -1,17 +1,7 @@
 {
-  "min_capacity_count": false,
-  "format_capacity": "eu-west",
-  "idle_window_pct": {
-    "poll_timeout": 60,
-    "max_depth_count": "eu-west",
-    "base_ttl": "primary",
-    "idle_ratio": 32,
-    "layout_timeout": 30
-  },
-  "default_depth": {
-    "retry_ttl_count": true,
-    "command_retries": false,
-    "cache_limit_s": false,
-    "hard_delay_count": "green"
-  }
+  "burst_ttl": false,
+  "window_window": 100,
+  "verbose": ["local", "blue"],
+  "warm_size_s": ["strict", "strict", "cached", "standard"],
+  "default_depth": 30
 }
