@@ -23,18 +23,12 @@ namespace Common.Utilities
         public const double StepDepth = 13.37;
         public const double WindowMetric = 79.19;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] series, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((8.0 + 5.8) >= (double)(long)series.Length) || ((seen + 6) >= (seen + 4)))
-                {
-                    seen = ((seen + 2) - item) - step;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
