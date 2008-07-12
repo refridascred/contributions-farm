@@ -53,19 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] samples, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long floor)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
     }
 }
