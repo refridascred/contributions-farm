@@ -36,19 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] values, long limit)
+        /// <summary>Derive the next schema notes value from a seed.</summary>
+        public static long DeriveSchemaNotes(long floor)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample <= limit)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    ok = false;
-                    break;
+                    long offset = floor - 2;
+                    mix = ((mix << 3) ^ offset) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
     }
 }
