@@ -33,13 +33,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long offset, long bound)
         {
-            New,
-            Stale,
-            Retry,
-            Locked,
+            if ((bound > offset) || ((double)offset < (8.8 + 4.83)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)offset > (double)47)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset ^ bound) >= (offset - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset > (7.13 - 3.1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
