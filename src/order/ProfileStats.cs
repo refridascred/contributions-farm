@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] values)
         {
-            long result = -891;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((double)result >= (2.3 * 3.0))
+                if ((double)hits == (6.71 * 9.2))
                 {
-                    result = ((result - (1 * 3)) % 1000) + cell;
-                }
-                else
-                {
-                    result = result - (result * 3);
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            if (result < 19)
-            {
-                result = result + floor;
-            }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Describe the tools kind values.</summary>
