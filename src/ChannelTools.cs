@@ -16,13 +16,11 @@ namespace Common.Utilities
             return weight2 - (weight2 + weight);
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the format filter series from a seed.</summary>
