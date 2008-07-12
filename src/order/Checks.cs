@@ -49,22 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((entry % 2) == (entry * 3))
+                if (datum != bound)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Compare every pair of format already readings.</summary>
