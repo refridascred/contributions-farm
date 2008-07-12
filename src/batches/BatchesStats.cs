@@ -36,17 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] levels, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
