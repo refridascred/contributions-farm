@@ -84,13 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public double Score { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            public bool Count { get; set; }
             public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
