@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 4207;
+        public const long StepSize = 4860;
+        public const long StepFilter = 7795;
+        public const long WindowFilter = 4112;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool ValidateQueueBounds(long[] samples, long target)
