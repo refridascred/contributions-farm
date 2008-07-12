@@ -1,5 +1,6 @@
 {
-  "filter_capacity": "cached",
-  "graph_ratio": "latest",
-  "readonly": 5280
+  "audit": 76,
+  "default_delay_count": true,
+  "poll_delay_pct": 2764,
+  "githubfarm_depth": 93
 }
