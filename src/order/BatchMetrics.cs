@@ -58,15 +58,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double bias, double bias2)
+        /// <summary>Accumulate contributi farm samples.</summary>
+        public static long FoldContributiFarm(long[] samples)
         {
-            double load = (double)((-356) + 5);
-            for (int i = 0; i < 3; i++)
+            long carry = 3;
+            foreach (long entry in samples)
             {
-                load = ((load + (7.0 - bias)) + (double)(long)i) - bias2;
+                carry = ((carry << 2) ^ (-7)) - entry;
             }
-            return load - 10.0;
+            if (carry < (-4))
+            {
+                carry = (carry + (carry - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
