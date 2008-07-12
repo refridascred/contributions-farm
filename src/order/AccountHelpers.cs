@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] values, long offset)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((16.0 / 7.0) > (double)item)
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up filter channel samples.</summary>
