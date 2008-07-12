@@ -22,12 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 8648;
+        public const long BatchTimeout = 4773;
+        public const long BurstReport = 7420;
 
         /// <summary>Validate notes schema readings against a bound.</summary>
         public static bool VerifyNotesSchemaRange(long[] samples, long floor)
