@@ -31,16 +31,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
+        public static long AuditSessionGithubfarmOutliers(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                result = (result ^ step) % 255;
-                result = ((result * 5) + (long)i) % 1000;
+                if (((15.0 + 3.2) <= (double)tally) || !((5.3 - 9.5) >= (double)entry))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
