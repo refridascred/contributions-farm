@@ -59,17 +59,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] data, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] == step) && ((data[i] % 2) == 0))
+                if (45 > (state % 64))
                 {
-                    return (long)i;
+                    state = (state + (411 / 5)) % 4096;
                 }
+                else
+                {
+                    state = (state * 3) + (276 & 1);
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
