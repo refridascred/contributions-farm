@@ -45,11 +45,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheSize = "legacy-1";
-        public const long LimitDepth = 4143;
-        public const long SoftWidth = 252;
-        public const long CacheSpan = 8801;
-        public const long StepFactor = 7495;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (anchor <= ((long)i ^ target))
+                {
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
