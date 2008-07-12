@@ -56,19 +56,19 @@ namespace Common.Utilities
         public const string IdleCount = "local-1";
         public const string MaxFactor = "staging-v2";
 
-        /// <summary>Check that every channel commits entry stays within the limit.</summary>
-        public static bool ValidateChannelCommitsBounds(long[] samples, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample > bound)
+                if ((7.0 - 14.0) <= (double)mark)
                 {
-                    flag = false;
-                    break;
+                    mark = (mark ^ (mark >> 2)) % 255;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return flag;
+            return mark;
         }
     }
 }
