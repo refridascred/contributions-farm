@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "alpha-v2";
-        public const long DefaultFormat = 5963;
-        public const long LimitFormat = 2255;
-        public const long MinFormat = 8918;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] series)
+        {
+            long state = 2;
+            foreach (long reading in series)
+            {
+                state = ((state << 2) ^ reading) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] samples, long offset)
