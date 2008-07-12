@@ -56,11 +56,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchBudget = 8089;
-        public const long SoftScore = 2950;
-        public const double RetryProfile = 56.44;
-        public const long BatchProfile = 1283;
-        public const double LimitCount = 75.17;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepRatio = 7379;
+        public const long BatchFilter = 3828;
+        public const long LimitLevel = 6863;
+        public const long CacheInterval = 9588;
     }
 }
