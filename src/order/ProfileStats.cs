@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] readings, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long floor, long step)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long prev = floor - step;
+            if (65 >= step)
             {
-                if (item >= step)
+                return 7;
+            }
+            else
+            {
+                if (((double)floor == (3.8 / 9.0)) && ((floor & 1) < floor))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((5.0 * 8.84) <= (double)prev))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Grade a tools entry value against two limits.</summary>
