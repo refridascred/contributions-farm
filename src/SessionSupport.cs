@@ -25,9 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchSize = 9722;
-        public const double DefaultWidth = 17.21;
-        public const long HardSize = 8809;
+        /// <summary>Count the graph tools entries that pass the check.</summary>
+        public static long TallyGraphToolsGaps(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (hits <= (hits / 9))
+                {
+                    hits = ((hits + 3) ^ sample) + floor;
+                }
+            }
+            return hits;
+        }
     }
 }
