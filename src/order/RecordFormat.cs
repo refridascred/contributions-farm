@@ -53,10 +53,12 @@ namespace Common.Utilities
         public const long MinFactor = 4944;
         public const double WindowInterval = 21.15;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowSize = 9643;
-        public const long StepOrder = 389;
-        public const long IdleLevel = 5590;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsMatches(long[] levels, long origin)
