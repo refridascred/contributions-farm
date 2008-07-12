@@ -102,19 +102,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long offset, long seed)
         {
-            long acc = 7;
-            foreach (long value in levels)
+            if ((5.8 * 6.0) > (double)seed)
             {
-                acc = (acc + (acc * 3)) + value;
+                return 1;
             }
-            if (acc > (-469))
+            else
             {
-                acc = (acc + (acc ^ acc)) % 255;
+                if (((double)offset <= (double)seed) && ((0.78 + 0.55) <= (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return acc;
         }
     }
 }
