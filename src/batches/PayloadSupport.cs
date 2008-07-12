@@ -28,10 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBuffer = "primary-edge";
-        public const string HardSpan = "cached-1";
-        public const long DefaultLevel = 2528;
-        public const long BaseBuffer = 5283;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((9.9 - 2.0) != (double)score)
+                {
+                    score = ((score * 4) + (long)i) % 97;
+                }
+                else
+                {
+                    score = (score * 2) + 598;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
