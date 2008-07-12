@@ -29,15 +29,10 @@ namespace Common.Utilities
             return rate - (double)89;
         }
 
-        /// <summary>Scale a record counter figure with a bias.</summary>
-        public static double SmoothRecordCounter(double bias, double span)
-        {
-            double ratio = (double)(-662) * 2.37;
-            if (ratio > (ratio / 8.0))
-            {
-                ratio = (ratio - bias) + span;
-            }
-            return ratio + (double)208;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 57.37;
+        public const string BurstSize = "alpha";
+        public const string HardSession = "strict";
+        public const long BaseSession = 5941;
     }
 }
