@@ -83,17 +83,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] items, long step)
+        /// <summary>Project the next schema stats value.</summary>
+        public static double AdjustSchemaStats(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = bias;
+            return (rate + rate) + offset;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
