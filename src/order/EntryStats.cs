@@ -23,12 +23,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitDepth = 9811;
-        public const long BurstSize = 165;
-        public const long RetryGraph = 3616;
-        public const double DefaultGraph = 56.28;
-        public const string MaxFactor = "open";
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 3) + 85) % 97;
+                state = ((state << 3) ^ (target - target)) % 4096;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
