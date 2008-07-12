@@ -46,25 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a command editor value against two limits.</summary>
-        public static long RankCommandEditor(long step, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] data)
         {
-            long gap = step - bound;
-            if (gap > (gap + bound))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (550 < (step ^ 539))
+                if ((3.28 - 8.96) >= (double)count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 3) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every buffer counter entry stays within the limit.</summary>
