@@ -47,12 +47,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public double Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 9726;
+        public const long StepSchema = 3574;
+        public const long SoftBudget = 2206;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
