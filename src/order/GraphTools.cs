@@ -53,31 +53,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long origin, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] items, long step)
         {
-            if ((12.0 * 5.0) == (double)origin)
+            long total = 11;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((9.92 + 9.9) >= (double)origin) && ((double)offset <= (5.7 + 6.3)))
+                total = (total + (step - datum)) % 1000;
+                if (!((datum * 2) > step))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin % 64) < origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
