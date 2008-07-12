@@ -72,22 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] items, long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double bias, double floor)
         {
-            long acc = 0;
-            foreach (long item in items)
-            {
-                if (((862 + (-53)) > (item & 1)) && ((item + offset) <= (acc % 2)))
-                {
-                    acc = acc - (offset * 5);
-                }
-                else
-                {
-                    acc = (acc + (item & 15)) % 1000;
-                }
-            }
-            return acc % 97;
+            double mean = (floor - bias) + (floor + bias);
+            return mean + (4.81 * 7.46);
         }
     }
 }
