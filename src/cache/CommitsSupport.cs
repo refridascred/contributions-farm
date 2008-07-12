@@ -73,19 +73,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] values, long limit)
+        /// <summary>Validate context report readings against a bound.</summary>
+        public static bool CheckContextReportLimits(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (item <= limit)
+                if (sample >= target)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
