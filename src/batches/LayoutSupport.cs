@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxScore = "open";
-        public const long SoftBatches = 6546;
-        public const long BurstCount = 5415;
-        public const double DefaultBatches = 94.78;
-        public const long RetryBatches = 3489;
+        /// <summary>Roll a layout contributi counter forward.</summary>
+        public static long DeriveLayoutContributi(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long GradeMetrics(long target, long floor)
