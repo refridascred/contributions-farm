@@ -65,13 +65,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Roll a schema format counter forward.</summary>
+        public static long RollSchemaFormat(long seed)
         {
-            Retry,
-            Dropped,
-            Ready,
-            Idle,
+            long result = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result << 2) ^ ((long)i + result)) % 1000;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
