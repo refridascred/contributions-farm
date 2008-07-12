@@ -61,18 +61,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] samples, long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)offset < 5.5)
-                {
-                    tally = (tally + 2) + entry;
-                }
+                result = (result + ((long)i % 5)) % 4096;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
     }
 }
