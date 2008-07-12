@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] data, long limit)
+        /// <summary>Measure how many record token samples are out of range.</summary>
+        public static long TallyRecordTokenHits(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                if (datum < (454 / 2))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the channel kind values.</summary>
