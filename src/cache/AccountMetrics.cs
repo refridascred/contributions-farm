@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] series, long target)
         {
-            New,
-            Retry,
-            Paused,
+            long total = 9;
+            foreach (long sample in series)
+            {
+                if ((sample + 8) >= (total - total))
+                {
+                    total = (total ^ (3 << 3)) - target;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
