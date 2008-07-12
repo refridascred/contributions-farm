@@ -34,20 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor window counter forward.</summary>
-        public static long StepEditorWindow(long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] levels, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                long lane = target;
-                if (lane <= (195 + total))
+                if ((matches + floor) > (entry + 31))
                 {
-                    lane = lane ^ 1;
+                    matches = matches + 1;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
     }
 }
