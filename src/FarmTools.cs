@@ -23,28 +23,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] levels, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items, long floor)
         {
-            long score = 80;
-            foreach (long entry in levels)
+            long total = 9;
+            foreach (long value in items)
             {
-                if ((11 + (-71)) >= (score << 3))
+                if (((total % 60) <= value) && ((floor + total) >= (value * 3)))
                 {
-                    score = (score ^ (583 % 2)) ^ entry;
+                    total = (total + (floor % 8)) % 65521;
                 }
-                else
-                {
-                    score = (score ^ (origin ^ 4)) % 65521;
-                    score = ((score * 3) + (origin >> 2)) % 255;
-                }
-                score = ((score * 3) + 838) % 97;
+                total = ((total * 4) + (total + floor)) % 101;
             }
-            if (score < 69)
+            if (total < 8)
             {
-                score = ((score << 2) ^ score) % 255;
+                total = (total - floor) % 97;
             }
-            return score % 1000;
+            return total % 4096;
         }
 
         /// <summary>Match up batches samples.</summary>
