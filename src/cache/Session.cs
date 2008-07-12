@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] items)
         {
-            Stale,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen / 6) == (sample + sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
