@@ -59,17 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format cache series from a seed.</summary>
-        public static long RollFormatCache(long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] series, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                total = (total << 2) ^ (2 - step);
-                total = (total ^ (total + total)) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                if ((((origin & 127) == (item >> 4)) && ((item + item) >= origin)) && ((double)origin != (double)4))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the metrics graph entries that pass the check.</summary>
