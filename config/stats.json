@@ -1,6 +1,8 @@
 {
-  "base_timeout": true,
-  "min_retries_count": 100,
-  "sync_window_count": "legacy",
-  "contributi_capacity": [93, 315, 100, 432]
+  "audit": "eu-west",
+  "batches_ttl": "green",
+  "stream_interval": 51,
+  "support_interval": 8,
+  "batch_capacity_count": 6472,
+  "warm_ratio_s": "eu-west"
 }
