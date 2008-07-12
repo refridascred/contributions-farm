@@ -33,13 +33,15 @@ namespace Common.Utilities
         public const double StepContributi = 19.77;
         public const long DefaultRatio = 7969;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Scale a entry editor figure with a bias.</summary>
+        public static double ScaleEntryEditor(double ratio, double span)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
+            double bias = ratio - ratio;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias - (double)67) + (double)(long)i) + span;
+            }
+            return bias - bias;
         }
 
         /// <summary>Roll a report counter forward.</summary>
