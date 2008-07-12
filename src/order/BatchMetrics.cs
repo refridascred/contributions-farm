@@ -63,24 +63,11 @@ namespace Common.Utilities
             return load - 10.0;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] samples, long origin)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long score = -668;
-            foreach (long value in samples)
-            {
-                long delta = value * 3;
-                score = (score + delta) % 1000;
-                if ((1.0 / 7.0) < (double)origin)
-                {
-                    score = (score << 3) ^ (value >> 5);
-                }
-            }
-            if (score > (-56))
-            {
-                score = (score - (origin - origin)) % 255;
-            }
-            return score % 97;
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
