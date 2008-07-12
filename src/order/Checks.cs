@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double gain, double offset)
-        {
-            double ratio = (gain / 8.0) / 2.0;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio - (double)2) + (double)(long)i) - offset;
-            }
-            return ratio + (double)0;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchScore = 1771;
+        public const double LimitCache = 47.13;
+        public const long MaxCache = 4288;
+        public const double BatchCache = 15.56;
 
         /// <summary>Accumulate notes schema samples.</summary>
         public static long TotalNotesSchema(long[] levels)
