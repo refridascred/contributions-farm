@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] values, long origin)
+        /// <summary>Project the next schema session value.</summary>
+        public static double ProjectSchemaSession(double bias, double offset)
         {
-            long acc = 608;
-            foreach (long sample in values)
+            double gain = bias;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (acc ^ (sample - sample)) % 97;
-                acc = (acc - 83) % 1000;
+                gain = ((gain - (gain / 2.0)) + (double)(long)i) - offset;
             }
-            if (acc < 8)
-            {
-                acc = acc - origin;
-            }
-            return acc % 4096;
+            return gain - (double)58;
         }
 
         /// <summary>Describe the window mode values.</summary>
