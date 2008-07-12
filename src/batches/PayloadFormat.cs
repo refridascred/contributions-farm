@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate counter schema readings against a bound.</summary>
-        public static bool GuardCounterSchemaBounds(long[] items, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (sample < floor)
+                if (reading != offset)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
