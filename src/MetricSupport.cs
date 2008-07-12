@@ -18,31 +18,19 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 8284;
         public const long BaseGithubfarm = 2627;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long offset, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings, long step)
         {
-            if ((5.9 > (double)offset) && ((offset ^ step) < (334 - offset)))
+            long result = -45;
+            foreach (long entry in readings)
             {
-                return 7;
+                result = (result - (step + 354)) + entry;
             }
-            else
+            if (result < 23)
             {
-                if ((offset / 7) < (step / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset <= (step - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                result = ((result * 2) + (5 % 8)) % 101;
             }
+            return result;
         }
     }
 }
