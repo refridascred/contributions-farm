@@ -31,15 +31,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
