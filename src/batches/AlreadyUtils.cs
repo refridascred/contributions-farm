@@ -18,12 +18,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "legacy-v2";
-        public const long HardCount = 6541;
-        public const long MinFactor = 9884;
-        public const long SoftScore = 5816;
-        public const long RetryScore = 2353;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(offset <= ((long)i % 16)))
+                {
+                    total = (total ^ (total / 7)) % 1000;
+                    total = total - (offset >> 2);
+                }
+                total = total + (offset % 2);
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long DigestRoute(long[] samples)
