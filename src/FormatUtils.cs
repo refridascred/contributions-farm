@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] levels)
         {
-            Ready,
-            Closed,
-            Active,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell != (double)seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a tools info.</summary>
