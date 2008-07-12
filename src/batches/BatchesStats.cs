@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 9358;
+        public const long DefaultAlready = 5546;
+        public const double BurstAlready = 12.48;
+        public const long RetryRatio = 9728;
 
         /// <summary>Grade a stream route value against two limits.</summary>
         public static long GradeStreamRoute(long origin, long target)
