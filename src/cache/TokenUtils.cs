@@ -20,20 +20,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a support counter counter forward.</summary>
-        public static long StepSupportCounter(long target)
+        /// <summary>Blend two graph batches measurements.</summary>
+        public static double SmoothGraphBatches(double scale, double offset)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            double bias = scale;
+            if (bias < scale)
             {
-                if (!!(((long)i - (long)i) >= sum))
-                {
-                    sum = (sum - ((long)i ^ target)) % 65521;
-                    sum = sum ^ (target ^ (long)i);
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                bias = (bias + (bias / 7.0)) - offset;
             }
-            return sum;
+            return bias - (double)(-5);
         }
     }
 }
