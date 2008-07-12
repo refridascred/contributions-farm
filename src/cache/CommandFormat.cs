@@ -32,12 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
+            Queued,
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
