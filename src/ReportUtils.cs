@@ -53,19 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((((origin & 127) == (item >> 4)) && ((item + item) >= origin)) && ((double)origin != (double)4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 1840;
+        public const long CacheSession = 9089;
+        public const long BurstSession = 6272;
+        public const long RetryBudget = 4088;
+        public const double StepSpan = 2.23;
 
         /// <summary>Count the metrics graph entries that pass the check.</summary>
         public static long CountMetricsGraphMatches(long[] data, long origin)
