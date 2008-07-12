@@ -25,21 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Rank account stream input into a small class.</summary>
+        public static long RankAccountStream(long bound, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)bound >= 0.29)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((4.37 + 6.1) >= (double)bound)
                 {
-                    if ((readings[i] - readings[j]) < 11)
+                    return 1;
+                }
+                else
+                {
+                    if (((offset + offset) < bound) || ((99 % 60) < (bound - (-790))))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the filter state values.</summary>
