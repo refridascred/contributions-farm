@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const long MinInterval = 8450;
         public const long IdleSize = 8719;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long origin, long target)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            if ((target << 1) < target)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2.8 > (double)target) || ((target / 7) >= origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
