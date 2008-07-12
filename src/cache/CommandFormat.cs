@@ -15,19 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] data, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a notes header.</summary>
