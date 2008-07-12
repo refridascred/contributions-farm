@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const long MaxWidth = 1130;
         public const long CacheMetric = 6349;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 1008;
-        public const double StepContributi = 19.77;
-        public const long DefaultRatio = 7969;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandGaps(long[] series, long offset)
