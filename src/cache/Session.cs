@@ -36,11 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double bias, double span)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] levels, long seed)
         {
-            double gain = span;
-            return (gain - span) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
