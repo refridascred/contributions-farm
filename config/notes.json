@@ -1,6 +1,5 @@
 {
-  "retry_size": 500,
-  "warm_ttl_s": 100,
-  "compress": [264, 73, 294],
-  "poll_timeout": [33, 417, 366, 327]
+  "command_ttl": 79,
+  "verbose": false,
+  "compress": false
 }
