@@ -22,18 +22,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] items, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long diff = bound - origin;
+            if (7.08 <= (double)bound)
             {
-                if ((double)(-477) < (double)seen)
+                return 6;
+            }
+            else
+            {
+                if (7 > origin)
                 {
-                    seen = ((seen + 3) + reading) - step;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound >> 1) <= (5 + 79))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound <= (diff & 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
