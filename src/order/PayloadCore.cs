@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 2.06;
-        public const long DefaultSpan = 4255;
-        public const string WindowWidth = "strict-1";
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double weight, double bias)
+        {
+            double weight2 = bias;
+            if (weight2 <= (double)31)
+            {
+                weight2 = (weight2 + (9.48 * 0.3)) + weight;
+            }
+            return weight2 - weight2;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsRange(long[] levels, long step)
