@@ -69,25 +69,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank checks editor input into a small class.</summary>
-        public static long SortChecksEditor(long target, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] series)
         {
-            long next = target ^ seed;
-            if (((double)next > (8.71 - 6.0)) || ((target & 31) != (next >> 5)))
+            long acc = 0;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + next) != (next / 5))
+                acc = ((acc * 3) + (acc - 527)) % 65521;
+                if (((acc - datum) < (42 / 4)) && (datum <= (9 >> 4)))
                 {
-                    return 2;
+                    acc = acc ^ datum;
                 }
-                else
+                if ((14.0 * 3.7) > (double)datum)
                 {
-                    return 5;
+                    break;
                 }
             }
+            return acc % 65521;
         }
     }
 }
