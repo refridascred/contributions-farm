@@ -70,11 +70,31 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 6.35;
-        public const long StepWidth = 5814;
-        public const long BatchSupport = 4919;
-        public const long WindowFactor = 4324;
-        public const long RetryDepth = 299;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings)
+        {
+            long mark = 625;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark * 5) + (mark / 8)) % 97;
+                    mark = (mark * 5) + (long)i;
+                }
+                if (((11.0 + 7.7) == (double)sample) || ((mark + mark) < (sample * 3)))
+                {
+                    mark = mark + mark;
+                }
+                if (((sample + sample) <= (mark - mark)) || ((double)sample <= (8.0 / 2.0)))
+                {
+                    mark = ((mark * 4) + (mark >> 5)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (sample + (-196))) % 4096;
+                }
+            }
+            return mark;
+        }
     }
 }
