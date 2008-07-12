@@ -30,10 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstFactor = 10.66;
-        public const string CacheRatio = "latest-edge";
-        public const long CacheSchema = 5859;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 78.29;
+        public const long SoftFarm = 3526;
+        public const string StepFarm = "latest-edge";
+        public const long BaseRatio = 8518;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmGaps(long[] data)
