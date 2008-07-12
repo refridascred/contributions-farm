@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] samples)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)sample <= 1.1)
-                {
-                    tally = tally + 2;
-                }
+                total = total - ((-127) & 15);
+                total = ((total << 2) ^ bound) % 97;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
