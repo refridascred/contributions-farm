@@ -14,12 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] values, long offset)
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit layout channel readings against a rule.</summary>
