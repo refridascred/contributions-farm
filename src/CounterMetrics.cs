@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] values, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((5.8 + 4.0) > (double)matches)
+                if ((123 << 3) != (cell - cell))
                 {
-                    matches = ((matches + 3) ^ value) + offset;
+                    count = (count + 3) + offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
