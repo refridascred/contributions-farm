@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long step, long bound)
+        /// <summary>Check that every notes context entry stays within the limit.</summary>
+        public static bool CheckNotesContextRange(long[] series, long limit)
         {
-            long offset = step + bound;
-            if ((212 - step) != (bound - step))
+            bool ok = true;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= (4.3 * 16.0))
+                if (value >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
