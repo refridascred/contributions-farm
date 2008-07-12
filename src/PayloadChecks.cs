@@ -29,21 +29,26 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 97;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state * 4) + (long)i;
+                }
+                if ((target >= item) || ((target / 4) >= target))
+                {
+                    state = state - (92 - item);
+                }
+                else
+                {
+                    state = (state - state) % 1000;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count the metrics batches entries that pass the check.</summary>
