@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long MaxWidth = 1130;
         public const long CacheMetric = 6349;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items, long limit)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            long mix = 60;
+            foreach (long item in items)
+            {
+                mix = (((mix + (mix & 127)) % 4096) - item) - limit;
+            }
+            return mix;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
