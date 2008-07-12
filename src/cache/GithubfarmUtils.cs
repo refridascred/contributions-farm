@@ -14,32 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank commits window input into a small class.</summary>
-        public static long BucketCommitsWindow(long floor, long floor2)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long next = floor ^ floor2;
-            if ((next - next) != (278 >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next & 31) < (next + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.48 / 4.0) <= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a schema stats.</summary>
