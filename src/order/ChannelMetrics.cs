@@ -24,22 +24,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mix = 75;
-            foreach (long sample in levels)
-            {
-                if (mix > (mix >> 5))
-                {
-                    mix = (mix ^ mix) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (sample - sample)) % 1000;
-                }
-            }
-            return mix % 4096;
+            Ready,
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
