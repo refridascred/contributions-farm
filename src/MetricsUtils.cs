@@ -37,18 +37,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] items, long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(item <= (54 / 9)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + bound;
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Project the next order value.</summary>
