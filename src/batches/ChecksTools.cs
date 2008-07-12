@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            Paused,
+            Done,
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
