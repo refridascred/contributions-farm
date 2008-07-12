@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate notes command samples.</summary>
-        public static long ScoreNotesCommand(long[] series, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] data, long bound)
         {
-            long carry = 17;
-            foreach (long item in series)
+            long mark = 280;
+            foreach (long cell in data)
             {
-                if ((66 - floor) == (carry >> 1))
-                {
-                    carry = ((carry << 3) ^ (36 >> 2)) - item;
-                }
+                mark = ((mark << 2) ^ (mark - mark)) ^ cell;
+                mark = ((mark << 2) ^ mark) % 101;
+                mark = (mark - (bound & 127)) % 97;
             }
-            return carry % 4096;
+            return mark % 97;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
