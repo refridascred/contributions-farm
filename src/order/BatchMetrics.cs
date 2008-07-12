@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support buffer readings.</summary>
-        public static long PairSupportBufferCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 2072;
+        public const long IdleCache = 9855;
+        public const double MaxCache = 77.31;
+        public const string DefaultBudget = "legacy-v2";
 
         /// <summary>Match up cache samples.</summary>
         public static long OverlapCacheCount(long[] data)
