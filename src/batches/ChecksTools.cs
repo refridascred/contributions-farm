@@ -44,15 +44,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double gain, double span)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long step)
         {
-            double mean = (5.31 / 2.0) - (double)32;
-            if (mean > (gain * 18.0))
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean + mean) + span;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return mean - (double)29;
+            return anchor;
         }
     }
 }
