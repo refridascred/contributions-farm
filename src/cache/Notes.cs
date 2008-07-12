@@ -56,14 +56,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate batch entry readings against a bound.</summary>
+        public static bool GuardBatchEntryBounds(long[] series, long step)
         {
-            Queued,
-            Dropped,
-            Failed,
-            Active,
-            Ready,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
