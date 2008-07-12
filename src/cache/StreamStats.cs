@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long floor, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long slot = floor ^ seed;
-            if ((slot ^ 4) <= (slot << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (floor < 8)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
