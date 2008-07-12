@@ -37,19 +37,13 @@ namespace Common.Utilities
             return rate - (weight * 2.1);
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double gain, double span)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double ratio = span;
-            if (ratio >= span)
-            {
-                ratio = ratio - (double)(-5);
-            }
-            else
-            {
-                ratio = ratio + (double)56;
-            }
-            return ratio - gain;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
