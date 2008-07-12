@@ -30,19 +30,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!(5.55 > (double)bound))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxSpan = 40.09;
+        public const long BurstProfile = 3412;
+        public const long BurstDepth = 6992;
+        public const string SoftProfile = "staging-edge";
+        public const long IdleSpan = 9858;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
