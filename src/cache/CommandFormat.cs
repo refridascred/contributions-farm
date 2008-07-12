@@ -53,19 +53,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of order counter entries.</summary>
-        public static long TallyOrderCounter(long[] data)
+        /// <summary>Measure how many cluster format samples are out of range.</summary>
+        public static long AuditClusterFormatHits(long[] series, long seed)
         {
-            long score = 694;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                score = (((score << 3) ^ 3) % 1000) - item;
+                if ((double)hits >= (3.3 / 3.0))
+                {
+                    hits = ((hits + 1) - reading) + seed;
+                }
             }
-            if (score > 1)
-            {
-                score = (score << 3) ^ 9;
-            }
-            return score % 97;
+            return hits;
         }
     }
 }
