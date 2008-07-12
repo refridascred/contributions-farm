@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)state >= (16.0 - 2.0)) || ((floor * 4) <= (long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state + floor;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    long lane = (state * 3) << 2;
-                    state = state ^ lane;
-                }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Adjust a already batch reading.</summary>
