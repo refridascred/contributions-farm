@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 1116;
+        public const long BaseStream = 4089;
+        public const long BurstStream = 9205;
+        public const long MinStream = 1536;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
