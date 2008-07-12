@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            if ((origin << 1) == (origin + origin))
             {
-                if ((91 + bound) <= (bound + item))
+                return 5;
+            }
+            else
+            {
+                if ((offset % 100) >= (9 % 5))
                 {
-                    matches = matches + 3;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a already summary.</summary>
