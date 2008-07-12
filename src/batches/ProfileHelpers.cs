@@ -55,21 +55,18 @@ namespace Common.Utilities
         public const long BatchWidth = 7040;
         public const long WindowSession = 7636;
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -836;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)cell <= (9.0 / 2.0)) && ((46 + limit) <= (limit / 7)))
                 {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 2) ^ (-86);
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
