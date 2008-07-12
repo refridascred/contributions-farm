@@ -73,19 +73,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] data, long bound)
+        /// <summary>Validate payload notes readings against a bound.</summary>
+        public static bool ValidatePayloadNotesRange(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (cell < bound)
+                if (entry >= floor)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
