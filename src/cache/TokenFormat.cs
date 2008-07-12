@@ -14,19 +14,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next filter graph value from a seed.</summary>
-        public static long StepFilterGraph(long limit)
+        /// <summary>Rank entry cache input into a small class.</summary>
+        public static long RankEntryCache(long origin, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
+            long span = origin - target;
+            if ((double)span >= (5.0 - 3.0))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = ((total ^ 36) % 1000) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 1000;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((target - 5) <= 32)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target * 3) > origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)span >= (double)target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
