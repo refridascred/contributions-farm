@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] levels)
         {
-            Pending,
-            Closed,
-            Queued,
-            Draft,
-            Paused,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((3 + hits) < cell)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
