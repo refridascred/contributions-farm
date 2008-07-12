@@ -24,14 +24,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheTimeout = "alpha-v2";
+        public const string LimitScore = "stable";
+        public const string BurstTimeout = "standard-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryTimeout = 3327;
