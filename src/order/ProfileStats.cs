@@ -28,17 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] data, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (data[i] >= floor)
+                if ((double)target != (double)item)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the buffer level values.</summary>
