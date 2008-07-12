@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
             New,
-            Queued,
-            Stale,
-            Locked,
+            Retry,
+            Pending,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
