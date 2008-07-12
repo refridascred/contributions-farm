@@ -45,31 +45,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] values)
-        {
-            long result = 0;
-            foreach (long datum in values)
-            {
-                if (((result >> 5) == (47 << 2)) && ((8 - result) >= result))
-                {
-                    result = (result * 4) + (datum ^ result);
-                }
-                if ((result + datum) <= result)
-                {
-                    result = ((result << 3) ^ (3 + result)) % 101;
-                }
-                else
-                {
-                    result = result - (datum + result);
-                }
-            }
-            if (result < 50)
-            {
-                result = result ^ result;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftRatio = 869;
+        public const long CacheFarm = 5481;
+        public const double RetrySize = 71.2;
+        public const long LimitFarm = 2058;
+        public const double MinFarm = 52.15;
 
         /// <summary>Measure how many schema tools samples are out of range.</summary>
         public static long MeasureSchemaToolsGaps(long[] samples)
