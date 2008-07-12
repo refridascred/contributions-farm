@@ -26,16 +26,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
