@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            Draft,
+            Active,
+            Paused,
+            Locked,
         }
 
         /// <summary>Fold a list of session readings.</summary>
