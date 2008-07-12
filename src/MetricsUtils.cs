@@ -23,21 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long limit, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            if ((limit ^ floor) > limit)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc ^ (long)i) ^ (long)i2;
-                }
-                acc = (acc << 2) ^ (long)i;
-                acc = ((acc * 5) + acc) % 65521;
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (((floor + floor) > floor) || ((limit + limit) < floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor <= (floor + 2)) && ((5.06 * 20.0) != (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a profile reading.</summary>
