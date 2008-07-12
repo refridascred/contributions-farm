@@ -35,14 +35,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Draft,
+            Done,
             Queued,
-            Active,
-            Stale,
-            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a entry entry.</summary>
