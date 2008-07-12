@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] levels, long target)
+        /// <summary>Accumulate tools profile samples.</summary>
+        public static long TallyToolsProfile(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long result = 0;
+            foreach (long value in values)
             {
-                if (datum >= target)
+                if (((floor >> 2) >= (floor - value)) && ((floor + value) >= value))
                 {
-                    valid = false;
-                    break;
+                    result = (result ^ (9 & 31)) % 97;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Match up cluster samples.</summary>
