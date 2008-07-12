@@ -16,11 +16,17 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Adjust a schema batch reading.</summary>
-        public static double BlendSchemaBatch(double scale, double bias)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long limit)
         {
-            double rate = (1.0 + scale) / 5.0;
-            return (rate + (7.0 - scale)) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
