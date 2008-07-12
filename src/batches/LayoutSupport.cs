@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long target, long origin)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            if (!(771 >= (target + target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > 7.7)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin + 595) == (49 ^ target)) || ((origin / 5) < (origin / 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Measure how many cluster format samples are out of range.</summary>
