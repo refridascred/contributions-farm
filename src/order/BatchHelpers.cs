@@ -19,21 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Closed,
+            Done,
+            New,
+            Synced,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
