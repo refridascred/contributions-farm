@@ -1,4 +1,21 @@
 # support settings
-batch_interval: blue
-default_depth_ms: primary
-compress: false
+retry_interval:
+  entry_limit: 16.3
+  base_interval_count: 69
+  retry_limit_pct: strict
+  cache_threshold_count: 500
+  audit: blue
+  max_window_s:
+    cluster_ratio: blue
+    graph_threshold: 84.18
+    readonly: 96.76
+hard_delay_pct: local
+format_depth: cached
+support_depth:
+  default_depth: legacy
+  session_ttl: eu-west
+  poll_retries:
+    compress: 21.42
+    sync_threshold: legacy
+    default_timeout_pct: 62.21
+    soft_depth_ms: 1352
