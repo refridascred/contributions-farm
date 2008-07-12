@@ -22,12 +22,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] levels, long seed)
         {
-            Pending,
-            Locked,
-            New,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count counter editor pairs that satisfy a relation.</summary>
