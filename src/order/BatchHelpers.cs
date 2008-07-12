@@ -40,11 +40,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 79.59;
-        public const double MinFilter = 7.51;
-        public const long BaseFilter = 3568;
-        public const double RetryWidth = 83.1;
-        public const string IdleWidth = "fallback-1";
+        /// <summary>Look up the position of a contributi metric sample.</summary>
+        public static long LocateContributiMetricIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
