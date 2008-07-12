@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] samples, long offset)
+        /// <summary>Grade a counter batch value against two limits.</summary>
+        public static long ClassifyCounterBatch(long offset, long offset2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset + offset) != (offset & 3))
             {
-                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if (!((offset << 1) != (offset + offset2)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset + offset2) >= (offset - offset)) && ((offset2 % 5) >= (5 << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset2 - offset) > (offset2 << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a cluster payload sample.</summary>
