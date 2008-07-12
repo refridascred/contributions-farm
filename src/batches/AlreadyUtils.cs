@@ -31,23 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long state = 1;
-            foreach (long item in samples)
-            {
-                state = (state - item) % 65521;
-                if ((state * 2) < (state & 63))
-                {
-                    state = state + item;
-                }
-                if (((state + 0) != (state & 1)) && (state >= 68))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            Pending,
+            Dropped,
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Hold a contributi header.</summary>
