@@ -51,18 +51,24 @@ namespace Common.Utilities
         public const long MinDepth = 6852;
         public const string DefaultCount = "latest";
 
-        /// <summary>Measure how many schema tools samples are out of range.</summary>
-        public static long MeasureSchemaToolsGaps(long[] samples)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if (!((floor * 4) > (floor % 7)))
             {
-                if ((cell + cell) >= cell)
+                return 1;
+            }
+            else
+            {
+                if (((15.0 - 0.8) >= (double)floor2) && ((double)floor2 > (16.0 / 3.0)))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
