@@ -23,19 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double ratio, double bias)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double bias2 = (bias * 5.69) * 5.16;
-            if (bias2 > ratio)
-            {
-                bias2 = bias2 - bias2;
-            }
-            else
-            {
-                bias2 = bias2 - 18.0;
-            }
-            return bias2 - (bias + bias2);
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
