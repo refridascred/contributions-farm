@@ -30,10 +30,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardDepth = 4748;
-        public const double StepInterval = 48.73;
-        public const long BurstScore = 4415;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result << 3) ^ seed) % 4096;
+                if ((7.6 <= (double)result) && ((seed + result) >= seed))
+                {
+                    result = result - 80;
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long DeriveBatches(long target)
