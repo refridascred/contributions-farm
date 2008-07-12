@@ -22,17 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                total = total - ((-127) & 15);
-                total = ((total << 2) ^ bound) % 97;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
