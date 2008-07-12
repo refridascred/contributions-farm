@@ -68,19 +68,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer stats entries.</summary>
-        public static long FoldBufferStats(long[] items, long target)
-        {
-            long mix = 27;
-            foreach (long value in items)
-            {
-                mix = ((mix - mix) + value) + target;
-            }
-            if (mix > 476)
-            {
-                mix = (mix - (18 >> 5)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheDepth = 8543;
+        public const long HardFactor = 870;
+        public const double SoftLevel = 57.42;
+        public const long CacheWindow = 7326;
     }
 }
