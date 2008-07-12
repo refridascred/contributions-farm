@@ -47,21 +47,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 519;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = (mark ^ (mark / 3)) % 255;
+                if ((entry + entry) != (4 / 2))
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - (mark << 1)) % 1000;
                 }
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
