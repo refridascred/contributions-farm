@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] items)
         {
-            New,
-            Retry,
-            Draft,
-            Pending,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches > (matches % 24)) || !((double)entry > (7.0 - 4.04)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
