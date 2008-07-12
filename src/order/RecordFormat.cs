@@ -53,11 +53,21 @@ namespace Common.Utilities
         public const long MinFactor = 4944;
         public const double WindowInterval = 21.15;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count farm cluster pairs that satisfy a relation.</summary>
+        public static long MatchFarmClusterCount(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
