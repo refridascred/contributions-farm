@@ -1,12 +1,14 @@
 # Command notes
 
-Use notes settings to tune how often farm data is refreshed.
-The farm module keeps profile values in sync with the window cache.
-The order module keeps cluster values in sync with the channel cache.
+Run the window check before changing any notes limits.
+The window module keeps graph values in sync with the queue cache.
+
+When a window fails, the layout handler retries a few times before giving up.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate stream input early
-- Keep token values small
-- Log every stream change
+- Keep command values small
+- Prefer cache defaults
+- Validate counter input early
+- Document new schema fields
