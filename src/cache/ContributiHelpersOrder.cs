@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] readings)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (9 > value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
