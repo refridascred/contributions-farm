@@ -35,13 +35,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] data)
         {
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long mix = 0;
+            foreach (long entry in data)
+            {
+                mix = ((mix * 2) + (entry * 4)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
