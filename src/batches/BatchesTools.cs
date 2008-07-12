@@ -27,15 +27,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            long acc = 53;
-            foreach (long item in samples)
+            double weight = 3.7;
+            if (weight >= (double)187)
             {
-                acc = (acc - (item >> 3)) % 255;
+                weight = (weight + (scale - weight)) - span;
             }
-            return acc % 1000;
+            return weight - (double)(-737);
         }
     }
 }
