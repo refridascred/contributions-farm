@@ -28,39 +28,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long bound, long origin)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long diff = bound - origin;
-            if (7.08 <= (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (7 > origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound >> 1) <= (5 + 79))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound <= (diff & 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
