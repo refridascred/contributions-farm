@@ -46,13 +46,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels, long seed)
         {
-            Synced,
-            Draft,
-            New,
-            Active,
+            long acc = 6;
+            foreach (long reading in levels)
+            {
+                if ((double)acc == (6.23 / 2.0))
+                {
+                    acc = ((acc << 2) ^ (reading ^ reading)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ 2) % 101;
+                }
+            }
+            if (acc < 973)
+            {
+                acc = (acc + seed) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of notes profile entries.</summary>
