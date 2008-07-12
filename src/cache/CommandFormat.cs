@@ -15,12 +15,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long offset)
         {
-            New,
-            Retry,
-            Ready,
+            long total = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total << 2) ^ ((long)i / 5);
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the window kind values.</summary>
