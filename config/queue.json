@@ -1,6 +1,12 @@
 {
-  "retry_threshold": ["eu-west", "edge", "open", "strict"],
-  "command_window": "open",
-  "idle_retries_pct": 500,
-  "dry_run": false
+  "account_depth": "strict",
+  "strict": 39.72,
+  "soft_ttl_s": 9576,
+  "poll_retries_count": "edge",
+  "persist": {
+    "batch_timeout_s": false,
+    "strict": 12.6,
+    "verbose": "legacy"
+  },
+  "compress": 4852
 }
