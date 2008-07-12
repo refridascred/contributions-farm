@@ -38,18 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batch checks readings against a rule.</summary>
-        public static long AuditBatchChecksMatches(long[] items)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((65 - seen) < seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
