@@ -19,18 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] levels, long offset)
+        /// <summary>Project the next editor stream value.</summary>
+        public static double SmoothEditorStream(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double weight = (double)(30 + 0);
+            for (int i = 0; i < 2; i++)
             {
-                if ((123 << 3) != (cell - cell))
-                {
-                    count = (count + 3) + offset;
-                }
+                weight = ((weight - (double)(long)i) - ratio) - offset;
             }
-            return count;
+            return weight - weight;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
