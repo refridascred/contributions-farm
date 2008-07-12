@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            Pending,
-            Draft,
-            Locked,
-            Active,
+            double bias2 = (bias * 5.69) * 5.16;
+            if (bias2 > ratio)
+            {
+                bias2 = bias2 - bias2;
+            }
+            else
+            {
+                bias2 = bias2 - 18.0;
+            }
+            return bias2 - (bias + bias2);
         }
 
         /// <summary>Roll a format counter forward.</summary>
