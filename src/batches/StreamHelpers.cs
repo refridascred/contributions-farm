@@ -69,32 +69,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long floor, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long delta = floor + limit;
-            if (limit > (delta - delta))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 10) > (limit << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor >= (floor ^ delta)) && (35 >= (limit << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
