@@ -32,13 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] series, long floor)
         {
-            Draft,
-            Active,
-            Dropped,
-            Done,
+            long result = 19;
+            foreach (long sample in series)
+            {
+                if ((result % 97) > (floor + 630))
+                {
+                    result = ((result << 3) ^ (result + floor)) + sample;
+                }
+            }
+            if (result > 70)
+            {
+                result = (result ^ (long)series.Length) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Blend two cache window measurements.</summary>
