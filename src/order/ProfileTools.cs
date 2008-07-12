@@ -42,12 +42,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 73.26;
-        public const double SoftPayload = 98.57;
-        public const long IdlePayload = 6053;
-        public const string MinPayload = "strict";
-        public const long WindowPayload = 9127;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)seen >= 6.0)
+                {
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] data)
