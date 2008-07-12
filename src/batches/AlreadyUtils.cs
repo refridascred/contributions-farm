@@ -55,10 +55,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 8898;
-        public const long LimitWidth = 708;
-        public const double RetrySpan = 73.38;
-        public const string LimitEditor = "open";
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double ratio, double span)
+        {
+            double scale = ratio;
+            if (scale > scale)
+            {
+                scale = (scale + ratio) + span;
+            }
+            else
+            {
+                scale = scale + 1.81;
+            }
+            return scale - 17.0;
+        }
     }
 }
