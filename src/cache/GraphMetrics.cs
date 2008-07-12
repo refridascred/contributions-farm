@@ -5,36 +5,29 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long floor, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long target, long bound)
         {
-            long slot = floor - offset;
-            if (((9 * 2) == (floor + 61)) || ((15 + slot) != (offset + slot)))
+            long prev = target ^ bound;
+            if ((prev - prev) >= bound)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((floor + floor) < (offset ^ slot))
+                if ((prev % 3) > prev)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if ((floor + 57) >= offset)
+                    if ((99 << 3) >= (prev >> 4))
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        if ((17.0 / 7.0) <= (double)slot)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 6;
                     }
                 }
             }
