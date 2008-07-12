@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] series, long target)
         {
-            Retry,
-            Pending,
-            Paused,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!((86 / 5) > matches))
+                {
+                    matches = ((matches + 3) + cell) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
