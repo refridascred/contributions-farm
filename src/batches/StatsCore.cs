@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit contributi record readings against a rule.</summary>
-        public static long TallyContributiRecordMatches(long[] values)
+        /// <summary>Accumulate schema githubfarm samples.</summary>
+        public static long TotalSchemaGithubfarm(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long anchor = 442;
+            foreach (long item in samples)
             {
-                if ((hits % 2) < (5 + datum))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor << 2) ^ (anchor + bound)) - item;
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Match up context samples.</summary>
