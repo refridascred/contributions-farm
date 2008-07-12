@@ -12,19 +12,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many record route samples are out of range.</summary>
-        public static long TallyRecordRouteMatches(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches >> 3) <= (cell - matches))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "alpha-1";
+        public const long HardFactor = 7158;
+        public const long SoftLevel = 7692;
 
         /// <summary>Count the support githubfarm entries that pass the check.</summary>
         public static long TallySupportGithubfarmMatches(long[] values, long limit)
