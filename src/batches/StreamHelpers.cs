@@ -27,14 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Synced,
-            Failed,
-            Draft,
-            Pending,
-            Dropped,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a entry header.</summary>
