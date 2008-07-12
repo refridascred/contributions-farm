@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=177
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
