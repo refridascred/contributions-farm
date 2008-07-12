@@ -46,19 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry / 7) == (entry - entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 8695;
+        public const string WindowNotes = "local-edge";
+        public const long IdleNotes = 723;
+        public const long MinFactor = 4944;
+        public const double WindowInterval = 21.15;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowSize = 9643;
