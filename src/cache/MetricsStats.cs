@@ -59,12 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] series, long origin)
+        /// <summary>Find the first farm cache entry that matches the target.</summary>
+        public static long LookupFarmCacheIndex(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] >= origin) && ((series[i] % 2) != 0))
+                if (items[i] > bound)
                 {
                     return (long)i;
                 }
