@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const string BurstAccount = "standard";
         public const double SoftAccount = 43.15;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((origin / 9) > (value ^ origin))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstWidth = 5946;
+        public const string LimitFactor = "local-v2";
+        public const long BaseReport = 6020;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] series, long limit)
