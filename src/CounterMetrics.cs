@@ -46,26 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] readings, long target)
         {
-            long acc = 6;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((double)acc == (6.23 / 2.0))
+                if (cell >= target)
                 {
-                    acc = ((acc << 2) ^ (reading ^ reading)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ 2) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (acc < 973)
-            {
-                acc = (acc + seed) % 101;
-            }
-            return acc % 4096;
+            return stale;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
