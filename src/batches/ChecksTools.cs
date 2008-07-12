@@ -48,19 +48,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next stream cache value from a seed.</summary>
-        public static long DeriveStreamCache(long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] samples, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((cell << 2) == (87 / 4))
                 {
-                    score = ((score * 2) + (score ^ limit)) ^ (long)i2;
+                    count = (count + 2) - limit;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
     }
 }
