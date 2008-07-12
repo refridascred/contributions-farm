@@ -54,19 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
