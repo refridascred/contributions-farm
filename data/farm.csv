@@ -1,9 +1,7 @@
-id,active,score
-1,98,18.32
-2,stable,standard
-3,894,26.65
-4,70.49,688
-5,staging,218
-6,standard,323
-7,89.91,fallback
-8,906,461
+id,label,ratio
+1,624,841
+2,legacy,latest
+3,32.37,519
+4,697,757
+5,466,70.01
+6,68,blue
