@@ -45,14 +45,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            New,
             Done,
+            Failed,
             Retry,
-            Dropped,
-            Idle,
         }
     }
 }
