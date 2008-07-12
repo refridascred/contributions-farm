@@ -28,21 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up already batches samples.</summary>
-        public static long CompareAlreadyBatchesCount(long[] readings)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = (state ^ state) % 1000;
+                double rate = (double)(offset + offset);
+                if (!(((double)offset >= rate) || (offset <= (offset % 8))))
                 {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    rate = rate + 5.0;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
