@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const string HardFilter = "latest-edge";
         public const long BatchWidth = 1835;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] series, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((15.0 - 11.0) < (double)sum)
+                if (item > step)
                 {
-                    sum = (sum ^ (sum << 3)) % 1000;
+                    found = false;
+                    break;
                 }
-                if (!((long)i == (bound + bound)))
-                {
-                    sum = (sum ^ 8) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
