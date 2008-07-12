@@ -54,15 +54,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the record account series from a seed.</summary>
-        public static long RollRecordAccount(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardWidth = 3238;
+        public const long BatchBuffer = 6417;
+        public const string MinBuffer = "alpha";
     }
 }
