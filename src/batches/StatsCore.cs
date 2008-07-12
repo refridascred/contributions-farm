@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate schema githubfarm samples.</summary>
-        public static long TotalSchemaGithubfarm(long[] samples, long bound)
-        {
-            long anchor = 442;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor << 2) ^ (anchor + bound)) - item;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftInterval = 49.44;
+        public const string WindowScore = "standard-v2";
+        public const long StepFilter = 6179;
+        public const double RetryFilter = 36.03;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LocateMetricIndex(long[] levels, long target)
