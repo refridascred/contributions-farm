@@ -42,27 +42,22 @@ namespace Common.Utilities
         public const string MinPayload = "strict";
         public const long WindowPayload = 9127;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] samples, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data)
         {
-            long score = 45;
-            foreach (long item in samples)
+            long score = 283;
+            foreach (long datum in data)
             {
-                score = score ^ (target - item);
-                if ((1.29 - 17.0) <= (double)target)
+                if (((datum % 60) > (datum >> 2)) && ((6.6 - 8.5) != (double)datum))
                 {
-                    score = (score ^ (target / 2)) % 101;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (target & 127)) % 1000;
+                    score = (score * 4) + (score % 60);
                 }
             }
-            if (score > 86)
+            if (score > 980)
             {
-                score = (score + (target ^ target)) % 97;
+                score = score + (12 % 60);
             }
-            return score % 65521;
+            return score;
         }
     }
 }
