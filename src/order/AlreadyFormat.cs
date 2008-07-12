@@ -33,22 +33,14 @@ namespace Common.Utilities
         public const long WindowFactor = 6300;
         public const long IdleRoute = 5009;
 
-        /// <summary>Accumulate contributi order samples.</summary>
-        public static long FoldContributiOrder(long[] data, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long sum = 50;
-            foreach (long cell in data)
-            {
-                if (!((758 * 3) <= target))
-                {
-                    sum = sum - (target + cell);
-                }
-            }
-            if (sum < 657)
-            {
-                sum = ((sum << 2) ^ (sum >> 2)) % 255;
-            }
-            return sum % 1000;
+            Retry,
+            New,
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Rank stream profile input into a small class.</summary>
