@@ -1,34 +1,19 @@
 # entry settings
-already_timeout:
-  batch_threshold: 250
-  flush_ratio_ms: 9652
-  readonly: 48
-  token_interval: fallback
-  dry_run:
-    batch_size_s: 9
-    window_capacity: 73
-    cache_size_s: 22
-    context_delay: true
-sync_capacity_s: 52.77
-readonly: 100
-persist:
-  contributi_timeout: 86.52
-  min_threshold: latest
-  default_ratio_ms:
-    persist: 24
-    batch_interval_s: 100
-    already_ttl: 90.52
-    default_depth_ms: legacy
-    batch_delay: legacy
-  default_threshold_pct:
-    poll_size_s: true
-    cache_size_ms: 97
-    max_size_ms: 50.74
-    warm_delay:
-      - 346
-      - 74
-    min_retries_s:
-      - open
-      - stable
-      - stable
-    readonly: false
+batches_ratio: 1024
+contributi_interval:
+  min_delay_pct:
+    sync_delay_pct: 500
+    strict: 1811
+    max_window: 24
+    base_ttl_count:
+      - 422
+      - 415
+    warm_timeout_pct: fallback
+  route_capacity: true
+  counter_threshold: green
+  hard_delay_count: 68.28
+channel_depth:
+  - green
+  - green
+  - open
+support_window: 36.4
