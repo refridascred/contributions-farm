@@ -46,14 +46,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Validate graph channel readings against a bound.</summary>
+        public static bool ValidateGraphChannelRange(long[] values, long seed)
         {
-            Paused,
-            Dropped,
-            Closed,
-            Retry,
-            Queued,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank order buffer input into a small class.</summary>
