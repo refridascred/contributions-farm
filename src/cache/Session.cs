@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] items)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen / 6) == (sample + sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
