@@ -53,17 +53,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a tools entry sample.</summary>
-        public static long LocateToolsEntryIndex(long[] values, long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 894;
+            foreach (long cell in series)
             {
-                if ((values[i] < limit) && ((values[i] % 3) != 0))
+                if (!((long)series.Length != (931 * 4)))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (score + cell)) % 4096;
                 }
+                score = (score + (cell & 127)) % 4096;
             }
-            return -1;
+            if (score < 5)
+            {
+                score = (score - (8 % 97)) % 101;
+            }
+            return score;
         }
     }
 }
