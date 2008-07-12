@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultInterval = 73.94;
-        public const long StepRatio = 5339;
-        public const string BurstEntry = "standard-v2";
-        public const double CacheDepth = 93.47;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (21 <= (step + step))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of batches schema readings.</summary>
         public static long PairBatchesSchemaCount(long[] levels)
