@@ -47,18 +47,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (value >= ((-21) + 8))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
