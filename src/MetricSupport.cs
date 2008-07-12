@@ -48,19 +48,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double gain, double offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] series)
         {
-            double gain2 = (double)(793 + 85);
-            if (gain2 < (gain / 6.0))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                gain2 = gain2 + offset;
+                if ((tally >> 2) <= reading)
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + (double)1) + (double)(long)i;
-            }
-            return gain2 - (double)44;
+            return tally;
         }
     }
 }
