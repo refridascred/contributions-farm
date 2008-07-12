@@ -60,9 +60,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepLevel = 1317;
-        public const string DefaultScore = "legacy";
-        public const long MinStream = 5069;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinLayout = 9.67;
+        public const long StepSize = 2665;
+        public const double MinScore = 56.04;
+        public const string HardLevel = "latest-1";
     }
 }
