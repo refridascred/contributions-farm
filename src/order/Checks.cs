@@ -77,22 +77,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long offset, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long target, long offset)
         {
-            if ((5.8 * 6.0) > (double)seed)
+            long span = target + offset;
+            if (!(63 <= (span + 680)))
             {
                 return 1;
             }
             else
             {
-                if (((double)offset <= (double)seed) && ((0.78 + 0.55) <= (double)offset))
+                if ((target - span) > (561 / 4))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if ((offset & 15) != (target - span))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
