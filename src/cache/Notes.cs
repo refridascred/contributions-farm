@@ -21,17 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] samples, long floor)
+        /// <summary>Check that every context window entry stays within the limit.</summary>
+        public static bool ValidateContextWindowLimits(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (samples[i] >= floor)
+                if (item > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
