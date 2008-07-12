@@ -32,22 +32,17 @@ namespace Common.Utilities
             return load + (double)44;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] values, long offset)
         {
-            long mix = 923;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((datum + mix) != (41 + mix)) && (mix <= datum))
+                if (values[i] < offset)
                 {
-                    mix = ((mix * 4) + (datum / 6)) % 4096;
-                }
-                else
-                {
-                    mix = mix - (mix ^ datum);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
