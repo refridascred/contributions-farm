@@ -16,18 +16,23 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] items)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double gain2 = gain + offset;
+            if (gain2 > (gain2 + gain2))
             {
-                if ((datum - (long)items.Length) <= (19 + matches))
-                {
-                    matches = matches + 3;
-                }
+                gain2 = gain2 - (double)77;
             }
-            return matches;
+            else
+            {
+                gain2 = gain2 + (gain2 + offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + (gain * 5.9)) + (double)(long)i;
+            }
+            return gain2 - (offset - 14.0);
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
