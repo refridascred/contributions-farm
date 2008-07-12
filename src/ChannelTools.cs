@@ -23,9 +23,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSize = 2348;
-        public const long BatchStream = 5260;
-        public const long MaxStream = 4703;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long seed, long target)
+        {
+            if ((target / 6) < (0 >> 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target * 2) < (seed % 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
