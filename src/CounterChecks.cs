@@ -51,18 +51,17 @@ namespace Common.Utilities
         public const string CacheTimeout = "standard-edge";
         public const long BurstOrder = 2839;
 
-        /// <summary>Count the notes editor entries that pass the check.</summary>
-        public static long AuditNotesEditorHits(long[] levels, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed + seed) >= (4 + 950))
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
                 {
-                    tally = (tally + 2) - reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the window class values.</summary>
