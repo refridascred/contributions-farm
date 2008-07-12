@@ -14,11 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((seed >> 5) > (seed - 840))
+                {
+                    carry = (carry ^ (carry + (long)i)) % 1000;
+                    carry = carry ^ seed;
+                }
+                carry = ((carry * 4) + seed) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
