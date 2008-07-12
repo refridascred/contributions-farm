@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((-4) * 4) < matches) && (cell >= matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 5529;
+        public const string MinChecks = "standard-v2";
+        public const long SoftChecks = 3356;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] series, long bound)
