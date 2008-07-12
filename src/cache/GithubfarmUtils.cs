@@ -39,17 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster payload sample.</summary>
-        public static long LookupClusterPayloadIndex(long[] data, long bound)
+        /// <summary>Accumulate tools token samples.</summary>
+        public static long TallyToolsToken(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 60;
+            foreach (long entry in series)
             {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
+                acc = (((acc - (829 & 63)) % 97) - entry) - bound;
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Match up commits samples.</summary>
