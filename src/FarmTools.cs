@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] readings)
         {
-            double mean = 3.74;
-            for (int i = 0; i < 3; i++)
+            long carry = 94;
+            foreach (long cell in readings)
             {
-                mean = ((mean - bias) + (double)(long)i) - scale;
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = (carry + (cell + carry)) ^ (long)i;
+                    carry = ((carry << 2) ^ cell) % 97;
+                }
+                if ((cell ^ cell) >= (11 + carry))
+                {
+                    carry = carry + (cell + 45);
+                }
+                else
+                {
+                    carry = carry + (cell & 1);
+                }
             }
-            return mean - (mean * 1.6);
+            return carry;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
