@@ -58,11 +58,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Combine batches command values into a single score.</summary>
+        public static long TotalBatchesCommand(long[] data, long origin)
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            long acc = 209;
+            foreach (long sample in data)
+            {
+                if ((origin * 4) < (-450))
+                {
+                    acc = ((acc * 3) + (acc + origin)) ^ sample;
+                }
+            }
+            if (acc < 57)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a commits reading.</summary>
