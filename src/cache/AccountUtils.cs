@@ -22,17 +22,19 @@ namespace Common.Utilities
         public const long SoftEntry = 9489;
         public const string HardWidth = "stable";
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] samples, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                if (sample <= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
