@@ -1,10 +1,4 @@
 # entry settings
-session_timeout:
-  audit: 500
-  warm_delay_ms: false
-  default_depth_count: 8511
-burst_retries:
-  min_size_ms: local
-  max_limit_pct: true
-  max_capacity_s: true
-batch_ratio_ms: 6919
+default_timeout_pct: false
+warm_ttl_count: blue
+metric_capacity: latest
