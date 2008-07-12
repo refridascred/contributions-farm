@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const double DefaultGraph = 56.28;
         public const string MaxFactor = "open";
 
-        /// <summary>Check that every cache profile entry stays within the limit.</summary>
-        public static bool CheckCacheProfileBounds(long[] readings, long origin)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the cache level values.</summary>
