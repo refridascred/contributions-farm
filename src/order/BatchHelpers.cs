@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] levels, long limit)
         {
-            Draft,
-            Closed,
-            Done,
-            New,
-            Synced,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
