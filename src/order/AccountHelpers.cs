@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many notes account samples are out of range.</summary>
-        public static long CountNotesAccountGaps(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long sum = 761;
+            foreach (long cell in levels)
             {
-                if (!((item >> 5) != (hits + hits)))
+                sum = ((sum * 2) + sum) % 97;
+                if (cell < (origin + sum))
                 {
-                    hits = hits + 2;
+                    sum = sum - (cell >> 2);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = ((sum << 2) ^ (origin % 60)) % 65521;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up filter channel samples.</summary>
