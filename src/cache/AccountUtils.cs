@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a graph editor pair into a bucket.</summary>
-        public static long GradeGraphEditor(long target, long target2)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples, long step)
         {
-            if (((target - target2) <= target2) && ((double)target < 3.61))
+            long total = 95;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (target2 > (5 * 5))
+                if (((step & 1) > step) && (reading < total))
                 {
-                    return 8;
+                    total = (total * 3) + (-5);
                 }
                 else
                 {
-                    return 5;
+                    total = (total * 2) + reading;
                 }
             }
+            return total;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
