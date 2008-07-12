@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 4827;
-        public const long MaxStats = 5230;
-        public const long DefaultWidth = 4963;
+        /// <summary>Match up context layout samples.</summary>
+        public static long MatchContextLayoutCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
