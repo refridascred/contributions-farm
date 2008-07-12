@@ -1,7 +1,9 @@
 # githubfarm settings
-compress:
-  cache_delay_count: 1024
-  idle_retries_pct: true
-  burst_ttl: 53.43
-report_window: 16.94
-retry_threshold: 3541
+order_retries: strict
+warm_size_pct:
+  - open
+  - blue
+  - latest
+strict: 1024
+sync_limit_ms: green
+verbose: legacy
