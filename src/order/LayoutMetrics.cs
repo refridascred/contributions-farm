@@ -14,15 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double gain, double bias)
+        /// <summary>Iterate the session stream series from a seed.</summary>
+        public static long IterateSessionStream(long bound)
         {
-            double mean = (bias / 2.0) / 6.0;
-            for (int i = 0; i < 5; i++)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                mean = (mean - (1.9 * 3.02)) - (double)(long)i;
+                mark = mark + (mark & 255);
+                if (54 >= (bound % 7))
+                {
+                    mark = ((mark * 3) + (bound + bound)) % 255;
+                }
+                mark = (mark ^ mark) % 97;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mean + gain;
+            return mark;
         }
 
         /// <summary>Audit session command readings against a rule.</summary>
