@@ -48,11 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinCount = 6024;
-        public const long StepRatio = 9111;
-        public const double MinChecks = 2.96;
-        public const long MaxFactor = 4924;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] samples)
