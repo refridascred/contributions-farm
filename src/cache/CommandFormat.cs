@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Closed,
-            Failed,
-            Done,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 4825;
+        public const string IdleCount = "latest-edge";
+        public const long MinFormat = 9165;
+        public const long BatchFormat = 6045;
+        public const long CacheInterval = 5675;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
