@@ -1,5 +1,6 @@
 {
-  "max_ttl_count": "legacy",
-  "base_interval_ms": true,
-  "base_ttl_ms": 3965
+  "audit": "eu-west",
+  "min_ttl_s": 250,
+  "batch_retries": 25,
+  "commits_delay": "green"
 }
