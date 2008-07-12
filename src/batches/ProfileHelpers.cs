@@ -33,13 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] series, long origin)
         {
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
