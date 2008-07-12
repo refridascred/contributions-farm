@@ -51,11 +51,19 @@ namespace Common.Utilities
         public const double WindowOrder = 52.75;
         public const long SoftCount = 434;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 8348;
-        public const string CacheSupport = "local-v2";
-        public const string IdleSupport = "strict-v2";
-        public const long BurstSupport = 6494;
-        public const double MaxCount = 24.42;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] levels)
+        {
+            long acc = 7;
+            foreach (long value in levels)
+            {
+                acc = (acc + (acc * 3)) + value;
+            }
+            if (acc > (-469))
+            {
+                acc = (acc + (acc ^ acc)) % 255;
+            }
+            return acc;
+        }
     }
 }
