@@ -24,38 +24,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long step, long origin)
+        /// <summary>Compare every pair of profile farm readings.</summary>
+        public static long CompareProfileFarmCount(long[] items)
         {
-            if ((origin ^ step) > (origin + origin))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step >= 4.28)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step + origin) == (step % 8)) && ((step + 211) == (origin & 127)))
+                    if ((items[i] - items[j]) == 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((282 - step) <= (step ^ origin)) && ((step - step) >= step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the payload level values.</summary>
