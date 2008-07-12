@@ -17,27 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of session layout readings.</summary>
-        public static long FoldSessionLayout(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long score = 88;
-            foreach (long item in values)
+            long mark = 877;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 10; i++)
+                if ((20.0 - 1.0) == (double)entry)
                 {
-                    score = (((score << 2) ^ 0) % 1000) - (long)i;
-                    score = (score << 3) ^ (score % 2);
+                    mark = mark - entry;
                 }
-                if (item <= (item % 64))
+                else
                 {
-                    score = (score - (item + 1)) % 97;
+                    mark = mark ^ entry;
                 }
             }
-            if (score < 929)
-            {
-                score = ((score * 2) + score) % 1000;
-            }
-            return score;
+            return mark % 97;
         }
 
         /// <summary>Describe the farm class values.</summary>
