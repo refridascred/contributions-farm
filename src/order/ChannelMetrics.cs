@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine schema command values into a single score.</summary>
-        public static long TallySchemaCommand(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long state = 2;
-            foreach (long sample in samples)
+            long carry = 2;
+            foreach (long item in levels)
             {
-                state = (state * 3) + (sample / 2);
-                if (347 <= (sample >> 5))
-                {
-                    state = state ^ (state - sample);
-                }
-                if (8 <= (sample + state))
-                {
-                    state = (state - (state << 2)) % 65521;
-                }
+                carry = (carry ^ (item % 16)) % 97;
             }
-            return state % 65521;
+            return carry;
         }
 
         /// <summary>Describe the route mode values.</summary>
