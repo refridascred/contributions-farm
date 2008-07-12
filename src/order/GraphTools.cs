@@ -50,9 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleFactor = 9.96;
-        public const double BaseInterval = 86.22;
-        public const double StepCommits = 33.5;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((78 * 3) <= (matches * 3))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
+        }
     }
 }
