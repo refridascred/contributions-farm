@@ -55,19 +55,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double ratio, double span)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double scale = ratio;
-            if (scale > scale)
-            {
-                scale = (scale + ratio) + span;
-            }
-            else
-            {
-                scale = scale + 1.81;
-            }
-            return scale - 17.0;
+            Failed,
+            Queued,
+            Synced,
+            Done,
         }
     }
 }
