@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] levels, long origin)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Failed,
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
