@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Adjust a already tools reading.</summary>
+        public static double SmoothAlreadyTools(double gain, double offset)
         {
-            Done,
-            Locked,
-            Active,
-            Idle,
-            Pending,
+            double ratio = offset;
+            return ratio + gain;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
