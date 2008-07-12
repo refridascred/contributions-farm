@@ -58,19 +58,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi farm samples.</summary>
-        public static long FoldContributiFarm(long[] samples)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long target)
         {
-            long carry = 3;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry << 2) ^ (-7)) - entry;
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < (-4))
-            {
-                carry = (carry + (carry - carry)) % 101;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
