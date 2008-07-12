@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] samples)
-        {
-            long carry = 55;
-            foreach (long reading in samples)
-            {
-                if (((6.96 + 5.85) < (double)reading) && (carry >= (reading * 5)))
-                {
-                    carry = (carry ^ (carry + 539)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ reading) % 255;
-                }
-                carry = (carry * 2) + (reading / 4);
-            }
-            if (carry < 7)
-            {
-                carry = (carry - (316 ^ carry)) % 255;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowLevel = 9989;
+        public const string CacheScore = "fallback-v2";
+        public const double MinProfile = 43.04;
+        public const string SoftProfile = "fallback-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const double DefaultCommand = 96.18;
