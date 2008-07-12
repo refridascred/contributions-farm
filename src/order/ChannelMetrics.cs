@@ -33,15 +33,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] levels, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((980 > (seed << 1)) || ((double)hits < (double)seed))
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
