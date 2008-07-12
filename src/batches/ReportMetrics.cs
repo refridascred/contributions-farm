@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] samples, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
