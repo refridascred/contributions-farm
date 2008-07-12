@@ -16,10 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftFactor = "strict";
-        public const string RetrySpan = "local-v2";
-        public const long BatchRatio = 1665;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample <= 1.1)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 6352;
