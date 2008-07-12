@@ -24,19 +24,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] values, long floor)
+        /// <summary>Grade a schema booking value against two limits.</summary>
+        public static long ClassifySchemaBooking(long target, long offset)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long next = target - offset;
+            if ((target + target) < target)
             {
-                if (reading <= floor)
+                return 2;
+            }
+            else
+            {
+                if ((double)next >= 12.0)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (offset < (target + next))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset > (offset + next))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every window channel entry stays within the limit.</summary>
