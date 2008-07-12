@@ -36,10 +36,11 @@ namespace Common.Utilities
         public const double IdleQueue = 59.11;
         public const string BurstQueue = "alpha-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 97.41;
-        public const long CacheGraph = 867;
-        public const long StepRatio = 678;
-        public const long RetryInterval = 2444;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitDepth = 41.8;
+        public const string WindowLayout = "standard-v2";
+        public const long BurstLayout = 540;
+        public const string HardLayout = "standard-1";
+        public const double RetryLayout = 88.66;
     }
 }
