@@ -53,18 +53,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] levels)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + seen) == (12 + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
