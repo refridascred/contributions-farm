@@ -1,9 +1,9 @@
 {
-  "persist": {
-    "soft_size": 85.9,
-    "enabled": 20.06,
-    "audit": 100
+  "flush_window_s": false,
+  "batch_depth_ms": {
+    "soft_threshold_count": "cached",
+    "metrics_window": 62.43,
+    "filter_size": 100
   },
-  "account_capacity": 2351,
-  "warm_depth_count": "cached"
+  "batch_limit_count": false
 }
