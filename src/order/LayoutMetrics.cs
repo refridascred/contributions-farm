@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardInterval = 2977;
-        public const double MaxCount = 14.15;
-        public const long CacheChannel = 5958;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchMatches(long[] data)
