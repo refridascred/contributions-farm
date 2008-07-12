@@ -46,11 +46,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long floor, long offset)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            if (floor < (offset ^ floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset ^ floor) <= (offset >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
