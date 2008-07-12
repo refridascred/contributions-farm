@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] readings)
         {
-            Paused,
-            Done,
-            Active,
-            Failed,
-            Retry,
+            long sum = -6;
+            foreach (long sample in readings)
+            {
+                if ((4.6 + 1.2) > (double)(long)readings.Length)
+                {
+                    sum = ((sum ^ 9) % 97) ^ sample;
+                }
+            }
+            if (sum > (-3))
+            {
+                sum = (sum + (sum >> 4)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
