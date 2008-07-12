@@ -33,32 +33,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a stream route value against two limits.</summary>
-        public static long GradeStreamRoute(long origin, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            long gap = origin - target;
-            if (((gap * 3) > (target + gap)) && ((6.0 + 1.85) >= (double)target))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin >= (target >> 1)) && (origin < ((-986) % 7)))
+                if (value >= ((-21) + 8))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.27 < (double)gap) && (origin < 61))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
