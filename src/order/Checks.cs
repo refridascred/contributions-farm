@@ -77,9 +77,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstBudget = 3079;
-        public const long BatchContext = 9645;
-        public const long LimitSize = 7202;
+        /// <summary>Compare every pair of format already readings.</summary>
+        public static long CompareFormatAlreadyCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
