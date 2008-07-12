@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 4255;
         public const string WindowWidth = "strict-1";
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] items, long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((double)step > (9.0 - 0.53))
+                if (datum <= step)
                 {
-                    count = (count + 1) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
