@@ -71,11 +71,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "strict-v2";
-        public const long IdleQueue = 8882;
-        public const long SoftTimeout = 5809;
-        public const double BatchInterval = 75.81;
-        public const long BaseQueue = 8338;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
