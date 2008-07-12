@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the buffer filter series from a seed.</summary>
-        public static long RollBufferFilter(long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (!((result - limit) >= result))
+                if (((long)data.Length > entry) || (hits <= (hits + entry)))
                 {
-                    result = (result ^ ((-5) - 21)) % 255;
+                    hits = hits + 3;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
