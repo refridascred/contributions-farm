@@ -15,21 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up filter channel samples.</summary>
-        public static long CompareFilterChannelCount(long[] samples)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = 4.0;
+            if (gain < (double)2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain - (double)400;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain - (bias / 8.0);
         }
 
         /// <summary>Hold a graph info.</summary>
