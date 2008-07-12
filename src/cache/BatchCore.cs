@@ -40,12 +40,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Adjust a metric metrics reading.</summary>
+        public static double SmoothMetricMetrics(double bias, double offset)
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            double gain = bias;
+            if (gain <= gain)
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (bias + 7.3)) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Describe the profile mode values.</summary>
