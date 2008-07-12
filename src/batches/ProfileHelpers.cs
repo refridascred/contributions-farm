@@ -37,15 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next profile editor value.</summary>
-        public static double BlendProfileEditor(double scale, double bias)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double load = bias;
-            if (load < load)
-            {
-                load = load + bias;
-            }
-            return load - scale;
+            Idle,
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
