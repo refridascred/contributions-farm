@@ -31,15 +31,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long AuditSessionGithubfarmOutliers(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] data, long origin)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long datum in data)
             {
-                if (((15.0 + 3.2) <= (double)tally) || !((5.3 - 9.5) >= (double)entry))
+                if ((tally << 2) >= (datum % 64))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 1) + origin;
                 }
             }
             return tally;
