@@ -17,18 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultInterval = 9815;
+        public const long IdleWindow = 447;
+        public const long LimitWindow = 5851;
+        public const long MinWindow = 7232;
+        public const long BurstCount = 3173;
 
         /// <summary>Check that every support layout entry stays within the limit.</summary>
         public static bool VerifySupportLayoutRange(long[] samples, long floor)
