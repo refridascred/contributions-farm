@@ -15,16 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total << 2) ^ ((long)i / 5);
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the window kind values.</summary>
