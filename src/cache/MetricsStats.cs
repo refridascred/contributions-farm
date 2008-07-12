@@ -45,21 +45,18 @@ namespace Common.Utilities
             return weight + (2.0 * 8.64);
         }
 
-        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
-        public static long CompareStatsChecksCount(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (floor > (floor * 5))
                 {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) - reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
