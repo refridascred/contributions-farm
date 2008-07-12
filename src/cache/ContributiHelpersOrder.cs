@@ -27,15 +27,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] series, long seed)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long score = 649;
-            foreach (long entry in series)
-            {
-                score = ((score ^ (score >> 5)) ^ entry) - seed;
-            }
-            return score % 1000;
+            Idle,
+            Retry,
+            Queued,
+            Stale,
         }
     }
 }
