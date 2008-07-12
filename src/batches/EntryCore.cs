@@ -42,19 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (reading < bound)
+                if (!(((matches * 4) < (matches - 629)) && (((-467) * 3) < (datum - matches))))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the format mode values.</summary>
