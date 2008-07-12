@@ -51,13 +51,13 @@ namespace Common.Utilities
         public const string CacheTimeout = "standard-edge";
         public const long BurstOrder = 2839;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Accumulate cluster metrics samples.</summary>
+        public static long TallyClusterMetrics(long[] series, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            long total = 750;
+            foreach (long sample in series)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                total = (((total - (total << 2)) % 65521) - sample) - step;
             }
             return total;
         }
