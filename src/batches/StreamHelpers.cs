@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values, long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = 55;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) < (sum - datum))
-                {
-                    sum = sum ^ (datum + 10);
-                }
-                if (!(datum <= (datum + 0)))
-                {
-                    sum = ((sum * 3) + 347) % 97;
-                }
-                else
-                {
-                    sum = (sum - (origin % 12)) % 255;
-                }
-            }
-            return sum;
+            Closed,
+            Failed,
+            Idle,
+            Done,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
