@@ -66,21 +66,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up format queue samples.</summary>
-        public static long PairFormatQueueCount(long[] series)
+        /// <summary>Check that every stats batch entry stays within the limit.</summary>
+        public static bool ValidateStatsBatchLimits(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= seed)
                 {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
