@@ -82,23 +82,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long score = 894;
-            foreach (long cell in series)
-            {
-                if (!((long)series.Length != (931 * 4)))
-                {
-                    score = ((score << 2) ^ (score + cell)) % 4096;
-                }
-                score = (score + (cell & 127)) % 4096;
-            }
-            if (score < 5)
-            {
-                score = (score - (8 % 97)) % 101;
-            }
-            return score;
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
