@@ -52,21 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 13)
+                    if ((items[i] + items[j]) == 4)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
