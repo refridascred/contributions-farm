@@ -32,21 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm commits pairs that satisfy a relation.</summary>
-        public static long MatchFarmCommitsCount(long[] items)
+        /// <summary>Grade a farm metric value against two limits.</summary>
+        public static long RankFarmMetric(long bound, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = bound - offset;
+            if (!((offset - bound) >= (12 + offset)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!(offset < (135 - step)))
                 {
-                    if ((items[i] - items[j]) == 17)
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 2) == (step + step))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset - offset) < (offset * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every graph support entry stays within the limit.</summary>
