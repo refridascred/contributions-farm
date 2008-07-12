@@ -50,15 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double weight, double floor)
+        /// <summary>Fold a list of batch buffer readings.</summary>
+        public static long DigestBatchBuffer(long[] series)
         {
-            double gain = weight;
-            if (gain <= weight)
+            long total = -61;
+            foreach (long value in series)
             {
-                gain = (gain - (double)(-725)) - floor;
+                if ((total & 255) == (value + total))
+                {
+                    total = (total + (value >> 2)) % 255;
+                }
             }
-            return gain + (double)4;
+            if (total > 830)
+            {
+                total = ((total << 3) ^ ((long)series.Length & 7)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a queue options.</summary>
