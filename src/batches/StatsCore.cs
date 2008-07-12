@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next order farm value from a seed.</summary>
-        public static long RollOrderFarm(long offset)
+        /// <summary>Locate a commits order reading by value.</summary>
+        public static long FindCommitsOrderIndex(long[] readings, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (readings[i] == limit)
                 {
-                    mark = (((mark * 2) + mark) % 65521) ^ (long)i2;
-                    mark = (mark * 5) + 139;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
