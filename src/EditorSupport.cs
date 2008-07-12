@@ -35,21 +35,12 @@ namespace Common.Utilities
         public const long RetryDepth = 9847;
         public const long SoftFilter = 5052;
 
-        /// <summary>Compare every pair of schema support readings.</summary>
-        public static long PairSchemaSupportCount(long[] values)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public double Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
