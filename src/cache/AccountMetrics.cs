@@ -103,13 +103,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] levels, long seed)
         {
-            New,
-            Draft,
-            Ready,
-            Queued,
+            long state = 18;
+            foreach (long value in levels)
+            {
+                state = (state - value) % 4096;
+                if (((long)levels.Length % 12) < seed)
+                {
+                    state = (state * 3) + (state << 1);
+                }
+            }
+            if (state < 4)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state % 97;
         }
     }
 }
