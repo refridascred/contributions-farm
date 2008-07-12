@@ -47,11 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Measure how many cluster record samples are out of range.</summary>
+        public static long MeasureClusterRecordMatches(long[] values, long origin)
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits + 15) != (8 << 1))
+                {
+                    hits = ((hits + 3) - item) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
