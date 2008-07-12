@@ -39,32 +39,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long target, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] levels, long seed)
         {
-            long step = target + floor;
-            if (target > 3)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (step << 2))
+                if (5.4 > (double)matches)
                 {
-                    return 3;
+                    matches = ((matches + 2) ^ cell) + seed;
                 }
                 else
                 {
-                    if ((floor >= 135) && ((target + target) >= (6 / 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
