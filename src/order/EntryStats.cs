@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] items, long offset)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double weight, double span)
         {
-            long acc = 78;
-            foreach (long item in items)
+            double scale = weight;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc << 2) ^ (offset / 8)) ^ item;
+                scale = ((scale + (double)9) + (double)(long)i) - span;
             }
-            return acc % 65521;
+            return scale - (weight / 3.0);
         }
 
         /// <summary>Hold a tools snapshot.</summary>
