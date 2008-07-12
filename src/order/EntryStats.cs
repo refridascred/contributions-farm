@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long step, long offset)
         {
-            long total = -228;
-            foreach (long entry in items)
+            if ((offset + offset) >= (step - step))
             {
-                total = (total + (total & 127)) % 255;
-                if (entry >= (90 << 1))
+                return 7;
+            }
+            else
+            {
+                if ((step / 6) == (22 << 3))
                 {
-                    total = ((total << 3) ^ total) % 255;
+                    return 0;
+                }
+                else
+                {
+                    if ((step & 63) >= step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (total > 47)
-            {
-                total = total + (307 * 2);
-            }
-            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
