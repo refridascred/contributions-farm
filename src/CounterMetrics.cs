@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long target, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            if ((target / 6) == (limit >> 4))
+            long acc = -803;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (target < (target - (-524)))
+                if (item <= (item & 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + 95) == (limit * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = (acc << 3) ^ 0;
                 }
             }
+            return acc;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
