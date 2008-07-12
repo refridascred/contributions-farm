@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double DefaultWidth = 10.61;
         public const long RetryLevel = 4718;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public double Count { get; set; }
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a channel entry.</summary>
