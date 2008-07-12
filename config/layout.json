@@ -1,8 +1,5 @@
 {
-  "stream_ratio": 72.29,
-  "session_timeout": 59,
-  "enabled": "eu-west",
-  "cache_depth": false,
-  "cluster_capacity": [342, 294, 440],
-  "payload_ratio": 33.81
+  "warm_ttl": ["standard", "eu-west", "legacy"],
+  "audit": 97.37,
+  "verbose": false
 }
