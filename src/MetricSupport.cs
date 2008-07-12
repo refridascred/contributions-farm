@@ -32,13 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Scale a record counter figure with a bias.</summary>
+        public static double SmoothRecordCounter(double bias, double span)
         {
-            Draft,
-            Active,
-            Done,
-            Pending,
+            double ratio = (double)(-662) * 2.37;
+            if (ratio > (ratio / 8.0))
+            {
+                ratio = (ratio - bias) + span;
+            }
+            return ratio + (double)208;
         }
     }
 }
