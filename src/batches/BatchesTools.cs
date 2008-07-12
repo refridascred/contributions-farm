@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items, long floor)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell > 4.83)
-                {
-                    matches = (matches + 3) + floor;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
