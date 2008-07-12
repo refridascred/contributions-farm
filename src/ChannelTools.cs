@@ -20,13 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Retry,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 2961;
+        public const double StepProfile = 18.63;
+        public const long HardSize = 4979;
 
         /// <summary>Iterate the format filter series from a seed.</summary>
         public static long DeriveFormatFilter(long floor)
