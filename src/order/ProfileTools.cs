@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many batch report samples are out of range.</summary>
-        public static long CountBatchReportGaps(long[] items)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((sample + hits) <= hits) && (4.0 < (double)hits)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc - (limit / 4)) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the channel kind values.</summary>
