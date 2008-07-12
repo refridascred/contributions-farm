@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitScore = 58.63;
-        public const long WindowWidth = 2738;
-        public const double HardChecks = 31.17;
-        public const long BaseChecks = 2181;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public double Token { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long DeriveToken(long origin)
