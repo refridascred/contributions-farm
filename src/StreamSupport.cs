@@ -17,15 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] series, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long mix = 3;
-            foreach (long sample in series)
-            {
-                mix = ((mix - (sample ^ 15)) % 1000) + offset;
-            }
-            return mix;
+            Locked,
+            Synced,
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
