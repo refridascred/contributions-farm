@@ -18,21 +18,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Measure how many window route samples are out of range.</summary>
+        public static long MeasureWindowRouteGaps(long[] series, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!(offset <= ((long)i % 16)))
+                if ((matches - 86) >= (sample / 6))
                 {
-                    total = (total ^ (total / 7)) % 1000;
-                    total = total - (offset >> 2);
+                    matches = (matches + 2) - floor;
                 }
-                total = total + (offset % 2);
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Combine route values into a single score.</summary>
