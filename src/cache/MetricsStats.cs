@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine graph cache values into a single score.</summary>
-        public static long FoldGraphCache(long[] items, long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long target)
         {
-            long mix = 292;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (((mix - 4) % 255) ^ cell) + floor;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 0)
-            {
-                mix = (mix + (mix - mix)) % 101;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
