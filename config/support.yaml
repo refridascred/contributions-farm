@@ -1,6 +1,8 @@
 # support settings
-sync_depth_pct: false
-strict: 3728
-cache_timeout_ms: 57
-verbose: false
-audit: 250
+compress: blue
+token_ttl:
+  - 283
+  - 413
+  - 82
+sync_interval: true
+cache_delay_count: local
