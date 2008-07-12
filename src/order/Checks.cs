@@ -44,13 +44,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Locked,
-            New,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 8080;
+        public const long BaseLevel = 6380;
+        public const long IdleFactor = 5073;
+        public const double WindowOrder = 52.75;
+        public const long SoftCount = 434;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetrySupport = 8348;
