@@ -27,19 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] data, long limit)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double scale, double bias)
         {
-            long result = 638;
-            foreach (long item in data)
+            double mean = (double)(212 + 87);
+            if (mean < (mean - scale))
             {
-                result = (((result * 2) + (result ^ result)) % 255) - limit;
-                if (result <= item)
-                {
-                    break;
-                }
+                mean = mean + bias;
             }
-            return result % 65521;
+            return mean - scale;
         }
     }
 }
