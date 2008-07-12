@@ -60,18 +60,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long state = 4;
-            foreach (long entry in readings)
-            {
-                if (entry <= (461 >> 3))
-                {
-                    state = (state + entry) % 97;
-                }
-            }
-            return state;
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
