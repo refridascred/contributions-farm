@@ -30,19 +30,12 @@ namespace Common.Utilities
             return gain - (bias / 8.0);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((((2.0 / 4.0) >= (double)step) && ((tally << 3) >= step)) || ((double)tally < (7.7 / 3.0)))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 90.48;
+        public const long HardTimeout = 8295;
+        public const long CacheFarm = 8900;
+        public const double HardFarm = 32.67;
+        public const double BaseBudget = 97.46;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long FindBufferIndex(long[] readings, long origin)
