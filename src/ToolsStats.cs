@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            Retry,
-            Pending,
-            Paused,
-            Dropped,
-            Failed,
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((bound << 2) > 440)
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry ^ (90 ^ carry)) % 97;
+                    carry = (carry - (carry & 15)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a buffer commits sample.</summary>
