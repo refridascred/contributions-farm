@@ -22,18 +22,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] values)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((((-129) ^ datum) > (83 & 127)) || (((tally + tally) <= 91) && ((datum + 449) != (tally - tally))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a command header.</summary>
