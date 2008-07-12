@@ -38,12 +38,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long origin, long step)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            long delta = origin + step;
+            if (((step * 5) < (origin / 7)) && ((double)origin <= (double)19))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((delta + 2) > origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.2 / 9.0) >= (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the commits graph series from a seed.</summary>
