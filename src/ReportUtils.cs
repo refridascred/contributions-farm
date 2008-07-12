@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] data, long bound)
+        /// <summary>Measure how many graph contributi samples are out of range.</summary>
+        public static long CountGraphContributiOutliers(long[] readings)
         {
-            long mark = 280;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark << 2) ^ (mark - mark)) ^ cell;
-                mark = ((mark << 2) ^ mark) % 101;
-                mark = (mark - (bound & 127)) % 97;
+                if (value > (tally / 6))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
