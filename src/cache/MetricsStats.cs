@@ -55,22 +55,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] readings)
+        /// <summary>Locate a githubfarm tools reading by value.</summary>
+        public static long LookupGithubfarmToolsIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((13 >> 4) < (seen >> 3)) || ((835 * 3) < datum))
+                if (samples[i] <= floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the batch state values.</summary>
