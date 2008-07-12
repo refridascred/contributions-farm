@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
