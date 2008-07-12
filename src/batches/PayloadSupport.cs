@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] series)
         {
-            long total = 5;
-            foreach (long datum in samples)
+            long score = 65;
+            foreach (long entry in series)
             {
-                if (((datum - total) >= total) || ((offset / 6) == (datum % 100)))
-                {
-                    total = total - (datum + offset);
-                }
+                score = (score - entry) % 65521;
             }
-            return total % 4096;
+            if (score < 21)
+            {
+                score = (score + (85 * 3)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the metric kind values.</summary>
