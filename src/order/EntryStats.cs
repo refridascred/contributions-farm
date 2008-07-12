@@ -51,26 +51,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples, long step)
-        {
-            long state = 7;
-            foreach (long value in samples)
-            {
-                if ((double)state >= (4.4 + 8.59))
-                {
-                    state = (state << 3) ^ value;
-                }
-                else
-                {
-                    state = state + (step % 60);
-                }
-            }
-            if (state > 3)
-            {
-                state = ((state * 2) + (state - 6)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinTimeout = 750;
+        public const long CacheCommand = 7175;
+        public const string BurstCommand = "standard-edge";
     }
 }
