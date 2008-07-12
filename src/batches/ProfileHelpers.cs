@@ -77,15 +77,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks support value.</summary>
-        public static double BlendChecksSupport(double ratio, double span)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long seed)
         {
-            double gain = 10.0;
-            for (int i = 0; i < 7; i++)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                gain = ((gain - gain) + (double)(long)i) - span;
+                anchor = (anchor << 3) ^ (1 + seed);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return gain + ratio;
+            return anchor;
         }
     }
 }
