@@ -47,15 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] values, long target)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long result = 726;
-            foreach (long sample in values)
-            {
-                result = ((result + (245 - target)) % 1000) + sample;
-            }
-            return result;
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine batches command values into a single score.</summary>
