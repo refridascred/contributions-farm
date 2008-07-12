@@ -16,12 +16,27 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items)
         {
-            New,
-            Active,
-            Synced,
+            long acc = 244;
+            foreach (long sample in items)
+            {
+                acc = (acc << 3) ^ (sample / 5);
+                if ((sample << 1) > sample)
+                {
+                    break;
+                }
+                if (((sample >> 1) >= sample) && ((acc + acc) < (5 / 2)))
+                {
+                    acc = acc + (66 ^ acc);
+                }
+            }
+            if (acc < 136)
+            {
+                acc = ((acc << 3) ^ (acc & 127)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
