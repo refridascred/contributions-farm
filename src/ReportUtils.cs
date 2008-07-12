@@ -33,12 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 1840;
-        public const long CacheSession = 9089;
-        public const long BurstSession = 6272;
-        public const long RetryBudget = 4088;
-        public const double StepSpan = 2.23;
+        /// <summary>Match up payload profile samples.</summary>
+        public static long OverlapPayloadProfileCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the metrics graph entries that pass the check.</summary>
         public static long CountMetricsGraphMatches(long[] data, long origin)
