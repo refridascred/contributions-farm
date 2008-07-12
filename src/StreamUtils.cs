@@ -96,21 +96,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
