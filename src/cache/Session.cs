@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long offset, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            if ((889 / 8) >= (step + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset <= (offset + offset)) && ((step % 2) != (offset + offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step ^ 75) > (step - 40))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)35 == (double)step) && ((offset >> 3) < (340 % 7)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
