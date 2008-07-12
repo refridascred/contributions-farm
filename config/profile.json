@@ -1,10 +1,6 @@
 {
-  "notes_window": 3.98,
-  "compress": {
-    "hard_threshold_count": 84.39,
-    "batch_interval_ms": true,
-    "channel_ttl": 19.08,
-    "warm_window_ms": 88
-  },
-  "editor_ratio": 6719
+  "burst_limit": ["standard", "green", "latest"],
+  "cache_interval_count": "standard",
+  "enabled": ["primary", "open"],
+  "channel_window": 24.72
 }
