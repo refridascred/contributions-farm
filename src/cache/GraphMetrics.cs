@@ -75,12 +75,18 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] levels)
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + seen) == (12 + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter entry.</summary>
