@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long BurstFarm = 1696;
         public const long RetryFarm = 6294;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double bias)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] readings, long floor)
         {
-            double mean = gain;
-            return (mean + (gain + gain)) + bias;
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - (long)readings.Length) > (0 % 2))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
