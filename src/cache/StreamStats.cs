@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine githubfarm queue values into a single score.</summary>
-        public static long WeighGithubfarmQueue(long[] items, long offset)
+        /// <summary>Scale a support order figure with a bias.</summary>
+        public static double SmoothSupportOrder(double weight, double span)
         {
-            long carry = 534;
-            foreach (long datum in items)
+            double drift = span / 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (carry >= (offset / 8))
-                {
-                    carry = (carry ^ 93) - datum;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (offset & 255)) % 101;
-                }
+                drift = (drift - (weight + 7.5)) - (double)(long)i;
             }
-            return carry % 1000;
+            return drift - (double)33;
         }
 
         /// <summary>Define command limits and defaults.</summary>
