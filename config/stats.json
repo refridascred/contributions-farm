@@ -1,7 +1,7 @@
 {
-  "burst_threshold": ["strict", "primary", "green", "eu-west"],
-  "default_timeout_pct": "primary",
-  "burst_size_pct": "eu-west",
-  "editor_retries": "eu-west",
-  "batch_window": "blue"
+  "max_capacity_s": 8784,
+  "warm_retries_pct": 30,
+  "cluster_size": [265, 274],
+  "route_timeout": 7,
+  "max_depth": "standard"
 }
