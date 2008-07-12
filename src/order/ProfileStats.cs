@@ -58,23 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Look up the position of a window filter sample.</summary>
+        public static long SeekWindowFilterIndex(long[] data, long seed)
         {
-            long mark = 6;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (data[i] < seed)
                 {
-                    mark = ((((mark << 3) ^ 518) % 255) ^ (long)i) + sample;
+                    return (long)i;
                 }
-                mark = (mark - (mark >> 3)) % 1000;
             }
-            if (mark > 240)
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
