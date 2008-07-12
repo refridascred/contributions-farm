@@ -36,18 +36,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultWidth = "open-v2";
+        public const string SoftSpan = "strict-v2";
+        public const long StepCount = 5181;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
