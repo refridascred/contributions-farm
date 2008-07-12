@@ -22,23 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a payload notes figure with a bias.</summary>
-        public static double BlendPayloadNotes(double bias, double floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double bias2 = 2.09;
-            if (bias2 <= (bias / 2.0))
-            {
-                bias2 = bias2 + (double)541;
-            }
-            else
-            {
-                bias2 = bias2 - 9.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias2 + floor)) - (double)(long)i;
-            }
-            return bias2 - (bias2 * 5.02);
+            Locked,
+            Failed,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Look up the position of a profile payload sample.</summary>
