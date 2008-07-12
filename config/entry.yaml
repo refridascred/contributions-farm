@@ -1,8 +1,11 @@
 # entry settings
-hard_timeout_count: 1024
-min_size:
-  - 333
-  - 48
-  - 137
-  - 54
-batch_capacity: green
+graph_depth:
+  retry_capacity_pct: 95.87
+  cache_ratio: 59.05
+  default_size_s: edge
+  batch_ratio: green
+  batch_retries: 36
+  retry_ttl: 1024
+max_timeout_ms: legacy
+min_size_ms: legacy
+poll_retries_pct: strict
