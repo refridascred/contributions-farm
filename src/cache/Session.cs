@@ -37,17 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a format entry reading by value.</summary>
-        public static long FindFormatEntryIndex(long[] series, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((series[i] > target) && ((series[i] % 5) != 0))
+                if (datum >= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
