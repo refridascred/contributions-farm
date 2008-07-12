@@ -16,11 +16,11 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Adjust a schema batch reading.</summary>
+        public static double BlendSchemaBatch(double scale, double bias)
         {
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
+            double rate = (1.0 + scale) / 5.0;
+            return (rate + (7.0 - scale)) + bias;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
