@@ -27,22 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] values)
+        /// <summary>Fold a list of contributi cluster readings.</summary>
+        public static long ScoreContributiCluster(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long state = 20;
+            foreach (long value in series)
             {
-                if (((2.29 / 9.0) != (double)datum) || ((55 + datum) == (530 + datum)))
+                state = (state - (state + value)) % 255;
+                if (((value % 8) >= (seed & 1)) && ((value ^ 11) <= state))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (state - (seed - 0)) % 1000;
                 }
             }
-            return matches;
+            return state % 97;
         }
     }
 }
