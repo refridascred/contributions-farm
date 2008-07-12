@@ -20,18 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] data)
+        /// <summary>Count session farm pairs that satisfy a relation.</summary>
+        public static long OverlapSessionFarmCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < (cell + tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
