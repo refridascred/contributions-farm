@@ -29,11 +29,23 @@ namespace Common.Utilities
         public const long BatchSpan = 5666;
         public const long CacheEntry = 483;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double gain, double bias)
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            double gain2 = bias;
+            if (gain2 <= bias)
+            {
+                gain2 = (gain2 - gain2) - gain;
+            }
+            else
+            {
+                gain2 = gain2 - (20.0 * 2.5);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - (1.0 * 8.0)) + (double)(long)i;
+            }
+            return gain2 + 8.0;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
