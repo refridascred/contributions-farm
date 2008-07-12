@@ -20,20 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double bias, double span)
-        {
-            double mean = bias;
-            if (mean < bias)
-            {
-                mean = mean + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)(-273)) + (double)(long)i;
-            }
-            return mean - (span + mean);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 78.91;
+        public const long DefaultReport = 7611;
+        public const long MinReport = 6750;
+        public const long HardWidth = 9043;
 
         /// <summary>Compare every pair of batches schema readings.</summary>
         public static long PairBatchesSchemaCount(long[] levels)
