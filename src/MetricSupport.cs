@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 8284;
         public const long BaseGithubfarm = 2627;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings, long step)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long result = -45;
-            foreach (long entry in readings)
-            {
-                result = (result - (step + 354)) + entry;
-            }
-            if (result < 23)
-            {
-                result = ((result * 2) + (5 % 8)) % 101;
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public double Region { get; set; }
         }
     }
 }
