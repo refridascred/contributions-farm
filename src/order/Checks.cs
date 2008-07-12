@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double gain, double floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            double ratio = (5.1 - floor) + (double)406;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ((ratio - (floor * 4.8)) + (double)(long)i) + gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio + (ratio + 8.94);
+            return count;
         }
 
         /// <summary>Accumulate notes schema samples.</summary>
