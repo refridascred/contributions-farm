@@ -1,8 +1,15 @@
 {
-  "base_delay": [227, 221],
-  "layout_ratio": false,
-  "route_limit": false,
-  "batch_threshold": ["strict", "staging", "green"],
-  "batch_threshold_count": 76,
-  "compress": false
+  "warm_interval_ms": "green",
+  "soft_timeout_ms": "primary",
+  "token_capacity": {
+    "base_delay_ms": "primary",
+    "checks_ratio": {
+      "checks_retries": ["primary", "edge", "cached"],
+      "tools_ttl": [399, 12, 249],
+      "stream_ttl": true,
+      "burst_size_count": "green"
+    },
+    "default_window_count": "eu-west"
+  },
+  "route_delay": "fallback"
 }
