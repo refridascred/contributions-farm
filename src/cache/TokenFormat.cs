@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] series, long origin)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double mean = bias;
+            if (mean < scale)
             {
-                if (item <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + (mean / 6.0);
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (scale * 8.84)) + (double)(long)i;
+            }
+            return mean - (scale * 13.0);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
