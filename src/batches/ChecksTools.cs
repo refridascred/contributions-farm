@@ -50,15 +50,38 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Digest a series of githubfarm metric entries.</summary>
-        public static long TotalGithubfarmMetric(long[] values)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long seed, long offset)
         {
-            long total = 6;
-            foreach (long datum in values)
+            if ((seed % 8) == (seed / 2))
             {
-                total = (((total * 5) + (319 >> 2)) % 255) ^ datum;
+                return 0;
             }
-            return total % 97;
+            else
+            {
+                if ((offset - offset) < (seed << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset >= (offset + 39))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed < (offset << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter options.</summary>
