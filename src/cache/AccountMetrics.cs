@@ -50,39 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long step, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] items, long target)
         {
-            long step2 = step + bound;
-            if ((step2 & 31) <= (bound ^ step))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step - step) < (0 - step2)) || ((double)step > (double)6))
+                if ((double)target > (4.0 - 5.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound & 255) == (bound ^ step2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((3 - bound) != (step & 63)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = (seen + 1) ^ cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
