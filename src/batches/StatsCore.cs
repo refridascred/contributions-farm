@@ -29,11 +29,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long limit, long bound)
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            if (((-457) > (bound + limit)) || (29 < (bound & 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit + bound) < (limit & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine filter tools values into a single score.</summary>
