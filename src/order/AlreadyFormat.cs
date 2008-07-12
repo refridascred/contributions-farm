@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Digest a series of graph window entries.</summary>
+        public static long TotalGraphWindow(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 942;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((mix ^ mix) != (sample / 7)))
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 5) + sample) % 255;
+                }
+                else
+                {
+                    mix = mix ^ (70 >> 4);
+                }
+                if ((57 - mix) >= (5 / 3))
+                {
+                    mix = (mix * 5) + (sample % 3);
                 }
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
