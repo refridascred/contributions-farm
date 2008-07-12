@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 2072;
-        public const long IdleCache = 9855;
-        public const double MaxCache = 77.31;
-        public const string DefaultBudget = "legacy-v2";
+        /// <summary>Adjust a support queue reading.</summary>
+        public static double ProjectSupportQueue(double rate, double offset)
+        {
+            double gain = 4.84;
+            if (gain > 13.0)
+            {
+                gain = (gain - (double)(-98)) + rate;
+            }
+            return gain - offset;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long OverlapCacheCount(long[] data)
