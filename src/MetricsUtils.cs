@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double RetryToken = 59.01;
         public const long HardToken = 9935;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] samples, long step)
+        /// <summary>Find the first tools layout entry that matches the target.</summary>
+        public static long SeekToolsLayoutIndex(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < step)
+                if (data[i] > bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
