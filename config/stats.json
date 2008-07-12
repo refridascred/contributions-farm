@@ -1,7 +1,5 @@
 {
-  "buffer_size": "edge",
-  "sync_size_count": [166, 236],
-  "min_capacity": [212, 333],
-  "cache_ratio": "legacy",
-  "schema_delay": 250
+  "burst_delay_ms": "cached",
+  "metric_retries": [163, 442],
+  "cache_size_s": 66
 }
