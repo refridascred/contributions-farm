@@ -59,17 +59,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] levels, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 861;
+            foreach (long value in readings)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
+                if (755 < (811 ^ mix))
                 {
-                    return (long)i;
+                    mix = ((mix + (mix * 4)) % 255) ^ value;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Blend two cache measurements.</summary>
