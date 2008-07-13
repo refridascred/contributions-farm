@@ -1,4 +1,11 @@
 # githubfarm settings
-warm_limit: fallback
-flush_ratio_ms: 1248
-idle_timeout: 250
+audit: true
+already_window:
+  - fallback
+  - strict
+enabled: 29
+batch_ratio_ms:
+  - 36
+  - 175
+  - 488
+  - 193
