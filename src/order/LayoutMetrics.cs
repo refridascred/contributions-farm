@@ -46,19 +46,10 @@ namespace Common.Utilities
         public const long BaseTimeout = 3613;
         public const double WindowSize = 8.93;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double gain, double offset)
-        {
-            double scale = (gain - offset) * 6.4;
-            if (scale <= (offset + scale))
-            {
-                scale = scale + (gain / 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale + gain;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowDepth = 5325;
+        public const long StepCount = 6397;
+        public const long LimitContributi = 6754;
+        public const double RetryBudget = 34.02;
     }
 }
