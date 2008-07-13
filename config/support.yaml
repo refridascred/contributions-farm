@@ -1,8 +1,17 @@
 # support settings
-readonly:
-  - 317
-  - 274
-report_delay: 98.32
-batch_limit: 2715
-enabled: 30
-idle_ratio: 3527
+warm_size_s: 5266
+strict: fallback
+dry_run:
+  min_depth_pct: edge
+  poll_depth:
+    enabled: legacy
+    cache_size_s: eu-west
+    poll_capacity: 2041
+    cache_limit_count: 18
+    report_retries: blue
+    hard_limit_s: true
+  entry_capacity:
+    - edge
+    - local
+  soft_ratio: latest
+  flush_size_pct: 15.91
