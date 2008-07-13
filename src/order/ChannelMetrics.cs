@@ -34,11 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] items, long seed)
         {
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
