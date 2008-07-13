@@ -33,13 +33,17 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] readings, long origin)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
