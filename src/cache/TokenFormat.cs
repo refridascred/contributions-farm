@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = (carry << 2) ^ ((long)i - carry);
-                carry = (carry * 5) + (carry + (long)i);
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Ready,
+            Failed,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
