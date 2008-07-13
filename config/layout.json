@@ -1,8 +1,12 @@
 {
-  "hard_timeout_count": "strict",
-  "burst_retries": "strict",
-  "cache_window": [207, 33],
-  "max_interval": 6252,
-  "metrics_retries": "green",
-  "context_threshold": 93
+  "flush_threshold_count": {
+    "persist": "latest",
+    "compress": "stable",
+    "entry_interval": 43.54,
+    "burst_delay_count": "legacy",
+    "hard_timeout_s": 18.38
+  },
+  "default_depth_ms": "edge",
+  "order_threshold": 45,
+  "hard_window": 3743
 }
