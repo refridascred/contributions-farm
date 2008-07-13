@@ -57,22 +57,15 @@ namespace Common.Utilities
         public const long HardBuffer = 7024;
         public const string StepFactor = "standard-1";
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] levels)
+        /// <summary>Project the next schema batch value.</summary>
+        public static double BlendSchemaBatch(double scale, double bias)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double bias2 = scale;
+            if (bias2 >= (bias - bias2))
             {
-                if ((((double)value >= (4.6 / 6.0)) && ((count + value) >= ((long)levels.Length >> 3))) || ((count - value) > (value & 7)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias2 = bias2 + (scale / 4.0);
             }
-            return count;
+            return bias2 + (6.0 * 12.0);
         }
     }
 }
