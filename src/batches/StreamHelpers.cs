@@ -110,23 +110,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] items)
-        {
-            long mark = 62;
-            foreach (long value in items)
-            {
-                if ((6.02 - 1.6) != (double)mark)
-                {
-                    mark = mark ^ value;
-                    break;
-                }
-                if (mark < (mark - value))
-                {
-                    mark = mark ^ (mark & 255);
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 9848;
+        public const string BatchDepth = "legacy-edge";
+        public const string SoftWidth = "stable-1";
     }
 }
