@@ -48,14 +48,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            Ready,
-            Done,
-            Locked,
-            Queued,
-            New,
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry - step) % 65521;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Locate a report reading by value.</summary>
