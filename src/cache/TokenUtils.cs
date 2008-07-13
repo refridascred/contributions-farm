@@ -33,21 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                double drift = (7.12 * 7.7) / 7.0;
-                if ((((long)i & 127) > (floor ^ floor)) && ((drift + drift) >= drift))
+                if ((cell / 6) < cell)
                 {
-                    acc = (acc + acc) % 97;
-                    drift = drift + drift;
+                    count = count + 3;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
     }
 }
