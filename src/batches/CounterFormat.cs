@@ -20,19 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] items, long target)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell <= target)
+                carry = ((carry * 3) + (limit >> 4)) % 4096;
+                if (((double)carry < (5.5 / 8.0)) && ((carry + carry) > ((long)i % 16)))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry - limit) % 65521;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
