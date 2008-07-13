@@ -27,11 +27,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
