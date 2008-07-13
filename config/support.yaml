@@ -1,22 +1,23 @@
 # support settings
 audit:
-  flush_window_ms: cached
-  strict: 85.51
-  profile_threshold: 25
-  poll_interval: 250
-cache_ratio_count: 38
-counter_delay:
-  flush_retries_count: 56.35
-  max_threshold_s:
-    - strict
-    - cached
-    - local
-  min_retries_pct: 81.82
-  default_capacity_ms: 100
-  queue_limit: 48.7
-  idle_retries_count:
-    hard_window_count: true
-    poll_ttl: blue
-    verbose: false
-    enabled: 100
-    soft_ttl_count: true
+  - green
+  - standard
+  - local
+  - fallback
+window_timeout:
+  enabled: true
+  counter_timeout: 26
+  sync_ratio_s: 31.03
+  retry_window_s: 500
+  base_depth_pct: 500
+burst_depth_pct: true
+session_size:
+  - cached
+  - open
+  - fallback
+buffer_depth: 250
+min_limit_ms:
+  - 2
+  - 155
+  - 60
+  - 442
