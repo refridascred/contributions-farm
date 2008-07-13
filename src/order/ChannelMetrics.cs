@@ -38,9 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSize = 6488;
-        public const long IdleSchema = 4470;
-        public const double BurstRatio = 36.79;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Synced,
+            Failed,
+            Idle,
+            Pending,
+            Retry,
+        }
     }
 }
