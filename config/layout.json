@@ -1,18 +1,7 @@
 {
-  "window_capacity": 74.77,
-  "warm_timeout_pct": {
-    "cache_timeout_count": ["standard", "staging", "legacy"],
-    "enabled": 58.18,
-    "max_delay": 17.94,
-    "default_depth_ms": 60,
-    "verbose": {
-      "account_ttl": 8547,
-      "default_ratio": [33, 296, 302],
-      "strict": 5,
-      "flush_depth_ms": "latest"
-    }
-  },
-  "format_ratio": 60,
-  "contributi_capacity": "cached",
-  "retry_ratio_count": "primary"
+  "idle_threshold": 66,
+  "min_size_s": [329, 91, 337],
+  "readonly": [448, 103, 40],
+  "retry_depth_ms": [96, 401],
+  "warm_window": 2102
 }
