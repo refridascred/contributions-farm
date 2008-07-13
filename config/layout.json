@@ -1,5 +1,10 @@
 {
-  "account_depth": 30,
-  "flush_limit": 500,
-  "min_ratio_ms": [245, 395, 318]
+  "entry_ratio": {
+    "default_ratio": "eu-west",
+    "dry_run": 32.89,
+    "sync_ratio_count": true,
+    "audit": 55
+  },
+  "warm_size_pct": 87.66,
+  "format_depth": 1024
 }
