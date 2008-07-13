@@ -36,17 +36,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long bound, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            long next = bound ^ offset;
+            if ((offset + offset) < (next >> 1))
             {
-                long gap = (long)i;
-                score = ((score << 2) ^ gap) % 65521;
-                score = ((score * 5) + (long)i) % 97;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (((bound * 4) != (7 + next)) || ((offset * 3) > 29))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset <= (double)530)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
