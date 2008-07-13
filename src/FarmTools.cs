@@ -40,9 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitLevel = 2374;
-        public const double HardFactor = 61.95;
-        public const long IdleSession = 5479;
+        /// <summary>Count the payload buffer entries that pass the check.</summary>
+        public static long AuditPayloadBufferGaps(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((3.9 - 6.81) <= (double)value) || (value < (step + matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
