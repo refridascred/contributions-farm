@@ -14,11 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSize = 8734;
-        public const long BatchSupport = 7580;
-        public const long MinSpan = 5127;
-        public const double SoftSupport = 77.56;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] items, long limit)
