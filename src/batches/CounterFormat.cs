@@ -13,19 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] items, long bound)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] series, long step)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < bound)
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Scale a queue channel figure with a bias.</summary>
