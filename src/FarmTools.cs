@@ -23,12 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double weight, double offset)
         {
-            Pending,
-            Done,
-            Draft,
+            double weight2 = (double)7 * 7.0;
+            if (weight2 < (weight2 - 0.5))
+            {
+                weight2 = (weight2 - (weight2 * 0.2)) + offset;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
