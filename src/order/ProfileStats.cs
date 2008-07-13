@@ -49,14 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Stale,
-            Active,
-            New,
-            Failed,
-            Pending,
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
