@@ -29,21 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of profile channel readings.</summary>
-        public static long OverlapProfileChannelCount(long[] items)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = (double)(45 + (-259));
+            if (rate2 >= (double)3)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate2 = ((rate2 - (double)33) + rate) + bias;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 + (double)59;
+            }
+            return rate2 - (double)1;
         }
 
         /// <summary>Look up the position of a batches graph sample.</summary>
