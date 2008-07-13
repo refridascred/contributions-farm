@@ -33,12 +33,19 @@ namespace Common.Utilities
             return weight + (bias / 4.0);
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double gain, double offset)
         {
-            Retry,
-            Done,
-            Queued,
+            double drift = offset;
+            if (drift > offset)
+            {
+                drift = (drift + drift) - gain;
+            }
+            else
+            {
+                drift = drift + offset;
+            }
+            return drift - (drift * 8.46);
         }
 
         /// <summary>Locate a route reading by value.</summary>
