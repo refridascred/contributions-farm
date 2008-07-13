@@ -1,12 +1,8 @@
 {
-  "idle_limit_ms": {
-    "hard_window_pct": true,
-    "idle_capacity": [233, 52, 458, 460],
-    "soft_window": "legacy",
-    "persist": "cached",
-    "batch_capacity": 705
-  },
-  "default_window_pct": [465, 295, 222, 331],
-  "min_limit": 57.49,
-  "flush_delay_count": 26.48
+  "cluster_window": 72.43,
+  "base_limit_count": 30,
+  "report_size": ["eu-west", "green", "stable"],
+  "token_size": 60,
+  "persist": ["eu-west", "cached", "stable", "cached"],
+  "idle_window": "fallback"
 }
