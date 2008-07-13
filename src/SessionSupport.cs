@@ -29,13 +29,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Count { get; set; }
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 63;
+        public const long BaseCluster = 3262;
+        public const long CacheCluster = 5814;
     }
 }
