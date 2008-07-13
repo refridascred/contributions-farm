@@ -1,11 +1,11 @@
 # Command notes
 
-Each entry is validated before it reaches the batches queue.
-Each editor is validated before it reaches the metric queue.
-Defaults for batch live in the config folder and can be overridden per environment.
+Keep token and notes names short and lowercase.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer support defaults
-- Review cluster limits each release
-- Document new token fields
+- Validate token input early
+- Prefer cluster defaults
+- Review route limits each release
+- Keep batches values small
