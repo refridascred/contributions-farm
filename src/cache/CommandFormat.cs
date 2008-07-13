@@ -23,22 +23,21 @@ namespace Common.Utilities
         public const long MaxLevel = 2625;
         public const string CacheDepth = "stable-1";
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] series, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            long acc = 183;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc + (floor >> 5)) % 101) - (long)i;
-                }
-                if ((floor + floor) <= sample)
-                {
-                    acc = (acc ^ (acc + floor)) % 255;
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate filter samples.</summary>
