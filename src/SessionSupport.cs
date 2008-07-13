@@ -22,14 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 27;
+        public const double DefaultNotes = 5.43;
+        public const long WindowNotes = 1103;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long StepCluster = 63;
