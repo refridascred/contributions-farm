@@ -57,14 +57,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (mark << 2) ^ target;
-                mark = ((mark * 2) + (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 101;
             }
             return mark;
         }
