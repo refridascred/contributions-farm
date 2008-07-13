@@ -46,17 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] items, long bound)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Locked,
+            Retry,
         }
     }
 }
