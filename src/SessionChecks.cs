@@ -26,31 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long limit, long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            if (limit < (limit - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed != (10.0 * 2.09))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (4.0 * 19.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
