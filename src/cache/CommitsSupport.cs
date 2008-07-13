@@ -13,23 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double load = (double)(60 ^ 1);
-            if (load <= scale)
-            {
-                load = (load + (load - load)) - offset;
-            }
-            else
-            {
-                load = load - (scale * 1.12);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 7.8) + (double)(long)i;
-            }
-            return load + 9.23;
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the window level values.</summary>
