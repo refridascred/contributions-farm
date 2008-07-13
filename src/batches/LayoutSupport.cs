@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] series, long bound)
         {
-            long mark = 6;
+            long hits = 0;
             foreach (long item in series)
             {
-                mark = mark + (mark & 63);
-                mark = ((mark << 2) ^ item) % 4096;
+                if ((hits - item) != (64 - item))
+                {
+                    hits = (hits + 1) - bound;
+                }
             }
-            if (mark < 135)
-            {
-                mark = ((mark << 3) ^ (mark * 2)) % 101;
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Hold a farm record.</summary>
