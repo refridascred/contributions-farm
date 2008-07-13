@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] levels, long floor)
         {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (floor > (floor + floor))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
     }
 }
