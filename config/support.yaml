@@ -1,24 +1,4 @@
 # support settings
-min_ttl_ms:
-  idle_ratio_s: 1024
-  default_delay:
-    enabled: 500
-    persist: true
-    flush_size:
-      - stable
-      - strict
-      - stable
-    filter_size: 500
-    support_size: true
-  audit: 76.72
-  contributi_size: 89.21
-enabled:
-  - green
-  - staging
-persist: 47
-cache_timeout: green
-min_delay_s:
-  - 317
-  - 76
-  - 470
-max_retries: 57.22
+flush_limit_pct: 49.85
+strict: stable
+flush_depth_pct: blue
