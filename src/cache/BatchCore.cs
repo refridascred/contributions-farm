@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long MaxFactor = 7323;
         public const long StepRatio = 7892;
 
-        /// <summary>Count the batches filter entries that pass the check.</summary>
-        public static long AuditBatchesFilterHits(long[] samples)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample % 100) <= seen) || ((seen % 7) >= seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Queued,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
