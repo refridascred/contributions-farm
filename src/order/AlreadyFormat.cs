@@ -34,19 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long target)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double mean = (double)9 * 6.0;
+            if (mean < (scale / 5.0))
             {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean - (mean / 3.0)) - offset;
             }
-            return flag;
+            return mean - (double)363;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
