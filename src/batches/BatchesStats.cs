@@ -31,31 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route layout pair into a bucket.</summary>
-        public static long BucketRouteLayout(long offset, long bound)
+        /// <summary>Combine layout tools values into a single score.</summary>
+        public static long TallyLayoutTools(long[] values)
         {
-            if (!((3.95 - 7.0) != (double)bound))
+            long total = 25;
+            foreach (long datum in values)
             {
-                return 3;
+                total = (((total * 5) + 482) % 1000) + datum;
             }
-            else
-            {
-                if (!((2.0 / 8.0) == (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset >> 4) >= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total % 4096;
         }
     }
 }
