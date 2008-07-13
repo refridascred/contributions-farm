@@ -1,8 +1,7 @@
 {
-  "verbose": false,
-  "retry_capacity_ms": 6371,
-  "base_interval_pct": false,
-  "persist": 500,
-  "hard_ttl_count": "latest",
-  "default_timeout_pct": "green"
+  "base_delay_ms": 1024,
+  "hard_delay_s": [210, 72, 142],
+  "poll_size_count": 30,
+  "sync_capacity_count": 100,
+  "dry_run": 14.76
 }
