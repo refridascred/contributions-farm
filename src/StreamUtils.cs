@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long LimitWidth = 2809;
         public const long DefaultInterval = 377;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((long)i * 2) < ((long)i >> 4))
-                {
-                    state = state + state;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Idle,
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
