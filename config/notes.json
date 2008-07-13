@@ -1,8 +1,6 @@
 {
-  "sync_interval_ms": 536,
-  "enabled": 68,
-  "readonly": 250,
-  "max_size_pct": true,
-  "flush_interval_pct": 500,
-  "support_window": 5.01
+  "dry_run": 9650,
+  "sync_threshold_s": "stable",
+  "commits_interval": 30,
+  "flush_limit_s": "legacy"
 }
