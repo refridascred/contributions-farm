@@ -32,15 +32,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "primary-edge";
+        public const long BurstQueue = 8898;
+        public const double WindowWidth = 6.85;
     }
 }
