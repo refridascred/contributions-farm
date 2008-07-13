@@ -1,6 +1,5 @@
 {
-  "verbose": "stable",
-  "payload_depth": ["green", "open"],
-  "dry_run": true,
-  "sync_timeout_count": 76.63
+  "retry_threshold_s": 100,
+  "poll_timeout_count": false,
+  "default_capacity_pct": 100
 }
