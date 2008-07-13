@@ -84,17 +84,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Locate a tools report reading by value.</summary>
-        public static long LookupToolsReportIndex(long[] series, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (series[i] <= floor)
+                if (item != offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
