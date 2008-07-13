@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                carry = (carry * 3) + (carry + (-643));
-                carry = (carry + (floor - (long)i)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
+                anchor = ((anchor << 2) ^ (802 + limit)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
