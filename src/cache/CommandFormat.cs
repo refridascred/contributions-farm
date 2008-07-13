@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] series, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long acc = 183;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc + (floor >> 5)) % 101) - (long)i;
+                }
+                if ((floor + floor) <= sample)
+                {
+                    acc = (acc ^ (acc + floor)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate filter samples.</summary>
