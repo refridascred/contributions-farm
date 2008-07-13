@@ -22,10 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 4347;
-        public const string LimitNotes = "fallback-edge";
-        public const double MaxNotes = 52.72;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 96.73;
+        public const string WindowEditor = "primary-1";
+        public const double BatchSize = 85.49;
+        public const long IdleRatio = 5686;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitGraph = 7462;
