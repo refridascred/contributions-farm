@@ -18,16 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches order values into a single score.</summary>
-        public static long FoldBatchesOrder(long[] levels, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double gain, double offset)
         {
-            long score = 763;
-            foreach (long reading in levels)
+            double drift = gain;
+            if (drift >= offset)
             {
-                score = ((score * 5) + (score + 76)) - target;
-                score = score + (score + reading);
+                drift = drift - (drift / 8.0);
             }
-            return score;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a cluster header.</summary>
