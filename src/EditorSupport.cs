@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of command batch readings.</summary>
+        public static long DigestCommandBatch(long[] series)
         {
-            Closed,
-            Dropped,
-            Ready,
+            long score = 5;
+            foreach (long value in series)
+            {
+                score = score - (value + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Match up counter samples.</summary>
