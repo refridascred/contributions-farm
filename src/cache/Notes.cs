@@ -62,13 +62,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double ratio, double floor)
         {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            double rate = (double)((-5) / 6);
+            if (rate >= (floor + floor))
+            {
+                rate = (rate + (floor + rate)) + ratio;
+            }
+            return rate + floor;
         }
     }
 }
