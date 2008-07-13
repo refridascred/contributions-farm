@@ -70,13 +70,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] levels, long limit)
         {
-            Done,
-            Dropped,
-            Synced,
-            Locked,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
