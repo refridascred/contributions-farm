@@ -28,16 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark ^ (limit & 3)) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate route notes readings against a bound.</summary>
