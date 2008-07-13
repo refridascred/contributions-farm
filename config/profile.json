@@ -1,7 +1,13 @@
 {
-  "sync_retries_count": "green",
-  "stream_interval": 8.92,
-  "batch_timeout_count": 83,
-  "sync_limit_count": 9510,
-  "hard_interval_pct": 87.37
+  "window_size": [432, 32],
+  "account_interval": {
+    "flush_window": {
+      "persist": 6563,
+      "poll_limit_s": "stable",
+      "default_retries": [221, 373, 429, 454]
+    },
+    "base_depth": "green",
+    "base_capacity_s": "primary"
+  },
+  "verbose": "local"
 }
