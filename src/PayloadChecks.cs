@@ -13,14 +13,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Active,
-            Dropped,
-            Done,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "primary-v2";
+        public const long BurstRatio = 5124;
+        public const long WindowGithubfarm = 4715;
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
