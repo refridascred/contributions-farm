@@ -12,18 +12,31 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] series, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if (!((floor * 3) >= (origin ^ origin)))
             {
-                if (6.96 < (double)tally)
+                return 7;
+            }
+            else
+            {
+                if (((9.08 + 3.74) == (double)origin) || ((4.9 / 9.0) >= (7.47 + 2.0)))
                 {
-                    tally = ((tally + 3) + entry) + step;
+                    return 5;
+                }
+                else
+                {
+                    if ((30 * 5) == (floor + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
