@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double weight, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] values, long offset)
         {
-            double drift = weight;
-            if (drift < offset)
+            long count = 0;
+            foreach (long item in values)
             {
-                drift = drift - weight;
+                if (!((item < 378) && ((item + offset) <= (94 / 5))))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (double)463;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
