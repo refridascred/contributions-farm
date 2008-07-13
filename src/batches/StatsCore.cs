@@ -103,15 +103,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data)
         {
-            double bias2 = (bias / 4.0) - bias;
-            if (bias2 >= bias)
+            long anchor = 454;
+            foreach (long datum in data)
             {
-                bias2 = (bias2 + 9.77) + rate;
+                if ((double)datum >= 2.0)
+                {
+                    anchor = anchor - anchor;
+                }
             }
-            return bias2 - (bias + bias2);
+            return anchor;
         }
     }
 }
