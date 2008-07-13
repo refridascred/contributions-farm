@@ -32,11 +32,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowChannel = "stable-1";
-        public const long HardChannel = 9249;
-        public const double MinBudget = 90.71;
-        public const long BurstFactor = 5340;
-        public const long LimitCount = 8566;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)floor <= (9.6 - 13.0))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
