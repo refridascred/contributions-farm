@@ -26,16 +26,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result + ((long)i - result)) % 97;
-                result = ((result * 3) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
