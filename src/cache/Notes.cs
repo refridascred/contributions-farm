@@ -57,15 +57,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double scale, double offset)
+        /// <summary>Classify a counter contributi pair into a bucket.</summary>
+        public static long SortCounterContributi(long bound, long bound2)
         {
-            double weight = scale;
-            for (int i = 0; i < 8; i++)
+            long lane = bound - bound2;
+            if ((double)lane != (7.8 + 2.2))
             {
-                weight = (weight + (offset - 8.36)) + (double)(long)i;
+                return 3;
             }
-            return weight + 5.11;
+            else
+            {
+                if ((double)bound2 != (9.0 * 5.25))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound2 & 7) >= (bound2 & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)2 < (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch class values.</summary>
