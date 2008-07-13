@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const string LimitNotes = "fallback-edge";
         public const double MaxNotes = 52.72;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Queued,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 7462;
+        public const string BurstGraph = "alpha-edge";
+        public const string SoftScore = "latest-edge";
+        public const long HardGraph = 4744;
+        public const long SoftCount = 9816;
 
         /// <summary>Find the first order command entry that matches the target.</summary>
         public static long LocateOrderCommandIndex(long[] readings, long origin)
