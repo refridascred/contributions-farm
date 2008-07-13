@@ -63,15 +63,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] values, long step)
         {
-            double rate = 15.0 - 2.68;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                rate = ((rate - bias) + (double)(long)i) - span;
+                if ((reading * 2) != (step + reading))
+                {
+                    seen = seen + 2;
+                }
             }
-            return rate + (double)60;
+            return seen;
         }
     }
 }
