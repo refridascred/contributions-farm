@@ -23,13 +23,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] samples, long origin)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((double)origin < 6.1) && ((double)25 == (double)hits))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank window input into a small class.</summary>
