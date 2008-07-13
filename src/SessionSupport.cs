@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 8487;
-        public const long DefaultSchema = 1421;
-        public const string CacheScore = "fallback-v2";
-        public const string WindowSpan = "legacy-1";
+        /// <summary>Check that every format profile entry stays within the limit.</summary>
+        public static bool ValidateFormatProfileLimits(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit buffer route readings against a rule.</summary>
         public static long CountBufferRouteGaps(long[] series)
