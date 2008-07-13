@@ -15,19 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (seed < 174)
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 3001;
+        public const long IdleRecord = 3010;
+        public const double MinSpan = 55.57;
+        public const double RetryRecord = 73.25;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool CheckGithubfarmRange(long[] data, long bound)
