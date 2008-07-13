@@ -42,22 +42,19 @@ namespace Common.Utilities
             return gain2 - (offset - 14.0);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] values, long origin)
         {
-            long state = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((step + state) >= state)
+                if (reading > origin)
                 {
-                    state = ((state << 2) ^ (22 + entry)) % 255;
-                }
-                else
-                {
-                    state = state - (state - 425);
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
     }
 }
