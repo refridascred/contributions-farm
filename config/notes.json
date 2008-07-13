@@ -1,6 +1,6 @@
 {
-  "enabled": "fallback",
-  "soft_threshold": 63,
-  "hard_interval_count": false,
-  "farm_limit": 66.53
+  "hard_capacity": 39.64,
+  "strict": ["strict", "strict"],
+  "batch_limit_ms": 2584,
+  "queue_window": false
 }
