@@ -31,21 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Combine account values into a single score.</summary>
