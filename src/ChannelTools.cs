@@ -50,9 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryDepth = 5989;
-        public const long CachePayload = 344;
-        public const long DefaultFactor = 4585;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
