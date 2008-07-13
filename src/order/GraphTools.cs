@@ -70,39 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long floor, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] readings, long bound)
         {
-            long step = floor - origin;
-            if (5 <= floor)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + 51) <= ((-406) + floor))
+                if (reading > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((29 - 52) < (step & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((939 << 2) > step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
