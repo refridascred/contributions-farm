@@ -39,19 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double gain, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] data)
         {
-            double drift = offset;
-            if (drift > offset)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                drift = (drift + drift) - gain;
+                if (((7.95 - 6.3) >= (double)tally) || ((datum ^ tally) < tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            return drift - (drift * 8.46);
+            return tally;
         }
 
         /// <summary>Locate a route reading by value.</summary>
