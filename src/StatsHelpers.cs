@@ -45,19 +45,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] data, long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
