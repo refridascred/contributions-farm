@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Paused,
-            Idle,
-            Draft,
-            Failed,
-            Closed,
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
