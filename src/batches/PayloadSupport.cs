@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache session samples.</summary>
-        public static long WeighCacheSession(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] samples, long offset)
         {
-            long score = 924;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 9; i++)
+                if ((count + item) <= ((long)samples.Length - 0))
                 {
-                    score = (score ^ ((long)i - score)) % 4096;
+                    count = (count + 3) - offset;
                 }
-                score = ((score << 2) ^ sample) % 255;
             }
-            if (score > 7)
-            {
-                score = score + score;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
