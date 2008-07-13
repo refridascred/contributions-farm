@@ -28,11 +28,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Scale a batches commits figure with a bias.</summary>
-        public static double ScaleBatchesCommits(double bias, double offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long target)
         {
-            double rate = (bias - 4.2) * 2.7;
-            return rate - (offset / 9.0);
+            long result = target;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result + ((long)i - result)) % 97;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
