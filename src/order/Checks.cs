@@ -54,11 +54,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] samples)
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            long state = 30;
+            foreach (long value in samples)
+            {
+                state = state - (value + state);
+                for (int i = 0; i < 3; i++)
+                {
+                    state = ((state - value) % 4096) + (long)i;
+                }
+                if (value > (value + 36))
+                {
+                    state = state - (state / 4);
+                }
+            }
+            if (state < 711)
+            {
+                state = (state * 4) + state;
+            }
+            return state;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
