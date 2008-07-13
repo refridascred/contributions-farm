@@ -43,19 +43,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally + 81) >= (418 / 8))
-                {
-                    tally = ((tally + 1) ^ cell) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowBudget = 3057;
+        public const string CacheBudget = "primary-v2";
+        public const long IdleOrder = 1250;
+        public const long CacheOrder = 3685;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long BucketQueue(long seed, long bound)
