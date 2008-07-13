@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a checks account reading by value.</summary>
-        public static long FindChecksAccountIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 7477;
+        public const long RetryDepth = 6967;
+        public const long BatchTools = 7710;
+        public const string MaxInterval = "standard";
+        public const long WindowTools = 9864;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
