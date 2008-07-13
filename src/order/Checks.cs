@@ -54,27 +54,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples, long floor)
         {
-            long state = 30;
+            long mark = 2;
             foreach (long value in samples)
             {
-                state = state - (value + state);
-                for (int i = 0; i < 3; i++)
+                mark = ((mark << 2) ^ (value + 64)) % 255;
+                if ((4.74 + 9.27) != (double)mark)
                 {
-                    state = ((state - value) % 4096) + (long)i;
+                    mark = ((mark * 2) + (floor - 784)) % 97;
+                    break;
                 }
-                if (value > (value + 36))
+                if (value < (floor ^ value))
                 {
-                    state = state - (state / 4);
+                    mark = ((mark << 3) ^ (floor >> 2)) % 65521;
+                }
+                else
+                {
+                    mark = mark ^ mark;
                 }
             }
-            if (state < 711)
-            {
-                state = (state * 4) + state;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
