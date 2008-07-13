@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next stream stats value from a seed.</summary>
-        public static long DeriveStreamStats(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                result = result ^ origin;
-                result = (result * 4) + (origin >> 2);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepCount = 4418;
+        public const string WindowNotes = "latest-edge";
+        public const long IdleCount = 5308;
+        public const long BaseDepth = 6289;
+        public const double MinNotes = 41.34;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long ClassifyEntry(long origin, long offset)
