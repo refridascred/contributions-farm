@@ -38,18 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor cache samples are out of range.</summary>
-        public static long CountEditorCacheHits(long[] readings, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (datum > 1)
+                if (377 > datum)
                 {
-                    tally = (tally + 1) - floor;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
