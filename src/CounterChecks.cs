@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every window session entry stays within the limit.</summary>
-        public static bool VerifyWindowSessionLimits(long[] items, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (reading >= origin)
+                if (datum < target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
