@@ -14,22 +14,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long AuditCacheTokenGaps(long[] series, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long limit, long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if ((double)limit > 4.4)
             {
-                if ((entry ^ entry) <= entry)
+                return 0;
+            }
+            else
+            {
+                if ((double)step == (1.74 + 18.0))
                 {
-                    matches = (matches + 3) - limit;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((limit >> 4) >= 9)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a metric session figure with a bias.</summary>
