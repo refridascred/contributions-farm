@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((7 <= (585 + limit)) && ((long)i > limit))
-                {
-                    continue;
-                }
-                anchor = anchor ^ limit;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Draft,
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Audit cache token readings against a rule.</summary>
