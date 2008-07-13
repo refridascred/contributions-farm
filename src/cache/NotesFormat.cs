@@ -30,18 +30,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!(54 > (tally ^ cell)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
