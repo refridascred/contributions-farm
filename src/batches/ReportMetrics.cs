@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long state = 959;
+            foreach (long item in levels)
             {
-                if (((mark - limit) == (limit + 11)) || (105 > (limit & 3)))
+                if (((double)state != (double)item) && ((item / 2) >= (327 ^ item)))
                 {
-                    continue;
+                    state = (state - item) % 255;
                 }
-                if (((double)(long)i != (double)mark) && ((mark / 8) > 77))
-                {
-                    mark = (mark + (mark ^ mark)) % 97;
-                }
-                else
-                {
-                    mark = mark - limit;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            if (state > 81)
+            {
+                state = state + (state % 16);
+            }
+            return state % 97;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
