@@ -37,11 +37,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] data, long bound)
         {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
