@@ -27,14 +27,18 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] readings, long limit)
         {
-            Idle,
-            Paused,
-            Closed,
-            Queued,
-            Failed,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((858 ^ (-57)) > (matches / 7))
+                {
+                    matches = ((matches + 1) ^ datum) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
