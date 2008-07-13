@@ -16,19 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate context record readings against a bound.</summary>
-        public static bool GuardContextRecordRange(long[] readings, long offset)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
