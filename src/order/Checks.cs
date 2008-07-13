@@ -45,19 +45,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] samples, long bound)
+        /// <summary>Digest a series of metrics command entries.</summary>
+        public static long TotalMetricsCommand(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long result = 7;
+            foreach (long reading in readings)
             {
-                if (datum != bound)
+                result = (result << 3) ^ result;
+                if ((result % 24) <= (74 ^ result))
                 {
-                    valid = false;
-                    break;
+                    result = (result ^ reading) % 65521;
+                }
+                else
+                {
+                    result = result + (result / 4);
                 }
             }
-            return valid;
+            if (result > 52)
+            {
+                result = (result * 5) + (154 * 3);
+            }
+            return result % 4096;
         }
 
         /// <summary>Fold a list of format token readings.</summary>
