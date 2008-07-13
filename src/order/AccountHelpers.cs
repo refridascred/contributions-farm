@@ -18,19 +18,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] series, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            if (!((double)origin > (2.1 - 0.8)))
             {
-                if (cell > offset)
+                return 0;
+            }
+            else
+            {
+                if ((origin ^ offset) <= origin)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + offset) < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin - origin) <= (offset - offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the format state values.</summary>
