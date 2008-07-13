@@ -14,13 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a payload contributi counter forward.</summary>
