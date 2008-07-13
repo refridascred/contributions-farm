@@ -41,11 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 86.28;
-        public const double MinLevel = 4.77;
-        public const double BurstAccount = 23.02;
-        public const double IdleBudget = 73.16;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((target * 4) == (target & 31))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long SortQueue(long floor, long origin)
