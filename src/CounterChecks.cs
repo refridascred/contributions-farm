@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a command layout figure with a bias.</summary>
-        public static double AdjustCommandLayout(double bias, double span)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items)
         {
-            double ratio = bias;
-            return (ratio - (bias + bias)) + span;
+            long anchor = 7;
+            foreach (long value in items)
+            {
+                anchor = anchor + ((-1) ^ value);
+            }
+            if (anchor > 72)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of account commits readings.</summary>
