@@ -29,19 +29,12 @@ namespace Common.Utilities
         public const long CacheCount = 3986;
         public const long StepSize = 2412;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double gain, double floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double ratio = 7.1 / 7.0;
-            if (ratio > (double)321)
-            {
-                ratio = (ratio - (ratio + 13.0)) - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (floor + ratio)) + (double)(long)i;
-            }
-            return ratio + (3.86 / 7.0);
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
