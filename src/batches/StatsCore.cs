@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const long StepStream = 8056;
         public const string CacheStream = "stable";
 
-        /// <summary>Audit account token readings against a rule.</summary>
-        public static long TallyAccountTokenHits(long[] items)
+        /// <summary>Scale a metrics layout figure with a bias.</summary>
+        public static double SmoothMetricsLayout(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double weight = 4.0 * 7.5;
+            if (weight <= (gain + gain))
             {
-                if ((item & 1) == (hits >> 3))
-                {
-                    hits = hits + 1;
-                }
+                weight = weight - (weight - gain);
             }
-            return hits;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - floor;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
