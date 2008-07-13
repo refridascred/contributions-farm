@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks counter readings against a bound.</summary>
-        public static bool GuardChecksCounterLimits(long[] items, long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
