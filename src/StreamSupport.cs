@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultSize = 1516;
-        public const long RetryContext = 8868;
-        public const long IdleContext = 6733;
-        public const long StepContext = 4580;
-        public const string WindowInterval = "standard-1";
+        /// <summary>Iterate the counter contributi series from a seed.</summary>
+        public static long SeriesCounterContributi(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = (mark + 947) % 97;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
