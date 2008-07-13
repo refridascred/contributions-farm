@@ -19,27 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] levels, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long bound, long limit)
         {
-            long mix = 664;
-            foreach (long value in levels)
+            long cur = bound + limit;
+            if ((3.2 + 2.0) == (double)cur)
             {
-                mix = (mix ^ (mix + bound)) - value;
-                if ((43 ^ bound) <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((((-106) % 97) <= (bound * 3)) || ((limit + limit) > (bound + cur)))
                 {
-                    mix = (mix + (mix - 995)) % 97;
+                    return 4;
                 }
-                if ((double)bound <= (2.47 - 18.0))
+                else
                 {
-                    mix = mix - mix;
+                    if ((0.1 + 13.0) == (double)cur)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((16.0 * 19.0) > (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mix > 993)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Hold a route entry.</summary>
