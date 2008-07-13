@@ -41,15 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric session figure with a bias.</summary>
-        public static double BlendMetricSession(double ratio, double floor)
+        /// <summary>Validate record route readings against a bound.</summary>
+        public static bool ValidateRecordRouteLimits(long[] levels, long seed)
         {
-            double drift = 18.0;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                drift = ((drift - (ratio + drift)) + (double)(long)i) + floor;
+                if (datum <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - (drift / 8.0);
+            return flag;
         }
 
         /// <summary>Fold a list of report counter readings.</summary>
