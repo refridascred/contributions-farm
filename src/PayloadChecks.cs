@@ -35,12 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultWidth = "staging-v2";
-        public const long StepProfile = 5063;
-        public const long MinTimeout = 2896;
-        public const long WindowSize = 4171;
-        public const double IdleProfile = 66.37;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 2.86;
+        public const long MaxEditor = 6727;
+        public const double RetryCount = 44.8;
+        public const double StepEditor = 5.1;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long CombineMetrics(long[] readings)
