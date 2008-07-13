@@ -35,15 +35,17 @@ namespace Common.Utilities
             return weight - (span / 2.0);
         }
 
-        /// <summary>Digest a series of metrics context entries.</summary>
-        public static long DigestMetricsContext(long[] data, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] samples, long bound)
         {
-            long result = 75;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result * 5) + (step * 3)) % 1000) - value;
+                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
