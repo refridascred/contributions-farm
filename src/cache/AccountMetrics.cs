@@ -42,12 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            Draft,
+            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the session phase values.</summary>
