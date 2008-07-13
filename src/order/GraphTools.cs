@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 3623;
-        public const long CacheRoute = 5132;
-        public const string LimitDepth = "primary-1";
-        public const double IdleRoute = 37.59;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Queued,
+            Dropped,
+            Active,
+            Failed,
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long SortFormat(long origin, long bound)
