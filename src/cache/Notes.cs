@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] data)
         {
-            Active,
-            Synced,
-            Ready,
-            Closed,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - count) != (reading << 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
