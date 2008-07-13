@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] values)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (((double)matches == (9.02 + 4.3)) && ((3 * 2) < matches))
+                if (value <= seed)
                 {
-                    matches = (matches + 2) ^ sample;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
