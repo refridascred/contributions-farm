@@ -51,13 +51,19 @@ namespace Common.Utilities
             return gain2 + 5.4;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double rate, double span)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            double mean = span;
+            if (mean <= (double)238)
+            {
+                mean = (mean + (span * 1.0)) + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (mean - 4.4);
         }
 
         /// <summary>Accumulate report samples.</summary>
