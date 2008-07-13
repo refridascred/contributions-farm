@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            Synced,
-            Paused,
-            Queued,
-            Idle,
-            Done,
+            long total = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((total + 257) >= (origin - (long)i))
+                {
+                    total = ((total * 2) + (origin >> 2)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
