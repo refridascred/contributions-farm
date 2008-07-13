@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] data, long bound)
-        {
-            long mark = 79;
-            foreach (long item in data)
-            {
-                if ((item * 3) < (bound - item))
-                {
-                    mark = (mark * 2) + (bound % 60);
-                }
-                else
-                {
-                    mark = (mark ^ (item - bound)) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstWidth = "strict-edge";
+        public const long DefaultReport = 7281;
+        public const double BurstSpan = 38.38;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheHits(long[] series)
