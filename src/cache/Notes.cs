@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] values, long target)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public double Offset { get; set; }
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up cluster samples.</summary>
