@@ -1,21 +1,8 @@
 # githubfarm settings
-dry_run:
-  retry_limit_count: latest
-  base_depth_s:
-    compress: 250
-    hard_limit_s: 1024
-    batch_ratio_pct: cached
-    cluster_window: 38.5
-  token_size: false
-  hard_window: stable
-  burst_window_count: true
-  channel_limit: 46
-cache_capacity_pct:
-  - 171
-  - 164
-  - 154
-  - 65
-max_interval_pct: edge
-account_capacity: 62.61
-default_ratio_count: 7476
-max_size_s: 60
+max_interval_s:
+  - 225
+  - 432
+  - 200
+poll_depth_count: 2023
+base_limit_ms: 1024
+support_ratio: false
