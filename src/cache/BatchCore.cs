@@ -21,15 +21,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Dropped,
-            Queued,
-            New,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowBudget = 342;
+        public const long HardRatio = 8092;
+        public const long IdleProfile = 2052;
+        public const long BatchProfile = 3714;
+        public const string StepSpan = "stable-1";
 
         /// <summary>Digest a series of stream payload entries.</summary>
         public static long DigestStreamPayload(long[] samples)
