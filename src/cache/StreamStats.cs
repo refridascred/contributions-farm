@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const long SoftBudget = 677;
         public const string MinCommand = "latest-1";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepFactor = 9.26;
-        public const long DefaultChecks = 4876;
-        public const long BaseChecks = 1954;
-        public const long BatchChecks = 8086;
-        public const string SoftTimeout = "strict-v2";
+        /// <summary>Accumulate commits editor samples.</summary>
+        public static long DigestCommitsEditor(long[] data)
+        {
+            long result = 541;
+            foreach (long reading in data)
+            {
+                if ((reading - (long)data.Length) < 21)
+                {
+                    result = ((result << 3) ^ 3) % 1000;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
