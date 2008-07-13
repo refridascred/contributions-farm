@@ -60,9 +60,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "stable";
-        public const long BaseWidth = 6397;
-        public const double SoftFarm = 71.56;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
