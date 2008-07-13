@@ -1,6 +1,12 @@
 {
-  "batch_window_ms": [404, 68],
-  "poll_window_ms": "legacy",
-  "soft_ttl": 76,
-  "audit": 40
+  "poll_retries_s": 250,
+  "batch_size_count": 68.0,
+  "readonly": 30,
+  "token_retries": {
+    "dry_run": "fallback",
+    "burst_threshold_pct": [73, 166, 222],
+    "audit": 44,
+    "readonly": 5
+  },
+  "strict": 19
 }
