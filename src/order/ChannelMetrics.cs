@@ -31,9 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftDepth = 2056;
-        public const long IdleWidth = 8750;
-        public const long StepDepth = 1289;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySession = "standard-v2";
+        public const string CacheSession = "open-1";
+        public const string WindowSession = "strict-v2";
+        public const long IdleDepth = 6194;
     }
 }
