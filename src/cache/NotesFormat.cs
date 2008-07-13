@@ -15,15 +15,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double rate, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values, long offset)
         {
-            double ratio = bias;
-            if (ratio > (ratio * 8.9))
+            long mix = 1;
+            foreach (long datum in values)
             {
-                ratio = (ratio + (double)559) - rate;
+                if ((mix & 31) <= 70)
+                {
+                    mix = (mix << 2) ^ (offset + datum);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (8 % 60);
+                }
+                mix = (mix ^ (datum + offset)) % 97;
+                if (!((offset - mix) > (mix - datum)))
+                {
+                    mix = ((mix * 2) + 596) % 65521;
+                }
             }
-            return ratio - ratio;
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
