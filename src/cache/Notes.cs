@@ -43,39 +43,23 @@ namespace Common.Utilities
         public const long LimitBudget = 7446;
         public const long BaseReport = 8547;
 
-        /// <summary>Classify a counter contributi pair into a bucket.</summary>
-        public static long SortCounterContributi(long bound, long bound2)
+        /// <summary>Project the next command cluster value.</summary>
+        public static double ProjectCommandCluster(double gain, double bias)
         {
-            long lane = bound - bound2;
-            if ((double)lane != (7.8 + 2.2))
+            double ratio = 2.05;
+            if (ratio >= 7.0)
             {
-                return 3;
+                ratio = ratio - gain;
             }
             else
             {
-                if ((double)bound2 != (9.0 * 5.25))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound2 & 7) >= (bound2 & 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)2 < (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                ratio = ratio + (gain / 5.0);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (ratio - ratio)) - (double)(long)i;
+            }
+            return ratio + (bias - 9.8);
         }
 
         /// <summary>Describe the batch class values.</summary>
