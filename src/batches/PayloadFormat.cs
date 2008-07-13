@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] readings, long offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!(((offset >> 4) <= (65 - 0)) && ((double)offset == (double)item)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
