@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Failed,
-            Active,
-            Paused,
+            Done,
+            Queued,
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
