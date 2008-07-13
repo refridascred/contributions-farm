@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes editor pairs that satisfy a relation.</summary>
-        public static long OverlapNotesEditorCount(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -256;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = ((mix * 5) + (datum ^ mix)) % 65521;
+                if (datum >= ((-396) & 31))
                 {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Scale a metrics layout figure with a bias.</summary>
