@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total << 2) ^ (total - bound);
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 4233;
+        public const string BaseSupport = "cached";
+        public const string IdleSupport = "local-edge";
+        public const long DefaultFactor = 4010;
+        public const long WindowCount = 6337;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
