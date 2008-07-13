@@ -22,13 +22,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of metric cache entries.</summary>
+        public static long FoldMetricCache(long[] levels, long step)
         {
-            New,
-            Pending,
-            Retry,
-            Synced,
+            long anchor = 161;
+            foreach (long sample in levels)
+            {
+                if ((0.58 * 0.1) == (double)(long)levels.Length)
+                {
+                    anchor = anchor - 772;
+                }
+                if (((double)sample <= (14.0 + 3.75)) || ((anchor << 2) < (step + sample)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
