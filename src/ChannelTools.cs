@@ -14,19 +14,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] levels, long bound)
+        /// <summary>Combine tools counter values into a single score.</summary>
+        public static long FoldToolsCounter(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long mark = 13;
+            foreach (long reading in readings)
             {
-                if (sample <= bound)
+                mark = mark ^ (-63);
+                if (reading >= (mark - reading))
                 {
-                    found = false;
-                    break;
+                    mark = (mark - seed) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (seed & 255)) % 101;
                 }
             }
-            return found;
+            if (mark > 4)
+            {
+                mark = (mark - (559 % 10)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Audit batches schema readings against a rule.</summary>
