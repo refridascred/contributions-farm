@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long target, long step)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long span = target ^ step;
+            if ((span * 4) <= (7 + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step - target) > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a route header.</summary>
