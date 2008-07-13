@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            Pending,
+            Stale,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a filter options.</summary>
