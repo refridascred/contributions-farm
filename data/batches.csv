@@ -1,6 +1,8 @@
-id,active,level,owner,score
-1,latest,80.35,229,512
-2,38,22.19,49.63,717
-3,304,836,4.45,794
-4,115,319,449,673
-5,725,82.96,2.53,720
+id,ratio,region,count,weight
+1,59.38,49.04,latest,980
+2,681,554,cached,700
+3,latest,edge,open,874
+4,434,318,54.25,stable
+5,edge,82.79,71.62,39.27
+6,638,45.5,90.58,eu-west
+7,23.98,eu-west,eu-west,primary
