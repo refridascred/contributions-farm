@@ -14,12 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardBudget = 42.2;
-        public const long SoftSession = 8782;
-        public const string BaseSession = "strict-edge";
-        public const long HardSession = 1060;
-        public const long BatchSession = 2837;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public long Count { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
