@@ -10,12 +10,31 @@ namespace Common.Utilities
         public const long BatchOrder = 5921;
         public const string StepSize = "staging";
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long bound, long bound2)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            if (!(4 < (bound2 + bound2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound2 / 9) < (bound << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((bound2 + bound2) <= (bound2 >> 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metrics profile value against two limits.</summary>
