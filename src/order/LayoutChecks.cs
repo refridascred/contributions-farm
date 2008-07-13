@@ -15,17 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] readings, long bound)
+        /// <summary>Audit batch layout readings against a rule.</summary>
+        public static long AuditBatchLayoutGaps(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (readings[i] == bound)
+                if ((count * 2) < datum)
                 {
-                    return (long)i;
+                    count = (count + 3) + limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a counter cluster value against two limits.</summary>
