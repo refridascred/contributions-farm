@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long acc = -803;
-            foreach (long item in levels)
-            {
-                if (item <= (item & 1))
-                {
-                    acc = (acc << 3) ^ 0;
-                }
-            }
-            return acc;
+            Synced,
+            Paused,
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
