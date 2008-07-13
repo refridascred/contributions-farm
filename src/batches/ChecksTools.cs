@@ -49,19 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double weight, double bias)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] values, long seed)
         {
-            double load = (weight / 9.0) - bias;
-            if (load < (weight + bias))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (double)6;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - 6.5) + (double)(long)i;
-            }
-            return load - (6.0 / 8.0);
+            return -1;
         }
     }
 }
