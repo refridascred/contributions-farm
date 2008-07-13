@@ -61,19 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report session entry stays within the limit.</summary>
-        public static bool ValidateReportSessionRange(long[] items, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (item >= bound)
+                if ((double)seen < (double)floor)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
