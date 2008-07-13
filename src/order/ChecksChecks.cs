@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const double MinSpan = 55.57;
         public const double RetryRecord = 73.25;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] data, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
