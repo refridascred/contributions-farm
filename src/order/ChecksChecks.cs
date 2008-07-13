@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the batches account entries that pass the check.</summary>
-        public static long MeasureBatchesAccountMatches(long[] samples, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((5 - step) < count)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
