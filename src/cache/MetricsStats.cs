@@ -27,13 +27,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
             public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public double Label { get; set; }
         }
 
         /// <summary>Hold a filter header.</summary>
