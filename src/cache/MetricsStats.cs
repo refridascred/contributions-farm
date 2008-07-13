@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long state = 6;
-            foreach (long reading in values)
-            {
-                if ((state * 4) >= (2 / 6))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = state - reading;
-                }
-                if ((double)381 == (double)state)
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Paused,
+            Active,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a batches record.</summary>
