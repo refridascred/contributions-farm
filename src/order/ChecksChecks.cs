@@ -19,18 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Audit layout buffer readings against a rule.</summary>
+        public static long AuditLayoutBufferMatches(long[] samples, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)hits >= 6.5)
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 3) ^ cell) - limit;
                 }
             }
             return hits;
