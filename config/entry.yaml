@@ -1,4 +1,10 @@
 # entry settings
-readonly: 41
-stats_threshold: 60
-retry_size_s: cached
+warm_capacity_count: open
+max_interval_s: latest
+retry_retries:
+  - 391
+  - 422
+burst_capacity_ms: 14
+payload_capacity:
+  - 402
+  - 87
