@@ -12,10 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheWidth = 5339;
-        public const long MaxProfile = 9949;
-        public const long StepScore = 7599;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)bound > 18.0)
+                {
+                    count = (count + 3) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] values)
