@@ -53,15 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double weight, double bias)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] values, long offset)
         {
-            double drift = bias - (double)999;
-            for (int i = 0; i < 5; i++)
+            long result = 30;
+            foreach (long entry in values)
             {
-                drift = ((drift - bias) + (double)(long)i) + weight;
+                result = (result + (offset ^ (long)values.Length)) % 255;
+                result = ((result * 2) + entry) % 97;
             }
-            return drift - (drift - drift);
+            return result;
         }
 
         /// <summary>Digest a series of command entries.</summary>
