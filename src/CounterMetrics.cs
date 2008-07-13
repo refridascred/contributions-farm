@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWidth = 4888;
-        public const long SoftWindow = 3698;
-        public const long WindowTimeout = 5445;
-        public const long MaxInterval = 3167;
-        public const long LimitSize = 9365;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine entry profile values into a single score.</summary>
         public static long TallyEntryProfile(long[] values, long limit)
