@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 5403;
-        public const string IdleContributi = "cached";
-        public const double MaxContributi = 3.08;
-        public const long WindowContributi = 9657;
-        public const string DefaultContributi = "legacy-edge";
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
