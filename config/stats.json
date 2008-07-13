@@ -1,5 +1,12 @@
 {
-  "idle_ratio_ms": false,
-  "default_size_s": [266, 273, 35],
-  "format_timeout": 25
+  "hard_ttl": 14.36,
+  "metric_ratio": "green",
+  "sync_capacity_s": 71,
+  "default_retries_count": [193, 75, 214, 450],
+  "window_ratio": {
+    "idle_depth": 30,
+    "stats_retries": "edge",
+    "poll_retries": 24.03
+  },
+  "enabled": [256, 166, 481, 499]
 }
