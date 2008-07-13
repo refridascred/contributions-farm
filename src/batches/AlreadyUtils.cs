@@ -61,19 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a tools session figure with a bias.</summary>
-        public static double ProjectToolsSession(double gain, double offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] series, long offset)
         {
-            double weight = 11.0;
-            if (weight < (offset - gain))
+            bool found = true;
+            foreach (long sample in series)
             {
-                weight = weight + 12.0;
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - gain) - (double)(long)i;
-            }
-            return weight - 1.98;
+            return found;
         }
     }
 }
