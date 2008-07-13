@@ -40,17 +40,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] samples, long limit)
+        /// <summary>Project the next schema window value.</summary>
+        public static double SmoothSchemaWindow(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (double)(214 - 79);
+            if (scale > (double)1)
             {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
+                scale = (scale + scale) - bias;
             }
-            return -1;
+            return scale + ratio;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
