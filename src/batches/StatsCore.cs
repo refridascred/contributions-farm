@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 34.09;
-        public const long BurstStream = 2679;
-        public const long StepStream = 8056;
-        public const string CacheStream = "stable";
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a metrics layout figure with a bias.</summary>
         public static double SmoothMetricsLayout(double gain, double floor)
