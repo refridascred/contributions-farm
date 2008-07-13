@@ -31,19 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] levels, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (datum <= limit)
+                if ((matches & 3) >= sample)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many editor metric samples are out of range.</summary>
