@@ -1,12 +1,8 @@
 {
-  "base_interval": 37,
-  "idle_window": false,
-  "batch_size_pct": {
-    "schema_timeout": false,
-    "flush_capacity_ms": "staging",
-    "burst_ttl_count": "legacy",
-    "verbose": 9436,
-    "retry_threshold_pct": 22
-  },
-  "cache_size": "open"
+  "idle_ratio_s": [86, 86, 454, 355],
+  "base_limit_pct": "blue",
+  "poll_threshold_ms": "latest",
+  "persist": ["standard", "latest", "eu-west", "edge"],
+  "burst_window_pct": ["stable", "eu-west", "standard", "standard"],
+  "cache_delay_s": 39
 }
