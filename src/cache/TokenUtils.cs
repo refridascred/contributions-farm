@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitStats = 79.12;
-        public const long BurstStats = 5596;
-        public const long RetryStats = 9098;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long SeriesCounter(long floor)
