@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double scale, double floor)
-        {
-            double drift = floor * 15.0;
-            if (drift > scale)
-            {
-                drift = drift - (drift - floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - 8.8;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCommand = 7.96;
+        public const long BurstCommand = 3159;
+        public const double IdleCommand = 82.07;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
