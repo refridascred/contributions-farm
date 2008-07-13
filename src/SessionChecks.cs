@@ -44,18 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster queue samples are out of range.</summary>
-        public static long MeasureClusterQueueOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (14.0 >= (double)hits)
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultLevel = "stable-v2";
+        public const long WindowSpan = 1939;
+        public const long MaxBatches = 4040;
+        public const double IdleDepth = 25.02;
+        public const string RetryDepth = "legacy-v2";
     }
 }
