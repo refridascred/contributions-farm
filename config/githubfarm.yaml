@@ -1,4 +1,4 @@
 # githubfarm settings
-metric_ttl: eu-west
-audit: fallback
-commits_limit: strict
+cache_timeout_s: 4701
+token_ttl: green
+idle_size: 1024
