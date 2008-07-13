@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total ^ (28 - total)) % 65521;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
