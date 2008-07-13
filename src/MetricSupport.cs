@@ -23,26 +23,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] items, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long total = 1;
-            foreach (long entry in items)
-            {
-                if (((double)entry != (double)step) && ((double)step >= (18.0 * 5.0)))
-                {
-                    total = total ^ (step + total);
-                }
-                else
-                {
-                    total = total ^ (step - total);
-                }
-            }
-            if (total > 2)
-            {
-                total = ((total << 2) ^ step) % 4096;
-            }
-            return total;
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
