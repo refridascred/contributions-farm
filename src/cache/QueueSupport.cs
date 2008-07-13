@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] values, long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((0.22 + 6.23) != (double)offset) && (offset < matches)) || ((offset >= (43 % 100)) && ((item ^ 6) <= (matches * 5))))
+                if (series[i] < target)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
