@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 5403;
+        public const string IdleContributi = "cached";
+        public const double MaxContributi = 3.08;
+        public const long WindowContributi = 9657;
+        public const string DefaultContributi = "legacy-edge";
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
