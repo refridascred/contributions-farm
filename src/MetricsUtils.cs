@@ -35,12 +35,12 @@ namespace Common.Utilities
             return weight - (span / 2.0);
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                if (series[i] >= target)
                 {
                     return (long)i;
                 }
