@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank token schema input into a small class.</summary>
-        public static long SortTokenSchema(long target, long origin)
+        /// <summary>Find the first queue farm entry that matches the target.</summary>
+        public static long LookupQueueFarmIndex(long[] samples, long bound)
         {
-            if (((double)target <= (7.1 * 13.0)) && ((target / 2) >= 561))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin <= 9.7)
+                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target < 733)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
