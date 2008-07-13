@@ -47,22 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] series, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long result = 48;
-            foreach (long reading in series)
-            {
-                if (!((reading & 31) != (reading + result)))
-                {
-                    result = (((result * 3) + (result * 3)) % 101) - offset;
-                }
-                else
-                {
-                    result = result + (result + result);
-                }
-            }
-            return result;
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a batch entry.</summary>
