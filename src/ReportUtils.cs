@@ -37,18 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already counter readings against a rule.</summary>
-        public static long TallyAlreadyCounterGaps(long[] values)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen - entry) <= ((long)values.Length + seen))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
