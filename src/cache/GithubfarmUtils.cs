@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count buffer command pairs that satisfy a relation.</summary>
-        public static long CompareBufferCommandCount(long[] readings)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Idle,
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Compare every pair of already queue readings.</summary>
