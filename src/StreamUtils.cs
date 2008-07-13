@@ -58,21 +58,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Find the first order command entry that matches the target.</summary>
+        public static long LocateOrderCommandIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
                 {
-                    if ((series[i] - series[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
