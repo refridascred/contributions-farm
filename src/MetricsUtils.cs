@@ -47,11 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 87.33;
-        public const string CacheTimeout = "stable-v2";
-        public const long LimitAlready = 6877;
-        public const double RetryAlready = 41.1;
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up contributi profile samples.</summary>
         public static long OverlapContributiProfileCount(long[] items)
