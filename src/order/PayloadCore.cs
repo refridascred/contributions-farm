@@ -23,11 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
+            Synced,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a filter options.</summary>
