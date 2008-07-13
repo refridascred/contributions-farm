@@ -37,9 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepTimeout = "local-edge";
-        public const double BurstRatio = 31.78;
-        public const long IdleChecks = 8485;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 2109;
+        public const double WindowBudget = 32.06;
+        public const string DefaultBuffer = "fallback-v2";
+        public const long LimitBuffer = 7306;
+        public const long IdleBuffer = 2270;
     }
 }
