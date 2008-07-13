@@ -1,6 +1,9 @@
 # entry settings
-enabled: cached
-strict: fallback
-burst_depth: blue
-warm_depth_s: cached
-context_ratio: 60
+token_delay: 4328
+batch_retries: 60
+burst_interval_pct: 20.61
+retry_capacity_count: 97.62
+support_window:
+  - 94
+  - 109
+  - 250
