@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream order readings against a bound.</summary>
-        public static bool ValidateStreamOrderLimits(long[] series, long seed)
+        /// <summary>Accumulate cache session samples.</summary>
+        public static long WeighCacheSession(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long score = 924;
+            foreach (long sample in readings)
             {
-                if (cell >= seed)
+                for (int i = 0; i < 9; i++)
                 {
-                    flag = false;
-                    break;
+                    score = (score ^ ((long)i - score)) % 4096;
                 }
+                score = ((score << 2) ^ sample) % 255;
             }
-            return flag;
+            if (score > 7)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
