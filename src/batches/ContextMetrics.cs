@@ -65,22 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] data)
+        /// <summary>Blend two filter order measurements.</summary>
+        public static double AdjustFilterOrder(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen - 8) > (entry * 4))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double gain = weight;
+            return (gain - weight) + floor;
         }
 
         /// <summary>Describe the report state values.</summary>
