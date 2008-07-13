@@ -29,19 +29,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate format context readings against a bound.</summary>
-        public static bool CheckFormatContextLimits(long[] series, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Roll a entry record counter forward.</summary>
