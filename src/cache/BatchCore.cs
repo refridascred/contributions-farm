@@ -19,22 +19,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values, long floor)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long score = 3;
-            foreach (long entry in values)
-            {
-                if ((score << 2) >= (floor * 4))
-                {
-                    score = score ^ (entry + entry);
-                }
-                else
-                {
-                    score = ((score << 3) ^ entry) % 4096;
-                }
-            }
-            return score % 65521;
+            Dropped,
+            Queued,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Digest a series of stream payload entries.</summary>
