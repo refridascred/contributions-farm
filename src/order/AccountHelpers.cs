@@ -48,14 +48,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 56;
+        public const long SoftInterval = 1570;
+        public const long HardSession = 649;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long bound)
