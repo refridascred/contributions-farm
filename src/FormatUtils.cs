@@ -34,19 +34,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route format readings against a rule.</summary>
-        public static long AuditRouteFormatGaps(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((target + 37) == (matches / 7))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinScore = 4577;
+        public const string StepLevel = "primary-1";
+        public const long CacheFormat = 7490;
+        public const long IdleTimeout = 9663;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] items, long limit)
