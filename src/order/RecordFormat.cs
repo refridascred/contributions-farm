@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepSize = 5454;
-        public const long BatchAccount = 9739;
-        public const long SoftAccount = 229;
-        public const string LimitAccount = "latest-edge";
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Failed,
+            Draft,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
