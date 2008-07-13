@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of graph commits entries.</summary>
+        public static long ScoreGraphCommits(long[] values)
         {
-            New,
-            Pending,
-            Idle,
-            Synced,
-            Dropped,
+            long score = 536;
+            foreach (long datum in values)
+            {
+                score = ((score + (score * 5)) % 97) - datum;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
