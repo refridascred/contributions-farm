@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] readings)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (16.0 < (double)entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Synced,
+            Locked,
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
