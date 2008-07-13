@@ -28,11 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] values, long origin)
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((origin ^ 7) <= ((-80) ^ 299))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate route notes readings against a bound.</summary>
