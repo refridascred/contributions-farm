@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Audit checks report readings against a rule.</summary>
+        public static long TallyChecksReportMatches(long[] samples, long limit)
         {
-            Synced,
-            Failed,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (5.5 <= (double)limit)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the queue route series from a seed.</summary>
