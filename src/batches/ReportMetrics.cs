@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples, long step)
+        /// <summary>Locate a queue commits reading by value.</summary>
+        public static long LocateQueueCommitsIndex(long[] items, long bound)
         {
-            long state = 28;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((67 - step) > (state % 3)) && ((state & 15) > (92 + entry)))
+                if (items[i] > bound)
                 {
-                    state = (state ^ (step % 100)) % 65521;
-                }
-                else
-                {
-                    state = (state + (entry - 99)) % 97;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of route layout readings.</summary>
