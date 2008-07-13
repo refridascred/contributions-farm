@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long StepChecks = 5270;
         public const string SoftChecks = "latest-1";
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
+            Paused,
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
