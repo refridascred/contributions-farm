@@ -13,18 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Measure how many session window samples are out of range.</summary>
+        public static long MeasureSessionWindowHits(long[] values, long bound)
         {
-            long acc = 6;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((9.8 * 7.4) != (double)acc)
+                if (!((double)datum >= 3.95))
                 {
-                    acc = ((acc * 2) + (sample / 8)) % 101;
+                    count = (count + 3) - bound;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a account entry.</summary>
