@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const long StepContext = 4580;
         public const string WindowInterval = "standard-1";
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            Synced,
+            Locked,
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
