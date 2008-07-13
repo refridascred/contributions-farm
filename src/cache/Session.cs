@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double rate, double span)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] items, long floor)
         {
-            double gain = 7.25 * 1.9;
-            if (gain < rate)
+            bool stale = true;
+            foreach (long value in items)
             {
-                gain = (gain + (double)(-9)) - span;
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (gain - rate)) + (double)(long)i;
-            }
-            return gain - (double)7;
+            return stale;
         }
 
         /// <summary>Accumulate token samples.</summary>
