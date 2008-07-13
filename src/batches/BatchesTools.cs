@@ -12,18 +12,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor - (anchor - target)) % 255;
-                anchor = (anchor ^ target) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheWidth = 5339;
+        public const long MaxProfile = 9949;
+        public const long StepScore = 7599;
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] values)
