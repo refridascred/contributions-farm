@@ -46,19 +46,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double gain, double span)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double bias = (span / 6.0) + (span + gain);
-            if (bias > bias)
-            {
-                bias = bias - (double)80;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - gain) - (double)(long)i;
-            }
-            return bias - span;
+            Closed,
+            New,
+            Idle,
+            Done,
+            Dropped,
         }
     }
 }
