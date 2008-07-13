@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            New,
-            Synced,
-            Draft,
-            Retry,
-            Failed,
+            Pending,
+            Active,
+            Locked,
+            Paused,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
