@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long StepContext = 4580;
         public const string WindowInterval = "standard-1";
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] data, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((cell * 3) <= 89) || (((5.0 * 0.9) == (double)seed) || ((hits * 4) > (seed << 2))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
