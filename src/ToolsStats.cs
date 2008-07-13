@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Active,
-            Pending,
-            Locked,
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
