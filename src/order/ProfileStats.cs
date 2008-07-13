@@ -29,24 +29,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] values, long offset)
         {
-            long state = 5;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                long matches = (state << 2) + (state % 7);
-                if (((cell / 8) > (state << 1)) || ((73 & 127) >= matches))
+                if (value >= offset)
                 {
-                    matches = (matches * 4) + (434 % 64);
+                    ok = false;
+                    break;
                 }
-                state = (state + state) % 4096;
             }
-            if (state > (-52))
-            {
-                state = ((state * 5) + (state / 5)) % 4096;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
