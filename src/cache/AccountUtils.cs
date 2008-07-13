@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double ratio, double span)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double weight = span;
-            if (weight > (span + span))
-            {
-                weight = weight + (5.67 + 9.0);
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (0.18 - ratio);
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
