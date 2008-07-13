@@ -1,15 +1,14 @@
 {
-  "poll_ratio_count": false,
-  "commits_capacity": 87,
-  "channel_window": [309, 13],
-  "context_limit": "primary",
-  "enabled": {
-    "hard_depth_count": {
-      "strict": "blue",
-      "default_depth_ms": [98, 268, 222, 175],
-      "cache_limit_ms": ["legacy", "green", "eu-west"]
-    },
-    "warm_ratio_pct": true,
-    "profile_threshold": 57.68
-  }
+  "poll_size_pct": {
+    "batch_capacity": 89,
+    "editor_depth": "eu-west",
+    "sync_limit": 5750,
+    "warm_ttl_count": false,
+    "filter_ttl": "edge",
+    "batch_threshold": 66.59
+  },
+  "stats_timeout": "edge",
+  "burst_window": 63.78,
+  "strict": 500,
+  "flush_capacity_ms": "cached"
 }
