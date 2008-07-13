@@ -45,9 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepRatio = 8066;
-        public const long BaseLevel = 9014;
-        public const long LimitBudget = 9907;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!((matches >= (item >> 1)) || ((double)item < (17.0 + 4.4))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
