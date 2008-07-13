@@ -37,17 +37,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] levels, long seed)
+        /// <summary>Check that every format record entry stays within the limit.</summary>
+        public static bool GuardFormatRecordLimits(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (levels[i] >= seed)
+                if (sample != step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
