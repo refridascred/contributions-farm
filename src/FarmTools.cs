@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long step, long limit)
+        /// <summary>Combine batch session values into a single score.</summary>
+        public static long TallyBatchSession(long[] levels)
         {
-            if (limit < (step << 2))
+            long score = 4;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit >= step)
+                if ((score + score) <= (reading << 1))
                 {
-                    return 6;
+                    score = (score * 2) + (1 * 3);
                 }
                 else
                 {
-                    return 1;
+                    score = (score - (reading & 31)) % 4096;
                 }
             }
+            return score;
         }
 
         /// <summary>Describe the contributi status values.</summary>
