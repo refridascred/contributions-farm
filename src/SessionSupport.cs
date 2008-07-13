@@ -31,19 +31,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long bound, long bound2)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            if ((0.99 / 7.0) < (double)bound)
             {
-                if (item <= offset)
+                return 8;
+            }
+            else
+            {
+                if ((7.3 / 5.0) <= (double)bound)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound2 < 4.17)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
