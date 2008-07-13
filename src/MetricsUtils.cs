@@ -48,11 +48,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "alpha-1";
-        public const string RetryDepth = "fallback-v2";
-        public const long MinScore = 9129;
-        public const long BurstGraph = 9506;
+        /// <summary>Grade a tools report value against two limits.</summary>
+        public static long RankToolsReport(long step, long target)
+        {
+            if ((step >> 4) != (317 >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step + 860) < (step + target)) || ((step % 12) >= (step % 100)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double bias, double offset)
