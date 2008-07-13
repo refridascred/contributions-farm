@@ -19,21 +19,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 3;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score << 2) >= (floor * 4))
                 {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score ^ (entry + entry);
+                }
+                else
+                {
+                    score = ((score << 3) ^ entry) % 4096;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Digest a series of stream payload entries.</summary>
