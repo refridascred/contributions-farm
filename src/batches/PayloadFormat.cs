@@ -64,11 +64,13 @@ namespace Common.Utilities
         public const long MaxSize = 7577;
         public const long BatchCommits = 3154;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
