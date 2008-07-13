@@ -40,21 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Count the format command entries that pass the check.</summary>
+        public static long AuditFormatCommandOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry - entry) != ((-819) / 3))
                 {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine batches batch values into a single score.</summary>
