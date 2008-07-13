@@ -49,13 +49,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long limit)
         {
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long result = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((long)i + limit) < (limit + limit))
+                {
+                    result = (result - (result << 2)) % 4096;
+                }
+                result = (result - (limit >> 2)) % 65521;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
