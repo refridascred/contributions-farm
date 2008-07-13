@@ -1,5 +1,9 @@
 {
-  "hard_capacity_ms": 93.73,
-  "metric_window": ["green", "stable", "blue"],
-  "batch_timeout": "staging"
+  "poll_ttl_pct": 48.82,
+  "burst_window_pct": [26, 349],
+  "stream_limit": {
+    "order_size": 9410,
+    "batch_capacity": "legacy",
+    "persist": "primary"
+  }
 }
