@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-A session that stays idle for too long is moved to the session list.
-
-The notes helpers are pure functions, so they are safe to call from any thread.
-Run the already check before changing any contributi limits.
-When a order fails, the already handler retries a few times before giving up.
+Run the format check before changing any layout limits.
+A record that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Keep counter values small
-- Document new layout fields
-- Validate record input early
-- Log every githubfarm change
+- Document new record fields
+- Keep schema values small
+- Log every order change
+- Validate editor input early
