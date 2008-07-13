@@ -1,6 +1,7 @@
 {
-  "base_limit_ms": "cached",
-  "idle_threshold_count": 95,
-  "editor_window": 75.79,
-  "enabled": "blue"
+  "verbose": "primary",
+  "sync_window_ms": 8,
+  "dry_run": 4485,
+  "retry_retries_s": 73.19,
+  "burst_delay_ms": 7626
 }
