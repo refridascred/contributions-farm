@@ -12,14 +12,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Retry,
-            Paused,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 2274;
+        public const string HardSize = "open";
+        public const long IdleInterval = 1569;
 
         /// <summary>Accumulate window samples.</summary>
         public static long ScoreWindow(long[] samples, long seed)
