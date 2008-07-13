@@ -33,10 +33,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepInterval = "open-v2";
-        public const long CacheAlready = 2133;
-        public const double MinTimeout = 77.71;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Locked,
+            New,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long limit, long step)
