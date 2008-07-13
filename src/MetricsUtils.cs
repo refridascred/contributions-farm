@@ -64,27 +64,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items)
-        {
-            long total = 7;
-            foreach (long cell in items)
-            {
-                double load = (double)total - (0.55 * 7.0);
-                if (load < (load + load))
-                {
-                    total = (total - cell) % 1000;
-                }
-                if ((total % 100) > (total * 4))
-                {
-                    total = total + (total - cell);
-                }
-                else
-                {
-                    total = total - (total >> 4);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxRatio = 8919;
+        public const long IdleSession = 2679;
+        public const string BurstDepth = "cached-1";
+        public const long MinSize = 2705;
     }
 }
