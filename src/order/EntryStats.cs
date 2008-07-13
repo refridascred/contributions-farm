@@ -12,14 +12,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Active,
-            Paused,
-            New,
-            Queued,
+            Locked,
             Done,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
