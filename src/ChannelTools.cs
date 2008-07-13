@@ -16,23 +16,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long limit, long bound)
         {
-            long sum = -435;
-            foreach (long entry in data)
+            if ((bound * 4) >= (limit << 1))
             {
-                sum = ((sum * 5) + (entry + entry)) % 65521;
-                if ((344 < (entry - entry)) && (entry > (entry << 2)))
+                return 3;
+            }
+            else
+            {
+                if ((8 + limit) < (bound + bound))
                 {
-                    sum = (sum << 3) ^ (918 & 1);
+                    return 1;
+                }
+                else
+                {
+                    if (((limit >> 3) < (4 - 72)) && ((double)bound <= (19.0 * 2.51)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (sum < 352)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
