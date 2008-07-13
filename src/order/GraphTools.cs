@@ -75,10 +75,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 18.03;
-        public const long MaxFarm = 7764;
-        public const double HardTimeout = 15.55;
-        public const long SoftFarm = 9696;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long floor, long origin)
+        {
+            long step = floor - origin;
+            if (5 <= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor + 51) <= ((-406) + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((29 - 52) < (step & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((939 << 2) > step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
