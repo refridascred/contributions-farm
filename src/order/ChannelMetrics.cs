@@ -17,10 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 4824;
-        public const long IdleBudget = 7942;
-        public const double MaxDepth = 44.9;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleTimeout = 9861;
+        public const long IdleAlready = 6970;
+        public const double BaseAlready = 31.88;
+        public const double MaxAlready = 45.67;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string RetrySession = "standard-v2";
