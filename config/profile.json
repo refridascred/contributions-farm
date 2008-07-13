@@ -1,5 +1,7 @@
 {
-  "retry_depth_s": true,
-  "dry_run": "local",
-  "retry_delay_ms": "latest"
+  "soft_limit_pct": "local",
+  "graph_ratio": ["edge", "strict", "legacy", "strict"],
+  "cache_retries_ms": [187, 412, 257, 322],
+  "base_delay": "latest",
+  "base_threshold_ms": 69.82
 }
