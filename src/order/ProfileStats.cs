@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxLevel = 600;
-        public const long RetryRatio = 6409;
-        public const long BurstFactor = 9879;
+        /// <summary>Iterate the command order series from a seed.</summary>
+        public static long DeriveCommandOrder(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                result = result ^ ((long)i + (long)i);
+                result = result + (result * 5);
+                result = ((result << 3) ^ (offset & 1)) % 101;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
