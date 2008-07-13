@@ -23,13 +23,30 @@ namespace Common.Utilities
         public const long SoftMetrics = 3506;
         public const double RetryMetrics = 63.46;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] items)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            long anchor = 6;
+            foreach (long datum in items)
+            {
+                if (!((anchor ^ anchor) != (310 & 127)))
+                {
+                    anchor = (anchor + (0 ^ datum)) % 4096;
+                }
+                if ((datum % 2) > anchor)
+                {
+                    anchor = (anchor - (anchor % 24)) % 101;
+                }
+                if (datum >= anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor < 306)
+            {
+                anchor = (anchor ^ (anchor * 4)) % 97;
+            }
+            return anchor;
         }
     }
 }
