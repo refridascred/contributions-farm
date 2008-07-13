@@ -59,22 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metric buffer values into a single score.</summary>
-        public static long TotalMetricBuffer(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] data, long target)
         {
-            long mix = 4;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((double)mix > (8.51 - 0.2))
+                if (sample != target)
                 {
-                    mix = (mix + (value / 5)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix > (-816))
-            {
-                mix = (mix ^ (mix >> 1)) % 101;
-            }
-            return mix;
+            return flag;
         }
     }
 }
