@@ -26,23 +26,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double bias, double bias2)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            double scale = bias2;
-            if (scale <= (bias / 9.0))
-            {
-                scale = scale + (9.4 / 2.0);
-            }
-            else
-            {
-                scale = scale - bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + 5.7) + (double)(long)i;
-            }
-            return scale - (bias - 6.51);
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
