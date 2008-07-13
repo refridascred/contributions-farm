@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] values, long target)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = step ^ limit;
+            if (((1.0 + 16.0) < (double)cur) || ((cur / 2) < (limit << 3)))
             {
-                if (values[i] < target)
+                return 4;
+            }
+            else
+            {
+                if (((limit << 2) == (step >> 4)) && ((0.6 / 4.0) != (double)step))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((cur % 24) >= (step % 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a account stats.</summary>
