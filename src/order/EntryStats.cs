@@ -12,15 +12,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double span)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            double drift = (weight - weight) + weight;
-            if (drift >= drift)
-            {
-                drift = drift - (span / 5.0);
-            }
-            return drift + (double)111;
+            Active,
+            Paused,
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
