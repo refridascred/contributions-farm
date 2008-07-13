@@ -41,12 +41,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = (((score << 3) ^ (target % 5)) % 101) - (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Iterate the report contributi series from a seed.</summary>
