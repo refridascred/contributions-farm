@@ -20,21 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up metric support samples.</summary>
-        public static long CompareMetricSupportCount(long[] levels)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)773;
+            if (load <= (span / 7.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + (20.0 - weight);
             }
-            return matches;
+            else
+            {
+                load = load - (double)566;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (span / 6.0)) + (double)(long)i;
+            }
+            return load - (weight - load);
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
