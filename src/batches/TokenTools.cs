@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit tools metric readings against a rule.</summary>
-        public static long MeasureToolsMetricMatches(long[] items, long floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((datum >> 4) == (datum << 1))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = (tally + 3) + floor;
+                    long next = limit + mark;
+                    mark = (((mark << 2) ^ ((long)i - next)) % 4096) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    mark = (((mark << 2) ^ (limit - (long)i)) % 4096) + (long)i3;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
