@@ -58,17 +58,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] series, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 59;
+            foreach (long sample in samples)
             {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
+                sum = ((sum - (85 + sum)) ^ sample) + target;
             }
-            return -1;
+            return sum % 1000;
         }
     }
 }
