@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
