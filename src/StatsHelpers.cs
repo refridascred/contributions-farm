@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit cache token readings against a rule.</summary>
