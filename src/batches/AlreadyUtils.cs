@@ -15,18 +15,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the stream cache entries that pass the check.</summary>
-        public static long MeasureStreamCacheHits(long[] values, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long seed, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            if ((18.0 * 9.68) <= (double)limit)
             {
-                if (((double)count < (double)item) && ((double)step != (0.3 / 7.0)))
+                return 7;
+            }
+            else
+            {
+                if (((6.85 + 7.6) < (double)limit) && ((double)limit < 5.7))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (((5 - seed) == (limit ^ limit)) || ((seed >> 2) >= (seed - limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
