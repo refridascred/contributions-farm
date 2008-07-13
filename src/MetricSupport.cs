@@ -20,17 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first stats contributi entry that matches the target.</summary>
-        public static long FindStatsContributiIndex(long[] items, long target)
+        /// <summary>Project the next report githubfarm value.</summary>
+        public static double ProjectReportGithubfarm(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (offset + offset)) - (double)(long)i;
             }
-            return -1;
+            return drift - gain;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
