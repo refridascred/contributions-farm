@@ -30,11 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] readings, long floor)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a context info.</summary>
