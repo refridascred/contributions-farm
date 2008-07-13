@@ -63,15 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema batch value.</summary>
-        public static double BlendSchemaBatch(double scale, double bias)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long bound)
         {
-            double bias2 = scale;
-            if (bias2 >= (bias - bias2))
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                bias2 = bias2 + (scale / 4.0);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return bias2 + (6.0 * 12.0);
+            return anchor;
         }
     }
 }
