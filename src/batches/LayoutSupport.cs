@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] series, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((hits - item) != (64 - item))
+                if (datum >= target)
                 {
-                    hits = (hits + 1) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
