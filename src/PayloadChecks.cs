@@ -54,11 +54,17 @@ namespace Common.Utilities
             return scale - (weight + scale);
         }
 
-        /// <summary>Project the next schema stats value.</summary>
-        public static double AdjustSchemaStats(double bias, double offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            double rate = bias;
-            return (rate + rate) + offset;
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor + (anchor / 3)) % 255;
+                anchor = (anchor + (bound + bound)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context state values.</summary>
