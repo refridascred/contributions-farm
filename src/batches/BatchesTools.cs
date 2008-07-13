@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] readings, long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long result = 56;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 5) + (sample - floor)) % 255;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
