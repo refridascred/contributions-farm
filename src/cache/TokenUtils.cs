@@ -20,22 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up window batch samples.</summary>
-        public static long OverlapWindowBatchCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitStats = 79.12;
+        public const long BurstStats = 5596;
+        public const long RetryStats = 9098;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] values, long step)
