@@ -37,15 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks githubfarm counter forward.</summary>
-        public static long IterateChecksGithubfarm(long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] values, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
