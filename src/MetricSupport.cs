@@ -23,12 +23,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long mark = 3;
+            foreach (long cell in samples)
+            {
+                mark = ((mark << 2) ^ (mark / 2)) - cell;
+            }
+            return mark;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
