@@ -1,11 +1,14 @@
 # Command notes
 
-When a filter fails, the farm handler retries a few times before giving up.
-The route helpers are pure functions, so they are safe to call from any thread.
-The context report groups every cluster by window.
+Each already is validated before it reaches the already queue.
+A graph that stays idle for too long is moved to the buffer list.
+
+Each format is validated before it reaches the route queue.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate editor input early
-- Document new context fields
-- Review farm limits each release
+- Log every batch change
+- Review payload limits each release
+- Keep record values small
+- Prefer checks defaults
