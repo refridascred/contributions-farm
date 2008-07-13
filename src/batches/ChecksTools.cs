@@ -17,15 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of channel metric entries.</summary>
-        public static long WeighChannelMetric(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] data, long limit)
         {
-            long mark = 1;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mark = ((mark << 3) ^ (mark + mark)) + reading;
+                if (!(((matches << 1) != (value * 5)) || ((limit / 3) >= (matches - value))))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
