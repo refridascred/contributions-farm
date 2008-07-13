@@ -20,22 +20,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] series)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)value <= (3.6 - 9.9)))
+                if (values[i] > limit)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a payload contributi counter forward.</summary>
