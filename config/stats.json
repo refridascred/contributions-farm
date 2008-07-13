@@ -1,10 +1,6 @@
 {
-  "enabled": "fallback",
-  "retry_window": "edge",
-  "layout_depth": 30,
-  "sync_ratio": {
-    "checks_retries": 2938,
-    "retry_delay": 6567,
-    "poll_capacity": "legacy"
-  }
+  "batch_limit": 60,
+  "dry_run": 90,
+  "soft_retries_s": "green",
+  "poll_size": 6819
 }
