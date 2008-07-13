@@ -1,6 +1,6 @@
 {
-  "base_limit": 19.59,
-  "max_ttl_count": "primary",
-  "cache_ratio_ms": 43.48,
-  "cache_interval_pct": "stable"
+  "verbose": 2920,
+  "graph_retries": [362, 43, 13, 115],
+  "contributi_ttl": "cached",
+  "cache_delay_count": 4143
 }
