@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema command values into a single score.</summary>
-        public static long CombineSchemaCommand(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] values)
         {
-            long total = 9;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (total > (total >> 3))
+                if (((seen << 1) >= (seen & 3)) && (seen >= cell))
                 {
-                    total = (total ^ ((-52) % 8)) + reading;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Blend two filter order measurements.</summary>
