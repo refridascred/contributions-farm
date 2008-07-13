@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
