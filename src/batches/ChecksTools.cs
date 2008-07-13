@@ -56,11 +56,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleTimeout = "standard";
-        public const long WindowSize = 1177;
-        public const long BatchSupport = 8617;
-        public const double MaxSize = 60.65;
-        public const string CacheSupport = "strict-edge";
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long step, long bound)
+        {
+            if (step > (step + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound > (step * 4)) || ((bound * 5) > (6 + step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((47 + 398) < step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
