@@ -13,23 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] items, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long step)
         {
-            long total = 117;
-            foreach (long reading in items)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((reading >= (bound - reading)) && ((long)items.Length >= (reading + (long)items.Length)))
+                if (((10.0 - 20.0) <= (double)step) && (step <= (3 & 1)))
                 {
-                    total = total - (110 ^ (-549));
+                    anchor = (anchor ^ (806 + (long)i)) % 101;
                 }
-                total = ((total << 2) ^ reading) % 97;
-                if ((260 < (total + total)) && ((801 + total) < (reading / 2)))
-                {
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return total % 65521;
+            return anchor;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
