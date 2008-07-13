@@ -23,13 +23,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of route layout readings.</summary>
+        public static long CombineRouteLayout(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public double Count { get; set; }
+            long result = 497;
+            foreach (long datum in series)
+            {
+                if (datum >= (result + result))
+                {
+                    result = (result ^ datum) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
