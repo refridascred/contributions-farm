@@ -28,17 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] readings, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                if ((tally < 3) || ((717 % 3) == (16 - tally)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
