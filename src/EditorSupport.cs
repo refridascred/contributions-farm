@@ -21,12 +21,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the channel window entries that pass the check.</summary>
+        public static long AuditChannelWindowGaps(long[] series)
         {
-            Retry,
-            Ready,
-            Active,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((6.5 / 9.0) > (double)datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
