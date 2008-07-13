@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many checks format samples are out of range.</summary>
-        public static long MeasureChecksFormatMatches(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long score = 77;
+            foreach (long entry in series)
             {
-                if ((value >> 4) <= (value & 31))
-                {
-                    tally = tally + 2;
-                }
+                score = score + (324 / 3);
+                score = score - (entry + entry);
             }
-            return tally;
+            if (score > 6)
+            {
+                score = ((score << 2) ^ 262) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Derive the next channel layout value from a seed.</summary>
