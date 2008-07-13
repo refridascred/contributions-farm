@@ -33,18 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches schema readings against a rule.</summary>
-        public static long MeasureBatchesSchemaMatches(long[] samples)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches / 7) > (matches & 31))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) - sample;
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
