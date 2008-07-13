@@ -61,12 +61,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 6610;
-        public const long HardFactor = 8833;
-        public const long BurstBatch = 542;
-        public const string BatchWidth = "alpha";
-        public const double HardDepth = 63.77;
+        /// <summary>Validate window layout readings against a bound.</summary>
+        public static bool CheckWindowLayoutBounds(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] series, long bound)
