@@ -67,9 +67,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxBudget = 7563;
-        public const long LimitBudget = 4047;
-        public const long SoftTimeout = 1359;
+        public const long BurstLayout = 3046;
+        public const long CacheTimeout = 2478;
+        public const long WindowTimeout = 2634;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ScaleRecord(double ratio, double floor)
