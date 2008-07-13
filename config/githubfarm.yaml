@@ -1,8 +1,22 @@
 # githubfarm settings
-max_interval_s:
-  - 225
-  - 432
-  - 200
-poll_depth_count: 2023
-base_limit_ms: 1024
-support_ratio: false
+idle_size_count:
+  cluster_retries: 30
+  sync_window_ms:
+    base_timeout_ms: true
+    batch_window_ms: false
+    dry_run:
+      - 74
+      - 378
+      - 286
+      - 213
+  retry_limit_pct: true
+  filter_timeout:
+    - 152
+    - 391
+batch_timeout_count: false
+compress: false
+dry_run:
+  - 106
+  - 392
+  - 317
+  - 179
