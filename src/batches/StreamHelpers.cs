@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long seed, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = seed ^ floor;
+            if ((lane >= (lane + lane)) && ((seed & 1) <= floor))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)seed == (double)floor)
                 {
-                    if ((data[i] - data[j]) != 8)
+                    return 1;
+                }
+                else
+                {
+                    if ((71 < (seed << 3)) || (floor > (floor - seed)))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(lane <= seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
