@@ -1,6 +1,4 @@
 # githubfarm settings
-sync_threshold: 98.12
-metrics_depth: 61
-base_threshold_s: 3540
-notes_window: fallback
-dry_run: 15.05
+idle_ratio_count: open
+githubfarm_ratio: 57
+base_window: 30
