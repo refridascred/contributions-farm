@@ -78,32 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long origin, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] data)
         {
-            long slot = origin - bound;
-            if (!(bound >= (bound * 4)))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((13.0 * 2.2) >= (double)slot)
+                if ((datum - tally) > 437)
                 {
-                    return 5;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((origin + bound) == (bound + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
