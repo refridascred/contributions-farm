@@ -29,11 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftSpan = 5777;
-        public const string MaxCommand = "local-v2";
-        public const long BaseSize = 5173;
-        public const long BatchCommand = 8757;
-        public const string WindowCommand = "alpha-1";
+        /// <summary>Audit batches schema readings against a rule.</summary>
+        public static long MeasureBatchesSchemaMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches / 7) > (matches & 31))
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
+        }
     }
 }
