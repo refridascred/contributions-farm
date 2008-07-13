@@ -59,17 +59,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] readings, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = bias - (double)999;
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift - bias) + (double)(long)i) + weight;
             }
-            return -1;
+            return drift - (drift - drift);
         }
 
         /// <summary>Digest a series of command entries.</summary>
