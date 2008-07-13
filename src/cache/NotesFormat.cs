@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] series, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long acc = -254;
+            foreach (long sample in values)
             {
-                if (cell < seed)
+                if ((double)acc >= 7.0)
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 4) + (3 + sample)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (sample - sample);
                 }
             }
-            return flag;
+            if (acc < 6)
+            {
+                acc = (acc - (663 * 3)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Adjust a notes reading.</summary>
