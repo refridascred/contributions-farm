@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] items)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry - 8) >= (matches % 12)) && (((entry & 3) > matches) || (entry <= matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every record cache entry stays within the limit.</summary>
