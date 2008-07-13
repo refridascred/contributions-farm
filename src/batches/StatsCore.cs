@@ -22,22 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count counter contributi pairs that satisfy a relation.</summary>
-        public static long OverlapCounterContributiCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFactor = "open-v2";
+        public const double BurstTimeout = 32.99;
+        public const long DefaultFormat = 4691;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long TallyContributiMatches(long[] data)
