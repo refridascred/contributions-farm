@@ -49,18 +49,38 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] values, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long floor, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if (!((double)target <= (5.3 / 2.0)))
             {
-                if ((entry > 86) || ((entry * 2) != (limit * 2)))
+                return 5;
+            }
+            else
+            {
+                if (!(1.6 < (double)floor))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (!(70 <= (floor * 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor != (7.87 - 14.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the support state values.</summary>
