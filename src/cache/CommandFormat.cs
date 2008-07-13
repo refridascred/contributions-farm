@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 9952;
-        public const double BurstGithubfarm = 63.78;
-        public const long SoftSize = 6364;
-        public const double SoftScore = 77.5;
-        public const long MinDepth = 349;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
