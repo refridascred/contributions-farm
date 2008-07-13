@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long limit, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((step >= (limit % 16)) || (7.3 <= (double)step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit + step) >= limit)
                 {
-                    if ((levels[i] - levels[j]) == 16)
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step) < step)
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step - limit) >= 7)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
