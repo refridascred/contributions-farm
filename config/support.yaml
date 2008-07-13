@@ -1,9 +1,14 @@
 # support settings
-warm_window_s: false
-batches_retries: true
-soft_threshold_pct: false
-max_limit_s:
-  - cached
-  - latest
-  - open
-cache_capacity_ms: stable
+hard_size:
+  - local
+  - staging
+idle_window:
+  - 343
+  - 497
+  - 369
+dry_run: legacy
+persist: blue
+warm_interval_pct:
+  - 290
+  - 297
+  - 338
