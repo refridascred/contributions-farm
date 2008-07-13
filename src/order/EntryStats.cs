@@ -38,24 +38,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long step, long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            if (0 < (step / 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset >> 4) > (step ^ offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
