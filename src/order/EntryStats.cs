@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
