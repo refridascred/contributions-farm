@@ -32,10 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 65.61;
-        public const long MinDepth = 3208;
-        public const long IdlePayload = 9554;
-        public const long LimitWidth = 6692;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double weight, double span)
+        {
+            double bias = 4.28;
+            if (bias >= (double)6)
+            {
+                bias = (bias - weight) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - bias;
+        }
     }
 }
