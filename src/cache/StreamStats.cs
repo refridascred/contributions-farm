@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double rate, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] data, long offset)
         {
-            double gain = bias;
-            return gain - rate;
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (751 >= (offset - cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
