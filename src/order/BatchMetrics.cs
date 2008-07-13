@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] data, long seed)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale2 = (double)3 / 8.0;
+            if (scale2 >= scale2)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                scale2 = ((scale2 + (double)89) + scale) + offset;
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 + scale2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 - 5.0;
         }
 
         /// <summary>Adjust a support queue reading.</summary>
