@@ -76,19 +76,19 @@ namespace Common.Utilities
         public const long HardBuffer = 7024;
         public const string StepFactor = "standard-1";
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double weight, double floor)
+        /// <summary>Validate githubfarm payload readings against a bound.</summary>
+        public static bool VerifyGithubfarmPayloadBounds(long[] samples, long floor)
         {
-            double drift = floor;
-            if (drift > (double)76)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                drift = drift - (weight / 4.0);
+                if (value <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)7) + (double)(long)i;
-            }
-            return drift + drift;
+            return valid;
         }
     }
 }
