@@ -32,24 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double scale, double bias)
-        {
-            double gain = scale;
-            if (gain > 11.0)
-            {
-                gain = (gain - scale) - bias;
-            }
-            else
-            {
-                gain = gain - (double)48;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (2.34 + 9.83)) + (double)(long)i;
-            }
-            return gain - (2.4 + gain);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultCount = 2659;
+        public const string WindowAlready = "stable-1";
+        public const double LimitSpan = 40.35;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
