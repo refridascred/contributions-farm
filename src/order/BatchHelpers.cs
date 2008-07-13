@@ -23,16 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already githubfarm values into a single score.</summary>
-        public static long TotalAlreadyGithubfarm(long[] levels)
-        {
-            long mix = -11;
-            foreach (long reading in levels)
-            {
-                mix = ((mix << 3) ^ (reading + reading)) % 101;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseWidth = "legacy-edge";
+        public const string IdleReport = "latest";
+        public const long RetryReport = 9580;
+        public const double MaxRatio = 13.94;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsGaps(long[] values, long step)
