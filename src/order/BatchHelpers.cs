@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseWidth = "legacy-edge";
-        public const string IdleReport = "latest";
-        public const long RetryReport = 9580;
-        public const double MaxRatio = 13.94;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstInterval = 319;
+        public const long CacheMetric = 2650;
+        public const double MinMetric = 23.57;
+        public const double BaseTimeout = 6.35;
+        public const double SoftMetric = 31.99;
 
         /// <summary>Check that every record cache entry stays within the limit.</summary>
         public static bool GuardRecordCacheRange(long[] values, long step)
