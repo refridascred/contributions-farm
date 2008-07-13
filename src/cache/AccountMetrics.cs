@@ -64,39 +64,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long bound, long target)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double ratio, double floor)
         {
-            long offset = bound ^ target;
-            if ((92 - 946) == (offset * 5))
+            double load = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                load = ((load + load) + (double)(long)i) - floor;
             }
-            else
-            {
-                if (((93 * 5) >= (offset + bound)) && ((offset * 5) < (offset % 8)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)bound >= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((370 << 2) <= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return load - (6.9 + load);
         }
     }
 }
