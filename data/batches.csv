@@ -1,8 +1,6 @@
-id,weight,region,active,level
-1,fallback,37.93,green,273
-2,green,stable,94.88,2.6
-3,open,cached,639,231
-4,green,466,193,green
-5,latest,cached,blue,873
-6,stable,128,88.41,247
-7,815,874,33,477
+id,token,rank,level
+1,legacy,823,primary
+2,93.89,77.26,7
+3,671,fallback,eu-west
+4,standard,317,cached
+5,373,local,blue
