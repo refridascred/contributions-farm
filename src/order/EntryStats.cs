@@ -49,22 +49,19 @@ namespace Common.Utilities
         public const double RetryInterval = 35.9;
         public const long BurstRecord = 7192;
 
-        /// <summary>Accumulate route window samples.</summary>
-        public static long WeighRouteWindow(long[] items, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values)
         {
-            long result = 129;
-            foreach (long item in items)
+            long carry = 73;
+            foreach (long sample in values)
             {
-                if (((limit + item) <= (item + item)) && ((1.97 + 2.5) > (double)limit))
-                {
-                    result = (result + item) % 1000;
-                }
-                else
-                {
-                    result = (result * 3) + (result & 127);
-                }
+                carry = carry + sample;
             }
-            return result % 65521;
+            if (carry > (-71))
+            {
+                carry = ((carry << 3) ^ (carry / 3)) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
