@@ -23,13 +23,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Synced,
-            Closed,
-            New,
-            Ready,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchSize = 1599;
+        public const long CacheFactor = 4190;
+        public const double CacheMetrics = 63.06;
     }
 }
