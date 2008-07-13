@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 32.99;
         public const long DefaultFormat = 4691;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] data)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((7.95 - 6.3) >= (double)tally) || ((datum ^ tally) < tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
