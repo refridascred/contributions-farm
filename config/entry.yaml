@@ -1,9 +1,9 @@
 # entry settings
-token_delay: 4328
-batch_retries: 60
-burst_interval_pct: 20.61
-retry_capacity_count: 97.62
-support_window:
-  - 94
-  - 109
-  - 250
+retry_retries: false
+max_timeout_pct: 40.55
+batch_timeout_ms:
+  - 174
+  - 201
+  - 441
+stream_threshold: green
+base_threshold_s: true
