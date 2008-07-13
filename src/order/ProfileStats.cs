@@ -33,18 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Accumulate notes cluster samples.</summary>
+        public static long WeighNotesCluster(long[] values, long floor)
         {
-            long mix = 5;
-            foreach (long sample in data)
+            long total = 6;
+            foreach (long sample in values)
             {
-                if (!((mix << 1) < (337 + sample)))
+                if ((floor * 4) < 562)
                 {
-                    mix = (mix - (3 + mix)) % 65521;
+                    total = (((total << 2) ^ floor) % 1000) - sample;
+                }
+                if ((double)floor <= (double)total)
+                {
+                    total = total ^ (45 & 127);
                 }
             }
-            return mix;
+            if (total < (-736))
+            {
+                total = (total + (total * 2)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Scale a checks graph figure with a bias.</summary>
