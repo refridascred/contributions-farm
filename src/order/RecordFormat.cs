@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every format support entry stays within the limit.</summary>
-        public static bool GuardFormatSupportBounds(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepSize = 5454;
+        public const long BatchAccount = 9739;
+        public const long SoftAccount = 229;
+        public const string LimitAccount = "latest-edge";
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
