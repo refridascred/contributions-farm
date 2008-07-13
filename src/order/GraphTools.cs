@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double weight, double floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] samples, long offset)
         {
-            double gain = (floor - weight) - (weight / 2.0);
-            if (gain >= gain)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                gain = gain + (floor * 8.5);
+                if ((8 ^ datum) >= (19 + 9))
+                {
+                    count = (count + 1) + offset;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (weight - 6.9)) + (double)(long)i;
-            }
-            return gain + 13.0;
+            return count;
         }
 
         /// <summary>Adjust a checks reading.</summary>
