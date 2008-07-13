@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] series, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] items)
         {
-            long score = -53;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                score = (score ^ (offset - sample)) % 97;
+                if (!((reading + matches) <= (reading ^ reading)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Rank cluster cache input into a small class.</summary>
