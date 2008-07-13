@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double offset)
+        /// <summary>Audit commits profile readings against a rule.</summary>
+        public static long TallyCommitsProfileGaps(long[] readings)
         {
-            double scale = weight;
-            return (scale - 8.4) + offset;
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)count < (double)value)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
