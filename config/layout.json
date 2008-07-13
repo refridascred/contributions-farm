@@ -1,13 +1,8 @@
 {
-  "idle_retries": "edge",
-  "buffer_threshold": 2093,
-  "default_capacity_s": {
-    "command_limit": ["eu-west", "stable", "strict"],
-    "soft_depth_ms": 4399,
-    "soft_window_ms": 46.66,
-    "verbose": 3378,
-    "counter_delay": "standard",
-    "strict": 96.68
-  },
-  "githubfarm_capacity": "strict"
+  "default_timeout_ms": false,
+  "persist": 500,
+  "stats_ratio": 100,
+  "retry_capacity_ms": 67,
+  "strict": "fallback",
+  "poll_ttl_s": "staging"
 }
