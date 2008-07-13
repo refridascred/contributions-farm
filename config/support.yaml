@@ -1,23 +1,24 @@
 # support settings
-audit:
-  - green
-  - standard
-  - local
-  - fallback
-window_timeout:
-  enabled: true
-  counter_timeout: 26
-  sync_ratio_s: 31.03
-  retry_window_s: 500
-  base_depth_pct: 500
-burst_depth_pct: true
-session_size:
-  - cached
-  - open
-  - fallback
-buffer_depth: 250
-min_limit_ms:
-  - 2
-  - 155
-  - 60
-  - 442
+order_delay:
+  batch_size_ms: 47.49
+  enabled: 82
+  audit: 59.16
+  max_timeout: 30
+entry_delay: 31
+batch_size_pct:
+  - 371
+  - 364
+  - 328
+cluster_limit: 60.12
+flush_timeout_count:
+  poll_limit_s:
+    hard_capacity_s: 3121
+    audit: primary
+    checks_delay: cached
+    default_ttl_pct: false
+  compress: legacy
+  cache_window_s:
+    - 461
+    - 198
+    - 69
+    - 438
