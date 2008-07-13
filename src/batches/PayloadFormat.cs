@@ -53,13 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Retry,
-            Closed,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 4933;
+        public const string RetryLayout = "fallback-v2";
+        public const long MinWidth = 1684;
+        public const string StepInterval = "strict-1";
+        public const string BurstInterval = "standard";
     }
 }
