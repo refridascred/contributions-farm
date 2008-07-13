@@ -30,11 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell - matches) < (cell + cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
