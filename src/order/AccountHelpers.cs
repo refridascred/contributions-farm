@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit payload channel readings against a rule.</summary>
-        public static long CountPayloadChannelOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count ^ (-21)) == (count >> 3))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitSpan = 1802;
+        public const double StepDepth = 62.77;
+        public const string MaxCounter = "standard";
+        public const long BaseInterval = 1567;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
