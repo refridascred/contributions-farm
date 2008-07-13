@@ -54,15 +54,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long score = 35;
-            foreach (long datum in data)
-            {
-                score = (score ^ (score % 100)) ^ datum;
-            }
-            return score % 65521;
+            Locked,
+            Ready,
+            Synced,
+            Done,
         }
     }
 }
