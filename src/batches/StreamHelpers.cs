@@ -72,22 +72,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] data)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long acc = 478;
+            foreach (long reading in data)
             {
-                if (!(value < (value + matches)))
+                if (((double)reading >= (2.0 - 2.0)) && ((reading / 8) != (reading >> 4)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = (acc ^ reading) % 1000;
                 }
             }
-            return matches;
+            if (acc > 57)
+            {
+                acc = (acc + (20 >> 5)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
