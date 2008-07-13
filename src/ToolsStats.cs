@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 5499;
-        public const long WindowBudget = 9013;
-        public const long BaseSession = 9876;
-        public const double IdleWidth = 73.24;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
