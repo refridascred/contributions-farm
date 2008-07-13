@@ -44,19 +44,21 @@ namespace Common.Utilities
         public const long MinContributi = 6991;
         public const double CacheContributi = 25.48;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long target)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the notes mode values.</summary>
