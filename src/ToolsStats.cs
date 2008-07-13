@@ -55,19 +55,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches batch values into a single score.</summary>
-        public static long TotalBatchesBatch(long[] data, long origin)
-        {
-            long carry = 39;
-            foreach (long cell in data)
-            {
-                carry = (((carry << 2) ^ (carry + 56)) % 1000) ^ cell;
-            }
-            if (carry > 55)
-            {
-                carry = carry - (carry - origin);
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 197;
+        public const long CacheSpan = 733;
+        public const double RetryFormat = 82.46;
+        public const string SoftFormat = "strict-v2";
     }
 }
