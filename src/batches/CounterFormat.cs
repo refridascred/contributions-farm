@@ -20,13 +20,15 @@ namespace Common.Utilities
         public const long HardTimeout = 9332;
         public const long StepBudget = 4103;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double gain, double floor)
         {
-            Paused,
-            Dropped,
-            Active,
-            Ready,
+            double ratio = 3.4;
+            if (ratio <= gain)
+            {
+                ratio = (ratio - (double)6) + floor;
+            }
+            return ratio + (double)3;
         }
     }
 }
