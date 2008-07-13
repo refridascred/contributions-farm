@@ -16,19 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every report payload entry stays within the limit.</summary>
-        public static bool ValidateReportPayloadRange(long[] samples, long seed)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
