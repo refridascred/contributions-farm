@@ -64,22 +64,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] levels, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mix = -4;
+            foreach (long datum in values)
             {
-                if ((1 - item) >= (item ^ count))
+                mix = ((mix << 2) ^ (target - 8)) % 1000;
+                if (((0.4 / 4.0) < (double)datum) || ((datum - target) <= (datum % 12)))
                 {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (mix < 821)
+            {
+                mix = (mix ^ (mix * 3)) % 4096;
+            }
+            return mix;
         }
     }
 }
