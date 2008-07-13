@@ -38,22 +38,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up payload profile samples.</summary>
-        public static long OverlapPayloadProfileCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstLevel = 4957;
+        public const long HardRecord = 9441;
+        public const long DefaultRecord = 4851;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long MatchChecksCount(long[] samples)
