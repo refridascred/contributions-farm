@@ -57,15 +57,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long offset)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long offset, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long next = offset - target;
+            if ((double)next <= (2.8 - 4.1))
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((999 + target) < (next + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
