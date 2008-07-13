@@ -20,10 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 2274;
-        public const string HardSize = "open";
-        public const long IdleInterval = 1569;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Draft,
+            Done,
+            Locked,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Scale a graph layout figure with a bias.</summary>
         public static double ProjectGraphLayout(double bias, double bias2)
