@@ -40,17 +40,13 @@ namespace Common.Utilities
         public const double IdleAlready = 89.78;
         public const long MaxFactor = 8101;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long seed)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
