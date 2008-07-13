@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const double SoftScore = 77.5;
         public const long MinDepth = 349;
 
-        /// <summary>Find the first graph window entry that matches the target.</summary>
-        public static long LocateGraphWindowIndex(long[] items, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (items[i] <= offset)
+                if (reading != bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Accumulate filter samples.</summary>
