@@ -54,17 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] samples, long offset)
+        /// <summary>Digest a series of channel metric entries.</summary>
+        public static long TotalChannelMetric(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 877;
+            foreach (long sample in data)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
+                if (570 > (sample << 2))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + sample;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
     }
 }
