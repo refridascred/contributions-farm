@@ -70,22 +70,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long step, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if ((double)2 < (double)origin)
             {
-                if (((tally - tally) == (39 & 1)) && ((double)tally < (double)datum))
+                return 6;
+            }
+            else
+            {
+                if ((step & 3) == (step & 31))
                 {
-                    tally = tally + 2;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
