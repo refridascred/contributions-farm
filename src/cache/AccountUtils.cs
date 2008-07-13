@@ -33,24 +33,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank session stats input into a small class.</summary>
-        public static long BucketSessionStats(long floor, long bound)
+        /// <summary>Iterate the batches layout series from a seed.</summary>
+        public static long DeriveBatchesLayout(long target)
         {
-            if ((floor - floor) >= (bound + floor))
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
+                anchor = ((anchor * 3) + ((long)i % 16)) % 255;
+                anchor = (anchor - (anchor * 2)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((7.76 - 3.21) != (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return anchor;
         }
     }
 }
