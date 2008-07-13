@@ -35,18 +35,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a githubfarm batches reading by value.</summary>
-        public static long LocateGithubfarmBatchesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultBudget = 9063;
+        public const double BurstMetric = 0.42;
+        public const string WindowMetric = "strict-1";
+        public const long CacheSize = 8293;
+        public const long IdleCount = 3780;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long SeriesNotes(long bound)
