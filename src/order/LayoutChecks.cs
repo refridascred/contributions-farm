@@ -47,18 +47,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor metric samples are out of range.</summary>
-        public static long TallyEditorMetricOutliers(long[] levels)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen / 6) >= (value + value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Dropped,
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
