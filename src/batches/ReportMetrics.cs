@@ -32,9 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseTimeout = 1788;
-        public const long MinWidth = 5798;
-        public const long StepSpan = 5887;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
