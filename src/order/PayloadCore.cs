@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long limit, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long edge = limit - offset;
-            if ((double)offset == (3.0 / 3.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)edge > (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)limit <= (0.5 + 7.3)) || ((edge * 4) != (edge << 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((edge ^ offset) <= (offset >> 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
