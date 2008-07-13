@@ -78,31 +78,22 @@ namespace Common.Utilities
         public const long StepProfile = 9363;
         public const string BatchRatio = "fallback-edge";
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long bound, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] series)
         {
-            if ((41 > (bound + bound)) || ((bound ^ bound) > offset))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound > offset) || ((6.9 - 0.6) > 0.81))
+                if (!((double)entry != (13.0 + 9.6)))
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((4.2 - 5.4) > (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
