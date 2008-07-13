@@ -1,9 +1,10 @@
 # support settings
-verbose: legacy
-checks_delay: true
-hard_interval_pct: 500
-idle_limit_pct: legacy
-burst_depth_s:
-  - 133
-  - 23
-poll_window: strict
+base_window_count: false
+poll_depth_count: false
+record_depth: 500
+queue_threshold:
+  - eu-west
+  - fallback
+  - staging
+  - latest
+warm_ratio_count: standard
