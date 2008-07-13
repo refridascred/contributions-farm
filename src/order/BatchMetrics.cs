@@ -30,14 +30,11 @@ namespace Common.Utilities
         public const string MaxSupport = "stable-1";
         public const long RetrySupport = 3809;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 20.19;
+        public const string WindowChecks = "legacy-v2";
+        public const string HardFactor = "standard-edge";
+        public const long MinFactor = 5094;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long origin, long origin2)
