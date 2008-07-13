@@ -62,12 +62,12 @@ namespace Common.Utilities
         public const long RetryContributi = 3746;
         public const string IdleBudget = "latest";
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Active,
-            Synced,
-            Retry,
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
