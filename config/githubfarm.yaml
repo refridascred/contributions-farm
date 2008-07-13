@@ -1,14 +1,4 @@
 # githubfarm settings
-cache_capacity:
-  - legacy
-  - green
-  - standard
-window_limit: 250
-idle_timeout_s: 1024
-hard_size:
-  - fallback
-  - primary
-  - stable
-  - strict
-readonly: 13.1
-sync_depth: true
+base_interval_s: 1024
+notes_ttl: staging
+soft_depth: true
