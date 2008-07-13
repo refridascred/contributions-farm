@@ -20,21 +20,22 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
-        public static long OverlapQueueMetricsCount(long[] series)
+        /// <summary>Combine profile githubfarm values into a single score.</summary>
+        public static long FoldProfileGithubfarm(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -2;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((carry >> 2) == (target / 8))
                 {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry * 4) + (carry - target)) - sample;
+                }
+                if ((carry << 2) >= (carry + target))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Match up payload profile samples.</summary>
