@@ -37,18 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 1609;
+        public const string LimitReport = "open";
+        public const long LimitBudget = 7446;
+        public const long BaseReport = 8547;
 
         /// <summary>Classify a counter contributi pair into a bucket.</summary>
         public static long SortCounterContributi(long bound, long bound2)
