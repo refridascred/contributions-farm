@@ -23,17 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] items, long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long seed, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((floor + floor) != (floor - floor))
             {
-                if (items[i] > origin)
+                return 1;
+            }
+            else
+            {
+                if (((double)seed == (20.0 + 4.3)) && ((seed >> 4) > (floor & 255)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((floor >> 3) == (floor - seed)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a schema profile figure with a bias.</summary>
