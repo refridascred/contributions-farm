@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum ^ ((-598) >> 2)) % 65521;
-                sum = (sum - (1 & 15)) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstLevel = "local";
+        public const long RetryRoute = 8070;
+        public const long BaseRoute = 961;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long PairRouteCount(long[] data)
