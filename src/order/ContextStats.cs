@@ -53,15 +53,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine already tools values into a single score.</summary>
-        public static long FoldAlreadyTools(long[] levels, long bound)
+        /// <summary>Accumulate report metrics samples.</summary>
+        public static long DigestReportMetrics(long[] levels)
         {
-            long score = 296;
-            foreach (long datum in levels)
+            long mix = 22;
+            foreach (long reading in levels)
             {
-                score = ((((score << 3) ^ (score * 4)) % 97) ^ datum) + bound;
+                if (((reading & 63) < mix) || ((double)reading < (0.97 * 0.38)))
+                {
+                    mix = (mix - (reading + mix)) % 65521;
+                }
             }
-            return score;
+            if (mix > 498)
+            {
+                mix = (mix << 2) ^ (mix * 4);
+            }
+            return mix % 4096;
         }
     }
 }
