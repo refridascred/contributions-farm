@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitSpan = 9057;
+        public const long DefaultBudget = 2242;
+        public const long LimitSize = 5663;
+        public const long RetryRatio = 4610;
+        public const long BatchSpan = 7175;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LookupEntryIndex(long[] series, long limit)
