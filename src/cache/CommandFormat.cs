@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Synced,
-            Stale,
-            Done,
+            Pending,
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a report info.</summary>
