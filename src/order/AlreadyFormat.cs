@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
