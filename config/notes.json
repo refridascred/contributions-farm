@@ -1,13 +1,14 @@
 {
-  "hard_threshold": 45,
-  "soft_depth_count": {
-    "payload_timeout": "latest",
-    "idle_delay_ms": 38.95,
-    "buffer_capacity": false,
-    "compress": "open",
-    "poll_depth_pct": 69.09,
-    "warm_limit_ms": 53.05
+  "flush_retries_s": ["local", "eu-west", "stable", "primary"],
+  "compress": "green",
+  "max_ratio_count": 72.17,
+  "route_ratio": {
+    "min_timeout": 43,
+    "idle_ratio": 7161,
+    "verbose": false,
+    "enabled": true,
+    "poll_timeout_pct": 1024,
+    "dry_run": true
   },
-  "poll_ttl_count": [432, 280, 323, 62],
-  "default_interval_count": true
+  "queue_ttl": 71.84
 }
