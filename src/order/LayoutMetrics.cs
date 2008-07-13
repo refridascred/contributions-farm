@@ -42,9 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 9194;
-        public const double IdleMetrics = 18.28;
-        public const long SoftSize = 7212;
+        /// <summary>Count the window buffer entries that pass the check.</summary>
+        public static long MeasureWindowBufferOutliers(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry <= (double)hits)
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
+        }
     }
 }
