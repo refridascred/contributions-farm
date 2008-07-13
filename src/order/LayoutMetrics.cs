@@ -18,11 +18,31 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Grade a metrics profile value against two limits.</summary>
+        public static long GradeMetricsProfile(long bound, long origin)
         {
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
+            if (!((4.1 - 15.0) <= (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin << 3) < origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - bound) < (origin + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
