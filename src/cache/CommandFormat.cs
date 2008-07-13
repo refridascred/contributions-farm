@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string WindowScore = "fallback-1";
         public const long HardBatches = 6462;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] readings, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (reading < target)
+                if (datum >= floor)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Describe the account class values.</summary>
