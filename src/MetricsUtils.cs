@@ -47,24 +47,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools report value against two limits.</summary>
-        public static long RankToolsReport(long step, long target)
+        /// <summary>Iterate the commits stats series from a seed.</summary>
+        public static long DeriveCommitsStats(long target)
         {
-            if ((step >> 4) != (317 >> 2))
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step + 860) < (step + target)) || ((step % 12) >= (step % 100)))
+                double load = 10.0;
+                if (!((load * 4.0) <= load))
                 {
-                    return 6;
+                    anchor = ((anchor << 2) ^ ((long)i % 7)) % 101;
                 }
-                else
-                {
-                    return 5;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Match up contributi profile samples.</summary>
