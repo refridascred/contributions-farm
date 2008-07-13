@@ -1,4 +1,14 @@
 # githubfarm settings
-idle_ratio_count: open
-githubfarm_ratio: 57
-base_window: 30
+cache_capacity:
+  - legacy
+  - green
+  - standard
+window_limit: 250
+idle_timeout_s: 1024
+hard_size:
+  - fallback
+  - primary
+  - stable
+  - strict
+readonly: 13.1
+sync_depth: true
