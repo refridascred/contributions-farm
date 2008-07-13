@@ -13,31 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long origin, long floor)
+        /// <summary>Check that every context payload entry stays within the limit.</summary>
+        public static bool GuardContextPayloadLimits(long[] data, long target)
         {
-            if (!((floor * 3) >= (origin ^ origin)))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((9.08 + 3.74) == (double)origin) || ((4.9 / 9.0) >= (7.47 + 2.0)))
+                if (entry != target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((30 * 5) == (floor + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit already queue readings against a rule.</summary>
