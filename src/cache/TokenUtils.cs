@@ -22,10 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 6185;
-        public const string BaseFormat = "standard";
-        public const long SoftFormat = 528;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "primary";
+        public const long WindowInterval = 6330;
+        public const long RetryDepth = 749;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
