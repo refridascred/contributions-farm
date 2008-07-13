@@ -40,23 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double scale, double span)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] series)
         {
-            double gain = (double)(99 + 6);
-            if (gain > gain)
+            long count = 0;
+            foreach (long entry in series)
             {
-                gain = (gain - (gain + 4.0)) - span;
+                if (!(entry < (entry + 5)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                gain = gain - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - gain;
+            return count;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
