@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics already readings against a bound.</summary>
-        public static bool CheckMetricsAlreadyLimits(long[] values, long origin)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != origin)
+                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
