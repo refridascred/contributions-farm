@@ -13,21 +13,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 117;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading >= (bound - reading)) && ((long)items.Length >= (reading + (long)items.Length)))
                 {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    total = total - (110 ^ (-549));
+                }
+                total = ((total << 2) ^ reading) % 97;
+                if ((260 < (total + total)) && ((801 + total) < (reading / 2)))
+                {
+                    break;
                 }
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
