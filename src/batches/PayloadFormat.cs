@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
