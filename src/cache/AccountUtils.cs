@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route counter entry that matches the target.</summary>
-        public static long FindRouteCounterIndex(long[] data, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (data[i] < step)
+                if ((hits * 4) > hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) - cell) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
