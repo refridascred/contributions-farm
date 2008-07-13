@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-legacy}"
 case "${mode}" in
-    standard)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in primary open latest; do
+for item in latest strict open staging; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
