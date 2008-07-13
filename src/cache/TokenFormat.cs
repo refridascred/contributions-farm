@@ -13,19 +13,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] samples, long seed)
+        /// <summary>Grade a support context value against two limits.</summary>
+        public static long BucketSupportContext(long target, long bound)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            if (!((target / 7) <= target))
             {
-                if (value <= seed)
+                return 8;
+            }
+            else
+            {
+                if (((9 + 38) <= (target + 0)) || ((target - bound) > ((-871) - bound)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
