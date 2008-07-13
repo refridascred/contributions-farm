@@ -1,16 +1,5 @@
 # entry settings
-persist: legacy
-metrics_threshold: false
-batch_retries_ms: 87.56
-poll_delay_pct:
-  hard_window_ms: 4136
-  notes_limit:
-    - 112
-    - 96
-  min_threshold: edge
-  farm_retries:
-    cache_timeout_count: false
-    enabled: 80
-    persist: legacy
-  dry_run: 8481
-default_ratio: staging
+retry_threshold: local
+dry_run: cached
+hard_capacity: 9651
+persist: 85.17
