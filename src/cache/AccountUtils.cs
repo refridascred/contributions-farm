@@ -28,13 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
             public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
