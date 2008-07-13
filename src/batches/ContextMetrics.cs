@@ -41,13 +41,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] readings, long seed)
         {
-            Synced,
-            Done,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (seed > (84 ^ matches))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
