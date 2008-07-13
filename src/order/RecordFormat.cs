@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] values, long target)
+        /// <summary>Check that every format support entry stays within the limit.</summary>
+        public static bool GuardFormatSupportBounds(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((item - target) > (item & 31))
+                if (reading > target)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the window mode values.</summary>
