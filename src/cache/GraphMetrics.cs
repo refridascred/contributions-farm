@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] readings, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (cell <= step)
+                if (value < bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
