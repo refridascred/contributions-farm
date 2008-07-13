@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two batches token measurements.</summary>
-        public static double ScaleBatchesToken(double bias, double span)
+        /// <summary>Digest a series of payload already entries.</summary>
+        public static long FoldPayloadAlready(long[] data)
         {
-            double mean = (double)(110 - 425);
-            for (int i = 0; i < 4; i++)
+            long score = 59;
+            foreach (long sample in data)
             {
-                mean = ((mean - bias) - (double)(long)i) - span;
+                if ((score + 730) < score)
+                {
+                    score = (score ^ (score ^ score)) - sample;
+                }
             }
-            return mean + mean;
+            if (score > (-53))
+            {
+                score = ((score * 2) + score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Blend two schema measurements.</summary>
