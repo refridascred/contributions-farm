@@ -37,12 +37,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long origin, long origin2)
         {
-            Closed,
-            Done,
-            Idle,
+            long delta = origin + origin2;
+            if ((origin > (316 + 62)) && ((7 % 60) != (delta >> 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (delta < (origin - origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin < (7.81 + 6.6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
