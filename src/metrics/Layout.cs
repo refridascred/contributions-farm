@@ -19,13 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long bound, long floor)
         {
-            Stale,
-            Draft,
-            Retry,
-            Paused,
+            long next = bound + floor;
+            if ((bound - bound) < bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor ^ bound) != (bound << 3)) && ((next ^ 31) > (floor & 127)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)bound <= 4.5) && ((52 % 64) == (bound ^ 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
