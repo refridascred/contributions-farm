@@ -34,11 +34,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinScore = 4577;
-        public const string StepLevel = "primary-1";
-        public const long CacheFormat = 7490;
-        public const long IdleTimeout = 9663;
+        /// <summary>Scale a counter channel figure with a bias.</summary>
+        public static double BlendCounterChannel(double weight, double offset)
+        {
+            double mean = (offset * 4.86) - weight;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (double)1;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] items, long limit)
