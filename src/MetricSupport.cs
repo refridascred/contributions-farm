@@ -15,31 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long step, long origin)
+        /// <summary>Find the first stats contributi entry that matches the target.</summary>
+        public static long FindStatsContributiIndex(long[] items, long target)
         {
-            if (!(11.0 <= (double)step))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin > (double)821)
+                if (items[i] <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((7 << 3) != (step + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
