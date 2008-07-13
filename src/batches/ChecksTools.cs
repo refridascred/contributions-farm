@@ -23,12 +23,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Grade a buffer context value against two limits.</summary>
+        public static long SortBufferContext(long origin, long step)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
+            long next = origin + step;
+            if ((double)origin > (1.48 - 3.3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin / 4) < (8 - origin)) && (9.2 < (double)next))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
