@@ -84,18 +84,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] readings, long offset)
         {
-            long anchor = 454;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum >= 2.0)
+                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
                 {
-                    anchor = anchor - anchor;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
