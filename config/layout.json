@@ -1,15 +1,6 @@
 {
-  "dry_run": {
-    "soft_timeout_count": 3153,
-    "audit": 30,
-    "default_delay_ms": {
-      "githubfarm_retries": 6761,
-      "max_ttl": 61,
-      "min_delay_count": true,
-      "max_limit": 56
-    }
-  },
-  "audit": true,
-  "default_depth": "strict",
-  "batches_retries": 42.28
+  "enabled": true,
+  "hard_limit_count": 7906,
+  "session_threshold": "cached",
+  "flush_ttl_pct": false
 }
