@@ -66,10 +66,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxRatio = 8919;
-        public const long IdleSession = 2679;
-        public const string BurstDepth = "cached-1";
-        public const long MinSize = 2705;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long target, long offset)
+        {
+            if ((offset + 17) == (target >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target > (6 - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((3.22 / 4.0) != (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target & 3) < (target + target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
