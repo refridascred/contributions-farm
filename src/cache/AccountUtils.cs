@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 9242;
+        public const long DefaultFactor = 6433;
+        public const long IdleAlready = 5434;
+        public const double MinAlready = 54.52;
+        public const long BaseAlready = 1206;
 
         /// <summary>Iterate the batches layout series from a seed.</summary>
         public static long DeriveBatchesLayout(long target)
