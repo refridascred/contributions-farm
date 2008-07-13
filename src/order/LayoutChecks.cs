@@ -43,20 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] levels, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                sum = ((sum << 3) ^ (step * 2)) % 97;
-                for (int i2 = 0; i2 < 7; i2++)
+                if (datum <= limit)
                 {
-                    sum = ((sum + step) % 97) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Measure how many editor metric samples are out of range.</summary>
