@@ -34,19 +34,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine entry profile values into a single score.</summary>
-        public static long TallyEntryProfile(long[] values, long limit)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double bias, double bias2)
         {
-            long carry = 11;
-            foreach (long reading in values)
+            double scale = bias2;
+            if (scale <= (bias / 9.0))
             {
-                carry = ((carry << 3) ^ carry) - limit;
-                if ((6.1 - 6.0) == (double)reading)
-                {
-                    carry = carry + (reading << 2);
-                }
+                scale = scale + (9.4 / 2.0);
             }
-            return carry;
+            else
+            {
+                scale = scale - bias2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + 5.7) + (double)(long)i;
+            }
+            return scale - (bias - 6.51);
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
