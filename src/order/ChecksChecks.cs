@@ -33,9 +33,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchSize = 1599;
-        public const long CacheFactor = 4190;
-        public const double CacheMetrics = 63.06;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long seed, long seed2)
+        {
+            long step = seed ^ seed2;
+            if ((seed2 + seed2) > seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed == (9.4 * 2.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((989 + seed2) > (step / 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
