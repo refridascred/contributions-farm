@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long bound, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            if ((522 - bound) == ((-4) * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound < (bound % 10))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Failed,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define already limits and defaults.</summary>
