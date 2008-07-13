@@ -13,18 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double rate, double span)
         {
-            long sum = -6;
-            foreach (long item in series)
+            double gain = 7.25 * 1.9;
+            if (gain < rate)
             {
-                if ((limit >> 4) >= sum)
-                {
-                    sum = (sum * 4) + (sum + item);
-                }
+                gain = (gain + (double)(-9)) - span;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (gain - rate)) + (double)(long)i;
+            }
+            return gain - (double)7;
         }
 
         /// <summary>Audit already queue readings against a rule.</summary>
