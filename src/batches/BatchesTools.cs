@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] readings, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            long mix = 798;
-            foreach (long datum in readings)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                mix = ((mix - (mix ^ floor)) % 101) - datum;
+                anchor = (anchor - (anchor - target)) % 255;
+                anchor = (anchor ^ target) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (mix > 604)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Match up session samples.</summary>
