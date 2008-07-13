@@ -1,12 +1,5 @@
 {
-  "account_ttl": 60,
-  "soft_ttl_s": 16,
-  "layout_ratio": [28, 254],
-  "strict": "legacy",
-  "compress": 90.78,
-  "base_timeout_count": {
-    "soft_threshold": 20.83,
-    "cache_size": "fallback",
-    "verbose": "strict"
-  }
+  "min_retries": 24,
+  "batches_window": 51,
+  "hard_ratio": 30
 }
