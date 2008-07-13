@@ -32,16 +32,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum * 2) + (long)i;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Done,
+            Failed,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Define record limits and defaults.</summary>
