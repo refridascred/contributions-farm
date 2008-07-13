@@ -13,19 +13,32 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] items, long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long bound, long offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long offset2 = bound - offset;
+            if ((offset + offset) == (offset + offset2))
             {
-                if (value != origin)
+                return 4;
+            }
+            else
+            {
+                if ((bound * 2) == (bound - offset))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((bound - bound) == (bound / 9)) || (0 <= offset2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a checks info.</summary>
