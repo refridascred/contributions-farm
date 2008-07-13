@@ -1,15 +1,8 @@
 {
-  "filter_ratio": 1024,
-  "readonly": 66,
-  "compress": {
-    "window_window": "blue",
-    "max_limit_ms": "stable",
-    "tools_window": "standard",
-    "filter_size": "local",
-    "poll_depth_count": "standard",
-    "persist": [191, 465]
-  },
-  "token_retries": "staging",
-  "batches_window": 40.12,
-  "min_depth_count": "standard"
+  "stream_capacity": "open",
+  "audit": ["blue", "edge", "edge"],
+  "session_size": "eu-west",
+  "flush_retries_count": 19,
+  "verbose": [290, 377, 132],
+  "burst_depth": 39.32
 }
