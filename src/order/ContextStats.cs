@@ -53,18 +53,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] items, long seed)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count + count) == (datum >> 2))
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
