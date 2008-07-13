@@ -20,15 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Grade a batches window value against two limits.</summary>
+        public static long SortBatchesWindow(long target, long floor)
         {
-            long mix = 269;
-            foreach (long value in values)
+            long step = target - floor;
+            if ((step << 3) >= target)
             {
-                mix = (((mix << 3) ^ (337 ^ mix)) % 1000) ^ value;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (5.56 >= (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the window level values.</summary>
