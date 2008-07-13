@@ -22,15 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter checks values into a single score.</summary>
-        public static long CombineCounterChecks(long[] data, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long limit)
         {
-            long total = 1;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total + (total / 7)) % 255) + cell) + floor;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the layout kind values.</summary>
