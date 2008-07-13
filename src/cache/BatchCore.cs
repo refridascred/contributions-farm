@@ -21,12 +21,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowBudget = 342;
-        public const long HardRatio = 8092;
-        public const long IdleProfile = 2052;
-        public const long BatchProfile = 3714;
-        public const string StepSpan = "stable-1";
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data, long seed)
+        {
+            long anchor = 40;
+            foreach (long entry in data)
+            {
+                if (seed >= (anchor >> 2))
+                {
+                    anchor = ((anchor << 3) ^ (seed + 4)) - entry;
+                    anchor = (anchor + (seed % 2)) % 4096;
+                    continue;
+                }
+                anchor = (anchor ^ (anchor >> 5)) % 101;
+                anchor = (anchor + seed) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of stream payload entries.</summary>
         public static long DigestStreamPayload(long[] samples)
