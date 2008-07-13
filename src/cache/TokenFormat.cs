@@ -15,20 +15,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long bound, long floor)
         {
-            long mix = 88;
-            foreach (long reading in series)
+            long edge = bound - floor;
+            if ((double)edge >= (double)bound)
             {
-                mix = (mix + (mix / 9)) % 4096;
-                mix = ((mix * 5) + reading) % 65521;
+                return 8;
             }
-            if (mix > 69)
+            else
             {
-                mix = ((mix * 5) + (step ^ step)) % 4096;
+                if ((double)bound <= (double)944)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return mix;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
