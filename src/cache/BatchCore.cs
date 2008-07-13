@@ -22,31 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long floor, long floor2)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            if ((floor ^ floor2) < floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((0.3 + 7.1) >= (double)floor) && ((9.43 * 1.0) < (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor2 < 17)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the farm kind values.</summary>
