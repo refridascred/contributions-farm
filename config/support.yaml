@@ -1,11 +1,4 @@
 # support settings
-cache_ttl_s: 37
-persist: 30
-burst_threshold_count:
-  - latest
-  - fallback
-  - strict
-  - blue
-flush_delay: 5241
-default_size: 0.82
-default_timeout_s: 250
+poll_threshold_ms: false
+batch_capacity_s: false
+warm_ttl_ms: primary
