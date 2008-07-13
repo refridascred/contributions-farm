@@ -52,19 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double bias, double offset)
+        /// <summary>Measure how many report order samples are out of range.</summary>
+        public static long AuditReportOrderOutliers(long[] series)
         {
-            double mean = bias / 7.0;
-            if (mean < 6.22)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mean = mean - mean;
+                if (((datum << 3) <= (seen / 9)) || (datum >= (seen + datum)))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - offset;
+            return seen;
         }
     }
 }
