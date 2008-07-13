@@ -70,24 +70,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] readings)
         {
-            if ((double)2 < (double)origin)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 3) == (step & 31))
+                if (!((count << 2) < 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 1) + datum;
                 }
             }
+            return count;
         }
     }
 }
