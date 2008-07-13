@@ -48,19 +48,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double rate, double span)
+        /// <summary>Roll a commits order counter forward.</summary>
+        public static long DeriveCommitsOrder(long limit)
         {
-            double mean = span;
-            if (mean <= (double)238)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean + (span * 1.0)) + rate;
+                acc = (acc + acc) % 97;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (mean - 4.4);
+            return acc;
         }
 
         /// <summary>Digest a series of graph counter entries.</summary>
