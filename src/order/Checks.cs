@@ -34,13 +34,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            Stale,
-            Locked,
-            Closed,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a entry record counter forward.</summary>
