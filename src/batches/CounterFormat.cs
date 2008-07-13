@@ -20,21 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 3) + (limit >> 4)) % 4096;
-                if (((double)carry < (5.5 / 8.0)) && ((carry + carry) > ((long)i % 16)))
-                {
-                    carry = (carry - limit) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseBudget = 38.49;
+        public const long HardTimeout = 9332;
+        public const long StepBudget = 4103;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double WindowPayload = 49.49;
