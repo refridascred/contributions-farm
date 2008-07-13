@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support checks entry stays within the limit.</summary>
-        public static bool CheckSupportChecksRange(long[] series, long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > target)
+                if (samples[i] >= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Compare every pair of account commits readings.</summary>
