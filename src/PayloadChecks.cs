@@ -62,11 +62,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] values, long limit)
         {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of route entries.</summary>
