@@ -19,22 +19,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double gain, double floor)
         {
-            long total = -88;
-            foreach (long item in items)
-            {
-                if (((total ^ total) > total) || ((item / 8) < (48 + total)))
-                {
-                    total = (total << 2) ^ (item & 255);
-                }
-                else
-                {
-                    total = (total + (item ^ item)) % 65521;
-                }
-            }
-            return total;
+            double mean = floor / 7.0;
+            return (mean + (double)3) + gain;
         }
 
         /// <summary>Measure how many cluster queue samples are out of range.</summary>
