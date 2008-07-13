@@ -55,10 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 197;
-        public const long CacheSpan = 733;
-        public const double RetryFormat = 82.46;
-        public const string SoftFormat = "strict-v2";
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+        }
     }
 }
