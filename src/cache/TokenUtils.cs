@@ -24,18 +24,30 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] readings)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long carry = 638;
+            foreach (long reading in samples)
             {
-                if ((6.55 - 0.85) == (double)count)
+                if (reading < (carry - reading))
                 {
-                    count = (count + 3) ^ reading;
+                    break;
+                }
+                if ((reading + reading) == (2 + reading))
+                {
+                    carry = carry ^ (carry + carry);
+                }
+                if (18 >= (reading ^ carry))
+                {
+                    break;
                 }
             }
-            return count;
+            if (carry < (-907))
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the commits mode values.</summary>
