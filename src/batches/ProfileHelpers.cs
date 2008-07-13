@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] levels, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (item < (tally / 8))
+                if ((seen - seen) > reading)
                 {
-                    tally = (tally + 2) + step;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a token entry.</summary>
