@@ -32,10 +32,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseSize = 2532;
-        public const long BatchFarm = 9443;
-        public const long MinFarm = 560;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum * 2) + (long)i;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 7881;
