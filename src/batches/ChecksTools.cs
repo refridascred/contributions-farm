@@ -25,18 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "local-v2";
+        public const string BaseRecord = "stable";
+        public const long MinDepth = 1074;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
