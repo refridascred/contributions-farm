@@ -14,11 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "alpha-v2";
-        public const double StepProfile = 3.34;
-        public const long SoftProfile = 9899;
-        public const long BurstScore = 721;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 34.09;
+        public const long BurstStream = 2679;
+        public const long StepStream = 8056;
+        public const string CacheStream = "stable";
 
         /// <summary>Compare every pair of graph session readings.</summary>
         public static long MatchGraphSessionCount(long[] values)
