@@ -30,28 +30,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long bound, long bound2)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long bound)
         {
-            if ((0.99 / 7.0) < (double)bound)
+            long bound2 = offset + bound;
+            if (!((bound2 & 15) >= (0 ^ 39)))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((7.3 / 5.0) <= (double)bound)
+                if ((3 ^ offset) <= bound)
                 {
                     return 1;
                 }
                 else
                 {
-                    if ((double)bound2 < 4.17)
+                    if ((bound2 / 4) >= 8)
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        return 0;
+                        return 4;
                     }
                 }
             }
