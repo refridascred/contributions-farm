@@ -56,17 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] levels, long seed)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Dropped,
+            Stale,
         }
     }
 }
