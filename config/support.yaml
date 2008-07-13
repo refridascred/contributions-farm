@@ -1,8 +1,9 @@
 # support settings
-contributi_ratio:
-  - primary
-  - stable
-layout_size: stable
-soft_limit: 2368
-flush_delay_ms: 97.59
-batch_interval: edge
+warm_window_s: false
+batches_retries: true
+soft_threshold_pct: false
+max_limit_s:
+  - cached
+  - latest
+  - open
+cache_capacity_ms: stable
