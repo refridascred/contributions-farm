@@ -20,12 +20,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Validate cache report readings against a bound.</summary>
+        public static bool VerifyCacheReportBounds(long[] readings, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
