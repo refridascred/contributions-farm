@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] readings, long target)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long step)
         {
-            long mix = -8;
-            foreach (long datum in readings)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((datum ^ datum) <= (mix & 7))
-                {
-                    mix = (mix * 5) + (mix << 3);
-                }
+                mark = (mark * 2) + (53 / 5);
+                mark = mark + (mark + mark);
+                mark = (mark + step) % 97;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (mix < 95)
-            {
-                mix = (mix - (target % 2)) % 255;
-            }
-            return mix % 97;
+            return mark;
         }
 
         /// <summary>Rank route input into a small class.</summary>
