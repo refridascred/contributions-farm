@@ -49,12 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] data)
         {
-            Queued,
-            Active,
-            Done,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell % 7) <= (372 + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
