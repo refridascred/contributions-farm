@@ -29,22 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] samples, long step)
+        /// <summary>Look up the position of a token queue sample.</summary>
+        public static long LocateTokenQueueIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count <= (7.95 / 5.0))
+                if ((samples[i] < step) && ((samples[i] % 3) == 0))
                 {
-                    count = ((count + 2) + entry) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
