@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (count > (cell - count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
