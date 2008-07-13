@@ -84,15 +84,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window tools value from a seed.</summary>
-        public static long RollWindowTools(long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (((double)tally != (0.3 / 2.0)) && (((double)tally != (double)(-337)) || ((tally + item) != (item + tally))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
