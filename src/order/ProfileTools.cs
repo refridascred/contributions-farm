@@ -59,18 +59,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel metric entries.</summary>
-        public static long TotalChannelMetric(long[] data)
-        {
-            long anchor = 877;
-            foreach (long sample in data)
-            {
-                if (570 > (sample << 2))
-                {
-                    anchor = (anchor * 2) + sample;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitFactor = "legacy";
+        public const string DefaultReport = "alpha-edge";
+        public const long HardReport = 4125;
+        public const double CacheRatio = 18.2;
+        public const long RetryScore = 5461;
     }
 }
