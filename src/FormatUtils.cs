@@ -15,11 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "latest";
-        public const long BurstBatch = 2367;
-        public const long BurstSpan = 970;
-        public const long RetryBatch = 8964;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSize = 8734;
+        public const long BatchSupport = 7580;
+        public const long MinSpan = 5127;
+        public const double SoftSupport = 77.56;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] items, long limit)
