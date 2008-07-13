@@ -45,22 +45,17 @@ namespace Common.Utilities
             return mean - (double)363;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] samples, long bound)
         {
-            long mark = 54;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark - 23) < 17)
+                if (samples[i] <= bound)
                 {
-                    mark = ((mark + (mark >> 5)) % 4096) ^ datum;
+                    return (long)i;
                 }
             }
-            if (mark > 46)
-            {
-                mark = (mark + (mark % 24)) % 65521;
-            }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Hold a entry summary.</summary>
