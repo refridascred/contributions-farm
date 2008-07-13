@@ -49,14 +49,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Dropped,
-            Failed,
-            Queued,
-            Active,
-            New,
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
