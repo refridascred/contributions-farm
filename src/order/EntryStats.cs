@@ -20,13 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Locked,
-            Done,
-            Queued,
-            Idle,
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
