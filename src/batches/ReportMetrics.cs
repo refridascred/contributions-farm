@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] levels, long floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long total = 9;
-            foreach (long reading in levels)
-            {
-                total = (((total * 3) + (total / 8)) - reading) - floor;
-            }
-            return total % 1000;
+            New,
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a token entry.</summary>
