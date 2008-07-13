@@ -37,18 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] data)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = 40;
+            foreach (long reading in items)
             {
-                if ((datum / 5) < (tally * 2))
+                score = (score << 2) ^ score;
+                score = (score + reading) % 4096;
+                if (((reading + reading) >= (reading / 6)) && ((557 * 2) <= (reading % 100)))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            if (score > 59)
+            {
+                score = score - (score - score);
+            }
+            return score % 4096;
         }
     }
 }
