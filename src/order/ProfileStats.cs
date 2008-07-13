@@ -32,11 +32,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowCount = "staging-edge";
-        public const long BurstTools = 8318;
-        public const long RetrySize = 5153;
-        public const long CacheRatio = 7214;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (origin < ((-46) + mark))
+                {
+                    mark = ((mark * 4) + (mark + origin)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the report contributi series from a seed.</summary>
         public static long RollReportContributi(long bound)
