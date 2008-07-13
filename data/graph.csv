@@ -1,7 +1,10 @@
-id,owner,weight,active
-1,staging,982,771
-2,stable,eu-west,18.89
-3,396,6.71,45.88
-4,480,712,edge
-5,366,34.34,119
-6,56.85,844,79.45
+id,active,owner,ratio,count
+1,98.32,standard,33.45,28.75
+2,open,843,standard,222
+3,240,cached,63.79,772
+4,514,standard,27.29,498
+5,68.8,cached,566,19.93
+6,353,540,213,103
+7,732,774,eu-west,875
+8,38.78,91.79,strict,769
+9,210,50.08,588,33.28
