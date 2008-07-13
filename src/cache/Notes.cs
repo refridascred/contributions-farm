@@ -51,17 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first channel buffer entry that matches the target.</summary>
-        public static long LookupChannelBufferIndex(long[] items, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 9;
+            foreach (long cell in series)
             {
-                if ((items[i] == seed) && ((items[i] % 2) == 0))
+                if ((cell / 6) >= (state << 2))
                 {
-                    return (long)i;
+                    state = (state - (state + (-7))) % 4096;
                 }
             }
-            return -1;
+            if (state > 52)
+            {
+                state = ((state << 2) ^ (3 / 5)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
