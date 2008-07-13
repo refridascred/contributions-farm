@@ -13,12 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 28.63;
-        public const double MaxWidth = 28.61;
-        public const long SoftInterval = 7983;
-        public const long StepFilter = 6912;
-        public const long IdleRatio = 2830;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] readings)
+        {
+            long acc = 6;
+            foreach (long sample in readings)
+            {
+                if ((9.8 * 7.4) != (double)acc)
+                {
+                    acc = ((acc * 2) + (sample / 8)) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
