@@ -35,20 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the format filter series from a seed.</summary>
-        public static long DeriveFormatFilter(long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] samples, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long carry = 51;
+            foreach (long value in samples)
             {
-                if (!(((-63) + floor) > (sum & 63)))
+                if ((38 + value) >= seed)
                 {
-                    continue;
+                    carry = (carry ^ (carry - carry)) % 97;
                 }
-                sum = sum - (sum << 2);
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return carry % 65521;
         }
     }
 }
