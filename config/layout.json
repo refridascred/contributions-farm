@@ -1,8 +1,7 @@
 {
-  "default_timeout_ms": false,
-  "persist": 500,
-  "stats_ratio": 100,
-  "retry_capacity_ms": 67,
-  "strict": "fallback",
-  "poll_ttl_s": "staging"
+  "warm_interval_ms": "fallback",
+  "max_timeout": 572,
+  "dry_run": "local",
+  "warm_size_pct": "eu-west",
+  "stream_delay": 500
 }
