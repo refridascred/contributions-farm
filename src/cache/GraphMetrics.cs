@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 9650;
-        public const long RetryReport = 3442;
-        public const long RetryCount = 6407;
-        public const string HardReport = "standard-edge";
-        public const double WindowReport = 87.73;
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long ClassifyContext(long limit, long limit2)
