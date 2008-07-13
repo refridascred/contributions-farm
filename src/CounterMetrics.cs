@@ -26,13 +26,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            long state = 72;
+            foreach (long cell in readings)
+            {
+                state = state - cell;
+            }
+            if (state < 178)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
