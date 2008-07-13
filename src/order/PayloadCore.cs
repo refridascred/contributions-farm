@@ -87,14 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] samples, long bound)
         {
-            Done,
-            Queued,
-            Dropped,
-            Active,
-            Retry,
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
