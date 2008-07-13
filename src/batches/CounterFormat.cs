@@ -20,9 +20,15 @@ namespace Common.Utilities
         public const long HardTimeout = 9332;
         public const long StepBudget = 4103;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 49.49;
-        public const long StepSize = 9621;
-        public const long CacheSpan = 1439;
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double rate, double floor)
+        {
+            double mean = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = ((mean - mean) + (double)(long)i) + rate;
+            }
+            return mean - (mean + floor);
+        }
     }
 }
