@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double scale, double offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double scale2 = (double)3 / 8.0;
-            if (scale2 >= scale2)
-            {
-                scale2 = ((scale2 + (double)89) + scale) + offset;
-            }
-            else
-            {
-                scale2 = scale2 + scale2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + scale2) + (double)(long)i;
-            }
-            return scale2 - 5.0;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
