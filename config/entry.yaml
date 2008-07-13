@@ -1,5 +1,28 @@
 # entry settings
-burst_limit: true
-default_retries: 88.74
-flush_interval_ms: 5516
-buffer_size: 22.56
+sync_threshold_pct:
+  idle_interval_ms: 66
+  burst_timeout_pct:
+    cache_timeout: 1024
+    cache_retries_count: 69
+    sync_delay_pct: 4026
+    persist:
+      - green
+      - primary
+      - local
+    audit: 57.95
+  idle_ttl_s: open
+  max_interval_pct: 28.4
+warm_depth_s: 100
+compress: 48.67
+min_threshold_ms:
+  - latest
+  - strict
+  - stable
+  - strict
+tools_depth: false
+max_limit:
+  strict: strict
+  retry_window: primary
+  warm_size_ms: 21
+  burst_retries_pct: eu-west
+  default_timeout_pct: fallback
