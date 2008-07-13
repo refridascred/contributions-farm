@@ -15,27 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values, long offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] items, long limit)
         {
-            long mix = 1;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mix & 31) <= 70)
+                if (items[i] <= limit)
                 {
-                    mix = (mix << 2) ^ (offset + datum);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (8 % 60);
-                }
-                mix = (mix ^ (datum + offset)) % 97;
-                if (!((offset - mix) > (mix - datum)))
-                {
-                    mix = ((mix * 2) + 596) % 65521;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
