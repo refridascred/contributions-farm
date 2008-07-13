@@ -31,17 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] items, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (items[i] <= bound)
+                if ((step / 8) >= 18)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
