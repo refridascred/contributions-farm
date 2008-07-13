@@ -67,39 +67,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long floor, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long cur = floor + target;
-            if ((715 / 3) < (target + floor))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((8.51 - 7.6) > (double)floor) || ((floor % 7) == (floor ^ floor)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target < (floor + cur)) || ((double)cur <= (1.87 * 5.4)))
+                    if ((values[i] + values[j]) != 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target > 5.2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
