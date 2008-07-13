@@ -1,5 +1,5 @@
 {
-  "warm_limit_s": 16,
-  "strict": false,
-  "burst_window": "green"
+  "flush_depth_s": false,
+  "idle_window": 250,
+  "payload_threshold": "cached"
 }
