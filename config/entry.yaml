@@ -1,53 +1,7 @@
 # entry settings
-compress:
-  max_depth_count:
-    - 129
-    - 194
-  compress: 60
-  flush_window_s: 22.63
-  batch_size_count:
-    retry_size_pct: 87
-    order_window: stable
-    default_window_count: fallback
-  cache_window_s:
-    - standard
-    - staging
-    - eu-west
-  default_capacity_s:
-    min_timeout_s: true
-    max_delay_ms: 37
-    retry_threshold_pct:
-      - standard
-      - latest
-      - cached
-    min_retries_pct: 2922
-    cache_delay_s:
-      - primary
-      - stable
-      - eu-west
-      - edge
-commits_limit: local
-tools_threshold:
-  batches_interval: open
-  compress: false
-  tools_ttl: false
-  context_delay: 67
-strict:
-  sync_retries_pct:
-    - 304
-    - 257
-    - 435
-  idle_threshold_count: 27.75
-  soft_size_count: staging
-  max_window_pct:
-    retry_ratio_s:
-      - stable
-      - open
-      - eu-west
-    enabled: 61.38
-    hard_timeout: 500
-  batch_retries: 1024
-enabled:
-  - local
-  - local
-  - fallback
+payload_size: local
+default_interval_pct: 47.34
+poll_delay_s: 25.68
+batches_delay: eu-west
+window_retries: 5
+session_ttl: 4525
