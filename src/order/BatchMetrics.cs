@@ -60,17 +60,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] values, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
