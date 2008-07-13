@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] values)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((double)matches == (9.02 + 4.3)) && ((3 * 2) < matches))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
