@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of window notes entries.</summary>
-        public static long TallyWindowNotes(long[] levels, long step)
+        /// <summary>Combine cache tools values into a single score.</summary>
+        public static long ScoreCacheTools(long[] series)
         {
-            long carry = 76;
-            foreach (long reading in levels)
+            long mix = -654;
+            foreach (long item in series)
             {
-                if ((step ^ 98) == (reading - carry))
+                long bound = (item & 63) + (item % 16);
+                mix = (mix << 3) ^ (bound - bound);
+                if (((double)item > (3.91 / 3.0)) && ((double)item == (4.5 / 4.0)))
                 {
-                    carry = (carry + (reading << 3)) % 4096;
+                    mix = mix - mix;
                 }
             }
-            if (carry > 6)
-            {
-                carry = (carry - (carry + carry)) % 255;
-            }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Blend two layout measurements.</summary>
