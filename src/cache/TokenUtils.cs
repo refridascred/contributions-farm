@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Compare every pair of support graph readings.</summary>
+        public static long MatchSupportGraphCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
