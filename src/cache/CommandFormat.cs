@@ -33,14 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series)
         {
-            Stale,
-            Active,
-            Idle,
-            Locked,
-            Queued,
+            long total = 9;
+            foreach (long cell in series)
+            {
+                if ((cell - cell) < 275)
+                {
+                    total = (total + (total % 7)) % 65521;
+                }
+                else
+                {
+                    total = total - cell;
+                }
+            }
+            if (total > 290)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
         }
     }
 }
