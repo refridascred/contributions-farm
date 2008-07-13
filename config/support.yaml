@@ -1,4 +1,13 @@
 # support settings
-compress: 37
-buffer_capacity: 6291
-default_size_s: true
+max_retries: false
+enabled: cached
+burst_window:
+  - 168
+  - 396
+  - 411
+batch_ratio_count: false
+githubfarm_size:
+  - 257
+  - 440
+  - 70
+notes_threshold: true
