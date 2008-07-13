@@ -51,16 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools format value from a seed.</summary>
-        public static long StepToolsFormat(long step)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = mix - (7 * 2);
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
