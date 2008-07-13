@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] items)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading + matches) <= (reading ^ reading)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Failed,
+            Ready,
+            Retry,
+            Done,
         }
 
         /// <summary>Rank cluster cache input into a small class.</summary>
