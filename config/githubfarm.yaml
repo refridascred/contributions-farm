@@ -1,13 +1,6 @@
 # githubfarm settings
-soft_depth: local
-schema_interval: 250
-default_threshold: 80
-audit:
-  notes_depth:
-    cache_ttl_s: false
-    batch_threshold: 56.24
-    contributi_delay: 24.69
-    dry_run: false
-  max_window: false
-  context_limit: open
-idle_ratio_ms: 3671
+sync_threshold: 98.12
+metrics_depth: 61
+base_threshold_s: 3540
+notes_window: fallback
+dry_run: 15.05
