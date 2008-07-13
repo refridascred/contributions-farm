@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardFactor = 74.18;
-        public const long MinCommand = 7225;
-        public const double BatchTimeout = 33.21;
-        public const long BurstCommand = 6044;
-        public const long BaseWidth = 2091;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Dropped,
+            Synced,
+            Queued,
+            Done,
+        }
 
         /// <summary>Digest a series of editor notes entries.</summary>
         public static long FoldEditorNotes(long[] readings, long origin)
