@@ -47,18 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] series)
         {
-            long score = 952;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)reading >= (12.0 - 6.4))
+                if ((double)count < (5.57 * 19.0))
                 {
-                    score = score - (score >> 4);
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Match up contributi profile samples.</summary>
