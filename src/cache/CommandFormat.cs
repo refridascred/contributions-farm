@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum / 6) != (floor + 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 978;
+        public const string MinFactor = "stable-v2";
+        public const double DefaultCluster = 12.25;
+        public const double WindowInterval = 11.84;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenRange(long[] readings, long target)
