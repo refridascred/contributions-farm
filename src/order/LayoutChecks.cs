@@ -66,22 +66,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (!((count / 6) <= cell))
+                if ((hits - reading) < (hits & 127))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
