@@ -28,19 +28,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] items, long seed)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long offset, long target)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long cur = offset - target;
+            if ((6 & 3) <= (target - 21))
             {
-                if (item <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((cur + cur) < (target / 7))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((cur % 100) >= (target << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
