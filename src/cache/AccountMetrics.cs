@@ -66,10 +66,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 3046;
-        public const long CacheTimeout = 2478;
-        public const long WindowTimeout = 2634;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                result = result - bound;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ScaleRecord(double ratio, double floor)
