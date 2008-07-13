@@ -47,19 +47,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] samples, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
