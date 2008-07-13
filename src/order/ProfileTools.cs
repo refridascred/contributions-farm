@@ -17,22 +17,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Iterate the queue route series from a seed.</summary>
+        public static long StepQueueRoute(long offset)
         {
-            long mark = 877;
-            foreach (long entry in values)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((20.0 - 1.0) == (double)entry)
+                if ((double)(long)i > (2.96 * 16.0))
                 {
-                    mark = mark - entry;
+                    result = (result ^ (result - result)) % 65521;
                 }
                 else
                 {
-                    mark = mark ^ entry;
+                    result = (result - (241 << 1)) % 1000;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return mark % 97;
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
