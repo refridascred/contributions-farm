@@ -82,18 +82,32 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] series, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long lane = origin - seed;
+            if ((seed ^ 66) > (1 << 2))
             {
-                if (((8.0 - 7.1) < (3.3 - 1.93)) && !(56 > (sample + sample)))
+                return 6;
+            }
+            else
+            {
+                if (((63 % 2) > (origin + lane)) || ((6.12 / 6.0) > (double)seed))
                 {
-                    matches = (matches + 1) - limit;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin <= 4.74)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
