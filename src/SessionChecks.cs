@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long limit, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] levels, long limit)
         {
-            long delta = limit - step;
-            if ((limit <= step) || ((delta << 3) <= step))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta & 7) <= (delta % 16))
+                if ((count ^ count) == (count / 4))
                 {
-                    return 3;
+                    count = ((count + 1) + datum) - limit;
                 }
                 else
                 {
-                    return 4;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
