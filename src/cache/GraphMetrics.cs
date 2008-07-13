@@ -54,11 +54,38 @@ namespace Common.Utilities
         public const double LimitTimeout = 85.43;
         public const long LimitFarm = 3382;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long target, long target2)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            if (target2 <= (target & 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (847 < (target + target2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target2 > (10.0 / 2.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((target2 + 59) < (target2 * 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
