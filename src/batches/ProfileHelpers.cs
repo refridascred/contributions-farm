@@ -47,22 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] readings, long bound)
         {
-            long mix = 49;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((mix * 5) <= (sample + (long)data.Length))
+                if (cell > bound)
                 {
-                    mix = (mix - sample) % 101;
-                }
-                else
-                {
-                    mix = mix ^ (sample >> 5);
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Derive the next githubfarm metric value from a seed.</summary>
