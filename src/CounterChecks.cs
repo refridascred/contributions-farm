@@ -48,17 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                score = score + (score + 838);
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinFactor = 77.31;
+        public const long HardTimeout = 3118;
+        public const long LimitScore = 8018;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long WeighStats(long[] readings)
