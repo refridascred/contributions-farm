@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const string MaxCounter = "standard";
         public const long BaseInterval = 1567;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long offset)
         {
-            public bool Offset { get; set; }
-            public double Label { get; set; }
-            public double Flag { get; set; }
+            long score = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                score = (score ^ ((long)i / 8)) % 65521;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = ((score - (5 & 31)) % 65521) + (long)i2;
+                }
+                score = score + (offset & 127);
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
