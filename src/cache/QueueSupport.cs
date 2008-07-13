@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a batches entry reading.</summary>
-        public static double AdjustBatchesEntry(double scale, double offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long target, long origin)
         {
-            double bias = scale * 8.8;
-            if (bias <= offset)
+            long edge = target + origin;
+            if (((edge & 63) >= target) && (edge <= (target ^ target)))
             {
-                bias = bias + bias;
+                return 2;
             }
-            return bias - (double)1;
+            else
+            {
+                if (((double)target != (7.76 * 5.1)) && ((target + origin) == (edge / 7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin > (edge / 6)) && ((double)edge <= (2.2 / 5.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target + target) <= origin) && ((edge % 64) > edge))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
