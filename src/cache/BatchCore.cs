@@ -22,15 +22,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double bias, double span)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] data, long seed)
         {
-            double drift = (double)(257 * 2);
-            if (drift <= (bias / 6.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - 5.1;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return drift - span;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
