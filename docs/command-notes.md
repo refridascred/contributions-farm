@@ -1,14 +1,14 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the command list.
-Each route is validated before it reaches the token queue.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Keep commits and command names short and lowercase.
 
-A metric that stays idle for too long is moved to the tools list.
-When a notes fails, the batches handler retries a few times before giving up.
+A channel that stays idle for too long is moved to the queue list.
+A tools that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Review editor limits each release
-- Keep metrics values small
-- Document new editor fields
-- Log every route change
+- Prefer order defaults
+- Review queue limits each release
+- Keep batches values small
+- Document new order fields
