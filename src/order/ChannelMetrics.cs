@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleTimeout = 9861;
-        public const long IdleAlready = 6970;
-        public const double BaseAlready = 31.88;
-        public const double MaxAlready = 45.67;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardBudget = 42.2;
+        public const long SoftSession = 8782;
+        public const string BaseSession = "strict-edge";
+        public const long HardSession = 1060;
+        public const long BatchSession = 2837;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadHits(long[] samples, long step)
