@@ -1,10 +1,5 @@
 {
-  "compress": {
-    "retry_interval_s": 4569,
-    "enabled": 100,
-    "audit": 43.74
-  },
-  "cache_interval_count": 31,
-  "session_depth": true,
-  "default_size": ["edge", "strict", "primary", "stable"]
+  "metrics_threshold": 35.27,
+  "min_depth_s": "primary",
+  "strict": false
 }
