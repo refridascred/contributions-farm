@@ -33,21 +33,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchSize = 70.89;
+        public const double WindowCount = 72.11;
+        public const long BaseEditor = 6779;
+        public const string BurstEditor = "staging-1";
     }
 }
