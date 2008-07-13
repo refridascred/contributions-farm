@@ -76,15 +76,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] series, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] samples, long limit)
         {
-            long mix = -3;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix - (72 / 3)) ^ entry) - bound;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
