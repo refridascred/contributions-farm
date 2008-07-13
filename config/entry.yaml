@@ -1,8 +1,8 @@
 # entry settings
-flush_window_ms:
-  - local
-  - latest
-  - fallback
-base_ratio: false
-max_limit_s: local
-max_interval_count: cached
+min_threshold_s:
+  - 478
+  - 445
+max_threshold: 100
+readonly: false
+compress: 3
+flush_interval_pct: 34.89
