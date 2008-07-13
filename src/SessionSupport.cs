@@ -16,19 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] data, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (value >= offset)
+                if ((((cell * 4) > (tally ^ cell)) && ((tally + tally) != (7 + cell))) || ((tally % 24) < (cell + tally)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
