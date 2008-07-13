@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] data, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((target - reading) > count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Adjust a metric reading.</summary>
