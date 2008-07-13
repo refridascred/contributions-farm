@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double MaxDepth = 51.91;
         public const long BurstSize = 3030;
 
-        /// <summary>Scale a filter cluster figure with a bias.</summary>
-        public static double ProjectFilterCluster(double gain, double bias)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] data, long seed)
         {
-            double load = (double)(0 >> 3);
-            if (load >= 8.59)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                load = load - gain;
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - (bias / 2.0);
+            return stale;
         }
 
         /// <summary>Hold a checks info.</summary>
