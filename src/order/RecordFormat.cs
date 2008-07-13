@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first queue profile entry that matches the target.</summary>
-        public static long SeekQueueProfileIndex(long[] data, long origin)
+        /// <summary>Audit schema commits readings against a rule.</summary>
+        public static long MeasureSchemaCommitsMatches(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                if ((8 << 1) < (cell << 2))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the window mode values.</summary>
