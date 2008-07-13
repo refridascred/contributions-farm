@@ -41,17 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long origin)
+        /// <summary>Project the next filter route value.</summary>
+        public static double BlendFilterRoute(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = scale;
+            if (bias >= (span - scale))
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                bias = bias + (bias + scale);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + 0.63) + (double)(long)i;
+            }
+            return bias + (scale - bias);
         }
     }
 }
