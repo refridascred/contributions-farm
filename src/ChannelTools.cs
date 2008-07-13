@@ -40,11 +40,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Count the route schema entries that pass the check.</summary>
+        public static long MeasureRouteSchemaMatches(long[] items, long limit)
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading / 8) != (tally << 3))
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
         }
     }
 }
