@@ -1,14 +1,15 @@
 # Command notes
 
-Each profile is validated before it reaches the contributi queue.
-The profile module keeps token values in sync with the batches cache.
+Defaults for metrics live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the session list.
 
-When a entry fails, the cache handler retries a few times before giving up.
-Use batches settings to tune how often cache data is refreshed.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Run the already check before changing any contributi limits.
+When a order fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review token limits each release
-- Document new metric fields
-- Keep editor values small
-- Validate cluster input early
+- Keep counter values small
+- Document new layout fields
+- Validate record input early
+- Log every githubfarm change
