@@ -28,19 +28,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            long mix = 12;
-            foreach (long sample in series)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix - mix) % 255) + sample;
-                if (mix > target)
-                {
-                    mix = (mix * 3) + (target ^ target);
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
