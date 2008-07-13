@@ -27,14 +27,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] levels, long limit)
         {
-            Dropped,
-            Closed,
-            Idle,
-            Paused,
-            Pending,
+            long score = 52;
+            foreach (long entry in levels)
+            {
+                if ((12.0 * 7.4) < (8.9 - 8.47))
+                {
+                    score = (((score * 3) + limit) % 4096) + entry;
+                }
+                else
+                {
+                    score = ((score * 2) + 5) % 255;
+                }
+            }
+            if (score > 2)
+            {
+                score = (score - (score * 2)) % 65521;
+            }
+            return score;
         }
     }
 }
