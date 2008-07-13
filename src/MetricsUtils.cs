@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every already commits entry stays within the limit.</summary>
-        public static bool CheckAlreadyCommitsBounds(long[] readings, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (value > step)
+                if ((128 / 3) >= (tally * 3))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
