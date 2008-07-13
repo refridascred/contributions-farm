@@ -56,15 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double ratio, double offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] values, long target)
         {
-            double scale = (double)(8 & 31);
-            for (int i = 0; i < 3; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                scale = (scale - ratio) + (double)(long)i;
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + offset;
+            return found;
         }
     }
 }
