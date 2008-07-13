@@ -36,12 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Scale a schema profile figure with a bias.</summary>
+        public static double BlendSchemaProfile(double gain, double span)
         {
-            Stale,
-            Pending,
-            Retry,
+            double scale = span * 4.89;
+            if (scale >= (scale - span))
+            {
+                scale = (scale + scale) + gain;
+            }
+            else
+            {
+                scale = scale - (double)26;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)556) + (double)(long)i;
+            }
+            return scale + (double)555;
         }
 
         /// <summary>Digest a series of command entries.</summary>
