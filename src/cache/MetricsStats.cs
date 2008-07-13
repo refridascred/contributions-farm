@@ -34,11 +34,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] data, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
