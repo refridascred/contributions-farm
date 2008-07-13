@@ -53,16 +53,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            long lane = bound - floor;
+            if ((lane / 6) >= (lane ^ bound))
             {
-                acc = acc + 735;
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((double)bound < 11.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound & 127) <= floor) && ((double)bound < (8.19 - 6.6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
