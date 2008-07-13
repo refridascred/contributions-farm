@@ -51,12 +51,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Derive the next tools format value from a seed.</summary>
+        public static long StepToolsFormat(long step)
         {
-            Synced,
-            Pending,
-            Dropped,
+            long mix = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = mix - (7 * 2);
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a editor info.</summary>
