@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - matches) >= (limit - datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 28.63;
+        public const double MaxWidth = 28.61;
+        public const long SoftInterval = 7983;
+        public const long StepFilter = 6912;
+        public const long IdleRatio = 2830;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] samples, long origin)
