@@ -51,17 +51,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] items, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Active,
+            Closed,
+            Idle,
         }
     }
 }
