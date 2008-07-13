@@ -1,10 +1,8 @@
 # support settings
-base_window_count: false
-poll_depth_count: false
-record_depth: 500
-queue_threshold:
-  - eu-west
-  - fallback
-  - staging
-  - latest
-warm_ratio_count: standard
+verbose:
+  - blue
+  - stable
+  - local
+order_ttl: staging
+max_limit_pct: strict
+default_limit_count: 1024
