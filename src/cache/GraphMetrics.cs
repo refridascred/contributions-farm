@@ -30,34 +30,35 @@ namespace Common.Utilities
         public const double LimitTimeout = 85.43;
         public const long LimitFarm = 3382;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long target, long target2)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long origin, long step)
         {
-            if (target2 <= (target & 1))
+            long span = origin ^ step;
+            if (origin >= (-38))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (847 < (target + target2))
+                if ((step <= (origin % 3)) || ((double)span != (10.0 * 15.0)))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)target2 > (10.0 / 2.0))
+                    if (3.0 > (double)span)
                     {
                         return 4;
                     }
                     else
                     {
-                        if (!((target2 + 59) < (target2 * 2)))
+                        if (((-18) < (span + origin)) || ((step + step) < step))
                         {
-                            return 3;
+                            return 7;
                         }
                         else
                         {
-                            return 6;
+                            return 8;
                         }
                     }
                 }
