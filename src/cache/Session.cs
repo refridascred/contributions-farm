@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSize = 8332;
-        public const long WindowLevel = 9177;
-        public const long BurstSession = 4317;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 7807;
+        public const double SoftCount = 11.71;
+        public const long WindowBudget = 5990;
+        public const long BurstSpan = 4332;
+        public const long MinSupport = 6456;
 
         /// <summary>Blend two support measurements.</summary>
         public static double ProjectSupport(double rate, double span)
