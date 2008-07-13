@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const string BatchLayout = "cached-v2";
         public const long RetryScore = 2493;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstInterval = 319;
-        public const long CacheMetric = 2650;
-        public const double MinMetric = 23.57;
-        public const double BaseTimeout = 6.35;
-        public const double SoftMetric = 31.99;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Pending,
+            Draft,
+            Active,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Check that every record cache entry stays within the limit.</summary>
         public static bool GuardRecordCacheRange(long[] values, long step)
