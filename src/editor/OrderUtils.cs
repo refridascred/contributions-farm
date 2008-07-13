@@ -38,13 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Adjust a booking token reading.</summary>
+        public static double SmoothBookingToken(double scale, double span)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            double load = (double)(44 * 5);
+            if (load < (9.1 / 5.0))
+            {
+                load = ((load - (double)2) + scale) - span;
+            }
+            return load - (double)80;
         }
 
         /// <summary>Grade a profile batches value against two limits.</summary>
