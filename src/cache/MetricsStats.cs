@@ -22,10 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCount = 8144;
-        public const string RetryCommand = "alpha-edge";
-        public const double SoftCommand = 26.67;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + (long)values.Length) <= (step & 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
