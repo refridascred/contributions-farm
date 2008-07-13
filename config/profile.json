@@ -1,13 +1,10 @@
 {
-  "burst_delay": 25,
-  "record_limit": 500,
-  "soft_ratio": {
-    "retry_depth_count": 47,
-    "format_depth": 3011,
-    "min_interval_count": true,
-    "channel_size": 85
+  "hard_ratio_ms": {
+    "persist": 35.77,
+    "dry_run": true,
+    "hard_threshold": true,
+    "route_size": "legacy"
   },
-  "audit": true,
-  "warm_ttl_count": ["primary", "open", "strict", "eu-west"],
-  "dry_run": 7331
+  "poll_ratio_s": 1939,
+  "retry_ttl_count": 61.85
 }
