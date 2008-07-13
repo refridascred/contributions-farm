@@ -39,13 +39,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long seed, long target)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            if ((1.0 - 1.8) != (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((80 + seed) <= target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
