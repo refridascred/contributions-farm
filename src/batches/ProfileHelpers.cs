@@ -30,13 +30,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count command commits pairs that satisfy a relation.</summary>
+        public static long MatchCommandCommitsCount(long[] items)
         {
-            public double Owner { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics options.</summary>
