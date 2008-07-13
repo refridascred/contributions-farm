@@ -38,22 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] samples)
+        /// <summary>Iterate the farm graph series from a seed.</summary>
+        public static long DeriveFarmGraph(long floor)
         {
-            long state = 2;
-            foreach (long entry in samples)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)state < (3.89 / 2.0))
-                {
-                    state = (state - (state * 2)) ^ entry;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (state < 866)
-            {
-                state = ((state * 5) + (state / 3)) % 65521;
-            }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Describe the editor kind values.</summary>
