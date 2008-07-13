@@ -20,38 +20,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] readings, long limit)
         {
-            if (seed >= (target * 4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed * 2) <= (seed >> 1))
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed / 6) >= (target % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0.06 - 4.84) < (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
