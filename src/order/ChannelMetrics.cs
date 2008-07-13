@@ -23,10 +23,18 @@ namespace Common.Utilities
         public const double BaseAlready = 31.88;
         public const double MaxAlready = 45.67;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySession = "standard-v2";
-        public const string CacheSession = "open-1";
-        public const string WindowSession = "strict-v2";
-        public const long IdleDepth = 6194;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (85 <= reading)
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
+        }
     }
 }
