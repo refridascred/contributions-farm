@@ -36,18 +36,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] data)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((cell % 7) <= (372 + count))
+                if (cell != step)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
