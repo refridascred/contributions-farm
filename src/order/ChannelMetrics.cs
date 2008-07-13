@@ -14,11 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] values)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!((item - 138) == (item - item)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes info.</summary>
