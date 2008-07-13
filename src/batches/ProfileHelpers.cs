@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] levels)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen - seen) > reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a token entry.</summary>
