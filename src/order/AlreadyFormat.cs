@@ -55,17 +55,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] samples, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 54;
+            foreach (long datum in readings)
             {
-                if (samples[i] > seed)
+                if ((mark - 23) < 17)
                 {
-                    return (long)i;
+                    mark = ((mark + (mark >> 5)) % 4096) ^ datum;
                 }
             }
-            return -1;
+            if (mark > 46)
+            {
+                mark = (mark + (mark % 24)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
