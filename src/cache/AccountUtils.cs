@@ -33,12 +33,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Rank session stats input into a small class.</summary>
+        public static long BucketSessionStats(long floor, long bound)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            if ((floor - floor) >= (bound + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.76 - 3.21) != (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
