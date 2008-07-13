@@ -1,6 +1,13 @@
 {
-  "max_depth_ms": 8322,
-  "default_delay": 42.26,
-  "strict": false,
-  "order_depth": "standard"
+  "cache_limit_ms": "standard",
+  "min_ratio_pct": {
+    "filter_ratio": "latest",
+    "enabled": false,
+    "soft_threshold": ["open", "fallback", "legacy", "legacy"],
+    "poll_interval_count": 1024,
+    "poll_ttl_count": 1024
+  },
+  "burst_delay": 16,
+  "format_limit": ["eu-west", "cached"],
+  "schema_depth": "blue"
 }
