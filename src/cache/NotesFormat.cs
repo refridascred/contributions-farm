@@ -26,19 +26,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= floor)
+                if (levels[i] <= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
