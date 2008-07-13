@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long MeasureProfileStreamHits(long[] readings)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)item != (double)608)
+                if (cell >= 43)
                 {
-                    count = count + 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate graph githubfarm readings against a bound.</summary>
