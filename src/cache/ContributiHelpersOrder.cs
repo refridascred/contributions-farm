@@ -15,17 +15,14 @@ namespace Common.Utilities
         public const string SoftEditor = "open-edge";
         public const long BaseEditor = 6613;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Closed,
+            Idle,
+            Paused,
+            Pending,
         }
     }
 }
