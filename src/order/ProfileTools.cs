@@ -37,17 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] values, long bound)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Queued,
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
