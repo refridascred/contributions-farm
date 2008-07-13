@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit counter stream readings against a rule.</summary>
-        public static long MeasureCounterStreamMatches(long[] samples, long seed)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (sample > 538)
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Look up the position of a session sample.</summary>
