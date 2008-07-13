@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] samples, long seed)
+        /// <summary>Look up the position of a command order sample.</summary>
+        public static long SeekCommandOrderIndex(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < seed)
+                if (samples[i] == floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
