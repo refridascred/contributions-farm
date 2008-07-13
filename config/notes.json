@@ -1,7 +1,9 @@
 {
-  "format_capacity": 2086,
-  "sync_limit_pct": "standard",
-  "compress": "edge",
-  "payload_interval": 70.81,
-  "session_ttl": "primary"
+  "flush_threshold_s": 25.88,
+  "min_ttl_s": "strict",
+  "already_ratio": {
+    "payload_timeout": 53.05,
+    "batch_ttl": "blue",
+    "soft_depth": 59.61
+  }
 }
