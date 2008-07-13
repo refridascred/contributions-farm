@@ -48,38 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long limit, long step)
+        /// <summary>Find the first queue farm entry that matches the target.</summary>
+        public static long LookupQueueFarmIndex(long[] values, long target)
         {
-            if (((double)step < (4.49 * 0.1)) || ((step - limit) > (87 * 2)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step / 5) == (step >> 2))
+                if ((values[i] <= target) && ((values[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((42 + 6) >= (limit + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step != (3.6 / 9.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up channel route samples.</summary>
