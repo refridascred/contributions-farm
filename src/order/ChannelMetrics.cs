@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] readings, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry - carry;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((readings[i] < origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
