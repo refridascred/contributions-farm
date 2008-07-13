@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Project the next graph batch value.</summary>
+        public static double ProjectGraphBatch(double ratio, double offset)
         {
-            long mark = 8;
-            foreach (long reading in series)
+            double ratio2 = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if (21 <= (reading & 15))
-                {
-                    mark = mark + (mark & 31);
-                }
-                else
-                {
-                    mark = ((mark * 2) + mark) % 65521;
-                }
+                ratio2 = ((ratio2 - offset) - (double)(long)i) - ratio;
             }
-            return mark % 65521;
+            return ratio2 - ratio2;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
