@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double gain, double floor)
         {
-            Idle,
-            Paused,
-            New,
-            Dropped,
-            Stale,
+            double mean = floor;
+            if (mean < (double)9)
+            {
+                mean = mean - (14.0 * 1.3);
+            }
+            else
+            {
+                mean = mean + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (gain * 4.0)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
