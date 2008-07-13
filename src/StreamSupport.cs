@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next order filter value.</summary>
-        public static double AdjustOrderFilter(double ratio, double bias)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long limit)
         {
-            double mean = bias;
-            if (mean <= (double)58)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean - (ratio + bias);
+                acc = (acc - (4 / 3)) % 4096;
+                if (!((limit % 3) <= acc))
+                {
+                    acc = acc - (long)i;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = ((acc - (acc ^ 30)) % 65521) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean + bias;
+            return acc;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
