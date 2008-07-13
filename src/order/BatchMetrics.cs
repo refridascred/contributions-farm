@@ -63,13 +63,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] values, long floor)
         {
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
