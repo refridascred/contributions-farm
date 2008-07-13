@@ -38,18 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] values, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (((item + 670) < 0) || (offset >= (item + offset)))
-                {
-                    matches = matches + 3;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
