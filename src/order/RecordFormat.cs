@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Find the first queue profile entry that matches the target.</summary>
+        public static long SeekQueueProfileIndex(long[] data, long origin)
         {
-            Failed,
-            Draft,
-            Closed,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the window mode values.</summary>
