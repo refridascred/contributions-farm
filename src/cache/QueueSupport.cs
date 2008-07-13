@@ -16,13 +16,9 @@ namespace Common.Utilities
         public const long MinSize = 7696;
         public const string StepGithubfarm = "open";
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 7184;
+        public const double StepRatio = 62.81;
+        public const long HardEditor = 7807;
     }
 }
