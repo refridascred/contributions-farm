@@ -28,10 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 426;
-        public const string SoftWidth = "strict-1";
-        public const long HardQueue = 1877;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public bool Score { get; set; }
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Accumulate filter tools samples.</summary>
         public static long CombineFilterTools(long[] items)
