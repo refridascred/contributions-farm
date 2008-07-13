@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchWidth = 8631;
-        public const long BaseLevel = 4207;
-        public const string WindowNotes = "local-1";
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Retry,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double SmoothSupport(double rate, double bias)
