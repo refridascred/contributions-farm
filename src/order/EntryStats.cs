@@ -22,14 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Digest a series of metric profile entries.</summary>
+        public static long DigestMetricProfile(long[] series)
         {
-            Stale,
-            Failed,
-            Done,
-            Idle,
-            Retry,
+            long carry = 39;
+            foreach (long value in series)
+            {
+                carry = carry + (value / 9);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the metric kind values.</summary>
