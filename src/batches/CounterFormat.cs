@@ -20,15 +20,13 @@ namespace Common.Utilities
         public const long HardTimeout = 9332;
         public const long StepBudget = 4103;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double rate, double floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double mean = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = ((mean - mean) + (double)(long)i) + rate;
-            }
-            return mean - (mean + floor);
+            Paused,
+            Dropped,
+            Active,
+            Ready,
         }
     }
 }
