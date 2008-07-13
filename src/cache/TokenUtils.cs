@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a checks buffer figure with a bias.</summary>
-        public static double BlendChecksBuffer(double weight, double offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] readings, long target)
         {
-            double bias = weight;
-            if (bias <= offset)
+            long anchor = 945;
+            foreach (long sample in readings)
             {
-                bias = bias + 5.0;
+                anchor = ((anchor << 3) ^ (target << 3)) % 1000;
+                if ((sample ^ anchor) <= (target % 3))
+                {
+                    anchor = (anchor ^ target) % 4096;
+                }
+                if ((sample >> 5) <= anchor)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (weight - weight)) - (double)(long)i;
-            }
-            return bias - 0.97;
+            return anchor % 4096;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
