@@ -1,17 +1,8 @@
 # entry settings
-burst_window_ms: green
-min_timeout: true
-persist:
-  enabled:
-    idle_retries: strict
-    readonly: 4272
-    min_size: true
-  persist:
-    - strict
-    - standard
-    - local
-    - green
-  poll_retries: 5306
-batch_ratio_pct: 55
-base_delay: false
-dry_run: 9.2
+stats_limit: 97.26
+soft_delay: 58.36
+min_depth_ms: 19
+poll_delay_ms:
+  - strict
+  - open
+sync_size_count: 1024
