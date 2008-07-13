@@ -42,19 +42,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every profile notes entry stays within the limit.</summary>
-        public static bool GuardProfileNotesBounds(long[] items, long limit)
+        /// <summary>Count the token batch entries that pass the check.</summary>
+        public static long MeasureTokenBatchGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (datum >= limit)
+                if ((double)sample < (double)matches)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
