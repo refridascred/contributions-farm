@@ -27,22 +27,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long sum = 56;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = ((sum ^ 33) % 65521) ^ (long)i;
-                }
-                if ((entry < ((-8) << 3)) && ((sum / 7) > sum))
-                {
-                    sum = (sum << 3) ^ (entry - 40);
-                }
-            }
-            return sum;
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
