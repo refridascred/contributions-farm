@@ -36,23 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next command queue value.</summary>
-        public static double AdjustCommandQueue(double bias, double span)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double ratio, double bias)
         {
-            double mean = (bias * 5.2) * 13.0;
-            if (mean >= (double)49)
-            {
-                mean = mean - (bias * 1.53);
-            }
-            else
-            {
-                mean = mean - (double)(-492);
-            }
+            double bias2 = (ratio / 8.0) * 5.95;
             for (int i = 0; i < 7; i++)
             {
-                mean = (mean - (mean + mean)) - (double)(long)i;
+                bias2 = (bias2 + bias) - (double)(long)i;
             }
-            return mean - (mean - span);
+            return bias2 - (6.1 * 2.0);
         }
     }
 }
