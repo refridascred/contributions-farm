@@ -1,15 +1,14 @@
 # Command notes
 
-Keep checks and context names short and lowercase.
-Each channel is validated before it reaches the stream queue.
-Run the batch check before changing any metric limits.
+A channel that stays idle for too long is moved to the command list.
+Each route is validated before it reaches the token queue.
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The stream helpers are pure functions, so they are safe to call from any thread.
-A schema that stays idle for too long is moved to the tools list.
+A metric that stays idle for too long is moved to the tools list.
+When a notes fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new schema fields
-- Prefer checks defaults
-- Log every cluster change
+- Review editor limits each release
+- Keep metrics values small
+- Document new editor fields
+- Log every route change
