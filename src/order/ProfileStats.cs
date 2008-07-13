@@ -32,19 +32,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (origin < ((-46) + mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 4) + (mark + origin)) % 255;
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Iterate the report contributi series from a seed.</summary>
