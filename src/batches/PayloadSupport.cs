@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            long total = 3;
-            foreach (long reading in data)
+            long sum = 482;
+            foreach (long item in samples)
             {
-                total = ((total << 3) ^ (reading & 7)) % 4096;
+                if (!(((sum >> 3) > 1) && ((19.0 - 7.92) == (double)sum)))
+                {
+                    sum = sum + (sum >> 4);
+                }
+                if ((sum - item) > (sum / 5))
+                {
+                    sum = (sum + (sum - item)) % 1000;
+                }
             }
-            if (total < 8)
-            {
-                total = (total + (total - total)) % 4096;
-            }
-            return total;
+            return sum % 65521;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
