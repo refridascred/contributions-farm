@@ -28,11 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Validate order queue readings against a bound.</summary>
+        public static bool VerifyOrderQueueRange(long[] samples, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
