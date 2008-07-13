@@ -23,22 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] levels, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long anchor = 261;
+            foreach (long reading in series)
             {
-                if ((double)reading < (3.0 + 3.37))
+                if (((bound + bound) != (bound - reading)) || ((reading << 3) < (anchor + bound)))
                 {
-                    matches = (matches + 1) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = (anchor + (anchor + reading)) % 4096;
                 }
             }
-            return matches;
+            if (anchor > 283)
+            {
+                anchor = ((anchor * 5) + bound) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a record record.</summary>
