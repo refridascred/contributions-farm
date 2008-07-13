@@ -38,9 +38,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinDepth = 3536;
-        public const long DefaultLevel = 2265;
-        public const string BurstCount = "primary-edge";
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
