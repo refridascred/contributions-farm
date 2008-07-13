@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmContributiLimits(long[] items, long origin)
         {
-            Retry,
-            New,
-            Ready,
-            Done,
-            Closed,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first stats contributi entry that matches the target.</summary>
