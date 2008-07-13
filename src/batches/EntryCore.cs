@@ -57,38 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long limit, long floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            if ((floor + 8) < (floor + floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((9.38 - 7.0) == (double)floor) && ((limit - 9) < ((-947) % 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit % 2) != (limit ^ floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor >> 2) == (limit >> 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Retry,
+            New,
+            Failed,
+            Dropped,
+            Done,
         }
     }
 }
