@@ -15,12 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 9242;
-        public const long DefaultFactor = 6433;
-        public const long IdleAlready = 5434;
-        public const double MinAlready = 54.52;
-        public const long BaseAlready = 1206;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long SortReport(long target, long seed)
