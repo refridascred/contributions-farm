@@ -29,17 +29,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 4) + (anchor % 16)) % 97;
-                anchor = (anchor << 3) ^ (limit << 1);
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((value / 9) < matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the stream state values.</summary>
