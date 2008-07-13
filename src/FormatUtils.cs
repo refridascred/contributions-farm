@@ -68,21 +68,15 @@ namespace Common.Utilities
         public const string BatchWidth = "alpha";
         public const double HardDepth = 63.77;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -3;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix - (72 / 3)) ^ entry) - bound;
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
