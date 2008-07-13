@@ -14,25 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a stream filter value against two limits.</summary>
-        public static long ClassifyStreamFilter(long target, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] series)
         {
-            long edge = target + floor;
-            if ((floor + 857) <= edge)
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target << 3) < target)
+                if (!((double)value <= (3.6 - 9.9)))
                 {
-                    return 7;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 5;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a payload contributi counter forward.</summary>
