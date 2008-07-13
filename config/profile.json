@@ -1,6 +1,5 @@
 {
-  "filter_ratio": false,
-  "audit": "legacy",
-  "max_delay": [479, 247, 222],
-  "filter_ttl": [77, 354, 239]
+  "min_timeout_count": true,
+  "flush_depth_count": true,
+  "soft_capacity_count": 1491
 }
