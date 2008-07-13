@@ -53,11 +53,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 4933;
-        public const string RetryLayout = "fallback-v2";
-        public const long MinWidth = 1684;
-        public const string StepInterval = "strict-1";
-        public const string BurstInterval = "standard";
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = acc + 735;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
