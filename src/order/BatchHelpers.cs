@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Pending,
-            Draft,
-            Active,
-            Locked,
-            Queued,
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every record cache entry stays within the limit.</summary>
