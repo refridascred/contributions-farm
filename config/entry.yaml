@@ -1,4 +1,6 @@
 # entry settings
-hard_depth_s: true
-flush_window: 1554
-persist: open
+warm_timeout_s: 97.89
+channel_capacity:
+  - 16
+  - 232
+window_timeout: true
