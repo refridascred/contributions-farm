@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((double)entry != (7.38 / 4.0))
+                if (6.96 < (double)tally)
                 {
-                    count = count + 1;
+                    tally = ((tally + 3) + entry) + step;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
