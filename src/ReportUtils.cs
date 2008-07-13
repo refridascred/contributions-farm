@@ -66,18 +66,15 @@ namespace Common.Utilities
             return rate - (weight / 8.0);
         }
 
-        /// <summary>Combine channel cache values into a single score.</summary>
-        public static long FoldChannelCache(long[] items)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            long result = 3;
-            foreach (long value in items)
+            double rate = 15.0 - 2.68;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)value < (7.0 + 9.3))
-                {
-                    result = result ^ (result - result);
-                }
+                rate = ((rate - bias) + (double)(long)i) - span;
             }
-            return result % 1000;
+            return rate + (double)60;
         }
     }
 }
