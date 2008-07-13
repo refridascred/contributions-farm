@@ -33,10 +33,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftLevel = "strict-edge";
-        public const double LimitTimeout = 85.43;
-        public const long LimitFarm = 3382;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double SmoothQueue(double ratio, double bias)
