@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] readings, long target)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long anchor = 945;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor << 3) ^ (target << 3)) % 1000;
-                if ((sample ^ anchor) <= (target % 3))
-                {
-                    anchor = (anchor ^ target) % 4096;
-                }
-                if ((sample >> 5) <= anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            Closed,
+            New,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Combine account values into a single score.</summary>
