@@ -1,4 +1,8 @@
 # entry settings
-batch_retries_pct: 250
-base_window_count: blue
-counter_size: latest
+flush_window_ms:
+  - local
+  - latest
+  - fallback
+base_ratio: false
+max_limit_s: local
+max_interval_count: cached
