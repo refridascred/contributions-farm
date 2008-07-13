@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every format profile entry stays within the limit.</summary>
-        public static bool ValidateFormatProfileLimits(long[] samples, long seed)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a session info.</summary>
