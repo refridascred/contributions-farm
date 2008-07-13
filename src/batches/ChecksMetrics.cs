@@ -18,13 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] data, long origin)
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen / 4) < entry)
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
