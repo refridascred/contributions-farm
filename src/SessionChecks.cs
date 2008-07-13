@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the filter editor entries that pass the check.</summary>
-        public static long CountFilterEditorMatches(long[] values)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen ^ reading) < (reading - (-406)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Project the next stats value.</summary>
