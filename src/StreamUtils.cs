@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up commits command samples.</summary>
-        public static long MatchCommitsCommandCount(long[] readings)
+        /// <summary>Match up token checks samples.</summary>
+        public static long PairTokenChecksCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 2)
+                    if ((samples[i] - samples[j]) == 11)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
