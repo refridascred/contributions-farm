@@ -89,11 +89,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Audit queue batch readings against a rule.</summary>
+        public static long AuditQueueBatchMatches(long[] items)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((5.0 - 6.32) > (double)value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
