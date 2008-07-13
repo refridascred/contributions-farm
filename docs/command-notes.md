@@ -1,11 +1,11 @@
 # Command notes
 
-Keep token and notes names short and lowercase.
-Defaults for format live in the config folder and can be overridden per environment.
+Use layout settings to tune how often record data is refreshed.
+A queue that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer cluster defaults
-- Review route limits each release
-- Keep batches values small
+- Prefer graph defaults
+- Review contributi limits each release
+- Keep tools values small
+- Log every graph change
