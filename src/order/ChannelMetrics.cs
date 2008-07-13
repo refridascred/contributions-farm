@@ -17,32 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long limit, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] data)
         {
-            long diff = limit - step;
-            if ((9.0 - 9.58) < (double)diff)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (4.7 < (double)step)
+                if ((hits << 3) != (7 + hits))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + limit) < (73 ^ limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 1) ^ entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
