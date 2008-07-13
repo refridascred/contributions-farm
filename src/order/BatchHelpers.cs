@@ -31,15 +31,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] values, long step)
         {
-            double load = rate - (double)990;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                load = ((load + load) + (double)(long)i) - bias;
+                if (step >= reading)
+                {
+                    seen = seen + 1;
+                }
             }
-            return load + (double)1;
+            return seen;
         }
     }
 }
