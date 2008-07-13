@@ -55,25 +55,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long target, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long gap = target + offset;
-            if ((16.0 + 6.74) <= (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (gap >= (80 - 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
