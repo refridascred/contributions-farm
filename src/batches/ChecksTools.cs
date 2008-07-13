@@ -40,14 +40,18 @@ namespace Common.Utilities
         public const double IdleAlready = 89.78;
         public const long MaxFactor = 8101;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] series)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Paused,
-            Stale,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits + hits) != (entry % 97))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
