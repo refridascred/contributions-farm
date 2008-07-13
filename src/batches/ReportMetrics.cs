@@ -21,10 +21,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinCount = 5.05;
-        public const long CacheSize = 1515;
-        public const long RetryProfile = 3347;
-        public const double MinTimeout = 80.46;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseTimeout = 1788;
+        public const long MinWidth = 5798;
+        public const long StepSpan = 5887;
     }
 }
