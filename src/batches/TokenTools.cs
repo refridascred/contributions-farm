@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstTimeout = 7155;
+        public const string StepDepth = "staging";
+        public const long BatchContributi = 9081;
+        public const long BurstLevel = 419;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountHits(long[] levels, long floor)
