@@ -27,22 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] samples)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((double)matches > (double)datum)
+                if (cell < seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
