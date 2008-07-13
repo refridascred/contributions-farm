@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+BUFFER_LIMIT=479
+log "limit is ${BUFFER_LIMIT}"
+
+for item in stable blue; do
+    log "checking ${item}"
+done
+
+mode="${1:-fallback}"
 case "${mode}" in
-    blue)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in green primary; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=85
-log "limit is ${BUFFER_LIMIT}"
