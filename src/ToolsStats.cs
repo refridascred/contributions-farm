@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((bound << 2) > 440)
-                {
-                    break;
-                }
-                else
-                {
-                    carry = (carry ^ (90 ^ carry)) % 97;
-                    carry = (carry - (carry & 15)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 5499;
+        public const long WindowBudget = 9013;
+        public const long BaseSession = 9876;
+        public const double IdleWidth = 73.24;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
