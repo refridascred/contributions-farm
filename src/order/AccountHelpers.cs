@@ -36,18 +36,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit order route readings against a rule.</summary>
-        public static long MeasureOrderRouteOutliers(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (datum <= (260 - matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a githubfarm batches reading by value.</summary>
