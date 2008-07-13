@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double scale, double bias)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            double mean = (double)(71 + 6);
-            if (mean > scale)
+            long mark = 979;
+            foreach (long entry in levels)
             {
-                mean = (mean + mean) - bias;
+                mark = (((mark << 2) ^ (73 & 3)) % 65521) - entry;
             }
-            return mean + scale;
+            if (mark > (-20))
+            {
+                mark = mark + (-41);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
