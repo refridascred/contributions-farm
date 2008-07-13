@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] readings, long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (((-769) - (-6)) != (hits & 7))
-                {
-                    hits = ((hits + 2) - cell) - bound;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Validate context record readings against a bound.</summary>
