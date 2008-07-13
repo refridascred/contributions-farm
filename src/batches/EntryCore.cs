@@ -37,19 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] items, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (cell != seed)
                 {
-                    carry = (carry - (52 ^ carry)) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the format mode values.</summary>
