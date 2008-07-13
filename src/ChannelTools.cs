@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 9359;
-        public const double BaseCount = 34.91;
-        public const string WindowDepth = "cached";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((51 - value) < matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TotalStats(long[] samples, long origin)
