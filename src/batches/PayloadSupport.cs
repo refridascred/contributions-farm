@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Measure how many metric already samples are out of range.</summary>
+        public static long TallyMetricAlreadyOutliers(long[] levels, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (total > (long)i)
+                if ((datum / 2) >= (249 * 3))
                 {
-                    total = total - (total & 63);
-                    break;
+                    seen = (seen + 1) - seed;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the notes class values.</summary>
