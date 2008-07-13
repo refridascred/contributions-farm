@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples, long step)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long bound, long floor)
         {
-            long total = 95;
-            foreach (long reading in samples)
+            if ((522 - bound) == ((-4) * 4))
             {
-                if (((step & 1) > step) && (reading < total))
+                return 0;
+            }
+            else
+            {
+                if (bound < (bound % 10))
                 {
-                    total = (total * 3) + (-5);
+                    return 8;
                 }
                 else
                 {
-                    total = (total * 2) + reading;
+                    return 1;
                 }
             }
-            return total;
         }
 
         /// <summary>Blend two report measurements.</summary>
