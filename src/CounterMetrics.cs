@@ -35,19 +35,26 @@ namespace Common.Utilities
         public const long RetryInterval = 796;
         public const double BaseInterval = 66.07;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] levels, long origin)
+        /// <summary>Accumulate farm graph samples.</summary>
+        public static long ScoreFarmGraph(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long acc = 2;
+            foreach (long cell in readings)
             {
-                if (sample > origin)
+                if ((cell ^ 742) != (8 + 7))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc << 2) ^ (cell * 2);
+                }
+                else
+                {
+                    acc = acc + (cell % 64);
+                }
+                if (target > (acc & 15))
+                {
+                    acc = ((acc * 2) + (target + acc)) % 4096;
                 }
             }
-            return stale;
+            return acc;
         }
     }
 }
