@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double weight, double span)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] samples, long seed)
         {
-            double ratio = (double)((-10) / 2);
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                ratio = ((ratio + span) + (double)(long)i) - weight;
+                if (datum <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio - (double)19;
+            return flag;
         }
 
         /// <summary>Hold a contributi record.</summary>
