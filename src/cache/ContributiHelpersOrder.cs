@@ -31,15 +31,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double ratio, double floor)
+        /// <summary>Combine notes contributi values into a single score.</summary>
+        public static long CombineNotesContributi(long[] series, long floor)
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 6; i++)
+            long sum = 0;
+            foreach (long value in series)
             {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+                if ((3 - (-38)) < value)
+                {
+                    sum = ((sum << 3) ^ sum) % 97;
+                }
+                if ((floor <= (sum - floor)) || ((sum - 478) < (sum + 496)))
+                {
+                    break;
+                }
             }
-            return ratio2 - (7.1 + floor);
+            if (sum < 8)
+            {
+                sum = (sum + 25) % 101;
+            }
+            return sum;
         }
     }
 }
