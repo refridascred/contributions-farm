@@ -64,18 +64,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] items, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            long count = 0;
+            long total = 7;
             foreach (long cell in items)
             {
-                if ((seed + seed) <= (seed - cell))
+                double load = (double)total - (0.55 * 7.0);
+                if (load < (load + load))
                 {
-                    count = count + 3;
+                    total = (total - cell) % 1000;
+                }
+                if ((total % 100) > (total * 4))
+                {
+                    total = total + (total - cell);
+                }
+                else
+                {
+                    total = total - (total >> 4);
                 }
             }
-            return count;
+            return total;
         }
     }
 }
