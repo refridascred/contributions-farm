@@ -18,23 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double gain, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] series)
         {
-            double gain2 = gain + offset;
-            if (gain2 > (gain2 + gain2))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                gain2 = gain2 - (double)77;
+                if (538 <= (reading % 12))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (gain2 + offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + (gain * 5.9)) + (double)(long)i;
-            }
-            return gain2 - (offset - 14.0);
+            return hits;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
