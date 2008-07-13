@@ -33,21 +33,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
