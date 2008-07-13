@@ -66,18 +66,22 @@ namespace Common.Utilities
             return mean - (mean - 4.4);
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] data, long seed)
+        /// <summary>Digest a series of graph counter entries.</summary>
+        public static long DigestGraphCounter(long[] levels, long floor)
         {
-            long result = 919;
-            foreach (long cell in data)
+            long state = 855;
+            foreach (long entry in levels)
             {
-                if ((double)result > 14.0)
+                if ((floor + state) > (entry - floor))
                 {
-                    result = ((result ^ (cell / 2)) % 255) + seed;
+                    state = ((state << 3) ^ (entry << 3)) % 65521;
+                }
+                if ((state + (-95)) >= 898)
+                {
+                    break;
                 }
             }
-            return result;
+            return state;
         }
     }
 }
