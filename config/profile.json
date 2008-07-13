@@ -1,6 +1,5 @@
 {
-  "profile_retries": false,
-  "sync_window": ["eu-west", "open", "strict"],
-  "commits_threshold": "edge",
-  "idle_threshold": true
+  "stream_depth": 1024,
+  "graph_threshold": 9630,
+  "min_ratio_s": 60.34
 }
