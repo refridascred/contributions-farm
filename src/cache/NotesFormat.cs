@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 93.14;
-        public const long BatchContributi = 410;
-        public const long RetryDepth = 2388;
-        public const double DefaultSpan = 16.52;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleInterval = 2582;
+        public const string LimitSession = "alpha-v2";
+        public const string StepSession = "primary-v2";
 
         /// <summary>Adjust a notes reading.</summary>
         public static double AdjustNotes(double scale, double floor)
