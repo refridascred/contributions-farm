@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
