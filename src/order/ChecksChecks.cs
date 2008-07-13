@@ -26,21 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
