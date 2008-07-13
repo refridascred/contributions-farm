@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] data, long target)
         {
-            Idle,
-            Ready,
-            Draft,
-            Synced,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((target - reading) > count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine account queue values into a single score.</summary>
