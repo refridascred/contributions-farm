@@ -59,19 +59,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long bound)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
