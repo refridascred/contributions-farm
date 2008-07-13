@@ -71,12 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the token context entries that pass the check.</summary>
+        public static long CountTokenContextMatches(long[] samples, long step)
         {
-            Queued,
-            Ready,
-            Pending,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample / 3) != (71 >> 1))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
         }
     }
 }
