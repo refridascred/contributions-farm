@@ -46,14 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Locked,
-            Stale,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultWidth = 1102;
+        public const double BaseChecks = 25.64;
+        public const long BatchChecks = 8834;
+        public const double MinFactor = 30.63;
+        public const long MaxChecks = 9425;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
