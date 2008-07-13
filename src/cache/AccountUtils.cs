@@ -38,17 +38,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] samples, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long origin, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset ^ origin) > offset)
             {
-                if (samples[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if (offset > (origin + offset))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset > (0.3 + 4.4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin < (5.0 - 10.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
