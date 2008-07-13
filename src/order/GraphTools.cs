@@ -26,12 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] data, long offset)
         {
-            Idle,
-            Synced,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
