@@ -14,18 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] series, long limit)
+        /// <summary>Find the first filter queue entry that matches the target.</summary>
+        public static long FindFilterQueueIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample < (1.5 - 1.0))
+                if (items[i] <= seed)
                 {
-                    tally = (tally + 1) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
