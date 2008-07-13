@@ -43,24 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter batches value against two limits.</summary>
-        public static long RankCounterBatches(long target, long target2)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            if ((target2 + target2) < target)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                long next = (floor & 3) << 2;
+                carry = ((carry << 3) ^ (next % 64)) % 255;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)target2 <= (5.0 + 7.73))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Combine already values into a single score.</summary>
