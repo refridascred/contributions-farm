@@ -35,22 +35,11 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 6694;
+        public const string BatchInterval = "primary-edge";
+        public const long LimitRoute = 7281;
+        public const long HardFactor = 2498;
 
         /// <summary>Fold a list of order route readings.</summary>
         public static long WeighOrderRoute(long[] series, long target)
