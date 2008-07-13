@@ -70,15 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] samples, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long sum = 59;
-            foreach (long sample in samples)
+            long sum = 498;
+            foreach (long sample in items)
             {
-                sum = ((sum - (85 + sum)) ^ sample) + target;
+                if ((sum % 100) < (sample & 1))
+                {
+                    sum = (sum * 4) + sample;
+                }
             }
-            return sum % 1000;
+            return sum;
         }
     }
 }
