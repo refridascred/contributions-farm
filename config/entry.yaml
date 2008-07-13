@@ -1,12 +1,4 @@
 # entry settings
-burst_size:
-  - open
-  - cached
-window_depth:
-  - green
-  - fallback
-  - legacy
-burst_capacity_pct:
-  - 160
-  - 43
-dry_run: 2034
+soft_window_ms: 1024
+warm_timeout: standard
+flush_limit: green
