@@ -11,23 +11,13 @@ namespace Common.Utilities
         public const double MaxDepth = 51.91;
         public const long BurstSize = 3030;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double gain, double offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double scale = 4.8 * 2.58;
-            if (scale < scale)
-            {
-                scale = (scale - scale) + gain;
-            }
-            else
-            {
-                scale = scale + (offset * 6.6);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale - offset;
+            Draft,
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
