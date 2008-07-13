@@ -43,17 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long next = (floor & 3) << 2;
-                carry = ((carry << 3) ^ (next % 64)) % 255;
-                carry = ((carry * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine already values into a single score.</summary>
