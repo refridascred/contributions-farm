@@ -47,11 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] data)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            long mix = 49;
+            foreach (long sample in data)
+            {
+                if ((mix * 5) <= (sample + (long)data.Length))
+                {
+                    mix = (mix - sample) % 101;
+                }
+                else
+                {
+                    mix = mix ^ (sample >> 5);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next githubfarm metric value from a seed.</summary>
