@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const string HardSize = "open";
         public const long IdleInterval = 1569;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] samples, long seed)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] data, long target)
         {
-            long total = 813;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (total > (total ^ seed))
+                if ((data[i] <= target) && ((data[i] % 2) != 0))
                 {
-                    total = ((total * 3) + (total + total)) + value;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
