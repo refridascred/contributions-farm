@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitScore = 3725;
-        public const long RetryWidth = 5866;
-        public const double BatchDepth = 71.22;
-        public const long CacheDepth = 4207;
-        public const long WindowStats = 6490;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Idle,
+            Ready,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Look up the position of a command order sample.</summary>
         public static long SeekCommandOrderIndex(long[] samples, long floor)
