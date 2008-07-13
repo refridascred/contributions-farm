@@ -1,11 +1,5 @@
 {
-  "cluster_depth": false,
-  "poll_size_pct": 81.0,
-  "sync_interval_ms": true,
-  "strict": {
-    "warm_depth_ms": "blue",
-    "dry_run": 3101,
-    "audit": [391, 312]
-  },
-  "dry_run": [122, 3, 410]
+  "cache_interval_ms": 500,
+  "default_retries": "latest",
+  "hard_retries_pct": 11.01
 }
