@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Closed,
             Idle,
-            Queued,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a batches record.</summary>
