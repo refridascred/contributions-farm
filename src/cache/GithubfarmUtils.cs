@@ -25,11 +25,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Check that every layout cluster entry stays within the limit.</summary>
+        public static bool VerifyLayoutClusterLimits(long[] values, long target)
         {
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a account reading.</summary>
