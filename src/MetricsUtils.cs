@@ -25,22 +25,16 @@ namespace Common.Utilities
         public const long WindowEditor = 8559;
         public const long SoftEditor = 6058;
 
-        /// <summary>Fold a list of batch buffer readings.</summary>
-        public static long DigestBatchBuffer(long[] series)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long bound)
         {
-            long total = -61;
-            foreach (long value in series)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((total & 255) == (value + total))
-                {
-                    total = (total + (value >> 2)) % 255;
-                }
+                result = (result - (3 + (long)i)) % 101;
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (total > 830)
-            {
-                total = ((total << 3) ^ ((long)series.Length & 7)) % 4096;
-            }
-            return total % 4096;
+            return result;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
