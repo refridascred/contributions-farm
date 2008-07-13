@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] readings, long step)
+        /// <summary>Compare every pair of account queue readings.</summary>
+        public static long OverlapAccountQueueCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally != (18.0 / 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 2) - value) - step;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
