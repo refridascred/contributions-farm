@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheInterval = 6552;
-        public const string WindowLayout = "local-edge";
-        public const string MaxLayout = "primary-1";
-        public const long IdleLayout = 3479;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] levels, long step)
+        {
+            long result = 46;
+            foreach (long entry in levels)
+            {
+                if ((result < (entry + entry)) || (entry <= ((long)levels.Length - step)))
+                {
+                    result = (result + 8) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (9 + 11)) % 97;
+                }
+            }
+            if (result < 6)
+            {
+                result = (result ^ step) % 1000;
+            }
+            return result % 97;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long step, long origin)
