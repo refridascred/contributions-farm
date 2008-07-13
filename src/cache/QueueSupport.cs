@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Locked,
-            Queued,
+            Paused,
+            Idle,
+            Ready,
+            Retry,
             Closed,
         }
 
