@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] items, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double ratio = scale;
+            if (ratio >= (ratio - scale))
             {
-                if ((977 <= (entry * 5)) && ((target - entry) <= ((long)items.Length * 4)))
-                {
-                    hits = hits + 1;
-                }
+                ratio = ratio - (double)49;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (scale - bias)) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Locate a account reading by value.</summary>
