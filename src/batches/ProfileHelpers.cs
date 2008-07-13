@@ -27,22 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count * 3) < (count & 7))
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
