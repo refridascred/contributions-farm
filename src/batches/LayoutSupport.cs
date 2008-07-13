@@ -14,11 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
