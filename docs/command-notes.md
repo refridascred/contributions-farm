@@ -1,11 +1,14 @@
 # Command notes
 
-The checks module keeps entry values in sync with the commits cache.
-Defaults for entry live in the config folder and can be overridden per environment.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Use schema settings to tune how often account data is refreshed.
+Each context is validated before it reaches the metrics queue.
+
+The queue report groups every account by farm.
+The farm module keeps order values in sync with the cluster cache.
 
 ## Guidelines
 
-- Document new editor fields
-- Prefer payload defaults
-- Log every profile change
+- Log every format change
+- Keep counter values small
+- Review token limits each release
+- Validate record input early
