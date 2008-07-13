@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepDepth = "legacy";
-        public const double BatchWidth = 38.16;
-        public const double IdleGithubfarm = 59.35;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (entry >= tally)
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] levels, long bound)
