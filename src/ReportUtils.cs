@@ -20,22 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] samples, long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if (!((bound >> 2) >= (floor & 63)))
             {
-                if ((((3 * 5) > (seen ^ value)) && ((double)bound < (double)seen)) || ((bound - 280) > (69 ^ value)))
+                return 7;
+            }
+            else
+            {
+                if (((2.8 + 17.0) == (double)bound) || ((bound & 255) >= floor))
                 {
-                    seen = seen + 3;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((floor * 5) >= (bound * 4)) && (((-8) << 1) <= (bound / 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
