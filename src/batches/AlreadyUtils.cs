@@ -29,24 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long floor, long floor2)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long target)
         {
-            if (((7 & 3) < (floor * 4)) || ((floor2 & 7) > floor2))
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)floor2 > 9.62)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
