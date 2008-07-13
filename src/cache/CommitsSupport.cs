@@ -40,15 +40,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            double gain2 = offset;
+            long mark = origin;
             for (int i = 0; i < 4; i++)
             {
-                gain2 = (gain2 + (double)(long)i) + gain;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return gain2 + 5.4;
+            return mark;
         }
 
         /// <summary>Blend two filter measurements.</summary>
