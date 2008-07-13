@@ -1,8 +1,6 @@
-id,owner,region,active,ratio
-1,90,standard,5.93,blue
-2,322,667,651,32.42
-3,open,2.82,cached,869
-4,45.76,525,633,22.16
-5,98.73,858,cached,eu-west
-6,green,2.88,primary,strict
-7,59.91,792,fallback,cached
+id,token,label
+1,376,965
+2,standard,706
+3,25.74,open
+4,48.67,280
+5,75.71,483
