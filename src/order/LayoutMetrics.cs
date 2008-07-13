@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long origin, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            if ((origin & 1) < (origin + seed))
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (((7.0 - 3.88) <= (double)seed) || ((seed & 15) > (seed + 24)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin == (8.0 - 8.5)) || ((double)seed > (2.34 / 7.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin * 5) <= (origin + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
