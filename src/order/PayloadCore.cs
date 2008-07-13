@@ -18,33 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long bound, long offset)
-        {
-            long offset2 = bound - offset;
-            if ((offset + offset) == (offset + offset2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound * 2) == (bound - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound - bound) == (bound / 9)) || (0 <= offset2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 97.72;
+        public const long WindowWidth = 4209;
+        public const double MinInterval = 19.56;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
