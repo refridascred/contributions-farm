@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits % 100) >= (hits + hits))
-                {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheDepth = "open";
+        public const long SoftMetrics = 3506;
+        public const double RetryMetrics = 63.46;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
