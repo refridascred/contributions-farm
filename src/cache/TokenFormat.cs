@@ -32,39 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long floor, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] levels, long offset)
         {
-            long edge = floor ^ limit;
-            if ((floor + limit) == (limit ^ limit))
+            long total = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((edge / 8) > floor) || (6 >= (floor % 5)))
+                if (5.0 <= (double)offset)
                 {
-                    return 4;
+                    total = ((total << 3) ^ (total << 3)) % 65521;
                 }
-                else
+                if (((5.04 - 5.0) == (double)entry) && ((double)offset >= 7.28))
                 {
-                    if (!((double)floor > (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor < (14.0 + 18.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return total % 1000;
         }
     }
 }
