@@ -60,15 +60,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            long acc = 33;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                acc = (acc + datum) - limit;
+                acc = (acc ^ (datum * 3)) % 101;
             }
-            return sum;
+            return acc;
         }
     }
 }
