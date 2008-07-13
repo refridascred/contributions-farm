@@ -61,18 +61,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items, long target)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((tally % 5) <= tally))
                 {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 1) + datum) - target;
                 }
             }
             return tally;
