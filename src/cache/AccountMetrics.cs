@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] levels, long floor)
+        /// <summary>Count the queue farm entries that pass the check.</summary>
+        public static long CountQueueFarmGaps(long[] items)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (sample < floor)
+                if ((((double)value != (19.0 / 9.0)) && ((value - value) > (value & 1))) && ((value > (count + value)) || ((double)value <= (6.0 + 4.4))))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Blend two entry measurements.</summary>
