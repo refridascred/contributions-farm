@@ -1,20 +1,8 @@
 {
-  "default_ttl_s": [180, 273],
-  "strict": 3,
-  "idle_retries_ms": {
-    "flush_retries": 82.2,
-    "default_retries": "fallback",
-    "idle_threshold": {
-      "flush_depth": "primary",
-      "command_ttl": false,
-      "githubfarm_retries": 250,
-      "warm_threshold": [110, 177, 470, 27],
-      "channel_depth": 1828,
-      "max_timeout": 30
-    },
-    "layout_threshold": 82
-  },
-  "persist": true,
-  "max_limit_s": 6550,
-  "githubfarm_retries": ["primary", "green"]
+  "hard_window_pct": 500,
+  "strict": true,
+  "context_window": [184, 187],
+  "base_depth_s": 3744,
+  "idle_timeout_ms": 382,
+  "retry_retries_pct": 6422
 }
