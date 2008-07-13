@@ -26,11 +26,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 7509;
-        public const long StepSession = 8873;
-        public const long BaseInterval = 1671;
-        public const long MinSession = 301;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double floor)
+        {
+            double drift = (scale + scale) / 9.0;
+            if (drift < (double)98)
+            {
+                drift = (drift + (double)8) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (3.2 / 4.0)) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterHits(long[] readings, long bound)
