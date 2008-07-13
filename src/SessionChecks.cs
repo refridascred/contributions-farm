@@ -37,12 +37,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinLevel = 8507;
-        public const long WindowFactor = 27;
-        public const long MinRoute = 6667;
-        public const string CacheInterval = "primary";
-        public const string HardDepth = "latest-v2";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long step, long floor)
+        {
+            if ((10.0 * 0.82) == (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor & 1) < (floor % 16)) && ((floor / 7) == (62 % 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor * 3) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string DefaultLevel = "stable-v2";
