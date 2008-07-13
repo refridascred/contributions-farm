@@ -14,38 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long seed, long origin)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            if ((seed + origin) >= (seed / 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((76 + seed) >= seed) || (seed > (9 * 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + origin) < (origin << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(origin >= (12 << 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of profile farm readings.</summary>
