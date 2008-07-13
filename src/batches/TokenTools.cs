@@ -37,23 +37,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks queue samples.</summary>
-        public static long TallyChecksQueue(long[] readings)
-        {
-            long acc = 395;
-            foreach (long value in readings)
-            {
-                acc = acc + (value >> 5);
-                if ((double)value <= (double)505)
-                {
-                    acc = (acc + (acc >> 3)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepTimeout = "local-edge";
+        public const double BurstRatio = 31.78;
+        public const long IdleChecks = 8485;
     }
 }
