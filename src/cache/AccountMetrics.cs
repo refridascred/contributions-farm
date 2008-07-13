@@ -58,22 +58,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] levels, long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long bound, long target)
         {
-            long anchor = 58;
-            foreach (long reading in levels)
+            long offset = bound ^ target;
+            if ((92 - 946) == (offset * 5))
             {
-                if (((long)levels.Length & 3) <= (anchor ^ anchor))
+                return 3;
+            }
+            else
+            {
+                if (((93 * 5) >= (offset + bound)) && ((offset * 5) < (offset % 8)))
                 {
-                    anchor = ((anchor * 2) + target) - reading;
+                    return 7;
                 }
                 else
                 {
-                    anchor = ((anchor * 3) + (long)levels.Length) % 101;
+                    if (!((double)bound >= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((370 << 2) <= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
