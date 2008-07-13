@@ -28,18 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate commits editor samples.</summary>
-        public static long DigestCommitsEditor(long[] data)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long origin)
         {
-            long result = 541;
-            foreach (long reading in data)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((reading - (long)data.Length) < 21)
+                if (((total % 5) < (total + total)) || (total <= (origin & 15)))
                 {
-                    result = ((result << 3) ^ 3) % 1000;
+                    total = total - 21;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
