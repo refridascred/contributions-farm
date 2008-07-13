@@ -48,12 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit profile stream readings against a rule.</summary>
+        public static long MeasureProfileStreamHits(long[] readings)
         {
-            Locked,
-            Draft,
-            Stale,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item != (double)608)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate graph githubfarm readings against a bound.</summary>
