@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] series)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (538 <= (reading % 12))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
