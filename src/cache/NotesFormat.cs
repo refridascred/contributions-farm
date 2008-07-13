@@ -15,17 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long limit)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = floor * 15.0;
+            if (drift > scale)
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                drift = drift - (drift - floor);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - 8.8;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
