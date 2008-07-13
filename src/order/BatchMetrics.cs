@@ -60,14 +60,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] series, long target)
         {
-            Ready,
-            Failed,
-            Idle,
-            Locked,
-            Paused,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + hits) <= hits)
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
