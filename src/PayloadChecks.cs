@@ -19,17 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a report channel reading by value.</summary>
-        public static long LookupReportChannelIndex(long[] values, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = 0.3 / 6.0;
+            if (bias2 < 6.8)
             {
-                if ((values[i] >= limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - (bias2 / 7.0)) + span;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + bias2) - (double)(long)i;
+            }
+            return bias2 + (18.0 - bias2);
         }
 
         /// <summary>Hold a stream summary.</summary>
