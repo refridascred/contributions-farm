@@ -50,24 +50,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a tools context value against two limits.</summary>
-        public static long SortToolsContext(long limit, long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double gain, double offset)
         {
-            if (((bound * 4) != (bound - limit)) && ((bound - 8) < (bound / 4)))
+            double ratio = gain;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
+                ratio = (ratio + (double)(long)i) - offset;
             }
-            else
-            {
-                if ((limit > (limit / 3)) || (limit > 429))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return ratio + ratio;
         }
     }
 }
