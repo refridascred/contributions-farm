@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank queue token input into a small class.</summary>
-        public static long RankQueueToken(long step, long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            if ((offset - step) < (3 + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-4) >> 3) <= (offset + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= (offset << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
