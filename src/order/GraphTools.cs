@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] samples, long offset)
+        /// <summary>Validate route channel readings against a bound.</summary>
+        public static bool VerifyRouteChannelLimits(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((8 ^ datum) >= (19 + 9))
+                if (value < offset)
                 {
-                    count = (count + 1) + offset;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the editor mode values.</summary>
