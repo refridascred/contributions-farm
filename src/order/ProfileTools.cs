@@ -31,15 +31,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Locked,
-            Queued,
-            Active,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 1229;
+        public const long DefaultEditor = 2926;
+        public const long SoftEditor = 8591;
+        public const double MaxBudget = 49.92;
+        public const long LimitCount = 7982;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] readings)
