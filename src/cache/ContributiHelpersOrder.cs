@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
