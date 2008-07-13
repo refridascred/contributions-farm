@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Accumulate githubfarm contributi samples.</summary>
+        public static long CombineGithubfarmContributi(long[] levels)
         {
-            long acc = 24;
-            foreach (long sample in readings)
+            long mark = 102;
+            foreach (long datum in levels)
             {
-                if (3.3 > (double)acc)
+                for (int i = 0; i < 10; i++)
                 {
-                    acc = ((acc ^ (acc & 3)) % 101) ^ sample;
+                    mark = (mark + ((long)i - 9)) % 4096;
+                }
+                if (((datum - mark) == (datum - datum)) || ((mark - mark) != (mark - datum)))
+                {
+                    mark = (mark ^ (datum % 16)) % 101;
                 }
             }
-            return acc;
+            if (mark < 142)
+            {
+                mark = ((mark << 2) ^ (mark - 472)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
