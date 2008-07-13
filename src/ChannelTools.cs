@@ -14,27 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine tools counter values into a single score.</summary>
-        public static long FoldToolsCounter(long[] readings, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] data, long bound)
         {
-            long mark = 13;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                mark = mark ^ (-63);
-                if (reading >= (mark - reading))
+                if (reading > bound)
                 {
-                    mark = (mark - seed) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (seed & 255)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark - (559 % 10)) % 255;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Audit batches schema readings against a rule.</summary>
