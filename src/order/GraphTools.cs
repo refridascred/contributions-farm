@@ -70,19 +70,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] readings, long bound)
+        /// <summary>Derive the next notes editor value from a seed.</summary>
+        public static long SeriesNotesEditor(long offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading > bound)
+                if (((9.62 * 4.36) == (double)mark) && ((0 * 5) >= (mark - offset)))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark << 3) ^ mark;
+                    continue;
                 }
+                else
+                {
+                    mark = ((mark * 4) + mark) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return valid;
+            return mark;
         }
     }
 }
