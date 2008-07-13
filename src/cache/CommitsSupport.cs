@@ -20,25 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a batches window value against two limits.</summary>
-        public static long SortBatchesWindow(long target, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double offset)
         {
-            long step = target - floor;
-            if ((step << 3) >= target)
+            double load = (double)(60 ^ 1);
+            if (load <= scale)
             {
-                return 3;
+                load = (load + (load - load)) - offset;
             }
             else
             {
-                if (5.56 >= (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                load = load - (scale * 1.12);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 7.8) + (double)(long)i;
+            }
+            return load + 9.23;
         }
 
         /// <summary>Describe the window level values.</summary>
