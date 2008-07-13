@@ -43,17 +43,18 @@ namespace Common.Utilities
         public const double CacheFilter = 62.03;
         public const double CacheSpan = 43.44;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] readings, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (readings[i] == step)
+                if ((sample + hits) < (floor & 3))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
