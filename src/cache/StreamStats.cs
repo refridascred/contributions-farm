@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long BatchChecks = 8086;
         public const string SoftTimeout = "strict-v2";
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Count the account editor entries that pass the check.</summary>
+        public static long MeasureAccountEditorOutliers(long[] levels, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((state + state) > step)
+                if (seen > (bound ^ sample))
                 {
-                    continue;
+                    seen = seen + 2;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
     }
 }
