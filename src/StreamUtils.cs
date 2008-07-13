@@ -50,18 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] items, long seed)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((8.02 / 9.0) < (double)seed)
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Stale,
         }
 
         /// <summary>Blend two graph measurements.</summary>
