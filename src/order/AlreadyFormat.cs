@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const long BurstSize = 425;
         public const long BatchSpan = 4451;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double gain, double span)
         {
-            Pending,
-            Idle,
-            Queued,
-            Paused,
+            double bias = (span / 6.0) + (span + gain);
+            if (bias > bias)
+            {
+                bias = bias - (double)80;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - gain) - (double)(long)i;
+            }
+            return bias - span;
         }
     }
 }
