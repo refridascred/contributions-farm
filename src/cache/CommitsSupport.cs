@@ -40,31 +40,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long carry = 715;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item % 3) != (item * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry << 3) ^ (carry + item);
-                    continue;
-                }
-                else
-                {
-                    carry = (carry + (carry * 3)) % 65521;
-                }
-                if ((double)item > 7.61)
-                {
-                    carry = (carry * 2) + ((long)readings.Length / 8);
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 619)
-            {
-                carry = (carry * 2) + (carry / 2);
-            }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
