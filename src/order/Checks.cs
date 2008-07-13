@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double gain, double floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double mean = floor;
-            if (mean < (double)9)
-            {
-                mean = mean - (14.0 * 1.3);
-            }
-            else
-            {
-                mean = mean + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (gain * 4.0)) + (double)(long)i;
-            }
-            return mean + mean;
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
