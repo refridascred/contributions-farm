@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine batch session values into a single score.</summary>
-        public static long TallyBatchSession(long[] levels)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            long score = 4;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score + score) <= (reading << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score * 2) + (1 * 3);
-                }
-                else
-                {
-                    score = (score - (reading & 31)) % 4096;
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Adjust a farm reading.</summary>
