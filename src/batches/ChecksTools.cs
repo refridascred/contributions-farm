@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] values)
+        /// <summary>Fold a list of notes githubfarm readings.</summary>
+        public static long ScoreNotesGithubfarm(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mix = 69;
+            foreach (long cell in samples)
             {
-                if (!((matches / 7) <= (entry << 2)) || (entry > (matches + entry)))
+                if ((((-73) - 629) < mix) && ((7 - floor) != (7 % 24)))
                 {
-                    matches = matches + 1;
+                    mix = (mix ^ floor) - cell;
                 }
             }
-            return matches;
+            if (mix < 2)
+            {
+                mix = ((mix << 2) ^ mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
