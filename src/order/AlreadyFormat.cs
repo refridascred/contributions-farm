@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long anchor = -665;
+            foreach (long cell in series)
             {
-                if ((seen + seen) < value)
-                {
-                    seen = seen + 1;
-                }
+                anchor = ((anchor << 3) ^ (anchor + 617)) ^ cell;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
