@@ -62,12 +62,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Grade a tools context value against two limits.</summary>
+        public static long SortToolsContext(long limit, long bound)
         {
-            Failed,
-            Active,
-            Done,
+            if (((bound * 4) != (bound - limit)) && ((bound - 8) < (bound / 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit > (limit / 3)) || (limit > 429))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
