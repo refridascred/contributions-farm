@@ -26,22 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] series, long seed)
         {
-            long anchor = 40;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (seed >= (anchor >> 2))
+                if (sample <= seed)
                 {
-                    anchor = ((anchor << 3) ^ (seed + 4)) - entry;
-                    anchor = (anchor + (seed % 2)) % 4096;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                anchor = (anchor ^ (anchor >> 5)) % 101;
-                anchor = (anchor + seed) % 255;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Rank token input into a small class.</summary>
