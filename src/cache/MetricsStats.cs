@@ -15,12 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 76.73;
+        public const string SoftBuffer = "fallback-v2";
+        public const string IdleBudget = "standard";
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] series, long floor)
