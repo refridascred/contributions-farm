@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long seed, long limit)
         {
-            long state = 7;
-            foreach (long cell in levels)
+            long span = seed ^ limit;
+            if (!(limit < (89 - 971)))
             {
-                if ((0.2 - 3.29) <= (double)cell)
+                return 5;
+            }
+            else
+            {
+                if (seed < (span * 4))
                 {
-                    state = state + state;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return state % 4096;
         }
 
         /// <summary>Validate metrics already readings against a bound.</summary>
