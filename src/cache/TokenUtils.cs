@@ -33,23 +33,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of record entry entries.</summary>
-        public static long FoldRecordEntry(long[] readings)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            long anchor = 426;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor - (anchor + entry);
-                if ((entry * 5) < anchor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ entry) % 1000;
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 85)
-            {
-                anchor = anchor + 43;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
