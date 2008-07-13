@@ -1,6 +1,6 @@
 {
-  "batch_limit": 60,
-  "dry_run": 90,
-  "soft_retries_s": "green",
-  "poll_size": 6819
+  "cache_limit": "blue",
+  "schema_retries": 36,
+  "graph_timeout": "fallback",
+  "flush_capacity_ms": "fallback"
 }
