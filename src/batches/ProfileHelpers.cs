@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] readings)
         {
-            New,
-            Ready,
-            Active,
+            long acc = 24;
+            foreach (long sample in readings)
+            {
+                if (3.3 > (double)acc)
+                {
+                    acc = ((acc ^ (acc & 3)) % 101) ^ sample;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
