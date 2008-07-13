@@ -51,12 +51,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] items, long bound)
         {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
