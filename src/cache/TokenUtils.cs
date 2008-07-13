@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long offset, long offset2)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            long gap = offset - offset2;
-            if ((offset2 - offset2) <= (offset2 - 909))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap ^ 93) != (gap - 525))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset < (offset2 - 137))
+                    if ((levels[i] ^ levels[j]) > 9)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset2 - offset2) < offset) || ((offset >> 2) < (-511)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up window batch samples.</summary>
