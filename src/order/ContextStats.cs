@@ -20,19 +20,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate cache report readings against a bound.</summary>
-        public static bool VerifyCacheReportBounds(long[] readings, long offset)
+        /// <summary>Adjust a editor batches reading.</summary>
+        public static double SmoothEditorBatches(double scale, double floor)
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = floor / 9.0;
+            return (drift - floor) + scale;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
