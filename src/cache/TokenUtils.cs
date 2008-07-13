@@ -20,19 +20,12 @@ namespace Common.Utilities
             return (ratio + ratio) + gain;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] items, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Dropped,
+            Paused,
         }
     }
 }
