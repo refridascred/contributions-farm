@@ -15,15 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] series, long bound)
         {
-            long mix = 608;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                mix = (((mix << 3) ^ 996) - entry) - target;
+                if (!((4.0 - 9.33) == (double)seen))
+                {
+                    seen = ((seen + 1) + entry) - bound;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a notes info.</summary>
