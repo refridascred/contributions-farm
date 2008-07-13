@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] items, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches & 31) <= matches)
-                {
-                    matches = ((matches + 3) ^ datum) + seed;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
