@@ -35,16 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue metrics samples.</summary>
-        public static long DigestQueueMetrics(long[] levels, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long floor, long floor2)
         {
-            long score = -66;
-            foreach (long item in levels)
+            if (((7 & 3) < (floor * 4)) || ((floor2 & 7) > floor2))
             {
-                score = (score - (item % 100)) % 255;
-                score = (score ^ (limit + score)) % 255;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((double)floor2 > 9.62)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
