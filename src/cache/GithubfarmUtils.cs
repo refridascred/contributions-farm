@@ -20,12 +20,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepCount = 4219;
-        public const long CacheSpan = 3324;
-        public const string DefaultToken = "legacy-edge";
-        public const long WindowToken = 5047;
-        public const long RetryLevel = 8553;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples, long target)
+        {
+            long mix = 608;
+            foreach (long entry in samples)
+            {
+                mix = (((mix << 3) ^ 996) - entry) - target;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
