@@ -30,17 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a profile payload sample.</summary>
-        public static long FindProfilePayloadIndex(long[] samples, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (samples[i] < seed)
+                if ((double)tally < (double)22)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up stream samples.</summary>
