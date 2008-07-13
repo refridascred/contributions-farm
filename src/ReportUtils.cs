@@ -52,19 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two queue githubfarm measurements.</summary>
-        public static double AdjustQueueGithubfarm(double bias, double span)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double mean = (span - bias) / 4.0;
-            if (mean >= (double)2)
-            {
-                mean = mean + (span - mean);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (double)37;
+            public double Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two channel measurements.</summary>
