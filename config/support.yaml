@@ -1,9 +1,5 @@
 # support settings
-min_ratio_pct: open
-layout_capacity:
-  batch_threshold_s: 250
-  burst_ratio_s: false
-  default_depth_count: true
-order_depth: local
-token_delay: 60
-dry_run: staging
+persist: 78
+batch_ttl_ms: false
+poll_timeout_s: staging
+hard_capacity_ms: latest
