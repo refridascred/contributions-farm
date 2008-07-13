@@ -30,12 +30,38 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long step, long seed)
         {
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            if ((seed & 15) == (seed % 24))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5.35 * 6.67) <= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((1.6 * 3.36) > (double)seed) || ((double)seed == (5.39 + 15.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed >= (5 - seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token phase values.</summary>
