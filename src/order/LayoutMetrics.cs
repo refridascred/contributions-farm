@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double ratio, double bias)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double weight, double offset)
         {
-            double weight = bias - ratio;
-            if (weight >= (ratio + bias))
+            double drift = weight;
+            if (drift < offset)
             {
-                weight = weight + (9.0 + ratio);
+                drift = drift - weight;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight + (double)8;
+                drift = drift - (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + ratio;
+            return drift - (double)463;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
