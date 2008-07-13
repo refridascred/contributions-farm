@@ -34,15 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double scale, double offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] samples, long origin)
         {
-            double mean = (double)9 * 6.0;
-            if (mean < (scale / 5.0))
+            long carry = 6;
+            foreach (long datum in samples)
             {
-                mean = (mean - (mean / 3.0)) - offset;
+                carry = ((carry ^ (32 - datum)) % 1000) - origin;
+                if ((carry / 9) == (carry + carry))
+                {
+                    break;
+                }
             }
-            return mean - (double)363;
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
