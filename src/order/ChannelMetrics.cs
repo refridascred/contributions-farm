@@ -27,32 +27,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long offset, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long cur = offset - target;
-            if ((6 & 3) <= (target - 21))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((cur + cur) < (target / 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((cur % 100) >= (target << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
