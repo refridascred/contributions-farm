@@ -20,17 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] series, long origin)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
