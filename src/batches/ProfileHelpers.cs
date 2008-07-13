@@ -40,10 +40,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepLevel = 4193;
-        public const string LimitFactor = "strict-v2";
-        public const long CacheTools = 9247;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double floor)
+        {
+            double bias2 = floor;
+            if (bias2 > (bias2 * 7.0))
+            {
+                bias2 = bias2 + (floor / 9.0);
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 - bias2;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamGaps(long[] values, long limit)
