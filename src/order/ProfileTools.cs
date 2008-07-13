@@ -50,37 +50,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a metric route pair into a bucket.</summary>
-        public static long SortMetricRoute(long origin, long target)
+        /// <summary>Rank support payload input into a small class.</summary>
+        public static long GradeSupportPayload(long bound, long offset)
         {
-            long delta = origin - target;
-            if ((origin << 2) <= ((-79) / 2))
+            long prev = bound + offset;
+            if (((double)prev == (double)bound) || ((262 - prev) == (bound * 3)))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (((target * 4) > delta) && ((delta & 255) <= 221))
+                if (!((20.0 + 1.75) >= (double)offset))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((target - 75) >= (origin + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((delta & 255) == (origin >> 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
