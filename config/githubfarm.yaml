@@ -1,30 +1,21 @@
 # githubfarm settings
-enabled:
-  default_delay: 15.56
-  idle_ratio_pct:
-    - edge
-    - latest
+metric_delay:
+  burst_capacity_ms: true
+  cache_window_s: stable
+  strict: eu-west
+  max_capacity_pct: 30
+  poll_interval: standard
+max_depth: latest
+readonly: staging
+burst_ratio_s:
+  hard_window: 9462
+  payload_depth: cached
+  soft_retries_pct: legacy
+  compress: 43.49
+  hard_capacity:
+    - staging
     - cached
-    - edge
-  route_limit: 60
-  compress: 5.75
-  idle_limit_ms:
-    audit: standard
-    soft_capacity_ms: 99
-    persist: 93.06
-    strict: 500
-    hard_window: edge
-    cache_window_count: 1
-  poll_size_ms: 100
-warm_threshold_count: 2014
-burst_size:
-  persist: latest
-  already_interval:
-    - edge
-    - legacy
-    - stable
-    - latest
-  context_ratio: 7775
-  hard_retries: 30
-  stats_delay: eu-west
-  retry_interval_ms: 6370
+    - primary
+  hard_interval_s: 1167
+editor_threshold: 98
+retry_window: true
