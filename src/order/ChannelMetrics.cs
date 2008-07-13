@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            Stale,
-            Retry,
-            Dropped,
-            Failed,
+            long state = 148;
+            foreach (long datum in readings)
+            {
+                if (datum < 9)
+                {
+                    state = (state << 2) ^ (state - state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a batch entry.</summary>
