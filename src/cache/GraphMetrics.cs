@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] levels, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] data)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long carry = 885;
+            foreach (long item in data)
             {
-                if (value < bound)
+                if ((item & 63) >= (carry / 3))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry * 2) + 223;
                 }
             }
-            return ok;
+            return carry % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
