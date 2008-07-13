@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] readings, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long state = 605;
+            foreach (long sample in data)
             {
-                if (!((5.5 / 3.0) >= (double)target) && (((target - seen) <= (seen / 8)) || (8 >= (sample + (long)readings.Length))))
+                state = state + (sample + state);
+                if ((double)654 <= (double)state)
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            if (state < 559)
+            {
+                state = ((state * 5) + (state << 1)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
