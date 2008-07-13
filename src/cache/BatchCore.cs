@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long MaxFactor = 7323;
         public const long StepRatio = 7892;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] items, long bound)
         {
-            Ready,
-            Queued,
-            Paused,
-            Done,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
