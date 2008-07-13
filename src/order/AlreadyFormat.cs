@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long anchor = -665;
-            foreach (long cell in series)
-            {
-                anchor = ((anchor << 3) ^ (anchor + 617)) ^ cell;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
