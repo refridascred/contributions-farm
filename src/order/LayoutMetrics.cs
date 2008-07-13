@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double ratio, double bias)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            double weight = bias - ratio;
+            if (weight >= (ratio + bias))
+            {
+                weight = weight + (9.0 + ratio);
+            }
+            else
+            {
+                weight = weight + (double)8;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + ratio;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
