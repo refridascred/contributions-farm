@@ -15,20 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next channel layout value from a seed.</summary>
-        public static long DeriveChannelLayout(long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long total = 664;
+            foreach (long datum in values)
             {
-                if (((long)i >= seed) && (((-5) / 9) < (total << 1)))
-                {
-                    total = total ^ seed;
-                }
-                total = (total << 3) ^ seed;
-                total = ((total * 5) + (long)i) % 97;
+                total = ((total - 39) % 1000) + datum;
             }
-            return total;
+            if (total > 29)
+            {
+                total = (total * 3) + (total ^ 3);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the window mode values.</summary>
