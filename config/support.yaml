@@ -1,21 +1,5 @@
 # support settings
-record_limit:
-  retry_ratio_pct: 69.38
-  batch_window_s: 62.66
-  hard_ratio: local
-  already_interval: 17.47
-  hard_threshold_s: 2.23
-  default_delay_s: 78.18
-dry_run:
-  enabled: fallback
-  flush_window_pct: edge
-  batch_threshold_ms: 58.02
-  max_delay:
-    - 178
-    - 243
-    - 24
-  profile_retries: open
-  strict: eu-west
-min_depth_pct: edge
-burst_window_s: false
-enabled: false
+burst_ttl: true
+window_interval: 32.08
+verbose: local
+commits_depth: 20.08
