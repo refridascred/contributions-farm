@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry commits samples are out of range.</summary>
-        public static long CountEntryCommitsGaps(long[] data, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (!((893 << 2) < (sample ^ tally)))
+                if (cell > offset)
                 {
-                    tally = (tally + 3) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
