@@ -34,18 +34,9 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the payload buffer entries that pass the check.</summary>
-        public static long AuditPayloadBufferGaps(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((3.9 - 6.81) <= (double)value) || (value < (step + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseScore = 82.68;
+        public const double BatchBudget = 98.74;
+        public const double IdleCluster = 21.5;
     }
 }
