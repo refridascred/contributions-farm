@@ -27,9 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 22.82;
-        public const long MinCache = 3097;
-        public const long SoftCache = 7075;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits - reading) >= (reading * 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
