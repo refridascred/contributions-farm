@@ -37,11 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 1609;
-        public const string LimitReport = "open";
-        public const long LimitBudget = 7446;
-        public const long BaseReport = 8547;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Project the next command cluster value.</summary>
         public static double ProjectCommandCluster(double gain, double bias)
