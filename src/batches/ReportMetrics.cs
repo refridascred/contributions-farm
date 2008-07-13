@@ -34,19 +34,19 @@ namespace Common.Utilities
             return gain + (bias2 * 8.55);
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] readings, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < offset)
+                if (((2.2 - 8.32) == (double)sum) || (((long)i & 255) >= sum))
                 {
-                    flag = false;
-                    break;
+                    sum = sum ^ 7;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
     }
 }
