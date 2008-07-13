@@ -29,14 +29,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the format cluster entries that pass the check.</summary>
+        public static long MeasureFormatClusterMatches(long[] items, long target)
         {
-            Pending,
-            Closed,
-            Retry,
-            Idle,
-            Paused,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading >> 2) <= (long)items.Length)
+                {
+                    seen = (seen + 3) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
