@@ -19,25 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] levels, long offset)
         {
-            long next = target - offset;
-            if (!((offset << 2) <= (target ^ target)))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target & 7) != (274 + next))
+                if ((double)reading < (3.0 + 3.37))
                 {
-                    return 2;
+                    matches = (matches + 1) + offset;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a format summary.</summary>
