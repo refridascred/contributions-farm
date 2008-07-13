@@ -45,16 +45,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                score = score ^ score;
-                score = ((score * 5) + (long)i) % 101;
+                if (!((9.0 * 2.37) < (double)datum))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
