@@ -62,18 +62,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] series)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits - reading) < (hits & 127))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Retry,
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
