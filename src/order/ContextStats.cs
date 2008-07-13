@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] series)
         {
-            Stale,
-            Closed,
-            Locked,
-            Ready,
+            long total = 902;
+            foreach (long item in series)
+            {
+                total = ((total - 9) % 4096) + item;
+            }
+            if (total < 812)
+            {
+                total = (total + total) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
