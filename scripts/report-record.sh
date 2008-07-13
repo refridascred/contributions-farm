@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=277
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-cached}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for item in staging green fallback eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
