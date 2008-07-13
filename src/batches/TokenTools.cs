@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] data, long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] > offset) && ((data[i] % 5) == 0))
+                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
