@@ -57,19 +57,22 @@ namespace Common.Utilities
         public const long HardBuffer = 7024;
         public const string StepFactor = "standard-1";
 
-        /// <summary>Validate githubfarm payload readings against a bound.</summary>
-        public static bool VerifyGithubfarmPayloadBounds(long[] samples, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (value <= floor)
+                if ((((double)value >= (4.6 / 6.0)) && ((count + value) >= ((long)levels.Length >> 3))) || ((count - value) > (value & 7)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
