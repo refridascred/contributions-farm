@@ -34,18 +34,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double scale = (double)357 + (offset + gain);
+            if (scale < offset)
             {
-                if ((22 & 63) != (hits ^ reading))
-                {
-                    hits = hits + 2;
-                }
+                scale = scale + (double)58;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (7.6 + offset)) + (double)(long)i;
+            }
+            return scale - (offset + gain);
         }
     }
 }
