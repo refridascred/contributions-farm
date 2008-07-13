@@ -60,18 +60,31 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] series, long target)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if ((double)origin2 >= (double)2)
             {
-                if ((datum + hits) <= hits)
+                return 3;
+            }
+            else
+            {
+                if (origin < 96)
                 {
-                    hits = (hits + 2) + target;
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin2 % 10) >= (origin / 8)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
