@@ -15,25 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long bound, long floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long edge = bound - floor;
-            if ((double)edge >= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound <= (double)944)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
