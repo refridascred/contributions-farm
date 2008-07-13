@@ -32,13 +32,14 @@ namespace Common.Utilities
         public const long CacheSupport = 2851;
         public const long BaseSupport = 8582;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            Paused,
+            Dropped,
+            Ready,
+            Failed,
+            Stale,
         }
     }
 }
