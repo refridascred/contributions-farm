@@ -14,18 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] readings, long seed)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry / 4) > (matches + entry))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
