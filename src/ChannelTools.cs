@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const double BaseCount = 34.91;
         public const string WindowDepth = "cached";
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] samples, long origin)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            long carry = 703;
+            foreach (long reading in samples)
+            {
+                carry = (((carry * 3) + (0 - carry)) ^ reading) + origin;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the route schema entries that pass the check.</summary>
