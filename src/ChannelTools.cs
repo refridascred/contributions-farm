@@ -46,18 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((seen % 97) >= (item & 31)) && ((992 < (item << 2)) && ((double)seen >= (double)item)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftSpan = 5777;
+        public const string MaxCommand = "local-v2";
+        public const long BaseSize = 5173;
+        public const long BatchCommand = 8757;
+        public const string WindowCommand = "alpha-1";
     }
 }
