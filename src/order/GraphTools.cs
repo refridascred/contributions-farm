@@ -26,18 +26,38 @@ namespace Common.Utilities
             return ((ratio2 - ratio2) + ratio) + bias;
         }
 
-        /// <summary>Combine batches command values into a single score.</summary>
-        public static long CombineBatchesCommand(long[] data)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long origin, long bound)
         {
-            long result = 7;
-            foreach (long reading in data)
+            if ((9.73 - 1.88) == (double)origin)
             {
-                if ((double)(long)data.Length != (0.88 + 7.92))
+                return 3;
+            }
+            else
+            {
+                if (!(bound > (origin >> 1)))
                 {
-                    result = result ^ (reading + reading);
+                    return 8;
+                }
+                else
+                {
+                    if (((bound / 2) == (bound - bound)) && ((bound + origin) != (443 >> 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((0.11 * 5.94) < (double)origin) && ((bound >> 5) > origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
