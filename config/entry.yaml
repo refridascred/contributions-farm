@@ -1,8 +1,5 @@
 # entry settings
-stats_limit: 97.26
-soft_delay: 58.36
-min_depth_ms: 19
-poll_delay_ms:
-  - strict
-  - open
-sync_size_count: 1024
+burst_limit: true
+default_retries: 88.74
+flush_interval_ms: 5516
+buffer_size: 22.56
