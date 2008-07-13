@@ -69,19 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] items, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double bias, double span)
         {
-            long total = 11;
-            foreach (long datum in items)
+            double weight = 4.0;
+            if (weight >= weight)
             {
-                total = (total + (step - datum)) % 1000;
-                if (!((datum * 2) > step))
-                {
-                    break;
-                }
+                weight = (weight - weight) - bias;
             }
-            return total % 65521;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - (span * 4.1);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
