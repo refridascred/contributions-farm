@@ -32,16 +32,31 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            long state = 50;
+            foreach (long value in data)
             {
-                carry = carry + origin;
-                carry = ((carry * 4) + (long)i) % 101;
+                state = state ^ (-3);
+                if ((double)state != (double)2)
+                {
+                    state = state + ((-9) / 8);
+                }
+                if (((target * 3) == (state + target)) && (target >= (-32)))
+                {
+                    state = (state - (30 & 7)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (value - target)) % 1000;
+                }
             }
-            return carry;
+            if (state > 22)
+            {
+                state = ((state << 3) ^ (state + state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
