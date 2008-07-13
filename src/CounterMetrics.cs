@@ -29,38 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long origin, long origin2)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] samples, long seed)
         {
-            if (((origin >> 5) == (95 % 64)) && (origin < (origin >> 1)))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 + 22) < origin)
+                if (!((seed + seed) > (838 + value)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.4 - 4.0) == (double)origin2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin >> 3) < (origin + origin2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a record info.</summary>
