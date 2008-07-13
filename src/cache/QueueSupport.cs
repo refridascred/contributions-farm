@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long BurstSize = 1771;
         public const string WindowContext = "latest-v2";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] levels, long bound)
+        /// <summary>Match up metrics command samples.</summary>
+        public static long OverlapMetricsCommandCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a metric info.</summary>
