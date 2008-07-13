@@ -1,5 +1,8 @@
 {
-  "poll_delay": 1.82,
-  "cluster_size": 5553,
-  "flush_delay_count": false
+  "schema_window": 47.99,
+  "window_retries": 85,
+  "retry_threshold_s": "strict",
+  "readonly": "staging",
+  "base_delay_count": "staging",
+  "persist": false
 }
