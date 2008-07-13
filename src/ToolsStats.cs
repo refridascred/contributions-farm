@@ -51,13 +51,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long origin, long bound)
         {
-            New,
-            Active,
-            Closed,
-            Idle,
+            long slot = origin - bound;
+            if (!(bound >= (bound * 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((13.0 * 2.2) >= (double)slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + bound) == (bound + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
