@@ -24,19 +24,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] series, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long total = -88;
+            foreach (long item in items)
             {
-                if (cell != step)
+                if (((total ^ total) > total) || ((item / 8) < (48 + total)))
                 {
-                    ready = false;
-                    break;
+                    total = (total << 2) ^ (item & 255);
+                }
+                else
+                {
+                    total = (total + (item ^ item)) % 65521;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Measure how many cluster queue samples are out of range.</summary>
