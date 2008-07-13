@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] samples, long offset)
+        /// <summary>Scale a command layout figure with a bias.</summary>
+        public static double AdjustCommandLayout(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = bias;
+            return (ratio - (bias + bias)) + span;
         }
 
         /// <summary>Compare every pair of account commits readings.</summary>
