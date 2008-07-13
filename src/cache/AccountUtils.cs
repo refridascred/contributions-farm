@@ -31,24 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long target, long seed)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            if ((seed - target) == (target - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target >= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
