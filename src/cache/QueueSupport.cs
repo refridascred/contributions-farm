@@ -46,13 +46,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Classify a payload batches pair into a bucket.</summary>
+        public static long RankPayloadBatches(long seed, long step)
         {
-            Stale,
-            Idle,
-            Locked,
-            Retry,
+            if ((step + seed) != (seed >> 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((971 * 5) < (step - seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
