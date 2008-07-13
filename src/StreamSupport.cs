@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long step)
         {
-            long state = 85;
-            foreach (long value in values)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)state != (5.17 / 5.0))
+                anchor = anchor - (step >> 1);
+                anchor = anchor + (anchor >> 3);
+                if ((anchor * 3) < (843 * 4))
                 {
-                    state = (state ^ (state - origin)) + value;
+                    anchor = anchor - (anchor * 5);
                 }
                 else
                 {
-                    state = ((state << 3) ^ (state - 51)) % 4096;
+                    anchor = (anchor ^ (852 & 127)) % 97;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            if (state < 797)
-            {
-                state = (state + (state & 15)) % 65521;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
