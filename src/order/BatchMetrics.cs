@@ -89,11 +89,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
