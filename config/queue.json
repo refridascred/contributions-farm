@@ -1,6 +1,6 @@
 {
-  "idle_capacity_count": ["cached", "primary", "fallback", "green"],
-  "retry_ratio_ms": false,
-  "schema_retries": "primary",
-  "base_interval_ms": "staging"
+  "base_timeout_count": "primary",
+  "retry_ratio_ms": "staging",
+  "idle_limit_s": "open",
+  "cache_timeout": 500
 }
