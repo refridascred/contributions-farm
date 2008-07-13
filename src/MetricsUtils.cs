@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next account cache value.</summary>
-        public static double BlendAccountCache(double scale, double span)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] readings)
         {
-            double weight = span;
-            if (weight > weight)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                weight = (weight + (weight / 6.0)) - scale;
+                if (!((tally & 255) < (value / 4)))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                weight = weight + (weight * 3.34);
-            }
-            return weight - (span / 2.0);
+            return tally;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
