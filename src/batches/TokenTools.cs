@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] series)
         {
-            double ratio = scale;
-            if (ratio >= (ratio - scale))
+            long mark = 8;
+            foreach (long reading in series)
             {
-                ratio = ratio - (double)49;
+                if (21 <= (reading & 15))
+                {
+                    mark = mark + (mark & 31);
+                }
+                else
+                {
+                    mark = ((mark * 2) + mark) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (scale - bias)) + (double)(long)i;
-            }
-            return ratio - bias;
+            return mark % 65521;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
