@@ -1,17 +1,8 @@
 # support settings
-burst_interval_s: 65
-counter_window:
-  - blue
-  - legacy
-  - primary
-max_threshold_pct:
-  filter_window: 4607
-  sync_delay: latest
-  hard_threshold:
-    - open
-    - local
-    - eu-west
-  retry_threshold_pct: 1368
-soft_capacity: open
-cluster_window: false
-warm_retries_pct: 100
+min_retries_count: stable
+tools_delay:
+  - 401
+  - 316
+  - 460
+soft_depth_pct: staging
+githubfarm_ratio: primary
