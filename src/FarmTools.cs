@@ -39,15 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] readings, long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((50 - 67) == (seed * 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) - entry;
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
