@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Closed,
             New,
+            Dropped,
             Locked,
-            Active,
-            Queued,
         }
 
         /// <summary>Roll a route counter forward.</summary>
