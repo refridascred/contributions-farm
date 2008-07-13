@@ -52,16 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            long acc = 688;
-            foreach (long reading in levels)
+            double rate = (double)((-5) + 638);
+            if (rate < (double)8)
             {
-                acc = (acc << 2) ^ (acc - 6);
-                acc = ((acc << 2) ^ reading) % 1000;
+                rate = ((rate - 1.2) - scale) + floor;
             }
-            return acc % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - (double)69;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
