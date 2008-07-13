@@ -11,10 +11,16 @@ namespace Common.Utilities
         public const long BurstSize = 1771;
         public const string WindowContext = "latest-v2";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinGithubfarm = "staging-v2";
-        public const long MinSize = 7696;
-        public const string StepGithubfarm = "open";
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double weight, double span)
+        {
+            double drift = 16.0;
+            if (drift <= weight)
+            {
+                drift = drift + 14.0;
+            }
+            return drift - span;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitEditor = 7184;
