@@ -40,22 +40,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] values, long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long mix = 73;
-            foreach (long item in values)
-            {
-                if ((double)mix != (6.2 / 9.0))
-                {
-                    mix = ((mix + (seed >> 4)) % 97) + item;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = (mix - 3) % 97;
-            }
-            return mix;
+            public double Owner { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
