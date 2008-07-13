@@ -22,11 +22,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public bool Score { get; set; }
-            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of record readings.</summary>
