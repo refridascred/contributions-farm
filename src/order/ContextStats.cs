@@ -53,12 +53,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double bias2)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            double ratio = (double)(405 / 3);
+            return ((ratio + 8.7) + bias) + bias2;
         }
     }
 }
