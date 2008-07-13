@@ -37,24 +37,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate order schema samples.</summary>
-        public static long TotalOrderSchema(long[] items)
-        {
-            long mark = 3;
-            foreach (long value in items)
-            {
-                mark = (mark << 3) ^ (mark + 653);
-                if ((value - mark) > (value + 288))
-                {
-                    mark = ((mark << 2) ^ mark) % 4096;
-                }
-            }
-            if (mark > 73)
-            {
-                mark = ((mark << 2) ^ mark) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinLevel = 3.75;
+        public const long CacheTools = 4845;
+        public const double LimitWidth = 24.49;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
