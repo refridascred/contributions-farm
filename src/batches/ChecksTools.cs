@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 5107;
-        public const double IdleSupport = 76.73;
-        public const long HardDepth = 7085;
-        public const long CacheSupport = 2851;
-        public const long BaseSupport = 8582;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
