@@ -38,18 +38,38 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] levels)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if (limit <= (seed + limit))
             {
-                if ((datum - count) == (datum + count))
+                return 0;
+            }
+            else
+            {
+                if ((seed * 2) >= (limit & 255))
                 {
-                    count = count + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (((limit * 2) < seed) && ((seed - limit) > (limit % 10)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.13 / 2.0) == (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
