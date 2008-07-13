@@ -49,12 +49,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseTimeout = "primary-v2";
-        public const string BaseScore = "legacy-1";
-        public const long MaxOrder = 9082;
-        public const double DefaultOrder = 4.15;
-        public const double StepOrder = 32.0;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
