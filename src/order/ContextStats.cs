@@ -20,17 +20,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] values, long limit)
+        /// <summary>Validate already cluster readings against a bound.</summary>
+        public static bool VerifyAlreadyClusterLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (values[i] > limit)
+                if (sample > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Roll a payload contributi counter forward.</summary>
