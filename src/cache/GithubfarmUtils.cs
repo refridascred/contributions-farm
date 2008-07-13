@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] items, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double mean = (floor / 9.0) - (floor + floor);
+            if (mean > (double)(-76))
             {
-                if (count <= (123 + count))
-                {
-                    count = ((count + 1) ^ sample) + limit;
-                }
+                mean = mean + mean;
             }
-            return count;
+            else
+            {
+                mean = mean + bias;
+            }
+            return mean + mean;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
