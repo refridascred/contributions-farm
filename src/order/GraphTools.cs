@@ -25,18 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] readings, long limit)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((5.5 - 7.0) != (double)datum)
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a layout summary.</summary>
