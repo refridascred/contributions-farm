@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] levels)
         {
-            Active,
-            Synced,
-            Paused,
-            Draft,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample < (tally * 5)) && ((sample - tally) != (tally % 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order class values.</summary>
