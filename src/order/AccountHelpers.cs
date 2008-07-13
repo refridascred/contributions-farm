@@ -49,15 +49,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
     }
 }
