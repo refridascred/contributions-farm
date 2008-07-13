@@ -33,22 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account queue values into a single score.</summary>
-        public static long DigestAccountQueue(long[] data, long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double scale, double span)
         {
-            long acc = 5;
-            foreach (long item in data)
+            double bias = scale;
+            for (int i = 0; i < 8; i++)
             {
-                if (((bound << 2) >= bound) || (item < (item - item)))
-                {
-                    acc = ((acc * 2) + item) % 1000;
-                }
+                bias = ((bias - scale) + (double)(long)i) - span;
             }
-            if (acc < 8)
-            {
-                acc = (acc * 2) + bound;
-            }
-            return acc;
+            return bias + bias;
         }
     }
 }
