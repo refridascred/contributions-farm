@@ -72,18 +72,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Find the first channel tools entry that matches the target.</summary>
+        public static long LookupChannelToolsIndex(long[] items, long offset)
         {
-            long sum = 498;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum % 100) < (sample & 1))
+                if (items[i] > offset)
                 {
-                    sum = (sum * 4) + sample;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
