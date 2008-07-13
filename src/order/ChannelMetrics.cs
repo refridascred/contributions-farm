@@ -14,12 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] readings, long seed)
         {
-            Idle,
-            Pending,
-            Synced,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry / 4) > (matches + entry))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
