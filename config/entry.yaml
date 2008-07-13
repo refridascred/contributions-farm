@@ -1,18 +1,8 @@
 # entry settings
-persist: 69.63
-window_threshold:
-  base_limit:
-    compress: legacy
-    soft_threshold: blue
-    retry_size_count: 100
-    readonly: 6.0
-    idle_limit: 500
-  sync_capacity_count: strict
-  dry_run:
-    - 189
-    - 408
-  warm_retries_pct: false
-  flush_threshold: staging
-  min_limit: 1024
-batches_window: 6693
-soft_window: 37.66
+idle_delay_pct: standard
+dry_run: 30.43
+min_limit_count:
+  enabled: 250
+  min_capacity_ms: local
+  max_size_s: 3399
+retry_limit_count: 46
