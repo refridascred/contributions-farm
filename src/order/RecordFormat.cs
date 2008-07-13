@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next schema session value.</summary>
-        public static double ProjectSchemaSession(double bias, double offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] values, long target)
         {
-            double gain = bias;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                gain = ((gain - (gain / 2.0)) + (double)(long)i) - offset;
+                if ((item - target) > (item & 31))
+                {
+                    matches = matches + 1;
+                }
             }
-            return gain - (double)58;
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
