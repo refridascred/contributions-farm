@@ -23,38 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long offset, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] levels, long step)
         {
-            if (target <= (offset % 64))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (1.1 - 19.0))
+                if ((entry + step) >= (step & 255))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target ^ offset) < offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + target) < (offset ^ 572))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
