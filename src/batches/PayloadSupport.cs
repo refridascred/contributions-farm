@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] samples, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((count + item) <= ((long)samples.Length - 0))
+                if ((hits % 100) >= (hits + hits))
                 {
-                    count = (count + 3) - offset;
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a channel stats.</summary>
