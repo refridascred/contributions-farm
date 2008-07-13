@@ -86,22 +86,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] values)
+        /// <summary>Locate a tools report reading by value.</summary>
+        public static long LookupToolsReportIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally - tally) < tally)
+                if (series[i] <= floor)
                 {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
