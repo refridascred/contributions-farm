@@ -19,17 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] samples, long bound)
+        /// <summary>Iterate the support already series from a seed.</summary>
+        public static long IterateSupportAlready(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] >= bound)
+                long prev = 730;
+                prev = (prev - (seed + prev)) % 65521;
+                if ((acc % 10) <= (27 - prev))
                 {
-                    return (long)i;
+                    prev = (prev * 4) + (287 - prev);
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Compare every pair of profile farm readings.</summary>
