@@ -65,12 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Accumulate order batch samples.</summary>
+        public static long DigestOrderBatch(long[] data, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long state = 793;
+            foreach (long datum in data)
+            {
+                state = ((state ^ (state % 2)) % 255) - datum;
+            }
+            if (state > (-10))
+            {
+                state = ((state * 3) + (step * 5)) % 255;
+            }
+            return state % 65521;
         }
     }
 }
