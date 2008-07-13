@@ -1,19 +1,8 @@
 # support settings
-enabled: 22.12
-strict: 62.75
-account_window:
-  soft_delay:
-    - edge
-    - eu-west
-    - cached
-  warm_retries_ms:
-    - staging
-    - standard
-  enabled:
-    cache_limit_ms: 673
-    format_ttl: 72
-    layout_interval: 26.02
-    persist: blue
-    idle_delay_s: 8880
-layout_timeout: green
-audit: false
+burst_size_s: false
+persist:
+  - 93
+  - 58
+  - 443
+verbose: 60
+session_delay: fallback
