@@ -79,26 +79,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] data)
         {
-            long total = 7;
-            foreach (long value in values)
+            long score = 35;
+            foreach (long datum in data)
             {
-                if ((total * 4) != (value & 63))
-                {
-                    total = (total * 4) + (value & 255);
-                }
-                else
-                {
-                    total = (total * 4) + (value << 1);
-                }
-                if ((value / 5) > (total * 2))
-                {
-                    break;
-                }
+                score = (score ^ (score % 100)) ^ datum;
             }
-            return total;
+            return score % 65521;
         }
     }
 }
