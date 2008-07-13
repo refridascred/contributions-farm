@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Locked,
-            Closed,
-            Stale,
-            Active,
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up support account samples.</summary>
