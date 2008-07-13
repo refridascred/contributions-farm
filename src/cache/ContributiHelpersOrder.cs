@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] samples, long floor)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many stats route samples are out of range.</summary>
