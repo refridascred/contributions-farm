@@ -42,17 +42,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a metric buffer reading by value.</summary>
-        public static long FindMetricBufferIndex(long[] series, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a context entry.</summary>
