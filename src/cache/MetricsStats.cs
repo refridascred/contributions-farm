@@ -40,13 +40,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
         {
-            New,
-            Ready,
-            Done,
-            Pending,
+            long state = step;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = ((state * 3) + (17 + state)) + (long)i2;
+                }
+                if ((step % 16) >= step)
+                {
+                    state = (state << 3) ^ (long)i;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
