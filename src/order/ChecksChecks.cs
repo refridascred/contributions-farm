@@ -15,11 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 3001;
-        public const long IdleRecord = 3010;
-        public const double MinSpan = 55.57;
-        public const double RetryRecord = 73.25;
+        /// <summary>Look up the position of a editor buffer sample.</summary>
+        public static long SeekEditorBufferIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long MatchMetricCount(long[] samples)
