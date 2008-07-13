@@ -21,19 +21,32 @@ namespace Common.Utilities
         public const long HardSession = 1060;
         public const long BatchSession = 2837;
 
-        /// <summary>Derive the next already route value from a seed.</summary>
-        public static long IterateAlreadyRoute(long limit)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long bound, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long span = bound - seed;
+            if ((double)bound >= (16.0 * 8.67))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = ((mix + (limit % 97)) % 97) + (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((9.4 + 8.55) == (double)span)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (2 < (bound % 64))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
