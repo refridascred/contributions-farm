@@ -22,39 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long floor, long floor2)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            long prev = floor ^ floor2;
-            if (((prev % 97) > (floor2 * 2)) || ((double)prev <= (6.7 / 6.0)))
+            long score = 84;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 9) == (14 / 7))
+                if ((datum & 127) > (datum + datum))
                 {
-                    return 0;
+                    score = (score - score) % 65521;
                 }
                 else
                 {
-                    if ((floor >> 4) >= (floor2 / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor2 > 36) || (0.9 <= (double)floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score << 3) ^ (561 + datum);
                 }
             }
+            if (score > 250)
+            {
+                score = (score * 2) + (score ^ 947);
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
