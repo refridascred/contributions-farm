@@ -1,8 +1,10 @@
 # support settings
-verbose:
-  - blue
-  - stable
-  - local
-order_ttl: staging
-max_limit_pct: strict
-default_limit_count: 1024
+retry_size:
+  - 190
+  - 304
+  - 416
+max_depth: 76
+contributi_interval:
+  - 32
+  - 354
+  - 44
