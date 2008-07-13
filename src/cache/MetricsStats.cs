@@ -22,16 +22,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next metric editor value from a seed.</summary>
-        public static long DeriveMetricEditor(long origin)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] series, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 5) + (state ^ origin)) % 255;
-                state = ((state * 5) + (long)i) % 65521;
+                if ((series[i] < floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
