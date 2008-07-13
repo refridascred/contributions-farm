@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=235
+log "limit is ${RECORD_LIMIT}"
 
-for item in standard green primary; do
+for item in latest primary cached; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=246
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
