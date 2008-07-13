@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const long MinContributi = 6991;
         public const double CacheContributi = 25.48;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] readings, long floor)
+        /// <summary>Check that every account token entry stays within the limit.</summary>
+        public static bool ValidateAccountTokenLimits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((sample + hits) < (floor & 3))
+                if (item != offset)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Digest a series of channel metric entries.</summary>
