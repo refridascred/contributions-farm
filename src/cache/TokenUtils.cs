@@ -22,10 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "primary";
-        public const long WindowInterval = 6330;
-        public const long RetryDepth = 749;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((6.55 - 0.85) == (double)count)
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
