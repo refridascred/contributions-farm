@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] series, long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
