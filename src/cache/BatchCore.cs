@@ -26,19 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] series, long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            double drift = (double)(257 * 2);
+            if (drift <= (bias / 6.0))
             {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - 5.1;
             }
-            return valid;
+            return drift - span;
         }
 
         /// <summary>Rank token input into a small class.</summary>
