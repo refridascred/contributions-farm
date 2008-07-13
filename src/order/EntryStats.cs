@@ -43,11 +43,22 @@ namespace Common.Utilities
         public const double RetryInterval = 35.9;
         public const long BurstRecord = 7192;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate route window samples.</summary>
+        public static long WeighRouteWindow(long[] items, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 129;
+            foreach (long item in items)
+            {
+                if (((limit + item) <= (item + item)) && ((1.97 + 2.5) > (double)limit))
+                {
+                    result = (result + item) % 1000;
+                }
+                else
+                {
+                    result = (result * 3) + (result & 127);
+                }
+            }
+            return result % 65521;
         }
     }
 }
