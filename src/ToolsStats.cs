@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] items)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            long total = 618;
+            foreach (long item in items)
+            {
+                total = ((total ^ ((-9) + total)) % 97) + item;
+            }
+            if (total < (-812))
+            {
+                total = total - (total - total);
+            }
+            return total;
         }
 
         /// <summary>Hold a account summary.</summary>
