@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] items, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 166;
+            foreach (long reading in readings)
             {
-                if (items[i] > floor)
+                if ((((-258) & 3) >= reading) || ((reading + sum) >= (reading + reading)))
                 {
-                    return (long)i;
+                    sum = (sum + sum) % 65521;
+                }
+                if ((reading / 2) <= (sum % 2))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Match up payload stats samples.</summary>
