@@ -1,10 +1,4 @@
 # support settings
-compress: local
-retry_size_pct:
-  profile_window: 100
-  flush_depth: 62
-  soft_capacity_ms: 89.67
-  persist: 5035
-  hard_threshold_ms: 1024
-idle_delay_pct: true
-strict: 250
+sync_ttl: 85
+batch_depth_count: true
+editor_window: false
