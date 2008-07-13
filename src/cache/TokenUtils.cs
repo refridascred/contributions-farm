@@ -15,30 +15,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long origin)
         {
-            long carry = 638;
-            foreach (long reading in samples)
+            long span = target + origin;
+            if ((double)origin <= (double)716)
             {
-                if (reading < (carry - reading))
+                return 3;
+            }
+            else
+            {
+                if ((target ^ target) <= (target << 3))
                 {
-                    break;
+                    return 5;
                 }
-                if ((reading + reading) == (2 + reading))
+                else
                 {
-                    carry = carry ^ (carry + carry);
-                }
-                if (18 >= (reading ^ carry))
-                {
-                    break;
+                    if ((double)span > 1.6)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((92 / 6) >= origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (carry < (-907))
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry;
         }
 
         /// <summary>Describe the commits mode values.</summary>
