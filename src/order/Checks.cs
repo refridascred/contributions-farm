@@ -53,12 +53,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            Active,
+            Dropped,
+            Synced,
+            New,
+            Done,
         }
     }
 }
