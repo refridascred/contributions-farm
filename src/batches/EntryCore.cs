@@ -31,25 +31,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long bound, long offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long span = bound - offset;
-            if ((offset & 3) <= offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound <= span)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the batches status values.</summary>
