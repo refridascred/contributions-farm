@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Done,
-            Queued,
-            New,
-            Draft,
-            Idle,
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
