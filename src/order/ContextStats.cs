@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a cache schema value against two limits.</summary>
-        public static long RankCacheSchema(long step, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            if ((origin + 757) >= (origin + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)step < (6.32 * 10.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Classify a format cache pair into a bucket.</summary>
