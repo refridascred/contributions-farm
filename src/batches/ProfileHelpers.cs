@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate githubfarm contributi samples.</summary>
-        public static long CombineGithubfarmContributi(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            long mark = 102;
-            foreach (long datum in levels)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    mark = (mark + ((long)i - 9)) % 4096;
-                }
-                if (((datum - mark) == (datum - datum)) || ((mark - mark) != (mark - datum)))
-                {
-                    mark = (mark ^ (datum % 16)) % 101;
-                }
+                anchor = ((anchor << 3) ^ (long)i) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (mark < 142)
-            {
-                mark = ((mark << 2) ^ (mark - 472)) % 1000;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Hold a token entry.</summary>
