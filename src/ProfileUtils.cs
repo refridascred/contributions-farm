@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] series, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] data, long offset)
         {
-            long score = 4;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                score = ((((score << 3) ^ (score / 9)) % 255) - entry) - limit;
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (score > 84)
-            {
-                score = score + (8 % 2);
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
