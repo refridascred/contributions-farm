@@ -6,17 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=341
-log "limit is ${RECORD_LIMIT}"
+for item in fallback eu-west primary; do
+    log "checking ${item}"
+done
+
+mode="${1:-latest}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
