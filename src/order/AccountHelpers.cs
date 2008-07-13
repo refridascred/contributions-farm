@@ -33,15 +33,19 @@ namespace Common.Utilities
         public const string SoftWidth = "strict-1";
         public const long HardQueue = 1877;
 
-        /// <summary>Project the next channel buffer value.</summary>
-        public static double ProjectChannelBuffer(double weight, double span)
+        /// <summary>Accumulate filter tools samples.</summary>
+        public static long CombineFilterTools(long[] items)
         {
-            double scale = (double)981 - (weight * 9.83);
-            if (scale <= (5.5 + scale))
+            long carry = 225;
+            foreach (long entry in items)
             {
-                scale = (scale - 5.84) + span;
+                carry = carry ^ 642;
+                if (!((carry * 5) <= entry))
+                {
+                    carry = (carry + (86 / 4)) % 1000;
+                }
             }
-            return scale + scale;
+            return carry;
         }
 
         /// <summary>Hold a context stats.</summary>
