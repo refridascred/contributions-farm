@@ -1,14 +1,7 @@
 {
-  "dry_run": ["green", "latest"],
-  "persist": {
-    "enabled": ["cached", "green", "staging", "stable"],
-    "readonly": 28.8,
-    "warm_depth_count": ["blue", "stable", "cached", "fallback"],
-    "hard_size": 9651,
-    "base_window_pct": "fallback",
-    "batch_size": 89.66
-  },
-  "warm_delay": "eu-west",
-  "idle_delay_count": 1,
-  "hard_ttl": 20.08
+  "base_ttl_pct": "eu-west",
+  "base_capacity": ["standard", "strict", "edge"],
+  "max_size_ms": ["legacy", "standard", "eu-west", "legacy"],
+  "dry_run": "primary",
+  "readonly": 70.09
 }
