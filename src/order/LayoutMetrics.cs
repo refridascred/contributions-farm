@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank buffer graph input into a small class.</summary>
-        public static long GradeBufferGraph(long bound, long offset)
-        {
-            long prev = bound + offset;
-            if ((offset / 3) == (prev + prev))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((170 ^ prev) > (offset - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((prev & 15) >= offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(prev > offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheScore = 36.92;
+        public const long BatchOrder = 5921;
+        public const string StepSize = "staging";
 
         /// <summary>Audit already githubfarm readings against a rule.</summary>
         public static long CountAlreadyGithubfarmHits(long[] series, long floor)
