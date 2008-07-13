@@ -29,24 +29,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long offset, long bound)
+        /// <summary>Roll a already filter counter forward.</summary>
+        public static long IterateAlreadyFilter(long seed)
         {
-            if (((offset + offset) <= (offset * 5)) || (offset <= (bound << 1)))
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset - bound) >= offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
