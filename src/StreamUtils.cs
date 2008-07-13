@@ -34,13 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Failed,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardDepth = 48.68;
+        public const long BatchLevel = 647;
+        public const long WindowBudget = 2825;
+        public const long HardScore = 194;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long FindEntryIndex(long[] series, long offset)
