@@ -1,8 +1,6 @@
 # entry settings
-idle_ttl: 23
-retry_threshold_count: legacy
-sync_interval_count: strict
-session_timeout: fallback
-max_size_pct:
-  - 454
-  - 39
+enabled: cached
+strict: fallback
+burst_depth: blue
+warm_depth_s: cached
+context_ratio: 60
