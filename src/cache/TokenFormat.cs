@@ -32,19 +32,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double weight, double span)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long floor, long limit)
         {
-            double bias = 4.28;
-            if (bias >= (double)6)
+            long edge = floor ^ limit;
+            if ((floor + limit) == (limit ^ limit))
             {
-                bias = (bias - weight) - span;
+                return 0;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias = (bias - bias) + (double)(long)i;
+                if (((edge / 8) > floor) || (6 >= (floor % 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)floor > (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor < (14.0 + 18.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return bias - bias;
         }
     }
 }
