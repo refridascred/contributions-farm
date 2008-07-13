@@ -20,26 +20,19 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Validate metrics already readings against a bound.</summary>
+        public static bool CheckMetricsAlreadyLimits(long[] values, long origin)
         {
-            long carry = 61;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((item + carry) < (carry ^ carry))
+                if (sample != origin)
                 {
-                    carry = (carry * 3) + carry;
-                }
-                else
-                {
-                    carry = carry ^ (carry + item);
+                    valid = false;
+                    break;
                 }
             }
-            if (carry < (-12))
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Audit stream token readings against a rule.</summary>
