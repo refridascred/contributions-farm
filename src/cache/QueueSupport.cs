@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] data, long floor)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long reading in data)
             {
-                if ((seen + value) != (seen / 5))
+                if (seen < floor)
                 {
-                    seen = seen + 2;
+                    seen = (seen + 2) + reading;
                 }
             }
             return seen;
