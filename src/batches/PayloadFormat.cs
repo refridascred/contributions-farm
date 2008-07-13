@@ -30,19 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double ratio, double offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            double mean = (offset / 2.0) + (double)406;
-            if (mean < (mean / 4.0))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean - offset) + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (mean * 0.82);
+            return seen;
         }
 
         /// <summary>Audit cluster batches readings against a rule.</summary>
