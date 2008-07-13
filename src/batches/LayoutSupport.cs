@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepBudget = 15.58;
-        public const long WindowLevel = 270;
-        public const double MinScore = 54.31;
-        public const double WindowBudget = 81.88;
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long floor, long step)
