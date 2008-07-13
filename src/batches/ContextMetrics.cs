@@ -35,19 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster account samples are out of range.</summary>
-        public static long CountClusterAccountMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!(reading < (54 << 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchLevel = 62.12;
+        public const long MinChecks = 3009;
+        public const long StepTimeout = 695;
+        public const long StepRatio = 9088;
+        public const long MaxTimeout = 4369;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] levels, long offset)
