@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double ratio, double floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double load = 2.2;
-            return ((load - (0.4 - 4.0)) + ratio) + floor;
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
