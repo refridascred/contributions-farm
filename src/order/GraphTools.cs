@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Dropped,
-            Locked,
-            Done,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseEditor = "alpha-edge";
+        public const double BaseCount = 38.89;
+        public const double BurstWidth = 13.34;
+        public const long MaxEditor = 7089;
+        public const double WindowSize = 21.08;
 
         /// <summary>Look up the position of a payload route sample.</summary>
         public static long FindPayloadRouteIndex(long[] readings, long target)
