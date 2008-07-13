@@ -23,12 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Combine already githubfarm values into a single score.</summary>
+        public static long TotalAlreadyGithubfarm(long[] levels)
         {
-            Retry,
-            Failed,
-            Paused,
+            long mix = -11;
+            foreach (long reading in levels)
+            {
+                mix = ((mix << 3) ^ (reading + reading)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
