@@ -42,9 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "primary-edge";
-        public const long BurstQueue = 8898;
-        public const double WindowWidth = 6.85;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardCount = 4763;
+        public const long SoftAlready = 2545;
+        public const long RetryBudget = 5545;
+        public const long MaxRatio = 8439;
+        public const double DefaultFactor = 84.39;
     }
 }
