@@ -40,18 +40,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] items, long floor)
+        /// <summary>Combine batch farm values into a single score.</summary>
+        public static long ScoreBatchFarm(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long total = 4;
+            foreach (long cell in readings)
             {
-                if ((double)floor <= (9.6 - 13.0))
+                total = (total - (474 + cell)) % 255;
+                if (((total - total) == (total / 9)) || (total >= (cell + total)))
                 {
-                    hits = (hits + 1) ^ item;
+                    total = (total + (cell - 39)) % 65521;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
