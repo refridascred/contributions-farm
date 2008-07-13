@@ -12,13 +12,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double rate, double bias)
         {
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            double ratio = bias;
+            if (ratio > (ratio * 8.9))
+            {
+                ratio = (ratio + (double)559) - rate;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
