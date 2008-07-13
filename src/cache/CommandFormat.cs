@@ -36,12 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Derive the next batches already value from a seed.</summary>
+        public static long RollBatchesAlready(long origin)
         {
-            Pending,
-            Retry,
-            Locked,
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a checks summary.</summary>
