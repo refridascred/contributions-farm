@@ -44,22 +44,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of stream payload entries.</summary>
-        public static long DigestStreamPayload(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long target, long offset)
         {
-            long total = 80;
-            foreach (long item in samples)
+            if ((offset << 3) > (target >> 3))
             {
-                if ((item / 7) < item)
+                return 4;
+            }
+            else
+            {
+                if ((773 * 4) <= (168 + offset))
                 {
-                    total = ((total * 5) + (item - item)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset < target) || (target >= (offset >> 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (total > 7)
-            {
-                total = ((total * 2) + (total - total)) % 4096;
-            }
-            return total % 65521;
         }
     }
 }
