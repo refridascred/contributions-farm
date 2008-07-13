@@ -54,16 +54,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Derive the next githubfarm metric value from a seed.</summary>
+        public static long DeriveGithubfarmMetric(long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                carry = carry ^ 7;
-                carry = ((carry * 4) + (long)i) % 97;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = ((result * 4) + target) - (long)i2;
+                }
+                result = (result - target) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return carry;
+            return result;
         }
     }
 }
