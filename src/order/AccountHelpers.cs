@@ -40,12 +40,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultBudget = 9063;
-        public const double BurstMetric = 0.42;
-        public const string WindowMetric = "strict-1";
-        public const long CacheSize = 8293;
-        public const long IdleCount = 3780;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long SeriesNotes(long bound)
