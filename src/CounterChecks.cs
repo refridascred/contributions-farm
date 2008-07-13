@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 8209;
-        public const double SoftLayout = 91.73;
-        public const long MaxLayout = 3769;
-        public const long StepLayout = 594;
-        public const long MinLayout = 8641;
+        /// <summary>Check that every window session entry stays within the limit.</summary>
+        public static bool VerifyWindowSessionLimits(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double BurstContributi = 5.36;
