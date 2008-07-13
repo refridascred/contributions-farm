@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const long MaxCache = 4288;
         public const double BatchCache = 15.56;
 
-        /// <summary>Accumulate notes schema samples.</summary>
-        public static long TotalNotesSchema(long[] levels)
-        {
-            long mark = 247;
-            foreach (long entry in levels)
-            {
-                mark = ((mark ^ (mark / 7)) % 101) ^ entry;
-                if ((double)mark >= (1.3 - 0.1))
-                {
-                    break;
-                }
-            }
-            if (mark > 638)
-            {
-                mark = mark - mark;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxTimeout = 6631;
+        public const string StepGraph = "stable";
+        public const double CacheGraph = 80.88;
+        public const long MinCount = 8251;
+        public const long StepLevel = 6559;
 
         /// <summary>Accumulate checks record samples.</summary>
         public static long ScoreChecksRecord(long[] data)
