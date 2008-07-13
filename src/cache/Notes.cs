@@ -58,19 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] levels, long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= bound)
+                if (items[i] == origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
