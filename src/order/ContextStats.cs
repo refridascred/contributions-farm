@@ -20,19 +20,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate already cluster readings against a bound.</summary>
-        public static bool VerifyAlreadyClusterLimits(long[] samples, long bound)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
