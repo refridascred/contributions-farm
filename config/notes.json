@@ -1,5 +1,7 @@
 {
-  "poll_interval": "legacy",
-  "enabled": "strict",
-  "counter_retries": 96
+  "batch_ratio_ms": false,
+  "retry_retries_count": "latest",
+  "already_ratio": false,
+  "compress": 2267,
+  "poll_delay_ms": 87.37
 }
