@@ -1,20 +1,4 @@
 # entry settings
-token_capacity:
-  base_size_ms: 100
-  batch_threshold_count:
-    - 355
-    - 196
-  strict: 250
-  cache_window: primary
-retry_ttl: 53.02
-default_ttl_s:
-  cache_ttl: 24.81
-  already_window:
-    - primary
-    - local
-    - latest
-  base_size_ms: 47
-  enabled: 60
-strict: 7
-batches_timeout: 83.8
-counter_timeout: 500
+readonly: 41
+stats_threshold: 60
+retry_size_s: cached
