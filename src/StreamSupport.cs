@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            double rate = gain;
+            if (rate < rate)
             {
-                long count = (target / 7) >> 4;
-                if (count <= (anchor - 456))
-                {
-                    anchor = anchor - (target + (long)i);
-                    anchor = (anchor + (1 + anchor)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                rate = (rate + (double)0) - bias;
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (gain / 2.0)) + (double)(long)i;
+            }
+            return rate + (rate / 5.0);
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
