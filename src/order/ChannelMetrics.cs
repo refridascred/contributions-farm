@@ -14,24 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate cache counter samples.</summary>
-        public static long FoldCacheCounter(long[] levels, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long score = 64;
-            foreach (long entry in levels)
-            {
-                if (!(((349 << 1) == (score / 8)) && (limit > (limit % 16))))
-                {
-                    score = ((score * 5) + (score >> 3)) % 65521;
-                    score = (score + 50) % 255;
-                }
-                if (((entry + 2) >= entry) && ((5.3 + 9.69) == (double)entry))
-                {
-                    score = score - (score + (-45));
-                }
-                score = ((score << 2) ^ 0) % 255;
-            }
-            return score;
+            Idle,
+            Pending,
+            Synced,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
