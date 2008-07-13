@@ -20,19 +20,11 @@ namespace Common.Utilities
             return gain + 13.0;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] levels, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio2 = 1.28;
+            return ((ratio2 - ratio2) + ratio) + bias;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
