@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-legacy}"
 case "${mode}" in
     cached)
         log "fast path"
@@ -16,12 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict edge; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=151
+log "limit is ${CHANNEL_LIMIT}"
