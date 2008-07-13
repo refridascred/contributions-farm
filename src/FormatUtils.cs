@@ -55,21 +55,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= step)
                 {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
