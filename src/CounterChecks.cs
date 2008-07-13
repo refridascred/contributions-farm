@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items)
-        {
-            long anchor = 7;
-            foreach (long value in items)
-            {
-                anchor = anchor + ((-1) ^ value);
-            }
-            if (anchor > 72)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 4096;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardSize = 709;
+        public const long StepRatio = 8170;
+        public const long SoftFactor = 8883;
+        public const long MinChannel = 4502;
+        public const string SoftTimeout = "primary-edge";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] data, long step)
