@@ -40,9 +40,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstStream = 62.41;
-        public const long RetryFactor = 841;
-        public const string IdleSize = "primary-1";
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long floor, long bound)
+        {
+            long edge = floor - bound;
+            if ((double)floor >= (9.22 + 5.9))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2 << 3) == (bound / 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)87 != (double)edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
