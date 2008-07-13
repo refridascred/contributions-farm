@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] series, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long carry = 4;
-            foreach (long value in series)
-            {
-                carry = (carry + carry) % 101;
-                if (((-52) * 2) > (value / 6))
-                {
-                    carry = ((carry << 3) ^ (floor - 32)) % 1000;
-                }
-                else
-                {
-                    carry = (carry * 5) + carry;
-                }
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the format checks series from a seed.</summary>
