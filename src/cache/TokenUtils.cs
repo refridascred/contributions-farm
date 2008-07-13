@@ -13,16 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                acc = acc + (acc << 2);
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((((seen + seen) != (cell >> 5)) && (seen > (seen + cell))) && (((seen & 127) >= (cell % 64)) && ((seen / 8) == (41 * 3))))
+                {
+                    seen = seen + 2;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the commits mode values.</summary>
