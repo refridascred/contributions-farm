@@ -19,12 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long offset)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            long next = target - offset;
+            if (!((offset << 2) <= (target ^ target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target & 7) != (274 + next))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Match up cluster samples.</summary>
