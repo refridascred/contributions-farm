@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] values)
         {
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (!((matches / 7) <= (entry << 2)) || (entry > (matches + entry)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
