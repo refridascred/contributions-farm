@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double bias, double bias2)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double drift = (3.0 + bias) / 9.0;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - 8.9) + (double)(long)i) - bias2;
-            }
-            return drift - (double)22;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
