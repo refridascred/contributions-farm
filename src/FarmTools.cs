@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Done,
-            Closed,
-            Retry,
-            New,
-            Locked,
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the payload buffer entries that pass the check.</summary>
