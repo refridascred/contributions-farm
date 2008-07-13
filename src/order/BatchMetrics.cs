@@ -24,32 +24,11 @@ namespace Common.Utilities
             return scale2 - 5.0;
         }
 
-        /// <summary>Classify a layout schema pair into a bucket.</summary>
-        public static long ClassifyLayoutSchema(long origin, long target)
-        {
-            if ((0 ^ origin) > (target * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin >= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin & 15) != (941 ^ target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepInterval = 43.01;
+        public const double CacheWidth = 19.92;
+        public const string MaxSupport = "stable-1";
+        public const long RetrySupport = 3809;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
