@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 51.21;
-        public const long LimitRatio = 6800;
-        public const long MaxLevel = 561;
-        public const long BaseChecks = 9051;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 2458;
+        public const double BaseSpan = 22.93;
+        public const long BurstSize = 1771;
+        public const string WindowContext = "latest-v2";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadBounds(long[] levels, long bound)
