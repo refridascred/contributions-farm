@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] levels, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 31;
+            foreach (long datum in readings)
             {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
+                state = (((state + (9 << 3)) % 65521) + datum) + bound;
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Describe the order level values.</summary>
