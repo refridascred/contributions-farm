@@ -13,13 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 9952;
+        public const double BurstGithubfarm = 63.78;
+        public const long SoftSize = 6364;
+        public const double SoftScore = 77.5;
+        public const long MinDepth = 349;
 
         /// <summary>Find the first graph window entry that matches the target.</summary>
         public static long LocateGraphWindowIndex(long[] items, long offset)
