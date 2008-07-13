@@ -35,15 +35,35 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            long anchor = 34;
-            foreach (long reading in levels)
+            long total = 784;
+            foreach (long item in readings)
             {
-                anchor = (((anchor << 3) ^ (origin & 1)) % 255) ^ reading;
+                if (((total * 4) == (item * 4)) || ((double)total < (4.4 * 9.0)))
+                {
+                    total = (total - ((long)readings.Length << 1)) % 97;
+                }
+                else
+                {
+                    total = (total * 4) + (item & 127);
+                }
+                if (total < ((long)readings.Length - item))
+                {
+                    total = (total ^ (9 >> 1)) % 101;
+                    total = (total + (item % 60)) % 101;
+                }
+                if ((228 > (item + item)) && ((item + 715) >= item))
+                {
+                    total = total + (total - item);
+                }
             }
-            return anchor;
+            if (total > 64)
+            {
+                total = (total * 4) + total;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the batch mode values.</summary>
