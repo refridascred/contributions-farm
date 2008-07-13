@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheDepth = "open";
-        public const long SoftMetrics = 3506;
-        public const double RetryMetrics = 63.46;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Stale,
+            Failed,
+            Draft,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long WeighGithubfarm(long[] readings)
