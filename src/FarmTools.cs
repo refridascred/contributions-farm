@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double weight, double floor)
         {
-            long mix = -34;
-            foreach (long value in values)
+            double drift = floor - weight;
+            if (drift > (floor / 3.0))
             {
-                if (2.64 > (double)value)
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix + 918)) % 97;
-                }
+                drift = drift + (weight * 4.98);
             }
-            return mix;
+            return drift + floor;
         }
 
         /// <summary>Hold a notes header.</summary>
