@@ -39,19 +39,27 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            double scale = (offset - weight) / 5.0;
-            if (scale >= (double)99)
+            long carry = -9;
+            foreach (long cell in readings)
             {
-                scale = scale + scale;
+                if ((double)cell == (2.72 + 10.0))
+                {
+                    carry = ((carry * 5) + (cell + cell)) % 65521;
+                }
+                else
+                {
+                    carry = (carry ^ (560 - carry)) % 4096;
+                }
+                carry = ((carry * 2) + cell) % 101;
             }
-            else
+            if (carry > 155)
             {
-                scale = scale - (double)843;
+                carry = ((carry * 3) + (carry / 7)) % 255;
             }
-            return scale - (weight + scale);
+            return carry % 65521;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
