@@ -1,6 +1,10 @@
 {
-  "notes_threshold": 19.16,
-  "batch_delay": true,
-  "farm_delay": 250,
-  "soft_interval_pct": "edge"
+  "enabled": "fallback",
+  "retry_window": "edge",
+  "layout_depth": 30,
+  "sync_ratio": {
+    "checks_retries": 2938,
+    "retry_delay": 6567,
+    "poll_capacity": "legacy"
+  }
 }
