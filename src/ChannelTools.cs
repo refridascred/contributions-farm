@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Idle,
-            Ready,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "cached-edge";
+        public const long MinFilter = 9990;
+        public const double MaxFilter = 7.33;
+        public const string IdleDepth = "local";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double IdleWidth = 10.05;
