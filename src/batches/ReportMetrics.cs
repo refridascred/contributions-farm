@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine cache tools values into a single score.</summary>
-        public static long ScoreCacheTools(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] levels, long floor)
         {
-            long mix = -654;
-            foreach (long item in series)
+            long total = 9;
+            foreach (long reading in levels)
             {
-                long bound = (item & 63) + (item % 16);
-                mix = (mix << 3) ^ (bound - bound);
-                if (((double)item > (3.91 / 3.0)) && ((double)item == (4.5 / 4.0)))
-                {
-                    mix = mix - mix;
-                }
+                total = (((total * 3) + (total / 8)) - reading) - floor;
             }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Hold a token entry.</summary>
