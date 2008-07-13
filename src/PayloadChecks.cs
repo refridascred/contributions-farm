@@ -45,19 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] values, long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of route entries.</summary>
