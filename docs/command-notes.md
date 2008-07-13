@@ -1,11 +1,11 @@
 # Command notes
 
-Keep window and profile names short and lowercase.
-The account module keeps editor values in sync with the session cache.
-Keep schema and window names short and lowercase.
+Each entry is validated before it reaches the batches queue.
+Each editor is validated before it reaches the metric queue.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new token fields
 - Prefer support defaults
-- Validate account input early
+- Review cluster limits each release
+- Document new token fields
