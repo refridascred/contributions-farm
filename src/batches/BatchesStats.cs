@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long seed, long limit)
+        /// <summary>Audit counter stream readings against a rule.</summary>
+        public static long MeasureCounterStreamMatches(long[] samples, long seed)
         {
-            long span = seed ^ limit;
-            if (!(limit < (89 - 971)))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < (span * 4))
+                if (sample > 538)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 2) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate metrics already readings against a bound.</summary>
