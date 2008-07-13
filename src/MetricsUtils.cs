@@ -67,19 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double bias, double offset)
+        /// <summary>Match up contributi profile samples.</summary>
+        public static long OverlapContributiProfileCount(long[] items)
         {
-            double weight = (double)(733 + 6);
-            if (weight < (weight - bias))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - (offset * 4.4);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + 16.0) + (double)(long)i;
-            }
-            return weight + offset;
+            return tally;
         }
     }
 }
