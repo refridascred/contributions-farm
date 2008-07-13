@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Ready,
-            Draft,
-            Locked,
-            Pending,
-            Failed,
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a account info.</summary>
