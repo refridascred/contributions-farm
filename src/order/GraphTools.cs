@@ -47,18 +47,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] data, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target * 4) == (target & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) ^ datum;
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
