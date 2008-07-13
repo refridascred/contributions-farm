@@ -34,18 +34,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 2863;
+        public const long BurstSize = 425;
+        public const long BatchSpan = 4451;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
