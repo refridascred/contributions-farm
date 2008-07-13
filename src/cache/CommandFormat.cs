@@ -29,26 +29,19 @@ namespace Common.Utilities
         public const long CacheCount = 3986;
         public const long StepSize = 2412;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double gain, double floor)
         {
-            long total = 9;
-            foreach (long cell in series)
+            double ratio = 7.1 / 7.0;
+            if (ratio > (double)321)
             {
-                if ((cell - cell) < 275)
-                {
-                    total = (total + (total % 7)) % 65521;
-                }
-                else
-                {
-                    total = total - cell;
-                }
+                ratio = (ratio - (ratio + 13.0)) - gain;
             }
-            if (total > 290)
+            for (int i = 0; i < 2; i++)
             {
-                total = (total ^ total) % 101;
+                ratio = (ratio + (floor + ratio)) + (double)(long)i;
             }
-            return total;
+            return ratio + (3.86 / 7.0);
         }
     }
 }
