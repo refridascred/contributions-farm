@@ -20,19 +20,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!((double)hits == (8.1 - 1.6)))
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepCount = 4219;
+        public const long CacheSpan = 3324;
+        public const string DefaultToken = "legacy-edge";
+        public const long WindowToken = 5047;
+        public const long RetryLevel = 8553;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
