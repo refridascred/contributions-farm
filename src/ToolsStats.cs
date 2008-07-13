@@ -43,18 +43,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] samples)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value / 9) < matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
