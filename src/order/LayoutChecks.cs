@@ -62,14 +62,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many editor metric samples are out of range.</summary>
+        public static long TallyEditorMetricOutliers(long[] levels)
         {
-            Idle,
-            Retry,
-            Ready,
-            Synced,
-            Active,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen / 6) >= (value + value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
