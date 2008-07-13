@@ -23,22 +23,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] samples, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long step, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if (!(11.0 <= (double)step))
             {
-                if (((double)origin < 6.1) && ((double)25 == (double)hits))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin > (double)821)
                 {
-                    hits = (hits + 1) + item;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((7 << 3) != (step + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank window input into a small class.</summary>
