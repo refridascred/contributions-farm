@@ -1,6 +1,6 @@
 {
-  "default_retries_pct": 5377,
-  "max_interval_ms": "edge",
-  "poll_timeout_s": "latest",
-  "counter_timeout": true
+  "base_limit": 18,
+  "readonly": "primary",
+  "token_ttl": 407,
+  "schema_capacity": 250
 }
