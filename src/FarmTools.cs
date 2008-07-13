@@ -28,11 +28,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Rank cache notes input into a small class.</summary>
+        public static long ClassifyCacheNotes(long seed, long offset)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long delta = seed ^ offset;
+            if ((delta ^ offset) < delta)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5.56 / 6.0) < (double)delta)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
