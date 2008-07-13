@@ -19,22 +19,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long offset, long offset2)
         {
-            if ((double)step != (9.0 / 5.0))
+            if (((-8) + offset) <= (offset << 1))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((((-82) >> 3) > (target + target)) && ((target + target) < target))
+                if (((double)offset2 <= (2.9 * 0.28)) || ((offset * 4) < offset2))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 6;
+                    if (offset >= (offset2 ^ 81))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
