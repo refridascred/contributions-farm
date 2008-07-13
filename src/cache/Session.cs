@@ -40,32 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long floor, long bound)
+        /// <summary>Validate route notes readings against a bound.</summary>
+        public static bool VerifyRouteNotesBounds(long[] levels, long floor)
         {
-            long edge = floor - bound;
-            if ((double)floor >= (9.22 + 5.9))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2 << 3) == (bound / 5))
+                if (item != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)87 != (double)edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
