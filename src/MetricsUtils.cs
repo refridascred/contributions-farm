@@ -25,16 +25,15 @@ namespace Common.Utilities
         public const long WindowEditor = 8559;
         public const long SoftEditor = 6058;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Digest a series of metrics context entries.</summary>
+        public static long DigestMetricsContext(long[] data, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long result = 75;
+            foreach (long value in data)
             {
-                result = (result - (3 + (long)i)) % 101;
-                result = ((result * 2) + (long)i) % 97;
+                result = (((result * 5) + (step * 3)) % 1000) - value;
             }
-            return result;
+            return result % 65521;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
