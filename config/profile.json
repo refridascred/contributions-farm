@@ -1,10 +1,6 @@
 {
-  "hard_ratio_ms": {
-    "persist": 35.77,
-    "dry_run": true,
-    "hard_threshold": true,
-    "route_size": "legacy"
-  },
-  "poll_ratio_s": 1939,
-  "retry_ttl_count": 61.85
+  "filter_ratio": false,
+  "audit": "legacy",
+  "max_delay": [479, 247, 222],
+  "filter_ttl": [77, 354, 239]
 }
