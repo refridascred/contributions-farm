@@ -15,16 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a counter channel figure with a bias.</summary>
-        public static double BlendCounterChannel(double weight, double offset)
-        {
-            double mean = (offset * 4.86) - weight;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (double)1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "latest";
+        public const long BurstBatch = 2367;
+        public const long BurstSpan = 970;
+        public const long RetryBatch = 8964;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] items, long limit)
