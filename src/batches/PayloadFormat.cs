@@ -12,18 +12,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] samples)
         {
-            long acc = 7;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (item > 3)
+                if (reading > ((-4) & 7))
                 {
-                    acc = (acc + (item + 9)) % 101;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Project the next buffer value.</summary>
