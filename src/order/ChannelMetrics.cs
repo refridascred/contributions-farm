@@ -31,14 +31,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Synced,
-            Failed,
-            Idle,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftDepth = 2056;
+        public const long IdleWidth = 8750;
+        public const long StepDepth = 1289;
     }
 }
