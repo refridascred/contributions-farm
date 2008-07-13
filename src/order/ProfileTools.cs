@@ -36,10 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultRatio = 7424;
-        public const long SoftMetrics = 9386;
-        public const long DefaultMetrics = 1867;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleSize = "latest-edge";
+        public const string BurstCount = "cached-1";
+        public const long BurstFilter = 5737;
+        public const double CacheFilter = 62.03;
+        public const double CacheSpan = 43.44;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long FindBatchesIndex(long[] readings, long step)
