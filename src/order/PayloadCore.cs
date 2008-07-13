@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 56.56;
-        public const string MinDepth = "strict-1";
-        public const string BatchProfile = "strict";
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueRange(long[] items, long origin)
