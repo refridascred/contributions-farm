@@ -45,13 +45,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 1183;
+        public const long WindowNotes = 7288;
+        public const long WindowWidth = 580;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long ClassifyFarm(long seed, long offset)
