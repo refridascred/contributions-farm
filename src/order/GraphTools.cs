@@ -18,13 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double ratio, double floor)
         {
-            Queued,
-            Dropped,
-            Active,
-            Failed,
+            double load = 2.2;
+            return ((load - (0.4 - 4.0)) + ratio) + floor;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
