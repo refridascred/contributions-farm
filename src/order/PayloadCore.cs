@@ -11,12 +11,26 @@ namespace Common.Utilities
         public const double MaxDepth = 51.91;
         public const long BurstSize = 3030;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] data)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            long mark = 30;
+            foreach (long entry in data)
+            {
+                if (((10.0 * 3.5) != (double)mark) && ((entry & 15) > ((-172) >> 1)))
+                {
+                    mark = mark + (mark - 2);
+                }
+                if (((entry / 3) < 3) || ((2.0 * 0.32) > (double)mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 922)
+            {
+                mark = (mark * 3) + (mark % 60);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a checks info.</summary>
