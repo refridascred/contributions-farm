@@ -56,15 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double ratio, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            double bias = (double)8 - floor;
+            if (bias > floor)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                bias = (bias + (bias + bias)) + ratio;
             }
-            return total;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias + (floor * 9.0);
         }
 
         /// <summary>Match up channel route samples.</summary>
