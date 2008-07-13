@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] readings, long bound)
-        {
-            long state = 31;
-            foreach (long datum in readings)
-            {
-                state = (((state + (9 << 3)) % 65521) + datum) + bound;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchLevel = "legacy-v2";
+        public const long CacheSession = 8040;
+        public const long MinWidth = 292;
+        public const long LimitRatio = 8470;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
