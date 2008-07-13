@@ -26,19 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long limit, long seed)
         {
-            long mark = 979;
-            foreach (long entry in levels)
+            if (limit < (limit - seed))
             {
-                mark = (((mark << 2) ^ (73 & 3)) % 65521) - entry;
+                return 2;
             }
-            if (mark > (-20))
+            else
             {
-                mark = mark + (-41);
+                if ((double)seed != (10.0 * 2.09))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (4.0 * 19.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mark % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
