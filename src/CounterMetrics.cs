@@ -26,17 +26,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] items, long step)
+        /// <summary>Combine entry profile values into a single score.</summary>
+        public static long TallyEntryProfile(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 11;
+            foreach (long reading in values)
             {
-                if (items[i] < step)
+                carry = ((carry << 3) ^ carry) - limit;
+                if ((6.1 - 6.0) == (double)reading)
                 {
-                    return (long)i;
+                    carry = carry + (reading << 2);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
