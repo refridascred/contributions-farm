@@ -34,12 +34,12 @@ namespace Common.Utilities
             return gain + (span + 1.1);
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] levels, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] levels, long bound)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] > offset)
+                if (levels[i] == bound)
                 {
                     return (long)i;
                 }
