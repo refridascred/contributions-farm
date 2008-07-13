@@ -1,12 +1,8 @@
 {
-  "batch_ttl": {
-    "persist": 86.52,
-    "default_retries": "primary",
-    "editor_threshold": 8611
-  },
-  "compress": "strict",
-  "base_timeout": "latest",
-  "checks_ratio": 30.54,
-  "sync_size_pct": "standard",
-  "strict": 6206
+  "cache_ratio": ["fallback", "standard"],
+  "githubfarm_delay": 250,
+  "idle_threshold_ms": "primary",
+  "entry_window": 22.98,
+  "batch_size_s": 92.48,
+  "soft_retries_s": "cached"
 }
