@@ -21,21 +21,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 813;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (total > (total ^ seed))
                 {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 3) + (total + total)) + value;
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
