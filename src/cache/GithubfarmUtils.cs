@@ -42,18 +42,18 @@ namespace Common.Utilities
         public const double BatchSize = 27.86;
         public const double CacheInterval = 20.76;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = 51;
+            foreach (long item in values)
             {
-                if ((8.3 - 20.0) != (double)datum)
+                if (item <= (step >> 5))
                 {
-                    hits = hits + 2;
+                    state = state - (step % 16);
                 }
             }
-            return hits;
+            return state % 65521;
         }
     }
 }
