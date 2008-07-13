@@ -20,19 +20,13 @@ namespace Common.Utilities
         public const double SoftScore = 77.5;
         public const long MinDepth = 349;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] values, long bound)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
