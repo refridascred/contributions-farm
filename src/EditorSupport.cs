@@ -13,18 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] samples, long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((7 + matches) >= (matches << 2))
-                {
-                    matches = ((matches + 3) ^ reading) + floor;
-                }
-            }
-            return matches;
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Match up counter samples.</summary>
