@@ -72,22 +72,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((double)tally != (0.3 / 2.0)) && (((double)tally != (double)(-337)) || ((tally + item) != (item + tally))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCluster = 49.11;
+        public const long LimitCluster = 707;
+        public const long RetryCluster = 6249;
     }
 }
