@@ -1,6 +1,7 @@
 {
-  "dry_run": 3619,
-  "commits_size": 47.19,
-  "hard_limit": 91,
-  "max_depth_ms": "latest"
+  "hard_retries_s": "edge",
+  "max_timeout": 30,
+  "burst_delay_count": 9041,
+  "enabled": 250,
+  "compress": [25, 402]
 }
