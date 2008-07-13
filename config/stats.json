@@ -1,5 +1,5 @@
 {
-  "hard_limit": 3082,
-  "soft_threshold_pct": 56.61,
-  "soft_delay_count": 100
+  "enabled": "standard",
+  "session_size": ["green", "standard", "strict", "eu-west"],
+  "retry_threshold_pct": "staging"
 }
