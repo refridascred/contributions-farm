@@ -23,10 +23,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultBudget = 2.24;
-        public const long MinInterval = 6903;
-        public const double CacheSpan = 41.34;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long bound, long offset)
