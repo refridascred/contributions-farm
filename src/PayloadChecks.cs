@@ -30,21 +30,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Fold a list of schema graph readings.</summary>
+        public static long WeighSchemaGraph(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 7;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((1.52 / 5.0) >= (double)sample)
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark + sample) % 65521;
+                    mark = (mark * 2) + sample;
+                }
+                else
+                {
+                    mark = (mark ^ (sample - sample)) % 101;
+                }
+                if ((sample + sample) >= sample)
+                {
+                    mark = ((mark << 2) ^ (mark - sample)) % 255;
+                }
+                else
+                {
+                    mark = mark - sample;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Hold a graph info.</summary>
