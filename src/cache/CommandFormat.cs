@@ -22,22 +22,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 6564;
+        public const long BaseRatio = 512;
+        public const long SoftSize = 6515;
+        public const long CacheCount = 3986;
+        public const long StepSize = 2412;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long FoldFilter(long[] series)
