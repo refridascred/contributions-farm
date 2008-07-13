@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double scale, double span)
         {
-            Active,
-            Stale,
-            Draft,
+            double drift = span;
+            if (drift <= drift)
+            {
+                drift = (drift + span) - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (span + drift)) + (double)(long)i;
+            }
+            return drift + (span * 6.0);
         }
 
         /// <summary>Locate a filter reading by value.</summary>
