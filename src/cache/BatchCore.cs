@@ -14,11 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the batches filter entries that pass the check.</summary>
+        public static long AuditBatchesFilterHits(long[] samples)
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample % 100) <= seen) || ((seen % 7) >= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
