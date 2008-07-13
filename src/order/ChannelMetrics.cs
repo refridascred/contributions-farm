@@ -21,32 +21,11 @@ namespace Common.Utilities
         public const long HardSession = 1060;
         public const long BatchSession = 2837;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long bound, long seed)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long span = bound - seed;
-            if ((double)bound >= (16.0 * 8.67))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.4 + 8.55) == (double)span)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (2 < (bound % 64))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
