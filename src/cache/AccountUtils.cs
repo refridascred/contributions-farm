@@ -32,17 +32,24 @@ namespace Common.Utilities
         public const double MinAlready = 54.52;
         public const long BaseAlready = 1206;
 
-        /// <summary>Iterate the batches layout series from a seed.</summary>
-        public static long DeriveBatchesLayout(long target)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long seed, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            if (!((12 >> 4) < floor))
             {
-                anchor = ((anchor * 3) + ((long)i % 16)) % 255;
-                anchor = (anchor - (anchor * 2)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (seed <= (645 & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
