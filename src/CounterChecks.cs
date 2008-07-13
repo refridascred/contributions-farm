@@ -48,10 +48,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinFactor = 77.31;
-        public const long HardTimeout = 3118;
-        public const long LimitScore = 8018;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] data)
+        {
+            long state = 27;
+            foreach (long datum in data)
+            {
+                if ((state < (state >> 2)) && ((5.04 + 6.0) != (double)state))
+                {
+                    state = (((state * 4) + (state % 8)) % 65521) ^ datum;
+                }
+                if ((state - 11) < (state / 9))
+                {
+                    break;
+                }
+            }
+            if (state > 4)
+            {
+                state = ((state * 2) + (state + 347)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long WeighStats(long[] readings)
