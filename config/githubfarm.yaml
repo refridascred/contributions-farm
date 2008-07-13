@@ -1,28 +1,7 @@
 # githubfarm settings
-cache_delay: strict
-min_limit_s:
-  tools_timeout: open
-  base_capacity:
-    - fallback
-    - cached
-  readonly: green
-  counter_retries: 68
-  profile_capacity:
-    base_delay_pct: 9442
-    batch_timeout: false
-    warm_timeout_count: false
-    layout_limit: true
-    hard_delay: 90.77
-    dry_run: edge
-support_window: 7.61
-commits_depth: 87.53
-dry_run:
-  - latest
-  - green
-soft_retries_pct:
-  hard_threshold_pct:
-    - staging
-    - blue
-    - stable
-  soft_capacity: cached
-  max_ratio_count: primary
+flush_capacity_count: 2
+audit: latest
+already_threshold:
+  cache_retries_count: 4630
+  notes_limit: eu-west
+  max_depth_s: 250
