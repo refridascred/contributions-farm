@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const double BurstTimeout = 32.99;
         public const long DefaultFormat = 4691;
 
-        /// <summary>Check that every payload filter entry stays within the limit.</summary>
-        public static bool CheckPayloadFilterLimits(long[] values, long origin)
+        /// <summary>Compare every pair of graph session readings.</summary>
+        public static long MatchGraphSessionCount(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Locate a route reading by value.</summary>
