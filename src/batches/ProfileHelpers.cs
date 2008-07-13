@@ -27,15 +27,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Idle,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a filter record.</summary>
