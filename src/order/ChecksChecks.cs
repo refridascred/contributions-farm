@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] values)
         {
-            long mix = 9;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (1.4 < (double)datum)
+                if ((double)matches > (double)item)
                 {
-                    mix = mix ^ (mix - datum);
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Audit layout buffer readings against a rule.</summary>
