@@ -1,5 +1,7 @@
 {
-  "stream_depth": 1024,
-  "graph_threshold": 9630,
-  "min_ratio_s": 60.34
+  "dry_run": false,
+  "stream_size": "local",
+  "readonly": [22, 311],
+  "metric_ratio": "latest",
+  "min_limit_count": "local"
 }
