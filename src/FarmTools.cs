@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine contributi notes values into a single score.</summary>
-        public static long ScoreContributiNotes(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] levels)
         {
-            long acc = 7;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                acc = acc ^ ((long)levels.Length + cell);
-                acc = (acc ^ (acc << 3)) % 65521;
-                if ((16 + acc) != (acc - 13))
+                if ((double)hits >= (6.0 - 9.0))
                 {
-                    break;
+                    hits = (hits + 3) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (acc > (-173))
-            {
-                acc = ((acc * 3) + 27) % 4096;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
