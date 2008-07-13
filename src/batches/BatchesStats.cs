@@ -56,18 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] data, long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 < datum) && (((double)bound != (double)datum) && ((hits - hits) >= datum)))
+                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
