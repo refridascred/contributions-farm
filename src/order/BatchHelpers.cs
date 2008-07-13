@@ -32,32 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stats channel pair into a bucket.</summary>
-        public static long SortStatsChannel(long step, long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double bias, double floor)
         {
-            long offset = step + limit;
-            if ((limit - 770) < (offset & 63))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((step - limit) >= offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step & 255) != (7 - limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double scale = (double)(9 + 921);
+            return (scale + (bias - 5.0)) + floor;
         }
     }
 }
