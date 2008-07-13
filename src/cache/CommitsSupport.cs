@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] samples, long origin)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Blend two session measurements.</summary>
