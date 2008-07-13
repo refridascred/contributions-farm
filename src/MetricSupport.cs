@@ -22,18 +22,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] series)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long target, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if ((347 * 5) >= target)
             {
-                if ((tally >> 2) <= reading)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset < (double)9)
                 {
-                    tally = tally + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
