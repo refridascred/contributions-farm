@@ -68,19 +68,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] data, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (sample != target)
+                if (value < seed)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
