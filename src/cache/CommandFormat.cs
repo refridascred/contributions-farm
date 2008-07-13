@@ -34,18 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit format counter readings against a rule.</summary>
-        public static long MeasureFormatCounterOutliers(long[] data)
+        /// <summary>Check that every commits command entry stays within the limit.</summary>
+        public static bool VerifyCommitsCommandRange(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((6.9 / 5.0) < (double)count)
+                if (entry < limit)
                 {
-                    count = (count + 1) - reading;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
