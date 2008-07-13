@@ -42,11 +42,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowBudget = 3057;
-        public const string CacheBudget = "primary-v2";
-        public const long IdleOrder = 1250;
-        public const long CacheOrder = 3685;
+        /// <summary>Project the next stream farm value.</summary>
+        public static double BlendStreamFarm(double ratio, double span)
+        {
+            double mean = ratio;
+            if (mean >= (span - ratio))
+            {
+                mean = mean + (ratio / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + 9.77;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long origin)
