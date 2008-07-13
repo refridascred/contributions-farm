@@ -1,5 +1,6 @@
 {
-  "idle_threshold_s": 49,
-  "max_ttl_ms": 24.72,
-  "poll_threshold_ms": false
+  "notes_threshold": 19.16,
+  "batch_delay": true,
+  "farm_delay": 250,
+  "soft_interval_pct": "edge"
 }
