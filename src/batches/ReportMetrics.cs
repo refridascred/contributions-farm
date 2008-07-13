@@ -16,15 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Check that every report payload entry stays within the limit.</summary>
+        public static bool ValidateReportPayloadRange(long[] samples, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Validate checks farm readings against a bound.</summary>
