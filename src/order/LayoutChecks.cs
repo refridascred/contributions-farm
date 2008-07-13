@@ -83,11 +83,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Derive the next window tools value from a seed.</summary>
+        public static long RollWindowTools(long bound)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
