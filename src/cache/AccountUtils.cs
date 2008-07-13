@@ -38,38 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long origin, long offset)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            if ((offset ^ origin) > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset > (origin + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset > (0.3 + 4.4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin < (5.0 - 10.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
