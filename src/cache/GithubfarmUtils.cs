@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a counter batch value against two limits.</summary>
-        public static long ClassifyCounterBatch(long offset, long offset2)
+        /// <summary>Count buffer command pairs that satisfy a relation.</summary>
+        public static long CompareBufferCommandCount(long[] readings)
         {
-            if ((offset + offset) != (offset & 3))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset << 1) != (offset + offset2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset + offset2) >= (offset - offset)) && ((offset2 % 5) >= (5 << 3)))
+                    if ((readings[i] - readings[j]) > 14)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset2 - offset) > (offset2 << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of already queue readings.</summary>
