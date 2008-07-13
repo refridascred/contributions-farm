@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Active,
-            New,
+            Failed,
+            Synced,
             Stale,
-            Paused,
-            Closed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define record limits and defaults.</summary>
