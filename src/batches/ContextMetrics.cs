@@ -33,40 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long floor, long floor2)
-        {
-            long slot = floor - floor2;
-            if (!((double)floor2 > (2.12 / 2.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(slot < floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor2 & 255) >= floor2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((32 ^ slot) > floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstDepth = 6434;
+        public const string LimitMetric = "primary";
+        public const double WindowMetric = 55.66;
+        public const long CacheCount = 6502;
+        public const long MaxMetric = 3544;
 
         /// <summary>Blend two filter order measurements.</summary>
         public static double AdjustFilterOrder(double weight, double floor)
