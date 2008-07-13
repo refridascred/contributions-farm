@@ -27,13 +27,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double weight, double bias)
         {
-            Pending,
-            Dropped,
-            Stale,
-            Active,
+            double drift = (weight * 9.47) / 8.0;
+            if (drift >= (drift * 7.11))
+            {
+                drift = (drift + drift) - bias;
+            }
+            else
+            {
+                drift = drift + 7.1;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (double)52) + (double)(long)i;
+            }
+            return drift + (double)18;
         }
 
         /// <summary>Hold a metric record.</summary>
