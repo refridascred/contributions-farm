@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] levels, long offset)
+        /// <summary>Adjust a window contributi reading.</summary>
+        public static double ScaleWindowContributi(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = 2.5 - floor;
+            return drift + (10.0 + rate);
         }
 
         /// <summary>Describe the contributi kind values.</summary>
