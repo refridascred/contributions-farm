@@ -63,13 +63,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Pending,
-            Queued,
-            Retry,
-            Synced,
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
