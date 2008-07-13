@@ -27,10 +27,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 2863;
-        public const long BurstSize = 425;
-        public const long BatchSpan = 4451;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long origin)
+        {
+            long anchor = 34;
+            foreach (long reading in levels)
+            {
+                anchor = (((anchor << 3) ^ (origin & 1)) % 255) ^ reading;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ProjectCluster(double gain, double span)
