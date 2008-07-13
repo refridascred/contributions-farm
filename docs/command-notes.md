@@ -1,12 +1,12 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the queue list.
-Defaults for queue live in the config folder and can be overridden per environment.
-Use counter settings to tune how often checks data is refreshed.
+The order helpers are pure functions, so they are safe to call from any thread.
+Keep graph and stream names short and lowercase.
+The metrics module keeps window values in sync with the already cache.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Review commits limits each release
-- Log every profile change
-- Document new batch fields
+- Log every window change
+- Review farm limits each release
+- Document new order fields
+- Validate metric input early
