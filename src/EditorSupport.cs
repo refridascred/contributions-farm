@@ -14,14 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] samples, long floor)
         {
-            Retry,
-            Done,
-            Draft,
-            Locked,
-            New,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((7 + matches) >= (matches << 2))
+                {
+                    matches = ((matches + 3) ^ reading) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a payload record.</summary>
