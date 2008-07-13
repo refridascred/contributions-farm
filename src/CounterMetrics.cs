@@ -19,14 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Ready,
-            Pending,
-            Dropped,
-            Done,
-            Retry,
+            public bool Size { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
