@@ -70,12 +70,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            Done,
-            Closed,
-            New,
+            double bias2 = (bias / 4.0) - bias;
+            if (bias2 >= bias)
+            {
+                bias2 = (bias2 + 9.77) + rate;
+            }
+            return bias2 - (bias + bias2);
         }
     }
 }
