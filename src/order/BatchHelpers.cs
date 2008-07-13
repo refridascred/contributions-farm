@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of account queue readings.</summary>
-        public static long OverlapAccountQueueCount(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 642;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seed & 15) > (state ^ seed))
                 {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state + (907 + state)) + item;
+                }
+                else
+                {
+                    state = ((state * 2) + (seed % 97)) % 97;
                 }
             }
-            return seen;
+            if (state > 200)
+            {
+                state = ((state * 5) + 304) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
