@@ -7,20 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-standard}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=65
+BUFFER_LIMIT=307
 log "limit is ${BUFFER_LIMIT}"
+
+for item in primary green; do
+    log "checking ${item}"
+done
