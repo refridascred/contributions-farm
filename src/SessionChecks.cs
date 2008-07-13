@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] levels, long limit)
+        /// <summary>Compare every pair of record queue readings.</summary>
+        public static long MatchRecordQueueCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count ^ count) == (count / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 1) + datum) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
