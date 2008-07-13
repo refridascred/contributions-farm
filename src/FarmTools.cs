@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] data)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally - tally) > (tally + (-5)))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the payload buffer entries that pass the check.</summary>
