@@ -1,7 +1,5 @@
 {
-  "soft_limit_pct": "local",
-  "graph_ratio": ["edge", "strict", "legacy", "strict"],
-  "cache_retries_ms": [187, 412, 257, 322],
-  "base_delay": "latest",
-  "base_threshold_ms": 69.82
+  "compress": "cached",
+  "channel_ratio": 30,
+  "soft_timeout_pct": ["eu-west", "legacy", "cached"]
 }
