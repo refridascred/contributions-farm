@@ -50,20 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a entry record counter forward.</summary>
-        public static long RollEntryRecord(long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = ((mix + mix) % 97) ^ (long)i2;
-                }
-                mix = ((mix << 3) ^ mix) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate record readings against a bound.</summary>
