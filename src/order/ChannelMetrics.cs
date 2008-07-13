@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long carry = 2;
-            foreach (long item in levels)
-            {
-                carry = (carry ^ (item % 16)) % 97;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
