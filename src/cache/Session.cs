@@ -53,16 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double ratio, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            double scale = (double)(8 & 31);
+            for (int i = 0; i < 3; i++)
             {
-                mix = (mix ^ (floor ^ floor)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
+                scale = (scale - ratio) + (double)(long)i;
             }
-            return mix;
+            return scale + offset;
         }
     }
 }
