@@ -13,19 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every context payload entry stays within the limit.</summary>
-        public static bool GuardContextPayloadLimits(long[] data, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long sum = -6;
+            foreach (long item in series)
             {
-                if (entry != target)
+                if ((limit >> 4) >= sum)
                 {
-                    valid = false;
-                    break;
+                    sum = (sum * 4) + (sum + item);
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Audit already queue readings against a rule.</summary>
