@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double scale, double span)
+        /// <summary>Compare every pair of profile cache readings.</summary>
+        public static long PairProfileCacheCount(long[] values)
         {
-            double drift = span;
-            if (drift <= drift)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + span) - scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (span + drift)) + (double)(long)i;
-            }
-            return drift + (span * 6.0);
+            return tally;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
