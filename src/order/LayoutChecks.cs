@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit batch layout readings against a rule.</summary>
-        public static long AuditBatchLayoutGaps(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count * 2) < datum)
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseSpan = 16.4;
+        public const long BaseRatio = 4080;
+        public const double BurstScore = 80.43;
+        public const double HardWidth = 59.75;
+        public const long DefaultFormat = 1380;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] data)
