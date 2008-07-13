@@ -67,14 +67,25 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long origin, long target)
         {
-            Closed,
-            New,
-            Idle,
-            Done,
-            Dropped,
+            long bound = origin - target;
+            if (((double)target > 5.5) && ((double)bound < 6.34))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(origin >= (19 ^ target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
