@@ -61,17 +61,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor + (anchor / 3)) % 255;
-                anchor = (anchor + (bound + bound)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
