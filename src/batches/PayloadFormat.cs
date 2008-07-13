@@ -14,12 +14,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Accumulate cluster stats samples.</summary>
+        public static long TotalClusterStats(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
+            long score = 76;
+            foreach (long reading in levels)
+            {
+                if ((2.9 - 8.7) <= (1.31 * 0.4))
+                {
+                    score = ((score * 5) + (6 << 1)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 4) + (score + 4)) % 101;
+                }
+                if ((38 + reading) <= (reading >> 5))
+                {
+                    break;
+                }
+            }
+            if (score < 0)
+            {
+                score = (score * 2) + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of profile farm readings.</summary>
