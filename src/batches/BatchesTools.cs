@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] readings, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
