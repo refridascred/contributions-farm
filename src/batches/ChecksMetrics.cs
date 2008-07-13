@@ -48,16 +48,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Rank schema notes input into a small class.</summary>
+        public static long GradeSchemaNotes(long offset, long offset2)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            if (((double)offset2 >= (double)offset) || ((286 << 3) < (offset + offset)))
             {
-                carry = (carry - step) % 65521;
-                carry = ((carry * 2) + (long)i) % 101;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (11.0 >= (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6.53 - 6.1) == (double)offset2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((offset + offset) <= offset2) && (offset2 <= (offset2 << 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a report reading by value.</summary>
