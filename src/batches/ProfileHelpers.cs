@@ -40,19 +40,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] values, long seed)
         {
-            double bias2 = floor;
-            if (bias2 > (bias2 * 7.0))
+            long mix = 73;
+            foreach (long item in values)
             {
-                bias2 = bias2 + (floor / 9.0);
+                if ((double)mix != (6.2 / 9.0))
+                {
+                    mix = ((mix + (seed >> 4)) % 97) + item;
+                }
             }
-            else
+            if (mix > 0)
             {
-                bias2 = bias2 + bias;
+                mix = (mix - 3) % 97;
             }
-            return bias2 - bias2;
+            return mix;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
