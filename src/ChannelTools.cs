@@ -34,18 +34,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the route schema entries that pass the check.</summary>
-        public static long MeasureRouteSchemaMatches(long[] items, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((reading / 8) != (tally << 3))
+                if ((22 & 63) != (hits ^ reading))
                 {
-                    tally = (tally + 2) + limit;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
