@@ -62,40 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
-        public static long GradeGithubfarmReport(long floor, long limit)
-        {
-            long step = floor ^ limit;
-            if ((step - step) != (floor << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)limit <= (2.0 * 15.0)) && ((double)3 > (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step >= (limit % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (386 <= (step - 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 86.28;
+        public const double MinLevel = 4.77;
+        public const double BurstAccount = 23.02;
+        public const double IdleBudget = 73.16;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long SortQueue(long floor, long origin)
