@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many commits contributi samples are out of range.</summary>
-        public static long AuditCommitsContributiMatches(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (!(((double)sample < (double)3) && ((double)sample <= 7.9)))
+                if (((seen << 1) >= (435 - 76)) && (((seen + cell) > seen) || ((double)seen >= (0.7 - 9.7))))
                 {
-                    matches = matches + 2;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
