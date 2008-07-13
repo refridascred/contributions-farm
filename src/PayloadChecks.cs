@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] data, long floor)
-        {
-            long acc = -5;
-            foreach (long entry in data)
-            {
-                if ((entry / 7) > (entry * 5))
-                {
-                    acc = ((acc << 2) ^ acc) - floor;
-                }
-            }
-            if (acc > 0)
-            {
-                acc = (acc - (34 * 5)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 5348;
+        public const long BatchDepth = 9667;
+        public const string MaxBuffer = "primary";
+        public const long StepBuffer = 3947;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long PairRouteCount(long[] data)
