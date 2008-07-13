@@ -47,13 +47,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Active,
-            Synced,
-            New,
+            Done,
             Closed,
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
