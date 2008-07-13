@@ -27,18 +27,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] samples, long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long result = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (((seed % 5) < matches) || !((value / 4) > value))
-                {
-                    matches = matches + 3;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a filter record.</summary>
