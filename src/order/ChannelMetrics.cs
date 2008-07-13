@@ -27,13 +27,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long floor, long limit)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            long span = floor - limit;
+            if ((limit - span) >= (limit + limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit * 3) >= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((91 - limit) != (floor + floor)) && ((limit >> 4) < (limit - span)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9 + limit) >= 31)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
