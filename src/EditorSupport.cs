@@ -29,21 +29,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 5;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((total * 5) != (item % 100))
                 {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + total) % 1000;
+                }
+                if ((483 > (item & 3)) || ((item - item) >= item))
+                {
+                    total = (total + (total - total)) % 4096;
                 }
             }
-            return hits;
+            if (total < 6)
+            {
+                total = ((total * 5) + (total * 4)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Project the next stream farm value.</summary>
