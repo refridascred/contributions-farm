@@ -56,15 +56,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of report counter readings.</summary>
-        public static long ScoreReportCounter(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long total = 4;
-            foreach (long cell in samples)
-            {
-                total = (total + (89 >> 5)) - cell;
-            }
-            return total % 1000;
+            Locked,
+            Idle,
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
