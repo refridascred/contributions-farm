@@ -55,24 +55,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a checks graph figure with a bias.</summary>
-        public static double AdjustChecksGraph(double weight, double offset)
-        {
-            double rate = offset;
-            if (rate >= (weight + 9.5))
-            {
-                rate = rate - 2.7;
-            }
-            else
-            {
-                rate = rate + (rate - weight);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - (weight / 3.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 739;
+        public const long MaxContributi = 5521;
+        public const long RetrySize = 2143;
+        public const long RetryContributi = 3746;
+        public const string IdleBudget = "latest";
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
