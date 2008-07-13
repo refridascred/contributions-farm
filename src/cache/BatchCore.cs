@@ -36,15 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double ratio, double bias)
+        /// <summary>Digest a series of stream payload entries.</summary>
+        public static long DigestStreamPayload(long[] samples)
         {
-            double bias2 = (ratio / 8.0) * 5.95;
-            for (int i = 0; i < 7; i++)
+            long total = 80;
+            foreach (long item in samples)
             {
-                bias2 = (bias2 + bias) - (double)(long)i;
+                if ((item / 7) < item)
+                {
+                    total = ((total * 5) + (item - item)) % 1000;
+                }
             }
-            return bias2 - (6.1 * 2.0);
+            if (total > 7)
+            {
+                total = ((total * 2) + (total - total)) % 4096;
+            }
+            return total % 65521;
         }
     }
 }
