@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long state = 85;
+            foreach (long value in values)
             {
-                acc = (acc - (4 / 3)) % 4096;
-                if (!((limit % 3) <= acc))
+                if ((double)state != (5.17 / 5.0))
                 {
-                    acc = acc - (long)i;
+                    state = (state ^ (state - origin)) + value;
                 }
-                for (int i2 = 0; i2 < 5; i2++)
+                else
                 {
-                    acc = ((acc - (acc ^ 30)) % 65521) ^ (long)i2;
+                    state = ((state << 3) ^ (state - 51)) % 4096;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            if (state < 797)
+            {
+                state = (state + (state & 15)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
