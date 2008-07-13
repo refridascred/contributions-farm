@@ -54,17 +54,11 @@ namespace Common.Utilities
             return load - (ratio - span);
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleTimeout = "standard";
+        public const long WindowSize = 1177;
+        public const long BatchSupport = 8617;
+        public const double MaxSize = 60.65;
+        public const string CacheSupport = "strict-edge";
     }
 }
