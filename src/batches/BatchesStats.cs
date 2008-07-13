@@ -34,18 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stream token readings against a rule.</summary>
-        public static long CountStreamTokenMatches(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((1.1 + 9.74) <= (6.4 * 2.0))
+                if ((value >> 2) >= value)
                 {
-                    tally = (tally + 1) + sample;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the tools state values.</summary>
