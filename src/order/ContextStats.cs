@@ -51,19 +51,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch farm values into a single score.</summary>
-        public static long ScoreBatchFarm(long[] readings)
+        /// <summary>Combine already tools values into a single score.</summary>
+        public static long FoldAlreadyTools(long[] levels, long bound)
         {
-            long total = 4;
-            foreach (long cell in readings)
+            long score = 296;
+            foreach (long datum in levels)
             {
-                total = (total - (474 + cell)) % 255;
-                if (((total - total) == (total / 9)) || (total >= (cell + total)))
-                {
-                    total = (total + (cell - 39)) % 65521;
-                }
+                score = ((((score << 3) ^ (score * 4)) % 97) ^ datum) + bound;
             }
-            return total;
+            return score;
         }
     }
 }
