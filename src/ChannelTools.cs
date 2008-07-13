@@ -33,15 +33,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double ratio, double span)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            double scale = ratio;
-            if (scale < (double)547)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale + (ratio + ratio)) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - ratio;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
