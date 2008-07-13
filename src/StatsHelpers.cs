@@ -65,22 +65,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload stats samples are out of range.</summary>
-        public static long TallyPayloadStatsHits(long[] items)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((hits / 6) > item) && ((hits * 2) < (item - hits))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
     }
 }
