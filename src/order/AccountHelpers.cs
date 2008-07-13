@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const string MaxCounter = "standard";
         public const long BaseInterval = 1567;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Compare every pair of metrics context readings.</summary>
+        public static long CompareMetricsContextCount(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score ^ ((long)i / 8)) % 65521;
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score - (5 & 31)) % 65521) + (long)i2;
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = score + (offset & 127);
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a report entry.</summary>
