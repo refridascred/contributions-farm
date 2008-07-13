@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a window schema pair into a bucket.</summary>
-        public static long RankWindowSchema(long bound, long floor)
-        {
-            if (0 <= (bound / 6))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((10.0 + 19.0) >= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 8067;
+        public const string CacheDepth = "staging-1";
+        public const long BaseWidth = 2431;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long limit, long step)
