@@ -45,21 +45,18 @@ namespace Common.Utilities
         public const string LimitFactor = "strict-v2";
         public const long CacheTools = 9247;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry > 86) || ((entry * 2) != (limit * 2)))
                 {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the support state values.</summary>
