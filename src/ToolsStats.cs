@@ -42,12 +42,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Synced,
+            Dropped,
             Closed,
-            Done,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a context entry.</summary>
