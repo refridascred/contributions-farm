@@ -39,14 +39,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Validate format context readings against a bound.</summary>
+        public static bool CheckFormatContextLimits(long[] series, long limit)
         {
-            Paused,
-            Dropped,
-            Done,
-            Pending,
-            Idle,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a buffer record.</summary>
