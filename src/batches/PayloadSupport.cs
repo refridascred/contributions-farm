@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long sum = 482;
-            foreach (long item in samples)
-            {
-                if (!(((sum >> 3) > 1) && ((19.0 - 7.92) == (double)sum)))
-                {
-                    sum = sum + (sum >> 4);
-                }
-                if ((sum - item) > (sum / 5))
-                {
-                    sum = (sum + (sum - item)) % 1000;
-                }
-            }
-            return sum % 65521;
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
