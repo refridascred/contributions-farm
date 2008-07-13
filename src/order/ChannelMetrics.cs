@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
+            Stale,
             Retry,
-            Queued,
             Dropped,
-            New,
+            Failed,
         }
 
         /// <summary>Hold a queue header.</summary>
