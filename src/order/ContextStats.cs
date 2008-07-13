@@ -33,11 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor batches reading.</summary>
-        public static double SmoothEditorBatches(double scale, double floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            double drift = floor / 9.0;
-            return (drift - floor) + scale;
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two layout measurements.</summary>
