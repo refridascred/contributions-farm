@@ -21,11 +21,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Scale a batches commits figure with a bias.</summary>
