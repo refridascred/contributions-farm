@@ -13,19 +13,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] readings, long bound)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double gain, double offset)
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = offset * 3.64;
+            return (ratio + ratio) + gain;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
