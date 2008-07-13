@@ -28,15 +28,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double scale, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] readings)
         {
-            double bias = scale;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                bias = ((bias - scale) + (double)(long)i) - span;
+                if ((sample >= (145 - sample)) || ((sample >> 2) <= (seen / 4)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias + bias;
+            return seen;
         }
     }
 }
