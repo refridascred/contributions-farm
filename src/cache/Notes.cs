@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] items, long bound)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long sample in items)
             {
-                if ((reading - count) != (reading << 2))
+                if (41 > sample)
                 {
-                    count = count + 3;
+                    count = (count + 2) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
