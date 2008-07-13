@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((-5) + 58) < (item >> 2))
-                {
-                    matches = (matches + 2) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseSpan = 6485;
+        public const long DefaultCluster = 6468;
+        public const long BurstCluster = 530;
+        public const double StepSpan = 31.3;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long GradeLayout(long offset, long offset2)
