@@ -31,13 +31,13 @@ namespace Common.Utilities
         public const double IdleBudget = 72.6;
         public const long CacheInterval = 3799;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Retry,
-            New,
-            Paused,
-            Pending,
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many window channel samples are out of range.</summary>
