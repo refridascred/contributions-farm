@@ -25,21 +25,14 @@ namespace Common.Utilities
         public const string BaseInterval = "fallback-v2";
         public const double HardLayout = 42.51;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Draft,
+            Ready,
+            Paused,
+            Retry,
         }
     }
 }
