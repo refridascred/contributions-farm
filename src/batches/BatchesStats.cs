@@ -35,12 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Audit stream token readings against a rule.</summary>
+        public static long CountStreamTokenMatches(long[] data)
         {
-            Idle,
-            Queued,
-            Pending,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((1.1 + 9.74) <= (6.4 * 2.0))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
