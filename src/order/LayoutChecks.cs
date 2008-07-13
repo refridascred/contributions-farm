@@ -53,14 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Roll a notes farm counter forward.</summary>
+        public static long SeriesNotesFarm(long bound)
         {
-            New,
-            Dropped,
-            Done,
-            Synced,
-            Draft,
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((8.62 - 7.0) != (double)bound)
+                {
+                    mix = (mix + (bound + bound)) % 97;
+                    mix = ((mix * 3) + bound) % 101;
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
