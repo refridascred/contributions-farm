@@ -53,25 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support payload input into a small class.</summary>
-        public static long GradeSupportPayload(long bound, long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] samples, long offset)
         {
-            long prev = bound + offset;
-            if (((double)prev == (double)bound) || ((262 - prev) == (bound * 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((20.0 + 1.75) >= (double)offset))
+                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
