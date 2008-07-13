@@ -1,30 +1,7 @@
 # githubfarm settings
-compress: 89.41
-base_depth_pct:
-  hard_delay: 30
-  idle_timeout:
-    - staging
-    - strict
-    - standard
-  min_window:
-    - fallback
-    - latest
-  sync_threshold_count: 17.67
-  dry_run: 7598
-  retry_size_s: 500
-commits_window:
-  cluster_interval: primary
-  poll_timeout_s:
-    retry_delay_s: primary
-    max_retries_count: eu-west
-    record_interval: 1024
-    burst_ttl_s: 57.89
-  max_ttl_s:
-    default_limit_pct: cached
-    cache_timeout_count: true
-    token_size: local
-    readonly: 82.65
-  cache_threshold_pct:
-    - fallback
-    - latest
-  hard_retries_pct: open
+readonly: 28
+soft_ratio_s: eu-west
+sync_threshold_count: 100
+compress: green
+idle_size: cached
+idle_limit: 20.95
