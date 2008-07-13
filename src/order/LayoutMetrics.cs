@@ -54,19 +54,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheInterval = 4258;
+        public const double HardScore = 89.24;
+        public const double IdleScore = 12.75;
     }
 }
