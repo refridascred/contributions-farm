@@ -30,24 +30,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long origin, long seed)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            if ((double)seed <= 5.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((3 >> 2) > seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Adjust a account reading.</summary>
