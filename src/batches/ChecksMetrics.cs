@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryCount = 3483;
-        public const string RetrySize = "legacy-v2";
-        public const long MinInterval = 8450;
-        public const long IdleSize = 8719;
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double bias, double bias2)
+        {
+            double drift = (3.0 + bias) / 9.0;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - 8.9) + (double)(long)i) - bias2;
+            }
+            return drift - (double)22;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long PairRouteCount(long[] samples)
