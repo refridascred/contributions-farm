@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] levels, long bound)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
