@@ -1,10 +1,7 @@
 # support settings
-max_threshold:
-  soft_size:
-    - strict
-    - blue
-  batches_timeout: 100
-  sync_delay_s: strict
-idle_window_pct: 95
-warm_depth_count: 69.08
-idle_interval_s: 60
+max_interval_pct: 55
+session_limit:
+  - standard
+  - eu-west
+  - legacy
+burst_ratio_pct: eu-west
