@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double bias, double floor)
         {
-            Dropped,
-            Synced,
-            Queued,
-            Done,
+            double bias2 = (floor + bias) / 5.0;
+            if (bias2 <= (double)6)
+            {
+                bias2 = bias2 - bias2;
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + (double)864;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
