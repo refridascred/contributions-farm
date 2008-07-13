@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const long BatchOrder = 5921;
         public const string StepSize = "staging";
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long bound, long bound2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] values, long floor)
         {
-            if (!(4 < (bound2 + bound2)))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 / 9) < (bound << 3))
+                if ((reading << 3) >= count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound2 + bound2) <= (bound2 >> 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 2) - floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a metrics profile value against two limits.</summary>
