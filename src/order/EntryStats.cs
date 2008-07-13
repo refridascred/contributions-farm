@@ -12,10 +12,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 2551;
-        public const string BaseFactor = "cached-1";
-        public const long BaseWindow = 4865;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double weight, double span)
+        {
+            double drift = (weight - weight) + weight;
+            if (drift >= drift)
+            {
+                drift = drift - (span / 5.0);
+            }
+            return drift + (double)111;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double SoftInterval = 6.16;
