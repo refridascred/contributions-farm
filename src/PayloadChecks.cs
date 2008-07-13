@@ -35,13 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Draft,
-            Ready,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultWidth = "staging-v2";
+        public const long StepProfile = 5063;
+        public const long MinTimeout = 2896;
+        public const long WindowSize = 4171;
+        public const double IdleProfile = 66.37;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long CombineMetrics(long[] readings)
