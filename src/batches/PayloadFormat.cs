@@ -36,13 +36,12 @@ namespace Common.Utilities
         public const long MaxSize = 7577;
         public const long BatchCommits = 3154;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
