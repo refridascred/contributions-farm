@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] data, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mix = 62;
+            foreach (long reading in values)
             {
-                if (!(((matches << 1) != (value * 5)) || ((limit / 3) >= (matches - value))))
-                {
-                    matches = matches + 2;
-                }
+                mix = (((mix << 2) ^ 62) ^ reading) + seed;
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
