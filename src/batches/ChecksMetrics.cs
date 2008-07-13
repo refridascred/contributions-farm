@@ -12,13 +12,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public bool Score { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
