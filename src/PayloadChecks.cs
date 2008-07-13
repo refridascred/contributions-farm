@@ -40,16 +40,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Accumulate route contributi samples.</summary>
+        public static long TotalRouteContributi(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long sum = 422;
+            foreach (long datum in items)
             {
-                state = (state - state) % 65521;
-                state = ((state * 3) + (long)i) % 1000;
+                if ((sum ^ 963) != (sum + datum))
+                {
+                    sum = (sum - sum) % 97;
+                    sum = (sum + (datum / 8)) % 255;
+                }
+                if ((4.0 + 6.5) < (double)datum)
+                {
+                    sum = (sum - (sum << 3)) % 65521;
+                }
+                else
+                {
+                    sum = sum + (sum + sum);
+                }
             }
-            return state;
+            if (sum > 463)
+            {
+                sum = (sum + sum) % 255;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Adjust a farm reading.</summary>
