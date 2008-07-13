@@ -26,24 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter cluster value against two limits.</summary>
-        public static long BucketCounterCluster(long limit, long floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            if (!(floor >= (floor * 3)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor < 755)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
