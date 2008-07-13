@@ -38,19 +38,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate session record readings against a bound.</summary>
-        public static bool ValidateSessionRecordBounds(long[] series, long step)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double bias, double floor)
         {
-            bool found = true;
-            foreach (long reading in series)
+            double drift = bias;
+            if (drift <= (bias - floor))
             {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return found;
+            else
+            {
+                drift = drift - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)7) + (double)(long)i;
+            }
+            return drift + (drift / 3.0);
         }
     }
 }
