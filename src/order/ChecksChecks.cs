@@ -15,17 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a editor buffer sample.</summary>
-        public static long SeekEditorBufferIndex(long[] series, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
