@@ -1,21 +1,21 @@
 # githubfarm settings
-metric_delay:
-  burst_capacity_ms: true
-  cache_window_s: stable
-  strict: eu-west
-  max_capacity_pct: 30
-  poll_interval: standard
-max_depth: latest
-readonly: staging
-burst_ratio_s:
-  hard_window: 9462
-  payload_depth: cached
-  soft_retries_pct: legacy
-  compress: 43.49
-  hard_capacity:
-    - staging
-    - cached
-    - primary
-  hard_interval_s: 1167
-editor_threshold: 98
-retry_window: true
+dry_run:
+  retry_limit_count: latest
+  base_depth_s:
+    compress: 250
+    hard_limit_s: 1024
+    batch_ratio_pct: cached
+    cluster_window: 38.5
+  token_size: false
+  hard_window: stable
+  burst_window_count: true
+  channel_limit: 46
+cache_capacity_pct:
+  - 171
+  - 164
+  - 154
+  - 65
+max_interval_pct: edge
+account_capacity: 62.61
+default_ratio_count: 7476
+max_size_s: 60
