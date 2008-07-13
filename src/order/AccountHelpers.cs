@@ -28,19 +28,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (1 < (sample & 63))
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 426;
+        public const string SoftWidth = "strict-1";
+        public const long HardQueue = 1877;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
