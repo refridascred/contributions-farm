@@ -1,31 +1,13 @@
 # githubfarm settings
-session_retries:
-  flush_interval:
-    - 55
-    - 50
-    - 54
-  warm_retries: 88
-  dry_run: 500
-  base_limit_count: true
-  idle_window_pct: 60
-  sync_ttl_pct: 250
-batch_delay_count:
-  persist:
-    readonly: 60
-    persist:
-      - 462
-      - 337
-      - 84
-      - 141
-    githubfarm_capacity:
-      - 463
-      - 118
-    retry_interval:
-      - cached
-      - primary
-  burst_ttl: 65.49
-  flush_interval_pct: legacy
-  soft_delay: true
-  default_ttl_s: local
-  soft_capacity_ms: 100
-cluster_ratio: legacy
+soft_depth: local
+schema_interval: 250
+default_threshold: 80
+audit:
+  notes_depth:
+    cache_ttl_s: false
+    batch_threshold: 56.24
+    contributi_delay: 24.69
+    dry_run: false
+  max_window: false
+  context_limit: open
+idle_ratio_ms: 3671
