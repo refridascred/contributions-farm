@@ -33,21 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seed + anchor) <= (long)i)
                 {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + (anchor << 2)) % 97;
+                    anchor = anchor - (seed % 3);
                 }
+                anchor = anchor ^ seed;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Blend two layout measurements.</summary>
