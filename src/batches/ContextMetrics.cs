@@ -57,11 +57,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two filter order measurements.</summary>
-        public static double AdjustFilterOrder(double weight, double floor)
+        /// <summary>Iterate the commits stats series from a seed.</summary>
+        public static long IterateCommitsStats(long bound)
         {
-            double gain = weight;
-            return (gain - weight) + floor;
+            long result = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                result = result ^ (long)i;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Describe the report state values.</summary>
