@@ -1,7 +1,7 @@
 {
-  "dry_run": false,
-  "stream_size": "local",
-  "readonly": [22, 311],
-  "metric_ratio": "latest",
-  "min_limit_count": "local"
+  "retry_limit_s": 5709,
+  "batch_size": 87.54,
+  "max_threshold_pct": 9061,
+  "retry_threshold_s": 96,
+  "warm_threshold_pct": "fallback"
 }
