@@ -1,4 +1,30 @@
 # githubfarm settings
-cache_timeout_s: 4701
-token_ttl: green
-idle_size: 1024
+enabled:
+  default_delay: 15.56
+  idle_ratio_pct:
+    - edge
+    - latest
+    - cached
+    - edge
+  route_limit: 60
+  compress: 5.75
+  idle_limit_ms:
+    audit: standard
+    soft_capacity_ms: 99
+    persist: 93.06
+    strict: 500
+    hard_window: edge
+    cache_window_count: 1
+  poll_size_ms: 100
+warm_threshold_count: 2014
+burst_size:
+  persist: latest
+  already_interval:
+    - edge
+    - legacy
+    - stable
+    - latest
+  context_ratio: 7775
+  hard_retries: 30
+  stats_delay: eu-west
+  retry_interval_ms: 6370
