@@ -33,21 +33,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Compare every pair of account commits readings.</summary>
-        public static long OverlapAccountCommitsCount(long[] values)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry != step)
                 {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Combine order values into a single score.</summary>
