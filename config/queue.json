@@ -1,6 +1,19 @@
 {
-  "base_timeout_count": "primary",
-  "retry_ratio_ms": "staging",
-  "idle_limit_s": "open",
-  "cache_timeout": 500
+  "compress": ["eu-west", "green", "open"],
+  "enabled": "green",
+  "persist": 74,
+  "idle_window": {
+    "compress": "green",
+    "flush_retries_pct": 97.31,
+    "flush_retries": "fallback",
+    "payload_capacity": "cached",
+    "idle_capacity_ms": 59,
+    "sync_delay": {
+      "checks_interval": "legacy",
+      "soft_retries": ["latest", "cached", "primary"],
+      "idle_capacity_ms": 52.17,
+      "min_ratio_s": 72.93,
+      "retry_limit": "green"
+    }
+  }
 }
