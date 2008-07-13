@@ -25,11 +25,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardWidth = "legacy-edge";
-        public const long MinSpan = 302;
-        public const long IdleContributi = 7056;
-        public const long MinContributi = 7304;
-        public const long CacheWidth = 4773;
+        /// <summary>Digest a series of farm cache entries.</summary>
+        public static long TotalFarmCache(long[] series, long step)
+        {
+            long acc = -6;
+            foreach (long entry in series)
+            {
+                if (0.7 < (double)acc)
+                {
+                    acc = (((acc << 3) ^ (entry * 5)) % 1000) + step;
+                }
+            }
+            if (acc > 87)
+            {
+                acc = acc - (acc + (-83));
+            }
+            return acc;
+        }
     }
 }
