@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
