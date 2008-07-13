@@ -32,30 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster stats samples.</summary>
-        public static long TotalClusterStats(long[] levels)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] data, long target)
         {
-            long score = 76;
-            foreach (long reading in levels)
+            long total = 78;
+            foreach (long value in data)
             {
-                if ((2.9 - 8.7) <= (1.31 * 0.4))
-                {
-                    score = ((score * 5) + (6 << 1)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 4) + (score + 4)) % 101;
-                }
-                if ((38 + reading) <= (reading >> 5))
-                {
-                    break;
-                }
+                total = ((total ^ (63 & 127)) % 255) ^ value;
             }
-            if (score < 0)
+            if (total > 6)
             {
-                score = (score * 2) + (score + score);
+                total = total ^ (target * 3);
             }
-            return score;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
