@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long target, long step)
+        /// <summary>Count the batches account entries that pass the check.</summary>
+        public static long MeasureBatchesAccountMatches(long[] samples, long step)
         {
-            long cur = target + step;
-            if (5.56 > (double)target)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (target >= (cur + 5))
+                if ((5 - step) < count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 3) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
