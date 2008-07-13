@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 1156;
+        public const long StepTimeout = 1174;
+        public const string WindowRatio = "alpha-v2";
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long GradeMetrics(long bound, long offset)
