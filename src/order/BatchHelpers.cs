@@ -32,19 +32,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record cache entry stays within the limit.</summary>
-        public static bool GuardRecordCacheRange(long[] values, long step)
+        /// <summary>Classify a stats channel pair into a bucket.</summary>
+        public static long SortStatsChannel(long step, long limit)
         {
-            bool found = true;
-            foreach (long item in values)
+            long offset = step + limit;
+            if ((limit - 770) < (offset & 63))
             {
-                if (item >= step)
+                return 0;
+            }
+            else
+            {
+                if (!((step - limit) >= offset))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((step & 255) != (7 - limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
     }
 }
