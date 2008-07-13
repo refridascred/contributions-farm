@@ -37,13 +37,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long result = 892;
+            foreach (long item in data)
+            {
+                if (1.3 <= (double)item)
+                {
+                    result = (result - (result & 31)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the session mode values.</summary>
