@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftDepth = "strict-edge";
-        public const double CacheWidth = 26.64;
-        public const double RetryTimeout = 42.04;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long target)
+        {
+            if ((double)target > (2.5 - 9.1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (3.1 >= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitSession = 4568;
