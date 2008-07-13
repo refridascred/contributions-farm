@@ -29,18 +29,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the format cluster entries that pass the check.</summary>
-        public static long MeasureFormatClusterMatches(long[] items, long target)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading >> 2) <= (long)items.Length)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) - target;
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Project the next command queue value.</summary>
