@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
