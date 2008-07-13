@@ -15,19 +15,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] items, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long mix = 88;
+            foreach (long reading in series)
             {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (mix + (mix / 9)) % 4096;
+                mix = ((mix * 5) + reading) % 65521;
             }
-            return flag;
+            if (mix > 69)
+            {
+                mix = ((mix * 5) + (step ^ step)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
