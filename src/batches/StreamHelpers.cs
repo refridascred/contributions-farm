@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long seed, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] items, long limit)
         {
-            long lane = seed ^ floor;
-            if ((lane >= (lane + lane)) && ((seed & 1) <= floor))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed == (double)floor)
+                if ((double)hits != (4.7 * 14.0))
                 {
-                    return 1;
+                    hits = ((hits + 1) + sample) - limit;
                 }
                 else
                 {
-                    if ((71 < (seed << 3)) || (floor > (floor - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(lane <= seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
