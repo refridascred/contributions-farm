@@ -29,19 +29,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long offset, long bound)
         {
-            long state = 72;
-            foreach (long cell in readings)
+            if (((offset + offset) <= (offset * 5)) || (offset <= (bound << 1)))
             {
-                state = state - cell;
+                return 0;
             }
-            if (state < 178)
+            else
             {
-                state = state + state;
+                if ((offset - bound) >= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return state;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
