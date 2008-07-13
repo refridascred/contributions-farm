@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples, long step)
+        /// <summary>Count graph cache pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCacheCount(long[] items)
         {
-            long score = 5;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score + ((long)samples.Length + step)) ^ cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score > 39)
-            {
-                score = (score << 3) ^ (score ^ step);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a cluster summary.</summary>
