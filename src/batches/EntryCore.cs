@@ -36,13 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit record route readings against a rule.</summary>
+        public static long AuditRecordRouteOutliers(long[] data, long bound)
         {
-            New,
-            Draft,
-            Paused,
-            Locked,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((((double)matches == (9.0 - 7.0)) && ((matches * 2) >= (matches & 1))) && !((matches / 9) == (item >> 4)))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
