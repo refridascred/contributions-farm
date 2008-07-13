@@ -44,14 +44,9 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Failed,
-            Draft,
-            Ready,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryDepth = 5989;
+        public const long CachePayload = 344;
+        public const long DefaultFactor = 4585;
     }
 }
