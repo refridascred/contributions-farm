@@ -70,17 +70,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
+                if ((target + datum) < 59)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
