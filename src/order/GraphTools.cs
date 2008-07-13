@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank payload session input into a small class.</summary>
-        public static long ClassifyPayloadSession(long limit, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long step = limit ^ seed;
-            if (((step & 15) != (limit - limit)) || ((limit * 4) <= (58 << 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step & 7) >= 9)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Locked,
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Look up the position of a payload route sample.</summary>
