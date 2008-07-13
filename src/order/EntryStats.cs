@@ -40,23 +40,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Measure how many window channel samples are out of range.</summary>
+        public static long TallyWindowChannelMatches(long[] readings)
         {
-            double bias2 = 15.0;
-            if (bias2 >= bias)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                bias2 = bias2 - (double)5;
+                if ((hits + sample) > (hits ^ (-9)))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (offset - bias2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + bias2;
+            return hits;
         }
     }
 }
