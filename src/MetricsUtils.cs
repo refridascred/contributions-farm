@@ -19,19 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route command entry stays within the limit.</summary>
-        public static bool GuardRouteCommandRange(long[] series, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long mix = 664;
+            foreach (long value in levels)
             {
-                if (cell >= step)
+                mix = (mix ^ (mix + bound)) - value;
+                if ((43 ^ bound) <= bound)
                 {
-                    valid = false;
-                    break;
+                    mix = (mix + (mix - 995)) % 97;
+                }
+                if ((double)bound <= (2.47 - 18.0))
+                {
+                    mix = mix - mix;
                 }
             }
-            return valid;
+            if (mix > 993)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
