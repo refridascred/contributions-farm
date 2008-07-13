@@ -33,19 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] samples, long seed)
+        /// <summary>Accumulate checks queue samples.</summary>
+        public static long TallyChecksQueue(long[] readings)
         {
-            long anchor = 94;
-            foreach (long datum in samples)
+            long acc = 395;
+            foreach (long value in readings)
             {
-                anchor = ((anchor ^ seed) % 97) + datum;
+                acc = acc + (value >> 5);
+                if ((double)value <= (double)505)
+                {
+                    acc = (acc + (acc >> 3)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 1000;
+                }
             }
-            if (anchor > 868)
-            {
-                anchor = (anchor + (anchor - anchor)) % 65521;
-            }
-            return anchor % 1000;
+            return acc;
         }
     }
 }
