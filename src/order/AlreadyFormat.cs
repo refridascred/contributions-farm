@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] values)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((datum * 3) == (datum - datum)) && ((datum * 4) == (datum % 10)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double load = bias;
+            return (load + (double)63) + gain;
         }
 
         /// <summary>Measure how many session window samples are out of range.</summary>
