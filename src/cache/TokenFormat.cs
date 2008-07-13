@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] readings)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits / 7) >= (sample % 7))
+                if (levels[i] >= origin)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the already kind values.</summary>
