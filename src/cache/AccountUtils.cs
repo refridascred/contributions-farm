@@ -14,15 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of editor notes entries.</summary>
-        public static long FoldEditorNotes(long[] readings, long origin)
+        /// <summary>Match up report githubfarm samples.</summary>
+        public static long CompareReportGithubfarmCount(long[] series)
         {
-            long carry = 5;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((((carry << 2) ^ (carry >> 2)) % 255) + reading) + origin;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
