@@ -26,22 +26,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] series)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((60 + (long)series.Length) > (item + tally))
+                if (reading >= floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
