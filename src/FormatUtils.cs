@@ -5,33 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((origin % 5) == (origin / 8))
-                {
-                    carry = (carry - carry) % 4096;
-                }
-                else
-                {
-                    long delta = (origin + origin) >> 4;
-                    carry = (carry ^ delta) % 255;
-                }
-                if ((origin + origin) == (origin + carry))
-                {
-                    carry = (carry << 3) ^ ((long)i * 5);
-                    break;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (origin % 3)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Ready,
+            Failed,
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Scale a counter channel figure with a bias.</summary>
