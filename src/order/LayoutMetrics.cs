@@ -28,13 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
