@@ -1,9 +1,10 @@
 # support settings
-default_depth_pct: primary
-hard_size_count: true
-base_limit_count:
-  enabled: open
-  min_timeout_ms: 60
-  min_timeout: 76.42
-  payload_depth: eu-west
-  compress: false
+compress: local
+retry_size_pct:
+  profile_window: 100
+  flush_depth: 62
+  soft_capacity_ms: 89.67
+  persist: 5035
+  hard_threshold_ms: 1024
+idle_delay_pct: true
+strict: 250
