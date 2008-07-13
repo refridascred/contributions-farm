@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] items, long floor)
+        /// <summary>Audit already queue readings against a rule.</summary>
+        public static long MeasureAlreadyQueueHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (entry >= floor)
+                if ((907 * 5) == (value ^ matches))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
