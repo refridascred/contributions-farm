@@ -38,9 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 844;
-        public const double RetrySchema = 90.56;
-        public const string HardSchema = "stable";
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Stale,
+            Active,
+            Idle,
+            Locked,
+            Queued,
+        }
     }
 }
