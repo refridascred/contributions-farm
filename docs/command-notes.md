@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-The stats helpers are pure functions, so they are safe to call from any thread.
-Run the schema check before changing any payload limits.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Keep tools and route names short and lowercase.
+Keep cache and cluster names short and lowercase.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer stream defaults
-- Log every checks change
+- Keep cluster values small
+- Document new report fields
+- Log every stream change
+- Review support limits each release
