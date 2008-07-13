@@ -19,11 +19,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double gain, double floor)
+        /// <summary>Count the graph contributi entries that pass the check.</summary>
+        public static long AuditGraphContributiOutliers(long[] values, long offset)
         {
-            double mean = floor / 7.0;
-            return (mean + (double)3) + gain;
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)hits <= (9.96 + 3.81))
+                {
+                    hits = ((hits + 1) - value) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many cluster queue samples are out of range.</summary>
