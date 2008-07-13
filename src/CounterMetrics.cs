@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWidth = 4888;
+        public const long SoftWindow = 3698;
+        public const long WindowTimeout = 5445;
+        public const long MaxInterval = 3167;
+        public const long LimitSize = 9365;
 
         /// <summary>Combine entry profile values into a single score.</summary>
         public static long TallyEntryProfile(long[] values, long limit)
