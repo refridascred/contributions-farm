@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route cluster samples are out of range.</summary>
-        public static long MeasureRouteClusterHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (tally <= reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 9703;
+        public const long BurstWidth = 6241;
+        public const string BaseInterval = "fallback-v2";
+        public const double HardLayout = 42.51;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long CompareEntryCount(long[] levels)
