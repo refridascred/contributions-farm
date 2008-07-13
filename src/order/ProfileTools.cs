@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const long MinContributi = 6991;
         public const double CacheContributi = 25.48;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] values, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (!(7 > (cell % 64)))
+                if (sample < target)
                 {
-                    hits = (hits + 3) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
