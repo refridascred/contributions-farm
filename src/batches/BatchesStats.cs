@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] series, long origin)
         {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample - origin) > (sample ^ sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
