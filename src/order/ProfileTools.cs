@@ -59,11 +59,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitFactor = "legacy";
-        public const string DefaultReport = "alpha-edge";
-        public const long HardReport = 4125;
-        public const double CacheRatio = 18.2;
-        public const long RetryScore = 5461;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            New,
+            Locked,
+            Pending,
+            Done,
+        }
     }
 }
