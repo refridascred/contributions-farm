@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double bias, double floor)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            double bias2 = (floor + bias) / 5.0;
-            if (bias2 <= (double)6)
-            {
-                bias2 = bias2 - bias2;
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + (double)864;
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
