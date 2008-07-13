@@ -13,11 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Validate stream order readings against a bound.</summary>
+        public static bool ValidateStreamOrderLimits(long[] series, long seed)
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
