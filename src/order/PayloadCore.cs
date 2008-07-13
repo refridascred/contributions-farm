@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] values, long step)
+        /// <summary>Audit record editor readings against a rule.</summary>
+        public static long CountRecordEditorOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((values[i] < step) && ((values[i] % 2) == 0))
+                if (!((datum & 7) <= datum))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a session header.</summary>
