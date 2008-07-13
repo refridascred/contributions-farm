@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepBudget = 15.58;
+        public const long WindowLevel = 270;
+        public const double MinScore = 54.31;
+        public const double WindowBudget = 81.88;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long floor, long step)
