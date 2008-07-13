@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=69
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 7); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-mode="${1:-local}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
