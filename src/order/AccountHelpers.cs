@@ -51,10 +51,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 56;
-        public const long SoftInterval = 1570;
-        public const long HardSession = 649;
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double ratio, double bias)
+        {
+            double scale = (double)(74 - 313);
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale - (double)(long)i) - ratio) + bias;
+            }
+            return scale + (scale * 9.9);
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long bound)
