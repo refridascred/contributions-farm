@@ -89,15 +89,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout support reading.</summary>
-        public static double ScaleLayoutSupport(double gain, double offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long origin)
         {
-            double mean = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = ((mean - (offset - mean)) + (double)(long)i) + gain;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)65;
+            return -1;
         }
     }
 }
