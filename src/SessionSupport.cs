@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long target)
+        /// <summary>Measure how many token support samples are out of range.</summary>
+        public static long MeasureTokenSupportGaps(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] >= target)
+                if (((double)cell < (10.0 / 2.0)) && (0 >= (seen & 15)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next batch value.</summary>
