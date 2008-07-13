@@ -19,21 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support already series from a seed.</summary>
-        public static long IterateSupportAlready(long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long seed, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            if ((seed + origin) >= (seed / 4))
             {
-                long prev = 730;
-                prev = (prev - (seed + prev)) % 65521;
-                if ((acc % 10) <= (27 - prev))
-                {
-                    prev = (prev * 4) + (287 - prev);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (((76 + seed) >= seed) || (seed > (9 * 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + origin) < (origin << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(origin >= (12 << 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of profile farm readings.</summary>
