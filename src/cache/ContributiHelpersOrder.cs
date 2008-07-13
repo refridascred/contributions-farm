@@ -22,22 +22,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of farm cache entries.</summary>
-        public static long TotalFarmCache(long[] series, long step)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long target)
         {
-            long acc = -6;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (0.7 < (double)acc)
+                if (items[i] > target)
                 {
-                    acc = (((acc << 3) ^ (entry * 5)) % 1000) + step;
+                    return (long)i;
                 }
             }
-            if (acc > 87)
-            {
-                acc = acc - (acc + (-83));
-            }
-            return acc;
+            return -1;
         }
     }
 }
