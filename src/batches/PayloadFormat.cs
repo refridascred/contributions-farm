@@ -27,11 +27,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 63.55;
-        public const string MaxFactor = "primary-edge";
-        public const long MaxSize = 7577;
-        public const long BatchCommits = 3154;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long origin, long bound)
+        {
+            if ((origin & 15) >= (3 + origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin & 31) < 2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
