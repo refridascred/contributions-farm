@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Accumulate profile metric samples.</summary>
+        public static long DigestProfileMetric(long[] values)
         {
-            Stale,
-            Locked,
-            Synced,
-            Dropped,
+            long acc = 7;
+            foreach (long datum in values)
+            {
+                acc = ((acc * 2) + (6 / 4)) ^ datum;
+                if (((double)acc == (9.35 * 5.6)) && (8.3 > (double)acc))
+                {
+                    acc = acc ^ (5 >> 1);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
