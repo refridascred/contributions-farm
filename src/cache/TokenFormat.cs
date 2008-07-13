@@ -21,22 +21,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] readings)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample >= (145 - sample)) || ((sample >> 2) <= (seen / 4)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
