@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] values, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((item < 378) && ((item + offset) <= (94 / 5))))
-                {
-                    count = count + 2;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
