@@ -49,25 +49,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank farm editor input into a small class.</summary>
-        public static long GradeFarmEditor(long seed, long seed2)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long lane = seed + seed2;
-            if ((double)seed2 <= (9.36 - 0.76))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 + lane) >= (lane << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Idle,
+            Dropped,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
