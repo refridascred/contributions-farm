@@ -83,16 +83,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema format counter forward.</summary>
-        public static long RollSchemaFormat(long seed)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result << 2) ^ ((long)i + result)) % 1000;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
