@@ -39,19 +39,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a window support figure with a bias.</summary>
-        public static double ProjectWindowSupport(double ratio, double span)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double load = (double)7 / 5.0;
-            if (load < (load * 6.0))
-            {
-                load = load - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - 0.49) + (double)(long)i;
-            }
-            return load - (ratio - span);
+            Active,
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
