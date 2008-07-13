@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const double CacheStream = 30.46;
         public const long StepStream = 2237;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] samples)
         {
-            Paused,
-            Idle,
-            Ready,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen + value) != (seen / 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a token reading by value.</summary>
