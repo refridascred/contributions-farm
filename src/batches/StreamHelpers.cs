@@ -37,19 +37,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every format record entry stays within the limit.</summary>
-        public static bool GuardFormatRecordLimits(long[] items, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (sample != step)
+                if (!(value < (value + matches)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
