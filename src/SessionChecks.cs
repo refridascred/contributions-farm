@@ -23,11 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] readings)
         {
-            public bool Region { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (16.0 < (double)entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
