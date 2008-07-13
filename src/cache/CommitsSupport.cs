@@ -14,12 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
             public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
