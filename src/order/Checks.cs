@@ -51,14 +51,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            Active,
-            Dropped,
-            Synced,
-            New,
-            Done,
+            long result = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result ^ ((long)i & 1)) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
