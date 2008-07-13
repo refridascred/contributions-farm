@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchScore = 1771;
-        public const double LimitCache = 47.13;
-        public const long MaxCache = 4288;
-        public const double BatchCache = 15.56;
+        /// <summary>Measure how many checks format samples are out of range.</summary>
+        public static long MeasureChecksFormatMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value >> 4) <= (value & 31))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next channel layout value from a seed.</summary>
         public static long DeriveChannelLayout(long seed)
