@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine support tools values into a single score.</summary>
-        public static long DigestSupportTools(long[] samples)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long sum = 5;
-            foreach (long entry in samples)
-            {
-                if (!((double)sum != (double)entry))
-                {
-                    sum = sum + (sum % 12);
-                }
-            }
-            if (sum > 26)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
+            Retry,
+            New,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
