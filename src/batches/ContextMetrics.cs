@@ -15,24 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank cluster cache input into a small class.</summary>
-        public static long ClassifyClusterCache(long bound, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            if ((double)offset >= (double)bound)
+            long result = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (bound <= (8 + 50))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a route stats.</summary>
