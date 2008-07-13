@@ -42,19 +42,21 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double ratio, double floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            double rate = (double)82 / 6.0;
-            if (rate < 6.84)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = ((rate - rate) - ratio) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (double)97;
-            }
-            return rate - rate;
+            return hits;
         }
 
         /// <summary>Describe the profile status values.</summary>
