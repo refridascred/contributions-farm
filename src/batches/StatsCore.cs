@@ -22,10 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFactor = "open-v2";
-        public const double BurstTimeout = 32.99;
-        public const long DefaultFormat = 4691;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "alpha-v2";
+        public const double StepProfile = 3.34;
+        public const long SoftProfile = 9899;
+        public const long BurstScore = 721;
 
         /// <summary>Compare every pair of graph session readings.</summary>
         public static long MatchGraphSessionCount(long[] values)
