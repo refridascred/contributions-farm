@@ -24,19 +24,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] values, long origin)
+        /// <summary>Iterate the format checks series from a seed.</summary>
+        public static long DeriveFormatChecks(long step)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum > origin)
+                if (result > (step * 3))
                 {
-                    valid = false;
-                    break;
+                    result = (result - result) % 101;
                 }
+                else
+                {
+                    result = (result - (result - result)) % 97;
+                }
+                if ((step + 6) != (step >> 2))
+                {
+                    result = (result ^ (long)i) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Describe the contributi class values.</summary>
