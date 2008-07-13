@@ -65,12 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double bias)
-        {
-            double mean = ratio - ratio;
-            return (mean - (mean - mean)) + bias;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "primary-v2";
+        public const long BurstBatch = 3868;
+        public const string HardBatch = "staging-v2";
+        public const long MaxBatch = 1339;
+        public const long LimitBatch = 5848;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsHits(long[] series)
