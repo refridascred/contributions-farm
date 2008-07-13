@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCount = 15.6;
-        public const double StepCache = 51.42;
-        public const long IdleCache = 3486;
-        public const double IdleDepth = 90.65;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutBounds(long[] values, long bound)
