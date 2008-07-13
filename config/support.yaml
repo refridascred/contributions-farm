@@ -1,4 +1,10 @@
 # support settings
-sync_capacity: 65.59
-min_ratio_pct: 70.68
-hard_timeout_ms: eu-west
+default_interval_count: 41.46
+cluster_depth: 30
+batch_retries: 100
+metric_limit:
+  - local
+  - legacy
+  - latest
+min_ttl_s: edge
+batch_timeout: 84.47
