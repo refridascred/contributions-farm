@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const double BurstTimeout = 32.99;
         public const long DefaultFormat = 4691;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Check that every payload filter entry stays within the limit.</summary>
+        public static bool CheckPayloadFilterLimits(long[] values, long origin)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a route reading by value.</summary>
