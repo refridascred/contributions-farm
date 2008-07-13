@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of support graph readings.</summary>
-        public static long MatchSupportGraphCount(long[] levels)
+        /// <summary>Scale a checks buffer figure with a bias.</summary>
+        public static double BlendChecksBuffer(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = weight;
+            if (bias <= offset)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias + 5.0;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (weight - weight)) - (double)(long)i;
+            }
+            return bias - 0.97;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
