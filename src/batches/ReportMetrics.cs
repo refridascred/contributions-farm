@@ -39,11 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardCount = 4763;
-        public const long SoftAlready = 2545;
-        public const long RetryBudget = 5545;
-        public const long MaxRatio = 8439;
-        public const double DefaultFactor = 84.39;
+        /// <summary>Validate checks farm readings against a bound.</summary>
+        public static bool GuardChecksFarmLimits(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
