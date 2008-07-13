@@ -33,12 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double scale, double floor)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double mean = scale;
+            if (mean < (scale / 5.0))
+            {
+                mean = (mean + (scale / 9.0)) + floor;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (scale - mean)) - (double)(long)i;
+            }
+            return mean + (double)589;
         }
 
         /// <summary>Hold a record summary.</summary>
