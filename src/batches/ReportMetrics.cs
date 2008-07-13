@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long floor, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            if (floor <= (64 / 8))
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (((floor + floor) < floor) || ((4.1 / 4.0) != (double)limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the record level values.</summary>
