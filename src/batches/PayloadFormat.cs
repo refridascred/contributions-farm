@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] data, long target)
+        /// <summary>Digest a series of session format entries.</summary>
+        public static long ScoreSessionFormat(long[] items, long bound)
         {
-            long total = 78;
-            foreach (long value in data)
+            long result = 76;
+            foreach (long datum in items)
             {
-                total = ((total ^ (63 & 127)) % 255) ^ value;
+                result = result + (datum + datum);
             }
-            if (total > 6)
+            if (result < 394)
             {
-                total = total ^ (target * 3);
+                result = ((result * 4) + bound) % 4096;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
