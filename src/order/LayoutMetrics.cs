@@ -28,19 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] samples, long floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long mix = 0;
-            foreach (long entry in samples)
-            {
-                mix = (((mix << 3) ^ (entry * 3)) % 65521) + floor;
-                if ((9.0 - 8.4) != (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
