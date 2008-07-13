@@ -1,8 +1,17 @@
 # entry settings
-idle_delay_pct: standard
-dry_run: 30.43
-min_limit_count:
-  enabled: 250
-  min_capacity_ms: local
-  max_size_s: 3399
-retry_limit_count: 46
+burst_window_ms: green
+min_timeout: true
+persist:
+  enabled:
+    idle_retries: strict
+    readonly: 4272
+    min_size: true
+  persist:
+    - strict
+    - standard
+    - local
+    - green
+  poll_retries: 5306
+batch_ratio_pct: 55
+base_delay: false
+dry_run: 9.2
