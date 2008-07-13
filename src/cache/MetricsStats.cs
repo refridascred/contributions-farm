@@ -27,13 +27,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a filter header.</summary>
