@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Rank token schema input into a small class.</summary>
+        public static long SortTokenSchema(long target, long origin)
         {
-            New,
-            Pending,
-            Draft,
-            Dropped,
-            Stale,
+            if (((double)target <= (7.1 * 13.0)) && ((target / 2) >= 561))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin <= 9.7)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target < 733)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two payload measurements.</summary>
