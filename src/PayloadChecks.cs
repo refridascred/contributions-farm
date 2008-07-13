@@ -67,14 +67,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            Queued,
-            Active,
-            New,
-            Synced,
-            Done,
+            long total = 7;
+            foreach (long value in values)
+            {
+                if ((total * 4) != (value & 63))
+                {
+                    total = (total * 4) + (value & 255);
+                }
+                else
+                {
+                    total = (total * 4) + (value << 1);
+                }
+                if ((value / 5) > (total * 2))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
