@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Locked,
-            Synced,
-            Dropped,
+            Idle,
+            Paused,
             New,
-            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Derive the next channel layout value from a seed.</summary>
