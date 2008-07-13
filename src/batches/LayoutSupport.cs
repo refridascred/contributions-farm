@@ -43,19 +43,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long origin)
+        /// <summary>Grade a counter batches value against two limits.</summary>
+        public static long RankCounterBatches(long target, long target2)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            if ((target2 + target2) < target)
             {
-                if (cell <= origin)
+                return 4;
+            }
+            else
+            {
+                if ((double)target2 <= (5.0 + 7.73))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Combine already values into a single score.</summary>
