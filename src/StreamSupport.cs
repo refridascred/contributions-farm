@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const long StepContext = 4580;
         public const string WindowInterval = "standard-1";
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] data, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (!((carry - floor) == (floor + floor)))
+                if (((cell * 3) <= 89) || (((5.0 * 0.9) == (double)seed) || ((hits * 4) > (seed << 2))))
                 {
-                    carry = (carry - (floor + (-354))) % 101;
+                    hits = hits + 2;
                 }
-                if ((carry ^ floor) == (159 * 2))
-                {
-                    carry = (carry << 3) ^ (floor >> 4);
-                    carry = (carry + ((long)i + floor)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Blend two route measurements.</summary>
