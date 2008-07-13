@@ -22,12 +22,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] == seed)
+                if (levels[i] >= step)
                 {
                     return (long)i;
                 }
