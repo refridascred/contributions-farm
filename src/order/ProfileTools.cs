@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] levels, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (entry != origin)
+                if ((double)reading <= (17.0 * 5.93))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
