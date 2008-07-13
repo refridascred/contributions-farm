@@ -1,13 +1,13 @@
 {
-  "hard_depth_s": 3328,
-  "readonly": 40.33,
-  "sync_limit": 32.45,
-  "audit": {
-    "idle_ttl_pct": 71,
-    "notes_depth": 68.89,
-    "soft_timeout_s": false,
-    "enabled": "green",
-    "burst_threshold_ms": ["strict", "cached"]
+  "hard_threshold": 45,
+  "soft_depth_count": {
+    "payload_timeout": "latest",
+    "idle_delay_ms": 38.95,
+    "buffer_capacity": false,
+    "compress": "open",
+    "poll_depth_pct": 69.09,
+    "warm_limit_ms": 53.05
   },
-  "min_retries_count": 1024
+  "poll_ttl_count": [432, 280, 323, 62],
+  "default_interval_count": true
 }
