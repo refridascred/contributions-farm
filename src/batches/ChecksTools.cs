@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Count the layout commits entries that pass the check.</summary>
+        public static long AuditLayoutCommitsGaps(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                result = ((result * 2) + (result + (long)i)) % 97;
-                result = ((result * 3) + (long)i) % 101;
+                if (((value * 4) == (count << 3)) || (value <= (value + value)))
+                {
+                    count = count + 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
