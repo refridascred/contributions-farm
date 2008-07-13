@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((9.26 * 10.0) > (double)tally)
-                {
-                    tally = ((tally + 2) + reading) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCount = 15.6;
+        public const double StepCache = 51.42;
+        public const long IdleCache = 3486;
+        public const double IdleDepth = 90.65;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutBounds(long[] values, long bound)
