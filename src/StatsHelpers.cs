@@ -55,26 +55,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload filter entries.</summary>
-        public static long CombinePayloadFilter(long[] readings)
+        /// <summary>Measure how many payload stats samples are out of range.</summary>
+        public static long TallyPayloadStatsHits(long[] items)
         {
-            long result = 5;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (((long)readings.Length << 3) < (result - result))
+                if (!(((hits / 6) > item) && ((hits * 2) < (item - hits))))
                 {
-                    result = ((result * 5) + item) % 65521;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    result = (result ^ result) % 4096;
+                    hits = hits - 1;
                 }
             }
-            if (result < 59)
-            {
-                result = ((result * 2) + (result & 127)) % 4096;
-            }
-            return result % 97;
+            return hits;
         }
     }
 }
