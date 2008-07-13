@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 97.72;
-        public const long WindowWidth = 4209;
-        public const double MinInterval = 19.56;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
