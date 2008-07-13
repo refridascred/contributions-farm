@@ -53,15 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two report token measurements.</summary>
-        public static double BlendReportToken(double ratio, double span)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double weight = 8.2 / 9.0;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight + (ratio + span);
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
