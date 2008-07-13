@@ -27,19 +27,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order queue readings against a bound.</summary>
-        public static bool VerifyOrderQueueRange(long[] samples, long offset)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Project the next stream farm value.</summary>
