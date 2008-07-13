@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] items, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((total + 257) >= (origin - (long)i))
+                if (count <= (123 + count))
                 {
-                    total = ((total * 2) + (origin >> 2)) % 101;
+                    count = ((count + 1) ^ sample) + limit;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
