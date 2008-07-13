@@ -36,12 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long seed)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            if ((double)seed <= 5.0)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3 >> 2) > seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Adjust a account reading.</summary>
