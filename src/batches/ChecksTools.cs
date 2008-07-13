@@ -49,14 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double weight, double bias)
         {
-            Paused,
-            Dropped,
-            Ready,
-            Failed,
-            Stale,
+            double load = (weight / 9.0) - bias;
+            if (load < (weight + bias))
+            {
+                load = load - (double)6;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - 6.5) + (double)(long)i;
+            }
+            return load - (6.0 / 8.0);
         }
     }
 }
