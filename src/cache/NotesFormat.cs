@@ -27,23 +27,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double scale, double floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long floor)
         {
-            double mean = scale;
-            if (mean < (scale / 5.0))
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                mean = (mean + (scale / 9.0)) + floor;
+                if (((double)floor != (5.9 + 18.0)) && ((anchor << 1) <= anchor))
+                {
+                    anchor = anchor ^ (anchor / 6);
+                    anchor = (anchor + (long)i) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (scale - mean)) - (double)(long)i;
-            }
-            return mean + (double)589;
+            return anchor;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
