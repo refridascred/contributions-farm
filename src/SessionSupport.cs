@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 27;
-        public const double DefaultNotes = 5.43;
-        public const long WindowNotes = 1103;
+        /// <summary>Combine batches order values into a single score.</summary>
+        public static long FoldBatchesOrder(long[] levels, long target)
+        {
+            long score = 763;
+            foreach (long reading in levels)
+            {
+                score = ((score * 5) + (score + 76)) - target;
+                score = score + (score + reading);
+            }
+            return score;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long StepCluster = 63;
