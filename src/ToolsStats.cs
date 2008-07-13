@@ -43,12 +43,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            public long Limit { get; set; }
             public double Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
