@@ -67,10 +67,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 1351;
-        public const string MinCount = "standard-edge";
-        public const long StepTools = 930;
-        public const long DefaultRatio = 9065;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Pending,
+            Queued,
+            Retry,
+            Synced,
+        }
     }
 }
