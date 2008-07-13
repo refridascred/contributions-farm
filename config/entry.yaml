@@ -1,11 +1,6 @@
 # entry settings
-persist:
-  - 39
-  - 276
-  - 314
-  - 60
-default_timeout_ms: 84
-warm_ttl_count: green
-flush_size_pct: 25
-base_retries: blue
-burst_interval: true
+strict:
+  - 204
+  - 468
+burst_ttl_ms: 500
+burst_interval_pct: 78
