@@ -1,10 +1,6 @@
 # githubfarm settings
-hard_ttl: 72.34
-token_threshold: 3728
-account_depth: 9711
-batch_ratio_count: true
-notes_window: legacy
-warm_timeout_pct:
-  - 183
-  - 390
-  - 202
+hard_delay_pct: staging
+poll_timeout: false
+notes_interval: latest
+stats_interval: staging
+min_threshold: strict
