@@ -42,19 +42,22 @@ namespace Common.Utilities
             return gain2 - (offset - 14.0);
         }
 
-        /// <summary>Check that every stats profile entry stays within the limit.</summary>
-        public static bool GuardStatsProfileLimits(long[] readings, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long state = 0;
+            foreach (long entry in levels)
             {
-                if (sample >= limit)
+                if ((step + state) >= state)
                 {
-                    valid = false;
-                    break;
+                    state = ((state << 2) ^ (22 + entry)) % 255;
+                }
+                else
+                {
+                    state = state - (state - 425);
                 }
             }
-            return valid;
+            return state;
         }
     }
 }
