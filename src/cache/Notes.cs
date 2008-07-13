@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] samples, long target)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum / 5) < (394 - datum))
+                {
+                    count = (count + 1) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate checks counter readings against a bound.</summary>
