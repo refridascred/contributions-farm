@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] values, long step)
+        /// <summary>Grade a batches stream value against two limits.</summary>
+        public static long BucketBatchesStream(long origin, long offset)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long diff = origin ^ offset;
+            if (((origin + offset) > (diff + diff)) && ((diff - diff) == (offset + origin)))
             {
-                if (entry <= step)
+                return 0;
+            }
+            else
+            {
+                if ((offset & 15) >= origin)
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
