@@ -38,38 +38,9 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long seed)
-        {
-            if (limit <= (seed + limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed * 2) >= (limit & 255))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit * 2) < seed) && ((seed - limit) > (limit % 10)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.13 / 2.0) == (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultSpan = "standard-1";
+        public const long IdleMetric = 55;
+        public const double HardMetric = 67.64;
     }
 }
