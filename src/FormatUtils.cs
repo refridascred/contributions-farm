@@ -71,19 +71,11 @@ namespace Common.Utilities
         public const long MinToken = 3470;
         public const long IdleSize = 9606;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCount = 4708;
+        public const double MaxCount = 68.65;
+        public const string MaxInterval = "primary-edge";
+        public const double LimitCommits = 22.07;
+        public const double RetryCommits = 6.64;
     }
 }
