@@ -51,17 +51,22 @@ namespace Common.Utilities
         public const long WindowBudget = 2825;
         public const long HardScore = 194;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] series, long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 48;
+            foreach (long reading in series)
             {
-                if (series[i] < offset)
+                if (!((reading & 31) != (reading + result)))
                 {
-                    return (long)i;
+                    result = (((result * 3) + (result * 3)) % 101) - offset;
+                }
+                else
+                {
+                    result = result + (result + result);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a batch entry.</summary>
