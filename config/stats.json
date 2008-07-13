@@ -1,11 +1,20 @@
 {
-  "persist": "local",
-  "cache_delay": 5,
-  "profile_depth": false,
-  "enabled": 9837,
-  "token_timeout": {
-    "compress": "latest",
-    "account_timeout": "fallback",
-    "burst_size_count": "standard"
-  }
+  "default_ttl_s": [180, 273],
+  "strict": 3,
+  "idle_retries_ms": {
+    "flush_retries": 82.2,
+    "default_retries": "fallback",
+    "idle_threshold": {
+      "flush_depth": "primary",
+      "command_ttl": false,
+      "githubfarm_retries": 250,
+      "warm_threshold": [110, 177, 470, 27],
+      "channel_depth": 1828,
+      "max_timeout": 30
+    },
+    "layout_threshold": 82
+  },
+  "persist": true,
+  "max_limit_s": 6550,
+  "githubfarm_retries": ["primary", "green"]
 }
