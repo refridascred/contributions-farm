@@ -15,39 +15,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long origin)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long origin)
         {
-            long span = target + origin;
-            if ((double)origin <= (double)716)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                acc = acc + (acc << 2);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((target ^ target) <= (target << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)span > 1.6)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((92 / 6) >= origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the commits mode values.</summary>
