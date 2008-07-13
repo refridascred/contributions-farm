@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 7477;
-        public const long RetryDepth = 6967;
-        public const long BatchTools = 7710;
-        public const string MaxInterval = "standard";
-        public const long WindowTools = 9864;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] readings)
+        {
+            long carry = -75;
+            foreach (long reading in readings)
+            {
+                if ((reading % 10) > (carry - 65))
+                {
+                    carry = (carry * 5) + carry;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
