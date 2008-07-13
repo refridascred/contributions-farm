@@ -14,13 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Compare every pair of order support readings.</summary>
+        public static long CompareOrderSupportCount(long[] data)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
