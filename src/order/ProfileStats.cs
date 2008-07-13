@@ -19,11 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchScore = 4107;
-        public const long BurstOrder = 7829;
-        public const double WindowLevel = 29.24;
-        public const long BatchOrder = 634;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileBounds(long[] values, long offset)
