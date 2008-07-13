@@ -54,36 +54,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long offset, long origin)
+        /// <summary>Rank farm editor input into a small class.</summary>
+        public static long GradeFarmEditor(long seed, long seed2)
         {
-            if (((origin / 6) > (578 & 63)) && ((origin ^ origin) != (offset % 60)))
+            long lane = seed + seed2;
+            if ((double)seed2 <= (9.36 - 0.76))
             {
                 return 6;
             }
             else
             {
-                if (!((double)offset < 3.1))
+                if ((seed2 + lane) >= (lane << 1))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if (!((offset * 4) <= 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.0 < (double)offset) && ((origin * 2) != (offset + offset)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
