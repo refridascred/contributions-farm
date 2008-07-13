@@ -82,24 +82,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long offset, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] series, long limit)
         {
-            if ((19.0 * 17.0) <= (double)target)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (target < (target >> 4))
+                if (((8.0 - 7.1) < (3.3 - 1.93)) && !(56 > (sample + sample)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 1) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
