@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long RetryDepth = 4155;
         public const string HardBudget = "primary-edge";
 
-        /// <summary>Measure how many record counter samples are out of range.</summary>
-        public static long CountRecordCounterMatches(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((sample % 2) < (seen - (long)series.Length)) || ((offset + seen) == (sample - seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitInterval = 2.84;
+        public const long MaxSize = 500;
+        public const string WindowTimeout = "strict";
+        public const double CacheMetric = 89.5;
+        public const long WindowLevel = 3945;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
