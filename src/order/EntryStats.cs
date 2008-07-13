@@ -32,11 +32,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepWidth = "fallback";
-        public const long DefaultBudget = 8448;
-        public const string BaseDepth = "strict-v2";
-        public const string BatchSchema = "legacy-1";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSize = 2532;
+        public const long BatchFarm = 9443;
+        public const long MinFarm = 560;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 7881;
