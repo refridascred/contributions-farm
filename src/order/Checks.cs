@@ -63,23 +63,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long bound)
         {
-            long mix = -4;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                mix = ((mix << 2) ^ (target - 8)) % 1000;
-                if (((0.4 / 4.0) < (double)datum) || ((datum - target) <= (datum % 12)))
+                if (sample < bound)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (mix < 821)
-            {
-                mix = (mix ^ (mix * 3)) % 4096;
-            }
-            return mix;
+            return flag;
         }
     }
 }
