@@ -19,13 +19,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] samples, long bound)
         {
-            Locked,
-            New,
-            Synced,
-            Draft,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (1 < (sample & 63))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a token stats.</summary>
