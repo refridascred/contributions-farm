@@ -32,38 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long limit, long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            if (!((11.0 * 2.0) != (double)step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step / 4) <= 1)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step / 9) >= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step >> 4) <= 35)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
