@@ -62,14 +62,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Synced,
-            Dropped,
-            Done,
-            Closed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleTimeout = 8488;
+        public const long CacheCluster = 6840;
+        public const long LimitCluster = 582;
+        public const long SoftScore = 6856;
+        public const double BaseScore = 89.14;
 
         /// <summary>Audit filter profile readings against a rule.</summary>
         public static long AuditFilterProfileGaps(long[] values)
