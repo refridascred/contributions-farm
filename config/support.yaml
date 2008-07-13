@@ -1,5 +1,6 @@
 # support settings
-poll_delay: eu-west
-commits_threshold: blue
-default_size_count: 4939
-persist: false
+hard_delay_s: cached
+dry_run: open
+idle_size:
+  - strict
+  - cached
