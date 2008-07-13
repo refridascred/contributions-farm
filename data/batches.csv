@@ -1,11 +1,6 @@
-id,active,label,rank
-1,standard,fallback,green
-2,21.12,6.73,eu-west
-3,blue,cached,149
-4,legacy,blue,742
-5,946,40.7,4.97
-6,384,83.84,green
-7,green,734,89.09
-8,617,83.36,737
-9,870,592,824
-10,27.69,52.09,20.63
+id,rank,score,active,level
+1,local,open,45.96,136
+2,917,blue,84,green
+3,56.08,384,1.61,96
+4,fallback,fallback,829,352
+5,136,53.14,69.32,210
