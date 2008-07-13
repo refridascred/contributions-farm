@@ -27,19 +27,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] levels, long bound)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            long total = 6;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total << 2) ^ (datum / 2);
-                if ((total * 2) >= (bound / 8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
     }
 }
