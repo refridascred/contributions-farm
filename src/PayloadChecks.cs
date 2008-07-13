@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] series)
+        /// <summary>Locate a report channel reading by value.</summary>
+        public static long LookupReportChannelIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((17.0 + 3.3) > (double)(long)series.Length)
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
                 {
-                    count = (count + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
