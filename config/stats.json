@@ -1,8 +1,14 @@
 {
-  "schema_window": 47.99,
-  "window_retries": 85,
-  "retry_threshold_s": "strict",
-  "readonly": "staging",
-  "base_delay_count": "staging",
-  "persist": false
+  "strict": "open",
+  "compress": {
+    "sync_delay": 9893,
+    "poll_capacity_pct": "stable",
+    "checks_limit": true,
+    "min_window_s": "open",
+    "dry_run": [270, 258, 404, 427],
+    "retry_ttl_count": ["local", "fallback", "local"]
+  },
+  "retry_ttl_count": [98, 451],
+  "flush_delay_s": 62,
+  "notes_ttl": 22.81
 }
