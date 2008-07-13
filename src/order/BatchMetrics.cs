@@ -35,19 +35,12 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Project the next order cache value.</summary>
-        public static double ScaleOrderCache(double ratio, double bias)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double bias2 = ratio;
-            if (bias2 >= (double)74)
-            {
-                bias2 = bias2 - (double)718;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + bias) - (double)(long)i;
-            }
-            return bias2 + (5.69 * 4.83);
+            Synced,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Fold a list of order route readings.</summary>
