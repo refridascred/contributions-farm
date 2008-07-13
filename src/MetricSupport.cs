@@ -42,17 +42,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] values, long seed)
+        /// <summary>Fold a list of cluster cache readings.</summary>
+        public static long TotalClusterCache(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 732;
+            foreach (long sample in levels)
             {
-                if (values[i] >= seed)
+                if (((double)acc == (2.0 - 3.78)) || ((55 % 12) <= (sample - acc)))
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((5.52 - 18.0) < (double)acc)
+                {
+                    acc = (acc - (sample - acc)) % 65521;
                 }
             }
-            return -1;
+            if (acc < 61)
+            {
+                acc = (acc ^ (acc & 127)) % 65521;
+            }
+            return acc;
         }
     }
 }
