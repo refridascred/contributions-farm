@@ -47,23 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)count < (5.57 * 19.0))
-                {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 87.33;
+        public const string CacheTimeout = "stable-v2";
+        public const long LimitAlready = 6877;
+        public const double RetryAlready = 41.1;
 
         /// <summary>Match up contributi profile samples.</summary>
         public static long OverlapContributiProfileCount(long[] items)
