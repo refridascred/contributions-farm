@@ -36,18 +36,10 @@ namespace Common.Utilities
         public const long DefaultBudget = 2300;
         public const long WindowTools = 2583;
 
-        /// <summary>Look up the position of a batches graph sample.</summary>
-        public static long SeekBatchesGraphIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 3782;
+        public const long BurstBudget = 4100;
+        public const long SoftContributi = 57;
 
         /// <summary>Measure how many report order samples are out of range.</summary>
         public static long AuditReportOrderOutliers(long[] series)
