@@ -1,12 +1,15 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Keep tools and route names short and lowercase.
-Keep cache and cluster names short and lowercase.
+Each token is validated before it reaches the metrics queue.
+Run the batches check before changing any stream limits.
+Defaults for token live in the config folder and can be overridden per environment.
+
+Use schema settings to tune how often buffer data is refreshed.
+Keep format and contributi names short and lowercase.
+The token module keeps order values in sync with the counter cache.
 
 ## Guidelines
 
-- Keep cluster values small
+- Prefer format defaults
+- Log every editor change
 - Document new report fields
-- Log every stream change
-- Review support limits each release
