@@ -1,6 +1,4 @@
 # entry settings
-farm_limit: primary
-idle_interval_pct: true
-channel_ttl: green
-min_window_ms: false
-persist: latest
+batch_retries_pct: 250
+base_window_count: blue
+counter_size: latest
