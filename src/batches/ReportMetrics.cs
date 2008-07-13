@@ -23,17 +23,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] series, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
