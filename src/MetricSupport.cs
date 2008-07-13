@@ -13,13 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Rank window input into a small class.</summary>
