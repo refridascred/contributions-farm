@@ -27,13 +27,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Accumulate queue metrics samples.</summary>
+        public static long DigestQueueMetrics(long[] levels, long limit)
         {
-            Draft,
-            Dropped,
-            Retry,
-            Ready,
+            long score = -66;
+            foreach (long item in levels)
+            {
+                score = (score - (item % 100)) % 255;
+                score = (score ^ (limit + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
