@@ -1,13 +1,11 @@
 # Command notes
 
-The already module keeps session values in sync with the order cache.
-Keep window and route names short and lowercase.
-
-Keep account and batch names short and lowercase.
-Use farm settings to tune how often entry data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Run the schema check before changing any payload limits.
 
 ## Guidelines
 
-- Review already limits each release
-- Keep already values small
-- Prefer already defaults
+- Keep stream values small
+- Prefer stream defaults
+- Log every checks change
