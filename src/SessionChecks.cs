@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 827;
-        public const long CacheGithubfarm = 4734;
-        public const long BatchBudget = 1156;
-        public const long DefaultDepth = 2980;
-        public const long MaxDepth = 364;
+        /// <summary>Count the filter editor entries that pass the check.</summary>
+        public static long CountFilterEditorMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen ^ reading) < (reading - (-406)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double ProjectStats(double scale, double bias)
