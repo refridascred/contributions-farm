@@ -14,12 +14,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Grade a stream filter value against two limits.</summary>
+        public static long ClassifyStreamFilter(long target, long floor)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long edge = target + floor;
+            if ((floor + 857) <= edge)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target << 3) < target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Roll a payload contributi counter forward.</summary>
