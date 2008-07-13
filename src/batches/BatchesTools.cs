@@ -25,17 +25,11 @@ namespace Common.Utilities
         public const string HardSize = "open";
         public const long IdleInterval = 1569;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] data, long target)
+        /// <summary>Scale a graph layout figure with a bias.</summary>
+        public static double ProjectGraphLayout(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = bias / 7.0;
+            return (ratio - bias) + bias2;
         }
     }
 }
