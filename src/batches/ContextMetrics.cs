@@ -50,15 +50,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double gain, double offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double ratio = gain;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (double)(long)i) - offset;
-            }
-            return ratio + ratio;
+            Synced,
+            Done,
+            Idle,
+            Ready,
         }
     }
 }
