@@ -79,20 +79,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = ((total + (total << 3)) % 1000) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 80.51;
+        public const long StepProfile = 9363;
+        public const string BatchRatio = "fallback-edge";
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] levels)
