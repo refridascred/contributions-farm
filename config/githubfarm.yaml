@@ -1,7 +1,31 @@
 # githubfarm settings
-readonly: 28
-soft_ratio_s: eu-west
-sync_threshold_count: 100
-compress: green
-idle_size: cached
-idle_limit: 20.95
+session_retries:
+  flush_interval:
+    - 55
+    - 50
+    - 54
+  warm_retries: 88
+  dry_run: 500
+  base_limit_count: true
+  idle_window_pct: 60
+  sync_ttl_pct: 250
+batch_delay_count:
+  persist:
+    readonly: 60
+    persist:
+      - 462
+      - 337
+      - 84
+      - 141
+    githubfarm_capacity:
+      - 463
+      - 118
+    retry_interval:
+      - cached
+      - primary
+  burst_ttl: 65.49
+  flush_interval_pct: legacy
+  soft_delay: true
+  default_ttl_s: local
+  soft_capacity_ms: 100
+cluster_ratio: legacy
