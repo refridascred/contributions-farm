@@ -49,19 +49,10 @@ namespace Common.Utilities
         public const double RetryInterval = 35.9;
         public const long BurstRecord = 7192;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values)
-        {
-            long carry = 73;
-            foreach (long sample in values)
-            {
-                carry = carry + sample;
-            }
-            if (carry > (-71))
-            {
-                carry = ((carry << 3) ^ (carry / 3)) % 255;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftTimeout = 1619;
+        public const long MaxProfile = 1736;
+        public const long BatchProfile = 5463;
+        public const string IdleSpan = "cached";
     }
 }
