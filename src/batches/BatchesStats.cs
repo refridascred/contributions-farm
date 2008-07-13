@@ -32,12 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "staging";
-        public const long StepSize = 5879;
-        public const double RetryPayload = 66.75;
-        public const long BatchWidth = 4191;
-        public const long CachePayload = 4410;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public double Region { get; set; }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Classify a route layout pair into a bucket.</summary>
         public static long BucketRouteLayout(long offset, long bound)
