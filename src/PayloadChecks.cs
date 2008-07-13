@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((17.0 + 3.3) > (double)(long)series.Length)
                 {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) ^ reading;
                 }
             }
             return count;
