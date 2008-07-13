@@ -73,12 +73,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Iterate the report contributi series from a seed.</summary>
+        public static long RollReportContributi(long bound)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long result = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((6.7 - 1.0) != (double)result)
+                {
+                    result = result ^ (bound % 7);
+                    break;
+                }
+                result = ((result * 3) + ((-2) * 4)) % 101;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
