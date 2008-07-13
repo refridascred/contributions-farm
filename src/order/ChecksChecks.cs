@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long target, long step)
         {
-            Failed,
-            Synced,
-            Stale,
-            Retry,
-            Pending,
+            long cur = target + step;
+            if (5.56 > (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (target >= (cur + 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
