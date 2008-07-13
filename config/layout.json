@@ -1,7 +1,22 @@
 {
-  "warm_interval_ms": "fallback",
-  "max_timeout": 572,
-  "dry_run": "local",
-  "warm_size_pct": "eu-west",
-  "stream_delay": 500
+  "sync_window_count": "staging",
+  "hard_retries": {
+    "default_retries": "green",
+    "window_limit": 13.74,
+    "contributi_ratio": ["latest", "latest", "primary"],
+    "checks_retries": 41
+  },
+  "contributi_capacity": 4937,
+  "hard_limit_count": {
+    "token_size": [382, 64, 38, 492],
+    "poll_window_s": "green",
+    "sync_timeout": {
+      "default_delay": ["legacy", "local", "edge"],
+      "strict": "edge",
+      "layout_capacity": 26.79,
+      "route_delay": 16.25
+    },
+    "warm_window": 8353
+  },
+  "entry_ttl": "primary"
 }
