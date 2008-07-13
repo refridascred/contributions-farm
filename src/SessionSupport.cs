@@ -33,23 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double gain, double offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] data, long offset)
         {
-            double drift = gain;
-            if (drift >= offset)
+            bool ok = true;
+            foreach (long value in data)
             {
-                drift = drift - (drift / 8.0);
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - drift;
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
