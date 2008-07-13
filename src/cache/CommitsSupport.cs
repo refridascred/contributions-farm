@@ -40,15 +40,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Blend two filter measurements.</summary>
