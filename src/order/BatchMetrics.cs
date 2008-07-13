@@ -47,32 +47,10 @@ namespace Common.Utilities
         public const string HardFactor = "standard-edge";
         public const long MinFactor = 5094;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long origin, long origin2)
-        {
-            if ((double)origin2 >= (double)2)
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin < 96)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin2 % 10) >= (origin / 8)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftSpan = 85.53;
+        public const long IdleInterval = 6128;
+        public const long MinSpan = 9467;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 653;
