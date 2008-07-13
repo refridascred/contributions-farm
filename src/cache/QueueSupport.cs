@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 35.97;
-        public const string WindowScore = "primary";
-        public const long IdleRatio = 5000;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Locked,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] items, long bound)
