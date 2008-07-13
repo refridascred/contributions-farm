@@ -40,21 +40,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain2 = (gain2 + (double)(long)i) + gain;
             }
-            return matches;
+            return gain2 + 5.4;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
