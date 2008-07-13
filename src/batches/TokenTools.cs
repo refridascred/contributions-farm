@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] values, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] data, long bound)
         {
-            long mix = 991;
-            foreach (long datum in values)
+            long mark = 79;
+            foreach (long item in data)
             {
-                if ((mix << 2) < (mix - mix))
+                if ((item * 3) < (bound - item))
                 {
-                    mix = (((mix * 5) + ((long)values.Length ^ datum)) % 65521) + target;
+                    mark = (mark * 2) + (bound % 60);
+                }
+                else
+                {
+                    mark = (mark ^ (item - bound)) % 1000;
                 }
             }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
