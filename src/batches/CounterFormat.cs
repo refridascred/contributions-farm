@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftDepth = "strict-edge";
+        public const double CacheWidth = 26.64;
+        public const double RetryTimeout = 42.04;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitSession = 4568;
