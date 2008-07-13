@@ -22,27 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels)
-        {
-            long score = 84;
-            foreach (long datum in levels)
-            {
-                if ((datum & 127) > (datum + datum))
-                {
-                    score = (score - score) % 65521;
-                }
-                else
-                {
-                    score = (score << 3) ^ (561 + datum);
-                }
-            }
-            if (score > 250)
-            {
-                score = (score * 2) + (score ^ 947);
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinLevel = 81.4;
+        public const long MinFactor = 8030;
+        public const long IdleSchema = 2674;
+        public const double BatchSchema = 84.19;
+        public const double StepSchema = 6.83;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string SoftLevel = "strict-edge";
