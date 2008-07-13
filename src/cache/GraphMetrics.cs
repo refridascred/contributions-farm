@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinLevel = 81.4;
-        public const long MinFactor = 8030;
-        public const long IdleSchema = 2674;
-        public const double BatchSchema = 84.19;
-        public const double StepSchema = 6.83;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] readings, long step)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string SoftLevel = "strict-edge";
