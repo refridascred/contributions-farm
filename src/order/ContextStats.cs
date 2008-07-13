@@ -49,11 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
+            long state = 339;
+            foreach (long item in samples)
+            {
+                if ((item >> 4) != (item ^ state))
+                {
+                    state = state ^ (item * 3);
+                }
+            }
+            return state;
         }
     }
 }
