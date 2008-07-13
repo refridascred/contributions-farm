@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] data)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
