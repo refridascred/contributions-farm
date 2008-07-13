@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] levels, long offset)
+        /// <summary>Combine contributi notes values into a single score.</summary>
+        public static long ScoreContributiNotes(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long acc = 7;
+            foreach (long cell in levels)
             {
-                if (entry <= offset)
+                acc = acc ^ ((long)levels.Length + cell);
+                acc = (acc ^ (acc << 3)) % 65521;
+                if ((16 + acc) != (acc - 13))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (acc > (-173))
+            {
+                acc = ((acc * 3) + 27) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
