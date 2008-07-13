@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long state = 605;
-            foreach (long sample in data)
-            {
-                state = state + (sample + state);
-                if ((double)654 <= (double)state)
-                {
-                    break;
-                }
-            }
-            if (state < 559)
-            {
-                state = ((state * 5) + (state << 1)) % 255;
-            }
-            return state % 65521;
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
