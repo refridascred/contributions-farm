@@ -48,9 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultSpan = "standard-1";
-        public const long IdleMetric = 55;
-        public const double HardMetric = 67.64;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
