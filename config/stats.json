@@ -1,6 +1,6 @@
 {
-  "soft_retries_s": ["local", "blue", "edge", "standard"],
-  "enabled": false,
-  "strict": 7186,
-  "default_window_s": "stable"
+  "max_depth_ms": 8322,
+  "default_delay": 42.26,
+  "strict": false,
+  "order_depth": "standard"
 }
