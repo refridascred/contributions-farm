@@ -66,9 +66,11 @@ namespace Common.Utilities
             return rate - (weight / 3.0);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 5551;
-        public const double MinFactor = 85.8;
-        public const long RetryWidth = 8211;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
