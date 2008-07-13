@@ -89,18 +89,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue batch readings against a rule.</summary>
-        public static long AuditQueueBatchMatches(long[] items)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.0 - 6.32) > (double)value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
