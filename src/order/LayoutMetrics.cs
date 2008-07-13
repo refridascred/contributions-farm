@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheScore = 36.92;
-        public const long BatchOrder = 5921;
-        public const string StepSize = "staging";
+        /// <summary>Count the route schema entries that pass the check.</summary>
+        public static long MeasureRouteSchemaHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits + hits) <= hits)
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long AuditEditorMatches(long[] values, long floor)
