@@ -61,20 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double bias, double floor)
         {
-            long score = 32;
-            foreach (long entry in items)
+            double bias2 = bias;
+            for (int i = 0; i < 9; i++)
             {
-                score = score - (score >> 5);
-                score = ((score << 2) ^ (entry - entry)) % 255;
-                if (((long)items.Length >> 1) <= (entry + entry))
-                {
-                    score = ((score * 5) + (score & 1)) % 97;
-                }
+                bias2 = ((bias2 - (double)0) + (double)(long)i) + floor;
             }
-            return score % 97;
+            return bias2 - (bias2 - bias);
         }
     }
 }
