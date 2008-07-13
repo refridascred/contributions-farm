@@ -47,12 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] readings, long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
