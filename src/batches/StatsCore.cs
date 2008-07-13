@@ -52,18 +52,19 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] values)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (377 > datum)
+                if (entry > target)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Rank session input into a small class.</summary>
