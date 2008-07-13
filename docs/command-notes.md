@@ -1,15 +1,14 @@
 # Command notes
 
-The queue report groups every format by notes.
-Use channel settings to tune how often already data is refreshed.
-Each metric is validated before it reaches the token queue.
+Each profile is validated before it reaches the contributi queue.
+The profile module keeps token values in sync with the batches cache.
 
-Use metric settings to tune how often farm data is refreshed.
-The farm module keeps githubfarm values in sync with the commits cache.
+When a entry fails, the cache handler retries a few times before giving up.
+Use batches settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Document new command fields
-- Keep githubfarm values small
-- Log every farm change
+- Review token limits each release
+- Document new metric fields
+- Keep editor values small
+- Validate cluster input early
