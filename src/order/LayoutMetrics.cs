@@ -20,22 +20,19 @@ namespace Common.Utilities
             return drift - (double)463;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] samples, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (!!((entry & 15) < 0))
+                if (entry != bound)
                 {
-                    seen = (seen + 2) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
