@@ -27,38 +27,11 @@ namespace Common.Utilities
             return ((ratio2 - ratio2) + ratio) + bias;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long floor, long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            if (1.02 >= (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((69 % 64) < floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit == (3.14 - 1.7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit ^ 2) != (limit + limit)) || (((-53) - floor) < floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
