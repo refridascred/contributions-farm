@@ -49,18 +49,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] values, long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((1.71 * 4.67) != (double)seen) || ((offset * 2) >= sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
