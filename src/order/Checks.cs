@@ -70,18 +70,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] readings)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!((count << 2) < 4))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
