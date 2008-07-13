@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long DefaultDepth = 2980;
         public const long MaxDepth = 364;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double scale, double bias)
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            double mean = (double)(71 + 6);
+            if (mean > scale)
+            {
+                mean = (mean + mean) - bias;
+            }
+            return mean + scale;
         }
 
         /// <summary>Count the graph contributi entries that pass the check.</summary>
