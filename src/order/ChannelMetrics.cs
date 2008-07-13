@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings)
-        {
-            long state = 148;
-            foreach (long datum in readings)
-            {
-                if (datum < 9)
-                {
-                    state = (state << 2) ^ (state - state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryCount = 887;
+        public const double IdleInterval = 55.1;
+        public const long StepChecks = 5270;
+        public const string SoftChecks = "latest-1";
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
