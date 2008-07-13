@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long RetryReport = 9580;
         public const double MaxRatio = 13.94;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] values, long step)
+        /// <summary>Check that every record cache entry stays within the limit.</summary>
+        public static bool GuardRecordCacheRange(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (step >= reading)
+                if (item >= step)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
