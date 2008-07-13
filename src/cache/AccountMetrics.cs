@@ -38,21 +38,28 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 2;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = ((result << 2) ^ (step / 8)) % 101;
+                result = result + sample;
+                if ((8.5 / 5.0) <= (double)result)
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (sample % 24)) % 1000;
+                }
+                else
+                {
+                    result = result + (result * 5);
                 }
             }
-            return hits;
+            if (result > 652)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a stream options.</summary>
