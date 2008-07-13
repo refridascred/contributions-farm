@@ -20,17 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first filter queue entry that matches the target.</summary>
-        public static long FindFilterQueueIndex(long[] items, long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (offset * 0.9) / 3.0;
+            if (drift >= (double)0)
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                drift = (drift + drift) + rate;
             }
-            return -1;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift - drift)) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
