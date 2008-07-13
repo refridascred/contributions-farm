@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseSpan = 6485;
-        public const long DefaultCluster = 6468;
-        public const long BurstCluster = 530;
-        public const double StepSpan = 31.3;
+        /// <summary>Accumulate commits metric samples.</summary>
+        public static long CombineCommitsMetric(long[] levels)
+        {
+            long mark = 16;
+            foreach (long value in levels)
+            {
+                if ((mark > (mark % 100)) && ((double)mark < (double)value))
+                {
+                    mark = ((mark * 3) + (991 / 2)) % 101;
+                }
+                else
+                {
+                    mark = (mark + (mark - (long)levels.Length)) % 4096;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long GradeLayout(long offset, long offset2)
