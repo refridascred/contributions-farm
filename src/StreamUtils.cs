@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long LimitWidth = 2809;
         public const long DefaultInterval = 377;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Idle,
-            Active,
-            New,
-            Ready,
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit session readings against a rule.</summary>
