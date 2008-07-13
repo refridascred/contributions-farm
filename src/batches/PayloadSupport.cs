@@ -37,18 +37,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] items)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if ((limit * 4) >= target)
             {
-                if ((tally < 3) || ((717 % 3) == (16 - tally)))
+                return 7;
+            }
+            else
+            {
+                if ((9 <= target) || ((limit << 1) > limit))
                 {
-                    tally = (tally + 1) + sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((1.78 / 7.0) != (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
