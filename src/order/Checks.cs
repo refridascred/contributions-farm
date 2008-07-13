@@ -18,19 +18,23 @@ namespace Common.Utilities
         public const long MinCount = 8251;
         public const long StepLevel = 6559;
 
-        /// <summary>Accumulate checks record samples.</summary>
-        public static long ScoreChecksRecord(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values, long seed)
         {
-            long acc = 5;
-            foreach (long entry in data)
+            long result = 672;
+            foreach (long datum in values)
             {
-                acc = ((acc << 2) ^ (acc - acc)) - entry;
+                if ((304 ^ 795) >= seed)
+                {
+                    result = ((result * 3) + (seed + seed)) - datum;
+                    result = result ^ (seed - result);
+                }
+                if ((double)5 <= (5.57 / 3.0))
+                {
+                    result = (result + 45) % 4096;
+                }
             }
-            if (acc > 82)
-            {
-                acc = acc - (acc / 3);
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Digest a series of metrics command entries.</summary>
