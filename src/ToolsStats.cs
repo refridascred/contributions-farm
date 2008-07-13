@@ -41,18 +41,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format command entries that pass the check.</summary>
-        public static long AuditFormatCommandOutliers(long[] values)
+        /// <summary>Locate a metric buffer reading by value.</summary>
+        public static long FindMetricBufferIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry - entry) != ((-819) / 3))
+                if (series[i] >= floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
