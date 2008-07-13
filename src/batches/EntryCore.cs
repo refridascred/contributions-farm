@@ -36,16 +36,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                total = total - (origin >> 2);
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
