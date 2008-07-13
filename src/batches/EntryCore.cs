@@ -31,19 +31,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record route readings against a rule.</summary>
-        public static long AuditRecordRouteOutliers(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((((double)matches == (9.0 - 7.0)) && ((matches * 2) >= (matches & 1))) && !((matches / 9) == (item >> 4)))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultBudget = 2.24;
+        public const long MinInterval = 6903;
+        public const double CacheSpan = 41.34;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long bound, long offset)
