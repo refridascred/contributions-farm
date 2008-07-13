@@ -1,7 +1,5 @@
 {
-  "verbose": "primary",
-  "sync_window_ms": 8,
-  "dry_run": 4485,
-  "retry_retries_s": 73.19,
-  "burst_delay_ms": 7626
+  "account_depth": 30,
+  "flush_limit": 500,
+  "min_ratio_ms": [245, 395, 318]
 }
