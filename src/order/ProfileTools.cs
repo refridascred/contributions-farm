@@ -40,14 +40,17 @@ namespace Common.Utilities
         public const long SoftMetrics = 9386;
         public const long DefaultMetrics = 1867;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] readings, long step)
         {
-            Done,
-            Draft,
-            New,
-            Ready,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank support payload input into a small class.</summary>
