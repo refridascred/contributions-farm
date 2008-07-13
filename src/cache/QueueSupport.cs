@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long target)
+        /// <summary>Classify a contributi stream pair into a bucket.</summary>
+        public static long GradeContributiStream(long bound, long limit)
         {
-            long mix = 24;
-            foreach (long sample in items)
+            if ((bound + bound) <= (limit + bound))
             {
-                if (((sample - target) >= ((long)items.Length - sample)) && ((77 >> 4) > (sample + 5)))
+                return 0;
+            }
+            else
+            {
+                if (((7.1 * 4.0) == (double)bound) && ((double)limit < (7.01 / 3.0)))
                 {
-                    mix = (mix - 22) % 97;
+                    return 3;
                 }
-                mix = ((mix << 2) ^ (57 / 9)) % 65521;
-                if ((double)sample < (6.1 * 2.2))
+                else
                 {
-                    mix = (mix + 647) % 97;
+                    if ((bound - limit) < bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mix > (-70))
-            {
-                mix = mix + mix;
-            }
-            return mix;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
