@@ -31,13 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double ratio, double floor)
         {
-            Active,
-            Retry,
-            New,
-            Pending,
+            double ratio2 = ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 - (7.1 + floor);
         }
     }
 }
