@@ -62,18 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] items, long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (((seed <= ((-73) & 15)) || ((value + value) > value)) || !((double)hits > 17.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
