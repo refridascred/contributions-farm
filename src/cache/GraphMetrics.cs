@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            long carry = 885;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item & 63) >= (carry / 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry * 2) + 223;
+                    if ((data[i] + data[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
