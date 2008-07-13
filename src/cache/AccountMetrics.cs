@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] levels, long floor)
         {
-            Retry,
-            New,
-            Pending,
-            Paused,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first filter queue entry that matches the target.</summary>
