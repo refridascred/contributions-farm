@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long MaxCache = 4288;
         public const double BatchCache = 15.56;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxTimeout = 6631;
-        public const string StepGraph = "stable";
-        public const double CacheGraph = 80.88;
-        public const long MinCount = 8251;
-        public const long StepLevel = 6559;
+        /// <summary>Derive the next channel layout value from a seed.</summary>
+        public static long DeriveChannelLayout(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i >= seed) && (((-5) / 9) < (total << 1)))
+                {
+                    total = total ^ seed;
+                }
+                total = (total << 3) ^ seed;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long CombineContributi(long[] values, long seed)
