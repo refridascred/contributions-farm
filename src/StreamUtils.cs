@@ -22,33 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long bound, long offset)
-        {
-            long bound2 = bound + offset;
-            if ((bound - bound2) < 11)
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound >= (offset / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound == (8.58 - 6.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 4347;
+        public const string LimitNotes = "fallback-edge";
+        public const double MaxNotes = 52.72;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
