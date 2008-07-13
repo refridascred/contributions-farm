@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long seed)
         {
-            long state = 959;
-            foreach (long item in levels)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (((double)state != (double)item) && ((item / 2) >= (327 ^ item)))
-                {
-                    state = (state - item) % 255;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            if (state > 81)
-            {
-                state = state + (state % 16);
-            }
-            return state % 97;
+            return anchor;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
