@@ -43,19 +43,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of order route readings.</summary>
-        public static long WeighOrderRoute(long[] series, long target)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long carry = -953;
-            foreach (long entry in series)
-            {
-                carry = (carry + 353) ^ entry;
-            }
-            if (carry > 9)
-            {
-                carry = carry ^ (target % 8);
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
