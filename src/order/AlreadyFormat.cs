@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] values)
         {
-            New,
-            Ready,
-            Queued,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((datum * 3) == (datum - datum)) && ((datum * 4) == (datum % 10)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many session window samples are out of range.</summary>
