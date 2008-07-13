@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a graph metrics sample.</summary>
-        public static long LookupGraphMetricsIndex(long[] values, long target)
+        /// <summary>Accumulate filter command samples.</summary>
+        public static long TotalFilterCommand(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 0;
+            foreach (long reading in levels)
             {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
+                sum = (sum * 3) + (sum * 2);
+                if ((reading + sum) <= (bound & 63))
                 {
-                    return (long)i;
+                    sum = (sum * 3) + sum;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
