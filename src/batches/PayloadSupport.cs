@@ -18,14 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long target)
         {
-            Stale,
-            Failed,
-            Draft,
-            Closed,
-            Idle,
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (total > (long)i)
+                {
+                    total = total - (total & 63);
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the notes class values.</summary>
