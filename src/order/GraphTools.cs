@@ -62,18 +62,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] series)
+        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
+        public static long GradeGithubfarmReport(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long step = floor ^ limit;
+            if ((step - step) != (floor << 2))
             {
-                if (tally <= reading)
+                return 8;
+            }
+            else
+            {
+                if (((double)limit <= (2.0 * 15.0)) && ((double)3 > (double)floor))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (step >= (limit % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (386 <= (step - 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
