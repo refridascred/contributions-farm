@@ -1,5 +1,17 @@
 # entry settings
-retry_threshold: local
-dry_run: cached
-hard_capacity: 9651
-persist: 85.17
+min_interval_ms: 250
+flush_ratio_count: 1101
+base_ttl:
+  verbose:
+    - 420
+    - 126
+    - 46
+  min_ratio_s: green
+  report_capacity: true
+  audit: standard
+  record_interval:
+    - blue
+    - edge
+retry_window: 4
+filter_ratio: true
+enabled: false
