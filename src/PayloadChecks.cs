@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 2.86;
-        public const long MaxEditor = 6727;
-        public const double RetryCount = 44.8;
-        public const double StepEditor = 5.1;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long CombineMetrics(long[] readings)
