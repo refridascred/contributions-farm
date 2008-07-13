@@ -29,19 +29,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!((seed + seed) > (838 + value)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 5534;
+        public const long MinSpan = 7651;
+        public const long RetryInterval = 796;
+        public const double BaseInterval = 66.07;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandLimits(long[] levels, long origin)
