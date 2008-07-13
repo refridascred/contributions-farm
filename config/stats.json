@@ -1,15 +1,6 @@
 {
-  "hard_window_count": ["green", "eu-west", "blue"],
-  "farm_depth": 18.25,
-  "burst_interval_pct": {
-    "burst_interval_s": {
-      "layout_interval": 60,
-      "soft_retries_ms": false,
-      "persist": 500,
-      "hard_ttl": ["legacy", "strict", "fallback"],
-      "session_retries": "local"
-    },
-    "metrics_ttl": "cached",
-    "enabled": "fallback"
-  }
+  "soft_retries_s": ["local", "blue", "edge", "standard"],
+  "enabled": false,
+  "strict": 7186,
+  "default_window_s": "stable"
 }
