@@ -1,8 +1,13 @@
 {
-  "poll_timeout_count": "open",
-  "schema_limit": true,
-  "hard_retries_count": "eu-west",
-  "filter_ttl": "staging",
-  "idle_delay_count": 60,
-  "audit": [197, 375, 61, 45]
+  "queue_size": [463, 218, 122],
+  "context_ttl": "eu-west",
+  "readonly": "fallback",
+  "already_threshold": {
+    "profile_delay": ["fallback", "latest"],
+    "idle_window_count": 44,
+    "dry_run": 9901,
+    "metric_ratio": 100,
+    "poll_delay": 30
+  },
+  "idle_timeout_s": [498, 97, 218]
 }
