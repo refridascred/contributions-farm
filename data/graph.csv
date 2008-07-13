@@ -1,6 +1,7 @@
-id,active,rank
-1,46.11,blue
-2,290,green
-3,783,61.47
-4,144,edge
-5,240,153
+id,label,region
+1,903,67.64
+2,eu-west,stable
+3,837,standard
+4,18.8,fallback
+5,edge,local
+6,latest,15.19
