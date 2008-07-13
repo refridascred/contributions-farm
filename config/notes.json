@@ -1,6 +1,6 @@
 {
-  "dry_run": 9650,
-  "sync_threshold_s": "stable",
-  "commits_interval": 30,
-  "flush_limit_s": "legacy"
+  "payload_ttl": "staging",
+  "contributi_threshold": "standard",
+  "cache_interval_s": true,
+  "cluster_timeout": 66
 }
