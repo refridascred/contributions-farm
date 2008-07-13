@@ -71,26 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Scale a tools session figure with a bias.</summary>
+        public static double ProjectToolsSession(double gain, double offset)
         {
-            long score = 3;
-            foreach (long cell in data)
+            double weight = 11.0;
+            if (weight < (offset - gain))
             {
-                if ((score - score) >= (cell % 12))
-                {
-                    score = (score + (cell * 2)) % 255;
-                }
-                if ((score - cell) <= (score >> 3))
-                {
-                    break;
-                }
+                weight = weight + 12.0;
             }
-            if (score > 95)
+            for (int i = 0; i < 6; i++)
             {
-                score = (score << 3) ^ ((-574) + score);
+                weight = (weight - gain) - (double)(long)i;
             }
-            return score % 1000;
+            return weight - 1.98;
         }
     }
 }
