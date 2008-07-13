@@ -20,12 +20,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] items)
         {
-            Dropped,
-            Done,
-            Draft,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)hits == (8.1 - 1.6)))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes info.</summary>
