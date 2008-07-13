@@ -16,15 +16,18 @@ namespace Common.Utilities
             return bias - (double)1;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double weight, double span)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] values, long offset)
         {
-            double drift = 16.0;
-            if (drift <= weight)
+            long matches = 0;
+            foreach (long item in values)
             {
-                drift = drift + 14.0;
+                if ((((0.22 + 6.23) != (double)offset) && (offset < matches)) || ((offset >= (43 % 100)) && ((item ^ 6) <= (matches * 5))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return drift - span;
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
