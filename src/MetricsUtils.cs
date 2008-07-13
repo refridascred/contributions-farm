@@ -72,21 +72,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up contributi profile samples.</summary>
-        public static long OverlapContributiProfileCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowFactor = "alpha-1";
+        public const long LimitStats = 8557;
+        public const long SoftStats = 1262;
     }
 }
