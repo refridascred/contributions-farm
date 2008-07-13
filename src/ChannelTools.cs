@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Stale,
-            New,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 9359;
+        public const double BaseCount = 34.91;
+        public const string WindowDepth = "cached";
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
