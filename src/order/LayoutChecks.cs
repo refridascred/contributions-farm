@@ -14,17 +14,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] series, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 5;
+            foreach (long value in series)
             {
-                if ((series[i] == step) && ((series[i] % 3) != 0))
+                if ((11.0 + 9.24) < (double)value)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (227 / 5)) % 65521;
                 }
             }
-            return -1;
+            if (mark > 94)
+            {
+                mark = (mark << 3) ^ (mark & 1);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Roll a report counter forward.</summary>
