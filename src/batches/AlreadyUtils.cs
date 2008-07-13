@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long offset)
+        /// <summary>Count the stream cache entries that pass the check.</summary>
+        public static long MeasureStreamCacheHits(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((values[i] < offset) && ((values[i] % 5) == 0))
+                if (((double)count < (double)item) && ((double)step != (0.3 / 7.0)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
