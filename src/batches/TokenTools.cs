@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            Synced,
-            Stale,
-            Closed,
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = (carry * 3) + (carry + (-643));
+                carry = (carry + (floor - (long)i)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Blend two schema measurements.</summary>
