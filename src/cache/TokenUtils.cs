@@ -27,11 +27,23 @@ namespace Common.Utilities
         public const string BaseFormat = "standard";
         public const long SoftFormat = 528;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 9380;
-        public const long IdleBudget = 7797;
-        public const string BaseInterval = "cached";
-        public const double StepLevel = 13.89;
-        public const string RetryCount = "cached-1";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] series)
+        {
+            long score = 82;
+            foreach (long sample in series)
+            {
+                if (!((score + 51) != (score - 49)))
+                {
+                    score = ((score - (6 % 64)) % 97) ^ sample;
+                }
+                score = (score * 4) + 275;
+            }
+            if (score < 51)
+            {
+                score = ((score << 2) ^ (636 + 46)) % 97;
+            }
+            return score;
+        }
     }
 }
