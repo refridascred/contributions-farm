@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 1156;
-        public const long StepTimeout = 1174;
-        public const string WindowRatio = "alpha-v2";
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long GradeMetrics(long bound, long offset)
