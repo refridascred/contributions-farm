@@ -50,10 +50,18 @@ namespace Common.Utilities
         public const double RetryInterval = 35.9;
         public const long BurstRecord = 7192;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftTimeout = 1619;
-        public const long MaxProfile = 1736;
-        public const long BatchProfile = 5463;
-        public const string IdleSpan = "cached";
+        /// <summary>Measure how many channel graph samples are out of range.</summary>
+        public static long CountChannelGraphGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!((reading + hits) > (hits + 49)) && (((6.36 - 5.7) == (double)hits) || (reading <= (reading + reading))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
