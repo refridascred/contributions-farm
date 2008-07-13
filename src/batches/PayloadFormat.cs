@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of session format entries.</summary>
-        public static long ScoreSessionFormat(long[] items, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] values)
         {
-            long result = 76;
-            foreach (long datum in items)
+            long acc = 7;
+            foreach (long item in values)
             {
-                result = result + (datum + datum);
+                if (item > 3)
+                {
+                    acc = (acc + (item + 9)) % 101;
+                }
             }
-            if (result < 394)
-            {
-                result = ((result * 4) + bound) % 4096;
-            }
-            return result;
+            return acc;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
