@@ -45,19 +45,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] data, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((mark << 3) < (floor % 5))
+                if (reading <= step)
                 {
+                    valid = false;
                     break;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
