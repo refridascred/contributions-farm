@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long AuditCacheTokenGaps(long[] series, long limit)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry ^ entry) <= entry)
+                {
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
