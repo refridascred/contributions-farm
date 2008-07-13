@@ -86,17 +86,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] samples, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
+                if ((tally - tally) < tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
