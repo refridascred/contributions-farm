@@ -49,39 +49,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long floor, long target)
-        {
-            if (!((double)target <= (5.3 / 2.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(1.6 < (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(70 <= (floor * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor != (7.87 - 14.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseTimeout = "primary-v2";
+        public const string BaseScore = "legacy-1";
+        public const long MaxOrder = 9082;
+        public const double DefaultOrder = 4.15;
+        public const double StepOrder = 32.0;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
