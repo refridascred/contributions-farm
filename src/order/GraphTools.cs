@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] data, long limit)
+        /// <summary>Look up the position of a payload route sample.</summary>
+        public static long FindPayloadRouteIndex(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 5) != 0))
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
