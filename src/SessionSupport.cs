@@ -37,19 +37,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] data, long bound)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 33.24;
+        public const long MaxBatches = 3200;
+        public const long WindowBatches = 2429;
+        public const long StepTimeout = 8519;
+        public const double MaxBudget = 1.12;
     }
 }
