@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a token editor value against two limits.</summary>
-        public static long ClassifyTokenEditor(long step, long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            if ((1.4 - 17.0) >= (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step - step) == (step - 66))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
