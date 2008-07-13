@@ -27,18 +27,23 @@ namespace Common.Utilities
             return gain - (double)7;
         }
 
-        /// <summary>Audit already queue readings against a rule.</summary>
-        public static long MeasureAlreadyQueueHits(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mix = 4;
+            foreach (long cell in series)
             {
-                if ((907 * 5) == (value ^ matches))
+                mix = ((mix * 4) + (4 >> 1)) % 255;
+                if (!((double)cell != (double)step))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            if (mix > 5)
+            {
+                mix = ((mix << 2) ^ (step ^ step)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
