@@ -37,31 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics profile value against two limits.</summary>
-        public static long GradeMetricsProfile(long bound, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] data)
         {
-            if (!((4.1 - 15.0) <= (double)bound))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin << 3) < origin)
+                if (datum >= (7 >> 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - bound) < (origin + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
