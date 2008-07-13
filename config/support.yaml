@@ -1,4 +1,20 @@
 # support settings
-sync_ttl: 85
-batch_depth_count: true
-editor_window: false
+audit: true
+cache_capacity: true
+batch_interval_s:
+  warm_retries_s:
+    retry_interval_s: 7298
+    editor_retries: staging
+    sync_retries: staging
+    payload_capacity: 6586
+    sync_interval_s:
+      - legacy
+      - standard
+    route_size: strict
+  burst_threshold_s: false
+  persist: 88
+  cache_delay_s:
+    - blue
+    - latest
+  dry_run: 84
+  min_ttl: open
