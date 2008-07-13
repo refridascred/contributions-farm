@@ -47,20 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits stats series from a seed.</summary>
-        public static long DeriveCommitsStats(long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long score = 952;
+            foreach (long reading in items)
             {
-                double load = 10.0;
-                if (!((load * 4.0) <= load))
+                if ((double)reading >= (12.0 - 6.4))
                 {
-                    anchor = ((anchor << 2) ^ ((long)i % 7)) % 101;
+                    score = score - (score >> 4);
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Match up contributi profile samples.</summary>
