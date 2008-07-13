@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Idle,
-            Failed,
-            Queued,
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
