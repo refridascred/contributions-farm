@@ -35,19 +35,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double bias, double floor)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double offset)
         {
-            double weight = (double)(93 - 8);
-            if (weight < floor)
+            double bias2 = 15.0;
+            if (bias2 >= bias)
             {
-                weight = weight + bias;
+                bias2 = bias2 - (double)5;
             }
             else
             {
-                weight = weight + (weight + 1.7);
+                bias2 = bias2 - (offset - bias2);
             }
-            return weight + 3.4;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + bias2;
         }
     }
 }
