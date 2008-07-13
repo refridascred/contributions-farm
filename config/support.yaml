@@ -1,42 +1,4 @@
 # support settings
-report_threshold: 36
-idle_interval: blue
-token_limit:
-  strict:
-    - stable
-    - stable
-  default_limit: latest
-  flush_window: 5945
-  sync_window_count: 88.46
-sync_ttl_s:
-  idle_window_count:
-    - 388
-    - 440
-    - 465
-    - 430
-  account_capacity: green
-  batches_ratio: primary
-  cache_ttl_ms:
-    hard_delay_pct: strict
-    idle_size_ms:
-      - 259
-      - 301
-    verbose: 500
-    retry_retries_count: green
-    poll_ratio: 8709
-  batch_retries: 28.44
-  sync_depth_ms: edge
-audit:
-  enabled: cached
-  default_retries_ms:
-    - standard
-    - open
-    - stable
-    - primary
-  burst_interval_ms: 6417
-  commits_threshold:
-    - latest
-    - primary
-    - standard
-    - legacy
-cache_timeout: primary
+compress: 37
+buffer_capacity: 6291
+default_size_s: true
