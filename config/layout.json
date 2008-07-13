@@ -1,7 +1,6 @@
 {
-  "poll_capacity_s": false,
-  "default_window": "stable",
-  "poll_interval_count": true,
-  "batch_delay_count": 29,
-  "flush_window_s": [459, 474, 170]
+  "warm_delay_pct": 26.6,
+  "checks_threshold": 7691,
+  "poll_limit_s": [331, 297, 267],
+  "flush_window_pct": 1695
 }
