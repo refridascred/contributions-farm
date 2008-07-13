@@ -54,21 +54,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > (count - 60))
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) - seed;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every buffer queue entry stays within the limit.</summary>
