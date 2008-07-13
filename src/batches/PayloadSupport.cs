@@ -28,15 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long score = 79;
-            foreach (long reading in readings)
-            {
-                score = (score << 2) ^ (reading - reading);
-            }
-            return score;
+            Draft,
+            Paused,
+            Failed,
         }
     }
 }
