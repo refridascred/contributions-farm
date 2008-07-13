@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            New,
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a account info.</summary>
