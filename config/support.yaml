@@ -1,14 +1,7 @@
 # support settings
-hard_size:
+retry_timeout_ms: false
+default_capacity_pct:
+  - legacy
+  - edge
   - local
-  - staging
-idle_window:
-  - 343
-  - 497
-  - 369
-dry_run: legacy
-persist: blue
-warm_interval_pct:
-  - 290
-  - 297
-  - 338
+hard_depth_ms: cached
