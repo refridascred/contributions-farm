@@ -1,14 +1,12 @@
 # Command notes
 
-Each already is validated before it reaches the already queue.
-A graph that stays idle for too long is moved to the buffer list.
-
-Each format is validated before it reaches the route queue.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
+The stream module keeps filter values in sync with the account cache.
+Each batch is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Log every batch change
-- Review payload limits each release
-- Keep record values small
-- Prefer checks defaults
+- Prefer cache defaults
+- Keep token values small
+- Review already limits each release
+- Log every window change
