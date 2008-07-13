@@ -39,11 +39,13 @@ namespace Common.Utilities
         public const long BurstSize = 425;
         public const long BatchSpan = 4451;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
+            Pending,
+            Idle,
+            Queued,
+            Paused,
         }
     }
 }
