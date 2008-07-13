@@ -42,19 +42,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] levels, long step)
+        /// <summary>Check that every profile notes entry stays within the limit.</summary>
+        public static bool GuardProfileNotesBounds(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (cell != step)
+                if (datum >= limit)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
