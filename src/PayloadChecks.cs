@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] readings, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long acc = -5;
+            foreach (long entry in data)
             {
-                if (reading >= floor)
+                if ((entry / 7) > (entry * 5))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc << 2) ^ acc) - floor;
                 }
             }
-            return stale;
+            if (acc > 0)
+            {
+                acc = (acc - (34 * 5)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
