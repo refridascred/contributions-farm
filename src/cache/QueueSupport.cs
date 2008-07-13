@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSpan = 2228;
-        public const double BatchStream = 26.58;
-        public const string DefaultStream = "open-edge";
-        public const double CacheStream = 30.46;
-        public const long StepStream = 2237;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteOutliers(long[] samples)
