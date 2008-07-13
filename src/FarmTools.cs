@@ -25,13 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double offset)
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
+            double scale = weight;
+            return (scale - 8.4) + offset;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
