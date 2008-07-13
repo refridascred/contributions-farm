@@ -22,13 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            Stale,
+            Failed,
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
