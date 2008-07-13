@@ -1,10 +1,4 @@
 # support settings
-retry_size:
-  - 190
-  - 304
-  - 416
-max_depth: 76
-contributi_interval:
-  - 32
-  - 354
-  - 44
+sync_capacity: 65.59
+min_ratio_pct: 70.68
+hard_timeout_ms: eu-west
