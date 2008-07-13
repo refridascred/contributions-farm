@@ -24,11 +24,22 @@ namespace Common.Utilities
             return scale2 - 5.0;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepInterval = 43.01;
-        public const double CacheWidth = 19.92;
-        public const string MaxSupport = "stable-1";
-        public const long RetrySupport = 3809;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double BatchChecks = 20.19;
