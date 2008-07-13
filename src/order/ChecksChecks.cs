@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of graph commits entries.</summary>
-        public static long ScoreGraphCommits(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] items)
         {
-            long score = 536;
-            foreach (long datum in values)
+            long mix = 9;
+            foreach (long datum in items)
             {
-                score = ((score + (score * 5)) % 97) - datum;
+                if (1.4 < (double)datum)
+                {
+                    mix = mix ^ (mix - datum);
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
