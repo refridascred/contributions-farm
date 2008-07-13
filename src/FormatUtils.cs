@@ -44,11 +44,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] items, long limit)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long anchor = -8;
+            foreach (long datum in items)
+            {
+                if ((anchor >> 3) > (limit % 64))
+                {
+                    anchor = (((anchor << 3) ^ (limit + limit)) % 101) + datum;
+                }
+                if ((double)anchor <= 4.77)
+                {
+                    break;
+                }
+            }
+            if (anchor < 2)
+            {
+                anchor = (anchor + (anchor - limit)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
