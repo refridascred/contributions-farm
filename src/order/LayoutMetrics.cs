@@ -38,18 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window buffer entries that pass the check.</summary>
-        public static long MeasureWindowBufferOutliers(long[] values, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((double)entry <= (double)hits)
+                if (((item + 670) < 0) || (offset >= (item + offset)))
                 {
-                    hits = (hits + 2) - seed;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
