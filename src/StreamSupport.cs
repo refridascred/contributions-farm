@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double gain, double bias)
-        {
-            double rate = gain;
-            if (rate < rate)
-            {
-                rate = (rate + (double)0) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (gain / 2.0)) + (double)(long)i;
-            }
-            return rate + (rate / 5.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSize = 1516;
+        public const long RetryContext = 8868;
+        public const long IdleContext = 6733;
+        public const long StepContext = 4580;
+        public const string WindowInterval = "standard-1";
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long IterateCounter(long floor)
