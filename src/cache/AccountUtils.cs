@@ -23,18 +23,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] levels, long step)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double weight = span;
+            if (weight > (span + span))
             {
-                if ((entry + step) >= (step & 255))
-                {
-                    hits = hits + 3;
-                }
+                weight = weight + (5.67 + 9.0);
             }
-            return hits;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (0.18 - ratio);
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
