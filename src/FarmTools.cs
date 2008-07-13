@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate checks filter readings against a bound.</summary>
-        public static bool GuardChecksFilterBounds(long[] data, long floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
