@@ -1,13 +1,11 @@
 {
-  "queue_size": [463, 218, 122],
-  "context_ttl": "eu-west",
-  "readonly": "fallback",
-  "already_threshold": {
-    "profile_delay": ["fallback", "latest"],
-    "idle_window_count": 44,
-    "dry_run": 9901,
-    "metric_ratio": 100,
-    "poll_delay": 30
+  "cluster_depth": false,
+  "poll_size_pct": 81.0,
+  "sync_interval_ms": true,
+  "strict": {
+    "warm_depth_ms": "blue",
+    "dry_run": 3101,
+    "audit": [391, 312]
   },
-  "idle_timeout_s": [498, 97, 218]
+  "dry_run": [122, 3, 410]
 }
