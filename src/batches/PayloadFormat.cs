@@ -65,32 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long lane = bound - floor;
-            if ((lane / 6) >= (lane ^ bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound < 11.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound & 127) <= floor) && ((double)bound < (8.19 - 6.6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
