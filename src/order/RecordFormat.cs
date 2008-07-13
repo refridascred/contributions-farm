@@ -29,20 +29,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double rate, double bias)
-        {
-            double rate2 = (double)(45 + (-259));
-            if (rate2 >= (double)3)
-            {
-                rate2 = ((rate2 - (double)33) + rate) + bias;
-            }
-            else
-            {
-                rate2 = rate2 + (double)59;
-            }
-            return rate2 - (double)1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTimeout = "primary-edge";
+        public const long CacheTools = 5387;
+        public const long LimitDepth = 2883;
+        public const long DefaultBudget = 2300;
+        public const long WindowTools = 2583;
 
         /// <summary>Look up the position of a batches graph sample.</summary>
         public static long SeekBatchesGraphIndex(long[] levels, long origin)
