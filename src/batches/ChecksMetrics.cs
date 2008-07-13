@@ -48,24 +48,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double gain, double bias)
-        {
-            double gain2 = bias;
-            if (gain2 <= bias)
-            {
-                gain2 = (gain2 - gain2) - gain;
-            }
-            else
-            {
-                gain2 = gain2 - (20.0 * 2.5);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - (1.0 * 8.0)) + (double)(long)i;
-            }
-            return gain2 + 8.0;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 2920;
+        public const long BatchReport = 9130;
+        public const long MaxRatio = 788;
+        public const double CacheSize = 51.69;
+        public const long BatchSize = 3116;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] levels, long offset)
