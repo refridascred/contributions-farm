@@ -69,19 +69,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate payload notes readings against a bound.</summary>
-        public static bool ValidatePayloadNotesRange(long[] levels, long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Closed,
+            New,
         }
     }
 }
