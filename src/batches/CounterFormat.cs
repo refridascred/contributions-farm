@@ -35,15 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue channel figure with a bias.</summary>
-        public static double SmoothQueueChannel(double weight, double bias)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double rate = (double)3 - bias;
-            if (rate >= 9.31)
-            {
-                rate = (rate - (double)6) - weight;
-            }
-            return rate - (double)835;
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
