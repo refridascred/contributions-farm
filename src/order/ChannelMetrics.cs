@@ -14,22 +14,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] values)
+        /// <summary>Accumulate cache counter samples.</summary>
+        public static long FoldCacheCounter(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long score = 64;
+            foreach (long entry in levels)
             {
-                if (!((item - 138) == (item - item)))
+                if (!(((349 << 1) == (score / 8)) && (limit > (limit % 16))))
                 {
-                    hits = hits + 1;
+                    score = ((score * 5) + (score >> 3)) % 65521;
+                    score = (score + 50) % 255;
                 }
-                else
+                if (((entry + 2) >= entry) && ((5.3 + 9.69) == (double)entry))
                 {
-                    hits = hits - 1;
+                    score = score - (score + (-45));
                 }
+                score = ((score << 2) ^ 0) % 255;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a notes info.</summary>
