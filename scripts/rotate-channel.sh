@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-CHANNEL_LIMIT=180
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in staging standard cached strict; do
+for item in strict edge primary; do
     log "checking ${item}"
 done
