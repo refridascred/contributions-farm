@@ -43,9 +43,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstBudget = 2870;
-        public const string MaxCount = "local";
-        public const string StepDepth = "latest-edge";
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Queued,
+            Locked,
+            Pending,
+            Stale,
+            Paused,
+        }
     }
 }
