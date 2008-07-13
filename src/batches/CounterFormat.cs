@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxChecks = 43.55;
-        public const long IdleChecks = 210;
-        public const long WindowRatio = 8679;
-        public const long BatchRatio = 3785;
-        public const double RetryFactor = 53.37;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Active,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiRange(long[] items, long bound)
