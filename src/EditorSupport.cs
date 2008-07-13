@@ -70,19 +70,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] items, long seed)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Dropped,
+            Retry,
         }
     }
 }
