@@ -1,6 +1,14 @@
 {
-  "base_limit": 18,
-  "readonly": "primary",
-  "token_ttl": 407,
-  "schema_capacity": 250
+  "idle_ttl_pct": {
+    "audit": false,
+    "retry_limit": true,
+    "warm_timeout_pct": 5678,
+    "burst_capacity_count": 40.66,
+    "burst_limit_pct": "fallback",
+    "sync_capacity": true
+  },
+  "poll_ratio_ms": 86,
+  "base_timeout_pct": "open",
+  "retry_retries_s": true,
+  "payload_capacity": 16
 }
