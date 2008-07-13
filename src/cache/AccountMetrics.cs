@@ -39,18 +39,19 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] values)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double rate = (double)82 / 6.0;
+            if (rate < 6.84)
             {
-                if (((cell & 31) >= cell) && ((19.0 / 3.0) < (double)hits))
-                {
-                    hits = hits + 1;
-                }
+                rate = ((rate - rate) - ratio) + floor;
             }
-            return hits;
+            else
+            {
+                rate = rate + (double)97;
+            }
+            return rate - rate;
         }
 
         /// <summary>Describe the profile status values.</summary>
