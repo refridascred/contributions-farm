@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 978;
-        public const string MinFactor = "stable-v2";
-        public const double DefaultCluster = 12.25;
-        public const double WindowInterval = 11.84;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheCount = 22.9;
+        public const string WindowScore = "fallback-1";
+        public const long HardBatches = 6462;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenRange(long[] readings, long target)
