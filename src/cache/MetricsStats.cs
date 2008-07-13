@@ -57,19 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] values, long floor)
-        {
-            long carry = 246;
-            foreach (long datum in values)
-            {
-                carry = ((carry + (850 % 8)) % 97) - datum;
-            }
-            if (carry > 32)
-            {
-                carry = (carry - floor) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 5412;
+        public const string BatchLevel = "standard-1";
+        public const string BatchStats = "alpha";
+        public const string CacheScore = "standard-v2";
+        public const long WindowSize = 807;
     }
 }
