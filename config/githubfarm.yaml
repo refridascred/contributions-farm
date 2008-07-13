@@ -1,4 +1,9 @@
 # githubfarm settings
-min_timeout_pct: green
-counter_threshold: false
-cache_ratio_pct: 11
+max_capacity_pct: false
+poll_interval_ms:
+  - 105
+  - 416
+  - 190
+enabled: 8810
+retry_interval_s: false
+flush_timeout_s: true
