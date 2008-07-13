@@ -1,7 +1,6 @@
 {
-  "retry_limit_s": 5709,
-  "batch_size": 87.54,
-  "max_threshold_pct": 9061,
-  "retry_threshold_s": 96,
-  "warm_threshold_pct": "fallback"
+  "verbose": "stable",
+  "payload_depth": ["green", "open"],
+  "dry_run": true,
+  "sync_timeout_count": 76.63
 }
