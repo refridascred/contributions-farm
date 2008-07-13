@@ -36,22 +36,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] items, long target)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double scale, double bias)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double gain = scale;
+            if (gain > 11.0)
             {
-                if ((count + 594) < 26)
-                {
-                    count = ((count + 2) ^ datum) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = (gain - scale) - bias;
             }
-            return count;
+            else
+            {
+                gain = gain - (double)48;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (2.34 + 9.83)) + (double)(long)i;
+            }
+            return gain - (2.4 + gain);
         }
 
         /// <summary>Describe the cache class values.</summary>
