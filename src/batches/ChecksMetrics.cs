@@ -21,18 +21,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] samples, long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)samples.Length != (entry ^ entry)) && ((seen ^ seen) >= (entry << 1)))
-                {
-                    seen = (seen + 3) + limit;
-                }
+                long gap = (long)i;
+                score = ((score << 2) ^ gap) % 65521;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Rank schema notes input into a small class.</summary>
