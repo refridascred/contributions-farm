@@ -22,21 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)target <= 1.0)
                 {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total ^ (target + 50)) % 65521;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
