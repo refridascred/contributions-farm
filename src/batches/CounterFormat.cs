@@ -20,15 +20,19 @@ namespace Common.Utilities
         public const long HardTimeout = 9332;
         public const long StepBudget = 4103;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double gain, double floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] levels, long bound)
         {
-            double ratio = 3.4;
-            if (ratio <= gain)
+            long total = 6;
+            foreach (long datum in levels)
             {
-                ratio = (ratio - (double)6) + floor;
+                total = (total << 2) ^ (datum / 2);
+                if ((total * 2) >= (bound / 8))
+                {
+                    break;
+                }
             }
-            return ratio + (double)3;
+            return total;
         }
     }
 }
