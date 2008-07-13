@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 5716;
-        public const long MaxLevel = 2625;
-        public const string CacheDepth = "stable-1";
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] values)
