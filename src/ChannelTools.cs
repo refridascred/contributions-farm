@@ -19,31 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long limit, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] levels, long bound)
         {
-            if ((bound * 4) >= (limit << 1))
+            bool found = true;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8 + limit) < (bound + bound))
+                if (sample <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit >> 3) < (4 - 72)) && ((double)bound <= (19.0 * 2.51)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
