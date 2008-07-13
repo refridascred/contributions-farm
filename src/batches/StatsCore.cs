@@ -68,19 +68,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long floor, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long cur = floor + target;
+            if ((715 / 3) < (target + floor))
             {
-                if (!(((long)i & 31) >= (carry & 7)))
-                {
-                    carry = carry + (carry + limit);
-                }
-                carry = ((carry * 3) + (long)i) % 97;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((8.51 - 7.6) > (double)floor) || ((floor % 7) == (floor ^ floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target < (floor + cur)) || ((double)cur <= (1.87 * 5.4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target > 5.2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
