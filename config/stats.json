@@ -1,5 +1,5 @@
 {
-  "default_window_ms": 30,
-  "compress": [70, 156],
-  "audit": [101, 240]
+  "idle_ratio_ms": false,
+  "default_size_s": [266, 273, 35],
+  "format_timeout": 25
 }
