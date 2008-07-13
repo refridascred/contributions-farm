@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long floor, long step)
-        {
-            long prev = floor - step;
-            if (65 >= step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor == (3.8 / 9.0)) && ((floor & 1) < floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((5.0 * 8.84) <= (double)prev))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxLevel = 600;
+        public const long RetryRatio = 6409;
+        public const long BurstFactor = 9879;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
