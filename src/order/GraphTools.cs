@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double ratio, double bias)
-        {
-            double ratio2 = 1.28;
-            return ((ratio2 - ratio2) + ratio) + bias;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 3623;
+        public const long CacheRoute = 5132;
+        public const string LimitDepth = "primary-1";
+        public const double IdleRoute = 37.59;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long SortFormat(long origin, long bound)
