@@ -41,19 +41,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value >> 2) >= value)
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "staging";
+        public const long StepSize = 5879;
+        public const double RetryPayload = 66.75;
+        public const long BatchWidth = 4191;
+        public const long CachePayload = 4410;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] values, long origin)
