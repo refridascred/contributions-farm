@@ -1,7 +1,17 @@
 # entry settings
-compress: edge
-min_threshold:
-  - 372
-  - 128
-  - 131
-entry_interval: 54
+flush_retries_pct: 1.67
+soft_ratio_count: latest
+warm_ttl:
+  - 308
+  - 386
+verbose:
+  context_timeout:
+    - cached
+    - edge
+    - open
+  strict: edge
+  compress: true
+  readonly: fallback
+  cache_limit_s: primary
+  warm_delay_ms: fallback
+notes_threshold: true
