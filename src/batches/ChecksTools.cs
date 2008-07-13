@@ -40,13 +40,14 @@ namespace Common.Utilities
         public const double IdleAlready = 89.78;
         public const long MaxFactor = 8101;
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            Retry,
+            Dropped,
+            Queued,
+            Paused,
+            Stale,
         }
     }
 }
