@@ -19,23 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue route series from a seed.</summary>
-        public static long StepQueueRoute(long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] data, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long mix = 1;
+            foreach (long entry in data)
             {
-                if ((double)(long)i > (2.96 * 16.0))
+                if ((target << 1) < target)
                 {
-                    result = (result ^ (result - result)) % 65521;
+                    mix = mix + (entry + target);
                 }
-                else
-                {
-                    result = (result - (241 << 1)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
