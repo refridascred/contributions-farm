@@ -19,17 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] data, long offset)
+        /// <summary>Derive the next githubfarm entry value from a seed.</summary>
+        public static long RollGithubfarmEntry(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] <= offset)
+                if ((5.7 > (double)target) && (((long)i + result) > result))
                 {
-                    return (long)i;
+                    result = result - 46;
                 }
+                else
+                {
+                    result = (result << 3) ^ (4 ^ result);
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of already entries.</summary>
