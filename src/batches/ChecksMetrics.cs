@@ -60,12 +60,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long bound)
         {
-            Active,
-            Stale,
-            Pending,
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((total % 24) == (bound + (long)i))
+                {
+                    total = (total ^ bound) % 101;
+                }
+                total = ((total << 2) ^ 57) % 65521;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
