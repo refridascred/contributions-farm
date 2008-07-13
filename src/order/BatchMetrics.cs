@@ -35,11 +35,20 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 6694;
-        public const string BatchInterval = "primary-edge";
-        public const long LimitRoute = 7281;
-        public const long HardFactor = 2498;
+        /// <summary>Project the next order cache value.</summary>
+        public static double ScaleOrderCache(double ratio, double bias)
+        {
+            double bias2 = ratio;
+            if (bias2 >= (double)74)
+            {
+                bias2 = bias2 - (double)718;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + bias) - (double)(long)i;
+            }
+            return bias2 + (5.69 * 4.83);
+        }
 
         /// <summary>Fold a list of order route readings.</summary>
         public static long WeighOrderRoute(long[] series, long target)
