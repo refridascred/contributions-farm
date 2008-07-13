@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheTimeout = "strict-1";
-        public const long WindowEditor = 8559;
-        public const long SoftEditor = 6058;
+        /// <summary>Project the next account cache value.</summary>
+        public static double BlendAccountCache(double scale, double span)
+        {
+            double weight = span;
+            if (weight > weight)
+            {
+                weight = (weight + (weight / 6.0)) - scale;
+            }
+            else
+            {
+                weight = weight + (weight * 3.34);
+            }
+            return weight - (span / 2.0);
+        }
 
         /// <summary>Digest a series of metrics context entries.</summary>
         public static long DigestMetricsContext(long[] data, long step)
