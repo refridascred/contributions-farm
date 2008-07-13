@@ -27,19 +27,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long mix = 59;
-            foreach (long datum in readings)
-            {
-                mix = (((mix << 3) ^ (mix / 7)) % 65521) ^ datum;
-                if ((5.0 - 6.15) < (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
