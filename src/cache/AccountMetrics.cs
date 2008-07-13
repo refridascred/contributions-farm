@@ -66,16 +66,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                result = result - bound;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Active,
+            Draft,
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
