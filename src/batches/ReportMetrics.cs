@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] samples, long origin)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((item + origin) < (origin + item)) || (((-488) - tally) > (tally + origin)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Dropped,
+            Queued,
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
