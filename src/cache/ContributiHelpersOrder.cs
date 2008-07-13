@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const long LimitWidth = 1112;
         public const string BatchInterval = "legacy-v2";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 5168;
-        public const string SoftEditor = "open-edge";
-        public const long BaseEditor = 6613;
+        /// <summary>Match up support account samples.</summary>
+        public static long MatchSupportAccountCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
