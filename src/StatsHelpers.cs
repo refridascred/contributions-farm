@@ -14,32 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long limit, long step)
-        {
-            if ((double)limit > 4.4)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step == (1.74 + 18.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 4) >= 9)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 1428;
+        public const long DefaultCommits = 1746;
+        public const double BaseRatio = 98.95;
+        public const double WindowCommits = 57.37;
+        public const long IdleCommits = 7912;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double SmoothFilter(double bias, double offset)
