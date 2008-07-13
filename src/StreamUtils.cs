@@ -22,20 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long bound, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
+            long bound2 = bound + offset;
+            if ((bound - bound2) < 11)
             {
-                if ((double)target <= 1.0)
-                {
-                    total = (total ^ (target + 50)) % 65521;
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (bound >= (offset / 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound == (8.58 - 6.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
