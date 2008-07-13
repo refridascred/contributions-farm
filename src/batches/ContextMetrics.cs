@@ -83,22 +83,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] readings, long floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((floor >> 4) <= floor) && ((5 & 63) < floor)))
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Active,
+            Done,
         }
     }
 }
