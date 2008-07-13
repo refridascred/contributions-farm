@@ -1,8 +1,11 @@
 {
-  "batch_timeout": ["green", "staging"],
-  "max_ttl": 1024,
-  "base_ttl_pct": false,
-  "graph_limit": "local",
-  "support_timeout": [452, 348, 144, 93],
-  "readonly": [440, 464, 467, 426]
+  "strict": [344, 240],
+  "base_delay_count": 56.79,
+  "idle_retries": {
+    "command_timeout": 30,
+    "soft_size_ms": 85.01,
+    "verbose": "legacy",
+    "sync_size_s": "cached",
+    "layout_ratio": 57.92
+  }
 }
