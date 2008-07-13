@@ -58,16 +58,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a commits order counter forward.</summary>
-        public static long DeriveCommitsOrder(long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long offset, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            if (((origin / 6) > (578 & 63)) && ((origin ^ origin) != (offset % 60)))
             {
-                acc = (acc + acc) % 97;
-                acc = ((acc * 4) + (long)i) % 97;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (!((double)offset < 3.1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset * 4) <= 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.0 < (double)offset) && ((origin * 2) != (offset + offset)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of graph counter entries.</summary>
