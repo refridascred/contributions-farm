@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const long RetryDepth = 4155;
         public const string HardBudget = "primary-edge";
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Measure how many record counter samples are out of range.</summary>
+        public static long CountRecordCounterMatches(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sample % 2) < (seen - (long)series.Length)) || ((offset + seen) == (sample - seen)))
                 {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a notes header.</summary>
