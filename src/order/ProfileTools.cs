@@ -23,12 +23,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 1229;
-        public const long DefaultEditor = 2926;
-        public const long SoftEditor = 8591;
-        public const double MaxBudget = 49.92;
-        public const long LimitCount = 7982;
+        /// <summary>Locate a token channel reading by value.</summary>
+        public static long LookupTokenChannelIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] readings)
