@@ -54,32 +54,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a stats schema value against two limits.</summary>
-        public static long RankStatsSchema(long floor, long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] series, long floor)
         {
-            long gap = floor ^ bound;
-            if ((6.6 - 8.3) == (double)bound)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor < (gap >> 1))
+                if (series[i] <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + bound) > gap)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
