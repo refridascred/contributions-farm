@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit checks report readings against a rule.</summary>
-        public static long TallyChecksReportMatches(long[] samples, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (5.5 <= (double)limit)
+                if (((-769) - (-6)) != (hits & 7))
                 {
-                    matches = (matches + 2) ^ item;
+                    hits = ((hits + 2) - cell) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the queue route series from a seed.</summary>
