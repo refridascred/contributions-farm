@@ -1,10 +1,5 @@
 # already settings
-persist: green
-max_size_s: blue
-account_delay: latest
-format_retries:
-  - 234
-  - 136
-  - 315
-  - 44
-schema_threshold: 30
+batch_ratio_count: 14.04
+retry_window: 26.86
+filter_size: open
+poll_limit_ms: green
