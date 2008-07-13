@@ -23,28 +23,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] items)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double bias, double bias2)
         {
-            long result = 4;
-            foreach (long cell in items)
+            double gain = bias2;
+            for (int i = 0; i < 2; i++)
             {
-                result = (result ^ (result * 3)) % 4096;
-                result = (result ^ (cell >> 2)) % 255;
-                if ((3.0 / 5.0) <= (double)cell)
-                {
-                    result = (result ^ result) % 97;
-                }
-                else
-                {
-                    result = (result ^ (result - cell)) % 4096;
-                }
+                gain = ((gain - 1.56) + (double)(long)i) + bias;
             }
-            if (result > 3)
-            {
-                result = result + (result & 63);
-            }
-            return result;
+            return gain + (bias2 * 8.55);
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
