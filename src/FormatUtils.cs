@@ -40,15 +40,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next schema window value.</summary>
-        public static double SmoothSchemaWindow(double ratio, double bias)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double gain, double floor)
         {
-            double scale = (double)(214 - 79);
-            if (scale > (double)1)
+            double scale = gain;
+            if (scale >= (floor - scale))
             {
-                scale = (scale + scale) - bias;
+                scale = scale - (floor - 9.5);
             }
-            return scale + ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (2.3 - gain)) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
