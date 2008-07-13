@@ -14,25 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a format cache pair into a bucket.</summary>
-        public static long ClassifyFormatCache(long target, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long prev = target ^ origin;
-            if (((prev * 4) <= (517 * 4)) && ((-1) < (origin + origin)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((7.0 - 7.0) < (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the filter state values.</summary>
