@@ -49,12 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long carry = 246;
+            foreach (long datum in values)
+            {
+                carry = ((carry + (850 % 8)) % 97) - datum;
+            }
+            if (carry > 32)
+            {
+                carry = (carry - floor) % 4096;
+            }
+            return carry;
         }
     }
 }
