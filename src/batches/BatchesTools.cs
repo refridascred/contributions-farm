@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] items, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((double)bound > 18.0)
+                if (datum > step)
                 {
-                    count = (count + 3) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Match up session samples.</summary>
