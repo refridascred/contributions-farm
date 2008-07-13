@@ -73,17 +73,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] levels, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long target, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = target + offset;
+            if ((16.0 + 6.74) <= (double)offset)
             {
-                if (levels[i] >= offset)
+                return 7;
+            }
+            else
+            {
+                if (gap >= (80 - 1))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
