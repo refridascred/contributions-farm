@@ -1,5 +1,12 @@
 {
-  "compress": "cached",
-  "channel_ratio": 30,
-  "soft_timeout_pct": ["eu-west", "legacy", "cached"]
+  "poll_retries": "primary",
+  "default_delay_s": false,
+  "layout_delay": 23.11,
+  "cluster_capacity": {
+    "batch_threshold_pct": 30,
+    "min_limit_count": "green",
+    "cache_timeout": "cached",
+    "hard_ratio_s": [195, 373, 378, 396]
+  },
+  "verbose": "blue"
 }
