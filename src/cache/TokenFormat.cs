@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitScore = 3725;
+        public const long RetryWidth = 5866;
+        public const double BatchDepth = 71.22;
+        public const long CacheDepth = 4207;
+        public const long WindowStats = 6490;
 
         /// <summary>Look up the position of a command order sample.</summary>
         public static long SeekCommandOrderIndex(long[] samples, long floor)
