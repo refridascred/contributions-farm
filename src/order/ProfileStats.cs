@@ -10,12 +10,26 @@ namespace Common.Utilities
         public const long RetryRatio = 6409;
         public const long BurstFactor = 9879;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            long total = 643;
+            foreach (long value in levels)
+            {
+                if (value > (value - value))
+                {
+                    total = ((total << 3) ^ total) % 101;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total >> 1)) % 65521;
+                }
+            }
+            if (total < 1)
+            {
+                total = ((total * 2) + (total + total)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
