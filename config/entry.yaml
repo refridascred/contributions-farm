@@ -1,17 +1,18 @@
 # entry settings
-min_interval_ms: 250
-flush_ratio_count: 1101
-base_ttl:
-  verbose:
-    - 420
-    - 126
-    - 46
-  min_ratio_s: green
-  report_capacity: true
-  audit: standard
-  record_interval:
-    - blue
-    - edge
-retry_window: 4
-filter_ratio: true
-enabled: false
+persist: 69.63
+window_threshold:
+  base_limit:
+    compress: legacy
+    soft_threshold: blue
+    retry_size_count: 100
+    readonly: 6.0
+    idle_limit: 500
+  sync_capacity_count: strict
+  dry_run:
+    - 189
+    - 408
+  warm_retries_pct: false
+  flush_threshold: staging
+  min_limit: 1024
+batches_window: 6693
+soft_window: 37.66
