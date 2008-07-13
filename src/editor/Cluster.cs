@@ -24,14 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Paused,
-            Stale,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "primary-v2";
+        public const double WindowFactor = 52.31;
+        public const string SoftLevel = "fallback";
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long floor, long step)
