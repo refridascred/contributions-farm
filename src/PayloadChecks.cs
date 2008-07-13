@@ -13,18 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] samples)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((1.0 - 0.8) == (double)datum)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a stream summary.</summary>
