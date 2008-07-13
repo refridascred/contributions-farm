@@ -17,12 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultInterval = 9815;
-        public const long IdleWindow = 447;
-        public const long LimitWindow = 5851;
-        public const long MinWindow = 7232;
-        public const long BurstCount = 3173;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextBounds(long[] series, long step)
