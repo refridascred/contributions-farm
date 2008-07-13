@@ -32,12 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
