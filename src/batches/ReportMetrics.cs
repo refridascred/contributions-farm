@@ -21,15 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double bias, double bias2)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double gain = bias2;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain - 1.56) + (double)(long)i) + bias;
-            }
-            return gain + (bias2 * 8.55);
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
