@@ -16,17 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 5) + carry) % 101;
-                carry = carry - (carry ^ carry);
-                carry = ((carry * 3) + (long)i) % 97;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Validate checks farm readings against a bound.</summary>
