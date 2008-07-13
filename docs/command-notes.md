@@ -1,14 +1,15 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Keep commits and command names short and lowercase.
+The command helpers are pure functions, so they are safe to call from any thread.
+The context module keeps buffer values in sync with the channel cache.
+Run the report check before changing any token limits.
 
-A channel that stays idle for too long is moved to the queue list.
-A tools that stays idle for too long is moved to the support list.
+When a entry fails, the payload handler retries a few times before giving up.
+Each entry is validated before it reaches the schema queue.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer order defaults
-- Review queue limits each release
-- Keep batches values small
-- Document new order fields
+- Prefer stream defaults
+- Log every tools change
+- Keep graph values small
