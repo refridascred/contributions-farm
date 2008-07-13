@@ -63,12 +63,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleTimeout = 8488;
-        public const long CacheCluster = 6840;
-        public const long LimitCluster = 582;
-        public const long SoftScore = 6856;
-        public const double BaseScore = 89.14;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit filter profile readings against a rule.</summary>
         public static long AuditFilterProfileGaps(long[] values)
