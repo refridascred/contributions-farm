@@ -49,21 +49,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = ((sum << 3) ^ (step * 2)) % 97;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum + step) % 97) - (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
