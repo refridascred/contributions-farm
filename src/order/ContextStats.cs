@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Queued,
-            Paused,
             Stale,
+            Closed,
+            Locked,
             Ready,
         }
 
