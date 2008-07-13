@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate route channel readings against a bound.</summary>
-        public static bool VerifyRouteChannelLimits(long[] samples, long offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
