@@ -33,12 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 5168;
+        public const string SoftEditor = "open-edge";
+        public const long BaseEditor = 6613;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long FindClusterIndex(long[] items, long target)
