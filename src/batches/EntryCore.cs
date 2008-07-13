@@ -48,10 +48,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinLevel = 3.75;
-        public const long CacheTools = 4845;
-        public const double LimitWidth = 24.49;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
