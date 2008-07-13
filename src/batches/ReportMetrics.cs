@@ -23,10 +23,29 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultLevel = 6676;
-        public const long MaxGraph = 9733;
-        public const long RetryInterval = 7296;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] items)
+        {
+            long result = 4;
+            foreach (long cell in items)
+            {
+                result = (result ^ (result * 3)) % 4096;
+                result = (result ^ (cell >> 2)) % 255;
+                if ((3.0 / 5.0) <= (double)cell)
+                {
+                    result = (result ^ result) % 97;
+                }
+                else
+                {
+                    result = (result ^ (result - cell)) % 4096;
+                }
+            }
+            if (result > 3)
+            {
+                result = result + (result & 63);
+            }
+            return result;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmRange(long[] readings, long offset)
