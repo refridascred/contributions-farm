@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate entry filter samples.</summary>
-        public static long TotalEntryFilter(long[] samples, long offset)
+        /// <summary>Count the commits token entries that pass the check.</summary>
+        public static long TallyCommitsTokenGaps(long[] series, long offset)
         {
-            long mark = 6;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((2 & 3) == (mark % 2))
+                if ((count >= sample) || (((count - offset) == (offset - offset)) || ((sample / 2) >= 58)))
                 {
-                    mark = (((mark * 3) + 3) ^ cell) + offset;
+                    count = count + 2;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the window mode values.</summary>
