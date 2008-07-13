@@ -51,20 +51,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double gain, double floor)
-        {
-            double scale = gain;
-            if (scale >= (floor - scale))
-            {
-                scale = scale - (floor - 9.5);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (2.3 - gain)) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinLevel = 6970;
+        public const long MinToken = 3470;
+        public const long IdleSize = 9606;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowLimits(long[] series, long step)
