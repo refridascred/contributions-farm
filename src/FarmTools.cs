@@ -23,15 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double weight, double floor)
+        /// <summary>Roll a graph queue counter forward.</summary>
+        public static long SeriesGraphQueue(long limit)
         {
-            double drift = floor - weight;
-            if (drift > (floor / 3.0))
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                drift = drift + (weight * 4.98);
+                result = (result << 3) ^ (limit / 9);
+                if ((double)(long)i > 5.5)
+                {
+                    result = result ^ ((long)i % 60);
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return drift + floor;
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
