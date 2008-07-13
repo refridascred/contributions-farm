@@ -17,15 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double ratio, double offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] levels, long seed)
         {
-            double scale = offset;
-            if (scale < ratio)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                scale = scale + scale;
+                if (item < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale - scale;
+            return ready;
         }
 
         /// <summary>Hold a stream info.</summary>
