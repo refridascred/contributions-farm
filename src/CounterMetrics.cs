@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Measure how many commits contributi samples are out of range.</summary>
+        public static long AuditCommitsContributiMatches(long[] levels)
         {
-            Synced,
-            Paused,
-            Draft,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((double)sample < (double)3) && ((double)sample <= 7.9)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
