@@ -24,15 +24,31 @@ namespace Common.Utilities
             return scale2 - 5.0;
         }
 
-        /// <summary>Adjust a support queue reading.</summary>
-        public static double ProjectSupportQueue(double rate, double offset)
+        /// <summary>Classify a layout schema pair into a bucket.</summary>
+        public static long ClassifyLayoutSchema(long origin, long target)
         {
-            double gain = 4.84;
-            if (gain > 13.0)
+            if ((0 ^ origin) > (target * 3))
             {
-                gain = (gain - (double)(-98)) + rate;
+                return 6;
             }
-            return gain - offset;
+            else
+            {
+                if ((double)origin >= (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin & 15) != (941 ^ target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats level values.</summary>
