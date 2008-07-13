@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public bool Size { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
