@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const long HardSession = 1060;
         public const long BatchSession = 2837;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double floor)
+        /// <summary>Derive the next already route value from a seed.</summary>
+        public static long IterateAlreadyRoute(long limit)
         {
-            double mean = floor * 9.0;
-            if (mean <= 13.0)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                mean = mean - scale;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = ((mix + (limit % 97)) % 97) + (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)(-54)) - (double)(long)i;
-            }
-            return mean + 1.02;
+            return mix;
         }
     }
 }
