@@ -1,7 +1,37 @@
 # entry settings
-payload_size: local
-default_interval_pct: 47.34
-poll_delay_s: 25.68
-batches_delay: eu-west
-window_retries: 5
-session_ttl: 4525
+verbose: standard
+min_timeout_count:
+  enabled:
+    hard_size_pct: 2489
+    audit:
+      - primary
+      - blue
+    default_timeout_s: 8986
+    support_delay:
+      - 91
+      - 181
+    record_threshold: stable
+  queue_window:
+    sync_retries_ms: open
+    farm_size: 75.56
+    editor_capacity: 68.31
+    soft_limit_pct: local
+    cache_window: 3418
+  contributi_interval: 60
+  readonly: strict
+  sync_limit_count:
+    - green
+    - latest
+    - fallback
+    - primary
+  min_threshold:
+    batches_limit: true
+    base_limit_s: true
+    base_delay_count:
+      - 471
+      - 150
+    cache_ratio: 3030
+    batch_ratio_pct: 100
+persist: 500
+base_threshold: 500
+report_retries: primary
