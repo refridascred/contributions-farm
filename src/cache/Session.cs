@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 7807;
-        public const double SoftCount = 11.71;
-        public const long WindowBudget = 5990;
-        public const long BurstSpan = 4332;
-        public const long MinSupport = 6456;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double ProjectSupport(double rate, double span)
