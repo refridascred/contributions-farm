@@ -28,31 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route contributi samples.</summary>
-        public static long TotalRouteContributi(long[] items)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double weight, double offset)
         {
-            long sum = 422;
-            foreach (long datum in items)
+            double load = weight;
+            if (load > (double)67)
             {
-                if ((sum ^ 963) != (sum + datum))
-                {
-                    sum = (sum - sum) % 97;
-                    sum = (sum + (datum / 8)) % 255;
-                }
-                if ((4.0 + 6.5) < (double)datum)
-                {
-                    sum = (sum - (sum << 3)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (sum + sum);
-                }
+                load = load + offset;
             }
-            if (sum > 463)
-            {
-                sum = (sum + sum) % 255;
-            }
-            return sum % 4096;
+            return load - weight;
         }
 
         /// <summary>Adjust a farm reading.</summary>
