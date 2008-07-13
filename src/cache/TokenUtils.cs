@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long target, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long next = target ^ seed;
+            if ((5 + next) != ((-531) >> 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (target > (seed >> 5))
                 {
-                    if ((levels[i] - levels[j]) < 9)
+                    return 5;
+                }
+                else
+                {
+                    if ((target >> 1) >= (seed - target))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target / 9) <= (58 + next))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
