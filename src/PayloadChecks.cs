@@ -28,15 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double weight, double offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double load = weight;
-            if (load > (double)67)
-            {
-                load = load + offset;
-            }
-            return load - weight;
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
