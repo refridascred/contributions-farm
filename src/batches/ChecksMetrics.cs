@@ -48,18 +48,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] values, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((771 - step) != (2 + step)))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            Ready,
+            Done,
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Locate a report reading by value.</summary>
