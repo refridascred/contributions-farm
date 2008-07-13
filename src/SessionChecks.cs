@@ -64,11 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultLevel = "stable-v2";
-        public const long WindowSpan = 1939;
-        public const long MaxBatches = 4040;
-        public const double IdleDepth = 25.02;
-        public const string RetryDepth = "legacy-v2";
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
