@@ -1,5 +1,9 @@
 # support settings
-burst_ttl: true
-window_interval: 32.08
-verbose: local
-commits_depth: 20.08
+default_depth_pct: primary
+hard_size_count: true
+base_limit_count:
+  enabled: open
+  min_timeout_ms: 60
+  min_timeout: 76.42
+  payload_depth: eu-west
+  compress: false
