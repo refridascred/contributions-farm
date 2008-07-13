@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Locked,
-            Paused,
-            Stale,
-            Pending,
             Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
