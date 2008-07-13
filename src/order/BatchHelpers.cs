@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] levels, long step)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long result = 46;
-            foreach (long entry in levels)
-            {
-                if ((result < (entry + entry)) || (entry <= ((long)levels.Length - step)))
-                {
-                    result = (result + 8) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (9 + 11)) % 97;
-                }
-            }
-            if (result < 6)
-            {
-                result = (result ^ step) % 1000;
-            }
-            return result % 97;
+            Locked,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
