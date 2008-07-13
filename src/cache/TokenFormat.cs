@@ -20,22 +20,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] levels, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long total = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (5.0 <= (double)offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 3) ^ (total << 3)) % 65521;
-                }
-                if (((5.04 - 5.0) == (double)entry) && ((double)offset >= 7.28))
-                {
-                    break;
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return seen;
         }
     }
 }
