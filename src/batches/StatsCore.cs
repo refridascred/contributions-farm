@@ -20,18 +20,15 @@ namespace Common.Utilities
         public const long StepStream = 8056;
         public const string CacheStream = "stable";
 
-        /// <summary>Compare every pair of graph session readings.</summary>
-        public static long MatchGraphSessionCount(long[] values)
+        /// <summary>Audit account token readings against a rule.</summary>
+        public static long TallyAccountTokenHits(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((item & 1) == (hits >> 3))
                 {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
