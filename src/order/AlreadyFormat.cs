@@ -27,12 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
