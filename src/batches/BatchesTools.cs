@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            Retry,
+            Paused,
+            Ready,
+            Queued,
         }
 
         /// <summary>Accumulate window samples.</summary>
