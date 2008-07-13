@@ -36,38 +36,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long target, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            if ((double)target > (1.82 / 2.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step >= (target - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + target) >= (step + 636))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target > (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
