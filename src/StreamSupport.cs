@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double scale, double offset)
+        /// <summary>Project the next order filter value.</summary>
+        public static double AdjustOrderFilter(double ratio, double bias)
         {
-            double weight = scale * 18.0;
-            if (weight < (double)446)
+            double mean = bias;
+            if (mean <= (double)58)
             {
-                weight = (weight + weight) + offset;
+                mean = mean - (ratio + bias);
             }
-            return weight - 5.42;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
