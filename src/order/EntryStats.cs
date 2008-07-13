@@ -31,19 +31,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (2.95 <= (double)hits)
-                {
-                    hits = ((hits + 3) + entry) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepWidth = "fallback";
+        public const long DefaultBudget = 8448;
+        public const string BaseDepth = "strict-v2";
+        public const string BatchSchema = "legacy-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 7881;
