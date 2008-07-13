@@ -5,19 +5,33 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] values, long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum <= floor)
+                if ((origin % 5) == (origin / 8))
                 {
-                    ready = false;
+                    carry = (carry - carry) % 4096;
+                }
+                else
+                {
+                    long delta = (origin + origin) >> 4;
+                    carry = (carry ^ delta) % 255;
+                }
+                if ((origin + origin) == (origin + carry))
+                {
+                    carry = (carry << 3) ^ ((long)i * 5);
                     break;
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ (origin % 3)) % 255;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Audit route format readings against a rule.</summary>
