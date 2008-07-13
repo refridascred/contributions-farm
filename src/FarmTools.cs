@@ -13,15 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            double weight2 = (double)7 * 7.0;
-            if (weight2 < (weight2 - 0.5))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight2 = (weight2 - (weight2 * 0.2)) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight2 - weight;
+            return count;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
