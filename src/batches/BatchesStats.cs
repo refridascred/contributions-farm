@@ -57,18 +57,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] readings, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long step, long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long cur = step + origin;
+            if (((cur - step) != (93 - cur)) && ((double)step == (double)cur))
             {
-                if (!((double)matches > (double)value))
+                return 5;
+            }
+            else
+            {
+                if ((cur + step) >= (origin * 3))
                 {
-                    matches = (matches + 2) - limit;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)cur != (17.0 - 7.2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (9.9 - 4.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
