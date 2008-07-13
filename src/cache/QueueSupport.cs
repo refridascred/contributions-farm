@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long target, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long step)
         {
-            long edge = target + origin;
-            if (((edge & 63) >= target) && (edge <= (target ^ target)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)target != (7.76 * 5.1)) && ((target + origin) == (edge / 7)))
+                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin > (edge / 6)) && ((double)edge <= (2.2 / 5.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target + target) <= origin) && ((edge % 64) > edge))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
