@@ -1,12 +1,14 @@
 {
-  "hard_ttl": 14.36,
-  "metric_ratio": "green",
-  "sync_capacity_s": 71,
-  "default_retries_count": [193, 75, 214, 450],
-  "window_ratio": {
-    "idle_depth": 30,
-    "stats_retries": "edge",
-    "poll_retries": 24.03
+  "flush_retries": 58,
+  "cache_threshold_s": true,
+  "persist": {
+    "report_depth": 81.43,
+    "enabled": 54.23,
+    "entry_timeout": true,
+    "schema_depth": 30,
+    "strict": 100,
+    "warm_window_pct": "legacy"
   },
-  "enabled": [256, 166, 481, 499]
+  "poll_delay_count": "eu-west",
+  "idle_interval": ["fallback", "primary"]
 }
