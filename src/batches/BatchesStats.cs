@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a profile tools figure with a bias.</summary>
-        public static double ScaleProfileTools(double ratio, double span)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            double scale = span;
-            if (scale < ratio)
+            long state = 7;
+            foreach (long cell in levels)
             {
-                scale = scale + (scale + scale);
+                if ((0.2 - 3.29) <= (double)cell)
+                {
+                    state = state + state;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (scale + ratio)) - (double)(long)i;
-            }
-            return scale + span;
+            return state % 4096;
         }
 
         /// <summary>Validate metrics already readings against a bound.</summary>
