@@ -37,12 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultLevel = 18.79;
-        public const long BaseContributi = 4338;
-        public const long MaxContributi = 9484;
-        public const long MinContributi = 6991;
-        public const double CacheContributi = 25.48;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] readings)
