@@ -52,15 +52,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] items, long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long score = -413;
-            foreach (long value in items)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                score = (((score * 3) + score) ^ value) - offset;
+                carry = carry ^ 7;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return score;
+            return carry;
         }
     }
 }
