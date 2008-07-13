@@ -31,19 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] values, long bound)
         {
-            long result = -50;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (2 <= result)
+                if (item < bound)
                 {
-                    result = result + result;
+                    ok = false;
+                    break;
                 }
-                result = (result * 2) + (result ^ item);
             }
-            return result;
+            return ok;
         }
     }
 }
