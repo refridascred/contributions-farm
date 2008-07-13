@@ -1,22 +1,21 @@
 # githubfarm settings
-idle_size_count:
-  cluster_retries: 30
-  sync_window_ms:
-    base_timeout_ms: true
-    batch_window_ms: false
-    dry_run:
-      - 74
-      - 378
-      - 286
-      - 213
-  retry_limit_pct: true
-  filter_timeout:
-    - 152
-    - 391
-batch_timeout_count: false
-compress: false
-dry_run:
-  - 106
-  - 392
-  - 317
-  - 179
+retry_threshold: legacy
+batch_window_pct: 30
+dry_run: legacy
+hard_limit_pct:
+  already_window: false
+  context_size:
+    - 62
+    - 96
+  cache_threshold: 5804
+  idle_delay_ms:
+    base_limit_ms: 32.71
+    retry_window_pct: stable
+    verbose: 45.76
+    strict:
+      - 104
+      - 357
+      - 162
+    compress: legacy
+session_retries: 89
+checks_retries: local
