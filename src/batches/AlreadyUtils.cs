@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "staging-v2";
-        public const long MinPayload = 4399;
-        public const string IdlePayload = "primary-edge";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long offset)
+        {
+            if ((offset + (-661)) < (33 << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (2.45 <= (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + 5) >= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
