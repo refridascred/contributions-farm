@@ -57,12 +57,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Draft,
             New,
-            Synced,
+            Failed,
+            Done,
+            Stale,
+            Queued,
         }
     }
 }
