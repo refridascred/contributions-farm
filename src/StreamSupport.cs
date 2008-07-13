@@ -21,15 +21,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double bias, double floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] items, long limit)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                bias2 = ((bias2 - (double)0) + (double)(long)i) + floor;
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias2 - (bias2 - bias);
+            return flag;
         }
     }
 }
