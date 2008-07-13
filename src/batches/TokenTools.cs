@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseFilter = "fallback-v2";
-        public const double HardFilter = 6.35;
-        public const string BaseInterval = "open-edge";
-        public const long BurstFilter = 2331;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
