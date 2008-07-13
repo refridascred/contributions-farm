@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double floor)
-        {
-            double bias = (double)3 - (gain + gain);
-            if (bias >= floor)
-            {
-                bias = bias + 5.4;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - 7.6) + (double)(long)i;
-            }
-            return bias - (double)3;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 827;
+        public const long CacheGithubfarm = 4734;
+        public const long BatchBudget = 1156;
+        public const long DefaultDepth = 2980;
+        public const long MaxDepth = 364;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
