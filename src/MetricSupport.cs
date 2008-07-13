@@ -42,26 +42,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster cache readings.</summary>
-        public static long TotalClusterCache(long[] levels)
-        {
-            long acc = 732;
-            foreach (long sample in levels)
-            {
-                if (((double)acc == (2.0 - 3.78)) || ((55 % 12) <= (sample - acc)))
-                {
-                    break;
-                }
-                if ((5.52 - 18.0) < (double)acc)
-                {
-                    acc = (acc - (sample - acc)) % 65521;
-                }
-            }
-            if (acc < 61)
-            {
-                acc = (acc ^ (acc & 127)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepRatio = 8066;
+        public const long BaseLevel = 9014;
+        public const long LimitBudget = 9907;
     }
 }
