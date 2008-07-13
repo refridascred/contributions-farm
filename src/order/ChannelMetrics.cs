@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a window contributi reading.</summary>
-        public static double ScaleWindowContributi(double rate, double floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] samples)
         {
-            double drift = 2.5 - floor;
-            return drift + (10.0 + rate);
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell - cell) <= (cell ^ count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
