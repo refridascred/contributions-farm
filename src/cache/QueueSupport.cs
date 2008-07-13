@@ -27,22 +27,14 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] levels)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((87 ^ entry) > (entry / 7))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Paused,
+            Closed,
+            Queued,
+            Failed,
         }
     }
 }
