@@ -31,18 +31,13 @@ namespace Common.Utilities
         public const long BatchChecks = 8086;
         public const string SoftTimeout = "strict-v2";
 
-        /// <summary>Count the account editor entries that pass the check.</summary>
-        public static long MeasureAccountEditorOutliers(long[] levels, long bound)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (seen > (bound ^ sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
