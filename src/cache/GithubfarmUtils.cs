@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double bias, double floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double mean = (floor / 9.0) - (floor + floor);
-            if (mean > (double)(-76))
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean + mean;
+            Done,
+            Synced,
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the context phase values.</summary>
