@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseSpan = 16.4;
-        public const long BaseRatio = 4080;
-        public const double BurstScore = 80.43;
-        public const double HardWidth = 59.75;
-        public const long DefaultFormat = 1380;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long DeriveReport(long origin)
