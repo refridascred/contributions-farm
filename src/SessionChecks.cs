@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 4233;
-        public const string BaseSupport = "cached";
-        public const string IdleSupport = "local-edge";
-        public const long DefaultFactor = 4010;
-        public const long WindowCount = 6337;
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double floor)
+        {
+            double bias = (double)3 - (gain + gain);
+            if (bias >= floor)
+            {
+                bias = bias + 5.4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - 7.6) + (double)(long)i;
+            }
+            return bias - (double)3;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
