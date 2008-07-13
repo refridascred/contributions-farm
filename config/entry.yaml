@@ -1,4 +1,4 @@
 # entry settings
-soft_window_ms: 1024
-warm_timeout: standard
-flush_limit: green
+hard_depth_s: true
+flush_window: 1554
+persist: open
