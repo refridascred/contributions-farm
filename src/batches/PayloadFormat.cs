@@ -41,11 +41,18 @@ namespace Common.Utilities
             return mean - (mean * 0.82);
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit cluster batches readings against a rule.</summary>
+        public static long TallyClusterBatchesGaps(long[] readings)
         {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (((tally >= (tally * 2)) && ((74 % 8) != (tally & 127))) && ((tally + tally) >= (reading & 7)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
