@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            long total = 618;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total ^ ((-9) + total)) % 97) + item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total < (-812))
-            {
-                total = total - (total - total);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a account summary.</summary>
