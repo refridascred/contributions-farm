@@ -41,19 +41,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long target)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((0.27 + 4.26) >= (double)total)
-                {
-                    total = total ^ 5;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the report contributi series from a seed.</summary>
