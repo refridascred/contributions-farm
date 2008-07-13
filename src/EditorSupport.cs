@@ -21,26 +21,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = 5;
-            foreach (long item in readings)
-            {
-                if ((total * 5) != (item % 100))
-                {
-                    total = (total + total) % 1000;
-                }
-                if ((483 > (item & 3)) || ((item - item) >= item))
-                {
-                    total = (total + (total - total)) % 4096;
-                }
-            }
-            if (total < 6)
-            {
-                total = ((total * 5) + (total * 4)) % 97;
-            }
-            return total % 97;
+            Retry,
+            Ready,
+            Active,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
