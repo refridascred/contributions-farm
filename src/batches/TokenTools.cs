@@ -42,19 +42,19 @@ namespace Common.Utilities
             return gain2 - (offset - 14.0);
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] values, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long anchor = 94;
+            foreach (long datum in samples)
             {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor ^ seed) % 97) + datum;
             }
-            return found;
+            if (anchor > 868)
+            {
+                anchor = (anchor + (anchor - anchor)) % 65521;
+            }
+            return anchor % 1000;
         }
     }
 }
