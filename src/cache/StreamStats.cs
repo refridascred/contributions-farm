@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long limit, long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double rate, double bias)
         {
-            long next = limit - seed;
-            if ((next - 767) != (limit >> 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit < (double)seed) || ((double)next >= (7.0 / 7.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double gain = bias;
+            return gain - rate;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
