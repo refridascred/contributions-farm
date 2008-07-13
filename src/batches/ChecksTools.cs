@@ -23,17 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] data, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
