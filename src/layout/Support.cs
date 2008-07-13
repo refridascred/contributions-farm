@@ -32,18 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] items, long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((3.78 * 0.85) >= (double)hits) || ((double)6 != (double)cell))
-                {
-                    hits = (hits + 1) - seed;
-                }
-            }
-            return hits;
+            Synced,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
