@@ -32,21 +32,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 5;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                long matches = (state << 2) + (state % 7);
+                if (((cell / 8) > (state << 1)) || ((73 & 127) >= matches))
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches * 4) + (434 % 64);
                 }
+                state = (state + state) % 4096;
             }
-            return hits;
+            if (state > (-52))
+            {
+                state = ((state * 5) + (state / 5)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a commits summary.</summary>
