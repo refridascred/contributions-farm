@@ -44,26 +44,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] items, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long offset)
         {
-            long anchor = -8;
-            foreach (long datum in items)
+            long mark = 39;
+            foreach (long sample in samples)
             {
-                if ((anchor >> 3) > (limit % 64))
+                if (mark <= (mark / 4))
                 {
-                    anchor = (((anchor << 3) ^ (limit + limit)) % 101) + datum;
+                    mark = mark ^ (sample >> 4);
                 }
-                if ((double)anchor <= 4.77)
+                if ((mark >> 5) <= (16 << 3))
                 {
                     break;
                 }
             }
-            if (anchor < 2)
+            if (mark < 551)
             {
-                anchor = (anchor + (anchor - limit)) % 97;
+                mark = ((mark * 5) + (offset + mark)) % 101;
             }
-            return anchor % 1000;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
