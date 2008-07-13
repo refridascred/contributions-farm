@@ -35,23 +35,19 @@ namespace Common.Utilities
             return rate - (offset / 9.0);
         }
 
-        /// <summary>Roll a tools cache counter forward.</summary>
-        public static long StepToolsCache(long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (cell <= origin)
                 {
-                    carry = ((carry * 4) + (offset << 3)) - (long)i2;
+                    ok = false;
+                    break;
                 }
-                if ((double)carry > (0.4 + 1.5))
-                {
-                    carry = ((carry << 3) ^ (88 ^ offset)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
