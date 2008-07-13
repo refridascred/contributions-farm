@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] readings, long offset)
         {
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!(((offset >> 4) <= (65 - 0)) && ((double)offset == (double)item)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
