@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const long HardSession = 1060;
         public const long BatchSession = 2837;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] samples, long step)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double mean = floor * 9.0;
+            if (mean <= 13.0)
             {
-                if (85 <= reading)
-                {
-                    matches = (matches + 3) + step;
-                }
+                mean = mean - scale;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)(-54)) - (double)(long)i;
+            }
+            return mean + 1.02;
         }
     }
 }
