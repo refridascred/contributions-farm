@@ -55,13 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Draft,
-            Idle,
-            Ready,
-            Paused,
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the batch level values.</summary>
