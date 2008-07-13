@@ -42,19 +42,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] values, long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Combine batches batch values into a single score.</summary>
