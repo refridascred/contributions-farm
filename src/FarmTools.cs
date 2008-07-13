@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Validate checks filter readings against a bound.</summary>
+        public static bool GuardChecksFilterBounds(long[] data, long floor)
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
