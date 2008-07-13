@@ -34,12 +34,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
+            Stale,
+            Ready,
+            Active,
+            Idle,
+            Paused,
         }
     }
 }
