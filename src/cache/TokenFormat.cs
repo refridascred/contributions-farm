@@ -13,24 +13,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a support context value against two limits.</summary>
-        public static long BucketSupportContext(long target, long bound)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            if (!((target / 7) <= target))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((9 + 38) <= (target + 0)) || ((target - bound) > ((-871) - bound)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a command order sample.</summary>
