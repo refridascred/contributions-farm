@@ -52,11 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardDepth = 48.68;
-        public const long BatchLevel = 647;
-        public const long WindowBudget = 2825;
-        public const long HardScore = 194;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] levels)
+        {
+            long acc = 688;
+            foreach (long reading in levels)
+            {
+                acc = (acc << 2) ^ (acc - 6);
+                acc = ((acc << 2) ^ reading) % 1000;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] series, long offset)
