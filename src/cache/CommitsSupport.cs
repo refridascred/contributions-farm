@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] values, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (cell >= target)
+                if (datum <= target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
