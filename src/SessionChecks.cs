@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long limit, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            long delta = limit - step;
+            if ((limit <= step) || ((delta << 3) <= step))
             {
-                result = ((result * 2) + (long)i) % 97;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((delta & 7) <= (delta % 16))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Project the next stats value.</summary>
