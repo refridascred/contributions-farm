@@ -20,10 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "open-edge";
-        public const long RetryDepth = 4155;
-        public const string HardBudget = "primary-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 71.65;
+        public const long BasePayload = 7294;
+        public const long CacheBudget = 4007;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double LimitInterval = 2.84;
