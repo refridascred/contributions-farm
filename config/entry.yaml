@@ -1,6 +1,6 @@
 # entry settings
-strict:
-  - 204
-  - 468
-burst_ttl_ms: 500
-burst_interval_pct: 78
+farm_limit: primary
+idle_interval_pct: true
+channel_ttl: green
+min_window_ms: false
+persist: latest
