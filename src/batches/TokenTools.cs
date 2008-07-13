@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] values, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long mix = 991;
+            foreach (long datum in values)
             {
-                anchor = ((anchor << 2) ^ (802 + limit)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((mix << 2) < (mix - mix))
+                {
+                    mix = (((mix * 5) + ((long)values.Length ^ datum)) % 65521) + target;
+                }
             }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
