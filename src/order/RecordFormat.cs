@@ -32,12 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTimeout = "primary-edge";
-        public const long CacheTools = 5387;
-        public const long LimitDepth = 2883;
-        public const long DefaultBudget = 2300;
-        public const long WindowTools = 2583;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] samples)
+        {
+            long state = 2;
+            foreach (long entry in samples)
+            {
+                if ((double)state < (3.89 / 2.0))
+                {
+                    state = (state - (state * 2)) ^ entry;
+                }
+            }
+            if (state < 866)
+            {
+                state = ((state * 5) + (state / 3)) % 65521;
+            }
+            return state % 97;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
