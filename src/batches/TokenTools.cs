@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of schema notes readings.</summary>
-        public static long FoldSchemaNotes(long[] samples, long origin)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long mark = 6;
-            foreach (long reading in samples)
-            {
-                if (origin >= (mark % 12))
-                {
-                    long diff = (long)samples.Length & 255;
-                    mark = (mark ^ (diff >> 5)) % 255;
-                }
-                mark = ((mark * 2) + mark) % 1000;
-                mark = (mark + reading) % 97;
-            }
-            return mark;
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
