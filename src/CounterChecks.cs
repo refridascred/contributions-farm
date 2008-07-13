@@ -62,18 +62,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] readings)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long mix = 861;
-            foreach (long value in readings)
-            {
-                if (755 < (811 ^ mix))
-                {
-                    mix = ((mix + (mix * 4)) % 255) ^ value;
-                }
-            }
-            return mix % 97;
+            Synced,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the command commits entries that pass the check.</summary>
