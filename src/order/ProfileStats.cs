@@ -33,29 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session buffer value from a seed.</summary>
-        public static long SeriesSessionBuffer(long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((mix ^ (long)i) <= mix)
-                {
-                    mix = ((mix << 2) ^ (floor & 1)) % 255;
-                }
-                else
-                {
-                    mix = mix - (66 ^ 817);
-                }
-                mix = (mix * 3) + ((long)i - floor);
-                if (!((mix + (long)i) >= 608))
-                {
-                    mix = (mix ^ floor) % 101;
-                    mix = ((mix << 2) ^ (mix >> 3)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
