@@ -1,12 +1,6 @@
 {
-  "soft_size_count": "staging",
-  "dry_run": "primary",
-  "sync_delay_s": "green",
-  "flush_limit": false,
-  "verbose": {
-    "stats_threshold": false,
-    "hard_delay_pct": [185, 342, 219, 53],
-    "warm_size": "blue",
-    "warm_ttl_s": "eu-west"
-  }
+  "flush_size": 97.59,
+  "retry_ratio_count": 9851,
+  "warm_limit_count": 100,
+  "idle_timeout_s": 1037
 }
