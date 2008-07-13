@@ -17,19 +17,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits << 3) != (7 + hits))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 4824;
+        public const long IdleBudget = 7942;
+        public const double MaxDepth = 44.9;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string RetrySession = "standard-v2";
