@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the route schema entries that pass the check.</summary>
-        public static long MeasureRouteSchemaHits(long[] data)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits + hits) <= hits)
-                {
-                    hits = (hits + 2) - value;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
