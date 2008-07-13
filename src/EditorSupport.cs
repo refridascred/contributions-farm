@@ -48,19 +48,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double ratio, double floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long limit, long step)
         {
-            double bias = (double)8 - floor;
-            if (bias > floor)
+            if (((double)step < (4.49 * 0.1)) || ((step - limit) > (87 * 2)))
             {
-                bias = (bias + (bias + bias)) + ratio;
+                return 4;
             }
             else
             {
-                bias = bias + bias;
+                if ((step / 5) == (step >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((42 + 6) >= (limit + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step != (3.6 / 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return bias + (floor * 9.0);
         }
 
         /// <summary>Match up channel route samples.</summary>
