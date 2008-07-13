@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] values, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                mix = mix ^ (seed / 6);
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
