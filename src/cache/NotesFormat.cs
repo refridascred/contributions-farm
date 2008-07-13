@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long acc = -254;
-            foreach (long sample in values)
-            {
-                if ((double)acc >= 7.0)
-                {
-                    acc = ((acc * 4) + (3 + sample)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (sample - sample);
-                }
-            }
-            if (acc < 6)
-            {
-                acc = (acc - (663 * 3)) % 4096;
-            }
-            return acc % 97;
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a batches options.</summary>
