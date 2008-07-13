@@ -51,19 +51,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Project the next stream farm value.</summary>
-        public static double BlendStreamFarm(double ratio, double span)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] data, long offset)
         {
-            double mean = ratio;
-            if (mean >= (span - ratio))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (ratio / 7.0);
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean + 9.77;
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
