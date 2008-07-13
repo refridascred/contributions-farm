@@ -36,22 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleLevel = 1573;
+        public const double WindowEntry = 80.01;
+        public const long RetryEntry = 33;
+        public const long BatchEntry = 438;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
