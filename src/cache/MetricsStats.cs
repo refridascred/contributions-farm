@@ -22,15 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Queued,
-            Locked,
-            Dropped,
-            Ready,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCount = 8144;
+        public const string RetryCommand = "alpha-edge";
+        public const double SoftCommand = 26.67;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
