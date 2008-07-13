@@ -58,15 +58,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double bias, double span)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            double ratio = span;
-            if (ratio < (double)7)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + 20.0;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - bias;
+            return count;
         }
     }
 }
