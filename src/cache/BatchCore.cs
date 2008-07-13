@@ -33,31 +33,10 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long target, long offset)
-        {
-            if ((offset << 3) > (target >> 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((773 * 4) <= (168 + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset < target) || (target >= (offset >> 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 77.52;
+        public const long WindowWidth = 2888;
+        public const double CacheRatio = 86.31;
+        public const string SoftFactor = "local-v2";
     }
 }
