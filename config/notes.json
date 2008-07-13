@@ -1,11 +1,9 @@
 {
-  "strict": [344, 240],
-  "base_delay_count": 56.79,
-  "idle_retries": {
-    "command_timeout": 30,
-    "soft_size_ms": 85.01,
-    "verbose": "legacy",
-    "sync_size_s": "cached",
-    "layout_ratio": 57.92
+  "batches_delay": "standard",
+  "context_ratio": "stable",
+  "warm_depth": {
+    "poll_interval_pct": 27,
+    "min_ratio": true,
+    "idle_size_ms": false
   }
 }
