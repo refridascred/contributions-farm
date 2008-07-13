@@ -54,20 +54,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((long)i + limit) < (limit + limit))
-                {
-                    result = (result - (result << 2)) % 4096;
-                }
-                result = (result - (limit >> 2)) % 65521;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Done,
+            Queued,
+            Dropped,
+            Active,
+            Retry,
         }
     }
 }
