@@ -23,18 +23,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] values, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long offset, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if (target <= (offset % 64))
             {
-                if ((88 ^ limit) >= (tally & 1))
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (1.1 - 19.0))
                 {
-                    tally = (tally + 3) ^ reading;
+                    return 5;
+                }
+                else
+                {
+                    if ((target ^ offset) < offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + target) < (offset ^ 572))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
