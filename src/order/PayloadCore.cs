@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a commits context sample.</summary>
-        public static long SeekCommitsContextIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxWidth = "primary-1";
+        public const long BurstProfile = 1228;
+        public const double MaxDepth = 51.91;
+        public const long BurstSize = 3030;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
