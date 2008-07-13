@@ -37,19 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] series, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long target)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state - state) % 65521;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Adjust a farm reading.</summary>
