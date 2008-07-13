@@ -42,18 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] data, long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((963 - floor) > (floor - cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
