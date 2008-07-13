@@ -47,12 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit stream graph readings against a rule.</summary>
+        public static long TallyStreamGraphGaps(long[] values, long offset)
         {
-            Idle,
-            Draft,
-            Ready,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (hits >= datum)
+                {
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a batch entry.</summary>
