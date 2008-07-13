@@ -57,36 +57,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long origin, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long seed, long offset)
         {
-            long cur = origin ^ target;
-            if ((double)origin >= (6.32 + 11.0))
+            if (!((seed & 1) <= (94 + 3)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((origin / 8) <= target)
+                if (3 <= (offset ^ seed))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((cur * 2) > target)
+                    if ((20.0 * 9.3) <= (double)seed)
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        if (13.0 < (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 7;
                     }
                 }
             }
