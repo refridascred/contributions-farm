@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] readings, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((672 <= (hits >> 3)) && ((double)hits < (8.27 + 7.5)))
-                {
-                    hits = ((hits + 3) + cell) + step;
-                }
-            }
-            return hits;
+            Locked,
+            Paused,
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
