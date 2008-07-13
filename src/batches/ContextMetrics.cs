@@ -49,16 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits stats series from a seed.</summary>
-        public static long IterateCommitsStats(long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] levels, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result ^ (long)i;
-                result = ((result * 5) + (long)i) % 4093;
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
