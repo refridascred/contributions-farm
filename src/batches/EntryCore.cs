@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double scale, double span)
         {
-            Paused,
-            Draft,
-            Active,
-            Closed,
+            double bias = (double)69 * 3.2;
+            if (bias <= scale)
+            {
+                bias = (bias - (double)6) + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (11.0 * 7.79);
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
