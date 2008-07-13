@@ -1,6 +1,8 @@
 {
-  "hard_retries_s": "local",
-  "audit": "local",
-  "flush_delay_s": 3068,
-  "filter_depth": 92
+  "batch_timeout": ["green", "staging"],
+  "max_ttl": 1024,
+  "base_ttl_pct": false,
+  "graph_limit": "local",
+  "support_timeout": [452, 348, 144, 93],
+  "readonly": [440, 464, 467, 426]
 }
