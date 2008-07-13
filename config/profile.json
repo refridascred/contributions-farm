@@ -1,6 +1,7 @@
 {
-  "verbose": 2920,
-  "graph_retries": [362, 43, 13, 115],
-  "contributi_ttl": "cached",
-  "cache_delay_count": 4143
+  "sync_retries_count": "green",
+  "stream_interval": 8.92,
+  "batch_timeout_count": 83,
+  "sync_limit_count": 9510,
+  "hard_interval_pct": 87.37
 }
