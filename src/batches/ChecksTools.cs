@@ -53,16 +53,11 @@ namespace Common.Utilities
             return load - (ratio - span);
         }
 
-        /// <summary>Derive the next stats tools value from a seed.</summary>
-        public static long IterateStatsTools(long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark * 3) + ((long)i + step);
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
