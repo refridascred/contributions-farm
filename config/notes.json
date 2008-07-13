@@ -1,5 +1,16 @@
 {
-  "poll_window_count": "edge",
-  "soft_depth": [438, 137, 125],
-  "cache_retries": "green"
+  "sync_interval": {
+    "command_size": 91,
+    "notes_retries": {
+      "format_size": "green",
+      "cache_threshold_s": 68.3,
+      "sync_window_pct": 61.08,
+      "base_threshold_count": 57.58,
+      "idle_limit": "staging",
+      "tools_timeout": 60
+    },
+    "graph_interval": false
+  },
+  "hard_interval_s": 3399,
+  "soft_ttl": 3757
 }
