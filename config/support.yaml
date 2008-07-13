@@ -1,13 +1,9 @@
 # support settings
-max_retries: false
-enabled: cached
-burst_window:
-  - 168
-  - 396
-  - 411
-batch_ratio_count: false
-githubfarm_size:
-  - 257
-  - 440
-  - 70
-notes_threshold: true
+verbose: legacy
+checks_delay: true
+hard_interval_pct: 500
+idle_limit_pct: legacy
+burst_depth_s:
+  - 133
+  - 23
+poll_window: strict
