@@ -30,14 +30,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long floor, long floor2)
         {
-            Failed,
-            Done,
-            Dropped,
-            Queued,
-            Idle,
+            long slot = floor - floor2;
+            if (!((double)floor2 > (2.12 / 2.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(slot < floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor2 & 255) >= floor2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((32 ^ slot) > floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
