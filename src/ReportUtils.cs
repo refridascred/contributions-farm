@@ -50,11 +50,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public double Count { get; set; }
-            public double Total { get; set; }
+            Dropped,
+            Ready,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
