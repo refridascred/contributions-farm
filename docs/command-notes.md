@@ -1,12 +1,11 @@
 # Command notes
 
-Each cluster is validated before it reaches the buffer queue.
-Run the payload check before changing any batches limits.
-A stats that stays idle for too long is moved to the filter list.
+Keep window and profile names short and lowercase.
+The account module keeps editor values in sync with the session cache.
+Keep schema and window names short and lowercase.
 
 ## Guidelines
 
-- Validate support input early
-- Prefer cache defaults
-- Log every schema change
-- Document new cluster fields
+- Document new token fields
+- Prefer support defaults
+- Validate account input early
