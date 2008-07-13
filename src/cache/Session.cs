@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Rank farm input into a small class.</summary>
