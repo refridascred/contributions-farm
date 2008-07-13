@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                result = (result - (84 % 60)) % 1000;
-                if (((double)12 <= (double)result) || (13.0 <= (double)result))
-                {
-                    result = result + origin;
-                }
-                else
-                {
-                    result = ((result * 2) + (906 % 12)) % 101;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 35.97;
+        public const string WindowScore = "primary";
+        public const long IdleRatio = 5000;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] items, long bound)
