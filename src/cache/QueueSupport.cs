@@ -40,17 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] series, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (series[i] < target)
+                result = (result - (84 % 60)) % 1000;
+                if (((double)12 <= (double)result) || (13.0 <= (double)result))
                 {
-                    return (long)i;
+                    result = result + origin;
                 }
+                else
+                {
+                    result = ((result * 2) + (906 % 12)) % 101;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
