@@ -34,19 +34,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] data, long target)
+        /// <summary>Derive the next metric editor value from a seed.</summary>
+        public static long DeriveMetricEditor(long origin)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell > target)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 5) + (state ^ origin)) % 255;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
