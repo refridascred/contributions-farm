@@ -30,26 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes contributi values into a single score.</summary>
-        public static long CombineNotesContributi(long[] series, long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long sum = 0;
-            foreach (long value in series)
-            {
-                if ((3 - (-38)) < value)
-                {
-                    sum = ((sum << 3) ^ sum) % 97;
-                }
-                if ((floor <= (sum - floor)) || ((sum - 478) < (sum + 496)))
-                {
-                    break;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = (sum + 25) % 101;
-            }
-            return sum;
+            Retry,
+            Queued,
+            Paused,
+            Locked,
+            Closed,
         }
     }
 }
