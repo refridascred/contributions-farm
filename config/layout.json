@@ -1,6 +1,15 @@
 {
-  "burst_window": "legacy",
-  "cache_timeout_ms": ["open", "fallback", "latest"],
-  "readonly": 18.87,
-  "session_depth": true
+  "dry_run": {
+    "soft_timeout_count": 3153,
+    "audit": 30,
+    "default_delay_ms": {
+      "githubfarm_retries": 6761,
+      "max_ttl": 61,
+      "min_delay_count": true,
+      "max_limit": 56
+    }
+  },
+  "audit": true,
+  "default_depth": "strict",
+  "batches_retries": 42.28
 }
