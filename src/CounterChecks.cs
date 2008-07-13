@@ -14,12 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardSize = 709;
-        public const long StepRatio = 8170;
-        public const long SoftFactor = 8883;
-        public const long MinChannel = 4502;
-        public const string SoftTimeout = "primary-edge";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 5.36;
+        public const long IdleContributi = 5642;
+        public const double SoftContributi = 46.93;
+        public const string StepContributi = "strict-edge";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] data, long step)
