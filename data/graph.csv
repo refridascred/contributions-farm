@@ -1,9 +1,6 @@
-id,ratio,score
-1,21.47,53.91
-2,777,blue
-3,53.87,fallback
-4,27.16,latest
-5,117,373
-6,30.91,488
-7,local,290
-8,641,green
+id,rank,count,owner
+1,cached,cached,45.83
+2,611,12.71,860
+3,921,68,fallback
+4,24.79,local,411
+5,5.1,45.67,open
