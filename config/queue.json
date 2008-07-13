@@ -1,12 +1,8 @@
 {
-  "dry_run": "staging",
-  "burst_interval_count": "staging",
-  "soft_retries": "cached",
-  "min_interval_count": {
-    "max_ttl_count": "open",
-    "min_size_count": "strict",
-    "dry_run": true,
-    "idle_ratio": 85.76
-  },
-  "filter_capacity": 52
+  "verbose": false,
+  "retry_capacity_ms": 6371,
+  "base_interval_pct": false,
+  "persist": 500,
+  "hard_ttl_count": "latest",
+  "default_timeout_pct": "green"
 }
