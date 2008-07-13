@@ -31,11 +31,18 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] series, long floor)
         {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
+            long mark = -346;
+            foreach (long entry in series)
+            {
+                if (((7.0 * 7.5) != (double)entry) && ((20.0 / 9.0) > (4.3 + 8.4)))
+                {
+                    mark = (((mark * 5) + 182) % 255) + floor;
+                }
+            }
+            return mark;
         }
     }
 }
