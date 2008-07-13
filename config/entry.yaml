@@ -1,8 +1,12 @@
 # entry settings
-min_threshold_s:
-  - 478
-  - 445
-max_threshold: 100
-readonly: false
-compress: 3
-flush_interval_pct: 34.89
+burst_size:
+  - open
+  - cached
+window_depth:
+  - green
+  - fallback
+  - legacy
+burst_capacity_pct:
+  - 160
+  - 43
+dry_run: 2034
