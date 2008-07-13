@@ -61,32 +61,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long step)
+        /// <summary>Audit order route readings against a rule.</summary>
+        public static long MeasureOrderRouteOutliers(long[] series)
         {
-            long edge = limit + step;
-            if (((step ^ limit) > (edge + (-12))) && ((limit - edge) < edge))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((901 < (step - 4)) && ((step ^ edge) > (5 + limit)))
+                if (datum <= (260 - matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 2) < (step + edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
