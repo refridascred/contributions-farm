@@ -50,31 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long bound, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] values, long floor)
         {
-            if (((4.0 + 6.47) >= (double)seed) || ((bound % 16) < (bound + seed)))
+            long acc = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((5.62 / 6.0) < (double)bound) || ((-9) <= seed))
+                if ((double)floor > 9.7)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound >= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = (acc * 2) + (acc + reading);
                 }
             }
+            if (acc < 936)
+            {
+                acc = ((acc * 2) + (408 + floor)) % 101;
+            }
+            return acc;
         }
     }
 }
