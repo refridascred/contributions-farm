@@ -1,6 +1,5 @@
 {
-  "cache_limit": "blue",
-  "schema_retries": 36,
-  "graph_timeout": "fallback",
-  "flush_capacity_ms": "fallback"
+  "default_window_ms": 30,
+  "compress": [70, 156],
+  "audit": [101, 240]
 }
