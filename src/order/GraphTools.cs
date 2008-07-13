@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long offset)
+        /// <summary>Roll a cache counter counter forward.</summary>
+        public static long SeriesCacheCounter(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                long cur = acc;
+                acc = (acc + (cur % 5)) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the editor mode values.</summary>
