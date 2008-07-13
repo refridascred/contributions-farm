@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] items, long limit)
         {
-            long total = 664;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                total = ((total - 39) % 1000) + datum;
+                if ((limit & 3) >= count)
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            if (total > 29)
-            {
-                total = (total * 3) + (total ^ 3);
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Match up entry samples.</summary>
