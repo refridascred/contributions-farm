@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] readings, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (0.3 < (double)tally)
+                if (!((hits > (floor + 431)) && (62 <= hits)))
                 {
-                    tally = ((tally + 2) + cell) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
