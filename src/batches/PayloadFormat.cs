@@ -40,22 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of profile farm readings.</summary>
-        public static long CompareProfileFarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCommits = 63.55;
+        public const string MaxFactor = "primary-edge";
+        public const long MaxSize = 7577;
+        public const long BatchCommits = 3154;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
