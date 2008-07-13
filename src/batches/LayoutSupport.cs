@@ -55,22 +55,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 2985;
+        public const long DefaultTimeout = 7721;
+        public const double IdleGithubfarm = 5.78;
+        public const long RetryGithubfarm = 995;
+        public const string StepBudget = "primary";
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long DigestNotes(long[] items)
