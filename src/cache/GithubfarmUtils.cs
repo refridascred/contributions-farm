@@ -36,12 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultWidth = 1489;
-        public const long BaseRatio = 6938;
-        public const long BatchRatio = 8678;
-        public const long MinContext = 4199;
-        public const long BaseWidth = 6520;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] values, long step)
