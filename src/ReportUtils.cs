@@ -55,15 +55,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double bias)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            double rate = bias;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + weight) - (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate - (weight / 8.0);
+            return tally;
         }
 
         /// <summary>Blend two channel measurements.</summary>
