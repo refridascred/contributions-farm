@@ -36,11 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardBudget = 8682;
-        public const string LimitProfile = "alpha-edge";
-        public const double BatchSize = 27.86;
-        public const double CacheInterval = 20.76;
+        /// <summary>Find the first account editor entry that matches the target.</summary>
+        public static long FindAccountEditorIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] values, long step)
