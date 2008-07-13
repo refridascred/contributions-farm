@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Look up the position of a graph metrics sample.</summary>
+        public static long LookupGraphMetricsIndex(long[] values, long target)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total ^ (target >> 3)) % 97;
-                total = ((total * 3) + (long)i) % 101;
+                if ((values[i] < target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
