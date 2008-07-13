@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series)
         {
-            Retry,
-            Synced,
-            Idle,
-            Pending,
+            long mark = 6;
+            foreach (long item in series)
+            {
+                mark = mark + (mark & 63);
+                mark = ((mark << 2) ^ item) % 4096;
+            }
+            if (mark < 135)
+            {
+                mark = ((mark << 3) ^ (mark * 2)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a cluster entry.</summary>
