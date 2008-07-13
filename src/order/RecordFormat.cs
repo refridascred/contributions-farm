@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit schema commits readings against a rule.</summary>
-        public static long MeasureSchemaCommitsMatches(long[] levels, long seed)
+        /// <summary>Accumulate entry filter samples.</summary>
+        public static long TotalEntryFilter(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mark = 6;
+            foreach (long cell in samples)
             {
-                if ((8 << 1) < (cell << 2))
+                if ((2 & 3) == (mark % 2))
                 {
-                    seen = (seen + 3) + seed;
+                    mark = (((mark * 3) + 3) ^ cell) + offset;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the window mode values.</summary>
