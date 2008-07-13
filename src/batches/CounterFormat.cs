@@ -27,18 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] readings)
+        /// <summary>Scale a queue channel figure with a bias.</summary>
+        public static double SmoothQueueChannel(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double rate = (double)3 - bias;
+            if (rate >= 9.31)
             {
-                if ((hits - reading) >= (reading * 2))
-                {
-                    hits = hits + 2;
-                }
+                rate = (rate - (double)6) - weight;
             }
-            return hits;
+            return rate - (double)835;
         }
     }
 }
