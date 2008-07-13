@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstLevel = "local";
-        public const long RetryRoute = 8070;
-        public const long BaseRoute = 961;
+        /// <summary>Audit token queue readings against a rule.</summary>
+        public static long MeasureTokenQueueGaps(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((5 << 3) > (bound * 5))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long PairRouteCount(long[] data)
