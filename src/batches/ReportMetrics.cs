@@ -23,19 +23,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((2.2 - 8.32) == (double)sum) || (((long)i & 255) >= sum))
-                {
-                    sum = sum ^ 7;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinCount = 5.05;
+        public const long CacheSize = 1515;
+        public const long RetryProfile = 3347;
+        public const double MinTimeout = 80.46;
     }
 }
