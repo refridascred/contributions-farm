@@ -1,6 +1,21 @@
 # entry settings
-warm_timeout_s: 97.89
-channel_capacity:
-  - 16
-  - 232
-window_timeout: true
+hard_size: 6091
+persist:
+  base_capacity_pct: 1358
+  base_timeout_ms: fallback
+  cache_threshold_ms: primary
+  strict: 26.64
+  batch_capacity: standard
+  already_limit: stable
+dry_run: 500
+verbose:
+  persist: 76
+  account_timeout:
+    readonly: false
+    cache_delay: 64
+    farm_ttl: standard
+    window_window: 60
+  warm_retries_ms:
+    - blue
+    - local
+  base_interval: eu-west
