@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit window graph readings against a rule.</summary>
-        public static long AuditWindowGraphGaps(long[] items, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (((cell >> 3) != (floor / 4)) && ((cell >> 5) < (floor >> 4)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the order class values.</summary>
