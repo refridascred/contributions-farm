@@ -1,19 +1,5 @@
 {
-  "entry_delay": {
-    "max_capacity_s": {
-      "hard_size": [396, 485, 304],
-      "retry_interval_pct": 9524,
-      "poll_interval_count": "fallback",
-      "tools_timeout": true,
-      "profile_interval": 8562
-    },
-    "hard_depth_pct": "open",
-    "burst_interval": "standard",
-    "cache_threshold_pct": 8693,
-    "readonly": "cached"
-  },
-  "min_capacity_count": "green",
-  "cache_size_count": false,
-  "retry_size_pct": 42,
-  "verbose": 11.43
+  "hard_limit": 3082,
+  "soft_threshold_pct": 56.61,
+  "soft_delay_count": 100
 }
