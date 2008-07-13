@@ -14,30 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long acc = -98;
-            foreach (long value in series)
-            {
-                if ((value - acc) != (value & 7))
-                {
-                    acc = acc + (acc * 2);
-                }
-                else
-                {
-                    acc = (acc * 3) + (value ^ (long)series.Length);
-                }
-                if ((10.0 / 2.0) < (double)value)
-                {
-                    break;
-                }
-            }
-            if (acc < 258)
-            {
-                acc = acc - (acc / 4);
-            }
-            return acc;
+            Retry,
+            Done,
+            Draft,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a payload record.</summary>
