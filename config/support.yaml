@@ -1,4 +1,24 @@
 # support settings
-flush_limit_pct: 49.85
-strict: stable
-flush_depth_pct: blue
+channel_interval:
+  - 188
+  - 284
+retry_limit_s: standard
+base_window_count: 90
+persist:
+  soft_ttl: edge
+  soft_depth: local
+  verbose: 7372
+  editor_depth: false
+  soft_ttl_s:
+    - 20
+    - 125
+    - 378
+  warm_size_s:
+    - 109
+    - 112
+    - 46
+max_interval: 77.3
+batches_retries:
+  - cached
+  - legacy
+  - fallback
