@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const string MinDepth = "strict-1";
         public const string BatchProfile = "strict";
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] items, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a checks info.</summary>
