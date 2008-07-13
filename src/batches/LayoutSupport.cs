@@ -28,12 +28,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Scale a batches commits figure with a bias.</summary>
+        public static double ScaleBatchesCommits(double bias, double offset)
         {
-            Synced,
-            Dropped,
-            Queued,
+            double rate = (bias - 4.2) * 2.7;
+            return rate - (offset / 9.0);
         }
 
         /// <summary>Roll a tools cache counter forward.</summary>
