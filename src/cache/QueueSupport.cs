@@ -27,9 +27,22 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 7184;
-        public const double StepRatio = 62.81;
-        public const long HardEditor = 7807;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((87 ^ entry) > (entry / 7))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
