@@ -1,8 +1,7 @@
 {
-  "idle_ratio_s": [86, 86, 454, 355],
-  "base_limit_pct": "blue",
-  "poll_threshold_ms": "latest",
-  "persist": ["standard", "latest", "eu-west", "edge"],
-  "burst_window_pct": ["stable", "eu-west", "standard", "standard"],
-  "cache_delay_s": 39
+  "verbose": 17,
+  "min_delay_ms": 7,
+  "cache_depth_ms": 60,
+  "sync_limit": "open",
+  "token_delay": 500
 }
