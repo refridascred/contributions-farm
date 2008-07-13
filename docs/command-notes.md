@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-The stream module keeps filter values in sync with the account cache.
-Each batch is validated before it reaches the metric queue.
+A report that stays idle for too long is moved to the cache list.
+The order module keeps editor values in sync with the metric cache.
+A notes that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep token values small
-- Review already limits each release
-- Log every window change
+- Review account limits each release
+- Keep counter values small
+- Log every batch change
