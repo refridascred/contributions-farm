@@ -25,19 +25,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] readings, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long target, long target2)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long lane = target ^ target2;
+            if ((target ^ target2) <= (8 / 9))
             {
-                if (reading >= offset)
+                return 4;
+            }
+            else
+            {
+                if (((target2 - 69) <= (target + target2)) || (target < 56))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((1.9 - 2.0) >= (double)lane)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (lane >= 8)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Project the next payload value.</summary>
