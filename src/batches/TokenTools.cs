@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstWidth = "strict-edge";
-        public const long DefaultReport = 7281;
-        public const double BurstSpan = 38.38;
+        /// <summary>Audit tools metric readings against a rule.</summary>
+        public static long MeasureToolsMetricMatches(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum >> 4) == (datum << 1))
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheHits(long[] series)
