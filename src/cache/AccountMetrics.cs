@@ -63,13 +63,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Pending,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxBudget = 7563;
+        public const long LimitBudget = 4047;
+        public const long SoftTimeout = 1359;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ScaleRecord(double ratio, double floor)
