@@ -30,19 +30,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] readings, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (value != offset)
+                if (!(54 > (tally ^ cell)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
