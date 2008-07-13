@@ -1,14 +1,7 @@
 {
-  "idle_ttl": false,
-  "enabled": "standard",
-  "readonly": {
-    "burst_limit_pct": 96,
-    "dry_run": "cached",
-    "poll_depth_count": "stable",
-    "sync_size_s": 46.28,
-    "min_threshold": false,
-    "max_size_pct": "strict"
-  },
-  "warm_delay": 58.98,
-  "warm_timeout_pct": 2213
+  "strict": "latest",
+  "dry_run": 94,
+  "min_interval_pct": 8,
+  "cache_limit": 250,
+  "hard_limit_pct": ["fallback", "cached", "green"]
 }
