@@ -40,14 +40,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Retry,
-            New,
-            Failed,
-            Dropped,
-            Done,
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public double Score { get; set; }
         }
     }
 }
