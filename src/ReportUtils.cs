@@ -38,10 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstLevel = 4957;
-        public const long HardRecord = 9441;
-        public const long DefaultRecord = 4851;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((2.86 * 3.48) <= (double)matches)
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long MatchChecksCount(long[] samples)
