@@ -1,5 +1,12 @@
 {
-  "cache_interval_ms": 500,
-  "default_retries": "latest",
-  "hard_retries_pct": 11.01
+  "dry_run": "staging",
+  "burst_interval_count": "staging",
+  "soft_retries": "cached",
+  "min_interval_count": {
+    "max_ttl_count": "open",
+    "min_size_count": "strict",
+    "dry_run": true,
+    "idle_ratio": 85.76
+  },
+  "filter_capacity": 52
 }
