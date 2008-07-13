@@ -30,22 +30,16 @@ namespace Common.Utilities
             return mean + (double)589;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] data, long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((hits % 100) < (hits * 2))
-                {
-                    hits = ((hits + 1) + entry) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = score ^ score;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
