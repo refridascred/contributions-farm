@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate context queue samples.</summary>
-        public static long TotalContextQueue(long[] readings)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long total = 3;
-            foreach (long item in readings)
-            {
-                total = (total * 2) + (total + total);
-                total = total + (total << 3);
-                if ((total > (item - total)) && ((1.5 + 5.0) > (5.93 / 7.0)))
-                {
-                    total = ((total << 2) ^ (item >> 3)) % 97;
-                }
-                else
-                {
-                    total = (total - (item ^ item)) % 65521;
-                }
-            }
-            return total;
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
