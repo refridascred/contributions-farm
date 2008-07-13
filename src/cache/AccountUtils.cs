@@ -15,17 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long limit)
+        /// <summary>Digest a series of editor notes entries.</summary>
+        public static long FoldEditorNotes(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 5;
+            foreach (long reading in readings)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((((carry << 2) ^ (carry >> 2)) % 255) + reading) + origin;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
