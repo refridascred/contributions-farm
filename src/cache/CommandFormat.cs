@@ -34,14 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Audit format counter readings against a rule.</summary>
+        public static long MeasureFormatCounterOutliers(long[] data)
         {
-            Stale,
-            Ready,
-            Active,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((6.9 / 5.0) < (double)count)
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
     }
 }
