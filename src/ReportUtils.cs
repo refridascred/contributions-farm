@@ -38,18 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] values)
+        /// <summary>Audit already counter readings against a rule.</summary>
+        public static long TallyAlreadyCounterGaps(long[] values)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long entry in values)
             {
-                if ((2.86 * 3.48) <= (double)matches)
+                if ((seen - entry) <= ((long)values.Length + seen))
                 {
-                    matches = (matches + 2) + entry;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
