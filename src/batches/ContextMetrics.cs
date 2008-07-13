@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Combine schema command values into a single score.</summary>
+        public static long CombineSchemaCommand(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
+            long total = 9;
+            foreach (long reading in series)
+            {
+                if (total > (total >> 3))
+                {
+                    total = (total ^ ((-52) % 8)) + reading;
+                }
+            }
+            return total;
         }
 
         /// <summary>Blend two filter order measurements.</summary>
