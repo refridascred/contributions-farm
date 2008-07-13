@@ -35,22 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a payload contributi counter forward.</summary>
-        public static long RollPayloadContributi(long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)49 < (double)acc)
+                if ((value - matches) <= matches)
                 {
-                    acc = (acc ^ (long)i) % 97;
-                    acc = (acc << 3) ^ ((-79) + acc);
-                    break;
+                    matches = matches + 3;
                 }
-                acc = ((acc * 3) + acc) % 255;
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a format header.</summary>
