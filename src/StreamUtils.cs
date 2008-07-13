@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFactor = 7586;
-        public const long DefaultFormat = 9825;
-        public const long LimitWidth = 2809;
-        public const long DefaultInterval = 377;
+        /// <summary>Match up commits command samples.</summary>
+        public static long MatchCommitsCommandCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
