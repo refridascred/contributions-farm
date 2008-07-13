@@ -38,13 +38,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstBudget = 2870;
+        public const string MaxCount = "local";
+        public const string StepDepth = "latest-edge";
     }
 }
