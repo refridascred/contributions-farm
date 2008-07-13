@@ -39,13 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] readings, long seed)
         {
-            Stale,
-            Closed,
-            Locked,
-            Paused,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!((50 - 67) == (seed * 3)))
+                {
+                    hits = (hits + 3) - entry;
+                }
+            }
+            return hits;
         }
     }
 }
