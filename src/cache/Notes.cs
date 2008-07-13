@@ -52,22 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double scale, double offset)
         {
-            long state = 9;
-            foreach (long cell in series)
+            double weight = scale;
+            for (int i = 0; i < 8; i++)
             {
-                if ((cell / 6) >= (state << 2))
-                {
-                    state = (state - (state + (-7))) % 4096;
-                }
+                weight = (weight + (offset - 8.36)) + (double)(long)i;
             }
-            if (state > 52)
-            {
-                state = ((state << 2) ^ (3 / 5)) % 255;
-            }
-            return state;
+            return weight + 5.11;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
