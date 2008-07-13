@@ -42,18 +42,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the token batch entries that pass the check.</summary>
-        public static long MeasureTokenBatchGaps(long[] samples)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((double)sample < (double)matches)
+                if ((8.3 - 20.0) != (double)datum)
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
