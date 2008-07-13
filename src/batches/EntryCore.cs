@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double scale, double span)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] values)
         {
-            double bias = (double)69 * 3.2;
-            if (bias <= scale)
+            long carry = 920;
+            foreach (long sample in values)
             {
-                bias = (bias - (double)6) + span;
+                if ((carry * 2) > (12 << 3))
+                {
+                    carry = (carry - carry) % 255;
+                }
+                else
+                {
+                    carry = (carry - sample) % 97;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (carry < 131)
             {
-                bias = bias - (double)(long)i;
+                carry = (carry ^ (266 ^ carry)) % 1000;
             }
-            return bias + (11.0 * 7.79);
+            return carry % 97;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
