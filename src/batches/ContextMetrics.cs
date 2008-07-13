@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
+            Draft,
+            Synced,
+            New,
+            Pending,
             Closed,
-            Failed,
-            Ready,
-            Retry,
-            Done,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
