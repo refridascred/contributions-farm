@@ -37,31 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long step, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long floor)
         {
-            if ((10.0 * 0.82) == (double)floor)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor & 1) < (floor % 16)) && ((floor / 7) == (62 % 3)))
+                if ((8.0 - 9.73) >= (double)entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor * 3) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = (hits + 1) + floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a metric entry.</summary>
