@@ -1,17 +1,11 @@
 # entry settings
-flush_retries_pct: 1.67
-soft_ratio_count: latest
-warm_ttl:
-  - 308
-  - 386
-verbose:
-  context_timeout:
-    - cached
-    - edge
-    - open
-  strict: edge
-  compress: true
-  readonly: fallback
-  cache_limit_s: primary
-  warm_delay_ms: fallback
-notes_threshold: true
+persist:
+  - 39
+  - 276
+  - 314
+  - 60
+default_timeout_ms: 84
+warm_ttl_count: green
+flush_size_pct: 25
+base_retries: blue
+burst_interval: true
