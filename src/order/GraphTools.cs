@@ -28,38 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long origin, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] readings, long limit)
         {
-            if ((9.73 - 1.88) == (double)origin)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(bound > (origin >> 1)))
+                if ((5.5 - 7.0) != (double)datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound / 2) == (bound - bound)) && ((bound + origin) != (443 >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((0.11 * 5.94) < (double)origin) && ((bound >> 5) > origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 2) + limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
