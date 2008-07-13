@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (limit < (step << 2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (limit >= step)
                 {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the farm phase values.</summary>
