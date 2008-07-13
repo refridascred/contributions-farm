@@ -77,24 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] items, long floor)
-        {
-            long mix = 70;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = ((mix - ((long)items.Length + 421)) % 97) + (long)i;
-                }
-                mix = mix ^ (entry * 2);
-                mix = (mix ^ (floor + mix)) % 101;
-            }
-            if (mix > 3)
-            {
-                mix = (mix * 5) + (floor + floor);
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheRatio = 6133;
+        public const long IdleEntry = 6023;
+        public const double BaseEntry = 80.25;
+        public const string WindowRatio = "alpha-1";
+        public const double MaxSpan = 38.9;
     }
 }
