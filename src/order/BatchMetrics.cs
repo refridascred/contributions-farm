@@ -86,21 +86,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)item == (double)seen)
                 {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
