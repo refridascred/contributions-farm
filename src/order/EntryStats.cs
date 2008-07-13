@@ -28,14 +28,12 @@ namespace Common.Utilities
         public const double IdleBudget = 72.6;
         public const long CacheInterval = 3799;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 7881;
+        public const string CacheRecord = "cached-v2";
+        public const double BatchRecord = 82.23;
+        public const double RetryInterval = 35.9;
+        public const long BurstRecord = 7192;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
