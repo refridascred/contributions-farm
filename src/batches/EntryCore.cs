@@ -71,18 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token context entries that pass the check.</summary>
-        public static long CountTokenContextMatches(long[] samples, long step)
+        /// <summary>Check that every buffer queue entry stays within the limit.</summary>
+        public static bool CheckBufferQueueBounds(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((sample / 3) != (71 >> 1))
+                if (datum < step)
                 {
-                    seen = (seen + 2) - step;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
