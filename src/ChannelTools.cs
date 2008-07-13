@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "cached-edge";
-        public const long MinFilter = 9990;
-        public const double MaxFilter = 7.33;
-        public const string IdleDepth = "local";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!((origin >> 4) >= (327 + origin)))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterLimits(long[] data, long bound)
