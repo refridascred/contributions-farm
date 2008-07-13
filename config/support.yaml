@@ -1,4 +1,7 @@
 # support settings
-poll_threshold_ms: false
-batch_capacity_s: false
-warm_ttl_ms: primary
+profile_ratio: 31.34
+report_limit: 250
+retry_threshold: blue
+soft_ratio: 95.8
+min_timeout_pct: true
+warm_depth_count: 2522
