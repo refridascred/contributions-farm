@@ -53,11 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double bias, double bias2)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] items, long seed)
         {
-            double ratio = (double)(405 / 3);
-            return ((ratio + 8.7) + bias) + bias2;
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count + count) == (datum >> 2))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
     }
 }
