@@ -20,10 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 71.65;
-        public const long BasePayload = 7294;
-        public const long CacheBudget = 4007;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((((3 * 5) > (seen ^ value)) && ((double)bound < (double)seen)) || ((bound - 280) > (69 ^ value)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double LimitInterval = 2.84;
