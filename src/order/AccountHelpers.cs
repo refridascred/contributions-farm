@@ -51,15 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double ratio, double bias)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] series, long target)
         {
-            double scale = (double)(74 - 313);
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                scale = ((scale - (double)(long)i) - ratio) + bias;
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + (scale * 9.9);
+            return found;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
