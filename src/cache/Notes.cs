@@ -63,18 +63,14 @@ namespace Common.Utilities
             return weight + 5.11;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] items, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (hits < (-75))
-                {
-                    hits = ((hits + 1) ^ cell) + step;
-                }
-            }
-            return hits;
+            Queued,
+            Stale,
+            Closed,
+            Done,
+            Failed,
         }
     }
 }
