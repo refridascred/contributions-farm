@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] items, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((limit & 3) >= count)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
