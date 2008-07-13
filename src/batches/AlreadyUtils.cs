@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "staging-v2";
+        public const long MinPayload = 4399;
+        public const string IdlePayload = "primary-edge";
 
         /// <summary>Compare every pair of checks queue readings.</summary>
         public static long PairChecksQueueCount(long[] series)
