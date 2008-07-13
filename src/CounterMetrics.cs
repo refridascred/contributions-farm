@@ -39,26 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm graph samples.</summary>
-        public static long ScoreFarmGraph(long[] readings, long target)
+        /// <summary>Count the counter support entries that pass the check.</summary>
+        public static long AuditCounterSupportMatches(long[] readings)
         {
-            long acc = 2;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((cell ^ 742) != (8 + 7))
+                if (6 <= (334 - value))
                 {
-                    acc = (acc << 2) ^ (cell * 2);
+                    matches = matches + 3;
                 }
                 else
                 {
-                    acc = acc + (cell % 64);
-                }
-                if (target > (acc & 15))
-                {
-                    acc = ((acc * 2) + (target + acc)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
