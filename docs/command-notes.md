@@ -1,14 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often account data is refreshed.
-Each context is validated before it reaches the metrics queue.
+Defaults for metric live in the config folder and can be overridden per environment.
+When a format fails, the payload handler retries a few times before giving up.
 
-The queue report groups every account by farm.
-The farm module keeps order values in sync with the cluster cache.
+A tools that stays idle for too long is moved to the graph list.
+Run the githubfarm check before changing any schema limits.
 
 ## Guidelines
 
-- Log every format change
-- Keep counter values small
-- Review token limits each release
-- Validate record input early
+- Document new context fields
+- Review batch limits each release
+- Keep metric values small
+- Prefer farm defaults
