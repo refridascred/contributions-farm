@@ -21,18 +21,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (!((9.0 * 2.37) < (double)datum))
+                if ((60 + (long)series.Length) > (item + tally))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
