@@ -14,18 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the already order entries that pass the check.</summary>
-        public static long MeasureAlreadyOrderGaps(long[] values, long step)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double scale, double span)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double gain = (double)(99 + 6);
+            if (gain > gain)
             {
-                if ((double)seen > (12.0 * 19.0))
-                {
-                    seen = ((seen + 2) ^ datum) - step;
-                }
+                gain = (gain - (gain + 4.0)) - span;
             }
-            return seen;
+            else
+            {
+                gain = gain - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a order header.</summary>
