@@ -78,17 +78,31 @@ namespace Common.Utilities
         public const long StepProfile = 9363;
         public const string BatchRatio = "fallback-edge";
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long bound, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((41 > (bound + bound)) || ((bound ^ bound) > offset))
             {
-                if (samples[i] <= offset)
+                return 8;
+            }
+            else
+            {
+                if ((bound > offset) || ((6.9 - 0.6) > 0.81))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((4.2 - 5.4) > (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
