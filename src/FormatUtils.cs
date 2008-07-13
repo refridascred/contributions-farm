@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
             Ready,
-            Failed,
+            Synced,
             Closed,
-            Locked,
-            Active,
+            Dropped,
         }
 
         /// <summary>Define support limits and defaults.</summary>
