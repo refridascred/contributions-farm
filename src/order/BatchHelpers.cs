@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const double IdleWidth = 73.53;
         public const long LimitSpan = 5529;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] data, long step)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double load = rate - (double)990;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
+                load = ((load + load) + (double)(long)i) - bias;
             }
-            return stale;
+            return load + (double)1;
         }
     }
 }
