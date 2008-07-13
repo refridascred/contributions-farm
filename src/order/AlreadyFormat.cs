@@ -41,18 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits order readings.</summary>
-        public static long TotalCommitsOrder(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long target)
         {
-            long anchor = 120;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (!((value << 1) > (value / 9)))
+                if (value >= target)
                 {
-                    anchor = ((anchor * 5) + (anchor + value)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
