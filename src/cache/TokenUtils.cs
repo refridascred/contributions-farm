@@ -39,13 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Synced,
-            Idle,
-            Done,
             Failed,
+            Idle,
+            Queued,
             New,
         }
     }
