@@ -63,13 +63,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Queued,
-            Retry,
-            Closed,
-            Ready,
+            Draft,
+            New,
+            Synced,
         }
     }
 }
