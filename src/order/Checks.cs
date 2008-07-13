@@ -60,24 +60,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of format token readings.</summary>
-        public static long TallyFormatToken(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            long mix = -4;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mix = mix - (6 >> 4);
-                if (sample < (mix + 3))
+                if (((tally - tally) == (39 & 1)) && ((double)tally < (double)datum))
                 {
-                    mix = mix + sample;
-                    break;
+                    tally = tally + 2;
                 }
-                if (!((sample & 255) == (sample << 3)))
+                else
                 {
-                    mix = (mix ^ mix) % 97;
+                    tally = tally - 1;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
     }
 }
