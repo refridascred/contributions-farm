@@ -57,13 +57,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long origin, long target)
         {
-            Dropped,
-            Closed,
-            Ready,
-            Synced,
+            long cur = origin ^ target;
+            if ((double)origin >= (6.32 + 11.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin / 8) <= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((cur * 2) > target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (13.0 < (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
