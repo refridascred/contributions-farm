@@ -1,20 +1,10 @@
 # support settings
-audit: true
-cache_capacity: true
-batch_interval_s:
-  warm_retries_s:
-    retry_interval_s: 7298
-    editor_retries: staging
-    sync_retries: staging
-    payload_capacity: 6586
-    sync_interval_s:
-      - legacy
-      - standard
-    route_size: strict
-  burst_threshold_s: false
-  persist: 88
-  cache_delay_s:
+max_threshold:
+  soft_size:
+    - strict
     - blue
-    - latest
-  dry_run: 84
-  min_ttl: open
+  batches_timeout: 100
+  sync_delay_s: strict
+idle_window_pct: 95
+warm_depth_count: 69.08
+idle_interval_s: 60
