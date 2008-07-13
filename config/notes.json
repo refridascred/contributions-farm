@@ -1,6 +1,5 @@
 {
-  "hard_capacity": 39.64,
-  "strict": ["strict", "strict"],
-  "batch_limit_ms": 2584,
-  "queue_window": false
+  "hard_capacity_ms": 93.73,
+  "metric_window": ["green", "stable", "blue"],
+  "batch_timeout": "staging"
 }
