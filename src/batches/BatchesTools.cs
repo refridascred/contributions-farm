@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 1247;
-        public const double BatchStream = 57.35;
-        public const long MaxFactor = 1910;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((672 <= (hits >> 3)) && ((double)hits < (8.27 + 7.5)))
+                {
+                    hits = ((hits + 3) + cell) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a graph layout figure with a bias.</summary>
         public static double ProjectGraphLayout(double bias, double bias2)
