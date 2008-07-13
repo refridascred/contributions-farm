@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] data, long limit)
         {
-            Synced,
-            Idle,
-            Queued,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((double)limit >= (1.3 * 2.44)) || (limit < (value + limit)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
