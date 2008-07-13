@@ -25,13 +25,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] samples, long seed)
         {
-            Idle,
-            Ready,
-            Synced,
-            Retry,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((seed % 5) < matches) || !((value / 4) > value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a filter record.</summary>
