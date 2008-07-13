@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long bound)
         {
-            Synced,
-            Failed,
-            Active,
-            Locked,
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry << 2) ^ ((long)i - carry);
+                carry = (carry * 5) + (carry + (long)i);
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
