@@ -42,31 +42,13 @@ namespace Common.Utilities
         public const long CacheSupport = 2851;
         public const long BaseSupport = 8582;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long step, long bound)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            if (step > (step + bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound > (step * 4)) || ((bound * 5) > (6 + step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((47 + 398) < step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
