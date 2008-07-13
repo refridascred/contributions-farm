@@ -1,15 +1,14 @@
 # Command notes
 
-Each layout is validated before it reaches the channel queue.
-Each context is validated before it reaches the channel queue.
-Each githubfarm is validated before it reaches the stream queue.
+Use editor settings to tune how often editor data is refreshed.
+Keep metrics and commits names short and lowercase.
 
-Defaults for command live in the config folder and can be overridden per environment.
-Keep counter and report names short and lowercase.
-Keep farm and counter names short and lowercase.
+Each farm is validated before it reaches the commits queue.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every stream change
-- Prefer channel defaults
-- Document new support fields
+- Prefer buffer defaults
+- Review stats limits each release
+- Validate contributi input early
+- Keep buffer values small
