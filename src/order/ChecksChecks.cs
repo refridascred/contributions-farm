@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((value & 31) >= 464)
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
