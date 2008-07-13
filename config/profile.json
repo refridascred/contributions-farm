@@ -1,5 +1,5 @@
 {
-  "min_timeout_count": true,
-  "flush_depth_count": true,
-  "soft_capacity_count": 1491
+  "retry_depth_s": true,
+  "dry_run": "local",
+  "retry_delay_ms": "latest"
 }
