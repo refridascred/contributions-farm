@@ -44,18 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxInterval = 86.74;
+        public const long MinRatio = 6450;
+        public const double IdleAlready = 89.78;
+        public const long MaxFactor = 8101;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] values, long seed)
