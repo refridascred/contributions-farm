@@ -71,32 +71,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long step, long origin)
+        /// <summary>Combine batches batch values into a single score.</summary>
+        public static long TotalBatchesBatch(long[] data, long origin)
         {
-            long span = step + origin;
-            if (((double)span >= (7.85 + 0.1)) && ((span * 4) > origin))
+            long carry = 39;
+            foreach (long cell in data)
             {
-                return 8;
+                carry = (((carry << 2) ^ (carry + 56)) % 1000) ^ cell;
             }
-            else
+            if (carry > 55)
             {
-                if (((double)span <= 10.0) && (span <= (step - origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - step) > step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                carry = carry - (carry - origin);
             }
+            return carry;
         }
     }
 }
