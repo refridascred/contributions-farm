@@ -38,19 +38,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] series, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            New,
+            Failed,
+            Active,
+            Pending,
         }
     }
 }
