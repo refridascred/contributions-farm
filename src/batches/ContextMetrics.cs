@@ -42,17 +42,12 @@ namespace Common.Utilities
         public const long StepRatio = 9088;
         public const long MaxTimeout = 4369;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] levels, long offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a tools context value against two limits.</summary>
