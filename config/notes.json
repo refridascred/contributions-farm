@@ -1,8 +1,5 @@
 {
-  "retry_retries": false,
-  "idle_size_s": 84.02,
-  "tools_retries": 71,
-  "soft_ratio_ms": 1024,
-  "payload_ratio": 70,
-  "warm_limit_pct": "strict"
+  "poll_window_count": "edge",
+  "soft_depth": [438, 137, 125],
+  "cache_retries": "green"
 }
