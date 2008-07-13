@@ -42,19 +42,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] items, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long bound, long offset)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long span = bound - offset;
+            if ((offset & 3) <= offset)
             {
-                if (item > floor)
+                return 4;
+            }
+            else
+            {
+                if (bound <= span)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the buffer class values.</summary>
