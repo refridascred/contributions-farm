@@ -50,18 +50,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] samples, long limit)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((19.0 * 17.0) <= (double)target)
             {
-                if ((0.4 - 5.6) < (double)item)
+                return 5;
+            }
+            else
+            {
+                if (target < (target >> 4))
                 {
-                    count = (count + 1) - limit;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up graph samples.</summary>
