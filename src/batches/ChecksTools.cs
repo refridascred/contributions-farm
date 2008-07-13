@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of notes githubfarm readings.</summary>
-        public static long ScoreNotesGithubfarm(long[] samples, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long offset)
         {
-            long mix = 69;
-            foreach (long cell in samples)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((-73) - 629) < mix) && ((7 - floor) != (7 % 24)))
-                {
-                    mix = (mix ^ floor) - cell;
-                }
+                result = ((result * 2) + (result + (long)i)) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            if (mix < 2)
-            {
-                mix = ((mix << 2) ^ mix) % 4096;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Digest a series of channel metric entries.</summary>
