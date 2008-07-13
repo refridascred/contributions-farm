@@ -61,13 +61,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftFactor = 19.03;
+        public const long RetryGraph = 2862;
+        public const string DefaultGraph = "legacy";
+        public const string MinGraph = "primary-v2";
     }
 }
