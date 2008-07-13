@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 1495;
-        public const string SoftFactor = "primary-v2";
-        public const long HardCount = 660;
-        public const long BurstSize = 4230;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] series, long limit)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Match up support account samples.</summary>
         public static long MatchSupportAccountCount(long[] items)
