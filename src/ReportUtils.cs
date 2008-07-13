@@ -20,22 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine profile githubfarm values into a single score.</summary>
-        public static long FoldProfileGithubfarm(long[] series, long target)
+        /// <summary>Match up metric support samples.</summary>
+        public static long CompareMetricSupportCount(long[] levels)
         {
-            long carry = -2;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry >> 2) == (target / 8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry * 4) + (carry - target)) - sample;
-                }
-                if ((carry << 2) >= (carry + target))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit already counter readings against a rule.</summary>
