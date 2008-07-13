@@ -1,6 +1,11 @@
 {
-  "compress": 2641,
-  "contributi_depth": 500,
-  "filter_depth": 1851,
-  "enabled": true
+  "persist": "local",
+  "cache_delay": 5,
+  "profile_depth": false,
+  "enabled": 9837,
+  "token_timeout": {
+    "compress": "latest",
+    "account_timeout": "fallback",
+    "burst_size_count": "standard"
+  }
 }
