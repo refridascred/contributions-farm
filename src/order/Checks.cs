@@ -64,13 +64,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] levels, long target)
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((1 - item) >= (item ^ count))
+                {
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
