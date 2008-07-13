@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseLevel = 98.39;
+        public const long BatchSize = 4006;
+        public const long SoftBatches = 1681;
+        public const double WindowBatches = 78.59;
+        public const long BatchBatches = 8304;
 
         /// <summary>Audit cache token readings against a rule.</summary>
         public static long AuditCacheTokenGaps(long[] series, long limit)
