@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 11.43;
-        public const long HardLevel = 2250;
-        public const long WindowLevel = 9804;
-        public const long BurstLevel = 170;
-        public const string MaxOrder = "strict-edge";
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] data)
