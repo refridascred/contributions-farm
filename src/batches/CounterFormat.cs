@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long target)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] items, long floor)
         {
-            if ((double)target > (2.5 - 9.1))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (3.1 >= (double)step)
+                if (items[i] > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
