@@ -53,22 +53,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate report metrics samples.</summary>
-        public static long DigestReportMetrics(long[] levels)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mix = 22;
-            foreach (long reading in levels)
-            {
-                if (((reading & 63) < mix) || ((double)reading < (0.97 * 0.38)))
-                {
-                    mix = (mix - (reading + mix)) % 65521;
-                }
-            }
-            if (mix > 498)
-            {
-                mix = (mix << 2) ^ (mix * 4);
-            }
-            return mix % 4096;
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
