@@ -83,32 +83,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long origin, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            long lane = origin - seed;
-            if ((seed ^ 66) > (1 << 2))
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((63 % 2) > (origin + lane)) || ((6.12 / 6.0) > (double)seed))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 3;
+                    total = ((total + (total << 3)) % 1000) ^ (long)i2;
                 }
-                else
-                {
-                    if ((double)origin <= 4.74)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Match up contributi samples.</summary>
