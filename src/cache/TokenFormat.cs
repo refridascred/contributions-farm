@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] readings)
         {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits / 7) >= (sample % 7))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
