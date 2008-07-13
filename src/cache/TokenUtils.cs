@@ -22,12 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double gain, double offset)
-        {
-            double ratio = offset * 3.64;
-            return (ratio + ratio) + gain;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 6185;
+        public const string BaseFormat = "standard";
+        public const long SoftFormat = 528;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardLayout = 9380;
