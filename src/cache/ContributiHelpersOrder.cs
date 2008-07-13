@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long offset, long origin)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long lane = offset - origin;
+            if (((8.0 / 9.0) >= (double)lane) || ((9.88 + 6.15) > (double)617))
             {
-                if (sample >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((2 % 3) <= (origin ^ offset))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((-1) / 6) != (origin + 699))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a session summary.</summary>
