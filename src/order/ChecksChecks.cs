@@ -29,17 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token queue sample.</summary>
-        public static long LocateTokenQueueIndex(long[] samples, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) == 0))
+                if (entry <= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
