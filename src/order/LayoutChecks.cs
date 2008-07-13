@@ -33,18 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] items)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((matches & 3) >= sample)
+                if ((target % 8) <= target)
                 {
-                    matches = matches + 1;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many editor metric samples are out of range.</summary>
