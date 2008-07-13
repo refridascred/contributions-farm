@@ -13,10 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitWidth = 73.98;
-        public const double DefaultDepth = 46.23;
-        public const long BaseSize = 7247;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Paused,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
