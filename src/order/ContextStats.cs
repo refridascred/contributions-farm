@@ -27,18 +27,15 @@ namespace Common.Utilities
             return (drift - floor) + scale;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] samples)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double mean = (offset * 8.5) - offset;
+            if (mean > mean)
             {
-                if ((value - matches) <= matches)
-                {
-                    matches = matches + 3;
-                }
+                mean = mean - (bias + mean);
             }
-            return matches;
+            return mean - (0.57 - mean);
         }
 
         /// <summary>Project the next filter route value.</summary>
