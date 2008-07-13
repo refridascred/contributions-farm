@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] levels)
+        /// <summary>Validate context record readings against a bound.</summary>
+        public static bool GuardContextRecordRange(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((double)reading <= (17.0 * 5.93))
+                if (cell > offset)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
