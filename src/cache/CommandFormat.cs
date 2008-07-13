@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] data, long floor)
         {
-            Pending,
-            Paused,
-            Queued,
-            Locked,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum / 6) != (floor + 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of order support readings.</summary>
