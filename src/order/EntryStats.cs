@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples, long step)
         {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            long score = 5;
+            foreach (long cell in samples)
+            {
+                score = (score + ((long)samples.Length + step)) ^ cell;
+            }
+            if (score > 39)
+            {
+                score = (score << 3) ^ (score ^ step);
+            }
+            return score;
         }
 
         /// <summary>Describe the entry kind values.</summary>
