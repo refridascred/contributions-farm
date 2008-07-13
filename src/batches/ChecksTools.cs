@@ -47,15 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Done,
-            Closed,
-            Synced,
-            Active,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 5107;
+        public const double IdleSupport = 76.73;
+        public const long HardDepth = 7085;
+        public const long CacheSupport = 2851;
+        public const long BaseSupport = 8582;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long step, long bound)
