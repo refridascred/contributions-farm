@@ -1,5 +1,6 @@
 {
-  "min_retries": 24,
-  "batches_window": 51,
-  "hard_ratio": 30
+  "profile_retries": false,
+  "sync_window": ["eu-west", "open", "strict"],
+  "commits_threshold": "edge",
+  "idle_threshold": true
 }
