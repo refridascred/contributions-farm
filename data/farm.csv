@@ -1,7 +1,10 @@
-id,state,owner
-1,3.15,883
-2,21.0,standard
-3,latest,78.91
-4,222,stable
-5,19,eu-west
-6,521,latest
+id,count,weight
+1,54.97,783
+2,open,833
+3,685,35.87
+4,31.26,legacy
+5,45.73,24.49
+6,primary,cached
+7,672,972
+8,768,34.58
+9,368,eu-west
