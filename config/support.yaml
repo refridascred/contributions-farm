@@ -1,13 +1,21 @@
 # support settings
-burst_limit:
-  max_ratio_s: eu-west
-  batch_ttl_count: 6453
-  warm_window:
-    - 484
-    - 226
-    - 271
-  sync_ratio_ms: green
-strict: 60
-default_depth_s: staging
-window_capacity: primary
-hard_retries_pct: 5814
+record_limit:
+  retry_ratio_pct: 69.38
+  batch_window_s: 62.66
+  hard_ratio: local
+  already_interval: 17.47
+  hard_threshold_s: 2.23
+  default_delay_s: 78.18
+dry_run:
+  enabled: fallback
+  flush_window_pct: edge
+  batch_threshold_ms: 58.02
+  max_delay:
+    - 178
+    - 243
+    - 24
+  profile_retries: open
+  strict: eu-west
+min_depth_pct: edge
+burst_window_s: false
+enabled: false
