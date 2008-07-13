@@ -1,14 +1,15 @@
 # Command notes
 
-Use editor settings to tune how often editor data is refreshed.
-Keep metrics and commits names short and lowercase.
+Use channel settings to tune how often record data is refreshed.
+Use entry settings to tune how often cache data is refreshed.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-Each farm is validated before it reaches the commits queue.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
+The order module keeps record values in sync with the metric cache.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Review stats limits each release
-- Validate contributi input early
-- Keep buffer values small
+- Validate farm input early
+- Log every contributi change
+- Prefer channel defaults
+- Document new cache fields
