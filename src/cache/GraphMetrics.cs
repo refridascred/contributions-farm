@@ -22,31 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long limit, long limit2)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] items, long limit)
         {
-            if ((double)limit2 >= (18.0 + 2.7))
+            long mark = -942;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit << 3) <= limit2)
+                if ((8.0 + 10.0) <= (double)reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit2 % 8) >= (limit2 * 3)) && ((limit + limit2) < (limit2 - limit2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = (((mark << 2) ^ 28) % 1000) + limit;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
