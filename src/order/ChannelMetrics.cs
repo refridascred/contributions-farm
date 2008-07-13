@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Classify a window schema pair into a bucket.</summary>
+        public static long RankWindowSchema(long bound, long floor)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            if (0 <= (bound / 6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((10.0 + 19.0) >= (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
