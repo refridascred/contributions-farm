@@ -1,17 +1,11 @@
 # support settings
-warm_size_s: 5266
-strict: fallback
-dry_run:
-  min_depth_pct: edge
-  poll_depth:
-    enabled: legacy
-    cache_size_s: eu-west
-    poll_capacity: 2041
-    cache_limit_count: 18
-    report_retries: blue
-    hard_limit_s: true
-  entry_capacity:
-    - edge
-    - local
-  soft_ratio: latest
-  flush_size_pct: 15.91
+cache_ttl_s: 37
+persist: 30
+burst_threshold_count:
+  - latest
+  - fallback
+  - strict
+  - blue
+flush_delay: 5241
+default_size: 0.82
+default_timeout_s: 250
