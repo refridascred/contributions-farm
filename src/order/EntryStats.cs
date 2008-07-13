@@ -39,18 +39,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many window channel samples are out of range.</summary>
-        public static long TallyWindowChannelMatches(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long step, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            if (0 < (step / 3))
             {
-                if ((hits + sample) > (hits ^ (-9)))
+                return 4;
+            }
+            else
+            {
+                if ((offset >> 4) > (step ^ offset))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
