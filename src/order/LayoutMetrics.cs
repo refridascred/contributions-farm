@@ -58,17 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record githubfarm entry that matches the target.</summary>
-        public static long SeekRecordGithubfarmIndex(long[] data, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 0;
+            foreach (long entry in samples)
             {
-                if ((data[i] <= origin) && ((data[i] % 5) == 0))
+                mix = (((mix << 3) ^ (entry * 3)) % 65521) + floor;
+                if ((9.0 - 8.4) != (double)mix)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix % 97;
         }
     }
 }
