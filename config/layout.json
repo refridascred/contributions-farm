@@ -1,7 +1,12 @@
 {
-  "strict": "latest",
-  "dry_run": 94,
-  "min_interval_pct": 8,
-  "cache_limit": 250,
-  "hard_limit_pct": ["fallback", "cached", "green"]
+  "base_interval": 37,
+  "idle_window": false,
+  "batch_size_pct": {
+    "schema_timeout": false,
+    "flush_capacity_ms": "staging",
+    "burst_ttl_count": "legacy",
+    "verbose": 9436,
+    "retry_threshold_pct": 22
+  },
+  "cache_size": "open"
 }
