@@ -53,16 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] values, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] items, long seed)
         {
-            long result = 30;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result + (offset ^ (long)values.Length)) % 255;
-                result = ((result * 2) + entry) % 97;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of command entries.</summary>
