@@ -1,22 +1,4 @@
 # githubfarm settings
-verbose: 250
-default_interval: false
-tools_size: legacy
-base_timeout_ms:
-  tools_ttl: 60
-  verbose:
-    - legacy
-    - primary
-    - primary
-  sync_ttl_s: 60
-  cache_ratio_pct: 67.52
-  route_threshold:
-    batches_limit:
-      - 153
-      - 432
-    readonly: latest
-    min_retries_pct: open
-    idle_limit: local
-  counter_depth: open
-session_size: fallback
-retry_ttl_s: staging
+metric_ttl: eu-west
+audit: fallback
+commits_limit: strict
