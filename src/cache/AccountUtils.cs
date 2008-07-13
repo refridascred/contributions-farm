@@ -24,18 +24,19 @@ namespace Common.Utilities
             return bias2 + (double)864;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] levels, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (((double)origin > (5.04 / 5.0)) || ((origin + seen) <= seen))
+                if (datum <= seed)
                 {
-                    seen = (seen + 1) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a token entry.</summary>
