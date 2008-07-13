@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] values, long target)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
