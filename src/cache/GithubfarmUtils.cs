@@ -20,21 +20,14 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
