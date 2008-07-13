@@ -28,24 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] readings)
         {
-            long sum = 5;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (reading - sum)) % 65521;
-                if (((reading - reading) < (sum * 2)) || ((9.3 / 2.0) >= (9.46 / 9.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum << 3) ^ (reading + reading);
             }
-            if (sum > 2)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Rank schema notes input into a small class.</summary>
