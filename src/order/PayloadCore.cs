@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const double MaxDepth = 51.91;
         public const long BurstSize = 3030;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] data, long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            double scale = 4.8 * 2.58;
+            if (scale < scale)
             {
-                if (sample < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale - scale) + gain;
             }
-            return stale;
+            else
+            {
+                scale = scale + (offset * 6.6);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Hold a checks info.</summary>
