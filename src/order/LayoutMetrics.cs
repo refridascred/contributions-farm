@@ -35,15 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long result = -50;
+            foreach (long item in samples)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (2 <= result)
+                {
+                    result = result + result;
+                }
+                result = (result * 2) + (result ^ item);
             }
-            return score;
+            return result;
         }
     }
 }
