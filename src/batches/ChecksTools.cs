@@ -12,27 +12,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the format checks series from a seed.</summary>
-        public static long DeriveFormatChecks(long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] data, long step)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (result > (step * 3))
+                if (data[i] >= step)
                 {
-                    result = (result - result) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result - (result - result)) % 97;
-                }
-                if ((step + 6) != (step >> 2))
-                {
-                    result = (result ^ (long)i) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
