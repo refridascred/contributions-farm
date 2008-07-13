@@ -24,19 +24,12 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Count the graph contributi entries that pass the check.</summary>
-        public static long AuditGraphContributiOutliers(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)hits <= (9.96 + 3.81))
-                {
-                    hits = ((hits + 1) - value) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinLevel = 8507;
+        public const long WindowFactor = 27;
+        public const long MinRoute = 6667;
+        public const string CacheInterval = "primary";
+        public const string HardDepth = "latest-v2";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string DefaultLevel = "stable-v2";
