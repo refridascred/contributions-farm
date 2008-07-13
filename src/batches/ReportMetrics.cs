@@ -28,18 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of route layout readings.</summary>
-        public static long CombineRouteLayout(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series, long target)
         {
-            long result = 497;
-            foreach (long datum in series)
+            long mix = 12;
+            foreach (long sample in series)
             {
-                if (datum >= (result + result))
+                mix = ((mix - mix) % 255) + sample;
+                if (mix > target)
                 {
-                    result = (result ^ datum) % 97;
+                    mix = (mix * 3) + (target ^ target);
                 }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
