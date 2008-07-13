@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long limit, long step)
-        {
-            if ((step >= (limit % 16)) || (7.3 <= (double)step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + step) >= limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step) < step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step - limit) >= 7)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepDepth = "legacy";
+        public const double BatchWidth = 38.16;
+        public const double IdleGithubfarm = 59.35;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] levels, long bound)
