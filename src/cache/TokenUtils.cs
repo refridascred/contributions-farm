@@ -20,12 +20,11 @@ namespace Common.Utilities
             return (ratio + ratio) + gain;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Failed,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 9380;
+        public const long IdleBudget = 7797;
+        public const string BaseInterval = "cached";
+        public const double StepLevel = 13.89;
+        public const string RetryCount = "cached-1";
     }
 }
