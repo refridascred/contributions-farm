@@ -19,22 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchScore = 4107;
+        public const long BurstOrder = 7829;
+        public const double WindowLevel = 29.24;
+        public const long BatchOrder = 634;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileBounds(long[] values, long offset)
