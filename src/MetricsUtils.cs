@@ -66,38 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long target, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double bias, double offset)
         {
-            if ((offset + 17) == (target >> 1))
+            double weight = (double)(733 + 6);
+            if (weight < (weight - bias))
             {
-                return 5;
+                weight = weight - (offset * 4.4);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (target > (6 - target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.22 / 4.0) != (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target & 3) < (target + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                weight = (weight + 16.0) + (double)(long)i;
             }
+            return weight + offset;
         }
     }
 }
