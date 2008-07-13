@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long StepFilter = 6912;
         public const long IdleRatio = 2830;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] samples, long origin)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long carry = 6;
-            foreach (long datum in samples)
-            {
-                carry = ((carry ^ (32 - datum)) % 1000) - origin;
-                if ((carry / 9) == (carry + carry))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
