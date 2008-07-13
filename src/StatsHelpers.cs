@@ -30,19 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double drift = (scale + scale) / 9.0;
-            if (drift < (double)98)
-            {
-                drift = (drift + (double)8) - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (3.2 / 4.0)) + (double)(long)i;
-            }
-            return drift + drift;
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
