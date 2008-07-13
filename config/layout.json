@@ -1,14 +1,7 @@
 {
-  "poll_size_pct": {
-    "batch_capacity": 89,
-    "editor_depth": "eu-west",
-    "sync_limit": 5750,
-    "warm_ttl_count": false,
-    "filter_ttl": "edge",
-    "batch_threshold": 66.59
-  },
-  "stats_timeout": "edge",
-  "burst_window": 63.78,
-  "strict": 500,
-  "flush_capacity_ms": "cached"
+  "poll_capacity_s": false,
+  "default_window": "stable",
+  "poll_interval_count": true,
+  "batch_delay_count": 29,
+  "flush_window_s": [459, 474, 170]
 }
