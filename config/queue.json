@@ -1,7 +1,8 @@
 {
-  "hard_retries_s": "edge",
-  "max_timeout": 30,
-  "burst_delay_count": 9041,
-  "enabled": 250,
-  "compress": [25, 402]
+  "poll_timeout_count": "open",
+  "schema_limit": true,
+  "hard_retries_count": "eu-west",
+  "filter_ttl": "staging",
+  "idle_delay_count": 60,
+  "audit": [197, 375, 61, 45]
 }
