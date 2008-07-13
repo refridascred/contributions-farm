@@ -32,20 +32,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = (((score << 3) ^ (target % 5)) % 101) - (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowCount = "staging-edge";
+        public const long BurstTools = 8318;
+        public const long RetrySize = 5153;
+        public const long CacheRatio = 7214;
 
         /// <summary>Iterate the report contributi series from a seed.</summary>
         public static long RollReportContributi(long bound)
