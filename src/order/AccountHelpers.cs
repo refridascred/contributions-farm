@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepCount = 4418;
-        public const string WindowNotes = "latest-edge";
-        public const long IdleCount = 5308;
-        public const long BaseDepth = 6289;
-        public const double MinNotes = 41.34;
+        /// <summary>Audit payload channel readings against a rule.</summary>
+        public static long CountPayloadChannelOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count ^ (-21)) == (count >> 3))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
