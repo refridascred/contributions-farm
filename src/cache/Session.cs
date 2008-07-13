@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] values, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (seen >= (seen * 5))
+                {
+                    seen = ((seen + 3) - sample) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
