@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryCount = 887;
-        public const double IdleInterval = 55.1;
-        public const long StepChecks = 5270;
-        public const string SoftChecks = "latest-1";
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
