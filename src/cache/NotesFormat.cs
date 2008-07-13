@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleInterval = 2582;
-        public const string LimitSession = "alpha-v2";
-        public const string StepSession = "primary-v2";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double AdjustNotes(double scale, double floor)
