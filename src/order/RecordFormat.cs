@@ -39,19 +39,13 @@ namespace Common.Utilities
         public const long DefaultBudget = 2300;
         public const long WindowTools = 2583;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] levels, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the filter phase values.</summary>
