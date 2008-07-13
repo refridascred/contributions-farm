@@ -49,18 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] series, long origin)
         {
-            long state = 339;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item >> 4) != (item ^ state))
+                if (series[i] < origin)
                 {
-                    state = state ^ (item * 3);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
