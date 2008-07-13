@@ -32,9 +32,13 @@ namespace Common.Utilities
             return (scale - 8.4) + offset;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseScore = 82.68;
-        public const double BatchBudget = 98.74;
-        public const double IdleCluster = 21.5;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Stale,
+            Closed,
+            Locked,
+            Paused,
+        }
     }
 }
