@@ -41,18 +41,17 @@ namespace Common.Utilities
         public const long BurstBudget = 4100;
         public const long SoftContributi = 57;
 
-        /// <summary>Measure how many report order samples are out of range.</summary>
-        public static long AuditReportOrderOutliers(long[] series)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((datum << 3) <= (seen / 9)) || (datum >= (seen + datum)))
+                if (values[i] > seed)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
