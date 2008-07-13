@@ -19,13 +19,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Active,
-            Locked,
-            Draft,
-            Closed,
+            Ready,
+            Pending,
+            Dropped,
+            Done,
+            Retry,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
