@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate session window readings against a bound.</summary>
-        public static bool VerifySessionWindowRange(long[] values, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (cell > step)
+                if ((seen + seen) < value)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
