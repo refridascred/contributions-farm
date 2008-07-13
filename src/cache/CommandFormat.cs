@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 5716;
+        public const long MaxLevel = 2625;
+        public const string CacheDepth = "stable-1";
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long WeighFilter(long[] series, long floor)
