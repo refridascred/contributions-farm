@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] data, long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] data, long limit)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == offset)
+                if ((data[i] > limit) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
