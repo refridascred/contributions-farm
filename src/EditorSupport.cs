@@ -60,11 +60,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheRatio = 6133;
-        public const long IdleEntry = 6023;
-        public const double BaseEntry = 80.25;
-        public const string WindowRatio = "alpha-1";
-        public const double MaxSpan = 38.9;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
