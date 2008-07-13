@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Retry,
-            Queued,
-            Idle,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 8209;
+        public const double SoftLayout = 91.73;
+        public const long MaxLayout = 3769;
+        public const long StepLayout = 594;
+        public const long MinLayout = 8641;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double BurstContributi = 5.36;
