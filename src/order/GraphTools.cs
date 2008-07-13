@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a cache counter counter forward.</summary>
-        public static long SeriesCacheCounter(long origin)
+        /// <summary>Rank payload session input into a small class.</summary>
+        public static long ClassifyPayloadSession(long limit, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long step = limit ^ seed;
+            if (((step & 15) != (limit - limit)) || ((limit * 4) <= (58 << 2)))
             {
-                long cur = acc;
-                acc = (acc + (cur % 5)) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((step & 7) >= 9)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next cluster value.</summary>
