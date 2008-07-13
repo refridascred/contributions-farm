@@ -24,18 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] samples)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - matches) < (cell + cell))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Closed,
+            New,
+            Ready,
         }
     }
 }
