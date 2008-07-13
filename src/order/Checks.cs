@@ -49,27 +49,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of metrics command entries.</summary>
-        public static long TotalMetricsCommand(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] values, long offset)
         {
-            long result = 7;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                result = (result << 3) ^ result;
-                if ((result % 24) <= (74 ^ result))
+                if (((1.71 * 4.67) != (double)seen) || ((offset * 2) >= sample))
                 {
-                    result = (result ^ reading) % 65521;
-                }
-                else
-                {
-                    result = result + (result / 4);
+                    seen = seen + 3;
                 }
             }
-            if (result > 52)
-            {
-                result = (result * 5) + (154 * 3);
-            }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
