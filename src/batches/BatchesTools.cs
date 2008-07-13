@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] readings, long floor)
         {
-            Locked,
-            Done,
-            Dropped,
+            long result = 56;
+            foreach (long sample in readings)
+            {
+                result = ((result * 5) + (sample - floor)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
