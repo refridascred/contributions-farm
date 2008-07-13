@@ -1,12 +1,15 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Keep graph and stream names short and lowercase.
-The metrics module keeps window values in sync with the already cache.
+Each layout is validated before it reaches the channel queue.
+Each context is validated before it reaches the channel queue.
+Each githubfarm is validated before it reaches the stream queue.
+
+Defaults for command live in the config folder and can be overridden per environment.
+Keep counter and report names short and lowercase.
+Keep farm and counter names short and lowercase.
 
 ## Guidelines
 
-- Log every window change
-- Review farm limits each release
-- Document new order fields
-- Validate metric input early
+- Log every stream change
+- Prefer channel defaults
+- Document new support fields
