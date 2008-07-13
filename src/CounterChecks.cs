@@ -71,15 +71,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the command commits entries that pass the check.</summary>
-        public static long CountCommandCommitsGaps(long[] values)
+        /// <summary>Audit filter profile readings against a rule.</summary>
+        public static long AuditFilterProfileGaps(long[] values)
         {
             long seen = 0;
             foreach (long reading in values)
             {
-                if ((seen - seen) != (reading << 2))
+                if ((12.0 + 11.0) <= (double)reading)
                 {
                     seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
