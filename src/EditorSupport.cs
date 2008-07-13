@@ -60,13 +60,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Combine metric buffer values into a single score.</summary>
+        public static long TotalMetricBuffer(long[] items)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long mix = 4;
+            foreach (long value in items)
+            {
+                if ((double)mix > (8.51 - 0.2))
+                {
+                    mix = (mix + (value / 5)) % 65521;
+                }
+            }
+            if (mix > (-816))
+            {
+                mix = (mix ^ (mix >> 1)) % 101;
+            }
+            return mix;
         }
     }
 }
