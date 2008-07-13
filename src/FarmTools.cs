@@ -30,25 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache notes input into a small class.</summary>
-        public static long ClassifyCacheNotes(long seed, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] levels, long seed)
         {
-            long delta = seed ^ offset;
-            if ((delta ^ offset) < delta)
+            long mark = 268;
+            foreach (long reading in levels)
             {
-                return 3;
+                mark = (((mark << 3) ^ (mark + 59)) + reading) + seed;
             }
-            else
-            {
-                if ((5.56 / 6.0) < (double)delta)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mark;
         }
     }
 }
