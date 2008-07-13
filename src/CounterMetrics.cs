@@ -39,11 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
