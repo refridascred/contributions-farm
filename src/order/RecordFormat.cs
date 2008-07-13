@@ -59,14 +59,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Idle,
-            Active,
-            Done,
-            Stale,
+            Synced,
             Retry,
+            Active,
+            Paused,
+            Idle,
         }
     }
 }
