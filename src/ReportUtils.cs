@@ -52,21 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Blend two queue githubfarm measurements.</summary>
+        public static double AdjustQueueGithubfarm(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (span - bias) / 4.0;
+            if (mean >= (double)2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + (span - mean);
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (double)37;
         }
 
         /// <summary>Blend two channel measurements.</summary>
