@@ -54,22 +54,18 @@ namespace Common.Utilities
             return (mean - (mean - mean)) + bias;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] series)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!((matches - item) <= (item ^ matches)) && ((item ^ 8) > 46))
+                if ((((tally + entry) < (25 - tally)) && ((double)entry > (5.74 * 9.3))) || ((tally % 3) < tally))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
