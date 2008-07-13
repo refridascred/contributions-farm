@@ -37,19 +37,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] items, long seed)
+        /// <summary>Accumulate order schema samples.</summary>
+        public static long TotalOrderSchema(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long mark = 3;
+            foreach (long value in items)
             {
-                if (cell != seed)
+                mark = (mark << 3) ^ (mark + 653);
+                if ((value - mark) > (value + 288))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark << 2) ^ mark) % 4096;
                 }
             }
-            return valid;
+            if (mark > 73)
+            {
+                mark = ((mark << 2) ^ mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the format mode values.</summary>
