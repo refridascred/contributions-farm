@@ -19,14 +19,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Done,
-            New,
-            Dropped,
-            Stale,
-            Paused,
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
