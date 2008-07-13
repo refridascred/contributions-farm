@@ -12,38 +12,12 @@ namespace Common.Utilities
         public const long BaseDepth = 6289;
         public const double MinNotes = 41.34;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long offset)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            if (!((double)origin > (2.1 - 0.8)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin ^ offset) <= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + offset) < origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin - origin) <= (offset - offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
