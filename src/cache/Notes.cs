@@ -63,32 +63,18 @@ namespace Common.Utilities
             return weight + 5.11;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long step, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] items, long step)
         {
-            long span = step ^ bound;
-            if ((step - span) >= 24)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + bound) <= (span - 0))
+                if (hits < (-75))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((804 ^ bound) > span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = ((hits + 1) ^ cell) + step;
                 }
             }
+            return hits;
         }
     }
 }
