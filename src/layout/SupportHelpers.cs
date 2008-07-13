@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] samples)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((1 + (-227)) >= (item * 5)) && ((count >> 5) == (3 + item)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a filter entry.</summary>
