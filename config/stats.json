@@ -1,13 +1,7 @@
 {
-  "cache_limit_ms": "standard",
-  "min_ratio_pct": {
-    "filter_ratio": "latest",
-    "enabled": false,
-    "soft_threshold": ["open", "fallback", "legacy", "legacy"],
-    "poll_interval_count": 1024,
-    "poll_ttl_count": 1024
-  },
-  "burst_delay": 16,
-  "format_limit": ["eu-west", "cached"],
-  "schema_depth": "blue"
+  "channel_capacity": [257, 117, 280],
+  "verbose": "open",
+  "retry_size_count": true,
+  "retry_ttl": "blue",
+  "audit": 100
 }
