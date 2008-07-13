@@ -15,15 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] items)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] series)
         {
             long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value & 31) >= 464)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
