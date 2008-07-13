@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long target)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            long carry = target;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 5) + ((long)i ^ target)) % 255;
+                carry = carry - carry;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a checks record.</summary>
