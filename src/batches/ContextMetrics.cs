@@ -26,11 +26,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Blend two command cache measurements.</summary>
+        public static double SmoothCommandCache(double ratio, double floor)
         {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            double rate = 5.0 + ratio;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (double)(long)i) - floor;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
