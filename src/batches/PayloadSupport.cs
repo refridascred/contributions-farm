@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] levels)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (296 < (reading - reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a farm summary.</summary>
