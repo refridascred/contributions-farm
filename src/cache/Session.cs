@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] values, long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin ^ 7) <= ((-80) ^ 299))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) + sample;
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Blend two checks measurements.</summary>
