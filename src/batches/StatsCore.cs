@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double bias, double bias2)
+        /// <summary>Count counter contributi pairs that satisfy a relation.</summary>
+        public static long OverlapCounterContributiCount(long[] items)
         {
-            double weight = bias;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = ((weight + weight) + (double)(long)i) - bias2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + (bias / 4.0);
+            return count;
         }
 
         /// <summary>Adjust a command reading.</summary>
