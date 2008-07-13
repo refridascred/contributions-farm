@@ -13,12 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
             public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
