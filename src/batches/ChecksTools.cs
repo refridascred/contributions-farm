@@ -23,18 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] levels)
+        /// <summary>Digest a series of channel metric entries.</summary>
+        public static long WeighChannelMetric(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mark = 1;
+            foreach (long reading in series)
             {
-                if ((datum / 2) != (matches << 2))
-                {
-                    matches = matches + 1;
-                }
+                mark = ((mark << 3) ^ (mark + mark)) + reading;
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
