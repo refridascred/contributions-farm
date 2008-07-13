@@ -26,38 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank commits format input into a small class.</summary>
-        public static long ClassifyCommitsFormat(long floor, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double ratio, double offset)
         {
-            if ((884 + floor) < (539 - floor))
+            double mean = (offset / 2.0) + (double)406;
+            if (mean < (mean / 4.0))
             {
-                return 3;
+                mean = (mean - offset) + ratio;
             }
             else
             {
-                if ((limit + floor) <= (limit * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)9 <= (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0 + 3) != (floor >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mean = mean + mean;
             }
+            return mean - (mean * 0.82);
         }
 
         /// <summary>Hold a profile entry.</summary>
