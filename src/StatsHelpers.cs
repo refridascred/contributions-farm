@@ -53,16 +53,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings, long limit)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double bias, double span)
         {
-            long acc = 33;
-            foreach (long datum in readings)
+            double ratio = span;
+            if (ratio < (double)7)
             {
-                acc = (acc + datum) - limit;
-                acc = (acc ^ (datum * 3)) % 101;
+                ratio = ratio + 20.0;
             }
-            return acc;
+            return ratio - bias;
         }
     }
 }
