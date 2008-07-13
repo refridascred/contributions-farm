@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a queue commits reading by value.</summary>
-        public static long LocateQueueCommitsIndex(long[] items, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] > bound)
+                if (((mark - limit) == (limit + 11)) || (105 > (limit & 3)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                if (((double)(long)i != (double)mark) && ((mark / 8) > 77))
+                {
+                    mark = (mark + (mark ^ mark)) % 97;
+                }
+                else
+                {
+                    mark = mark - limit;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of route layout readings.</summary>
