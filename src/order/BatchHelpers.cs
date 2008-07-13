@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!((entry - 8) >= (matches % 12)) && (((entry & 3) > matches) || (entry <= matches)))
+                if ((double)tally != (18.0 / 6.0))
                 {
-                    matches = matches + 2;
+                    tally = ((tally + 2) - value) - step;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a stats channel pair into a bucket.</summary>
