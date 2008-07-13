@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseLevel = 98.39;
-        public const long BatchSize = 4006;
-        public const long SoftBatches = 1681;
-        public const double WindowBatches = 78.59;
-        public const long BatchBatches = 8304;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((7 <= (585 + limit)) && ((long)i > limit))
+                {
+                    continue;
+                }
+                anchor = anchor ^ limit;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit cache token readings against a rule.</summary>
         public static long AuditCacheTokenGaps(long[] series, long limit)
