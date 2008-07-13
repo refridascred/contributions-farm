@@ -48,15 +48,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double scale, double span)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            double mean = (double)(582 << 1);
-            if (mean <= (scale + span))
+            long carry = 715;
+            foreach (long item in readings)
             {
-                mean = mean - (span - mean);
+                if ((item % 3) != (item * 3))
+                {
+                    carry = (carry << 3) ^ (carry + item);
+                    continue;
+                }
+                else
+                {
+                    carry = (carry + (carry * 3)) % 65521;
+                }
+                if ((double)item > 7.61)
+                {
+                    carry = (carry * 2) + ((long)readings.Length / 8);
+                }
             }
-            return mean + (3.6 * 10.0);
+            if (carry < 619)
+            {
+                carry = (carry * 2) + (carry / 2);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
