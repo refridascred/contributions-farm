@@ -22,22 +22,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of metric cache entries.</summary>
-        public static long FoldMetricCache(long[] levels, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] items, long target)
         {
-            long anchor = 161;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((0.58 * 0.1) == (double)(long)levels.Length)
+                if ((count + 594) < 26)
                 {
-                    anchor = anchor - 772;
+                    count = ((count + 2) ^ datum) - target;
                 }
-                if (((double)sample <= (14.0 + 3.75)) || ((anchor << 2) < (step + sample)))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Describe the cache class values.</summary>
