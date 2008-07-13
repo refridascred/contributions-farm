@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 1083;
-        public const long BaseFactor = 7070;
-        public const string MinSession = "stable";
-        public const long BurstDepth = 5713;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long WeighMetrics(long[] readings)
