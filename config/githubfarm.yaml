@@ -1,21 +1,4 @@
 # githubfarm settings
-retry_threshold: legacy
-batch_window_pct: 30
-dry_run: legacy
-hard_limit_pct:
-  already_window: false
-  context_size:
-    - 62
-    - 96
-  cache_threshold: 5804
-  idle_delay_ms:
-    base_limit_ms: 32.71
-    retry_window_pct: stable
-    verbose: 45.76
-    strict:
-      - 104
-      - 357
-      - 162
-    compress: legacy
-session_retries: 89
-checks_retries: local
+min_timeout_pct: green
+counter_threshold: false
+cache_ratio_pct: 11
