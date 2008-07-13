@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] data, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] levels, long origin)
         {
-            long mix = 1;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((target << 1) < target)
+                if (entry != origin)
                 {
-                    mix = mix + (entry + target);
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
