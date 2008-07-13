@@ -1,7 +1,16 @@
 # support settings
-max_interval_pct: 55
-session_limit:
-  - standard
-  - eu-west
-  - legacy
-burst_ratio_pct: eu-west
+audit: primary
+cache_depth_ms: 7878
+window_timeout:
+  soft_depth:
+    - cached
+    - latest
+    - open
+    - fallback
+  payload_interval: 21.53
+  strict:
+    strict: 60
+    schema_threshold: staging
+    context_limit: 83.33
+soft_threshold_count: 30
+sync_retries_s: 72.43
