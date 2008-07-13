@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel checks helpers.</summary>
     public static class ChannelChecks
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data, long origin)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] samples, long offset)
         {
-            long state = 352;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 4) + (state & 7)) % 101;
-                if ((sample << 3) >= sample)
+                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
                 {
-                    state = ((state * 4) + (origin ^ sample)) % 255;
+                    return (long)i;
                 }
             }
-            if (state > 89)
-            {
-                state = (state + origin) % 101;
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
