@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            Queued,
+            Paused,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
