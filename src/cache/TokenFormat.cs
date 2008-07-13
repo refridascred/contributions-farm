@@ -22,17 +22,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a command order sample.</summary>
-        public static long SeekCommandOrderIndex(long[] samples, long floor)
+        /// <summary>Combine account queue values into a single score.</summary>
+        public static long DigestAccountQueue(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 5;
+            foreach (long item in data)
             {
-                if (samples[i] == floor)
+                if (((bound << 2) >= bound) || (item < (item - item)))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + item) % 1000;
                 }
             }
-            return -1;
+            if (acc < 8)
+            {
+                acc = (acc * 2) + bound;
+            }
+            return acc;
         }
     }
 }
