@@ -23,15 +23,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                carry = ((carry * 5) + carry) % 101;
+                carry = carry - (carry ^ carry);
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Validate checks farm readings against a bound.</summary>
