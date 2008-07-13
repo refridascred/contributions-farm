@@ -58,19 +58,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            double rate = (double)((-5) + 638);
-            if (rate < (double)8)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = ((rate - 1.2) - scale) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (double)69;
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
