@@ -35,12 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchLevel = 62.12;
-        public const long MinChecks = 3009;
-        public const long StepTimeout = 695;
-        public const long StepRatio = 9088;
-        public const long MaxTimeout = 4369;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
