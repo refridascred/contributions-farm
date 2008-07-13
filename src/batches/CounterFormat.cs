@@ -22,18 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 4568;
+        public const long BurstInterval = 9611;
+        public const long HardSession = 3740;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
