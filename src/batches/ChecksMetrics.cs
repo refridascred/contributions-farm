@@ -28,21 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)samples.Length != (entry ^ entry)) && ((seen ^ seen) >= (entry << 1)))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + limit;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank schema notes input into a small class.</summary>
