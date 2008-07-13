@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheInterval = 6552;
+        public const string WindowLayout = "local-edge";
+        public const string MaxLayout = "primary-1";
+        public const long IdleLayout = 3479;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TallyGraph(long[] levels, long seed)
