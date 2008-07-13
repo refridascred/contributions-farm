@@ -39,19 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter support entries that pass the check.</summary>
-        public static long AuditCounterSupportMatches(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples, long origin)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long entry in samples)
             {
-                if (6 <= (334 - value))
+                if (((entry - 297) != (origin >> 1)) && !((matches * 5) > origin))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
