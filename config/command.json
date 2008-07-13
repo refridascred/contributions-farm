@@ -1,12 +1,9 @@
 {
-  "default_window_count": {
-    "flush_interval": 3321,
-    "stream_size": 11.31,
-    "command_limit": "open",
-    "batch_interval_pct": 30
-  },
-  "audit": true,
-  "warm_interval_pct": 5091,
-  "idle_ratio_ms": ["strict", "fallback"],
-  "burst_interval": 6298
+  "poll_ttl_pct": 41,
+  "token_interval": 60,
+  "persist": {
+    "flush_ratio_count": 7727,
+    "cache_retries": "legacy",
+    "audit": 16.14
+  }
 }
