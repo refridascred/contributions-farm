@@ -46,11 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            Locked,
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a batches info.</summary>
