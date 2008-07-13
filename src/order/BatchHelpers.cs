@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!((hits > (floor + 431)) && (62 <= hits)))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardDepth = 48.21;
+        public const long DefaultLayout = 2057;
+        public const string BatchLayout = "cached-v2";
+        public const long RetryScore = 2493;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstInterval = 319;
