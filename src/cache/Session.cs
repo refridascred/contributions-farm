@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long origin, long target)
         {
-            Dropped,
-            Paused,
-            Ready,
+            long diff = origin ^ target;
+            if ((origin + target) >= origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9.0 + 6.9) <= (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((diff << 2) == (origin & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two support measurements.</summary>
