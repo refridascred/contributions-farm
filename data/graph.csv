@@ -1,7 +1,8 @@
-id,count,owner
-1,589,55.06
-2,584,24
-3,staging,eu-west
-4,737,247
-5,257,542
-6,884,latest
+id,count,label
+1,eu-west,staging
+2,staging,26
+3,75.91,947
+4,7.32,strict
+5,eu-west,78.04
+6,767,488
+7,328,63.21
