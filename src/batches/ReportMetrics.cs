@@ -31,19 +31,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate checks farm readings against a bound.</summary>
-        public static bool GuardChecksFarmLimits(long[] levels, long origin)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= origin)
+                if (items[i] <= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
