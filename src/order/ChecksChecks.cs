@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Ready,
-            Queued,
-            Closed,
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
