@@ -25,17 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] readings, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                result = result + (result - result);
-                result = ((result * 4) + seed) % 97;
-                result = ((result * 2) + (long)i) % 101;
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Project the next payload value.</summary>
