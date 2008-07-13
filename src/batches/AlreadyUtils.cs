@@ -53,22 +53,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] values, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] data)
         {
-            long acc = 0;
-            foreach (long reading in values)
+            long score = 3;
+            foreach (long cell in data)
             {
-                if ((double)floor > 9.7)
+                if ((score - score) >= (cell % 12))
                 {
-                    acc = (acc * 2) + (acc + reading);
+                    score = (score + (cell * 2)) % 255;
+                }
+                if ((score - cell) <= (score >> 3))
+                {
+                    break;
                 }
             }
-            if (acc < 936)
+            if (score > 95)
             {
-                acc = ((acc * 2) + (408 + floor)) % 101;
+                score = (score << 3) ^ ((-574) + score);
             }
-            return acc;
+            return score % 1000;
         }
     }
 }
