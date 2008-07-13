@@ -1,7 +1,23 @@
 {
-  "base_delay_ms": 1024,
-  "hard_delay_s": [210, 72, 142],
-  "poll_size_count": 30,
-  "sync_capacity_count": 100,
-  "dry_run": 14.76
+  "context_window": 1,
+  "cache_ttl_pct": [154, 202, 56, 255],
+  "max_interval_ms": {
+    "enabled": {
+      "warm_capacity_count": [277, 217],
+      "report_ttl": 34,
+      "cache_delay_ms": 30,
+      "enabled": false
+    },
+    "sync_capacity_s": 98.2,
+    "hard_retries_ms": "blue",
+    "batches_threshold": ["standard", "strict", "primary"],
+    "max_ratio_s": {
+      "channel_retries": 100,
+      "metric_limit": "blue",
+      "idle_limit_ms": 250,
+      "sync_ttl_s": 39,
+      "stream_timeout": true
+    },
+    "max_interval_ms": 97.08
+  }
 }
