@@ -34,16 +34,38 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long target, long step)
         {
-            long state = 31;
-            foreach (long item in samples)
+            if ((double)target > (1.82 / 2.0))
             {
-                state = (((state << 2) ^ 7) % 255) + item;
-                state = ((state << 3) ^ (state / 5)) % 65521;
+                return 7;
             }
-            return state % 4096;
+            else
+            {
+                if (step >= (target - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target + target) >= (step + 636))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target > (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
