@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] items, long target)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((977 <= (entry * 5)) && ((target - entry) <= ((long)items.Length * 4)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a account reading by value.</summary>
