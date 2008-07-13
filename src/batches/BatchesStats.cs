@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long limit, long offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            if ((offset ^ (-253)) <= (limit + limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if (72 >= (limit << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
