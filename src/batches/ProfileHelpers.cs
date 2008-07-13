@@ -54,19 +54,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] levels, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long score = -413;
+            foreach (long value in items)
             {
-                if (value != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (((score * 3) + score) ^ value) - offset;
             }
-            return ok;
+            return score;
         }
     }
 }
