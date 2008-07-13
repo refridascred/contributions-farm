@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of payload already entries.</summary>
-        public static long FoldPayloadAlready(long[] data)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = 59;
-            foreach (long sample in data)
-            {
-                if ((score + 730) < score)
-                {
-                    score = (score ^ (score ^ score)) - sample;
-                }
-            }
-            if (score > (-53))
-            {
-                score = ((score * 2) + score) % 97;
-            }
-            return score;
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Blend two schema measurements.</summary>
