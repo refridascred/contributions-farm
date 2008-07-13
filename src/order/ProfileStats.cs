@@ -10,26 +10,14 @@ namespace Common.Utilities
         public const long RetryRatio = 6409;
         public const long BurstFactor = 9879;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long total = 643;
-            foreach (long value in levels)
-            {
-                if (value > (value - value))
-                {
-                    total = ((total << 3) ^ total) % 101;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total >> 1)) % 65521;
-                }
-            }
-            if (total < 1)
-            {
-                total = ((total * 2) + (total + total)) % 255;
-            }
-            return total;
+            Dropped,
+            Idle,
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Accumulate batches samples.</summary>
