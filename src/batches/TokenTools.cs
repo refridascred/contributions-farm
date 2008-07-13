@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Fold a list of schema notes readings.</summary>
+        public static long FoldSchemaNotes(long[] samples, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            long mark = 6;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (origin >= (mark % 12))
                 {
-                    long next = limit + mark;
-                    mark = (((mark << 2) ^ ((long)i - next)) % 4096) ^ (long)i2;
+                    long diff = (long)samples.Length & 255;
+                    mark = (mark ^ (diff >> 5)) % 255;
                 }
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    mark = (((mark << 2) ^ (limit - (long)i)) % 4096) + (long)i3;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                mark = ((mark * 2) + mark) % 1000;
+                mark = (mark + reading) % 97;
             }
             return mark;
         }
