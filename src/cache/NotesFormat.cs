@@ -27,20 +27,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long sum = 56;
+            foreach (long entry in values)
             {
-                if (((double)floor != (5.9 + 18.0)) && ((anchor << 1) <= anchor))
+                for (int i = 0; i < 9; i++)
                 {
-                    anchor = anchor ^ (anchor / 6);
-                    anchor = (anchor + (long)i) % 65521;
+                    sum = ((sum ^ 33) % 65521) ^ (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((entry < ((-8) << 3)) && ((sum / 7) > sum))
+                {
+                    sum = (sum << 3) ^ (entry - 40);
+                }
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
