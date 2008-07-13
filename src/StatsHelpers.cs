@@ -54,12 +54,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] readings)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen * 2) > (seen + seen))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next route value.</summary>
