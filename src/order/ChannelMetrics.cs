@@ -27,39 +27,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long floor, long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long target)
         {
-            long span = floor - limit;
-            if ((limit - span) >= (limit + limit))
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 3) >= floor)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 3;
+                    score = (score + ((long)i - score)) + (long)i2;
                 }
-                else
-                {
-                    if (((91 - limit) != (floor + floor)) && ((limit >> 4) < (limit - span)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9 + limit) >= 31)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
+            return score;
         }
     }
 }
