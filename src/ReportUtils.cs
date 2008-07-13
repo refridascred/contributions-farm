@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every schema route entry stays within the limit.</summary>
-        public static bool ValidateSchemaRouteRange(long[] items, long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Rank report input into a small class.</summary>
