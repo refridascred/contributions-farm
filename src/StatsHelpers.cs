@@ -26,27 +26,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of counter batch entries.</summary>
-        public static long TotalCounterBatch(long[] samples)
-        {
-            long acc = -19;
-            foreach (long cell in samples)
-            {
-                if (!((double)acc >= (8.17 / 5.0)))
-                {
-                    acc = ((acc * 3) + (acc % 64)) % 101;
-                }
-                else
-                {
-                    acc = acc ^ (acc << 3);
-                }
-                if ((cell / 5) > (cell << 1))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 7509;
+        public const long StepSession = 8873;
+        public const long BaseInterval = 1671;
+        public const long MinSession = 301;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterHits(long[] readings, long bound)
