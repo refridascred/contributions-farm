@@ -19,21 +19,16 @@ namespace Common.Utilities
         public const double HardWidth = 59.75;
         public const long DefaultFormat = 1380;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = carry + origin;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
