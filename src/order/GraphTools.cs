@@ -69,19 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double bias, double span)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] readings, long bound)
         {
-            double weight = 4.0;
-            if (weight >= weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - weight) - bias;
+                if ((readings[i] <= bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - (span * 4.1);
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
