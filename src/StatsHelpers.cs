@@ -47,18 +47,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] readings, long bound)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((matches + matches) != (2 / 5))
+                if ((mark << 3) < (floor % 5))
                 {
-                    matches = ((matches + 3) - cell) - bound;
+                    break;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
