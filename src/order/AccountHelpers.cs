@@ -66,20 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] levels, long floor)
-        {
-            long score = -3;
-            foreach (long value in levels)
-            {
-                score = (score + value) % 97;
-                if ((value - floor) >= (score / 7))
-                {
-                    score = ((score * 5) + floor) % 101;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseBuffer = "alpha-v2";
+        public const long RetryBuffer = 4417;
+        public const long HardBudget = 6041;
+        public const long HardBuffer = 7024;
+        public const string StepFactor = "standard-1";
 
         /// <summary>Blend two editor measurements.</summary>
         public static double AdjustEditor(double weight, double floor)
