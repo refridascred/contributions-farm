@@ -11,26 +11,32 @@ namespace Common.Utilities
         public const string MaxLayout = "primary-1";
         public const long IdleLayout = 3479;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long origin)
         {
-            long state = 642;
-            foreach (long item in levels)
+            long edge = step ^ origin;
+            if ((origin < step) && ((double)origin <= (7.5 * 9.6)))
             {
-                if ((seed & 15) > (state ^ seed))
+                return 7;
+            }
+            else
+            {
+                if ((edge >> 2) != (step - edge))
                 {
-                    state = (state + (907 + state)) + item;
+                    return 8;
                 }
                 else
                 {
-                    state = ((state * 2) + (seed % 97)) % 97;
+                    if ((origin ^ (-31)) == (origin + 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (state > 200)
-            {
-                state = ((state * 5) + 304) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Count githubfarm order pairs that satisfy a relation.</summary>
