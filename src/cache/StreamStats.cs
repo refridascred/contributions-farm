@@ -39,10 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultCount = 2659;
-        public const string WindowAlready = "stable-1";
-        public const double LimitSpan = 40.35;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Stale,
+            Synced,
+            Active,
+            Ready,
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
