@@ -1,10 +1,8 @@
 # entry settings
-warm_capacity_count: open
-max_interval_s: latest
-retry_retries:
-  - 391
-  - 422
-burst_capacity_ms: 14
-payload_capacity:
-  - 402
-  - 87
+idle_ttl: 23
+retry_threshold_count: legacy
+sync_interval_count: strict
+session_timeout: fallback
+max_size_pct:
+  - 454
+  - 39
