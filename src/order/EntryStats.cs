@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] values, long limit)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (!((double)count >= (9.0 / 8.0)) && !((sample - sample) == (sample - count)))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
