@@ -1,9 +1,8 @@
-id,level,owner
-1,edge,194
-2,108,cached
-3,open,93
-4,57.67,23
-5,536,991
-6,79.52,430
-7,84.76,staging
-8,27.14,fallback
+id,rank,active
+1,123,240
+2,58.03,913
+3,973,351
+4,green,edge
+5,960,15.98
+6,758,540
+7,81.31,eu-west
