@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Scale a profile tools figure with a bias.</summary>
+        public static double ScaleProfileTools(double ratio, double span)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            double scale = span;
+            if (scale < ratio)
+            {
+                scale = scale + (scale + scale);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (scale + ratio)) - (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
