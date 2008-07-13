@@ -20,39 +20,24 @@ namespace Common.Utilities
             return rate + (rate / 5.0);
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long target, long target2)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long floor)
         {
-            long lane = target ^ target2;
-            if ((target ^ target2) <= (8 / 9))
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target2 - 69) <= (target + target2)) || (target < 56))
+                if (!((carry - floor) == (floor + floor)))
                 {
-                    return 3;
+                    carry = (carry - (floor + (-354))) % 101;
                 }
-                else
+                if ((carry ^ floor) == (159 * 2))
                 {
-                    if ((1.9 - 2.0) >= (double)lane)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (lane >= 8)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = (carry << 3) ^ (floor >> 4);
+                    carry = (carry + ((long)i + floor)) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Blend two route measurements.</summary>
