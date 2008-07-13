@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 96.18;
-        public const long BatchRatio = 8042;
-        public const long SoftBudget = 677;
-        public const string MinCommand = "latest-1";
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Synced,
+            Idle,
+            Retry,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Accumulate commits editor samples.</summary>
         public static long DigestCommitsEditor(long[] data)
