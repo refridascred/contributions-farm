@@ -27,17 +27,21 @@ namespace Common.Utilities
         public const long BurstStats = 5596;
         public const long RetryStats = 9098;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] values, long step)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] == step)
+                double drift = (7.12 * 7.7) / 7.0;
+                if ((((long)i & 127) > (floor ^ floor)) && ((drift + drift) >= drift))
                 {
-                    return (long)i;
+                    acc = (acc + acc) % 97;
+                    drift = drift + drift;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
