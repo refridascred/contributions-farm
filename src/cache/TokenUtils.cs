@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
                 {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
