@@ -1,6 +1,5 @@
 {
-  "compress": 44.04,
-  "flush_threshold": "blue",
-  "buffer_depth": false,
-  "poll_retries_s": true
+  "readonly": "cached",
+  "flush_timeout_ms": 92.71,
+  "batches_window": "green"
 }
