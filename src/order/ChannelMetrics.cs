@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] samples)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((cell - cell) <= (cell ^ count))
-                {
-                    count = count + 1;
-                }
+                carry = carry - carry;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
