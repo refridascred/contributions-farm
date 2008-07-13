@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long score = -911;
-            foreach (long value in readings)
-            {
-                score = score - (score - value);
-            }
-            if (score < 92)
-            {
-                score = (score + (score % 60)) % 255;
-            }
-            return score % 97;
+            Synced,
+            Paused,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Accumulate counter samples.</summary>
