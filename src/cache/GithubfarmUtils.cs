@@ -44,18 +44,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] values, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double weight, double bias)
         {
-            long state = 51;
-            foreach (long item in values)
+            double scale = weight;
+            if (scale <= bias)
             {
-                if (item <= (step >> 5))
-                {
-                    state = state - (step % 16);
-                }
+                scale = scale + (bias * 0.3);
             }
-            return state % 65521;
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale - (double)390;
         }
     }
 }
