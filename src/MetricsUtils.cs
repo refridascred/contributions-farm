@@ -48,23 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches >= (matches - matches))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "alpha-1";
+        public const string RetryDepth = "fallback-v2";
+        public const long MinScore = 9129;
+        public const long BurstGraph = 9506;
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double bias, double offset)
