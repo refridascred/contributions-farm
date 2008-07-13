@@ -47,13 +47,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Dropped,
-            Stale,
-            Synced,
-            Locked,
+            Idle,
+            Queued,
             Pending,
         }
 
