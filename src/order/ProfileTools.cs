@@ -37,12 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleSize = "latest-edge";
-        public const string BurstCount = "cached-1";
-        public const long BurstFilter = 5737;
-        public const double CacheFilter = 62.03;
-        public const double CacheSpan = 43.44;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultLevel = 18.79;
+        public const long BaseContributi = 4338;
+        public const long MaxContributi = 9484;
+        public const long MinContributi = 6991;
+        public const double CacheContributi = 25.48;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandOutliers(long[] readings, long floor)
