@@ -1,7 +1,8 @@
 {
-  "idle_threshold": 66,
-  "min_size_s": [329, 91, 337],
-  "readonly": [448, 103, 40],
-  "retry_depth_ms": [96, 401],
-  "warm_window": 2102
+  "hard_timeout_count": "strict",
+  "burst_retries": "strict",
+  "cache_window": [207, 33],
+  "max_interval": 6252,
+  "metrics_retries": "green",
+  "context_threshold": 93
 }
