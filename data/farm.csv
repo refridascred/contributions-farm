@@ -1,6 +1,8 @@
-id,level,weight
-1,309,505
-2,standard,932
-3,82.31,804
-4,standard,43.34
-5,18.28,228
+id,rank,level,label
+1,388,open,green
+2,green,970,39.22
+3,stable,826,primary
+4,standard,blue,989
+5,15.67,837,5.11
+6,44,57.34,942
+7,latest,74.7,107
