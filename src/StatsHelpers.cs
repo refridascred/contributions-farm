@@ -39,19 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] readings, long floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (item >= floor)
+                if (datum >= seed)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
