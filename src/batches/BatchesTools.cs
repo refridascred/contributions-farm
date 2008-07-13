@@ -34,11 +34,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a graph layout figure with a bias.</summary>
-        public static double ProjectGraphLayout(double bias, double bias2)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            double ratio = bias / 7.0;
-            return (ratio - bias) + bias2;
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc + (origin >> 1)) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
