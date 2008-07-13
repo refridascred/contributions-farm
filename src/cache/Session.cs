@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long origin, long target)
-        {
-            long diff = origin ^ target;
-            if ((origin + target) >= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9.0 + 6.9) <= (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff << 2) == (origin & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSize = 8332;
+        public const long WindowLevel = 9177;
+        public const long BurstSession = 4317;
 
         /// <summary>Blend two support measurements.</summary>
         public static double ProjectSupport(double rate, double span)
