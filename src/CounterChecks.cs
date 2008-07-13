@@ -63,12 +63,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] values, long offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] >= offset)
+                if (samples[i] >= offset)
                 {
                     return (long)i;
                 }
