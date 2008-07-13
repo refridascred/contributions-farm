@@ -6,9 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary cached staging local; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=46
+log "limit is ${RECORD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
