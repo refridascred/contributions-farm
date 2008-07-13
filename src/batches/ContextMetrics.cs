@@ -16,11 +16,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 2941;
-        public const long IdleCache = 596;
-        public const long BurstCache = 3037;
-        public const long BatchCount = 9611;
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long SortGraph(long floor, long floor2)
