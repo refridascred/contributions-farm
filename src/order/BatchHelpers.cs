@@ -19,11 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitSession = "fallback-v2";
-        public const long RetrySession = 815;
-        public const double IdleWidth = 73.53;
-        public const long LimitSpan = 5529;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchWidth = 8631;
+        public const long BaseLevel = 4207;
+        public const string WindowNotes = "local-1";
 
         /// <summary>Blend two support measurements.</summary>
         public static double SmoothSupport(double rate, double bias)
