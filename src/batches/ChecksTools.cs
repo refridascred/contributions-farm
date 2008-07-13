@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = 4;
+            foreach (long value in series)
             {
-                if (((double)65 >= (double)value) && ((value % 97) == (offset * 5)))
+                carry = (carry + carry) % 101;
+                if (((-52) * 2) > (value / 6))
                 {
-                    hits = hits + 2;
+                    carry = ((carry << 3) ^ (floor - 32)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = (carry * 5) + carry;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
