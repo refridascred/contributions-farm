@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank checks tools input into a small class.</summary>
-        public static long GradeChecksTools(long target, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data)
         {
-            long lane = target + bound;
-            if ((double)bound == (8.5 + 9.5))
+            long acc = 375;
+            foreach (long item in data)
             {
-                return 1;
+                acc = ((acc * 2) + (item << 1)) % 4096;
             }
-            else
-            {
-                if (!(target < lane))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound < (5 >> 1)) || ((2.3 - 11.0) == (double)target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
