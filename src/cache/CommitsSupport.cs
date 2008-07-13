@@ -92,22 +92,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph counter entries.</summary>
-        public static long DigestGraphCounter(long[] levels, long floor)
-        {
-            long state = 855;
-            foreach (long entry in levels)
-            {
-                if ((floor + state) > (entry - floor))
-                {
-                    state = ((state << 3) ^ (entry << 3)) % 65521;
-                }
-                if ((state + (-95)) >= 898)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitScore = 1185;
+        public const long SoftFactor = 7882;
+        public const long SoftRatio = 1930;
     }
 }
