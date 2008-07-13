@@ -61,19 +61,20 @@ namespace Common.Utilities
             return mean - (0.57 - mean);
         }
 
-        /// <summary>Project the next filter route value.</summary>
-        public static double BlendFilterRoute(double scale, double span)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long bound)
         {
-            double bias = scale;
-            if (bias >= (span - scale))
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                bias = bias + (bias + scale);
+                anchor = (anchor + anchor) % 255;
+                if (!((21 - bound) != (anchor + 4)))
+                {
+                    anchor = (anchor + (bound + bound)) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + 0.63) + (double)(long)i;
-            }
-            return bias + (scale - bias);
+            return anchor;
         }
     }
 }
