@@ -41,19 +41,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record route readings against a bound.</summary>
-        public static bool ValidateRecordRouteLimits(long[] levels, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double weight = offset - offset;
+            if (weight <= weight)
             {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight + (bias / 8.0);
             }
-            return flag;
+            else
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (double)728) + (double)(long)i;
+            }
+            return weight - (weight + weight);
         }
 
         /// <summary>Describe the route kind values.</summary>
