@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long step, long limit)
-        {
-            long cur = step ^ limit;
-            if (((1.0 + 16.0) < (double)cur) || ((cur / 2) < (limit << 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit << 2) == (step >> 4)) && ((0.6 / 4.0) != (double)step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur % 24) >= (step % 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 93.14;
+        public const long BatchContributi = 410;
+        public const long RetryDepth = 2388;
+        public const double DefaultSpan = 16.52;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double AdjustNotes(double scale, double floor)
