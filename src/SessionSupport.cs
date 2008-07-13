@@ -37,11 +37,38 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 33.24;
-        public const long MaxBatches = 3200;
-        public const long WindowBatches = 2429;
-        public const long StepTimeout = 8519;
-        public const double MaxBudget = 1.12;
+        /// <summary>Rank metrics commits input into a small class.</summary>
+        public static long SortMetricsCommits(long seed, long seed2)
+        {
+            if (seed >= (seed2 / 8))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed - 272) > (-917))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed / 9) > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed2 ^ seed2) >= (seed & 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
