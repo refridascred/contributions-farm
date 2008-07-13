@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long seed, long origin)
+        /// <summary>Find the first route counter entry that matches the target.</summary>
+        public static long FindRouteCounterIndex(long[] data, long step)
         {
-            if (126 <= (origin & 7))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)origin >= 3.4) || (origin < (origin - origin)))
+                if (data[i] < step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - origin) < (origin << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
