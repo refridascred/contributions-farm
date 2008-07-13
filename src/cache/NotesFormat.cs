@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            New,
+            Pending,
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Adjust a batches reading.</summary>
