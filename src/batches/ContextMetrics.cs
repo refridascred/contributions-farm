@@ -33,12 +33,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((4 + matches) < matches)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
