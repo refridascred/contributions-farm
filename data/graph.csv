@@ -1,8 +1,9 @@
-id,score,state
-1,strict,strict
-2,228,green
-3,58.66,stable
-4,95.38,75.11
-5,757,703
-6,210,65.17
-7,833,open
+id,token,active
+1,956,4.11
+2,green,686
+3,eu-west,14.28
+4,952,394
+5,467,243
+6,primary,41.34
+7,84.38,fallback
+8,85.89,36.91
