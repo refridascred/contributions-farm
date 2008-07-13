@@ -31,12 +31,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftInterval = 6.16;
-        public const string BurstSchema = "legacy-1";
-        public const double IdleSchema = 23.56;
-        public const double IdleBudget = 72.6;
-        public const long CacheInterval = 3799;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (2.95 <= (double)hits)
+                {
+                    hits = ((hits + 3) + entry) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 7881;
