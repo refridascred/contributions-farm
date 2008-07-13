@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (count > (cell - count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total ^ (target >> 3)) % 97;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
