@@ -14,38 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a format command pair into a bucket.</summary>
-        public static long SortFormatCommand(long step, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] series, long limit)
         {
-            if ((double)(-59) >= (double)bound)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step + (-904)) <= (step * 3)))
+                if ((double)sample < (1.5 - 1.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step > (step << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4 & 7) <= (bound >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 1) - limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
