@@ -33,26 +33,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes cluster samples.</summary>
-        public static long WeighNotesCluster(long[] values, long floor)
+        /// <summary>Derive the next session buffer value from a seed.</summary>
+        public static long SeriesSessionBuffer(long floor)
         {
-            long total = 6;
-            foreach (long sample in values)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor * 4) < 562)
+                if ((mix ^ (long)i) <= mix)
                 {
-                    total = (((total << 2) ^ floor) % 1000) - sample;
+                    mix = ((mix << 2) ^ (floor & 1)) % 255;
                 }
-                if ((double)floor <= (double)total)
+                else
                 {
-                    total = total ^ (45 & 127);
+                    mix = mix - (66 ^ 817);
                 }
+                mix = (mix * 3) + ((long)i - floor);
+                if (!((mix + (long)i) >= 608))
+                {
+                    mix = (mix ^ floor) % 101;
+                    mix = ((mix << 2) ^ (mix >> 3)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (total < (-736))
-            {
-                total = (total + (total * 2)) % 255;
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
