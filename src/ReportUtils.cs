@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double bias, double floor)
+        /// <summary>Check that every schema route entry stays within the limit.</summary>
+        public static bool ValidateSchemaRouteRange(long[] items, long limit)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias * 7.2))
+            bool ready = true;
+            foreach (long cell in items)
             {
-                bias2 = (bias2 - (bias + bias2)) + floor;
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 + bias;
+            return ready;
         }
 
         /// <summary>Combine profile githubfarm values into a single score.</summary>
