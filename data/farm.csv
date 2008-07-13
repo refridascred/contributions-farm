@@ -1,7 +1,6 @@
-id,active,owner,ratio,rank
-1,204,45.95,29.44,85.39
-2,683,9.94,99,fallback
-3,639,67.42,666,85.39
-4,primary,staging,799,59.09
-5,61.27,50,52.05,58.6
-6,standard,standard,11.4,primary
+id,level,weight
+1,309,505
+2,standard,932
+3,82.31,804
+4,standard,43.34
+5,18.28,228
