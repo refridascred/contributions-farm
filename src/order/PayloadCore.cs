@@ -29,21 +29,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the already level values.</summary>
