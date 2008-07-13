@@ -20,15 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next report githubfarm value.</summary>
-        public static double ProjectReportGithubfarm(double gain, double offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] items, long step)
         {
-            double drift = offset;
-            for (int i = 0; i < 9; i++)
+            long total = 1;
+            foreach (long entry in items)
             {
-                drift = (drift + (offset + offset)) - (double)(long)i;
+                if (((double)entry != (double)step) && ((double)step >= (18.0 * 5.0)))
+                {
+                    total = total ^ (step + total);
+                }
+                else
+                {
+                    total = total ^ (step - total);
+                }
             }
-            return drift - gain;
+            if (total > 2)
+            {
+                total = ((total << 2) ^ step) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
