@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] data)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((seen << 1) >= (435 - 76)) && (((seen + cell) > seen) || ((double)seen >= (0.7 - 9.7))))
+                if ((9.26 * 10.0) > (double)tally)
                 {
-                    seen = seen + 3;
+                    tally = ((tally + 2) + reading) - offset;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
