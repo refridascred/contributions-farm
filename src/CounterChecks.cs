@@ -86,21 +86,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up stream contributi samples.</summary>
-        public static long MatchStreamContributiCount(long[] series)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
