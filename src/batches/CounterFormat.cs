@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate profile metric samples.</summary>
-        public static long DigestProfileMetric(long[] values)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long acc = 7;
-            foreach (long datum in values)
-            {
-                acc = ((acc * 2) + (6 / 4)) ^ datum;
-                if (((double)acc == (9.35 * 5.6)) && (8.3 > (double)acc))
-                {
-                    acc = acc ^ (5 >> 1);
-                }
-            }
-            return acc;
+            Closed,
+            Draft,
+            Dropped,
+            Idle,
+            New,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
