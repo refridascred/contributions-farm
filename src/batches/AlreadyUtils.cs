@@ -15,18 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] levels, long target)
+        /// <summary>Audit channel route readings against a rule.</summary>
+        public static long CountChannelRouteGaps(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((448 << 1) != (target * 5))
+                if (((origin + 403) > (3 << 1)) && ((273 ^ hits) >= (origin << 1)))
                 {
-                    count = (count + 2) - datum;
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
