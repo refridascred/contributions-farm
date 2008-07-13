@@ -1,10 +1,6 @@
 {
-  "entry_ratio": {
-    "default_ratio": "eu-west",
-    "dry_run": 32.89,
-    "sync_ratio_count": true,
-    "audit": 55
-  },
-  "warm_size_pct": 87.66,
-  "format_depth": 1024
+  "burst_window": "legacy",
+  "cache_timeout_ms": ["open", "fallback", "latest"],
+  "readonly": 18.87,
+  "session_depth": true
 }
