@@ -1,6 +1,7 @@
-id,rank,count,owner
-1,cached,cached,45.83
-2,611,12.71,860
-3,921,68,fallback
-4,24.79,local,411
-5,5.1,45.67,open
+id,owner,weight,active
+1,staging,982,771
+2,stable,eu-west,18.89
+3,396,6.71,45.88
+4,480,712,edge
+5,366,34.34,119
+6,56.85,844,79.45
