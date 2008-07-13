@@ -75,15 +75,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double ratio, double floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long step, long bound)
         {
-            double rate = (double)((-5) / 6);
-            if (rate >= (floor + floor))
+            long span = step ^ bound;
+            if ((step - span) >= 24)
             {
-                rate = (rate + (floor + rate)) + ratio;
+                return 1;
             }
-            return rate + floor;
+            else
+            {
+                if ((step + bound) <= (span - 0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((804 ^ bound) > span)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
