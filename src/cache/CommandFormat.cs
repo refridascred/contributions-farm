@@ -36,15 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batches already value from a seed.</summary>
-        public static long RollBatchesAlready(long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Pending,
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a checks summary.</summary>
