@@ -50,21 +50,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix ^ (floor ^ floor)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
     }
 }
