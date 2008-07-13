@@ -54,18 +54,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] items, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            long count = 0;
-            foreach (long value in items)
+            long result = 4;
+            foreach (long reading in samples)
             {
-                if (value > (count - 60))
+                if (((reading + reading) != (result * 5)) && ((reading ^ result) > reading))
                 {
-                    count = (count + 1) - seed;
+                    result = ((result * 5) + (reading >> 5)) % 101;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Check that every buffer queue entry stays within the limit.</summary>
