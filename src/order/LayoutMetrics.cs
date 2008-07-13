@@ -30,18 +30,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (datum >= (7 >> 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 9194;
+        public const double IdleMetrics = 18.28;
+        public const long SoftSize = 7212;
     }
 }
