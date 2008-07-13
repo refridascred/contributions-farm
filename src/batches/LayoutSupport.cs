@@ -19,21 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step2 = floor - step;
+            if ((3.0 / 8.0) < (double)floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step2 >= (floor * 2)) || (step >= (step - 507)))
                 {
-                    if ((values[i] + values[j]) < 20)
+                    return 4;
+                }
+                else
+                {
+                    if (step <= (step2 + floor))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
