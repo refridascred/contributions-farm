@@ -36,12 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstDepth = 6434;
-        public const string LimitMetric = "primary";
-        public const double WindowMetric = 55.66;
-        public const long CacheCount = 6502;
-        public const long MaxMetric = 3544;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Blend two filter order measurements.</summary>
         public static double AdjustFilterOrder(double weight, double floor)
