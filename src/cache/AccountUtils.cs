@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] items, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long seed, long origin)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            if (126 <= (origin & 7))
             {
-                if (datum <= seed)
+                return 3;
+            }
+            else
+            {
+                if (((double)origin >= 3.4) || (origin < (origin - origin)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - origin) < (origin << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
