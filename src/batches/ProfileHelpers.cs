@@ -27,13 +27,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
             Idle,
-            Active,
+            Paused,
             Retry,
-            Locked,
         }
 
         /// <summary>Hold a filter record.</summary>
