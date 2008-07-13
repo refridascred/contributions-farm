@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Queued,
-            Paused,
-            Active,
-            Stale,
-            Synced,
+            public double Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit batch layout readings against a rule.</summary>
