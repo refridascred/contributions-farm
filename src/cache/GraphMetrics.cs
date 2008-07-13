@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Scale a report layout figure with a bias.</summary>
+        public static double SmoothReportLayout(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (span / 8.0) * 7.08;
+            if (gain <= (span + gain))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - (gain - gain);
             }
-            return seen;
+            else
+            {
+                gain = gain - rate;
+            }
+            return gain + (span + 1.1);
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
