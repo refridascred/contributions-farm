@@ -49,11 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] data)
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((double)cell <= (double)matches) || !((735 / 5) < cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
