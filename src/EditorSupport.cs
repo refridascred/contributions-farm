@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Pending,
-            Active,
-            Locked,
-            Paused,
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
