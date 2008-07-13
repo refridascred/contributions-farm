@@ -16,19 +16,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)seen <= (4.94 + 2.61))
-                {
-                    seen = ((seen + 3) + entry) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 2941;
+        public const long IdleCache = 596;
+        public const long BurstCache = 3037;
+        public const long BatchCount = 9611;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long SortGraph(long floor, long floor2)
