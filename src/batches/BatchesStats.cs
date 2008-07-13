@@ -32,12 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] values)
         {
-            public double Region { get; set; }
-            public bool Score { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)count == (3.0 / 2.0))
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a route layout pair into a bucket.</summary>
