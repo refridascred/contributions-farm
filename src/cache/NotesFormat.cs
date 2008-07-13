@@ -52,12 +52,22 @@ namespace Common.Utilities
             return mean + (double)589;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] data, long bound)
         {
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits % 100) < (hits * 2))
+                {
+                    hits = ((hits + 1) + entry) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
