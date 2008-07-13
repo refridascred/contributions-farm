@@ -31,12 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] items, long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < limit) && ((items[i] % 3) == 0))
+                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
