@@ -46,12 +46,38 @@ namespace Common.Utilities
             return drift + (double)18;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long seed, long step)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            if (4.0 > (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step == (5.6 - 3.61))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step != (2.07 / 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6.0 + 2.09) <= (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
