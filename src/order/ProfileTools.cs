@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const long MinContributi = 6991;
         public const double CacheContributi = 25.48;
 
-        /// <summary>Check that every account token entry stays within the limit.</summary>
-        public static bool ValidateAccountTokenLimits(long[] readings, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (item != offset)
+                if (!(7 > (cell % 64)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
