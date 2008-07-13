@@ -14,18 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up report githubfarm samples.</summary>
-        public static long CompareReportGithubfarmCount(long[] series)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] levels, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)origin > (5.04 / 5.0)) || ((origin + seen) <= seen))
                 {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) ^ cell;
                 }
             }
             return seen;
