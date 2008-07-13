@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((tally * 2) != (entry % 97))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 9650;
+        public const long RetryReport = 3442;
+        public const long RetryCount = 6407;
+        public const string HardReport = "standard-edge";
+        public const double WindowReport = 87.73;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long ClassifyContext(long limit, long limit2)
