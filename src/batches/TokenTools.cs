@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const string BaseInterval = "open-edge";
         public const long BurstFilter = 2331;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 2109;
-        public const double WindowBudget = 32.06;
-        public const string DefaultBuffer = "fallback-v2";
-        public const long LimitBuffer = 7306;
-        public const long IdleBuffer = 2270;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+        }
     }
 }
