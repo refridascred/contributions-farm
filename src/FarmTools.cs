@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits profile readings against a rule.</summary>
-        public static long TallyCommitsProfileGaps(long[] readings)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)count < (double)value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Draft,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
