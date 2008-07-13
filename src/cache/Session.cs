@@ -41,18 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] samples, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((double)entry >= (7.0 / 6.0))
+                if (datum > limit)
                 {
-                    tally = (tally + 2) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
