@@ -1,7 +1,6 @@
 {
-  "channel_capacity": [257, 117, 280],
-  "verbose": "open",
-  "retry_size_count": true,
-  "retry_ttl": "blue",
-  "audit": 100
+  "compress": 2641,
+  "contributi_depth": 500,
+  "filter_depth": 1851,
+  "enabled": true
 }
