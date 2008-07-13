@@ -28,10 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchSize = 70.89;
-        public const double WindowCount = 72.11;
-        public const long BaseEditor = 6779;
-        public const string BurstEditor = "staging-1";
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
