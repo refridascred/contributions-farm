@@ -39,19 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] values, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (sample > target)
+                if ((double)entry >= (7.0 / 6.0))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
