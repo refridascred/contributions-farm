@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseFilter = "fallback-v2";
+        public const double HardFilter = 6.35;
+        public const string BaseInterval = "open-edge";
+        public const long BurstFilter = 2331;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseBuffer = 2109;
