@@ -1,21 +1,20 @@
 # entry settings
-hard_size: 6091
-persist:
-  base_capacity_pct: 1358
-  base_timeout_ms: fallback
-  cache_threshold_ms: primary
-  strict: 26.64
-  batch_capacity: standard
-  already_limit: stable
-dry_run: 500
-verbose:
-  persist: 76
-  account_timeout:
-    readonly: false
-    cache_delay: 64
-    farm_ttl: standard
-    window_window: 60
-  warm_retries_ms:
-    - blue
+token_capacity:
+  base_size_ms: 100
+  batch_threshold_count:
+    - 355
+    - 196
+  strict: 250
+  cache_window: primary
+retry_ttl: 53.02
+default_ttl_s:
+  cache_ttl: 24.81
+  already_window:
+    - primary
     - local
-  base_interval: eu-west
+    - latest
+  base_size_ms: 47
+  enabled: 60
+strict: 7
+batches_timeout: 83.8
+counter_timeout: 500
