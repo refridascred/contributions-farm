@@ -14,19 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] data, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Ready,
+            Queued,
+            Pending,
+            Locked,
         }
 
         /// <summary>Audit batches schema readings against a rule.</summary>
