@@ -84,14 +84,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Match up stream contributi samples.</summary>
+        public static long MatchStreamContributiCount(long[] series)
         {
-            Failed,
-            Paused,
-            Idle,
-            New,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
