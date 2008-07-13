@@ -35,23 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long result = 672;
-            foreach (long datum in values)
-            {
-                if ((304 ^ 795) >= seed)
-                {
-                    result = ((result * 3) + (seed + seed)) - datum;
-                    result = result ^ (seed - result);
-                }
-                if ((double)5 <= (5.57 / 3.0))
-                {
-                    result = (result + 45) % 4096;
-                }
-            }
-            return result;
+            Paused,
+            Dropped,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Digest a series of metrics command entries.</summary>
