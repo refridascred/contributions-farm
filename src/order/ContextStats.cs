@@ -23,13 +23,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Roll a payload contributi counter forward.</summary>
+        public static long RollPayloadContributi(long step)
         {
-            Done,
-            Failed,
-            Active,
-            Closed,
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)49 < (double)acc)
+                {
+                    acc = (acc ^ (long)i) % 97;
+                    acc = (acc << 3) ^ ((-79) + acc);
+                    break;
+                }
+                acc = ((acc * 3) + acc) % 255;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
