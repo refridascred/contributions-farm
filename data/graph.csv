@@ -1,7 +1,6 @@
-id,level,owner
-1,608,831
-2,283,24
-3,167,primary
-4,83.87,strict
-5,196,92.12
-6,488,89.15
+id,rank,score,owner,token
+1,109,open,80.29,3.78
+2,53.31,staging,12.19,strict
+3,537,2.51,93.89,46.32
+4,legacy,47.44,96.71,staging
+5,2.32,primary,staging,448
