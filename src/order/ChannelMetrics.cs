@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 8067;
-        public const string CacheDepth = "staging-1";
-        public const long BaseWidth = 2431;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = mix ^ (seed / 6);
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long limit, long step)
