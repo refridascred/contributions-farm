@@ -1,6 +1,12 @@
 {
-  "flush_size": 97.59,
-  "retry_ratio_count": 9851,
-  "warm_limit_count": 100,
-  "idle_timeout_s": 1037
+  "base_capacity": true,
+  "batch_capacity": false,
+  "poll_limit_pct": {
+    "retry_depth_s": "cached",
+    "support_size": 92,
+    "hard_timeout_ms": "legacy",
+    "hard_interval_s": false
+  },
+  "readonly": ["eu-west", "cached", "fallback"],
+  "support_limit": [251, 146]
 }
