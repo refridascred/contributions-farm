@@ -38,10 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheFactor = 6542;
-        public const long RetryLevel = 5238;
-        public const double StepWindow = 36.84;
+        /// <summary>Measure how many editor cache samples are out of range.</summary>
+        public static long CountEditorCacheHits(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (datum > 1)
+                {
+                    tally = (tally + 1) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long limit)
