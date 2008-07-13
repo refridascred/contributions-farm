@@ -61,19 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window layout readings against a bound.</summary>
-        public static bool CheckWindowLayoutBounds(long[] levels, long bound)
+        /// <summary>Blend two report token measurements.</summary>
+        public static double BlendReportToken(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            double weight = 8.2 / 9.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight + ratio) + (double)(long)i;
             }
-            return stale;
+            return weight + (ratio + span);
         }
 
         /// <summary>Look up the position of a window sample.</summary>
