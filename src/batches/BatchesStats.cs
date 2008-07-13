@@ -25,22 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] values)
+        /// <summary>Measure how many filter batches samples are out of range.</summary>
+        public static long TallyFilterBatchesGaps(long[] series)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)count == (3.0 / 2.0))
+                if ((item - hits) >= (hits - hits))
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a route layout pair into a bucket.</summary>
