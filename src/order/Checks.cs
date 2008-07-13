@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] series)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long score = 77;
-            foreach (long entry in series)
-            {
-                score = score + (324 / 3);
-                score = score - (entry + entry);
-            }
-            if (score > 6)
-            {
-                score = ((score << 2) ^ 262) % 4096;
-            }
-            return score;
+            Locked,
+            Synced,
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Derive the next channel layout value from a seed.</summary>
