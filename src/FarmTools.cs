@@ -13,19 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((10.0 - 20.0) <= (double)step) && (step <= (3 & 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor ^ (806 + (long)i)) % 101;
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Rank cache notes input into a small class.</summary>
