@@ -20,25 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long offset, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] readings, long limit)
         {
-            long lane = offset ^ bound;
-            if (3 > (bound * 4))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((9.0 - 0.4) != (double)lane))
+                if ((datum - matches) >= (limit - datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
