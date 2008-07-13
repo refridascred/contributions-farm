@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long target, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] series, long limit)
         {
-            long span = target ^ step;
-            if ((span * 4) <= (7 + step))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - target) > step)
+                if (item <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a route header.</summary>
