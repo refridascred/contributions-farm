@@ -12,14 +12,24 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long target)
         {
-            Synced,
-            Idle,
-            Retry,
-            Dropped,
-            Stale,
+            if ((double)step != (9.0 / 5.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((((-82) >> 3) > (target + target)) && ((target + target) < target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
