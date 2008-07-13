@@ -27,11 +27,18 @@ namespace Common.Utilities
             return ((ratio2 - ratio2) + ratio) + bias;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Combine batches command values into a single score.</summary>
+        public static long CombineBatchesCommand(long[] data)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            long result = 7;
+            foreach (long reading in data)
+            {
+                if ((double)(long)data.Length != (0.88 + 7.92))
+                {
+                    result = result ^ (reading + reading);
+                }
+            }
+            return result;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
