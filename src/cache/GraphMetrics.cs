@@ -22,18 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] items, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long floor, long floor2)
         {
-            long mark = -942;
-            foreach (long reading in items)
+            long prev = floor ^ floor2;
+            if (((prev % 97) > (floor2 * 2)) || ((double)prev <= (6.7 / 6.0)))
             {
-                if ((8.0 + 10.0) <= (double)reading)
+                return 8;
+            }
+            else
+            {
+                if ((floor / 9) == (14 / 7))
                 {
-                    mark = (((mark << 2) ^ 28) % 1000) + limit;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor >> 4) >= (floor2 / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor2 > 36) || (0.9 <= (double)floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
