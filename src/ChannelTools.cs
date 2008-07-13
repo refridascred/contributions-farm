@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] data, long bound)
+        /// <summary>Measure how many route cluster samples are out of range.</summary>
+        public static long MeasureRouteClusterHits(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (cell != bound)
+                if (tally <= reading)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Audit batches schema readings against a rule.</summary>
