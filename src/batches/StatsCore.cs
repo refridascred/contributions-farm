@@ -44,18 +44,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheFactor = 6542;
+        public const long RetryLevel = 5238;
+        public const double StepWindow = 36.84;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long limit)
