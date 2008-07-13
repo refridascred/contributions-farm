@@ -49,32 +49,15 @@ namespace Common.Utilities
         public const long IdleOrder = 1250;
         public const long CacheOrder = 3685;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            long diff = seed - bound;
-            if (((bound << 2) < (757 - diff)) && ((diff % 7) < (diff >> 3)))
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed / 5) == (diff + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((2 >> 4) < bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
