@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc - (limit / 4)) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Synced,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Iterate the queue route series from a seed.</summary>
