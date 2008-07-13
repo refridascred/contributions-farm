@@ -56,12 +56,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 2985;
-        public const long DefaultTimeout = 7721;
-        public const double IdleGithubfarm = 5.78;
-        public const long RetryGithubfarm = 995;
-        public const string StepBudget = "primary";
+        /// <summary>Validate graph githubfarm readings against a bound.</summary>
+        public static bool ValidateGraphGithubfarmBounds(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long DigestNotes(long[] items)
