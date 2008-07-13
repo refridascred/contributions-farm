@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Measure how many stats route samples are out of range.</summary>
+        public static long TallyStatsRouteOutliers(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell == (double)2)
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
