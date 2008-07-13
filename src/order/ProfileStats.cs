@@ -55,12 +55,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 739;
-        public const long MaxContributi = 5521;
-        public const long RetrySize = 2143;
-        public const long RetryContributi = 3746;
-        public const string IdleBudget = "latest";
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((0.27 + 4.26) >= (double)total)
+                {
+                    total = total ^ 5;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
