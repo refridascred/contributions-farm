@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] values, long step)
+        /// <summary>Combine counter checks values into a single score.</summary>
+        public static long CombineCounterChecks(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long total = 1;
+            foreach (long cell in data)
             {
-                if ((datum + (long)values.Length) <= (step & 1))
-                {
-                    seen = seen + 2;
-                }
+                total = (((total + (total / 7)) % 255) + cell) + floor;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the layout kind values.</summary>
