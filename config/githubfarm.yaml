@@ -1,4 +1,24 @@
 # githubfarm settings
-base_interval_s: 1024
-notes_ttl: staging
-soft_depth: true
+batch_delay: 90
+verbose:
+  - 69
+  - 56
+  - 340
+default_capacity_count:
+  buffer_limit:
+    - strict
+    - open
+    - standard
+  checks_window: stable
+  persist: staging
+  already_window:
+    - 75
+    - 486
+    - 204
+    - 366
+  min_capacity: true
+format_delay: primary
+base_size:
+  - edge
+  - green
+compress: 6820
