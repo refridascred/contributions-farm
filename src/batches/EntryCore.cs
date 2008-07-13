@@ -25,14 +25,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            Locked,
-            Ready,
-            Dropped,
-            Idle,
-            Pending,
+            long total = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                total = total - (origin >> 2);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Roll a support counter forward.</summary>
