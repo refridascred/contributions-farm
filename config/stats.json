@@ -1,10 +1,14 @@
 {
-  "max_timeout_s": false,
-  "burst_capacity": {
-    "batch_delay": 98.4,
-    "format_window": 96.21,
-    "soft_retries": "latest",
-    "persist": [95, 100, 278]
+  "dry_run": ["green", "latest"],
+  "persist": {
+    "enabled": ["cached", "green", "staging", "stable"],
+    "readonly": 28.8,
+    "warm_depth_count": ["blue", "stable", "cached", "fallback"],
+    "hard_size": 9651,
+    "base_window_pct": "fallback",
+    "batch_size": 89.66
   },
-  "soft_threshold": false
+  "warm_delay": "eu-west",
+  "idle_delay_count": 1,
+  "hard_ttl": 20.08
 }
