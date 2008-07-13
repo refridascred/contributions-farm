@@ -59,13 +59,13 @@ namespace Common.Utilities
             return mean + (3.6 * 10.0);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
