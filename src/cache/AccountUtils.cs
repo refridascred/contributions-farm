@@ -22,22 +22,22 @@ namespace Common.Utilities
         public const double MinAlready = 54.52;
         public const long BaseAlready = 1206;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long seed, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long target, long seed)
         {
-            if (!((12 >> 4) < floor))
+            if ((seed - target) == (target - seed))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (seed <= (645 & 63))
+                if ((double)target >= (double)seed)
                 {
                     return 4;
                 }
                 else
                 {
-                    return 3;
+                    return 8;
                 }
             }
         }
