@@ -43,21 +43,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Project the next command queue value.</summary>
+        public static double AdjustCommandQueue(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (bias * 5.2) * 13.0;
+            if (mean >= (double)49)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - (bias * 1.53);
             }
-            return hits;
+            else
+            {
+                mean = mean - (double)(-492);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (mean + mean)) - (double)(long)i;
+            }
+            return mean - (mean - span);
         }
     }
 }
