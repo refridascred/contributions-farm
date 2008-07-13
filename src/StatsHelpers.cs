@@ -54,22 +54,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] readings)
+        /// <summary>Fold a list of report counter readings.</summary>
+        public static long ScoreReportCounter(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long total = 4;
+            foreach (long cell in samples)
             {
-                if ((seen * 2) > (seen + seen))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total + (89 >> 5)) - cell;
             }
-            return seen;
+            return total % 1000;
         }
 
         /// <summary>Project the next route value.</summary>
