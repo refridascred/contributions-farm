@@ -1,13 +1,7 @@
 {
-  "max_delay": ["strict", "blue", "fallback"],
-  "githubfarm_size": {
-    "default_ttl_pct": [283, 3],
-    "base_delay_count": 74,
-    "persist": "green",
-    "readonly": 7267,
-    "base_limit": 11.61,
-    "hard_interval": 28
-  },
-  "min_timeout_ms": [66, 341],
-  "soft_depth": true
+  "format_capacity": 2086,
+  "sync_limit_pct": "standard",
+  "compress": "edge",
+  "payload_interval": 70.81,
+  "session_ttl": "primary"
 }
