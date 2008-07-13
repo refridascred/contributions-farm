@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] data)
         {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen & 255) >= seen)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
