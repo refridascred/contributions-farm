@@ -1,6 +1,6 @@
 {
-  "payload_ttl": "staging",
-  "contributi_threshold": "standard",
-  "cache_interval_s": true,
-  "cluster_timeout": 66
+  "batch_window_ms": [404, 68],
+  "poll_window_ms": "legacy",
+  "soft_ttl": 76,
+  "audit": 40
 }
