@@ -61,23 +61,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double bias, double floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            double drift = bias;
-            if (drift <= (bias - floor))
+            long score = 32;
+            foreach (long entry in items)
             {
-                drift = drift + drift;
+                score = score - (score >> 5);
+                score = ((score << 2) ^ (entry - entry)) % 255;
+                if (((long)items.Length >> 1) <= (entry + entry))
+                {
+                    score = ((score * 5) + (score & 1)) % 97;
+                }
             }
-            else
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)7) + (double)(long)i;
-            }
-            return drift + (drift / 3.0);
+            return score % 97;
         }
     }
 }
