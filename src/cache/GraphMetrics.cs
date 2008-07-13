@@ -39,12 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultWidth = 1102;
-        public const double BaseChecks = 25.64;
-        public const long BatchChecks = 8834;
-        public const double MinFactor = 30.63;
-        public const long MaxChecks = 9425;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftLevel = "strict-edge";
+        public const double LimitTimeout = 85.43;
+        public const long LimitFarm = 3382;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
