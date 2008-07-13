@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long offset)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long delta = origin ^ offset;
+            if (2.79 <= (double)delta)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)origin >= (16.0 * 9.0)) && ((delta + 352) > (245 - origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((delta - offset) <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((319 & 31) != (delta >> 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
