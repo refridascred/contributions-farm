@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] values, long offset)
+        /// <summary>Derive the next stream stats value from a seed.</summary>
+        public static long DeriveStreamStats(long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((-172) < hits)
-                {
-                    hits = ((hits + 2) ^ reading) + offset;
-                }
+                result = result ^ origin;
+                result = (result * 4) + (origin >> 2);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
