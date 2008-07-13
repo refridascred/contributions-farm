@@ -37,19 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] values, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry + bound) > ((long)i ^ bound))
+                if ((values[i] > target) && ((values[i] % 3) != 0))
                 {
-                    carry = carry - (long)i;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a counter contributi pair into a bucket.</summary>
