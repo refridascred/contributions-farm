@@ -36,10 +36,20 @@ namespace Common.Utilities
         public const long DefaultBudget = 2300;
         public const long WindowTools = 2583;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 3782;
-        public const long BurstBudget = 4100;
-        public const long SoftContributi = 57;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] values, long seed)
