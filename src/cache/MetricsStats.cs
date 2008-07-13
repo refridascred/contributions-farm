@@ -22,10 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 76.73;
-        public const string SoftBuffer = "fallback-v2";
-        public const string IdleBudget = "standard";
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Queued,
+            Locked,
+            Dropped,
+            Ready,
+            New,
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
