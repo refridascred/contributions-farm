@@ -20,24 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double weight, double span)
-        {
-            double load = (double)773;
-            if (load <= (span / 7.0))
-            {
-                load = load + (20.0 - weight);
-            }
-            else
-            {
-                load = load - (double)566;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (span / 6.0)) + (double)(long)i;
-            }
-            return load - (weight - load);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "open-edge";
+        public const long RetryDepth = 4155;
+        public const string HardBudget = "primary-edge";
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] series)
