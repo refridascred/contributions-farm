@@ -30,9 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 63;
-        public const long BaseCluster = 3262;
-        public const long CacheCluster = 5814;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
