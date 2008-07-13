@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Closed,
-            Draft,
-            Dropped,
-            Idle,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 43.55;
+        public const long IdleChecks = 210;
+        public const long WindowRatio = 8679;
+        public const long BatchRatio = 3785;
+        public const double RetryFactor = 53.37;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BaseBudget = 38.49;
