@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const string SoftBuffer = "fallback-v2";
         public const string IdleBudget = "standard";
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] series, long floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
