@@ -40,22 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(entry < (entry + 5)))
+                if (items[i] > origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
