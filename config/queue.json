@@ -1,5 +1,12 @@
 {
-  "cache_depth_s": true,
-  "default_ttl_s": "eu-west",
-  "stats_delay": "cached"
+  "idle_limit_ms": {
+    "hard_window_pct": true,
+    "idle_capacity": [233, 52, 458, 460],
+    "soft_window": "legacy",
+    "persist": "cached",
+    "batch_capacity": 705
+  },
+  "default_window_pct": [465, 295, 222, 331],
+  "min_limit": 57.49,
+  "flush_delay_count": 26.48
 }
