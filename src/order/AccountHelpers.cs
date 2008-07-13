@@ -50,12 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "alpha-v2";
-        public const long RetryBuffer = 4417;
-        public const long HardBudget = 6041;
-        public const long HardBuffer = 7024;
-        public const string StepFactor = "standard-1";
+        /// <summary>Locate a githubfarm batches reading by value.</summary>
+        public static long LocateGithubfarmBatchesIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next schema batch value.</summary>
         public static double BlendSchemaBatch(double scale, double bias)
