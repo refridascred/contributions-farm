@@ -39,18 +39,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] values, long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mark = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((reading * 2) != (step + reading))
-                {
-                    seen = seen + 2;
-                }
+                mark = (mark << 2) ^ target;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
     }
 }
