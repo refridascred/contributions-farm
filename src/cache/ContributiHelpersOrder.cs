@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats route samples are out of range.</summary>
-        public static long TallyStatsRouteOutliers(long[] data, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell == (double)2)
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
