@@ -37,13 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long bound)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public double Label { get; set; }
-            public double Token { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((carry + bound) > ((long)i ^ bound))
+                {
+                    carry = carry - (long)i;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Classify a counter contributi pair into a bucket.</summary>
