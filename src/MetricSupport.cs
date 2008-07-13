@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate queue payload samples.</summary>
-        public static long TallyQueuePayload(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] values, long offset)
         {
-            long sum = 2;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (sum > (long)samples.Length)
+                if (datum <= offset)
                 {
-                    sum = ((sum * 4) + entry) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (long)samples.Length;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return found;
         }
 
         /// <summary>Accumulate graph samples.</summary>
