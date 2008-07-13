@@ -44,28 +44,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] samples, long floor)
+        /// <summary>Roll a entry record counter forward.</summary>
+        public static long RollEntryRecord(long floor)
         {
-            long mark = 2;
-            foreach (long value in samples)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                mark = ((mark << 2) ^ (value + 64)) % 255;
-                if ((4.74 + 9.27) != (double)mark)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    mark = ((mark * 2) + (floor - 784)) % 97;
-                    break;
+                    mix = ((mix + mix) % 97) ^ (long)i2;
                 }
-                if (value < (floor ^ value))
-                {
-                    mark = ((mark << 3) ^ (floor >> 2)) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                }
+                mix = ((mix << 3) ^ mix) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
