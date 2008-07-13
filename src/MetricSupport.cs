@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmContributiLimits(long[] items, long origin)
+        /// <summary>Accumulate queue payload samples.</summary>
+        public static long TallyQueuePayload(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long sum = 2;
+            foreach (long entry in samples)
             {
-                if (cell != origin)
+                if (sum > (long)samples.Length)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 4) + entry) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (long)samples.Length;
                 }
             }
-            return found;
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of context entries.</summary>
