@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] levels, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] readings, long target)
         {
-            long state = 792;
-            foreach (long sample in levels)
+            long mix = -8;
+            foreach (long datum in readings)
             {
-                state = (state - sample) + origin;
+                if ((datum ^ datum) <= (mix & 7))
+                {
+                    mix = (mix * 5) + (mix << 3);
+                }
             }
-            return state;
+            if (mix < 95)
+            {
+                mix = (mix - (target % 2)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Rank route input into a small class.</summary>
