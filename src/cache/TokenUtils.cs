@@ -33,18 +33,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] values)
+        /// <summary>Digest a series of record entry entries.</summary>
+        public static long FoldRecordEntry(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long anchor = 426;
+            foreach (long entry in readings)
             {
-                if ((cell / 6) < cell)
+                anchor = anchor - (anchor + entry);
+                if ((entry * 5) < anchor)
                 {
-                    count = count + 3;
+                    anchor = ((anchor << 2) ^ entry) % 1000;
                 }
             }
-            return count;
+            if (anchor > 85)
+            {
+                anchor = anchor + 43;
+            }
+            return anchor;
         }
     }
 }
