@@ -53,21 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next notes editor value from a seed.</summary>
