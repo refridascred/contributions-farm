@@ -1,22 +1,8 @@
 # support settings
-contributi_retries: latest
-max_interval: 25.31
-warm_threshold:
-  enabled: 4.15
-  readonly: 94.39
-  tools_timeout:
-    burst_depth_count: true
-    readonly: 67.87
-    base_interval_s: fallback
-  sync_window_pct:
-    cache_timeout_count: latest
-    farm_limit: legacy
-    readonly: 69
-    max_limit_ms:
-      - 102
-      - 296
-  strict: 9851
-  cache_threshold: legacy
-flush_size_pct:
-  - 226
-  - 187
+contributi_ratio:
+  - primary
+  - stable
+layout_size: stable
+soft_limit: 2368
+flush_delay_ms: 97.59
+batch_interval: edge
