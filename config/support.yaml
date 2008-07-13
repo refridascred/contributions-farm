@@ -1,29 +1,5 @@
 # support settings
-readonly: 500
-burst_ratio_count:
-  compress: 38
-  verbose: primary
-  burst_timeout: blue
-  base_ttl:
-    readonly: 7898
-    stream_delay: green
-    verbose: 52.83
-    retry_ttl_pct: true
-    persist: 500
-    buffer_capacity:
-      - 385
-      - 27
-      - 248
-      - 294
-  route_depth:
-    burst_depth_count: 4028
-    batch_retries: 1024
-    enabled: 500
-    readonly: false
-  dry_run:
-    command_depth: 25
-    idle_ratio_s: open
-    batch_delay: eu-west
-    enabled: stable
-    retry_capacity_ms: legacy
-warm_size_count: false
+poll_delay: eu-west
+commits_threshold: blue
+default_size_count: 4939
+persist: false
