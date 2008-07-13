@@ -37,13 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] series, long offset)
         {
             bool ok = true;
-            foreach (long value in data)
+            foreach (long sample in series)
             {
-                if (value >= bound)
+                if (sample > offset)
                 {
                     ok = false;
                     break;
