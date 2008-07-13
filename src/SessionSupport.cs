@@ -20,18 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit buffer route readings against a rule.</summary>
-        public static long CountBufferRouteGaps(long[] series)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item <= (1.0 * 7.8))
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a account summary.</summary>
