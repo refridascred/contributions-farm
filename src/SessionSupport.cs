@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many token support samples are out of range.</summary>
-        public static long MeasureTokenSupportGaps(long[] samples, long bound)
+        /// <summary>Rank checks tools input into a small class.</summary>
+        public static long GradeChecksTools(long target, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long lane = target + bound;
+            if ((double)bound == (8.5 + 9.5))
             {
-                if (((double)cell < (10.0 / 2.0)) && (0 >= (seen & 15)))
+                return 1;
+            }
+            else
+            {
+                if (!(target < lane))
                 {
-                    seen = (seen + 2) + bound;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound < (5 >> 1)) || ((2.3 - 11.0) == (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next batch value.</summary>
