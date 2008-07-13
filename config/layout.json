@@ -1,6 +1,6 @@
 {
-  "warm_delay_pct": 26.6,
-  "checks_threshold": 7691,
-  "poll_limit_s": [331, 297, 267],
-  "flush_window_pct": 1695
+  "compress": 44.04,
+  "flush_threshold": "blue",
+  "buffer_depth": false,
+  "poll_retries_s": true
 }
