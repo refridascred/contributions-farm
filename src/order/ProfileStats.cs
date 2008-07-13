@@ -49,18 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools editor samples are out of range.</summary>
-        public static long MeasureToolsEditorHits(long[] series, long limit)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading * 5) != (3 + limit))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Stale,
+            Active,
+            New,
+            Failed,
+            Pending,
         }
     }
 }
