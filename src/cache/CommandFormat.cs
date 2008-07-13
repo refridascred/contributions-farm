@@ -31,12 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 6564;
-        public const long BaseRatio = 512;
-        public const long SoftSize = 6515;
-        public const long CacheCount = 3986;
-        public const long StepSize = 2412;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Pending,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
