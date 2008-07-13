@@ -23,21 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph queue counter forward.</summary>
-        public static long SeriesGraphQueue(long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result << 3) ^ (limit / 9);
-                if ((double)(long)i > 5.5)
-                {
-                    result = result ^ ((long)i % 60);
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Done,
+            Closed,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Count the payload buffer entries that pass the check.</summary>
