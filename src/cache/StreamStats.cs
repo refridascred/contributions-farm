@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowLevel = 9989;
-        public const string CacheScore = "fallback-v2";
-        public const double MinProfile = 43.04;
-        public const string SoftProfile = "fallback-1";
+        /// <summary>Locate a checks account reading by value.</summary>
+        public static long FindChecksAccountIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double DefaultCommand = 96.18;
