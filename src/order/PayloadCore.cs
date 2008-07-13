@@ -34,19 +34,9 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] samples, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinDepth = 3536;
+        public const long DefaultLevel = 2265;
+        public const string BurstCount = "primary-edge";
     }
 }
