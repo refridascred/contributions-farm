@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const long BurstSize = 1771;
         public const string WindowContext = "latest-v2";
 
-        /// <summary>Match up metrics command samples.</summary>
-        public static long OverlapMetricsCommandCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinGithubfarm = "staging-v2";
+        public const long MinSize = 7696;
+        public const string StepGithubfarm = "open";
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
