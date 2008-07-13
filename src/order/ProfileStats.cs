@@ -49,21 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report contributi series from a seed.</summary>
-        public static long RollReportContributi(long bound)
+        /// <summary>Measure how many tools editor samples are out of range.</summary>
+        public static long MeasureToolsEditorHits(long[] series, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((6.7 - 1.0) != (double)result)
+                if ((reading * 5) != (3 + limit))
                 {
-                    result = result ^ (bound % 7);
-                    break;
+                    hits = hits + 3;
                 }
-                result = ((result * 3) + ((-2) * 4)) % 101;
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
     }
 }
