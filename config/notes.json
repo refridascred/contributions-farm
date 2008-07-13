@@ -1,12 +1,18 @@
 {
-  "poll_retries_s": 250,
-  "batch_size_count": 68.0,
-  "readonly": 30,
-  "token_retries": {
-    "dry_run": "fallback",
-    "burst_threshold_pct": [73, 166, 222],
-    "audit": 44,
-    "readonly": 5
+  "poll_window_ms": 7063,
+  "hard_retries": {
+    "verbose": {
+      "retry_depth": true,
+      "readonly": 38.31,
+      "cache_ratio_ms": 25,
+      "already_ratio": false
+    },
+    "strict": ["latest", "stable"],
+    "farm_threshold": [11, 260],
+    "warm_retries": "edge",
+    "soft_retries_count": [229, 389, 271, 139]
   },
-  "strict": 19
+  "dry_run": "legacy",
+  "flush_ttl": 3872,
+  "soft_ttl": 9024
 }
