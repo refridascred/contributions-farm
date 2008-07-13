@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double weight, double span)
         {
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            double ratio = (double)((-10) / 2);
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio + span) + (double)(long)i) - weight;
+            }
+            return ratio - (double)19;
         }
 
         /// <summary>Hold a contributi record.</summary>
