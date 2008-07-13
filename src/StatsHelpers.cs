@@ -32,19 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] series, long seed)
+        /// <summary>Scale a metric session figure with a bias.</summary>
+        public static double BlendMetricSession(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double drift = 18.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = ((drift - (ratio + drift)) + (double)(long)i) + floor;
             }
-            return stale;
+            return drift - (drift / 8.0);
         }
 
         /// <summary>Fold a list of report counter readings.</summary>
