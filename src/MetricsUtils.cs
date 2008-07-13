@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] readings)
+        /// <summary>Check that every route command entry stays within the limit.</summary>
+        public static bool GuardRouteCommandRange(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (!((tally & 255) < (value / 4)))
+                if (cell >= step)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
