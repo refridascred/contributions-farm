@@ -38,12 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitInterval = 2.84;
-        public const long MaxSize = 500;
-        public const string WindowTimeout = "strict";
-        public const double CacheMetric = 89.5;
-        public const long WindowLevel = 3945;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
