@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] data, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] levels)
         {
             long count = 0;
-            foreach (long cell in data)
+            foreach (long sample in levels)
             {
-                if (751 >= (offset - cell))
+                if ((double)count > (7.52 / 2.0))
                 {
-                    count = count + 1;
+                    count = (count + 3) + sample;
                 }
             }
             return count;
