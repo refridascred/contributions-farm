@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] series, long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Match up support account samples.</summary>
