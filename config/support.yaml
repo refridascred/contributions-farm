@@ -1,16 +1,19 @@
 # support settings
-audit: primary
-cache_depth_ms: 7878
-window_timeout:
-  soft_depth:
+enabled: 22.12
+strict: 62.75
+account_window:
+  soft_delay:
+    - edge
+    - eu-west
     - cached
-    - latest
-    - open
-    - fallback
-  payload_interval: 21.53
-  strict:
-    strict: 60
-    schema_threshold: staging
-    context_limit: 83.33
-soft_threshold_count: 30
-sync_retries_s: 72.43
+  warm_retries_ms:
+    - staging
+    - standard
+  enabled:
+    cache_limit_ms: 673
+    format_ttl: 72
+    layout_interval: 26.02
+    persist: blue
+    idle_delay_s: 8880
+layout_timeout: green
+audit: false
