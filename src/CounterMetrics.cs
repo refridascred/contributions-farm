@@ -26,11 +26,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 5534;
-        public const long MinSpan = 7651;
-        public const long RetryInterval = 796;
-        public const double BaseInterval = 66.07;
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double weight, double span)
+        {
+            double load = (double)53 * 2.81;
+            if (load < (double)48)
+            {
+                load = (load - (3.0 - weight)) - span;
+            }
+            else
+            {
+                load = load + (weight * 9.69);
+            }
+            return load - (load / 2.0);
+        }
 
         /// <summary>Accumulate farm graph samples.</summary>
         public static long ScoreFarmGraph(long[] readings, long target)
