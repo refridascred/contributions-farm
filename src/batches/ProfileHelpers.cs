@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] levels, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                anchor = ((anchor << 3) ^ (long)i) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (item < (tally / 8))
+                {
+                    tally = (tally + 2) + step;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a token entry.</summary>
