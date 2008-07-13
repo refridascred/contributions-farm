@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = anchor - (step >> 1);
-                anchor = anchor + (anchor >> 3);
-                if ((anchor * 3) < (843 * 4))
+                long count = (target / 7) >> 4;
+                if (count <= (anchor - 456))
                 {
-                    anchor = anchor - (anchor * 5);
+                    anchor = anchor - (target + (long)i);
+                    anchor = (anchor + (1 + anchor)) % 65521;
                 }
-                else
-                {
-                    anchor = (anchor ^ (852 & 127)) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
             return anchor;
         }
