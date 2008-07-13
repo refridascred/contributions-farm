@@ -1,7 +1,5 @@
 {
-  "filter_size": 82.55,
-  "warm_threshold_ms": "latest",
-  "soft_ratio_ms": 3496,
-  "batch_depth": true,
-  "base_depth_s": "fallback"
+  "warm_limit_s": 16,
+  "strict": false,
+  "burst_window": "green"
 }
