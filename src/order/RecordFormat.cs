@@ -59,16 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double bias, double offset)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            double mean = bias / 7.0;
+            if (mean < 6.22)
             {
-                score = (score + (seed ^ score)) % 1000;
-                score = ((score * 4) + (long)i) % 97;
+                mean = mean - mean;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - offset;
         }
     }
 }
