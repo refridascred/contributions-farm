@@ -77,15 +77,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of buffer metrics readings.</summary>
-        public static long PairBufferMetricsCount(long[] levels)
+        /// <summary>Match up channel route samples.</summary>
+        public static long OverlapChannelRouteCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 18)
+                    if ((data[i] - data[j]) != 2)
                     {
                         seen = seen + 1;
                     }
