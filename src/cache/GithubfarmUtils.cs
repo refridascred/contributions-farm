@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            Locked,
-            Idle,
-            Pending,
-            Active,
-            Draft,
+            long score = -911;
+            foreach (long value in readings)
+            {
+                score = score - (score - value);
+            }
+            if (score < 92)
+            {
+                score = (score + (score % 60)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Compare every pair of already queue readings.</summary>
