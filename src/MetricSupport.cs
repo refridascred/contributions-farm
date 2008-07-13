@@ -50,24 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long target, long offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] values, long seed)
         {
-            if ((347 * 5) >= target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset < (double)9)
+                if (values[i] >= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
