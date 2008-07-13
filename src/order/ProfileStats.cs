@@ -74,11 +74,12 @@ namespace Common.Utilities
             return rate - (weight / 3.0);
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            Active,
+            Synced,
+            Retry,
         }
     }
 }
