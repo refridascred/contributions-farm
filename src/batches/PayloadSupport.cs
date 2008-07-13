@@ -32,28 +32,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long limit, long step)
         {
-            if ((limit * 4) >= target)
+            if (!((11.0 * 2.0) != (double)step))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((9 <= target) || ((limit << 1) > limit))
+                if ((step / 4) <= 1)
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((1.78 / 7.0) != (double)limit)
+                    if ((step / 9) >= step)
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 0;
+                        if ((step >> 4) <= 35)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
