@@ -26,19 +26,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double weight, double span)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] items, long step)
         {
-            double load = (double)53 * 2.81;
-            if (load < (double)48)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (3.0 - weight)) - span;
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (weight * 9.69);
-            }
-            return load - (load / 2.0);
+            return -1;
         }
 
         /// <summary>Accumulate farm graph samples.</summary>
