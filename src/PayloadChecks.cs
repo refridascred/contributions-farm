@@ -31,27 +31,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long carry = -9;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell == (2.72 + 10.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry * 5) + (cell + cell)) % 65521;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry ^ (560 - carry)) % 4096;
-                }
-                carry = ((carry * 2) + cell) % 101;
             }
-            if (carry > 155)
-            {
-                carry = ((carry * 3) + (carry / 7)) % 255;
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
