@@ -19,11 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 9703;
-        public const long BurstWidth = 6241;
-        public const string BaseInterval = "fallback-v2";
-        public const double HardLayout = 42.51;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double ratio, double span)
+        {
+            double scale = ratio;
+            if (scale < (double)547)
+            {
+                scale = (scale + (ratio + ratio)) - span;
+            }
+            return scale - ratio;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
