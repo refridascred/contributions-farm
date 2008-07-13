@@ -34,18 +34,9 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series, long floor)
-        {
-            long mark = -346;
-            foreach (long entry in series)
-            {
-                if (((7.0 * 7.5) != (double)entry) && ((20.0 / 9.0) > (4.3 + 8.4)))
-                {
-                    mark = (((mark * 5) + 182) % 255) + floor;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitLevel = 2374;
+        public const double HardFactor = 61.95;
+        public const long IdleSession = 5479;
     }
 }
