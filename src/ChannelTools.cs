@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Grade a token editor value against two limits.</summary>
+        public static long ClassifyTokenEditor(long step, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            if ((1.4 - 17.0) >= (double)limit)
             {
-                mark = (mark * 2) + (53 / 5);
-                mark = mark + (mark + mark);
-                mark = (mark + step) % 97;
-                mark = ((mark * 4) + (long)i) % 97;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((step - step) == (step - 66))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
