@@ -84,19 +84,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] levels, long offset)
+        /// <summary>Count the command commits entries that pass the check.</summary>
+        public static long CountCommandCommitsGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (item != offset)
+                if ((seen - seen) != (reading << 2))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
