@@ -35,18 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] samples, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] values)
         {
-            long carry = 51;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((38 + value) >= seed)
+                if (((seen % 97) >= (item & 31)) && ((992 < (item << 2)) && ((double)seen >= (double)item)))
                 {
-                    carry = (carry ^ (carry - carry)) % 97;
+                    seen = seen + 1;
                 }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
