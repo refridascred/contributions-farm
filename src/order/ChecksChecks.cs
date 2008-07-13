@@ -33,32 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long seed, long seed2)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long step = seed ^ seed2;
-            if ((seed2 + seed2) > seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)seed == (9.4 * 2.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((989 + seed2) > (step / 7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Idle,
         }
     }
 }
