@@ -1,12 +1,7 @@
 {
-  "base_capacity": true,
-  "batch_capacity": false,
-  "poll_limit_pct": {
-    "retry_depth_s": "cached",
-    "support_size": 92,
-    "hard_timeout_ms": "legacy",
-    "hard_interval_s": false
-  },
-  "readonly": ["eu-west", "cached", "fallback"],
-  "support_limit": [251, 146]
+  "persist": true,
+  "cache_ttl_s": 33.07,
+  "warm_depth_ms": "eu-west",
+  "window_threshold": ["legacy", "eu-west", "cached", "staging"],
+  "hard_threshold_pct": "primary"
 }
