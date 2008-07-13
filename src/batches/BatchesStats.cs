@@ -12,18 +12,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultSize = 849;
+        public const double LimitTimeout = 63.26;
+        public const long HardMetrics = 6526;
 
         /// <summary>Measure how many filter batches samples are out of range.</summary>
         public static long TallyFilterBatchesGaps(long[] series)
