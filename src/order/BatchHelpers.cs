@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] readings, long seed)
         {
             long tally = 0;
-            foreach (long sample in levels)
+            foreach (long cell in readings)
             {
-                if ((sample < (tally * 5)) && ((sample - tally) != (tally % 3)))
+                if (0.3 < (double)tally)
                 {
-                    tally = tally + 3;
+                    tally = ((tally + 2) + cell) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
