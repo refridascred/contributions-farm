@@ -1,9 +1,6 @@
 {
-  "batches_delay": "standard",
-  "context_ratio": "stable",
-  "warm_depth": {
-    "poll_interval_pct": 27,
-    "min_ratio": true,
-    "idle_size_ms": false
-  }
+  "poll_threshold_s": "latest",
+  "soft_limit_count": false,
+  "batch_interval_ms": "green",
+  "warm_size_ms": "eu-west"
 }
