@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstScore = 5646;
+        public const long LimitWidth = 1112;
+        public const string BatchInterval = "legacy-v2";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 5168;
