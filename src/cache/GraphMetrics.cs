@@ -39,39 +39,11 @@ namespace Common.Utilities
         public const double LimitTimeout = 85.43;
         public const long LimitFarm = 3382;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long origin, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double bias)
         {
-            long span = origin ^ step;
-            if (origin >= (-38))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step <= (origin % 3)) || ((double)span != (10.0 * 15.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (3.0 > (double)span)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-18) < (span + origin)) || ((step + step) < step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double mean = ratio - ratio;
+            return (mean - (mean - mean)) + bias;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
