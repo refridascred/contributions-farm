@@ -19,24 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double bias, double span)
-        {
-            double bias2 = 0.3 / 6.0;
-            if (bias2 < 6.8)
-            {
-                bias2 = (bias2 - (bias2 / 7.0)) + span;
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + bias2) - (double)(long)i;
-            }
-            return bias2 + (18.0 - bias2);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitWidth = 73.98;
+        public const double DefaultDepth = 46.23;
+        public const long BaseSize = 7247;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
