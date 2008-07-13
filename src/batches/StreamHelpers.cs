@@ -111,17 +111,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] >= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
