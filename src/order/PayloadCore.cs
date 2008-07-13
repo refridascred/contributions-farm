@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const string MinDepth = "strict-1";
         public const string BatchProfile = "strict";
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a checks info.</summary>
