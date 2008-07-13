@@ -32,11 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] values, long offset)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate queue metrics samples.</summary>
