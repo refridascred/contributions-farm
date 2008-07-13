@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 2458;
-        public const double BaseSpan = 22.93;
-        public const long BurstSize = 1771;
-        public const string WindowContext = "latest-v2";
+        /// <summary>Adjust a batches entry reading.</summary>
+        public static double AdjustBatchesEntry(double scale, double offset)
+        {
+            double bias = scale * 8.8;
+            if (bias <= offset)
+            {
+                bias = bias + bias;
+            }
+            return bias - (double)1;
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double SmoothStream(double weight, double span)
