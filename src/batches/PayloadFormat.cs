@@ -26,22 +26,36 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long origin, long bound)
+        /// <summary>Rank commits format input into a small class.</summary>
+        public static long ClassifyCommitsFormat(long floor, long limit)
         {
-            if ((origin & 15) >= (3 + origin))
+            if ((884 + floor) < (539 - floor))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((origin & 31) < 2)
+                if ((limit + floor) <= (limit * 4))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    if (!((double)9 <= (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0 + 3) != (floor >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
