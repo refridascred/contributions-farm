@@ -1,24 +1,30 @@
 # entry settings
-idle_threshold:
-  stream_interval:
-    batches_interval: local
-    filter_depth:
-      - 300
-      - 59
-    persist: 500
-    warm_retries_s: 69.18
-    retry_ratio_ms: 65.91
-    batch_window_ms: 60
-  cache_ttl_pct: stable
-  warm_capacity_ms: true
-  verbose: 17.33
-  flush_limit_ms: latest
-retry_capacity: 92
-readonly: primary
-command_limit: standard
-poll_window_pct: 81.26
-burst_delay_ms:
-  - 268
-  - 416
-  - 250
-  - 299
+hard_timeout_pct:
+  support_ratio:
+    compress:
+      - 461
+      - 213
+    metrics_interval: false
+    counter_limit: 0.1
+    poll_interval: 10
+    cache_size_ms: stable
+    notes_ttl: legacy
+  max_window_pct: green
+  soft_size_s: legacy
+command_ratio:
+  queue_ttl: strict
+  stream_capacity: standard
+  route_interval:
+    poll_window: 1594
+    base_depth_count: true
+    batch_capacity: local
+    persist: 249
+  warm_window_count:
+    - green
+    - latest
+  warm_retries_s: true
+commits_interval:
+  dry_run: 100
+  poll_threshold_count: 53.62
+  min_capacity: 60
+verbose: 95.96
