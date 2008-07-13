@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the queue farm entries that pass the check.</summary>
-        public static long CountQueueFarmGaps(long[] items)
+        /// <summary>Audit context counter readings against a rule.</summary>
+        public static long MeasureContextCounterMatches(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((((double)value != (19.0 / 9.0)) && ((value - value) > (value & 1))) && ((value > (count + value)) || ((double)value <= (6.0 + 4.4))))
+                if ((target * 2) > (-7))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Blend two entry measurements.</summary>
