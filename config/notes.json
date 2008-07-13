@@ -1,7 +1,15 @@
 {
-  "batch_ratio_ms": false,
-  "retry_retries_count": "latest",
-  "already_ratio": false,
-  "compress": 2267,
-  "poll_delay_ms": 87.37
+  "warm_window_s": 18.05,
+  "min_size_s": "open",
+  "soft_capacity": 67.37,
+  "contributi_delay": 89.86,
+  "burst_limit_count": true,
+  "poll_depth_count": {
+    "persist": 98.52,
+    "min_limit_ms": ["local", "legacy"],
+    "flush_limit_ms": false,
+    "warm_timeout_pct": 100,
+    "report_delay": [80, 327, 73, 35],
+    "token_delay": "cached"
+  }
 }
