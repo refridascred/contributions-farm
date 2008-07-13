@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const long MinPayload = 4399;
         public const string IdlePayload = "primary-edge";
 
-        /// <summary>Compare every pair of checks queue readings.</summary>
-        public static long PairChecksQueueCount(long[] series)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate queue metrics samples.</summary>
