@@ -28,12 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data, long offset)
         {
-            public bool Score { get; set; }
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 9;
+            foreach (long value in data)
+            {
+                if ((offset % 5) == (132 + 80))
+                {
+                    state = ((state << 3) ^ (offset & 31)) ^ value;
+                }
+                if ((state % 64) >= state)
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate filter tools samples.</summary>
