@@ -70,21 +70,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 62;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((6.02 - 1.6) != (double)mark)
                 {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ value;
+                    break;
+                }
+                if (mark < (mark - value))
+                {
+                    mark = mark ^ (mark & 255);
                 }
             }
-            return hits;
+            return mark % 1000;
         }
     }
 }
