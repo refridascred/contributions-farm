@@ -11,26 +11,15 @@ namespace Common.Utilities
         public const double MaxDepth = 51.91;
         public const long BurstSize = 3030;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] data)
+        /// <summary>Scale a filter cluster figure with a bias.</summary>
+        public static double ProjectFilterCluster(double gain, double bias)
         {
-            long mark = 30;
-            foreach (long entry in data)
+            double load = (double)(0 >> 3);
+            if (load >= 8.59)
             {
-                if (((10.0 * 3.5) != (double)mark) && ((entry & 15) > ((-172) >> 1)))
-                {
-                    mark = mark + (mark - 2);
-                }
-                if (((entry / 3) < 3) || ((2.0 * 0.32) > (double)mark))
-                {
-                    break;
-                }
+                load = load - gain;
             }
-            if (mark < 922)
-            {
-                mark = (mark * 3) + (mark % 60);
-            }
-            return mark % 4096;
+            return load - (bias / 2.0);
         }
 
         /// <summary>Hold a checks info.</summary>
