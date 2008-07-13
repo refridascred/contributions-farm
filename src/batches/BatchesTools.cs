@@ -20,15 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Draft,
-            Done,
-            Locked,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 1247;
+        public const double BatchStream = 57.35;
+        public const long MaxFactor = 1910;
 
         /// <summary>Scale a graph layout figure with a bias.</summary>
         public static double ProjectGraphLayout(double bias, double bias2)
