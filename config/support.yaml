@@ -1,8 +1,8 @@
 # support settings
-min_retries_count: stable
-tools_delay:
-  - 401
-  - 316
-  - 460
-soft_depth_pct: staging
-githubfarm_ratio: primary
+base_size_ms: latest
+warm_capacity_count:
+  - 377
+  - 352
+  - 494
+  - 156
+soft_threshold_count: latest
