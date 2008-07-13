@@ -16,21 +16,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Rank cluster cache input into a small class.</summary>
+        public static long ClassifyClusterCache(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)offset >= (double)bound)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (bound <= (8 + 50))
                 {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
