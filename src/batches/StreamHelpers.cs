@@ -44,25 +44,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long target, long target2)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            long next = target ^ target2;
-            if ((target * 5) > (916 * 2))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((next & 7) == (target + target2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a session header.</summary>
