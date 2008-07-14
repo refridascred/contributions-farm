@@ -15,18 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] samples)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits <= (hits - hits))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            Paused,
+            Pending,
+            Ready,
+            Failed,
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
