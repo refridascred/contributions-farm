@@ -1,8 +1,8 @@
 {
-  "compress": "legacy",
-  "batch_depth_ms": 42.11,
-  "persist": 250,
-  "cache_delay_s": "eu-west",
-  "poll_timeout": true,
-  "strict": false
+  "batch_ratio": "staging",
+  "counter_delay": 95,
+  "flush_limit_count": 9566,
+  "idle_ttl": "latest",
+  "poll_delay_count": 7446,
+  "verbose": 100
 }
