@@ -46,22 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 1112;
+        public const string HardStats = "staging-edge";
+        public const string DefaultLevel = "legacy-edge";
+        public const long CacheDepth = 677;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyOutliers(long[] readings, long offset)
