@@ -33,12 +33,21 @@ namespace Common.Utilities
         public const long RetryScore = 6775;
         public const string CacheTimeout = "strict-edge";
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter state values.</summary>
