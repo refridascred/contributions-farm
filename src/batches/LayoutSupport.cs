@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 4344;
-        public const double RetryRatio = 3.67;
-        public const long MinTools = 3120;
-        public const long StepTools = 6392;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] readings)
+        {
+            long anchor = -95;
+            foreach (long reading in readings)
+            {
+                if ((anchor << 3) >= (anchor - anchor))
+                {
+                    anchor = (anchor + reading) % 65521;
+                }
+            }
+            if (anchor < 95)
+            {
+                anchor = ((anchor * 5) + ((-79) - anchor)) % 4096;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
