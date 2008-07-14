@@ -23,16 +23,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of batches report readings.</summary>
-        public static long TallyBatchesReport(long[] items)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long mark = 347;
-            foreach (long item in items)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                mark = ((mark << 3) ^ (item << 3)) % 97;
-                mark = (mark * 4) + (mark - mark);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
     }
 }
