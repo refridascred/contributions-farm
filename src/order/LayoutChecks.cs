@@ -35,19 +35,18 @@ namespace Common.Utilities
         public const long LimitScore = 7343;
         public const long StepInterval = 1223;
 
-        /// <summary>Validate token cluster readings against a bound.</summary>
-        public static bool ValidateTokenClusterBounds(long[] data, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (entry <= step)
+                if (count >= (3 - count))
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 2) ^ sample) + limit;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Digest a series of report commits entries.</summary>
