@@ -42,18 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] series, long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step / 8) >= 18)
+                if (items[i] < origin)
                 {
-                    matches = (matches + 2) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
