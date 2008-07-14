@@ -71,13 +71,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Locked,
-            Ready,
-            Synced,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinCount = "stable-edge";
+        public const double DefaultOrder = 90.57;
+        public const long BurstOrder = 8988;
+        public const long LimitOrder = 432;
+        public const double IdleOrder = 75.48;
     }
 }
