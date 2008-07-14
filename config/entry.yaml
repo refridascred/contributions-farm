@@ -1,6 +1,14 @@
 # entry settings
-retry_size_s:
-  - stable
-  - strict
-verbose: green
-sync_size: 94.42
+readonly: green
+flush_timeout_count:
+  hard_limit: 3257
+  persist:
+    - 493
+    - 224
+  queue_size: fallback
+  burst_size: strict
+  hard_window_pct: 30
+metric_depth: 59
+warm_timeout_s: 500
+default_limit_s: true
+buffer_limit: stable
