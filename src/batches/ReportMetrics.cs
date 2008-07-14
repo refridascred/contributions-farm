@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate graph queue readings against a bound.</summary>
-        public static bool ValidateGraphQueueLimits(long[] readings, long offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
