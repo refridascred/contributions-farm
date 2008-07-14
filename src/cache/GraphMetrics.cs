@@ -14,31 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long floor, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            if ((floor + floor) < (floor >> 5))
+            long mix = 8;
+            foreach (long sample in readings)
             {
-                return 5;
+                mix = ((mix * 3) + (sample * 2)) % 65521;
             }
-            else
-            {
-                if (!(floor <= (floor + floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < (origin & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
