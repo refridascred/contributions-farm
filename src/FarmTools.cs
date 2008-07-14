@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long seed, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long lane = seed ^ offset;
+            if (((seed * 2) >= (offset / 3)) || ((offset - lane) < (offset & 127)))
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((lane ^ seed) <= (offset - 37))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + (-748)) != (lane - lane))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order level values.</summary>
