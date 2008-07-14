@@ -1,5 +1,17 @@
 {
-  "readonly": 500,
-  "tools_threshold": 2399,
-  "metric_limit": [448, 397, 313, 204]
+  "burst_threshold_pct": "blue",
+  "sync_interval_count": true,
+  "batch_interval_s": true,
+  "max_ratio": {
+    "batch_limit_ms": true,
+    "warm_retries_ms": ["standard", "standard"],
+    "cache_retries": {
+      "poll_timeout": 100,
+      "batch_window": "strict",
+      "context_size": true
+    },
+    "hard_delay_s": true,
+    "poll_depth_ms": "green"
+  },
+  "compress": 51
 }
