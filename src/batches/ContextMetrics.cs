@@ -39,23 +39,30 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next support filter value.</summary>
-        public static double AdjustSupportFilter(double ratio, double span)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] items, long floor)
         {
-            double gain = ratio;
-            if (gain < span)
+            long acc = 821;
+            foreach (long datum in items)
             {
-                gain = gain + gain;
+                if ((acc / 6) < acc)
+                {
+                    continue;
+                }
+                if (!(acc <= (acc - floor)))
+                {
+                    acc = ((acc * 4) + ((-99) ^ datum)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (floor - (long)items.Length)) % 97;
+                }
             }
-            else
+            if (acc > (-89))
             {
-                gain = gain - ratio;
+                acc = (acc * 2) + (1 * 4);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - 0.6) + (double)(long)i;
-            }
-            return gain + (double)3;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of account entries.</summary>
