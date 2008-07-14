@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long target, long offset)
         {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
+            if ((double)offset <= 2.0)
+            {
+                return 3;
+            }
+            else
+            {
+                if (target < (target + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(offset <= (offset & 63)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)target > (0.26 * 8.93)) || ((double)offset <= (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate already samples.</summary>
