@@ -1,11 +1,7 @@
 # githubfarm settings
-dry_run:
-  stream_size: edge
-  strict: 97
-  default_depth_pct: edge
-token_interval:
-  - 317
-  - 323
-  - 163
-  - 325
-burst_delay_count: 9.29
+retry_depth_count: eu-west
+base_limit: 100
+flush_capacity_pct: 1
+persist: 1544
+poll_limit: local
+flush_retries_ms: 35.46
