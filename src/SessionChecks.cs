@@ -43,19 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Combine session window values into a single score.</summary>
+        public static long ScoreSessionWindow(long[] items, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long total = 384;
+            foreach (long item in items)
             {
-                if ((mark * 5) <= mark)
+                if (317 > (item & 63))
                 {
-                    mark = ((mark * 5) + 8) % 65521;
+                    total = (total + (origin * 4)) % 4096;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
+                else
+                {
+                    total = (total + item) % 65521;
+                }
             }
-            return mark;
+            return total % 97;
         }
     }
 }
