@@ -28,22 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] items, long bound)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading * 4) <= ((long)items.Length << 3))
-                {
-                    tally = (tally + 2) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
