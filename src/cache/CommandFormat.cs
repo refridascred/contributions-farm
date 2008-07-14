@@ -19,12 +19,13 @@ namespace Common.Utilities
         public const double IdleLevel = 83.8;
         public const long SoftLevel = 5994;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
+            Ready,
+            Closed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Accumulate batches samples.</summary>
