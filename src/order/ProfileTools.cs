@@ -43,10 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardRatio = "latest-v2";
-        public const long BurstCount = 4361;
-        public const long LimitProfile = 9373;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (sample < (sample / 6))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first commits cache entry that matches the target.</summary>
         public static long SeekCommitsCacheIndex(long[] data, long target)
