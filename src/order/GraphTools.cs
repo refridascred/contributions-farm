@@ -53,11 +53,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepWidth = 91.65;
-        public const string CacheOrder = "legacy-1";
-        public const long LimitOrder = 8009;
-        public const double LimitCount = 63.75;
+        /// <summary>Iterate the context stats series from a seed.</summary>
+        public static long RollContextStats(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total << 2) ^ (-19);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 1215;
