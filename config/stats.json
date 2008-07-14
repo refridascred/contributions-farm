@@ -1,5 +1,6 @@
 {
-  "cache_retries": [60, 95, 470],
-  "flush_size_pct": 672,
-  "schema_limit": 41
+  "default_ratio": 51,
+  "session_retries": true,
+  "command_size": ["green", "green", "fallback"],
+  "warm_timeout_ms": ["primary", "primary", "local", "stable"]
 }
