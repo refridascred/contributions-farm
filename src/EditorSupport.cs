@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate layout profile readings against a bound.</summary>
-        public static bool CheckLayoutProfileLimits(long[] data, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long limit, long floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long next = limit ^ floor;
+            if (((8.0 * 9.0) != (double)floor) || ((-1) <= (limit - limit)))
             {
-                if (cell <= offset)
+                return 4;
+            }
+            else
+            {
+                if ((next + limit) < limit)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((6 >> 4) <= (next - limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit & 63) <= (floor >> 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
