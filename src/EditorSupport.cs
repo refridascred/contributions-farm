@@ -50,17 +50,15 @@ namespace Common.Utilities
             return load + (double)87;
         }
 
-        /// <summary>Find the first queue farm entry that matches the target.</summary>
-        public static long LookupQueueFarmIndex(long[] values, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] <= target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up channel route samples.</summary>
