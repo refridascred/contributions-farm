@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Done,
-            Synced,
-            Paused,
-            Ready,
-            Locked,
+            Stale,
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the context phase values.</summary>
