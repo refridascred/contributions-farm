@@ -1,17 +1,8 @@
 {
-  "default_timeout_count": {
-    "base_delay": "blue",
-    "idle_size_count": 60,
-    "burst_retries_count": ["legacy", "open", "fallback", "open"],
-    "persist": 77.28,
-    "burst_limit": {
-      "enabled": "standard",
-      "cache_ratio_ms": 250,
-      "max_timeout_pct": 28,
-      "warm_threshold_ms": false,
-      "soft_threshold": 250
-    }
-  },
-  "base_ratio_ms": 40.76,
-  "window_depth": 100
+  "compress": "legacy",
+  "batch_depth_ms": 42.11,
+  "persist": 250,
+  "cache_delay_s": "eu-west",
+  "poll_timeout": true,
+  "strict": false
 }
