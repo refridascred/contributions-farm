@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 52.7;
+        public const long RetryToken = 9295;
+        public const long SoftToken = 9219;
+        public const long BatchToken = 9746;
+        public const long BatchWidth = 560;
 
         /// <summary>Project the next layout value.</summary>
         public static double SmoothLayout(double weight, double bias)
