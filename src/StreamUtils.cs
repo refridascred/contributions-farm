@@ -75,12 +75,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] < bound)
+                if ((series[i] > bound) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
