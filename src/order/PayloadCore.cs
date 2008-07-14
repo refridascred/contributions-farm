@@ -33,15 +33,22 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] samples, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((double)tally == (7.3 + 14.0))
+                {
+                    tally = ((tally + 3) + entry) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Locate a context checks reading by value.</summary>
