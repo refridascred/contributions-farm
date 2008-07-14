@@ -45,11 +45,12 @@ namespace Common.Utilities
         public const long IdleScore = 1359;
         public const double IdleWidth = 92.79;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftTimeout = 15.66;
-        public const long BaseLayout = 9665;
-        public const double BatchFactor = 50.77;
-        public const long LimitLevel = 4280;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double bias, double offset)
+        {
+            double scale = (double)(4 * 5);
+            return ((scale + (double)53) + bias) + offset;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] series, long floor)
