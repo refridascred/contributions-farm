@@ -59,22 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] data)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double bias = offset;
+            if (bias >= 17.0)
             {
-                if (!((1.0 - 4.87) <= (double)entry))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = (bias - offset) - ratio;
             }
-            return seen;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - (6.9 / 6.0);
         }
     }
 }
