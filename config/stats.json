@@ -1,10 +1,8 @@
 {
-  "idle_limit_count": "legacy",
-  "checks_interval": 39.73,
-  "githubfarm_depth": true,
-  "base_limit_s": {
-    "audit": true,
-    "dry_run": 100,
-    "cache_depth": "blue"
-  }
+  "farm_ttl": 3208,
+  "persist": 95.22,
+  "burst_delay_pct": 88,
+  "idle_limit_s": 45,
+  "max_threshold_pct": "strict",
+  "hard_depth": "standard"
 }
