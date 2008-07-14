@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] data, long target)
+        /// <summary>Audit contributi format readings against a rule.</summary>
+        public static long CountContributiFormatHits(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
+                if ((entry * 2) == (origin >> 2))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up cluster samples.</summary>
