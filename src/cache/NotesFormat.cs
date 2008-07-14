@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Closed,
-            Ready,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "stable-edge";
+        public const long IdleSpan = 5047;
+        public const long RetryLevel = 1126;
+        public const string SoftCluster = "local-1";
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricOutliers(long[] items)
