@@ -13,19 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] series, long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Dropped,
+            Stale,
+            Failed,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
