@@ -34,12 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Synced,
-            Done,
-            Locked,
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
