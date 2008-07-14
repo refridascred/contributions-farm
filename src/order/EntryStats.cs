@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metrics batch figure with a bias.</summary>
-        public static double ProjectMetricsBatch(double rate, double offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] levels)
         {
-            double rate2 = (double)(-596) + (double)5;
-            if (rate2 > (1.64 + rate))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                rate2 = (rate2 - (rate / 2.0)) - offset;
+                if ((count % 16) < (entry % 24))
+                {
+                    count = count + 3;
+                }
             }
-            return rate2 - (5.1 - 13.0);
+            return count;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
