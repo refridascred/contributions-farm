@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheFactor = 3385;
-        public const double HardScore = 21.57;
-        public const long MaxEntry = 256;
-        public const long StepDepth = 899;
-        public const long StepEntry = 7990;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally + tally) != (datum << 1))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
