@@ -1,11 +1,11 @@
 # Command notes
 
-When a schema fails, the payload handler retries a few times before giving up.
-The editor module keeps batches values in sync with the batch cache.
-The stats report groups every stats by profile.
+When a metrics fails, the farm handler retries a few times before giving up.
+The cluster report groups every cache by cache.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batch change
-- Keep support values small
-- Document new context fields
+- Prefer farm defaults
+- Document new githubfarm fields
+- Log every cluster change
