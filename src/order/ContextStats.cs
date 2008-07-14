@@ -13,25 +13,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] items)
-        {
-            long total = 743;
-            foreach (long reading in items)
-            {
-                total = (total - (reading * 3)) % 255;
-                total = (total - (reading + total)) % 65521;
-                if ((6 + total) > total)
-                {
-                    total = (total << 2) ^ (total - (-914));
-                }
-            }
-            if (total < 5)
-            {
-                total = ((total * 3) + total) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitRatio = 8633;
+        public const long DefaultSupport = 5166;
+        public const string RetryTimeout = "open";
+        public const string MaxSupport = "primary-v2";
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long IterateQueue(long target)
