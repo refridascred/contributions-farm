@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long origin, long floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double ratio, double floor)
         {
-            long next = origin - floor;
-            if (((next * 4) < (origin - 55)) && ((next + 124) <= (floor + floor)))
+            double gain = ratio / 5.0;
+            if (gain < floor)
             {
-                return 7;
+                gain = gain + ratio;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (next <= (origin & 31))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                gain = (gain - (floor * 15.0)) + (double)(long)i;
             }
+            return gain + (gain - 2.8);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
