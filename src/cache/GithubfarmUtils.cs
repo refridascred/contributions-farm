@@ -54,17 +54,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first window stats entry that matches the target.</summary>
-        public static long LocateWindowStatsIndex(long[] series, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((series[i] > seed) && ((series[i] % 2) == 0))
+                if (!((matches * 5) > (floor + 973)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
