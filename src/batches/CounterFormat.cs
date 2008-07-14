@@ -19,19 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] values, long step)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Closed,
+            Pending,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the commits class values.</summary>
