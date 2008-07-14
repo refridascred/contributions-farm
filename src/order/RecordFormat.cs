@@ -62,39 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] items)
         {
-            long cur = origin ^ seed;
-            if ((double)cur < (double)1)
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (5.5 >= (9.6 - 6.8))
+                if (!(((matches + matches) < (matches << 3)) && (item < (matches & 31))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((cur * 5) >= (seed / 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed << 3) == (cur % 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
