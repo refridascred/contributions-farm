@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats command samples are out of range.</summary>
-        public static long AuditStatsCommandGaps(long[] levels)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((value / 7) != (8 % 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
