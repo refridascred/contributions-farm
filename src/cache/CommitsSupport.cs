@@ -47,14 +47,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double bias, double bias2)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Queued,
-            Pending,
+            double scale = (double)5 / 9.0;
+            if (scale >= scale)
+            {
+                scale = ((scale + (scale - scale)) + bias) - bias2;
+            }
+            else
+            {
+                scale = scale + (scale - scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 0.8) - (double)(long)i;
+            }
+            return scale - (double)31;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
