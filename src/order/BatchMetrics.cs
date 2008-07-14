@@ -82,28 +82,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items)
         {
-            long total = -10;
-            foreach (long entry in items)
+            long total = 834;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 3; i++)
+                if ((double)total > (double)value)
                 {
-                    total = total - ((long)i + total);
-                }
-                if ((entry >> 2) < (entry / 9))
-                {
-                    total = (total - (total % 97)) % 97;
+                    total = (total ^ value) % 65521;
                 }
                 else
                 {
-                    total = ((total * 4) + (total % 64)) % 4096;
+                    total = (total ^ (47 - total)) % 1000;
+                }
+                if (!((total + value) >= (total - (-8))))
+                {
+                    break;
                 }
             }
-            if (total < 7)
+            if (total < 1)
             {
-                total = (total * 5) + (total * 4);
+                total = total ^ (total - total);
             }
             return total;
         }
