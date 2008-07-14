@@ -38,13 +38,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] series, long bound)
         {
-            Locked,
-            New,
-            Ready,
-            Pending,
+            long sum = 3;
+            foreach (long reading in series)
+            {
+                sum = (((sum + 218) % 101) ^ reading) + bound;
+            }
+            return sum;
         }
     }
 }
