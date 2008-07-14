@@ -22,22 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] data, long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((tally + step) < ((-35) % 64)))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
