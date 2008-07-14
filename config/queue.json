@@ -1,10 +1,7 @@
 {
-  "verbose": "fallback",
-  "default_interval": [132, 434, 139],
-  "poll_size_pct": {
-    "enabled": 66.09,
-    "soft_limit_ms": [352, 312],
-    "burst_limit": "legacy",
-    "record_threshold": [344, 485, 428]
-  }
+  "base_limit_ms": 21.7,
+  "flush_delay": 390,
+  "max_retries": false,
+  "window_delay": false,
+  "enabled": 84.35
 }
