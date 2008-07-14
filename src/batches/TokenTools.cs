@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Stale,
-            Pending,
-            New,
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
