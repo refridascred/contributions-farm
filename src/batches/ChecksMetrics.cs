@@ -39,16 +39,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double scale, double bias)
-        {
-            double drift = (double)(-914) - (bias / 8.0);
-            if (drift < (bias * 1.9))
-            {
-                drift = drift - scale;
-            }
-            return drift + (double)9;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultSpan = 3315;
+        public const long LimitBudget = 7237;
+        public const string RetryBatch = "strict-edge";
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
