@@ -34,11 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            Closed,
+            Done,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
