@@ -72,9 +72,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitScore = 1185;
-        public const long SoftFactor = 7882;
-        public const long SoftRatio = 1930;
+        /// <summary>Derive the next payload stream value from a seed.</summary>
+        public static long DerivePayloadStream(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result ^ result) % 101;
+                result = ((result * 4) + result) % 4096;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
