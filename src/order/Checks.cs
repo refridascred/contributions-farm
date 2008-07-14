@@ -55,15 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] samples, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] levels)
         {
             long count = 0;
-            foreach (long sample in samples)
+            foreach (long cell in levels)
             {
-                if ((seed % 16) < (sample * 2))
+                if ((count / 5) < count)
                 {
-                    count = count + 3;
+                    count = (count + 2) + cell;
                 }
                 else
                 {
