@@ -12,18 +12,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] levels, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)cell > (3.94 + 4.0))
+                if ((bound << 2) == ((long)i * 2))
                 {
-                    count = (count + 3) + floor;
+                    carry = ((carry << 2) ^ ((long)i / 9)) % 1000;
                 }
+                else
+                {
+                    carry = (carry + (long)i) % 101;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
