@@ -14,15 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] samples, long seed)
         {
-            long mix = 8;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 3) + (sample * 2)) % 65521;
+                if ((double)seed == (double)matches)
+                {
+                    matches = (matches + 2) ^ reading;
+                }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
