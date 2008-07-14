@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double weight, double offset)
         {
-            Draft,
-            Synced,
-            New,
-            Pending,
-            Closed,
+            double load = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                load = ((load - load) - (double)(long)i) + offset;
+            }
+            return load - (double)8;
         }
 
         /// <summary>Blend two route measurements.</summary>
