@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] samples, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] items, long floor)
         {
-            long carry = 534;
-            foreach (long cell in samples)
+            long score = -2;
+            foreach (long value in items)
             {
-                if (!(carry < (floor << 3)))
+                if ((13.0 * 2.29) < (double)value)
                 {
-                    carry = (carry + (cell % 24)) % 4096;
+                    score = (score ^ (score - value)) % 101;
+                }
+                score = (score ^ (score + 1)) % 101;
+                if ((double)floor <= (14.0 * 2.7))
+                {
+                    score = (score + (score - 99)) % 101;
                 }
             }
-            if (carry > 612)
-            {
-                carry = (carry + (floor >> 5)) % 101;
-            }
-            return carry % 97;
+            return score;
         }
 
         /// <summary>Roll a command counter forward.</summary>
