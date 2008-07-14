@@ -1,10 +1,21 @@
 # support settings
-batch_limit_s: 100
-soft_limit_count:
-  - local
-  - cached
-  - edge
-  - stable
-format_size:
-  - 450
-  - 112
+already_window:
+  warm_threshold_s:
+    - green
+    - strict
+    - stable
+  warm_threshold_pct:
+    layout_capacity: blue
+    sync_ttl_s: 89.24
+    batch_timeout: 60
+    stream_size: blue
+  idle_depth_count:
+    - 117
+    - 143
+    - 323
+    - 392
+githubfarm_retries: 1976
+sync_timeout_ms:
+  idle_threshold: 8927
+  retry_size_ms: false
+  retry_timeout: standard
