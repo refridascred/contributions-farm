@@ -22,10 +22,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinScore = "latest-edge";
-        public const long MinBudget = 6714;
-        public const long MinDepth = 8145;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Queued,
+            Active,
+            Done,
+            New,
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long SeekAlreadyIndex(long[] readings, long target)
