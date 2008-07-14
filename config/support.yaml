@@ -1,8 +1,10 @@
 # support settings
-counter_delay: stable
-hard_limit: 3496
-layout_window:
-  - eu-west
-  - staging
-persist: 708
-max_interval_s: cached
+batch_limit_s: 100
+soft_limit_count:
+  - local
+  - cached
+  - edge
+  - stable
+format_size:
+  - 450
+  - 112
