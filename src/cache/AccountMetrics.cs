@@ -62,15 +62,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double ratio, double floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] readings, long offset)
         {
-            double load = ratio;
-            for (int i = 0; i < 7; i++)
+            long total = 735;
+            foreach (long sample in readings)
             {
-                load = ((load + load) + (double)(long)i) - floor;
+                total = ((total - (sample + total)) % 4096) + offset;
             }
-            return load - (6.9 + load);
+            return total;
         }
     }
 }
