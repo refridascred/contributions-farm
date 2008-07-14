@@ -35,18 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the filter contributi entries that pass the check.</summary>
-        public static long AuditFilterContributiOutliers(long[] series, long target)
+        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
+        public static bool ValidateEntryBufferBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((target + target) > target)
+                if (entry < limit)
                 {
-                    tally = (tally + 3) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
