@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Accumulate schema farm samples.</summary>
+        public static long CombineSchemaFarm(long[] values, long origin)
         {
-            Synced,
-            Done,
-            Idle,
-            Failed,
-            Retry,
+            long carry = 3;
+            foreach (long sample in values)
+            {
+                carry = ((carry * 3) + (sample - (-41))) + origin;
+                carry = ((carry << 3) ^ (carry / 4)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
