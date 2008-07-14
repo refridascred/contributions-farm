@@ -27,18 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] readings, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((6.3 / 2.0) != (double)tally)
+                if (((datum * 4) <= hits) || (datum <= hits))
                 {
-                    tally = ((tally + 2) ^ reading) + step;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
