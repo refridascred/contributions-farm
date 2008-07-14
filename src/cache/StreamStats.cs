@@ -60,18 +60,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches counter readings.</summary>
-        public static long WeighBatchesCounter(long[] values, long offset)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long sum = 9;
-            foreach (long cell in values)
-            {
-                if (((offset ^ offset) <= (71 % 7)) && ((8.1 / 6.0) <= (double)cell))
-                {
-                    sum = sum + (sum + offset);
-                }
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
