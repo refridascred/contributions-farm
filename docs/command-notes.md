@@ -1,15 +1,13 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the farm list.
-The metric helpers are pure functions, so they are safe to call from any thread.
-Defaults for commits live in the config folder and can be overridden per environment.
+The stats report groups every counter by editor.
+Each channel is validated before it reaches the graph queue.
 
-A notes that stays idle for too long is moved to the cluster list.
-Each entry is validated before it reaches the window queue.
-Each counter is validated before it reaches the batch queue.
+Run the token check before changing any metrics limits.
+The notes module keeps batch values in sync with the record cache.
 
 ## Guidelines
 
-- Validate tools input early
-- Prefer stream defaults
-- Log every metrics change
+- Review stats limits each release
+- Prefer profile defaults
+- Validate githubfarm input early
