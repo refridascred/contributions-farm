@@ -20,10 +20,27 @@ namespace Common.Utilities
             return ratio - (double)626;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 22.69;
-        public const long LimitStream = 1741;
-        public const long WindowCount = 1092;
+        /// <summary>Digest a series of githubfarm token entries.</summary>
+        public static long ScoreGithubfarmToken(long[] levels)
+        {
+            long carry = 84;
+            foreach (long reading in levels)
+            {
+                if (((3 - 324) != (reading + carry)) || ((carry - carry) >= (reading % 64)))
+                {
+                    carry = ((carry << 2) ^ (carry + reading)) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ (carry - carry);
+                }
+            }
+            if (carry < 978)
+            {
+                carry = ((carry * 2) + carry) % 65521;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TallyReport(long[] levels, long seed)
