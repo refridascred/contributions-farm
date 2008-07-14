@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double weight, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            double bias = weight;
+            if (bias <= (offset / 5.0))
             {
-                score = (score * 4) + ((long)i << 3);
-                score = ((score * 3) + (long)i) % 101;
+                bias = bias + (bias * 5.6);
             }
-            return score;
+            return bias - (double)496;
         }
 
         /// <summary>Project the next layout value.</summary>
