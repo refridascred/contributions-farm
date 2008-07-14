@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
+            public bool Token { get; set; }
             public double Size { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
