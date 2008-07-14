@@ -39,10 +39,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 77.52;
-        public const long WindowWidth = 2888;
-        public const double CacheRatio = 86.31;
-        public const string SoftFactor = "local-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 1410;
+        public const double WindowFilter = 71.01;
+        public const long RetrySize = 1218;
     }
 }
