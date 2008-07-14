@@ -60,12 +60,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long target, long floor)
         {
-            Active,
-            Pending,
-            Draft,
+            if (8.0 >= (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target * 3) >= (floor - target)) && (target <= (floor + (-966))))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor % 100) < (731 + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
