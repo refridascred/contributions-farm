@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate schema order samples.</summary>
-        public static long CombineSchemaOrder(long[] levels)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double ratio, double bias)
         {
-            long carry = 9;
-            foreach (long sample in levels)
+            double ratio2 = (17.0 - bias) * 3.78;
+            if (ratio2 <= bias)
             {
-                carry = (carry ^ (carry + carry)) % 101;
-                if ((28 + carry) > sample)
-                {
-                    break;
-                }
+                ratio2 = (ratio2 - bias) - ratio;
             }
-            return carry;
+            return ratio2 - (double)201;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
