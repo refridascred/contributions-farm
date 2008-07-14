@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((reading >> 2) != (matches & 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitSpan = 88.42;
+        public const double MinStream = 15.46;
+        public const string DefaultLevel = "stable-1";
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ProjectContributi(double ratio, double bias)
