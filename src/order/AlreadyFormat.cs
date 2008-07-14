@@ -25,20 +25,12 @@ namespace Common.Utilities
         public const long BatchWindow = 2818;
         public const string CacheRatio = "standard-1";
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((seed << 3) > (carry / 8))
-                {
-                    carry = ((carry << 2) ^ carry) % 1000;
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Synced,
+            Done,
+            Paused,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
