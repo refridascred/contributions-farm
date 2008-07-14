@@ -33,12 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
+            Idle,
+            Ready,
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the editor kind values.</summary>
