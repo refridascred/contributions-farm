@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            New,
-            Closed,
-            Pending,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 2099;
+        public const long LimitBudget = 8364;
+        public const long CacheCluster = 6688;
+        public const long WindowCluster = 7416;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
