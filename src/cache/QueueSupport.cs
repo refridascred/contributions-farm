@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] samples, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] data)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            foreach (long item in data)
             {
-                if (((175 - seen) == (cell * 3)) || (((cell / 9) <= (67 + seen)) && ((double)cell > (2.4 + 4.2))))
+                if (7 >= seen)
                 {
-                    seen = (seen + 1) - bound;
+                    seen = (seen + 3) + item;
                 }
             }
             return seen;
