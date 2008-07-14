@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
+            Failed,
+            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
