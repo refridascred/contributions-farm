@@ -32,11 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Classify a queue payload pair into a bucket.</summary>
+        public static long SortQueuePayload(long limit, long step)
         {
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            if ((limit << 2) > (limit + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + step) >= ((-2) >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks class values.</summary>
