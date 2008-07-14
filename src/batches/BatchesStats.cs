@@ -37,22 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((1.0 * 16.0) <= (double)value))
-                {
-                    count = (count + 2) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 7412;
+        public const double LimitTimeout = 80.91;
+        public const long RetrySpan = 1894;
+        public const double MinTimeout = 0.37;
     }
 }
