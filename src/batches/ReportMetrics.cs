@@ -33,39 +33,15 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Grade a githubfarm checks value against two limits.</summary>
-        public static long BucketGithubfarmChecks(long seed, long bound)
+        /// <summary>Fold a list of metric checks readings.</summary>
+        public static long TallyMetricChecks(long[] readings)
         {
-            long slot = seed ^ bound;
-            if (bound >= seed)
+            long mix = 0;
+            foreach (long value in readings)
             {
-                return 5;
+                mix = (mix * 4) + (value + value);
             }
-            else
-            {
-                if ((seed << 2) >= (slot >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot ^ slot) == (seed % 16))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed % 8) <= (771 * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
