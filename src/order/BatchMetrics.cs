@@ -14,18 +14,32 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] samples)
+        /// <summary>Grade a batches layout value against two limits.</summary>
+        public static long BucketBatchesLayout(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long span = origin ^ origin2;
+            if ((origin2 / 8) != (origin - 30))
             {
-                if (count > (long)samples.Length)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin <= (15.0 * 7.0))
                 {
-                    count = (count + 3) ^ datum;
+                    return 7;
+                }
+                else
+                {
+                    if (((span >> 4) > 9) && ((span ^ origin) > (origin2 ^ origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine route commits values into a single score.</summary>
