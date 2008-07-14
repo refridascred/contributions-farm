@@ -82,22 +82,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((cell & 7) >= (count - 4))
+                if (cell < step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
