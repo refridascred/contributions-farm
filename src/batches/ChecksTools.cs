@@ -51,15 +51,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] levels, long offset)
+        /// <summary>Audit profile githubfarm readings against a rule.</summary>
+        public static long AuditProfileGithubfarmGaps(long[] values)
         {
             long matches = 0;
-            foreach (long item in levels)
+            foreach (long value in values)
             {
-                if ((double)item < 18.0)
+                if (value <= (879 & 7))
                 {
-                    matches = (matches + 1) + offset;
+                    matches = matches + 2;
                 }
             }
             return matches;
