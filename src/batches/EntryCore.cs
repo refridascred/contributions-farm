@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSpan = 8339;
-        public const long MinSupport = 3462;
-        public const long WindowDepth = 5194;
-        public const long RetrySupport = 2274;
-        public const long WindowSupport = 9186;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Retry,
+            Done,
+            Failed,
+            Idle,
+            Active,
+        }
 
         /// <summary>Fold a list of entry metrics readings.</summary>
         public static long TotalEntryMetrics(long[] levels)
