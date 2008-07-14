@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 259;
+        public const long HardInterval = 4031;
+        public const string CacheGraph = "fallback";
+        public const double CacheRatio = 58.6;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
