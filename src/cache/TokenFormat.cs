@@ -30,10 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseWidth = 6871;
-        public const long BurstFactor = 5950;
-        public const long MaxSpan = 7395;
-        public const long LimitLayout = 873;
+        /// <summary>Check that every route report entry stays within the limit.</summary>
+        public static bool VerifyRouteReportLimits(long[] readings, long target)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
