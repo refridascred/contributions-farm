@@ -1,6 +1,8 @@
 # support settings
-hard_delay:
-  - 425
-  - 296
-poll_capacity_ms: staging
-max_limit_count: 9813
+counter_delay: stable
+hard_limit: 3496
+layout_window:
+  - eu-west
+  - staging
+persist: 708
+max_interval_s: cached
