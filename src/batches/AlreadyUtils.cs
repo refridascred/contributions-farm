@@ -26,11 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long sum = step;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many farm payload samples are out of range.</summary>
