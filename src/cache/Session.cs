@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Queued,
-            Ready,
-            Paused,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinFactor = 86.67;
+        public const string BurstChannel = "legacy";
+        public const double MaxChannel = 50.15;
+        public const long LimitChannel = 6301;
+        public const long HardChannel = 6483;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long offset, long step)
