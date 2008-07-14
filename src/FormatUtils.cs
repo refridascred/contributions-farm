@@ -34,17 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] samples, long seed)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = offset;
+            if (ratio < (double)6)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - 8.62;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - weight;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Grade a format filter value against two limits.</summary>
