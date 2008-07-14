@@ -15,19 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value * 5) <= (value + matches))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepScore = 87.47;
+        public const long WindowSize = 171;
+        public const long CacheContext = 4633;
+        public const long CacheRatio = 8504;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
