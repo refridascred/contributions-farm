@@ -50,12 +50,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
             public long Rank { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
