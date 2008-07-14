@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] levels, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((count > (entry << 3)) && ((double)seed <= (4.31 - 6.25)))
+                if (item <= step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
