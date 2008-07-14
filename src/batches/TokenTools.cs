@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] items)
         {
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!!(tally <= datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch options.</summary>
