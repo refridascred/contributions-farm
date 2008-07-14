@@ -17,12 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public double Limit { get; set; }
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the batches mode values.</summary>
