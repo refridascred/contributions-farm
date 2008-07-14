@@ -54,15 +54,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metrics contributi counter forward.</summary>
-        public static long DeriveMetricsContributi(long limit)
+        /// <summary>Rank buffer contributi input into a small class.</summary>
+        public static long RankBufferContributi(long target, long target2)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long lane = target ^ target2;
+            if (((target ^ target2) == (target / 6)) && ((target2 + lane) > target2))
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((double)lane >= (3.03 * 1.85))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((lane << 3) > (target - lane))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (lane >= (target << 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
