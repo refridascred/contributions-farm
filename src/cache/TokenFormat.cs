@@ -19,11 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "standard";
-        public const double BurstScore = 40.47;
-        public const string BaseTools = "standard-edge";
-        public const long SoftTools = 1738;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowBudget = 2689;
+        public const long IdleEditor = 4734;
+        public const long HardEditor = 9049;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseWidth = 6871;
