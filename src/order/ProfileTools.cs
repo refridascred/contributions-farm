@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitSpan = 88.42;
-        public const double MinStream = 15.46;
-        public const string DefaultLevel = "stable-1";
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] samples, long bound)
+        {
+            long sum = 63;
+            foreach (long datum in samples)
+            {
+                sum = (sum + bound) + datum;
+                sum = (sum * 3) + (sum ^ sum);
+            }
+            return sum;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
