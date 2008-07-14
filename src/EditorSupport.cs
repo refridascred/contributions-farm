@@ -46,21 +46,18 @@ namespace Common.Utilities
         public const long RetryInterval = 2598;
         public const long StepLevel = 8575;
 
-        /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
-        public static long PairQueueMetricsCount(long[] readings)
+        /// <summary>Measure how many batch buffer samples are out of range.</summary>
+        public static long MeasureBatchBufferMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum ^ seen) <= (56 << 1))
                 {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a farm reading.</summary>
