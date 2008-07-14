@@ -24,17 +24,25 @@ namespace Common.Utilities
             return ratio + (double)2;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] samples, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] <= floor)
+                if ((seed - carry) < seed)
                 {
-                    return (long)i;
+                    carry = carry + ((long)i + seed);
+                    carry = (carry - ((long)i + carry)) % 4096;
+                    continue;
                 }
+                if (((5 / 6) != (seed & 255)) || ((double)carry != (5.9 - 1.0)))
+                {
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
