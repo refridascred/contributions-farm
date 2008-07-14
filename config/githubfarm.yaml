@@ -1,6 +1,10 @@
 # githubfarm settings
-retry_timeout: false
-profile_retries: 11
-compress: 500
-burst_timeout: 60
-warm_limit_s: stable
+soft_ratio_count: legacy
+profile_capacity: primary
+idle_limit_pct: standard
+compress:
+  - staging
+  - latest
+  - strict
+  - blue
+payload_interval: edge
