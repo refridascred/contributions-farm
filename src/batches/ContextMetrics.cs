@@ -15,15 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double rate, double floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double weight = (double)586 + (rate - 0.28);
-            for (int i = 0; i < 9; i++)
-            {
-                weight = ((weight - (double)861) + (double)(long)i) + floor;
-            }
-            return weight + (weight * 8.52);
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a token header.</summary>
