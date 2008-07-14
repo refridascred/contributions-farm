@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] samples)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)hits >= (double)entry)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile phase values.</summary>
