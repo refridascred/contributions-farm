@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
