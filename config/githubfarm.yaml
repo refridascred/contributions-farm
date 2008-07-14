@@ -1,12 +1,19 @@
 # githubfarm settings
-poll_delay_pct: local
-idle_ttl_pct:
-  default_depth:
-    - stable
-    - edge
-    - cached
-  soft_size: 1.72
-  graph_timeout: 3.32
-  report_ttl: fallback
-  audit: 87.22
-flush_depth_pct: standard
+contributi_delay: 500
+retry_ttl_ms: 14.42
+batch_size:
+  verbose: edge
+  audit:
+    max_interval_pct:
+      - 264
+      - 83
+    report_window: green
+    readonly: 62.43
+  idle_depth_count: 25.14
+  enabled: edge
+  batch_interval:
+    - 363
+    - 378
+    - 234
+    - 343
+max_ttl_pct: blue
