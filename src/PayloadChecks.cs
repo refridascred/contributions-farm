@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double weight, double floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            double load = weight;
-            if (load >= (17.0 / 5.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (load * 5.0)) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - (double)78;
+            return hits;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
