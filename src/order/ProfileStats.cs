@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] series, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                if (reading > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the batches phase values.</summary>
