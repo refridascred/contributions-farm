@@ -1,7 +1,5 @@
 {
-  "batch_ttl": "primary",
-  "schema_retries": false,
-  "max_ratio_pct": 28,
-  "poll_size_s": 13,
-  "payload_threshold": "staging"
+  "cache_interval": "cached",
+  "idle_ratio_count": "legacy",
+  "poll_window": "eu-west"
 }
