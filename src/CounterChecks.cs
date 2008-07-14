@@ -76,11 +76,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseCluster = "primary";
-        public const double DefaultCluster = 18.67;
-        public const double IdleDepth = 46.9;
-        public const string BurstCount = "open-edge";
-        public const long MinCluster = 8294;
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
