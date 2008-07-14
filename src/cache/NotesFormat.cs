@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long step, long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            if ((step % 7) < 8)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step >> 5) >= (step * 4)) && ((step + target) != (step + step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target + target) >= (66 * 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the stream phase values.</summary>
