@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next graph batch value.</summary>
-        public static double ProjectGraphBatch(double ratio, double offset)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            double ratio2 = offset;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ((ratio2 - offset) - (double)(long)i) - ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio2 - ratio2;
+            return matches;
         }
 
         /// <summary>Project the next session value.</summary>
