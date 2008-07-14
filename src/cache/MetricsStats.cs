@@ -36,10 +36,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "staging-v2";
-        public const string WindowRatio = "open-1";
-        public const long MaxScore = 9604;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)bound <= (2.51 * 4.8))
+                {
+                    carry = ((carry << 3) ^ (bound + bound)) % 1000;
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long target, long limit)
