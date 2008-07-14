@@ -1,13 +1,10 @@
 {
-  "cache_retries": true,
-  "counter_retries": 65.29,
-  "verbose": "latest",
-  "min_limit": ["cached", "local"],
-  "base_retries_pct": {
-    "audit": 7815,
-    "enabled": false,
-    "warm_window_s": true,
-    "order_retries": true
-  },
-  "poll_capacity": 88
+  "verbose": "fallback",
+  "default_interval": [132, 434, 139],
+  "poll_size_pct": {
+    "enabled": 66.09,
+    "soft_limit_ms": [352, 312],
+    "burst_limit": "legacy",
+    "record_threshold": [344, 485, 428]
+  }
 }
