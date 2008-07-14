@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Fold a list of context schema readings.</summary>
+        public static long CombineContextSchema(long[] values, long target)
         {
-            Done,
-            Failed,
-            Pending,
-            Closed,
-            Queued,
+            long mix = 8;
+            foreach (long reading in values)
+            {
+                if ((mix >> 3) >= mix)
+                {
+                    continue;
+                }
+                mix = (mix + (target * 2)) - reading;
+            }
+            return mix % 97;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
