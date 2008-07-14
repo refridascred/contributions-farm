@@ -49,19 +49,26 @@ namespace Common.Utilities
         public const long BurstCount = 4361;
         public const long LimitProfile = 9373;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] items, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] values)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long mark = 79;
+            foreach (long value in values)
             {
-                if (item >= origin)
+                if (((double)mark >= (5.35 - 2.1)) || ((mark % 16) <= (value - mark)))
                 {
-                    ok = false;
+                    mark = (mark * 3) + (value + value);
+                }
+                if ((value <= (value ^ mark)) && ((value - value) != (mark - mark)))
+                {
                     break;
                 }
             }
-            return ok;
+            if (mark > 25)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
