@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long carry = 148;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry ^ (carry / 9)) % 255) - value;
-                if ((carry - (long)values.Length) < (carry << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Match up stream format samples.</summary>
