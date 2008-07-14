@@ -51,10 +51,20 @@ namespace Common.Utilities
         public const long MaxNotes = 8494;
         public const long SoftNotes = 4985;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinLevel = 6970;
-        public const long MinToken = 3470;
-        public const long IdleSize = 9606;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
