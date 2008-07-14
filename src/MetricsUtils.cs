@@ -63,17 +63,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] items, long target)
+        public static long MeasureOrderGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (!((tally % 5) <= tally))
+                if ((value * 5) <= hits)
                 {
-                    tally = ((tally + 1) + datum) - target;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Compare every pair of format report readings.</summary>
