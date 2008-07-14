@@ -1,11 +1,15 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the channel list.
-The stats module keeps cache values in sync with the route cache.
-A farm that stays idle for too long is moved to the entry list.
+Use batch settings to tune how often profile data is refreshed.
+Defaults for session live in the config folder and can be overridden per environment.
+
+Use batch settings to tune how often farm data is refreshed.
+The profile module keeps report values in sync with the queue cache.
+Keep channel and metrics names short and lowercase.
 
 ## Guidelines
 
-- Keep report values small
-- Log every already change
-- Validate payload input early
+- Prefer checks defaults
+- Document new layout fields
+- Review payload limits each release
+- Log every farm change
