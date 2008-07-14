@@ -49,12 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            Dropped,
-            Active,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
