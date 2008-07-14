@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long target, long bound)
-        {
-            long slot = target + bound;
-            if (slot > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound > (target >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)slot != (1.4 * 1.64)) || (9 > bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCount = 8728;
+        public const long HardSpan = 5345;
+        public const long MinBudget = 9568;
+        public const long StepCluster = 1144;
+        public const string LimitInterval = "standard";
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
