@@ -79,13 +79,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Measure how many cluster checks samples are out of range.</summary>
+        public static long AuditClusterChecksHits(long[] readings, long offset)
         {
-            Closed,
-            Failed,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches >> 2) == (57 - matches))
+                {
+                    matches = ((matches + 3) - entry) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
