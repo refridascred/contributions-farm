@@ -37,12 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long bound)
         {
-            Queued,
-            Closed,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate order batch samples.</summary>
