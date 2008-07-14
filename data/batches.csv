@@ -1,6 +1,10 @@
-id,state,rank,active
-1,626,97.84,legacy
-2,strict,94.43,429
-3,404,580,green
-4,blue,legacy,green
-5,67.42,stable,86.26
+id,count,state
+1,659,462
+2,81.74,626
+3,open,189
+4,322,primary
+5,19.65,42.13
+6,edge,edge
+7,21.97,blue
+8,eu-west,49.07
+9,744,15.77
