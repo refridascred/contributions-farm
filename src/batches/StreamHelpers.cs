@@ -85,22 +85,17 @@ namespace Common.Utilities
         public const long StepProfile = 9363;
         public const string BatchRatio = "fallback-edge";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] series)
+        /// <summary>Locate a account window reading by value.</summary>
+        public static long FindAccountWindowIndex(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)entry != (13.0 + 9.6)))
+                if (data[i] >= step)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
