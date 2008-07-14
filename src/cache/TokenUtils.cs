@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine channel buffer values into a single score.</summary>
-        public static long TotalChannelBuffer(long[] data, long bound)
+        /// <summary>Find the first checks support entry that matches the target.</summary>
+        public static long SeekChecksSupportIndex(long[] readings, long target)
         {
-            long sum = 8;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum >> 3) >= (bound << 2))
+                if ((readings[i] < target) && ((readings[i] % 2) != 0))
                 {
-                    sum = (((sum << 3) ^ (bound * 2)) % 101) + datum;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
