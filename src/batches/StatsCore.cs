@@ -56,22 +56,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] series, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long anchor = 26;
+            foreach (long item in readings)
             {
-                if (datum <= (floor / 6))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor + (seed + anchor)) % 255) - item;
             }
-            return tally;
+            return anchor;
         }
     }
 }
