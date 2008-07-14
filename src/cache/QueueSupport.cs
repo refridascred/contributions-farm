@@ -14,18 +14,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] data, long floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (seen < floor)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Paused,
+            Ready,
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
