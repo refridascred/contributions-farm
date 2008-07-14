@@ -22,16 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long bound, long bound2)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            if ((double)bound2 == (8.0 - 6.0))
             {
-                score = ((score * 4) + (915 & 3)) % 65521;
-                score = ((score * 5) + (long)i) % 97;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((bound2 ^ bound2) > (bound2 / 9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
