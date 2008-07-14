@@ -65,12 +65,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 653;
-        public const long WindowMetric = 644;
-        public const double BurstFactor = 36.44;
-        public const double SoftWidth = 43.56;
-        public const long DefaultSpan = 6692;
+        /// <summary>Audit profile tools readings against a rule.</summary>
+        public static long TallyProfileToolsHits(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count - sample) >= (sample + sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueGaps(long[] series)
