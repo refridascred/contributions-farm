@@ -1,15 +1,6 @@
 # githubfarm settings
-schema_interval:
-  sync_interval_s: 250
-  entry_threshold: legacy
-  burst_threshold: standard
-  soft_depth_pct: primary
-batch_capacity: primary
-burst_interval_s: 47
-soft_retries:
-  command_threshold: true
-  base_interval_ms: 1
-  strict: 13.98
-  farm_interval: 47
-flush_threshold_ms: eu-west
-soft_window: staging
+buffer_depth: 8240
+verbose: strict
+strict: true
+base_window_count: 9004
+batch_depth_ms: 9
