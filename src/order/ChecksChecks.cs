@@ -36,13 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Closed,
             Synced,
-            Done,
-            Retry,
+            Dropped,
+            Paused,
         }
     }
 }
