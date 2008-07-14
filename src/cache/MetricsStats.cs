@@ -36,22 +36,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "staging-v2";
+        public const string WindowRatio = "open-1";
+        public const long MaxScore = 9604;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long target, long limit)
