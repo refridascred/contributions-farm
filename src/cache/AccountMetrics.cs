@@ -25,22 +25,15 @@ namespace Common.Utilities
             return ratio + (7.93 * 6.9);
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] levels, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long carry = 761;
+            foreach (long reading in items)
             {
-                if (((bound * 2) <= (matches - matches)) || ((reading > (0 / 4)) && ((double)matches >= (double)bound)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry * 3) + (reading >> 4);
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
