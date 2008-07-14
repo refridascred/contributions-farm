@@ -95,17 +95,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Done,
+            Locked,
         }
     }
 }
