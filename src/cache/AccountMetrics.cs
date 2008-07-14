@@ -82,23 +82,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Blend two editor farm measurements.</summary>
-        public static double ProjectEditorFarm(double bias, double bias2)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double bias3 = bias;
-            if (bias3 <= (double)8)
-            {
-                bias3 = bias3 - bias;
-            }
-            else
-            {
-                bias3 = bias3 + (bias3 - bias2);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias3 = (bias3 + bias3) - (double)(long)i;
-            }
-            return bias3 + (6.11 * 8.5);
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
