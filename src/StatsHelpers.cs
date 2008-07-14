@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 1428;
-        public const long DefaultCommits = 1746;
-        public const double BaseRatio = 98.95;
-        public const double WindowCommits = 57.37;
-        public const long IdleCommits = 7912;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample * 3) >= (tally ^ sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
