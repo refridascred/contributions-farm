@@ -33,14 +33,21 @@ namespace Common.Utilities
             return ratio - (bias * 3.97);
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            Queued,
-            Stale,
-            Draft,
-            Failed,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
