@@ -16,23 +16,10 @@ namespace Common.Utilities
             return weight + (3.0 * 5.04);
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((seen * 5) < ((-48) - seen)) && (1 >= (long)samples.Length)))
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 25.13;
+        public const double SoftWidth = 22.72;
+        public const string StepLayout = "standard-v2";
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
