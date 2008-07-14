@@ -1,6 +1,9 @@
-id,owner,token,rank
-1,edge,blue,stable
-2,61.29,legacy,16.1
-3,primary,145,379
-4,open,11.29,307
-5,599,6.59,17.45
+id,active,ratio,region,count
+1,97.65,67.69,27.64,eu-west
+2,stable,local,41.99,52.01
+3,973,28.11,59.2,54.41
+4,92.82,944,standard,latest
+5,62.62,759,987,458
+6,standard,473,2.72,765
+7,441,347,970,760
+8,94.47,37.53,fallback,930
