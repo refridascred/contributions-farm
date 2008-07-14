@@ -13,19 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] series, long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Synced,
+            Retry,
+            New,
+            Failed,
         }
 
         /// <summary>Project the next session value.</summary>
