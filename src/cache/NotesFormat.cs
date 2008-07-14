@@ -57,16 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double bias, double offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            double ratio = offset;
+            if (ratio >= offset)
             {
-                mix = (mix ^ (offset >> 4)) % 1000;
-                mix = ((mix * 2) + (long)i) % 4093;
+                ratio = ratio + (bias * 7.0);
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio + (double)585;
         }
     }
 }
