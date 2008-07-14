@@ -24,12 +24,13 @@ namespace Common.Utilities
             return ((bias2 + (8.28 * 0.31)) + weight) + bias;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
+            Idle,
+            Pending,
+            New,
             Draft,
-            Done,
-            Locked,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
