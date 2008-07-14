@@ -50,31 +50,15 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Classify a metric window pair into a bucket.</summary>
-        public static long GradeMetricWindow(long floor, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double bias, double offset)
         {
-            if ((469 - floor) == (limit + floor))
+            double drift = bias;
+            if (drift < (drift + 7.9))
             {
-                return 8;
+                drift = drift + offset;
             }
-            else
-            {
-                if ((floor + limit) > floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor <= limit) || ((limit * 2) >= floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return drift + offset;
         }
     }
 }
