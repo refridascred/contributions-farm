@@ -1,9 +1,6 @@
-id,token,active
-1,956,4.11
-2,green,686
-3,eu-west,14.28
-4,952,394
-5,467,243
-6,primary,41.34
-7,84.38,fallback
-8,85.89,36.91
+id,label,region,owner,count
+1,54.48,712,10.8,38.94
+2,895,448,449,primary
+3,519,blue,59.35,cached
+4,11.35,566,strict,836
+5,local,65.41,609,staging
