@@ -76,22 +76,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long AuditFilterProfileGaps(long[] values)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((12.0 + 11.0) <= (double)reading)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
