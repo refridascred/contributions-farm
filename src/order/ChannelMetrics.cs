@@ -33,15 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] data, long target)
+        /// <summary>Audit format cluster readings against a rule.</summary>
+        public static long MeasureFormatClusterHits(long[] data, long seed)
         {
-            long result = -123;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                result = (((result * 4) + (target + result)) % 65521) - sample;
+                if ((seed * 2) > (seed << 2))
+                {
+                    count = (count + 2) - cell;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
