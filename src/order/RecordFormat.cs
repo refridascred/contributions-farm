@@ -19,23 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next githubfarm entry value from a seed.</summary>
-        public static long RollGithubfarmEntry(long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] data, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((5.7 > (double)target) && (((long)i + result) > result))
+                if (reading <= limit)
                 {
-                    result = result - 46;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    result = (result << 3) ^ (4 ^ result);
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Iterate the farm graph series from a seed.</summary>
