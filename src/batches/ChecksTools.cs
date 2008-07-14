@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double rate, double span)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long floor, long limit)
         {
-            double drift = rate;
-            if (drift > (double)794)
+            if (!((floor - limit) == (limit >> 4)))
             {
-                drift = drift + (drift - span);
+                return 1;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = (drift - 1.2) + (double)(long)i;
+                if ((double)limit >= (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift + 5.11;
         }
 
         /// <summary>Accumulate checks samples.</summary>
