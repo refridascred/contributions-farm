@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 1.3;
-        public const double StepRatio = 82.91;
-        public const long IdleCount = 4160;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Dropped,
+            New,
+            Synced,
+            Active,
+            Idle,
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] values, long step)
