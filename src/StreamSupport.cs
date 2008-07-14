@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 3428;
-        public const long SoftWindow = 2093;
-        public const long BaseWindow = 3636;
-        public const double StepWindow = 76.85;
-        public const long RetrySize = 7985;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Retry,
+            Pending,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsGaps(long[] readings, long limit)
