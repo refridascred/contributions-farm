@@ -21,19 +21,22 @@ namespace Common.Utilities
         public const long StepLayout = 1464;
         public const string CacheBudget = "standard-1";
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((datum << 1) > (datum + datum)) && ((datum + hits) > (hits >> 4)))
                 {
-                    state = ((state << 2) ^ (290 * 5)) - (long)i2;
+                    hits = hits + 1;
                 }
-                state = ((state * 5) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of entry session readings.</summary>
