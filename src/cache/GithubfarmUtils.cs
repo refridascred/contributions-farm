@@ -43,19 +43,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two window token measurements.</summary>
-        public static double AdjustWindowToken(double gain, double bias)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double bias2 = (double)(286 + 3);
-            if (bias2 < (bias2 - bias))
-            {
-                bias2 = bias2 - 18.0;
-            }
-            else
-            {
-                bias2 = bias2 + (gain + 16.0);
-            }
-            return bias2 - (double)9;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
