@@ -44,18 +44,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long origin)
         {
-            long mix = 410;
-            foreach (long item in data)
+            long slot = target - origin;
+            if ((origin * 2) >= origin)
             {
-                if ((item + mix) <= item)
+                return 7;
+            }
+            else
+            {
+                if ((slot / 5) > slot)
                 {
-                    mix = ((mix << 2) ^ (mix + item)) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return mix;
         }
     }
 }
