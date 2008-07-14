@@ -45,18 +45,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit command schema readings against a rule.</summary>
-        public static long MeasureCommandSchemaGaps(long[] readings)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((19.0 + 0.49) == (double)seen)
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Retry,
+            Closed,
         }
     }
 }
