@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a channel entry counter forward.</summary>
-        public static long SeriesChannelEntry(long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] values, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if (target > (77 - target))
+                {
+                    count = (count + 2) + datum;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the stream status values.</summary>
