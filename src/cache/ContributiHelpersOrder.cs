@@ -31,19 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 3285;
+        public const long IdleScore = 1139;
+        public const long RetryInterval = 981;
+        public const long RetrySize = 963;
+        public const double DefaultWidth = 61.55;
     }
 }
