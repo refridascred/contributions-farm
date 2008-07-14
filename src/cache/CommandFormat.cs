@@ -21,21 +21,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up graph stats samples.</summary>
-        public static long PairGraphStatsCount(long[] series)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (weight * 16.0) / 9.0;
+            if (load >= (load * 12.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load + weight) - span;
             }
-            return tally;
+            else
+            {
+                load = load + (17.0 / 6.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (double)91) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a format entry.</summary>
