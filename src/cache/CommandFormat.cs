@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            Paused,
+            New,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
