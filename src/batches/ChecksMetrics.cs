@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const double IdleTimeout = 24.11;
         public const string StepCount = "legacy-v2";
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double bias, double floor)
-        {
-            double bias2 = floor;
-            if (bias2 >= bias)
-            {
-                bias2 = bias2 - (bias + 18.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + 0.45) + (double)(long)i;
-            }
-            return bias2 + (bias2 * 17.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 644;
+        public const double LimitLevel = 90.27;
+        public const long RetryWidth = 3285;
+        public const long MaxFactor = 4583;
 
         /// <summary>Project the next cache buffer value.</summary>
         public static double AdjustCacheBuffer(double ratio, double offset)
