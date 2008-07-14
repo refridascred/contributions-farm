@@ -1,5 +1,6 @@
 {
-  "warm_window_s": true,
-  "hard_retries_count": false,
-  "command_retries": 100
+  "profile_ratio": "open",
+  "retry_size": ["stable", "fallback", "edge"],
+  "flush_retries_ms": ["primary", "fallback"],
+  "max_ratio_s": false
 }
