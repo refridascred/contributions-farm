@@ -56,22 +56,17 @@ namespace Common.Utilities
         public const long LimitRatio = 8598;
         public const long StepRatio = 9708;
 
-        /// <summary>Audit cache order readings against a rule.</summary>
-        public static long AuditCacheOrderGaps(long[] values, long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally > (6.0 + 5.5))
+                if (readings[i] < floor)
                 {
-                    tally = ((tally + 3) ^ datum) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
