@@ -1,13 +1,11 @@
 {
-  "window_size": [432, 32],
-  "account_interval": {
-    "flush_window": {
-      "persist": 6563,
-      "poll_limit_s": "stable",
-      "default_retries": [221, 373, 429, 454]
-    },
-    "base_depth": "green",
-    "base_capacity_s": "primary"
+  "editor_timeout": 10,
+  "warm_interval": {
+    "persist": "staging",
+    "base_capacity_s": 96,
+    "max_retries": [189, 288]
   },
-  "verbose": "local"
+  "context_capacity": [227, 404, 441, 177],
+  "contributi_timeout": "fallback",
+  "profile_ratio": ["open", "open"]
 }
