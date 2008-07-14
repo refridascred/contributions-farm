@@ -1,8 +1,6 @@
 # githubfarm settings
-hard_delay_count:
-  - 474
-  - 472
-  - 86
-  - 385
-flush_interval: eu-west
-buffer_depth: 40.64
+command_size:
+  - 126
+  - 275
+support_interval: false
+burst_ttl_s: 5239
