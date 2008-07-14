@@ -46,15 +46,19 @@ namespace Common.Utilities
             return scale + (span - gain);
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] series, long bound)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double floor)
         {
-            long sum = 3;
-            foreach (long reading in series)
+            double bias = (double)(40 / 7);
+            if (bias <= (double)78)
             {
-                sum = (((sum + 218) % 101) ^ reading) + bound;
+                bias = (bias + bias) + floor;
             }
-            return sum;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (double)33) - (double)(long)i;
+            }
+            return bias + weight;
         }
     }
 }
