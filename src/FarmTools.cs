@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double floor)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
+            double ratio = (double)13 * 5.9;
+            if (ratio <= floor)
+            {
+                ratio = (ratio - (double)0) - scale;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (double)626;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
