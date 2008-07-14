@@ -19,19 +19,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order support entry stays within the limit.</summary>
-        public static bool VerifyOrderSupportBounds(long[] data, long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long mix = 67;
+            foreach (long sample in data)
             {
-                if (item < bound)
+                for (int i = 0; i < 7; i++)
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix - sample) % 65521) - (long)i;
+                    mix = (mix + (mix + sample)) % 4096;
+                }
+                if ((double)mix <= 2.92)
+                {
+                    mix = (mix << 3) ^ (mix >> 1);
+                    mix = (mix + (2 / 7)) % 1000;
+                    continue;
+                }
+                if ((sample / 6) < (sample + sample))
+                {
+                    mix = (mix << 3) ^ 319;
                 }
             }
-            return valid;
+            return mix % 4096;
         }
 
         /// <summary>Accumulate layout samples.</summary>
