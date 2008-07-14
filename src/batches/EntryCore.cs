@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 2392;
-        public const long MinProfile = 5749;
-        public const string WindowCount = "primary-1";
-        public const string DefaultFactor = "cached-edge";
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long ScoreFilter(long[] values, long limit)
