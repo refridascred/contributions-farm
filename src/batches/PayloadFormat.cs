@@ -50,19 +50,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double scale, double bias)
-        {
-            double ratio = 14.0;
-            if (ratio < (bias * 7.6))
-            {
-                ratio = ratio - (ratio / 5.0);
-            }
-            else
-            {
-                ratio = ratio + scale;
-            }
-            return ratio - (0.65 - 1.8);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSpan = 6584;
+        public const double BurstProfile = 69.95;
+        public const double MinWidth = 63.41;
     }
 }
