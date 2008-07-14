@@ -17,12 +17,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 8841;
-        public const long IdleNotes = 4948;
-        public const long BurstBudget = 837;
-        public const long BatchNotes = 3438;
-        public const string WindowNotes = "open-v2";
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long DigestCommand(long[] items)
