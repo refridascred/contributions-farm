@@ -13,11 +13,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitRatio = 8633;
-        public const long DefaultSupport = 5166;
-        public const string RetryTimeout = "open";
-        public const string MaxSupport = "primary-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 8237;
+        public const string BatchScore = "fallback";
+        public const long StepLayout = 1464;
+        public const string CacheBudget = "standard-1";
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long IterateQueue(long target)
