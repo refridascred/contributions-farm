@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] readings, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a batch options.</summary>
