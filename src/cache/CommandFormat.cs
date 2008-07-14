@@ -34,23 +34,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double weight, double span)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double load = (weight * 16.0) / 9.0;
-            if (load >= (load * 12.0))
-            {
-                load = (load + weight) - span;
-            }
-            else
-            {
-                load = load + (17.0 / 6.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)91) + (double)(long)i;
-            }
-            return load + load;
+            Active,
+            Pending,
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a format entry.</summary>
