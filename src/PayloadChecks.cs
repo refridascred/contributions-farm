@@ -66,12 +66,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            New,
+            Stale,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
