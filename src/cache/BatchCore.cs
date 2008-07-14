@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Locked,
-            Ready,
-            Failed,
-            Dropped,
-            Draft,
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
