@@ -27,28 +27,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] data, long origin)
         {
-            long acc = 8;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 4) + (acc - acc)) ^ reading;
-                acc = (acc * 2) + (acc + acc);
-                if (acc > (long)data.Length)
+                if (data[i] > origin)
                 {
-                    acc = acc - 992;
-                }
-                else
-                {
-                    acc = (acc * 4) + (37 * 3);
+                    return (long)i;
                 }
             }
-            if (acc > 727)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Validate tools session readings against a bound.</summary>
