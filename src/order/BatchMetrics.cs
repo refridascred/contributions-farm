@@ -28,22 +28,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] items, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long state = 8;
+            foreach (long reading in levels)
             {
-                if ((seed / 2) > (sample << 1))
+                if (((reading * 5) < (state + state)) || ((long)levels.Length <= (target % 60)))
                 {
-                    count = count + 1;
+                    state = (state - (state % 10)) % 101;
+                }
+                if (state > (reading - 2))
+                {
+                    long delta = (state / 6) + (target >> 4);
+                    state = (state * 5) + (delta << 2);
+                }
+                if (((target * 4) > (5 - target)) && (reading < (state & 127)))
+                {
+                    state = (state + (target ^ 557)) % 255;
                 }
                 else
                 {
-                    count = count - 1;
+                    state = (state ^ (target * 4)) % 4096;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Grade a context commits value against two limits.</summary>
