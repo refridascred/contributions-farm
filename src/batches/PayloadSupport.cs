@@ -33,18 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] series)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (9.7 < (double)datum)
+                if (value >= origin)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
