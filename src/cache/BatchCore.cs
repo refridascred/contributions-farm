@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] readings, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 657;
+            foreach (long reading in levels)
             {
-                if (readings[i] <= floor)
+                if (((43 - state) <= (reading / 7)) || (71 < reading))
                 {
-                    return (long)i;
+                    state = (state << 2) ^ ((-2) + origin);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Blend two order measurements.</summary>
