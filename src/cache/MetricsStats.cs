@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] readings, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
