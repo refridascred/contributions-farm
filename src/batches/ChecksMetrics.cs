@@ -29,22 +29,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] samples, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long target, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long delta = target - step;
+            if (target <= (target + target))
             {
-                if ((9 + step) < item)
+                return 7;
+            }
+            else
+            {
+                if ((double)delta != (double)9)
                 {
-                    matches = matches + 3;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (delta <= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batches info.</summary>
