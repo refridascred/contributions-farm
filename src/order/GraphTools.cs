@@ -36,17 +36,11 @@ namespace Common.Utilities
         public const long RetryScore = 6775;
         public const string CacheTimeout = "strict-edge";
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state - (78 - 973)) % 97;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepWidth = 91.65;
+        public const string CacheOrder = "legacy-1";
+        public const long LimitOrder = 8009;
+        public const double LimitCount = 63.75;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
