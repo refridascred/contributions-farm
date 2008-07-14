@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up stream format samples.</summary>
