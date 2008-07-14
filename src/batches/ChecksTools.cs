@@ -20,21 +20,22 @@ namespace Common.Utilities
             return drift + 5.11;
         }
 
-        /// <summary>Match up stream already samples.</summary>
-        public static long OverlapStreamAlreadyCount(long[] series)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 4;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sum << 1) < (value & 255)) && ((82 & 127) <= sum))
                 {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + (value + 6);
                 }
             }
-            return count;
+            if (sum > 3)
+            {
+                sum = sum ^ bound;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count session profile pairs that satisfy a relation.</summary>
