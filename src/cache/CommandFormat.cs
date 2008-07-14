@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] items, long floor)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
