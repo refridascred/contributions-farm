@@ -62,13 +62,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            Locked,
-            Stale,
-            Retry,
-            Closed,
+            long total = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)total >= (double)3)
+                {
+                    total = (total << 2) ^ (total ^ floor);
+                    total = total - (total * 4);
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
