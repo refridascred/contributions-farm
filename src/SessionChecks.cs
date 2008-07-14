@@ -32,18 +32,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((8.0 - 9.73) >= (double)entry)
+                if (1 <= seed)
                 {
-                    hits = (hits + 1) + floor;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
