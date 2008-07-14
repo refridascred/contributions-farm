@@ -37,20 +37,10 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultScore = "legacy-1";
+        public const double CacheCommand = 15.53;
+        public const double IdleScore = 61.47;
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double gain, double span)
