@@ -79,18 +79,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats support values into a single score.</summary>
-        public static long FoldStatsSupport(long[] levels)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] items, long floor)
         {
-            long state = 24;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.13 * 1.8) != (double)state)
+                if ((items[i] == floor) && ((items[i] % 5) != 0))
                 {
-                    state = ((state + (state / 3)) % 4096) ^ datum;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
