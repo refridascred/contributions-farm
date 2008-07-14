@@ -1,25 +1,5 @@
 # githubfarm settings
-cache_ratio:
-  poll_timeout_pct: true
-  sync_timeout_count: 59.46
-  readonly: 41.2
-  soft_timeout:
-    - 89
-    - 182
-    - 401
-    - 105
-  hard_size: 97.71
-stats_ttl:
-  - 436
-  - 206
-  - 492
-  - 358
-flush_interval: 1607
-cache_ratio_pct:
-  - green
-  - local
-  - stable
-  - cached
-verbose:
-  - latest
-  - blue
+flush_window_s: 1717
+base_window_s: 8687
+commits_delay: true
+batch_delay_s: true
