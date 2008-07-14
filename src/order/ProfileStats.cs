@@ -45,9 +45,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRatio = 960;
-        public const long MinRoute = 3146;
-        public const long RetryInterval = 1530;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
