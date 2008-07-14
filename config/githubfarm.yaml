@@ -1,8 +1,11 @@
 # githubfarm settings
-verbose: 100
-flush_limit_count: 27.78
-metric_limit: green
-dry_run:
-  retry_window_s: true
-  flush_window_s: true
-  strict: 1235
+compress:
+  strict: 500
+  flush_ratio_s: true
+  poll_delay_s: blue
+  batches_capacity: 5592
+contributi_limit: 4704
+account_limit: 62.77
+batch_window: 5677
+default_delay_pct: true
+report_timeout: 500
