@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] series, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] values, long step)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (entry < limit)
+                if ((matches / 8) < (step + datum))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
