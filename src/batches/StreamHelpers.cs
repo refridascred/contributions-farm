@@ -63,10 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 80.51;
-        public const long StepProfile = 9363;
-        public const string BatchRatio = "fallback-edge";
+        /// <summary>Match up batches record samples.</summary>
+        public static long MatchBatchesRecordCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] values)
