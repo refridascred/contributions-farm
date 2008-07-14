@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] data, long origin)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen / 4) < entry)
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
