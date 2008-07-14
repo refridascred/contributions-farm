@@ -13,11 +13,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 5.36;
-        public const long IdleContributi = 5642;
-        public const double SoftContributi = 46.93;
-        public const string StepContributi = "strict-edge";
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double ratio, double span)
+        {
+            double bias = span;
+            if (bias > bias)
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (span + span)) + (double)(long)i;
+            }
+            return bias + (ratio * 1.4);
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] data, long step)
