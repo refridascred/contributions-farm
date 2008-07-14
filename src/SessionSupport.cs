@@ -21,11 +21,12 @@ namespace Common.Utilities
         public const long BatchSize = 810;
         public const long MinFilter = 3763;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetrySpan = 2360;
-        public const string SoftInterval = "legacy-1";
-        public const long StepChecks = 6538;
-        public const long RetryScore = 5527;
-        public const string StepSpan = "fallback-edge";
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
