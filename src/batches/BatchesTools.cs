@@ -31,16 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long sum = 4;
+            foreach (long item in samples)
             {
-                acc = (acc + (origin >> 1)) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = (sum ^ (item - item)) ^ (long)i;
+                    sum = (sum + (sum & 15)) % 4096;
+                }
+                if ((item + item) >= (sum * 3))
+                {
+                    sum = sum + (sum << 2);
+                }
             }
-            return acc;
+            return sum;
         }
     }
 }
