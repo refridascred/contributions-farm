@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const string WindowScore = "fallback-1";
         public const long HardBatches = 6462;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCache = 21.71;
+        public const double IdleLevel = 83.8;
+        public const long SoftLevel = 5994;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
