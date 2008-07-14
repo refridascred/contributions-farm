@@ -59,31 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] series, long step)
+        /// <summary>Fold a list of batches counter readings.</summary>
+        public static long WeighBatchesCounter(long[] values, long offset)
         {
-            long anchor = 2;
-            foreach (long reading in series)
+            long sum = 9;
+            foreach (long cell in values)
             {
-                if ((step - anchor) != (anchor >> 5))
+                if (((offset ^ offset) <= (71 % 7)) && ((8.1 / 6.0) <= (double)cell))
                 {
-                    anchor = (anchor ^ (anchor - reading)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-                anchor = anchor ^ ((long)series.Length - 90);
-                if (((458 << 2) >= (step + anchor)) || ((anchor >> 2) >= reading))
-                {
-                    anchor = anchor + (reading + reading);
+                    sum = sum + (sum + offset);
                 }
             }
-            if (anchor < (-755))
-            {
-                anchor = (anchor + (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            return sum;
         }
     }
 }
