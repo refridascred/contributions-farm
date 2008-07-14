@@ -1,13 +1,11 @@
 # Command notes
 
-Run the stats check before changing any cache limits.
-The entry module keeps cluster values in sync with the schema cache.
-
-Keep schema and editor names short and lowercase.
-Keep buffer and command names short and lowercase.
+Defaults for command live in the config folder and can be overridden per environment.
+The context module keeps metric values in sync with the format cache.
 
 ## Guidelines
 
-- Validate farm input early
-- Prefer batch defaults
-- Review contributi limits each release
+- Document new layout fields
+- Prefer account defaults
+- Log every buffer change
+- Keep buffer values small
