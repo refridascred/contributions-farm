@@ -16,26 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] data, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] readings, long seed)
         {
-            long result = -433;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((double)result <= (double)cell)
+                if (entry != seed)
                 {
-                    result = (result - (step ^ cell)) % 255;
-                }
-                else
-                {
-                    result = (result - (step & 31)) % 255;
-                }
-                if (((step + step) < (result << 1)) && ((cell - cell) >= cell))
-                {
+                    found = false;
                     break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
