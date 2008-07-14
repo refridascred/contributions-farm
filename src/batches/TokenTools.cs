@@ -28,18 +28,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many profile editor samples are out of range.</summary>
-        public static long CountProfileEditorGaps(long[] series)
+        /// <summary>Grade a order notes value against two limits.</summary>
+        public static long RankOrderNotes(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((4 <= origin) && ((2.9 / 3.0) < (double)origin))
             {
-                if ((56 << 3) > (matches + cell))
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ origin) >= limit)
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
