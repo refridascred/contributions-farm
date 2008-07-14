@@ -30,13 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            Active,
+            Retry,
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
