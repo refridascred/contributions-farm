@@ -23,12 +23,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] levels, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
