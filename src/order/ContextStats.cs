@@ -35,18 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a report farm reading by value.</summary>
-        public static long LocateReportFarmIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 5190;
+        public const double StepWindow = 94.94;
+        public const double BatchSize = 28.84;
+        public const long IdleSize = 3460;
+        public const long MaxTimeout = 9702;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long bound)
