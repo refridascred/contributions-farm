@@ -25,18 +25,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = 266;
+            foreach (long item in items)
             {
-                if (count >= (count + entry))
+                if (((state & 63) != (state & 15)) && ((10.0 * 4.0) > (double)state))
                 {
-                    count = count + 2;
+                    state = state ^ (item >> 4);
                 }
             }
-            return count;
+            if (state < 99)
+            {
+                state = state ^ state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Adjust a account reading.</summary>
