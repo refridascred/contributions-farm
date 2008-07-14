@@ -52,22 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Count layout notes pairs that satisfy a relation.</summary>
+        public static long CompareLayoutNotesCount(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ (target % 64)) % 4096;
-                long next = total;
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total + (next - total)) + (long)i2;
-                    next = (next + next) % 4096;
+                    if ((readings[i] - readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
     }
 }
