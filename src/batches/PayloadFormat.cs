@@ -38,15 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token editor readings.</summary>
-        public static long CombineTokenEditor(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] readings)
         {
-            long total = 1;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                total = total + datum;
+                if ((double)reading < (double)matches)
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
