@@ -42,15 +42,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double gain, double span)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long AuditSchemaPayloadOutliers(long[] samples, long limit)
         {
-            double scale = (double)141 - (span / 3.0);
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                scale = (scale - scale) + (double)(long)i;
+                if (limit <= 3)
+                {
+                    tally = (tally + 2) - item;
+                }
             }
-            return scale - gain;
+            return tally;
         }
 
         /// <summary>Validate report graph readings against a bound.</summary>
