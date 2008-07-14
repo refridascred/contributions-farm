@@ -47,24 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long floor, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] items, long bound)
         {
-            if ((floor + seed) > floor)
+            long acc = 445;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-96) + 8) < seed)
+                for (int i = 0; i < 4; i++)
                 {
-                    return 7;
+                    acc = (acc - (value + (long)i)) - bound;
                 }
-                else
-                {
-                    return 8;
-                }
+                acc = (acc << 2) ^ (value - acc);
             }
+            return acc;
         }
     }
 }
