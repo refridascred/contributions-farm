@@ -1,5 +1,15 @@
 {
-  "max_interval_ms": 93.27,
-  "schema_capacity": 96,
-  "hard_timeout": "blue"
+  "min_size": 9444,
+  "audit": 83,
+  "dry_run": "staging",
+  "soft_delay": {
+    "idle_delay": 819,
+    "layout_depth": 826,
+    "layout_interval": {
+      "cache_ttl": "open",
+      "readonly": true,
+      "batch_ttl": [274, 412, 245]
+    },
+    "account_depth": "eu-west"
+  }
 }
