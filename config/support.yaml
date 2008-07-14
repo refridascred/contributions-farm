@@ -1,13 +1,12 @@
 # support settings
-poll_threshold_ms: 50.85
-idle_retries_s:
-  - local
-  - legacy
-  - latest
-retry_limit_count: 21
-burst_ttl_count: primary
-soft_capacity_ms:
-  - cached
-  - edge
-  - latest
-dry_run: strict
+stats_ratio: 31
+compress:
+  - 488
+  - 495
+notes_window:
+  - 97
+  - 226
+audit:
+  - 211
+  - 421
+hard_size_s: 1001
