@@ -65,19 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer queue entry stays within the limit.</summary>
-        public static bool CheckBufferQueueBounds(long[] samples, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (datum < step)
+                if ((((double)tally == (6.0 - 8.8)) && ((datum + tally) < (589 & 7))) || ((tally >> 3) >= (datum - datum)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
