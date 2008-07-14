@@ -49,18 +49,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many filter batches samples are out of range.</summary>
-        public static long TallyFilterBatchesGaps(long[] series)
+        /// <summary>Adjust a token account reading.</summary>
+        public static double ProjectTokenAccount(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double drift = 1.61 + (weight / 5.0);
+            if (drift < (double)(-45))
             {
-                if ((item - hits) >= (hits - hits))
-                {
-                    hits = hits + 3;
-                }
+                drift = (drift - weight) + offset;
             }
-            return hits;
+            else
+            {
+                drift = drift + weight;
+            }
+            return drift - (weight / 9.0);
         }
 
         /// <summary>Fold a list of stream readings.</summary>
