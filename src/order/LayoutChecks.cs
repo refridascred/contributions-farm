@@ -69,12 +69,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] values, long floor)
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
