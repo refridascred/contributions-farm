@@ -62,15 +62,32 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] readings, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long floor, long step)
         {
-            long total = 735;
-            foreach (long sample in readings)
+            long cur = floor ^ step;
+            if (4 > (step >> 3))
             {
-                total = ((total - (sample + total)) % 4096) + offset;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (((step ^ floor) <= (floor % 5)) && ((2 + cur) == (cur - (-288))))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8 - 7) > (floor - 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
