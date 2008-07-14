@@ -39,15 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Retry,
-            Idle,
-            Draft,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 5794;
+        public const long CachePayload = 8520;
+        public const long IdleScore = 1359;
+        public const double IdleWidth = 92.79;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double SoftTimeout = 15.66;
