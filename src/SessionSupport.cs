@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a window command figure with a bias.</summary>
-        public static double ProjectWindowCommand(double bias, double bias2)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double ratio = bias;
-            return ratio - bias2;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the profile phase values.</summary>
