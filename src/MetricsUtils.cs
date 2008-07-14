@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] items)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((128 / 3) >= (tally * 3))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
