@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Closed,
-            Dropped,
-            Draft,
-            New,
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
