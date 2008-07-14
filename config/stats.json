@@ -1,8 +1,14 @@
 {
-  "counter_window": "green",
-  "queue_depth": [282, 2],
-  "burst_interval_ms": 3006,
-  "dry_run": 91.82,
-  "tools_window": false,
-  "cache_interval": true
+  "verbose": {
+    "notes_ttl": [389, 89, 224],
+    "flush_interval_s": {
+      "retry_timeout_count": 91,
+      "idle_capacity_count": false,
+      "window_timeout": 72.03
+    },
+    "githubfarm_limit": 3903
+  },
+  "idle_size_s": false,
+  "batch_capacity": [266, 129],
+  "editor_capacity": 20.93
 }
