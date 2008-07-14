@@ -15,21 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (hits <= (hits - hits))
                 {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a buffer stats.</summary>
