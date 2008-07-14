@@ -13,38 +13,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long limit, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            if ((double)bound < (9.71 * 17.0))
+            long anchor = 72;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit > (bound % 24))
+                if ((62 * 4) >= (datum + anchor))
                 {
-                    return 6;
+                    anchor = anchor ^ datum;
                 }
                 else
                 {
-                    if ((limit + bound) <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + bound) < bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = ((anchor << 2) ^ (datum / 2)) % 101;
                 }
             }
+            if (anchor < 86)
+            {
+                anchor = ((anchor * 4) + anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
