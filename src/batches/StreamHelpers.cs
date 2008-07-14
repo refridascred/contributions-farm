@@ -33,13 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            Ready,
-            Idle,
-            Locked,
-            Dropped,
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
