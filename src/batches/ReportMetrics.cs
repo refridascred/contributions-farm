@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowTimeout = 9762;
-        public const string IdleWidth = "latest";
-        public const long BaseCounter = 3056;
-        public const long BurstCounter = 3861;
+        /// <summary>Check that every support account entry stays within the limit.</summary>
+        public static bool GuardSupportAccountBounds(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricMatches(long[] data, long floor)
