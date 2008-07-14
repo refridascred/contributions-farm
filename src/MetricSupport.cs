@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Project the next tools order value.</summary>
+        public static double AdjustToolsOrder(double weight, double floor)
         {
-            long mark = 3;
-            foreach (long cell in samples)
+            double scale = weight;
+            if (scale <= floor)
             {
-                mark = ((mark << 2) ^ (mark / 2)) - cell;
+                scale = scale + floor;
             }
-            return mark;
+            return scale - floor;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
