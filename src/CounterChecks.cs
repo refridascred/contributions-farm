@@ -55,25 +55,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long offset, long limit)
-        {
-            if ((offset << 3) < (offset * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)310 != (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheTimeout = 75.19;
+        public const long MinCount = 1227;
+        public const double CacheRatio = 97.24;
+        public const long SoftBudget = 1664;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
