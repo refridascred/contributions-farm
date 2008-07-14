@@ -25,13 +25,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Failed,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "strict";
+        public const string DefaultInterval = "latest-edge";
+        public const long DefaultChannel = 3260;
+        public const string IdleScore = "latest-edge";
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] items, long offset)
