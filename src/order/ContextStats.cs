@@ -21,14 +21,12 @@ namespace Common.Utilities
         public const long StepLayout = 1464;
         public const string CacheBudget = "standard-1";
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Idle,
-            Done,
-            Paused,
-            Locked,
-            Queued,
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the session state values.</summary>
