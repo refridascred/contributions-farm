@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((reading >> 2) != (matches & 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
