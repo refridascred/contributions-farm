@@ -25,15 +25,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double ratio, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] readings)
         {
-            double scale = ratio - ratio;
-            if (scale >= scale)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                scale = scale - (scale - span);
+                if ((double)cell >= (11.0 - 3.79))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale + (double)7;
+            return count;
         }
     }
 }
