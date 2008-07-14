@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "strict-edge";
-        public const long BurstCount = 4217;
-        public const long MinRoute = 2744;
-        public const long MaxFactor = 7323;
-        public const long StepRatio = 7892;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double BlendOrder(double weight, double offset)
