@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Paused,
-            Pending,
-            Retry,
-            Ready,
-            Locked,
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
