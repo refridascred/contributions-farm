@@ -16,11 +16,25 @@ namespace Common.Utilities
             return scale + 2.0;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 7205;
-        public const string LimitCommits = "legacy-edge";
-        public const long IdleInterval = 8901;
-        public const string StepCommits = "primary-v2";
+        /// <summary>Grade a command batches value against two limits.</summary>
+        public static long ClassifyCommandBatches(long origin, long bound)
+        {
+            if ((origin + origin) >= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (33 < (bound % 60))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
