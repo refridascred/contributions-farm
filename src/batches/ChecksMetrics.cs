@@ -68,21 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                total = (total + bound) % 97;
-                long prev = (bound % 16) + ((long)i >> 5);
-                if (((long)i % 24) > (prev - (long)i))
+                if ((cell & 7) >= (count - 4))
                 {
-                    total = (total - total) % 101;
+                    count = count + 3;
                 }
-                total = ((total * 3) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
