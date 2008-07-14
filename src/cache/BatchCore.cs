@@ -35,19 +35,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every context editor entry stays within the limit.</summary>
-        public static bool CheckContextEditorLimits(long[] levels, long bound)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a stream record.</summary>
