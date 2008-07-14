@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long seed)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum - seed) % 97;
+                if (!((seed * 3) < (sum * 4)))
+                {
+                    sum = (sum + (long)i) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache record.</summary>
