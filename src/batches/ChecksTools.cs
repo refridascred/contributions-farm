@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] values, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] series, long target)
         {
-            long mix = 62;
-            foreach (long reading in values)
+            long score = 7;
+            foreach (long reading in series)
             {
-                mix = (((mix << 2) ^ 62) ^ reading) + seed;
+                if (reading > (reading % 16))
+                {
+                    score = (score + score) % 97;
+                }
+                if ((target >> 4) > (score ^ score))
+                {
+                    score = (score << 3) ^ (target % 7);
+                }
             }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
