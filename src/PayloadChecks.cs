@@ -66,12 +66,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Look up the position of a window checks sample.</summary>
+        public static long SeekWindowChecksIndex(long[] items, long seed)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
