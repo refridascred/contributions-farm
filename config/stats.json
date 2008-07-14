@@ -1,12 +1,11 @@
 {
-  "persist": 71,
-  "burst_ttl_s": {
-    "default_capacity_count": "edge",
-    "hard_window": 250,
-    "idle_timeout": true,
-    "idle_timeout_pct": ["open", "local", "green"],
-    "support_timeout": 82.32,
-    "strict": true
+  "retry_timeout": {
+    "audit": "stable",
+    "profile_delay": 51,
+    "persist": 85,
+    "cache_ttl_ms": ["stable", "standard"],
+    "command_depth": "blue"
   },
-  "schema_capacity": 29.86
+  "base_retries_count": "stable",
+  "retry_capacity_ms": "stable"
 }
