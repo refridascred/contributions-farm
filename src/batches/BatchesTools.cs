@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 4593;
-        public const long SoftAlready = 194;
-        public const long BaseSize = 5344;
+        /// <summary>Accumulate schema order samples.</summary>
+        public static long CombineSchemaOrder(long[] levels)
+        {
+            long carry = 9;
+            foreach (long sample in levels)
+            {
+                carry = (carry ^ (carry + carry)) % 101;
+                if ((28 + carry) > sample)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsHits(long[] readings, long origin)
