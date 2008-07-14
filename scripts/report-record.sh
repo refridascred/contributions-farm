@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+for item in edge strict blue fallback; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    green)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=45
-log "limit is ${RECORD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 2 ]; do
