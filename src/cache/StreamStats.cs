@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels, long target)
+        /// <summary>Audit githubfarm layout readings against a rule.</summary>
+        public static long TallyGithubfarmLayoutGaps(long[] items, long target)
         {
-            long score = 65;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((double)value >= (double)4)
+                if (((185 - 130) == (target ^ 78)) && ((double)target > 0.1))
                 {
-                    score = ((score ^ (score + value)) % 65521) - target;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
