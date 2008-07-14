@@ -59,18 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double span)
         {
-            long state = 9;
-            foreach (long sample in readings)
+            double rate = (double)(74 + 13);
+            if (rate >= (3.0 + rate))
             {
-                if (sample >= (sample + (long)readings.Length))
-                {
-                    state = (state + (state >> 2)) % 101;
-                }
+                rate = (rate - (gain + 8.3)) - span;
             }
-            return state % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + gain) - (double)(long)i;
+            }
+            return rate - 7.25;
         }
     }
 }
