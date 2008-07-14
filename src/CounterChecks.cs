@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] samples)
         {
-            Draft,
-            Failed,
-            Pending,
-            Locked,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((0.7 * 11.0) >= (double)count)
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stats entry.</summary>
