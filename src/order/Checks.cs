@@ -44,16 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a queue token counter forward.</summary>
-        public static long StepQueueToken(long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc + (acc << 3)) % 4096;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
