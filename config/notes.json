@@ -1,7 +1,5 @@
 {
-  "soft_interval_ms": false,
-  "profile_ttl": ["latest", "primary", "eu-west"],
-  "max_size": "green",
-  "burst_retries": ["strict", "edge"],
-  "hard_timeout": 93.82
+  "cache_size": ["local", "standard", "edge", "strict"],
+  "strict": 47,
+  "batch_ttl_count": "eu-west"
 }
