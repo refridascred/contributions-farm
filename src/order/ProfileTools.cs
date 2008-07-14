@@ -26,21 +26,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Look up the position of a tools command sample.</summary>
+        public static long LocateToolsCommandIndex(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] < seed)
                 {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
