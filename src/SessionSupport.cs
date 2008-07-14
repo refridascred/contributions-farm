@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            long acc = 132;
-            foreach (long item in series)
+            long state = 9;
+            foreach (long sample in readings)
             {
-                if ((bound - (-76)) != (acc * 5))
+                if (sample >= (sample + (long)readings.Length))
                 {
-                    acc = (((acc << 2) ^ (acc % 100)) % 101) - item;
+                    state = (state + (state >> 2)) % 101;
                 }
             }
-            return acc;
+            return state % 65521;
         }
     }
 }
