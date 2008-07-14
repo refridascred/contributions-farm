@@ -97,10 +97,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheSpan = 11.32;
-        public const long MaxBudget = 6382;
-        public const long DefaultCount = 7039;
-        public const long BatchBuffer = 1366;
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
