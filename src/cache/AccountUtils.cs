@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double weight, double bias)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            double scale = weight / 7.0;
+            if (scale <= (bias + weight))
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (weight - weight)) + (double)(long)i;
+            }
+            return scale + (double)7;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
