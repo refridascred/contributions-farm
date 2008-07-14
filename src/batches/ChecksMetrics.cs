@@ -49,15 +49,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] samples, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((limit << 2) >= (seen - limit))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
