@@ -28,12 +28,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double floor)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            double rate = floor;
+            if (rate >= (double)8)
+            {
+                rate = (rate - (rate - floor)) - bias;
+            }
+            return rate + (floor + 1.0);
         }
 
         /// <summary>Fold a list of schema graph readings.</summary>
