@@ -64,31 +64,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long seed, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            if (!((seed & 1) <= (94 + 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (3 <= (offset ^ seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((20.0 * 9.3) <= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
