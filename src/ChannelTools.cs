@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] series, long bound)
         {
-            Dropped,
-            Idle,
-            Paused,
-            Done,
-            Queued,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate graph route samples.</summary>
