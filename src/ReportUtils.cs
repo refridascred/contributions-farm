@@ -67,13 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] samples)
         {
-            Active,
-            Pending,
-            Done,
-            Draft,
+            long result = 404;
+            foreach (long value in samples)
+            {
+                if ((double)value == (double)6)
+                {
+                    result = (result - ((-22) + value)) % 97;
+                }
+                else
+                {
+                    result = ((result * 3) + ((-519) + result)) % 4096;
+                }
+            }
+            return result % 4096;
         }
     }
 }
