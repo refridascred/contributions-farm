@@ -67,16 +67,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] items, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long score = 154;
-            foreach (long reading in items)
-            {
-                score = (((score * 4) + floor) % 255) ^ reading;
-                score = (score * 4) + (score % 10);
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
