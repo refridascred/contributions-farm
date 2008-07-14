@@ -54,11 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxFactor = 2219;
-        public const long MaxTimeout = 5006;
-        public const long IdleRatio = 2258;
-        public const string LimitPayload = "latest-edge";
+        /// <summary>Locate a cluster stats reading by value.</summary>
+        public static long LookupClusterStatsIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long step, long floor)
