@@ -39,20 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels, long bound)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
-            long mark = 35;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark << 2) ^ (mark ^ 940);
-                mark = mark ^ (mark - bound);
-                if ((double)bound > (double)sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return count;
         }
     }
 }
