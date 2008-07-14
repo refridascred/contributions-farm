@@ -23,10 +23,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 37.34;
-        public const double RetryBudget = 62.99;
-        public const long StepBuffer = 4790;
-        public const string MinWidth = "stable-1";
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
