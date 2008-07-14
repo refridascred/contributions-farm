@@ -27,21 +27,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = -30;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(365 >= (sample + score)))
                 {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 5) + (step * 2)) % 1000;
+                }
+                else
+                {
+                    score = (score + step) % 1000;
                 }
             }
-            return matches;
+            if (score < (-450))
+            {
+                score = (score + (61 % 7)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
