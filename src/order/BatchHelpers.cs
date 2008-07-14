@@ -14,30 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long bound, long floor)
         {
-            long edge = step ^ origin;
-            if ((origin < step) && ((double)origin <= (7.5 * 9.6)))
+            long slot = bound - floor;
+            if (3.4 > (double)slot)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((edge >> 2) != (step - edge))
+                if ((slot & 63) == (6 / 3))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((origin ^ (-31)) == (origin + 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 7;
                 }
             }
         }
