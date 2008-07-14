@@ -24,13 +24,18 @@ namespace Common.Utilities
             return ((bias2 + (8.28 * 0.31)) + weight) + bias;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Fold a list of layout order readings.</summary>
+        public static long TallyLayoutOrder(long[] items, long step)
         {
-            Idle,
-            Pending,
-            New,
-            Draft,
+            long carry = 39;
+            foreach (long datum in items)
+            {
+                if (((6.6 * 14.0) < (double)step) && ((datum << 1) > (step << 1)))
+                {
+                    carry = carry ^ (step - step);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
