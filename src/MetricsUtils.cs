@@ -25,31 +25,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long step, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long target)
         {
-            if ((double)offset > (double)step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.35 - 17.0) > (double)step)
+                if (samples[i] < target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(offset >= (step + step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
