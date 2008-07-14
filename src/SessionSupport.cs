@@ -16,25 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = anchor ^ (seed - seed);
-                if (seed < (anchor + seed))
-                {
-                    anchor = (anchor * 2) + (seed >> 1);
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor & 63)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowScore = 6012;
+        public const long BatchSize = 810;
+        public const long MinFilter = 3763;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long RetrySpan = 2360;
