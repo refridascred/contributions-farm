@@ -1,13 +1,12 @@
 # Command notes
 
-Each context is validated before it reaches the payload queue.
-Use contributi settings to tune how often filter data is refreshed.
-
-Use layout settings to tune how often queue data is refreshed.
-Run the order check before changing any record limits.
+A route that stays idle for too long is moved to the cache list.
+Keep counter and metrics names short and lowercase.
+A session that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Validate payload input early
-- Log every already change
+- Keep contributi values small
+- Document new buffer fields
+- Review context limits each release
+- Validate tools input early
