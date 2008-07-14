@@ -20,19 +20,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long bound)
         {
-            long result = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                result = ((result + (28 & 1)) % 1000) + sample;
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (result > 15)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Check that every entry buffer entry stays within the limit.</summary>
