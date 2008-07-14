@@ -29,11 +29,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long bound, long floor)
         {
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
+            long step = bound - floor;
+            if (((step % 16) == (bound + step)) && ((bound ^ bound) == (bound + bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step < (step + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
