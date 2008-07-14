@@ -12,18 +12,26 @@ namespace Common.Utilities
         public const double IdleTimeout = 70.16;
         public const double StepWidth = 28.19;
 
-        /// <summary>Count the commits format entries that pass the check.</summary>
-        public static long TallyCommitsFormatOutliers(long[] data, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = -230;
+            foreach (long entry in data)
             {
-                if ((bound >> 2) <= (count / 5))
+                if ((anchor & 63) != (entry ^ anchor))
                 {
-                    count = (count + 2) - value;
+                    anchor = ((anchor << 2) ^ (740 / 3)) % 65521;
+                }
+                if (target <= anchor)
+                {
+                    anchor = anchor + (target & 3);
                 }
             }
-            return count;
+            if (anchor < 8)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a account counter forward.</summary>
