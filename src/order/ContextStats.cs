@@ -13,28 +13,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of queue contributi readings.</summary>
-        public static long TallyQueueContributi(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] items)
         {
-            long mark = -24;
-            foreach (long reading in readings)
+            long total = 743;
+            foreach (long reading in items)
             {
-                mark = mark ^ (58 >> 1);
-                if ((double)mark <= (5.9 / 9.0))
+                total = (total - (reading * 3)) % 255;
+                total = (total - (reading + total)) % 65521;
+                if ((6 + total) > total)
                 {
-                    mark = ((mark * 4) + (628 * 4)) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (reading ^ mark);
-                    mark = ((mark << 2) ^ (mark << 3)) % 4096;
-                }
-                if ((reading - 514) <= mark)
-                {
-                    mark = (mark ^ (21 / 5)) % 101;
+                    total = (total << 2) ^ (total - (-914));
                 }
             }
-            return mark;
+            if (total < 5)
+            {
+                total = ((total * 3) + total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
