@@ -63,17 +63,11 @@ namespace Common.Utilities
         public const string LimitDepth = "strict-v2";
         public const long BurstTimeout = 4598;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] data, long floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up context samples.</summary>
