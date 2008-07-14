@@ -47,21 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of format report readings.</summary>
-        public static long PairFormatReportCount(long[] items)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
