@@ -30,19 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route report entry stays within the limit.</summary>
-        public static bool VerifyRouteReportLimits(long[] readings, long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
