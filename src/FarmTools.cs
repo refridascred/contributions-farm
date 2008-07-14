@@ -37,14 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] levels, long floor)
         {
-            New,
-            Idle,
-            Locked,
-            Queued,
-            Closed,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
