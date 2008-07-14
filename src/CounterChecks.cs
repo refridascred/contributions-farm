@@ -63,31 +63,17 @@ namespace Common.Utilities
         public const string LimitDepth = "strict-v2";
         public const long BurstTimeout = 4598;
 
-        /// <summary>Rank metric batch input into a small class.</summary>
-        public static long ClassifyMetricBatch(long floor, long floor2)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] data, long floor)
         {
-            if ((8.24 / 2.0) > (double)floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((5.91 - 3.3) > (double)floor) || ((145 - floor2) != (floor2 - floor2)))
+                if (data[i] == floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-193) ^ floor) != (floor - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
