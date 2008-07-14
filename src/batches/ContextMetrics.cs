@@ -42,11 +42,19 @@ namespace Common.Utilities
         public const double CacheContributi = 29.74;
         public const long BaseRatio = 546;
 
-        /// <summary>Scale a checks editor figure with a bias.</summary>
-        public static double BlendChecksEditor(double bias, double span)
+        /// <summary>Validate metrics context readings against a bound.</summary>
+        public static bool ValidateMetricsContextLimits(long[] samples, long limit)
         {
-            double rate = 0.8 * 8.69;
-            return ((rate - (rate - 12.0)) + bias) + span;
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
