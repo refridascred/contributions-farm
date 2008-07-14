@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "latest";
-        public const string SoftCount = "standard-edge";
-        public const long BaseFactor = 7332;
-        public const long LimitBudget = 1569;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Dropped,
+            Idle,
+            Paused,
+            Done,
+            Queued,
+        }
 
         /// <summary>Accumulate graph route samples.</summary>
         public static long ScoreGraphRoute(long[] data, long target)
