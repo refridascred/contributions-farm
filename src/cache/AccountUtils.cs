@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Dropped,
-            Paused,
-            Locked,
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
