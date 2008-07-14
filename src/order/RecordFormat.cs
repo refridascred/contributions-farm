@@ -16,18 +16,15 @@ namespace Common.Utilities
             return drift + (double)45;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] readings, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] items)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = 5;
+            foreach (long value in items)
             {
-                if (8 >= count)
-                {
-                    count = ((count + 2) ^ entry) + step;
-                }
+                state = (state + (value & 1)) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Digest a series of counter order entries.</summary>
