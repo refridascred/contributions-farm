@@ -14,12 +14,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheWidth = 5678;
-        public const long MinStats = 7734;
-        public const long IdleStats = 4326;
-        public const long SoftFactor = 9196;
-        public const string WindowStats = "stable-edge";
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if (78 > (anchor + 0))
+                {
+                    anchor = anchor + (limit + limit);
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long DigestSession(long[] data, long target)
