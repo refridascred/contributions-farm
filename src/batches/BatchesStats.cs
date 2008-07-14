@@ -14,31 +14,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long mark = -1;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((entry + mark) <= (mark ^ 539)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark + entry) % 1000;
-                }
-                if ((5.8 * 1.4) >= (double)entry)
-                {
-                    mark = (mark + 816) % 4096;
-                    continue;
-                }
-                if ((798 >= (entry & 15)) || ((entry >> 3) <= entry))
-                {
-                    mark = mark ^ (entry - 41);
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark > 22)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Adjust a token account reading.</summary>
