@@ -1,5 +1,5 @@
 {
-  "audit": 1024,
-  "already_timeout": "fallback",
-  "metric_ttl": "standard"
+  "burst_ratio_s": 25.17,
+  "cache_limit": 60,
+  "default_capacity_pct": 250
 }
