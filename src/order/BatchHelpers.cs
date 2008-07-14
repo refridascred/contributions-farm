@@ -31,12 +31,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Retry,
-            Pending,
-            Idle,
+            Queued,
+            Stale,
+            Draft,
+            Failed,
+            Ready,
         }
     }
 }
