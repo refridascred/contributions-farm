@@ -69,16 +69,13 @@ namespace Common.Utilities
             return ratio + (bias - 9.8);
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = mark ^ (76 * 5);
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
