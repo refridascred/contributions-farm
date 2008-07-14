@@ -1,26 +1,5 @@
 {
-  "layout_delay": {
-    "window_delay": false,
-    "strict": true,
-    "batches_delay": 500,
-    "graph_delay": 2867
-  },
-  "queue_ratio": {
-    "cache_depth": {
-      "base_ratio_count": false,
-      "min_delay_ms": 18.96,
-      "soft_delay": 40.29
-    },
-    "batch_ttl_s": 30,
-    "soft_timeout_ms": {
-      "warm_ttl": 20.76,
-      "route_interval": "primary",
-      "warm_depth_ms": "local",
-      "sync_window": 5723,
-      "already_ratio": "local",
-      "support_ratio": [129, 207, 116, 225]
-    }
-  },
-  "idle_timeout_pct": "latest",
-  "default_threshold_s": "fallback"
+  "entry_retries": "primary",
+  "dry_run": 82.47,
+  "audit": "green"
 }
