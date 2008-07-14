@@ -30,15 +30,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
