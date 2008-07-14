@@ -1,7 +1,6 @@
 {
-  "githubfarm_window": 6760,
-  "schema_delay": "open",
-  "persist": false,
-  "warm_ratio_pct": ["fallback", "eu-west", "green"],
-  "max_ttl_count": false
+  "audit": 66.07,
+  "base_delay_s": "staging",
+  "warm_interval": 2.08,
+  "hard_delay": "primary"
 }
