@@ -23,19 +23,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((0.8 + 1.31) < (double)seed)
-                {
-                    sum = sum + (seed - seed);
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 37.34;
+        public const double RetryBudget = 62.99;
+        public const long StepBuffer = 4790;
+        public const string MinWidth = "stable-1";
     }
 }
