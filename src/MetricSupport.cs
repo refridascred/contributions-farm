@@ -54,18 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] samples)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((offset * 5) < (5 % 64))
             {
-                if (!((matches >= (item >> 1)) || ((double)item < (17.0 + 4.4))))
+                return 1;
+            }
+            else
+            {
+                if (!((429 * 2) < (offset + offset)))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
