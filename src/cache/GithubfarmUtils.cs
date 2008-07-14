@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] readings, long seed)
         {
-            long state = 7;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                state = ((state << 2) ^ (entry << 3)) % 4096;
+                if (sample != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
