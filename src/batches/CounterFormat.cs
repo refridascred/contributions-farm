@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cache queue samples are out of range.</summary>
-        public static long CountCacheQueueGaps(long[] samples)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((7.0 * 6.39) < (double)matches) || ((cell + cell) == (matches % 8)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
