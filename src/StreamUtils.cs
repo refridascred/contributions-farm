@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseWidth = "strict-1";
-        public const long MaxScore = 4472;
-        public const long CacheRatio = 1973;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double IdleEditor = 96.73;
