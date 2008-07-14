@@ -31,12 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double weight, double floor)
-        {
-            double load = (double)(-76) * 2.64;
-            return (load + floor) + weight;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 488;
+        public const long CacheWindow = 419;
+        public const double BaseCount = 6.0;
+        public const double MaxWindow = 68.56;
+        public const string LimitWidth = "staging-v2";
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long BucketEditor(long origin, long bound)
