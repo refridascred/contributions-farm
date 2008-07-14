@@ -31,19 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] samples, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (reading > target)
+                if ((bound >= (item * 4)) || (5.3 < (double)tally))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
