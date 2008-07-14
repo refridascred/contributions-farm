@@ -1,21 +1,5 @@
 {
-  "enabled": {
-    "token_depth": ["strict", "local"],
-    "cache_ttl_count": "standard",
-    "idle_ratio": {
-      "payload_capacity": "legacy",
-      "flush_threshold": [64, 1, 402, 188],
-      "profile_limit": ["open", "legacy", "local", "fallback"],
-      "dry_run": "stable"
-    },
-    "burst_retries_s": true
-  },
-  "batches_ttl": "cached",
-  "default_interval": {
-    "strict": 9247,
-    "enabled": false,
-    "audit": 100,
-    "sync_depth_ms": "open",
-    "hard_window_s": 86
-  }
+  "warm_window_s": true,
+  "hard_retries_count": false,
+  "command_retries": 100
 }
