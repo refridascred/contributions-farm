@@ -44,15 +44,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double bias, double offset)
-        {
-            double drift = bias;
-            if (drift < (drift + 7.9))
-            {
-                drift = drift + offset;
-            }
-            return drift + offset;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRatio = 960;
+        public const long MinRoute = 3146;
+        public const long RetryInterval = 1530;
     }
 }
