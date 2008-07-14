@@ -40,19 +40,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double weight, double span)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double load = (double)8 / 7.0;
-            if (load <= weight)
-            {
-                load = load + (span / 4.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (load / 6.0)) + (double)(long)i;
-            }
-            return load - load;
+            Synced,
+            Dropped,
+            Idle,
         }
     }
 }
