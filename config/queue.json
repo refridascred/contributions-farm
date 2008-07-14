@@ -1,7 +1,6 @@
 {
-  "min_window_count": 24,
-  "compress": "legacy",
-  "stats_timeout": 60,
-  "poll_threshold_count": ["standard", "staging"],
-  "idle_timeout": "green"
+  "warm_ttl_s": [497, 305, 166],
+  "audit": false,
+  "metric_depth": false,
+  "sync_capacity_count": 64
 }
