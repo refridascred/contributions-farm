@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] levels, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] data, long limit)
         {
             long count = 0;
-            foreach (long item in levels)
+            foreach (long entry in data)
             {
-                if (((-76) % 16) >= (limit - 691))
+                if (!(count <= (count << 2)))
                 {
-                    count = (count + 2) + item;
+                    count = ((count + 3) - entry) - limit;
                 }
             }
             return count;
