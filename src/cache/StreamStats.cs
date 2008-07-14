@@ -54,18 +54,12 @@ namespace Common.Utilities
             return (ratio - (double)1) + floor;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mark = -6;
-            foreach (long datum in values)
-            {
-                if (((double)datum != (3.8 + 7.88)) && (datum > mark))
-                {
-                    mark = (mark * 2) + (datum * 4);
-                }
-            }
-            return mark % 4096;
+            Idle,
+            Pending,
+            Queued,
         }
     }
 }
