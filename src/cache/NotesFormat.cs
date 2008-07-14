@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 9;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((reading & 7) < 913) && ((221 + reading) == (727 ^ result)))
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result + (result & 255);
+                }
+                else
+                {
+                    result = (result - (result + result)) % 1000;
+                }
+                result = result + (reading ^ reading);
+                if ((8 + reading) < result)
+                {
+                    result = result + (731 - result);
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Match up checks samples.</summary>
