@@ -46,22 +46,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series, long floor)
-        {
-            long result = -91;
-            foreach (long reading in series)
-            {
-                if ((floor >= (floor % 24)) && ((double)floor != (2.9 / 6.0)))
-                {
-                    result = result - (reading + result);
-                }
-            }
-            if (result > 1)
-            {
-                result = (result * 4) + (floor - floor);
-            }
-            return result % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 430;
+        public const long RetryMetric = 4291;
+        public const long BurstDepth = 7208;
+        public const long CacheRatio = 7678;
+        public const string SoftScore = "staging";
     }
 }
