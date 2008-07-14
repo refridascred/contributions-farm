@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two session buffer measurements.</summary>
-        public static double AdjustSessionBuffer(double scale, double offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double ratio = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio + offset) + (double)(long)i) - scale;
-            }
-            return ratio - (ratio - offset);
+            Failed,
+            Ready,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Match up channel samples.</summary>
