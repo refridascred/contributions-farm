@@ -26,17 +26,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first order command entry that matches the target.</summary>
-        public static long LocateOrderCommandIndex(long[] readings, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
+                if ((sample % 12) == ((long)series.Length - floor))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
