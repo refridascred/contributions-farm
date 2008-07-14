@@ -41,16 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics record entries.</summary>
-        public static long TotalMetricsRecord(long[] readings, long origin)
-        {
-            long result = 9;
-            foreach (long reading in readings)
-            {
-                result = ((result * 3) + (7 - origin)) + reading;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 9005;
+        public const string LimitContext = "strict";
+        public const double BurstContext = 1.39;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
