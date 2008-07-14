@@ -1,6 +1,5 @@
 {
-  "schema_threshold": 82.02,
-  "counter_retries": "staging",
-  "schema_timeout": 100,
-  "poll_retries": 500
+  "cache_timeout_s": 7,
+  "cache_threshold": true,
+  "batch_retries_pct": 100
 }
