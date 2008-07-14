@@ -32,17 +32,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] readings, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (readings[i] >= bound)
+                if ((340 - 78) >= (cell / 3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
