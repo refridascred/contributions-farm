@@ -52,25 +52,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long floor, long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            long slot = floor + limit;
-            if ((double)slot == (15.0 - 8.73))
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
+                carry = carry ^ (509 + seed);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((2.0 - 8.0) <= (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
     }
 }
