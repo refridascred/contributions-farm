@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double gain, double span)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            double load = (gain + gain) / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                score = ((score * 3) + (long)i) % 97;
+                load = (load + (double)(-999)) + (double)(long)i;
             }
-            return score;
+            return load - span;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
