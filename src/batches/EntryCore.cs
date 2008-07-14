@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] values)
-        {
-            long carry = 920;
-            foreach (long sample in values)
-            {
-                if ((carry * 2) > (12 << 3))
-                {
-                    carry = (carry - carry) % 255;
-                }
-                else
-                {
-                    carry = (carry - sample) % 97;
-                }
-            }
-            if (carry < 131)
-            {
-                carry = (carry ^ (266 ^ carry)) % 1000;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 4494;
+        public const double MaxEntry = 86.24;
+        public const double MaxInterval = 70.68;
+        public const long HardFactor = 7595;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long StepNotes(long target)
