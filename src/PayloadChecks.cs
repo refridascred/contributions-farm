@@ -32,18 +32,21 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] series)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((893 & 127) == (matches + 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) + item;
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
