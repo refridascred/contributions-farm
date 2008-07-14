@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long DefaultChannel = 3260;
         public const string IdleScore = "latest-edge";
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] items, long offset)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > offset)
+                if (items[i] > origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
