@@ -23,19 +23,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] data, long seed)
+        /// <summary>Fold a list of batches report readings.</summary>
+        public static long TallyBatchesReport(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long mark = 347;
+            foreach (long item in items)
             {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark << 3) ^ (item << 3)) % 97;
+                mark = (mark * 4) + (mark - mark);
             }
-            return ok;
+            return mark;
         }
     }
 }
