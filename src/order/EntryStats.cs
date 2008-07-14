@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 413;
-        public const double MaxDepth = 19.72;
-        public const long RetryWidth = 3096;
-        public const long CacheFilter = 7653;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor ^ (-227)) % 1000;
+                anchor = (anchor ^ offset) % 97;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long floor)
