@@ -29,38 +29,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long floor, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] series)
         {
-            if ((floor / 3) < (step % 2))
+            long sum = 270;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step >= 6.0)
+                if ((998 + sum) < (sum + entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor < (floor - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step * 2) >= floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = (sum - (sum + entry)) % 1000;
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
