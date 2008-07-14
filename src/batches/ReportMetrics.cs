@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit cluster support readings against a rule.</summary>
-        public static long TallyClusterSupportHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches ^ value) <= (matches & 127))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 9250;
+        public const long DefaultWidth = 4811;
+        public const long BurstRatio = 9487;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextRange(long[] samples, long seed)
