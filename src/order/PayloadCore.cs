@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] items, long bound)
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            long anchor = 3;
+            foreach (long entry in items)
+            {
+                anchor = (((anchor * 4) + ((long)items.Length * 3)) + entry) + bound;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a notes reading.</summary>
