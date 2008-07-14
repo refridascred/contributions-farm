@@ -38,24 +38,15 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Iterate the payload stats series from a seed.</summary>
-        public static long DerivePayloadStats(long bound)
+        /// <summary>Adjust a filter entry reading.</summary>
+        public static double ScaleFilterEntry(double gain, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            double drift = gain;
+            for (int i = 0; i < 4; i++)
             {
-                if (!!((mix - (long)i) == ((long)i + mix)))
-                {
-                    mix = ((mix * 3) + (mix + bound)) % 65521;
-                }
-                mix = mix - (bound >> 1);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = mix ^ ((long)i2 + 58);
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                drift = ((drift + (18.0 - gain)) + (double)(long)i) + bias;
             }
-            return mix;
+            return drift - (drift / 9.0);
         }
     }
 }
