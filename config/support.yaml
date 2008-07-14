@@ -1,23 +1,33 @@
 # support settings
-warm_ttl:
-  - eu-west
-  - fallback
-  - edge
-graph_capacity: 69.75
-batch_threshold_pct:
-  retry_ratio_count: 23.3
-  retry_capacity: edge
-  audit: 31.1
-  readonly:
-    soft_depth: 30
-    sync_limit_count: true
-    verbose: green
-    burst_limit: false
-    entry_delay: 58.07
-    flush_ratio_pct: edge
-  poll_delay_pct:
-    min_limit_ms: 21
-    burst_threshold_ms: 28.3
-    readonly: 58
-    verbose: true
-    enabled: fallback
+support_timeout:
+  flush_retries_count: 84
+  verbose: open
+  warm_window_ms: 6.34
+  enabled: false
+  hard_capacity: true
+  token_timeout: true
+batch_window_ms:
+  token_threshold: strict
+  max_depth_pct: 62
+  batch_timeout: true
+  format_size: blue
+  min_timeout: 1024
+  enabled:
+    base_limit_count: 97.52
+    flush_delay_pct: 46.3
+    default_window_s:
+      - 128
+      - 390
+    min_size_ms: local
+max_threshold: 3265
+readonly: open
+persist: 8323
+min_ttl_count:
+  max_retries: strict
+  hard_retries_ms: latest
+  profile_interval: fallback
+  poll_threshold:
+    payload_size: 33.75
+    support_capacity: local
+    already_depth: 70
+    context_retries: false
