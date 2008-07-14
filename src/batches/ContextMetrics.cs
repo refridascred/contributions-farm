@@ -30,19 +30,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] series, long offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Validate metrics context readings against a bound.</summary>
