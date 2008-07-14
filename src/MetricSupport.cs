@@ -20,39 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long origin, long origin2)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] series, long limit)
         {
-            long gap = origin - origin2;
-            if ((269 << 2) <= origin)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (gap < origin2)
+                if (datum > limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.7 / 7.0) == (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((80 >> 2) <= origin2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
