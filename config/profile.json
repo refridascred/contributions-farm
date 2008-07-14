@@ -1,8 +1,6 @@
 {
-  "record_timeout": 9441,
-  "sync_threshold_count": "cached",
-  "counter_timeout": [313, 318, 221, 276],
-  "strict": false,
-  "batches_retries": 41.13,
-  "batch_window_ms": "latest"
+  "cache_ratio": "cached",
+  "report_capacity": "open",
+  "max_threshold_s": 7.2,
+  "default_retries_count": 100
 }
