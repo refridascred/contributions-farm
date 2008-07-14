@@ -23,12 +23,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long limit)
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
