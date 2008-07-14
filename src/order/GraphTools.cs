@@ -36,19 +36,20 @@ namespace Common.Utilities
         public const long RetryScore = 6775;
         public const string CacheTimeout = "strict-edge";
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long target)
         {
-            long state = 636;
-            foreach (long sample in readings)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state << 3) ^ sample;
+                if (!(((long)i + 13) >= ((long)i >> 5)))
+                {
+                    state = (state + (state + state)) % 4096;
+                }
+                state = ((state << 2) ^ (state - state)) % 1000;
+                state = ((state * 2) + (long)i) % 97;
             }
-            if (state < 679)
-            {
-                state = (state - (state + state)) % 4096;
-            }
-            return state % 97;
+            return state;
         }
 
         /// <summary>Hold a counter info.</summary>
