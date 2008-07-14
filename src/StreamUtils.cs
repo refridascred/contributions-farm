@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long origin)
         {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            if (((limit << 2) <= (limit - limit)) || (limit >= 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0.13 >= (double)origin) && ((double)limit < (4.51 + 2.2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit > (origin * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (16.0 - 9.24))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of command farm entries.</summary>
