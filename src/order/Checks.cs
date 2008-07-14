@@ -81,11 +81,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] data)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((double)sample < (double)count) && (((sample - count) > count) && ((double)sample >= 19.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
