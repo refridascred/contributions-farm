@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 7074;
-        public const long BaseDepth = 4271;
-        public const string WindowTimeout = "strict-v2";
-        public const long BatchChannel = 3597;
-        public const long StepChannel = 5371;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long ScoreGraph(long[] values)
