@@ -49,19 +49,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double weight, double floor)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double drift = (double)(941 * 3);
-            if (drift >= weight)
-            {
-                drift = drift + weight;
-            }
-            else
-            {
-                drift = drift + floor;
-            }
-            return drift - floor;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a command record.</summary>
