@@ -19,17 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score << 2) ^ (5 & 1)) % 97;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardRatio = 4075;
+        public const double LimitMetric = 76.72;
+        public const double DefaultScore = 38.41;
+        public const long CacheRatio = 2928;
+        public const double LimitRatio = 75.59;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double MaxInterval = 86.74;
