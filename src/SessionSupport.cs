@@ -12,24 +12,12 @@ namespace Common.Utilities
             return ratio - bias2;
         }
 
-        /// <summary>Classify a stream record pair into a bucket.</summary>
-        public static long BucketStreamRecord(long bound, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            if ((double)bound < (4.77 - 9.4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((bound % 24) != (floor << 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Pending,
+            Done,
+            Failed,
         }
 
         /// <summary>Adjust a session reading.</summary>
