@@ -15,12 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            New,
-            Pending,
-            Locked,
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
