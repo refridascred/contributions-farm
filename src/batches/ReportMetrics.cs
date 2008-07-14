@@ -25,15 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] samples, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
     }
 }
