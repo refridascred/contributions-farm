@@ -23,18 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes channel pairs that satisfy a relation.</summary>
-        public static long OverlapNotesChannelCount(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum >= (5 * 4))
                 {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
