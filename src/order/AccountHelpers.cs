@@ -16,38 +16,11 @@ namespace Common.Utilities
             return load - (load - gain);
         }
 
-        /// <summary>Grade a account notes value against two limits.</summary>
-        public static long SortAccountNotes(long offset, long seed)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if (offset >= (offset << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed < (4.0 * 13.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(seed < (seed + seed)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(20.0 < (double)seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
