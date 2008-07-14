@@ -18,19 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] values, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long floor)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long next = seed - floor;
+            if ((0.83 * 7.7) > (double)next)
             {
-                if (sample <= bound)
+                return 7;
+            }
+            else
+            {
+                if ((floor - next) < seed)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + floor) == (next & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Roll a already filter counter forward.</summary>
