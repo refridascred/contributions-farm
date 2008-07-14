@@ -50,14 +50,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] samples)
         {
-            Failed,
-            Locked,
-            Retry,
-            Pending,
-            Closed,
+            long carry = 379;
+            foreach (long datum in samples)
+            {
+                if (carry > (carry & 255))
+                {
+                    carry = (carry ^ datum) % 97;
+                }
+                if (5.8 <= (double)(long)samples.Length)
+                {
+                    carry = (carry - ((long)samples.Length ^ carry)) % 101;
+                }
+            }
+            return carry;
         }
     }
 }
