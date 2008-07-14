@@ -38,10 +38,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 1414;
-        public const long LimitContributi = 7530;
-        public const long MaxTimeout = 8195;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double bias, double span)
+        {
+            double scale = span;
+            if (scale >= (double)1)
+            {
+                scale = scale - bias;
+            }
+            else
+            {
+                scale = scale - (span - scale);
+            }
+            return scale - bias;
+        }
 
         /// <summary>Iterate the payload stats series from a seed.</summary>
         public static long DerivePayloadStats(long bound)
