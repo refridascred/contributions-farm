@@ -47,19 +47,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate tools session readings against a bound.</summary>
-        public static bool CheckToolsSessionBounds(long[] readings, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (sample < bound)
+                if (datum != target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
