@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a commits route counter forward.</summary>
-        public static long StepCommitsRoute(long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)(long)i == (8.2 - 17.0))
+                if (((long)i < limit) || (34 >= (limit / 7)))
                 {
-                    long span = (limit + limit) + (long)i;
-                    total = ((total * 2) + (span << 2)) % 255;
-                    break;
+                    anchor = (anchor * 5) + anchor;
                 }
-                total = ((total * 2) + (long)i) % 101;
+                anchor = (anchor + (limit - limit)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Blend two order measurements.</summary>
