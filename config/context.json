@@ -1,5 +1,18 @@
 {
-  "sync_window_pct": 19,
-  "queue_ttl": true,
-  "base_limit": 83.2
+  "compress": {
+    "max_ratio_s": "legacy",
+    "default_limit_s": {
+      "token_depth": "stable",
+      "max_ttl_count": 45,
+      "min_ttl_pct": 48.66,
+      "order_threshold": "green",
+      "max_window": 4425
+    },
+    "command_limit": "green",
+    "poll_ttl_count": 3438
+  },
+  "flush_delay": false,
+  "batch_capacity_count": "strict",
+  "max_delay": "eu-west",
+  "sync_retries_ms": 83.32
 }
