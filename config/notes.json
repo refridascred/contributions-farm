@@ -1,6 +1,8 @@
 {
-  "compress": "edge",
-  "batches_timeout": ["primary", "blue"],
-  "order_limit": true,
-  "warm_window": 90.97
+  "dry_run": 60,
+  "hard_limit_count": 9729,
+  "layout_limit": 70,
+  "batch_size": [105, 35, 280, 84],
+  "retry_depth_pct": [283, 84],
+  "verbose": ["stable", "eu-west"]
 }
