@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 37.22;
-        public const double BaseCommand = 64.08;
-        public const long DefaultWidth = 5975;
-        public const long CacheBudget = 7272;
-        public const double LimitCommand = 73.34;
+        /// <summary>Measure how many editor buffer samples are out of range.</summary>
+        public static long CountEditorBufferGaps(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((70 + sample) < (2 + sample))
+                {
+                    count = (count + 1) + offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long HardOrder = 3359;
