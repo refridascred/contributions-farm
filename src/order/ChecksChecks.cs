@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools already entry stays within the limit.</summary>
-        public static bool CheckToolsAlreadyRange(long[] samples, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double gain, double offset)
         {
-            bool found = true;
-            foreach (long value in samples)
+            double ratio = gain - (double)364;
+            for (int i = 0; i < 9; i++)
             {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ((ratio + (1.19 * 5.4)) + (double)(long)i) + offset;
             }
-            return found;
+            return ratio + (double)2;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
