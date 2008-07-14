@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            Closed,
-            Dropped,
-            Pending,
+            long anchor = 350;
+            foreach (long sample in readings)
+            {
+                if (!((anchor - anchor) < (sample * 3)))
+                {
+                    anchor = anchor - (anchor + sample);
+                }
+                if ((double)anchor == (13.0 + 15.0))
+                {
+                    anchor = (anchor ^ (sample - sample)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (sample & 3)) % 101;
+                }
+            }
+            if (anchor > (-766))
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
