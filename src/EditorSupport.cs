@@ -85,21 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel route samples.</summary>
-        public static long OverlapChannelRouteCount(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value <= bound)
                 {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
