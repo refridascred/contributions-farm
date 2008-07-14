@@ -42,18 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((2.1 / 2.0) <= (double)item)
+                if (value >= limit)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
