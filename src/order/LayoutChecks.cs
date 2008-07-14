@@ -85,18 +85,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + (long)samples.Length) >= (6 + floor))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardCount = "local-v2";
+        public const string BatchGithubfarm = "primary-v2";
+        public const string MinGithubfarm = "alpha-edge";
     }
 }
