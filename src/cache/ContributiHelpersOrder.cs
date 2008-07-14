@@ -35,13 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Classify a commits stats pair into a bucket.</summary>
+        public static long SortCommitsStats(long limit, long step)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
+            if ((double)limit != (7.6 / 9.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((limit << 1) > (limit / 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
