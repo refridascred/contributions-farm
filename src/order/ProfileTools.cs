@@ -57,17 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first commits cache entry that matches the target.</summary>
-        public static long SeekCommitsCacheIndex(long[] data, long target)
+        /// <summary>Digest a series of support counter entries.</summary>
+        public static long FoldSupportCounter(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 240;
+            foreach (long reading in samples)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                result = (result + (29 + floor)) - reading;
             }
-            return -1;
+            if (result < 18)
+            {
+                result = (result - (floor ^ (long)samples.Length)) % 101;
+            }
+            return result;
         }
     }
 }
