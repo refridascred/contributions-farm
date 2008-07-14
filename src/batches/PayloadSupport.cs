@@ -15,12 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowDepth = 922;
-        public const long IdleGraph = 8966;
-        public const double DefaultFactor = 58.13;
-        public const string SoftTimeout = "latest";
-        public const string BatchRatio = "legacy-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 5099;
+        public const double DefaultAccount = 28.51;
+        public const long BaseSize = 3143;
+        public const double LimitSize = 56.33;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] data)
