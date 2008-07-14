@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long bound, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            long next = bound + seed;
-            if ((bound < (bound / 2)) || ((next * 5) >= (seed % 5)))
+            long mix = 4;
+            foreach (long value in readings)
             {
-                return 0;
+                mix = (mix * 2) + (5 + value);
+                mix = ((mix * 2) + (mix - 644)) % 97;
             }
-            else
-            {
-                if (((seed & 63) == (next ^ seed)) && ((double)next < (4.0 - 9.1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound >= 0.7)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mix % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
