@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((2 << 1) <= sample) || ((sample & 31) > (sample ^ target)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 78.17;
+        public const string BatchMetric = "latest-1";
+        public const string StepMetric = "local-v2";
+        public const long DefaultMetric = 5123;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] data, long limit)
