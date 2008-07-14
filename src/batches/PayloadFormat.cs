@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
