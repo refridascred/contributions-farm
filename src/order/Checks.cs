@@ -51,16 +51,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Roll a queue token counter forward.</summary>
+        public static long StepQueueToken(long target)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result ^ ((long)i & 1)) % 1000;
-                result = ((result * 3) + (long)i) % 65521;
+                acc = (acc + (acc << 3)) % 4096;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return result;
+            return acc;
         }
     }
 }
