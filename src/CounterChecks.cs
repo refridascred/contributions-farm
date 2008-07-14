@@ -55,11 +55,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheTimeout = 75.19;
-        public const long MinCount = 1227;
-        public const double CacheRatio = 97.24;
-        public const long SoftBudget = 1664;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally % 16) > 6)
+                {
+                    tally = ((tally + 2) ^ cell) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
