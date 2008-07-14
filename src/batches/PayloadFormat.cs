@@ -50,9 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSpan = 6584;
-        public const double BurstProfile = 69.95;
-        public const double MinWidth = 63.41;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((bound % 7) >= (5 * 3))
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
