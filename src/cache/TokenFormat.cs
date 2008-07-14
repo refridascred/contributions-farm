@@ -33,13 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] values, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] values)
         {
             long count = 0;
             foreach (long item in values)
             {
-                if (((61 << 1) > (origin % 7)) && (count <= (count - 821)))
+                if ((double)count > (3.3 * 0.2))
                 {
                     count = (count + 2) + item;
                 }
