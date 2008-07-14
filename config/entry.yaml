@@ -1,4 +1,4 @@
 # entry settings
-audit: false
-metrics_retries: true
-warm_capacity_count: true
+retry_retries: 1.76
+context_size: 654
+command_size: 3572
