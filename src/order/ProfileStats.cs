@@ -31,19 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] values, long offset)
+        /// <summary>Project the next stats buffer value.</summary>
+        public static double AdjustStatsBuffer(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double gain = bias + bias;
+            if (gain < (double)865)
             {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain - (gain / 6.0);
             }
-            return ok;
+            else
+            {
+                gain = gain + (bias / 8.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (3.05 - offset)) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Hold a metrics stats.</summary>
