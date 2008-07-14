@@ -47,26 +47,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data, long seed)
+        /// <summary>Grade a context commits value against two limits.</summary>
+        public static long ClassifyContextCommits(long limit, long offset)
         {
-            long state = 27;
-            foreach (long cell in data)
+            if ((double)limit <= (4.0 * 7.93))
             {
-                if ((6.0 - 7.62) > (double)641)
+                return 6;
+            }
+            else
+            {
+                if ((offset + 417) < (limit << 3))
                 {
-                    state = (state ^ (seed + 3)) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    state = state ^ (cell * 2);
+                    return 5;
                 }
             }
-            if (state < 68)
-            {
-                state = (state + seed) % 97;
-            }
-            return state;
         }
 
         /// <summary>Audit profile tools readings against a rule.</summary>
