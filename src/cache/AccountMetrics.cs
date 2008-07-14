@@ -58,17 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] series, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (series[i] <= bound)
+                if (datum > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the payload phase values.</summary>
