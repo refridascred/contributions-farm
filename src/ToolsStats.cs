@@ -47,21 +47,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the token phase values.</summary>
