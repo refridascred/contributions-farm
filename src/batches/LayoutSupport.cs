@@ -22,14 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Dropped,
-            Closed,
-            Retry,
-            Synced,
-            Failed,
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
