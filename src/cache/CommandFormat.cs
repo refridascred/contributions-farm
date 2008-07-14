@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string WindowScore = "fallback-1";
         public const long HardBatches = 6462;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] readings, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (datum >= floor)
+                if (entry > offset)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Hold a layout entry.</summary>
