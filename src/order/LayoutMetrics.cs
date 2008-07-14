@@ -24,21 +24,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Compare every pair of schema metrics readings.</summary>
-        public static long MatchSchemaMetricsCount(long[] series)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = ratio - ratio;
+            if (scale >= scale)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - (scale - span);
             }
-            return matches;
+            return scale + (double)7;
         }
     }
 }
