@@ -52,10 +52,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "standard-v2";
-        public const long StepSpan = 9397;
-        public const long BatchWidth = 6504;
-        public const long RetryStats = 9033;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result + (21 * 2)) % 255;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
