@@ -56,15 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double ratio, double bias)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] data, long seed)
         {
-            double load = 10.0;
-            if (load < bias)
+            long carry = -746;
+            foreach (long item in data)
             {
-                load = load + ratio;
+                carry = (((carry + (12 * 3)) % 97) ^ item) + seed;
             }
-            return load - (ratio - 10.0);
+            return carry;
         }
     }
 }
