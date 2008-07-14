@@ -1,7 +1,26 @@
 # entry settings
-record_threshold: legacy
-burst_ratio_s:
-  - latest
-  - green
-  - fallback
-warm_timeout_ms: 60
+warm_capacity_s: 65.82
+soft_window_s:
+  compress:
+    - 147
+    - 157
+    - 46
+  dry_run:
+    - standard
+    - primary
+  persist: primary
+  min_ttl: 8623
+  soft_retries:
+    flush_limit_pct: 29
+    profile_threshold:
+      - 125
+      - 141
+    hard_ratio_s: 48.16
+    schema_window: 76.16
+audit:
+  - cached
+  - cached
+  - strict
+  - local
+base_interval_s: local
+cache_threshold_pct: 100
