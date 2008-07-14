@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] data, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (sample != floor)
+                if ((-11) <= (long)readings.Length)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
