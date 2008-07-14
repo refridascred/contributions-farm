@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long MinWidth = 292;
         public const long LimitRatio = 8470;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Ready,
-            Failed,
-            Draft,
-            Active,
-            Locked,
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
