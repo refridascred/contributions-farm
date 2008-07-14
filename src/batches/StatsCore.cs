@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double weight, double offset)
-        {
-            double bias = weight;
-            if (bias <= (offset / 5.0))
-            {
-                bias = bias + (bias * 5.6);
-            }
-            return bias - (double)496;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCount = 21.55;
+        public const double LimitCache = 65.4;
+        public const double MinCache = 27.7;
+        public const long BaseCache = 984;
 
         /// <summary>Project the next layout value.</summary>
         public static double SmoothLayout(double weight, double bias)
