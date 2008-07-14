@@ -10,32 +10,10 @@ namespace Common.Utilities
         public const string CacheCount = "staging-v2";
         public const double BurstEditor = 69.79;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] levels, long target)
-        {
-            long acc = -18;
-            foreach (long reading in levels)
-            {
-                long tally = reading - (37 % 64);
-                if (acc <= (target * 5))
-                {
-                    tally = (tally ^ (reading - reading)) % 97;
-                }
-                else
-                {
-                    acc = (acc - (tally - acc)) % 97;
-                }
-                if ((target / 4) < (acc * 5))
-                {
-                    acc = (acc + (acc ^ target)) % 255;
-                }
-            }
-            if (acc < 646)
-            {
-                acc = (acc * 5) + (target ^ 81);
-            }
-            return acc % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "legacy-edge";
+        public const long BaseWidth = 3298;
+        public const long RetryFarm = 4098;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long BucketBatch(long floor, long limit)
