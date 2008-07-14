@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the account commits entries that pass the check.</summary>
-        public static long AuditAccountCommitsOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((-368) < (datum * 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseRecord = "primary-v2";
+        public const double RetryRecord = 71.2;
+        public const long SoftFactor = 6754;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long bound, long bound2)
