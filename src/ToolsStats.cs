@@ -67,9 +67,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 6112;
-        public const string StepSpan = "alpha-v2";
-        public const long CacheRatio = 7336;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value * 3) <= (long)data.Length)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
