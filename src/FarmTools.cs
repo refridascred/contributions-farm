@@ -24,14 +24,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Look up the position of a counter window sample.</summary>
+        public static long FindCounterWindowIndex(long[] data, long offset)
         {
-            Closed,
-            Draft,
-            Stale,
-            Dropped,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
