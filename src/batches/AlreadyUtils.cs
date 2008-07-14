@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] series, long target)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double weight = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight - (floor - 0.4)) - (double)(long)i;
             }
-            return ready;
+            return weight + (3.0 * 5.04);
         }
 
         /// <summary>Audit support readings against a rule.</summary>
