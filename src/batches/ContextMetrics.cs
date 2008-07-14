@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double weight, double offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            double load = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - load) - (double)(long)i) + offset;
-            }
-            return load - (double)8;
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
