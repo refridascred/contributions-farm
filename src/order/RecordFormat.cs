@@ -19,19 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] data, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading <= limit)
+                if ((double)sum == (double)step)
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum << 3) ^ 415) % 4096;
                 }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum * 4) + (step - sum)) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Hold a metrics record.</summary>
