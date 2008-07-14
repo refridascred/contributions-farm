@@ -33,22 +33,12 @@ namespace Common.Utilities
         public const string CacheStream = "primary-edge";
         public const long CacheRatio = 5117;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] samples, long step)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell + step) > (matches + matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the filter state values.</summary>
