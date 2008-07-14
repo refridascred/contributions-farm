@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] samples, long seed)
+        /// <summary>Fold a list of stream cluster readings.</summary>
+        public static long CombineStreamCluster(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long anchor = 79;
+            foreach (long reading in levels)
             {
-                if ((6 - count) <= seed)
+                if ((6.05 * 9.35) < (double)anchor)
                 {
-                    count = (count + 2) - reading;
+                    anchor = (anchor + (reading - reading)) % 97;
                 }
             }
-            return count;
+            if (anchor < 663)
+            {
+                anchor = (anchor << 2) ^ (anchor / 2);
+            }
+            return anchor;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
