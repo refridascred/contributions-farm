@@ -44,17 +44,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a cluster stats reading by value.</summary>
-        public static long LookupClusterStatsIndex(long[] readings, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                if ((double)step < 0.6)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a profile session value against two limits.</summary>
