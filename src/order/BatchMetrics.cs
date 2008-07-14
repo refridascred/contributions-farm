@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
