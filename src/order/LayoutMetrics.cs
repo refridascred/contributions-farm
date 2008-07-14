@@ -54,17 +54,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] readings, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
+                if (((score + (long)i) != (origin & 1)) || ((18.0 / 5.0) < (double)origin))
                 {
-                    return (long)i;
+                    score = (score ^ (long)i) % 255;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
