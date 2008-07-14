@@ -1,8 +1,5 @@
 {
-  "batch_ratio": "staging",
-  "counter_delay": 95,
-  "flush_limit_count": 9566,
-  "idle_ttl": "latest",
-  "poll_delay_count": 7446,
-  "verbose": 100
+  "flush_ttl_pct": 3440,
+  "enabled": 62.97,
+  "base_delay_ms": ["eu-west", "green", "cached"]
 }
