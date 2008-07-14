@@ -32,13 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long target, long offset)
         {
-            New,
-            Dropped,
-            Draft,
-            Locked,
+            if (offset > target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target ^ offset) > ((-258) + 0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target >= (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
