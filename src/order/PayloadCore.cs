@@ -27,12 +27,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] values, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
