@@ -38,17 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                total = total - origin;
-                total = (total + (total & 63)) % 101;
-                total = ((total * 4) + (long)i) % 97;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Audit cache metrics readings against a rule.</summary>
