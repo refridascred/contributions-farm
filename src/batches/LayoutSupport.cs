@@ -65,17 +65,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first channel tools entry that matches the target.</summary>
-        public static long LookupChannelToolsIndex(long[] items, long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long step, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((-623) ^ limit) > 8)
             {
-                if (items[i] > offset)
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 3) <= limit)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((6.0 + 1.1) < (8.49 - 4.4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((limit + limit) >= (limit << 1)) && ((915 + limit) != (step + 1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
