@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseRecord = "primary-v2";
-        public const double RetryRecord = 71.2;
-        public const long SoftFactor = 6754;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Closed,
+            Dropped,
+            Draft,
+            New,
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long bound, long bound2)
