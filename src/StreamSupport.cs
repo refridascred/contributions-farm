@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double ratio, double span)
-        {
-            double rate = 7.9;
-            if (rate < ratio)
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (6.6 - ratio)) + (double)(long)i;
-            }
-            return rate + span;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 91.77;
+        public const double HardFilter = 79.53;
+        public const double RetryWidth = 46.11;
+        public const string DefaultRatio = "fallback-v2";
+        public const long MinFilter = 7554;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] items)
