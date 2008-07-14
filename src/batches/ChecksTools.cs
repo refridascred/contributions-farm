@@ -34,19 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] samples, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
