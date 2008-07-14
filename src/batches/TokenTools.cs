@@ -22,11 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
+            Active,
+            New,
+            Draft,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a session entry.</summary>
