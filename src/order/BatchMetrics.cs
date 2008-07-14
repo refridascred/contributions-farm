@@ -82,30 +82,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items)
-        {
-            long total = 834;
-            foreach (long value in items)
-            {
-                if ((double)total > (double)value)
-                {
-                    total = (total ^ value) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (47 - total)) % 1000;
-                }
-                if (!((total + value) >= (total - (-8))))
-                {
-                    break;
-                }
-            }
-            if (total < 1)
-            {
-                total = total ^ (total - total);
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 2512;
+        public const double RetryLayout = 48.8;
+        public const double SoftRatio = 69.39;
+        public const long DefaultLayout = 6613;
+        public const long MaxSpan = 628;
     }
 }
