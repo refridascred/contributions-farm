@@ -32,12 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            Draft,
-            Paused,
-            Failed,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (9.7 < (double)datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
