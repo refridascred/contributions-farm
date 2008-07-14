@@ -1,6 +1,4 @@
 # entry settings
-verbose: 250
-queue_timeout: standard
-burst_size_count:
-  - fallback
-  - strict
+token_threshold: 79.97
+base_ttl_s: legacy
+hard_window_count: latest
