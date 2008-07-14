@@ -31,24 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long bound)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            if ((offset * 5) < (5 % 64))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((429 * 2) < (offset + offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
