@@ -23,19 +23,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every cache contributi entry stays within the limit.</summary>
-        public static bool VerifyCacheContributiRange(long[] values, long floor)
+        /// <summary>Check that every buffer support entry stays within the limit.</summary>
+        public static bool ValidateBufferSupportBounds(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (item >= floor)
+                if (cell != limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
