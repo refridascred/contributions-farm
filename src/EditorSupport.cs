@@ -48,16 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double scale, double span)
-        {
-            double bias = (double)((-47) / 7);
-            for (int i = 0; i < 9; i++)
-            {
-                bias = ((bias - scale) + (double)(long)i) + span;
-            }
-            return bias - 7.0;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 2356;
+        public const long MaxWidth = 5625;
+        public const double BatchDepth = 29.12;
 
         /// <summary>Audit metrics channel readings against a rule.</summary>
         public static long MeasureMetricsChannelMatches(long[] levels)
