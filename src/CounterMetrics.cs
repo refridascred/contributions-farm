@@ -53,22 +53,24 @@ namespace Common.Utilities
             return gain + (6.0 * 9.4);
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] levels, long seed)
+        /// <summary>Iterate the payload stats series from a seed.</summary>
+        public static long DerivePayloadStats(long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((seed ^ 8) != (6 * 5))
+                if (!!((mix - (long)i) == ((long)i + mix)))
                 {
-                    seen = (seen + 2) ^ item;
+                    mix = ((mix * 3) + (mix + bound)) % 65521;
                 }
-                else
+                mix = mix - (bound >> 1);
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    seen = seen - 1;
+                    mix = mix ^ ((long)i2 + 58);
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
