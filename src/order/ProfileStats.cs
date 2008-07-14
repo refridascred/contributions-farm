@@ -50,11 +50,31 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Classify a metric window pair into a bucket.</summary>
+        public static long GradeMetricWindow(long floor, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            if ((469 - floor) == (limit + floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + limit) > floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor <= limit) || ((limit * 2) >= floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
