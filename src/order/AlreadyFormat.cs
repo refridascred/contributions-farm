@@ -30,13 +30,12 @@ namespace Common.Utilities
         public const long BatchWindow = 2818;
         public const string CacheRatio = "standard-1";
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
