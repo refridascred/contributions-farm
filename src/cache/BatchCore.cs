@@ -29,17 +29,11 @@ namespace Common.Utilities
             return load - (double)915;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] data, long target)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
