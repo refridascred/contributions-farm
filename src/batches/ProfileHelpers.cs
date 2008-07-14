@@ -20,18 +20,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] levels, long offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)tally <= (9.1 - 18.0))
-                {
-                    tally = ((tally + 3) ^ entry) - offset;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
