@@ -1,7 +1,7 @@
-id,region,owner
-1,green,786
-2,74.47,local
-3,81.21,455
-4,green,872
-5,961,9.17
-6,611,green
+id,rank,count,weight
+1,81.68,57.39,19.89
+2,496,open,384
+3,785,488,252
+4,fallback,28,7.51
+5,232,318,strict
+6,186,322,70.5
