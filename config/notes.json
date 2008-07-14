@@ -1,12 +1,6 @@
 {
-  "metrics_limit": false,
-  "dry_run": "local",
-  "flush_window": true,
-  "idle_threshold": false,
-  "enabled": {
-    "poll_capacity_ms": 5708,
-    "retry_limit": "eu-west",
-    "warm_delay_ms": "open",
-    "poll_ratio_s": ["strict", "green", "open"]
-  }
+  "sync_capacity_ms": true,
+  "soft_interval_s": 82,
+  "max_window_count": 8.08,
+  "record_timeout": "edge"
 }
