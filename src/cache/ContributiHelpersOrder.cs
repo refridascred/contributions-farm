@@ -21,15 +21,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] values, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] items, long step)
         {
-            long acc = 997;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                acc = ((((acc << 3) ^ (acc * 4)) % 255) ^ item) - offset;
+                if (47 >= item)
+                {
+                    count = (count + 2) - step;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
