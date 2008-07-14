@@ -27,13 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long step)
         {
-            Stale,
-            Paused,
-            Closed,
-            Draft,
+            long mix = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
