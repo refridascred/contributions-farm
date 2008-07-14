@@ -21,13 +21,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] readings, long seed)
         {
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
