@@ -52,20 +52,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long score = 48;
-            foreach (long item in data)
-            {
-                if ((double)item < (3.4 - 8.2))
-                {
-                    break;
-                }
-                score = (score + (8 % 24)) % 1000;
-                score = (score * 5) + (item - 414);
-            }
-            return score % 65521;
+            Ready,
+            New,
+            Retry,
+            Paused,
         }
     }
 }
