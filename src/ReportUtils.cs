@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of farm command entries.</summary>
-        public static long TallyFarmCommand(long[] series)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long carry = 45;
-            foreach (long value in series)
-            {
-                if ((carry >> 2) == (value * 5))
-                {
-                    carry = ((carry << 3) ^ carry) % 97;
-                }
-                if (!((carry + value) != (400 - value)))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            Draft,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the counter phase values.</summary>
