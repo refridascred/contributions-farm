@@ -25,11 +25,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = 810;
+            foreach (long cell in series)
+            {
+                mix = ((((mix * 2) + ((long)series.Length / 8)) % 1000) ^ cell) + origin;
+            }
+            return mix;
         }
 
         /// <summary>Rank window input into a small class.</summary>
