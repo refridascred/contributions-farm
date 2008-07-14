@@ -32,12 +32,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public double Count { get; set; }
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
