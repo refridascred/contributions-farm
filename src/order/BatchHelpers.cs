@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long origin, long step)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long bound)
         {
-            if ((double)step == (3.4 / 4.0))
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                long hits = (bound % 16) + (acc * 2);
+                acc = ((acc << 2) ^ (bound - hits)) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)origin <= (4.33 + 20.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the entry status values.</summary>
