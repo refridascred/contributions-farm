@@ -52,12 +52,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 6681;
-        public const long BurstRecord = 907;
-        public const long CacheRecord = 5619;
-        public const double WindowDepth = 62.12;
-        public const long CacheFactor = 2611;
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double gain, double span)
+        {
+            double scale = 4.27;
+            if (scale < (double)720)
+            {
+                scale = scale + 8.3;
+            }
+            else
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + span;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BaseNotes = 89.35;
