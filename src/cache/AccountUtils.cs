@@ -13,26 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] data, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long anchor = -230;
-            foreach (long entry in data)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((anchor & 63) != (entry ^ anchor))
+                if (((seed % 97) > carry) || ((seed + seed) >= (carry + seed)))
                 {
-                    anchor = ((anchor << 2) ^ (740 / 3)) % 65521;
+                    carry = ((carry * 5) + (seed >> 1)) % 4096;
                 }
-                if (target <= anchor)
-                {
-                    anchor = anchor + (target & 3);
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Roll a account counter forward.</summary>
