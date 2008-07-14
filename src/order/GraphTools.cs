@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long MaxEditor = 7089;
         public const double WindowSize = 21.08;
 
-        /// <summary>Look up the position of a payload route sample.</summary>
-        public static long FindPayloadRouteIndex(long[] readings, long target)
+        /// <summary>Combine channel checks values into a single score.</summary>
+        public static long DigestChannelChecks(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 897;
+            foreach (long reading in data)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
+                if ((12.0 + 18.0) >= (double)mix)
                 {
-                    return (long)i;
+                    mix = (((mix << 3) ^ (long)data.Length) % 101) + reading;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a payload stats.</summary>
