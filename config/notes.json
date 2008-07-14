@@ -1,5 +1,7 @@
 {
-  "dry_run": 75.41,
-  "record_window": 76.9,
-  "min_interval_pct": ["strict", "blue", "edge"]
+  "batch_ttl": "primary",
+  "schema_retries": false,
+  "max_ratio_pct": 28,
+  "poll_size_s": 13,
+  "payload_threshold": "staging"
 }
