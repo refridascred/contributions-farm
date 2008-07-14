@@ -60,19 +60,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] series, long seed)
+        /// <summary>Classify a cluster stream pair into a bucket.</summary>
+        public static long SortClusterStream(long seed, long seed2)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long span = seed + seed2;
+            if (!((seed - seed2) >= span))
             {
-                if (value < seed)
+                return 3;
+            }
+            else
+            {
+                if (!((double)seed2 < (2.1 / 2.0)))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
