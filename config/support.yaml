@@ -1,23 +1,30 @@
 # support settings
-compress: 60
-soft_retries_ms: 15
-profile_timeout: 6420
-queue_size: 2820
-readonly:
-  max_delay: open
-  idle_ttl: blue
-  poll_timeout:
-    editor_window:
-      - staging
-      - edge
-      - staging
-      - latest
-    record_limit: strict
-    hard_interval: 2621
-    hard_depth_ms:
-      - 212
-      - 16
-  batch_limit:
-    - 50
-    - 421
-    - 400
+burst_limit:
+  audit:
+    - legacy
+    - open
+  editor_retries:
+    - 91
+    - 134
+    - 384
+    - 187
+  counter_threshold:
+    - latest
+    - green
+    - edge
+  cache_window: local
+flush_retries_ms:
+  cluster_size:
+    - cached
+    - edge
+  burst_capacity_s: 3010
+  soft_ttl: 30
+  stats_window:
+    poll_window: green
+    sync_interval_ms: 37
+    warm_delay_pct: false
+    warm_retries: 50.78
+    hard_timeout_count: green
+  farm_threshold: 24
+  max_ratio_pct: primary
+soft_ttl_count: 60
