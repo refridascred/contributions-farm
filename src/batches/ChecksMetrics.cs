@@ -95,12 +95,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] series)
         {
-            Paused,
-            Done,
-            Locked,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((10.0 / 4.0) >= (double)tally) && (((6 ^ entry) <= entry) && ((6.06 * 3.1) == (double)tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
