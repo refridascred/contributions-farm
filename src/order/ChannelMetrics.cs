@@ -16,11 +16,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
