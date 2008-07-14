@@ -78,22 +78,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile tools readings against a rule.</summary>
-        public static long TallyProfileToolsHits(long[] data)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long bound, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long prev = bound + origin;
+            if (((-74) - bound) > bound)
             {
-                if ((count - sample) >= (sample + sample))
+                return 7;
+            }
+            else
+            {
+                if (6.36 < (double)origin)
                 {
-                    count = count + 2;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((prev * 4) <= (55 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((prev & 127) <= (bound + 846))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
