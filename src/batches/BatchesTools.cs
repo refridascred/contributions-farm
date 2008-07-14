@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] levels, long origin)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long value in levels)
+            double scale = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (value < origin)
-                {
-                    found = false;
-                    break;
-                }
+                scale = ((scale + (5.71 / 4.0)) + (double)(long)i) + ratio;
             }
-            return found;
+            return scale + 2.0;
         }
 
         /// <summary>Describe the payload status values.</summary>
