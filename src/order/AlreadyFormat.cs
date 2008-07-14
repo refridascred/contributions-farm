@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const long BatchWindow = 2818;
         public const string CacheRatio = "standard-1";
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] items, long bound)
         {
-            Synced,
-            Done,
-            Paused,
+            long total = 175;
+            foreach (long cell in items)
+            {
+                total = (total + (bound >> 2)) + cell;
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
