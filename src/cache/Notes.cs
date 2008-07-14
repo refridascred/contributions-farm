@@ -50,18 +50,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count + count) < count)
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
