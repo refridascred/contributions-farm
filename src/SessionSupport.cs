@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] series, long bound)
         {
-            long acc = 375;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long item in series)
             {
-                acc = ((acc * 2) + (item << 1)) % 4096;
+                if (item < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Rank already input into a small class.</summary>
