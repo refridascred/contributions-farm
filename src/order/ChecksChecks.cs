@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Check that every session payload entry stays within the limit.</summary>
+        public static bool CheckSessionPayloadRange(long[] items, long limit)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two stats measurements.</summary>
