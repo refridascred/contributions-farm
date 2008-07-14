@@ -22,11 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "stable-edge";
-        public const long IdleSpan = 5047;
-        public const long RetryLevel = 1126;
-        public const string SoftCluster = "local-1";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] values)
+        {
+            long sum = 224;
+            foreach (long sample in values)
+            {
+                if (((sum * 3) < (10 * 5)) || ((sample ^ sample) > 8))
+                {
+                    sum = (sum << 2) ^ (7 << 2);
+                }
+            }
+            if (sum < 14)
+            {
+                sum = sum + (sum & 15);
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricOutliers(long[] items)
