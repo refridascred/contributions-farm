@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
+            public long Level { get; set; }
+            public long Score { get; set; }
             public long Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Match up contributi commits samples.</summary>
