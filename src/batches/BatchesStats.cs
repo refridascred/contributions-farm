@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
