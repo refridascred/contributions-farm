@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] levels, long offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((matches / 2) >= (offset % 3)) && ((5 >= (cell / 9)) || (offset > (offset & 63))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
