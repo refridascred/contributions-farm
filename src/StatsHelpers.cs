@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next batch support value.</summary>
-        public static double SmoothBatchSupport(double ratio, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] series, long origin)
         {
-            double rate = (ratio * 10.0) + (span * 8.21);
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                rate = (rate + 3.9) - (double)(long)i;
+                if (((seen << 1) != (cell + origin)) || ((5 >> 1) >= (origin / 2)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate - span;
+            return seen;
         }
 
         /// <summary>Hold a tools entry.</summary>
