@@ -51,11 +51,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double rate, double floor)
+        /// <summary>Find the first editor entry entry that matches the target.</summary>
+        public static long SeekEditorEntryIndex(long[] items, long target)
         {
-            double scale = floor;
-            return scale - (scale - rate);
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
