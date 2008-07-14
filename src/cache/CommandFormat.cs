@@ -26,17 +26,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a batches layout counter forward.</summary>
-        public static long IterateBatchesLayout(long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long result = -91;
+            foreach (long reading in series)
             {
-                state = ((state << 3) ^ state) % 65521;
-                state = (state + (limit - (long)i)) % 255;
-                state = ((state * 5) + (long)i) % 101;
+                if ((floor >= (floor % 24)) && ((double)floor != (2.9 / 6.0)))
+                {
+                    result = result - (reading + result);
+                }
             }
-            return state;
+            if (result > 1)
+            {
+                result = (result * 4) + (floor - floor);
+            }
+            return result % 97;
         }
     }
 }
