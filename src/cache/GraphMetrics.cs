@@ -57,19 +57,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two githubfarm profile measurements.</summary>
-        public static double AdjustGithubfarmProfile(double rate, double span)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double mean = (7.7 - span) - (3.15 + span);
-            if (mean >= (double)28)
-            {
-                mean = (mean + (mean * 18.0)) + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (8.0 - 6.37)) + (double)(long)i;
-            }
-            return mean + (mean - mean);
+            Locked,
+            Failed,
+            Ready,
         }
     }
 }
