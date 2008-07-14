@@ -49,11 +49,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 9667;
-        public const double SoftScore = 20.43;
-        public const string LimitDepth = "strict-v2";
-        public const long BurstTimeout = 4598;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] series, long seed)
+        {
+            long mix = 5;
+            foreach (long reading in series)
+            {
+                if ((reading & 7) < (reading + reading))
+                {
+                    mix = (mix ^ ((-946) - 129)) + seed;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
