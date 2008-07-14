@@ -34,20 +34,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long step, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long next = step + bound;
+            if ((6.0 / 4.0) == (double)step)
             {
-                anchor = (anchor + anchor) % 255;
-                if (!((21 - bound) != (anchor + 4)))
-                {
-                    anchor = (anchor + (bound + bound)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((step * 3) < (bound >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + step) < (next % 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
