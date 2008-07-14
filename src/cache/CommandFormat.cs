@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheCount = 22.9;
-        public const string WindowScore = "fallback-1";
-        public const long HardBatches = 6462;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BaseCache = 21.71;
