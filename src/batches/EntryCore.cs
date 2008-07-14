@@ -44,18 +44,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] samples)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long origin, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long cur = origin - seed;
+            if (cur >= (cur ^ 9))
             {
-                if ((count < cell) || ((count & 31) <= cell))
+                return 3;
+            }
+            else
+            {
+                if ((cur - cur) < origin)
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)cur >= (6.0 / 3.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
