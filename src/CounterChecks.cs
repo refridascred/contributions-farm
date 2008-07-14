@@ -36,10 +36,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 2032;
-        public const string MinLayout = "staging-v2";
-        public const double LimitLayout = 85.33;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 9667;
+        public const double SoftScore = 20.43;
+        public const string LimitDepth = "strict-v2";
+        public const long BurstTimeout = 4598;
 
         /// <summary>Match up stream report samples.</summary>
         public static long MatchStreamReportCount(long[] values)
