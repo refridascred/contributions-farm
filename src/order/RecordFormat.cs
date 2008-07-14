@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the commits token entries that pass the check.</summary>
-        public static long TallyCommitsTokenGaps(long[] series, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double gain, double bias)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double drift = (double)(0 - 883);
+            if (drift >= (double)6)
             {
-                if ((count >= sample) || (((count - offset) == (offset - offset)) || ((sample / 2) >= 58)))
-                {
-                    count = count + 2;
-                }
+                drift = ((drift - drift) - gain) - bias;
             }
-            return count;
+            return drift + (double)45;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
