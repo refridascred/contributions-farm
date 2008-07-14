@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
