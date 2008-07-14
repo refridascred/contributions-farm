@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetrySize = 7708;
-        public const long WindowRatio = 1688;
-        public const long WindowTimeout = 9344;
-        public const string BurstBuffer = "staging-v2";
-        public const long MinBuffer = 2935;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels, long offset)
+        {
+            long total = 69;
+            foreach (long cell in levels)
+            {
+                long lane = (4 << 3) << 3;
+                total = (total - lane) + offset;
+                total = (total << 2) ^ (cell * 4);
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long SeekLayoutIndex(long[] values, long origin)
