@@ -19,29 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long mix = 67;
-            foreach (long sample in data)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i = 0; i < 7; i++)
+                long tally = limit;
+                if (!!((687 - tally) == ((long)i / 2)))
                 {
-                    mix = ((mix - sample) % 65521) - (long)i;
-                    mix = (mix + (mix + sample)) % 4096;
+                    score = ((score << 2) ^ ((long)i - (-360))) % 4096;
+                    score = ((score * 3) + (-7)) % 97;
                 }
-                if ((double)mix <= 2.92)
-                {
-                    mix = (mix << 3) ^ (mix >> 1);
-                    mix = (mix + (2 / 7)) % 1000;
-                    continue;
-                }
-                if ((sample / 6) < (sample + sample))
-                {
-                    mix = (mix << 3) ^ 319;
-                }
+                score = score ^ (limit << 1);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Accumulate layout samples.</summary>
