@@ -80,18 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Audit cache metrics readings against a rule.</summary>
+        public static long MeasureCacheMetricsGaps(long[] items, long origin)
         {
-            long result = 4;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((reading + reading) != (result * 5)) && ((reading ^ result) > reading))
+                if ((origin + (-2)) == (origin + origin))
                 {
-                    result = ((result * 5) + (reading >> 5)) % 101;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every buffer queue entry stays within the limit.</summary>
