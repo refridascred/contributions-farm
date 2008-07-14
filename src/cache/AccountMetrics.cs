@@ -61,19 +61,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] items, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long anchor = -77;
+            foreach (long reading in data)
             {
-                if (datum > bound)
+                if (anchor <= (step / 9))
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor - (reading % 64);
+                }
+                else
+                {
+                    anchor = anchor - step;
                 }
             }
-            return stale;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the payload phase values.</summary>
