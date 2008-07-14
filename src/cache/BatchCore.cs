@@ -49,11 +49,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 151;
-        public const double MinSize = 72.32;
-        public const long SoftLevel = 8934;
-        public const string WindowAccount = "stable-edge";
-        public const long BatchDepth = 1896;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
