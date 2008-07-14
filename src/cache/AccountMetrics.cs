@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] values, long target)
+        /// <summary>Classify a token counter pair into a bucket.</summary>
+        public static long GradeTokenCounter(long offset, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if ((limit + limit) >= limit)
             {
-                if (target > (77 - target))
+                return 4;
+            }
+            else
+            {
+                if (((-223) + offset) <= ((-37) + limit))
                 {
-                    count = (count + 2) + datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit & 127) > (limit >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the stream status values.</summary>
