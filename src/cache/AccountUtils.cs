@@ -18,15 +18,22 @@ namespace Common.Utilities
         public const string HardTools = "strict-v2";
         public const long RetryRatio = 9981;
 
-        /// <summary>Derive the next graph counter value from a seed.</summary>
-        public static long IterateGraphCounter(long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] data, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            long anchor = 793;
+            foreach (long value in data)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = ((anchor ^ (anchor + anchor)) % 1000) ^ (long)i;
+                }
+                if ((value >> 2) < target)
+                {
+                    anchor = ((anchor * 5) + (anchor >> 1)) % 4096;
+                }
             }
-            return sum;
+            return anchor;
         }
     }
 }
