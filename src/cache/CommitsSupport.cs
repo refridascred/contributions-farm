@@ -30,14 +30,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many farm checks samples are out of range.</summary>
+        public static long MeasureFarmChecksOutliers(long[] series)
         {
-            Paused,
-            New,
-            Stale,
-            Queued,
-            Closed,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (sample >= 66)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
