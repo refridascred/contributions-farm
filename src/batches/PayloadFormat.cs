@@ -48,18 +48,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster batches readings against a rule.</summary>
-        public static long TallyClusterBatchesGaps(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((tally >= (tally * 2)) && ((74 % 8) != (tally & 127))) && ((tally + tally) >= (reading & 7)))
-                {
-                    tally = tally + 3;
-                }
+                score = (score + (bound - bound)) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
