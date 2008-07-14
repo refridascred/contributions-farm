@@ -1,5 +1,5 @@
 {
-  "compress": 26.34,
-  "burst_window_s": 62,
-  "strict": 60
+  "default_capacity": 9006,
+  "burst_interval_s": 250,
+  "cache_timeout": "fallback"
 }
