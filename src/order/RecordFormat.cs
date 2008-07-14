@@ -30,13 +30,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Queued,
-            Draft,
+            Active,
+            Paused,
             Done,
-            Dropped,
+            Pending,
+            Retry,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
