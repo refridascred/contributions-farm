@@ -1,13 +1,15 @@
 # Command notes
 
-The stats report groups every counter by editor.
-Each channel is validated before it reaches the graph queue.
+Use editor settings to tune how often format data is refreshed.
+Use editor settings to tune how often format data is refreshed.
+When a context fails, the graph handler retries a few times before giving up.
 
-Run the token check before changing any metrics limits.
-The notes module keeps batch values in sync with the record cache.
+Use metric settings to tune how often entry data is refreshed.
+Each session is validated before it reaches the notes queue.
+The metrics module keeps route values in sync with the farm cache.
 
 ## Guidelines
 
-- Review stats limits each release
-- Prefer profile defaults
-- Validate githubfarm input early
+- Log every session change
+- Review cluster limits each release
+- Document new record fields
