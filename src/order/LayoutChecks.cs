@@ -37,11 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 3359;
-        public const double HardDepth = 14.96;
-        public const long LimitScore = 7343;
-        public const long StepInterval = 1223;
+        /// <summary>Audit support account readings against a rule.</summary>
+        public static long MeasureSupportAccountOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)item == (1.71 - 3.45))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
