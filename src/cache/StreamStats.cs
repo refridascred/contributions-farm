@@ -46,17 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] data, long bound)
+        /// <summary>Measure how many farm stream samples are out of range.</summary>
+        public static long AuditFarmStreamMatches(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((data[i] < bound) && ((data[i] % 2) != 0))
+                if (!((tally + tally) == (tally * 4)))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + sample) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of batches counter readings.</summary>
