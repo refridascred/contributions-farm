@@ -1,10 +1,5 @@
 # githubfarm settings
-batch_ttl: 250
-strict: 3053
-idle_ratio_s:
-  - 171
-  - 303
-retry_threshold_count: cached
-sync_limit_count:
-  - local
-  - staging
+hard_timeout_pct: true
+session_ttl: local
+compress: open
+counter_ttl: 82
