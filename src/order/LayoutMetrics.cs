@@ -22,17 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the counter phase values.</summary>
