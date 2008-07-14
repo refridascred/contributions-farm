@@ -5,36 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine stream queue values into a single score.</summary>
-        public static long FoldStreamQueue(long[] data, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] data, long offset)
         {
-            long mark = 86;
+            bool valid = true;
             foreach (long item in data)
             {
-                if (((mark - step) <= (step ^ item)) || ((mark >> 1) <= (step % 12)))
+                if (item > offset)
                 {
-                    mark = (mark ^ (long)data.Length) % 97;
-                    mark = (mark + mark) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ (item + step)) % 1000;
-                    mark = (mark ^ step) % 65521;
-                }
-                if ((double)step > (3.6 * 6.0))
-                {
-                    mark = ((mark << 3) ^ (mark >> 3)) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ (mark * 4)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 66)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark % 1000;
+            return valid;
         }
 
         /// <summary>Scale a report layout figure with a bias.</summary>
