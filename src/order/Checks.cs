@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] data)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (reading <= (seen >> 5))
+                if (((tally & 31) > entry) && ((3.6 / 4.0) != (double)entry))
                 {
-                    seen = seen + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
