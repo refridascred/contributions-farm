@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] readings, long bound)
+        /// <summary>Count the buffer record entries that pass the check.</summary>
+        public static long CountBufferRecordGaps(long[] series, long target)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (entry >= bound)
+                if ((0 ^ seen) < (sample + seen))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the entry phase values.</summary>
