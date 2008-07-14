@@ -49,14 +49,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Queued,
+            Idle,
+            Paused,
             Locked,
-            Failed,
-            Synced,
-            Closed,
+            Retry,
         }
 
         /// <summary>Describe the token phase values.</summary>
