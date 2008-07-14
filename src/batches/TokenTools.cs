@@ -23,19 +23,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] data, long floor)
+        /// <summary>Measure how many profile editor samples are out of range.</summary>
+        public static long CountProfileEditorGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (entry >= floor)
+                if ((56 << 3) > (matches + cell))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
