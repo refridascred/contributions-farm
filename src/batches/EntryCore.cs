@@ -35,33 +35,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long origin, long seed)
-        {
-            long cur = origin - seed;
-            if (cur >= (cur ^ 9))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((cur - cur) < origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)cur >= (6.0 / 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 279;
+        public const long SoftSpan = 2702;
+        public const string BatchChecks = "strict-1";
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenMatches(long[] items)
