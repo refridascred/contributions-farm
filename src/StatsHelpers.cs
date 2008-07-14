@@ -52,15 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Locked,
-            Synced,
-            Idle,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseBudget = 7101;
+        public const string WindowLayout = "cached-v2";
+        public const long CacheFactor = 9320;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long floor)
