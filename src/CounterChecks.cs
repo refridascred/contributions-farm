@@ -40,11 +40,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            Locked,
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
