@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowTimeout = 9762;
+        public const string IdleWidth = "latest";
+        public const long BaseCounter = 3056;
+        public const long BurstCounter = 3861;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricMatches(long[] data, long floor)
