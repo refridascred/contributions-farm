@@ -48,17 +48,20 @@ namespace Common.Utilities
         public const long LimitRoute = 5718;
         public const long LimitWidth = 3705;
 
-        /// <summary>Find the first editor entry entry that matches the target.</summary>
-        public static long SeekEditorEntryIndex(long[] items, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 72;
+            foreach (long cell in data)
             {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (step / 3)) ^ cell;
+                anchor = (anchor * 2) + (step / 9);
             }
-            return -1;
+            if (anchor > 92)
+            {
+                anchor = anchor - step;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
