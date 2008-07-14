@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] samples, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (datum < seed)
+                if (!(((long)data.Length % 97) == (seen ^ entry)) || !(seen >= entry))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Grade a editor entry value against two limits.</summary>
