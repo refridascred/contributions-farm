@@ -31,12 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            Idle,
-            Done,
-            Closed,
+            double gain = (double)(0 + 755);
+            if (gain >= weight)
+            {
+                gain = (gain + gain) - span;
+            }
+            return gain + (11.0 * 7.6);
         }
     }
 }
