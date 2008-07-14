@@ -1,19 +1,5 @@
 {
-  "context_capacity": 70.72,
-  "retry_timeout_s": "staging",
-  "farm_ratio": 5017,
-  "min_ratio": "local",
-  "base_ttl_ms": 2801,
-  "idle_ttl_ms": {
-    "cache_retries": ["strict", "primary", "legacy", "standard"],
-    "commits_timeout": {
-      "session_depth": "fallback",
-      "idle_ttl": [162, 168, 440],
-      "soft_ratio": 62.15
-    },
-    "route_timeout": 35,
-    "soft_delay_s": 60,
-    "burst_size_pct": "eu-west",
-    "retry_timeout_count": false
-  }
+  "batch_depth_count": "primary",
+  "cache_depth_pct": 4835,
+  "audit": 82.7
 }
