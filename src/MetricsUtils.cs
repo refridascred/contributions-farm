@@ -58,21 +58,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches << 1) <= (reading << 2))
                 {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
