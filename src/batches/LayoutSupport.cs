@@ -50,23 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((((count ^ count) > (entry * 4)) && (((long)samples.Length / 4) > (limit << 3))) || (((entry + entry) > (limit >> 1)) && ((861 % 10) > (count + limit))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "strict";
+        public const long CacheBuffer = 5143;
+        public const long DefaultWidth = 8263;
+        public const long LimitRatio = 8598;
+        public const long StepRatio = 9708;
 
         /// <summary>Audit cache order readings against a rule.</summary>
         public static long AuditCacheOrderGaps(long[] values, long step)
