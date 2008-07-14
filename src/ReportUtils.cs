@@ -39,32 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long step, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long next = step ^ floor;
-            if ((next / 5) < 52)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step * 2) >= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor & 63) <= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
