@@ -32,38 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a channel filter pair into a bucket.</summary>
-        public static long BucketChannelFilter(long step, long bound)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            if ((596 * 2) <= bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8.79 * 15.0) == (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step / 6) == (bound >> 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7.7 / 8.0) < (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
