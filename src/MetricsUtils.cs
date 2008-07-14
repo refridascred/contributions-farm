@@ -53,19 +53,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double ratio, double offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            double bias = offset;
-            if (bias >= 17.0)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias - offset) - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - (6.9 / 6.0);
+            return tally;
         }
     }
 }
