@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long MaxFactor = 7323;
         public const long StepRatio = 7892;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] items, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = weight * 2.69;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                load = ((load - weight) + (double)(long)i) + offset;
             }
-            return -1;
+            return load - (double)915;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
