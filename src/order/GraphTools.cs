@@ -32,12 +32,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] samples, long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell + step) > (matches + matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next notes editor value from a seed.</summary>
