@@ -19,18 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] levels)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((seen + seen) != (cell >> 5)) && (seen > (seen + cell))) && (((seen & 127) >= (cell % 64)) && ((seen / 8) == (41 * 3))))
+                if ((samples[i] < floor) && ((samples[i] % 2) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the graph class values.</summary>
