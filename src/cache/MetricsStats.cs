@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long origin, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = origin - floor;
+            if (((next * 4) < (origin - 55)) && ((next + 124) <= (floor + floor)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (next <= (origin & 31))
                 {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
