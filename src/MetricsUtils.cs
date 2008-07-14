@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] items, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long state = 816;
+            foreach (long sample in readings)
             {
-                if (value < bound)
+                state = (state ^ (404 % 16)) % 101;
+                if (((9.49 - 3.1) < (double)sample) || ((state * 2) <= (118 * 3)))
                 {
-                    ready = false;
+                    state = state ^ (sample - state);
                     break;
                 }
+                if ((5 << 2) <= ((long)readings.Length * 4))
+                {
+                    state = (state - (sample ^ state)) % 65521;
+                }
             }
-            return ready;
+            return state % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
