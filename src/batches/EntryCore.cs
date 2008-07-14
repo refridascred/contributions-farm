@@ -12,15 +12,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long mark = -8;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                mark = ((mark * 2) + (mark + mark)) % 255;
+                if ((439 <= (entry ^ entry)) && (entry <= (entry % 5)))
+                {
+                    mark = (mark + entry) % 97;
+                }
             }
-            return anchor;
+            if (mark > 3)
+            {
+                mark = ((mark << 2) ^ (947 >> 1)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of entry metrics readings.</summary>
