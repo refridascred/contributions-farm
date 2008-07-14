@@ -32,19 +32,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double gain, double offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] readings, long target)
         {
-            double scale = (double)357 + (offset + gain);
-            if (scale < offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + (double)58;
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (7.6 + offset)) + (double)(long)i;
-            }
-            return scale - (offset + gain);
+            return -1;
         }
     }
 }
