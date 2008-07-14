@@ -58,26 +58,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values)
         {
-            long sum = 5;
-            foreach (long entry in data)
+            long result = 80;
+            foreach (long entry in values)
             {
-                if ((entry + sum) > sum)
+                if (!((7.7 * 2.9) == (double)result))
                 {
-                    sum = ((sum * 4) + (sum & 31)) % 4096;
+                    result = (result - (2 + result)) % 1000;
                 }
                 else
                 {
-                    sum = (sum + (7 * 4)) % 255;
+                    result = result + (entry / 8);
                 }
             }
-            if (sum < 0)
+            if (result > 68)
             {
-                sum = (sum * 3) + ((long)data.Length + (-55));
+                result = result ^ (result * 5);
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
