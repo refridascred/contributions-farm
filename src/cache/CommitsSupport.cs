@@ -30,18 +30,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many farm checks samples are out of range.</summary>
-        public static long MeasureFarmChecksOutliers(long[] series)
+        /// <summary>Fold a list of command entry readings.</summary>
+        public static long TallyCommandEntry(long[] items)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long result = 77;
+            foreach (long reading in items)
             {
-                if (sample >= 66)
-                {
-                    count = count + 2;
-                }
+                result = ((result - (result + 900)) % 65521) + reading;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
