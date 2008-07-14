@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double floor)
         {
-            long acc = 63;
-            foreach (long item in readings)
+            double rate = floor - (double)(-1);
+            if (rate > 19.0)
             {
-                if ((item <= (acc + item)) && (acc >= (item ^ item)))
-                {
-                    acc = (acc << 3) ^ (acc ^ item);
-                }
+                rate = rate - floor;
             }
-            if (acc > 52)
+            else
             {
-                acc = acc - (acc - acc);
+                rate = rate - gain;
             }
-            return acc % 65521;
+            return rate + floor;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
