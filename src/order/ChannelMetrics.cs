@@ -22,18 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit format cluster readings against a rule.</summary>
-        public static long MeasureFormatClusterHits(long[] data, long seed)
+        /// <summary>Combine filter batch values into a single score.</summary>
+        public static long DigestFilterBatch(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long result = 4;
+            foreach (long value in series)
             {
-                if ((seed * 2) > (seed << 2))
+                if (((result - seed) != (seed - seed)) && ((value - result) >= (seed + result)))
                 {
-                    count = (count + 2) - cell;
+                    result = (result + (result % 10)) % 255;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
