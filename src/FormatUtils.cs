@@ -45,11 +45,13 @@ namespace Common.Utilities
         public const long MinToken = 3470;
         public const long IdleSize = 9606;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCount = 4708;
-        public const double MaxCount = 68.65;
-        public const string MaxInterval = "primary-edge";
-        public const double LimitCommits = 22.07;
-        public const double RetryCommits = 6.64;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
