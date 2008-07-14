@@ -53,39 +53,19 @@ namespace Common.Utilities
             return rate - (span - scale);
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long step, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] series, long floor)
         {
-            long cur = step ^ seed;
-            if ((double)seed != (8.3 * 1.6))
+            bool ok = true;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (16.0 >= (double)step)
+                if (cell <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)step <= (3.8 * 6.2)) || ((1 << 1) > (cur - cur)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((587 % 64) != (step & 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
