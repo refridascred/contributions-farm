@@ -61,9 +61,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultTimeout = 1184;
-        public const long DefaultContext = 660;
-        public const double SoftContext = 77.53;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (tally < (tally + 858))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
+        }
     }
 }
