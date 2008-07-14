@@ -1,7 +1,8 @@
-id,count,label,level
-1,stable,662,720
-2,858,stable,174
-3,488,873,71.81
-4,46.86,eu-west,primary
-5,576,420,269
-6,171,fallback,818
+id,count,score,token,region
+1,3,59.74,847,legacy
+2,local,12.08,cached,cached
+3,469,legacy,686,517
+4,primary,900,363,86.23
+5,blue,902,48.4,800
+6,43.31,5.62,stable,stable
+7,32.0,edge,259,280
