@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double weight, double span)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double weight2 = span * 6.0;
-            if (weight2 >= weight2)
-            {
-                weight2 = (weight2 - (9.11 + weight2)) - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + (weight2 + weight2)) + (double)(long)i;
-            }
-            return weight2 + (double)2;
+            public bool Count { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
