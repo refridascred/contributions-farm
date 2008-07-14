@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a format command counter forward.</summary>
-        public static long SeriesFormatCommand(long target)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix >= target) || ((4.0 * 3.0) < (double)target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix + mix) % 1000;
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    mix = mix ^ (mix - 773);
-                }
-                mix = ((mix * 3) + mix) % 255;
-                mix = mix ^ (long)i;
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
