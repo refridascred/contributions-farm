@@ -65,12 +65,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count profile channel pairs that satisfy a relation.</summary>
+        public static long CompareProfileChannelCount(long[] items)
         {
-            public double Score { get; set; }
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
