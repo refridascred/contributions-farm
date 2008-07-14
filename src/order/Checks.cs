@@ -73,13 +73,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Failed,
-            Done,
-            Ready,
-            Pending,
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
