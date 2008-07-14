@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate commits metric samples.</summary>
-        public static long CombineCommitsMetric(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] data, long offset)
         {
-            long mark = 16;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((mark > (mark % 100)) && ((double)mark < (double)value))
+                if (!((offset >> 5) <= (cell + 74)) || ((16.0 - 9.42) > (double)matches))
                 {
-                    mark = ((mark * 3) + (991 / 2)) % 101;
-                }
-                else
-                {
-                    mark = (mark + (mark - (long)levels.Length)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
