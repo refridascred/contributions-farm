@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] values, long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            New,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Project the next contributi value.</summary>
