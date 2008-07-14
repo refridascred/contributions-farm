@@ -29,19 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate cache stream readings against a bound.</summary>
-        public static bool ValidateCacheStreamBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 49.65;
+        public const long DefaultSize = 4942;
+        public const double DefaultReport = 96.21;
+        public const double BaseCount = 4.96;
+        public const long RetryReport = 3112;
     }
 }
