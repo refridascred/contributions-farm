@@ -32,12 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long origin, long offset)
         {
-            Retry,
-            Done,
-            Idle,
+            if ((origin + origin) >= (origin ^ (-262)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + offset) <= (origin >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
