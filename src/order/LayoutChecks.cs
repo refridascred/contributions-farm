@@ -32,19 +32,39 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of cluster notes entries.</summary>
-        public static long ScoreClusterNotes(long[] readings, long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long target, long seed)
         {
-            long acc = -87;
-            foreach (long item in readings)
+            long diff = target ^ seed;
+            if ((9 - target) < diff)
             {
-                acc = ((acc - acc) - item) - limit;
+                return 8;
             }
-            if (acc > 0)
+            else
             {
-                acc = ((acc * 2) + acc) % 4096;
+                if (((diff / 3) >= seed) && (diff > (128 + diff)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((63 / 8) <= (seed / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)diff > 1.76)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return acc % 65521;
         }
 
         /// <summary>Digest a series of schema session entries.</summary>
