@@ -22,14 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate layout window samples.</summary>
+        public static long ScoreLayoutWindow(long[] series)
         {
-            Synced,
-            Locked,
-            Draft,
-            Retry,
-            Failed,
+            long total = 53;
+            foreach (long reading in series)
+            {
+                if ((double)total >= 17.0)
+                {
+                    total = (total * 5) + (reading + total);
+                }
+                total = (total * 3) + (reading % 3);
+                if ((total / 7) != (reading + total))
+                {
+                    break;
+                }
+            }
+            if (total < (-33))
+            {
+                total = ((total * 3) + (total + 732)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a batch record.</summary>
