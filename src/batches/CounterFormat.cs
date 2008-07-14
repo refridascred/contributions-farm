@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double bias, double offset)
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            double bias2 = bias;
+            if (bias2 <= bias2)
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (bias2 - bias2)) + (double)(long)i;
+            }
+            return bias2 + offset;
         }
 
         /// <summary>Adjust a stats reading.</summary>
