@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long target, long bound)
         {
-            Dropped,
-            Active,
-            Pending,
+            long slot = target + bound;
+            if (slot > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound > (target >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)slot != (1.4 * 1.64)) || (9 > bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools header.</summary>
