@@ -22,14 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Validate channel cluster readings against a bound.</summary>
+        public static bool VerifyChannelClusterBounds(long[] items, long target)
         {
-            Locked,
-            Done,
-            Draft,
-            New,
-            Paused,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next booking value from a seed.</summary>
