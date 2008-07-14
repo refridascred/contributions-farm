@@ -17,15 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next tools buffer value.</summary>
