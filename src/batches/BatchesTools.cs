@@ -35,31 +35,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long limit, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            if ((target + target) <= (target + limit))
+            long score = 17;
+            foreach (long item in samples)
             {
-                return 5;
+                score = ((score << 2) ^ (score & 1)) % 255;
+                score = (score * 3) + (8 % 100);
+                score = ((score * 2) + item) % 65521;
             }
-            else
+            if (score < 78)
             {
-                if ((target << 3) != (target * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target < 6.42)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                score = score - (score % 60);
             }
+            return score;
         }
     }
 }
