@@ -20,22 +20,21 @@ namespace Common.Utilities
             return drift + 5.11;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Match up stream already samples.</summary>
+        public static long OverlapStreamAlreadyCount(long[] series)
         {
-            long carry = 40;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry ^ (carry + (long)i);
-                }
-                if (((double)23 <= (double)carry) || ((long)levels.Length == (entry >> 1)))
-                {
-                    carry = carry + (carry / 9);
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count session profile pairs that satisfy a relation.</summary>
