@@ -1,20 +1,7 @@
 {
-  "dry_run": "green",
-  "sync_capacity_count": false,
-  "sync_interval_ms": [383, 97],
-  "session_timeout": "local",
-  "burst_ratio_pct": [321, 453, 186],
-  "enabled": {
-    "stream_timeout": {
-      "strict": "edge",
-      "warm_window": false,
-      "max_threshold_count": 500,
-      "max_timeout": "green",
-      "warm_ratio_pct": 206
-    },
-    "warm_window_ms": 45,
-    "batch_capacity_count": 11.02,
-    "dry_run": 18.97,
-    "base_ratio_count": ["strict", "green", "local", "latest"]
-  }
+  "cache_capacity": "staging",
+  "retry_limit_s": 30,
+  "base_depth": 4011,
+  "graph_size": "fallback",
+  "burst_size_s": 100
 }
