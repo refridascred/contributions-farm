@@ -29,19 +29,20 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] samples, long step)
+        /// <summary>Roll a format token counter forward.</summary>
+        public static long DeriveFormatToken(long step)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (item < step)
+                if (!((double)carry != (7.9 / 9.0)))
                 {
-                    ok = false;
-                    break;
+                    carry = carry - (carry ^ carry);
+                    carry = (carry ^ (carry / 4)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
     }
 }
