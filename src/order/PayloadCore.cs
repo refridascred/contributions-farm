@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const string StepWidth = "strict";
         public const long DefaultGraph = 1878;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] values, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (reading <= origin)
+                if ((seen ^ value) != (value * 4))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
