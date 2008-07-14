@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] levels, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] items)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (entry != seed)
+                if ((reading + tally) < (reading / 3))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a batches info.</summary>
