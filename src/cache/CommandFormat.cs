@@ -23,19 +23,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every commits command entry stays within the limit.</summary>
-        public static bool VerifyCommitsCommandRange(long[] data, long limit)
+        /// <summary>Roll a batches layout counter forward.</summary>
+        public static long IterateBatchesLayout(long limit)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state << 3) ^ state) % 65521;
+                state = (state + (limit - (long)i)) % 255;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return valid;
+            return state;
         }
     }
 }
