@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Match up route format samples.</summary>
