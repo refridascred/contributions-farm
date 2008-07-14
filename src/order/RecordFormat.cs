@@ -33,14 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
+            Paused,
+            Pending,
+            Done,
             Idle,
-            Ready,
-            Failed,
             Synced,
-            Closed,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
