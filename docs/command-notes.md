@@ -1,12 +1,15 @@
 # Command notes
 
-Run the window check before changing any cache limits.
-Each route is validated before it reaches the order queue.
-Run the metrics check before changing any command limits.
+Defaults for notes live in the config folder and can be overridden per environment.
+Defaults for entry live in the config folder and can be overridden per environment.
+
+Use filter settings to tune how often checks data is refreshed.
+Keep record and stream names short and lowercase.
+When a profile fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep stream values small
-- Log every farm change
-- Prefer report defaults
-- Review tools limits each release
+- Review cache limits each release
+- Prefer command defaults
+- Validate contributi input early
+- Document new metrics fields
