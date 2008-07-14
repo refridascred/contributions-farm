@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] levels, long seed)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
