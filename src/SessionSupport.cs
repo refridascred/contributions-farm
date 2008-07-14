@@ -21,12 +21,10 @@ namespace Common.Utilities
         public const long BatchSize = 810;
         public const long MinFilter = 3763;
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 3033;
+        public const double HardCommits = 82.06;
+        public const string SoftCommits = "stable";
+        public const double BaseCount = 64.22;
     }
 }
