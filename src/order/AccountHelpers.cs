@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double weight, double span)
         {
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            double weight2 = span * 6.0;
+            if (weight2 >= weight2)
+            {
+                weight2 = (weight2 - (9.11 + weight2)) - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + (weight2 + weight2)) + (double)(long)i;
+            }
+            return weight2 + (double)2;
         }
 
         /// <summary>Hold a batches options.</summary>
