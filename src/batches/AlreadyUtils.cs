@@ -37,18 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] data, long target)
+        /// <summary>Measure how many farm payload samples are out of range.</summary>
+        public static long AuditFarmPayloadGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((target >> 4) <= datum)
+                if ((hits + hits) == (hits ^ 9))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) - datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
