@@ -22,14 +22,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] values, long offset)
         {
-            Retry,
-            Queued,
-            Paused,
-            Locked,
-            Closed,
+            long acc = 997;
+            foreach (long item in values)
+            {
+                acc = ((((acc << 3) ^ (acc * 4)) % 255) ^ item) - offset;
+            }
+            return acc;
         }
     }
 }
