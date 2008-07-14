@@ -1,7 +1,12 @@
 {
-  "persist": 1292,
-  "batch_delay": 5655,
-  "readonly": 68,
-  "flush_window": 575,
-  "idle_interval_ms": "green"
+  "persist": 71,
+  "burst_ttl_s": {
+    "default_capacity_count": "edge",
+    "hard_window": 250,
+    "idle_timeout": true,
+    "idle_timeout_pct": ["open", "local", "green"],
+    "support_timeout": 82.32,
+    "strict": true
+  },
+  "schema_capacity": 29.86
 }
