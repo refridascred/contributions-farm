@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] items)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double rate, double span)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double drift = rate;
+            if (drift > (double)794)
             {
-                if ((reading + tally) < (reading / 3))
-                {
-                    tally = tally + 2;
-                }
+                drift = drift + (drift - span);
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - 1.2) + (double)(long)i;
+            }
+            return drift + 5.11;
         }
 
         /// <summary>Hold a batches info.</summary>
