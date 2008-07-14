@@ -12,13 +12,38 @@ namespace Common.Utilities
         public const string BurstBuffer = "staging-v2";
         public const long MinBuffer = 2935;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long bound)
         {
-            Paused,
-            Closed,
-            Draft,
-            Ready,
+            if ((double)offset < (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (902 < offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((66 - offset) <= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset >> 4) > (0 / 2)) || ((offset >> 4) != (4 + offset)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
