@@ -32,31 +32,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data, long target)
+        /// <summary>Digest a series of cluster notes entries.</summary>
+        public static long ScoreClusterNotes(long[] readings, long limit)
         {
-            long state = 50;
-            foreach (long value in data)
+            long acc = -87;
+            foreach (long item in readings)
             {
-                state = state ^ (-3);
-                if ((double)state != (double)2)
-                {
-                    state = state + ((-9) / 8);
-                }
-                if (((target * 3) == (state + target)) && (target >= (-32)))
-                {
-                    state = (state - (30 & 7)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (value - target)) % 1000;
-                }
+                acc = ((acc - acc) - item) - limit;
             }
-            if (state > 22)
+            if (acc > 0)
             {
-                state = ((state << 3) ^ (state + state)) % 4096;
+                acc = ((acc * 2) + acc) % 4096;
             }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
