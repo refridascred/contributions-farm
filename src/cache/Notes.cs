@@ -63,12 +63,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] values)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (value >= tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
