@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            long carry = 47;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((entry & 31) == (carry >> 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry * 2) + carry) % 255;
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 827)
-            {
-                carry = (carry ^ carry) % 65521;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
