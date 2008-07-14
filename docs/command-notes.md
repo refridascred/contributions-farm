@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-When a githubfarm fails, the tools handler retries a few times before giving up.
+The context report groups every support by window.
+Each order is validated before it reaches the order queue.
+Use profile settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Log every checks change
-- Document new account fields
-- Validate notes input early
+- Prefer entry defaults
+- Log every filter change
+- Document new stream fields
