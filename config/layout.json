@@ -1,5 +1,6 @@
 {
-  "verbose": "latest",
-  "idle_ratio": "local",
-  "flush_limit_count": 8617
+  "soft_size_s": true,
+  "schema_threshold": "standard",
+  "metric_size": 34.64,
+  "support_window": 1024
 }
