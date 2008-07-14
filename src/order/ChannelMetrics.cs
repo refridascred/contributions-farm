@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long target, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long edge = target + floor;
-            if ((floor / 8) >= (target + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-4) + edge) >= (edge & 31))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
