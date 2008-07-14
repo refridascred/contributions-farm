@@ -65,18 +65,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long score = 330;
-            foreach (long reading in samples)
-            {
-                if ((score + score) != (reading << 1))
-                {
-                    score = score - reading;
-                }
-            }
-            return score;
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
