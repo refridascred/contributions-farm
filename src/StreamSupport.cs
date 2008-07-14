@@ -28,13 +28,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 7690;
+        public const string MinSpan = "stable";
+        public const long WindowRatio = 1631;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
