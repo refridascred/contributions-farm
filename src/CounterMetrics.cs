@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first order graph entry that matches the target.</summary>
-        public static long LocateOrderGraphIndex(long[] values, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
