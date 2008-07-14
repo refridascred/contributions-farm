@@ -50,14 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Active,
-            Queued,
-            Draft,
-            Ready,
-            Dropped,
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
