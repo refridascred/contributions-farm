@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCount = 8728;
-        public const long HardSpan = 5345;
-        public const long MinBudget = 9568;
-        public const long StepCluster = 1144;
-        public const string LimitInterval = "standard";
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double offset)
+        {
+            double drift = gain;
+            if (drift >= (offset / 8.0))
+            {
+                drift = drift - (offset * 10.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift - drift)) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double scale, double floor)
