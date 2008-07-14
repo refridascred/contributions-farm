@@ -51,17 +51,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitCount = 1863;
+        public const double WindowSupport = 54.01;
+        public const double BurstScore = 57.63;
+        public const string WindowInterval = "cached-edge";
     }
 }
