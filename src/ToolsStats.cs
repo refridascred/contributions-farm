@@ -68,22 +68,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((value * 3) <= (long)data.Length)
+                if ((4.4 * 8.92) <= (double)matches)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = ((matches + 2) ^ datum) - bound;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
