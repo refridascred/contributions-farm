@@ -25,23 +25,19 @@ namespace Common.Utilities
         public const double WindowCommits = 57.37;
         public const long IdleCommits = 7912;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double bias, double offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] readings, long offset)
         {
-            double weight = offset - offset;
-            if (weight <= weight)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                weight = weight + (bias / 8.0);
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (double)728) + (double)(long)i;
-            }
-            return weight - (weight + weight);
+            return stale;
         }
 
         /// <summary>Describe the route kind values.</summary>
