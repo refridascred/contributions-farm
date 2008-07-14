@@ -19,12 +19,22 @@ namespace Common.Utilities
         public const long RetrySupport = 2274;
         public const long WindowSupport = 9186;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Fold a list of entry metrics readings.</summary>
+        public static long TotalEntryMetrics(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public double Token { get; set; }
+            long mix = 5;
+            foreach (long entry in levels)
+            {
+                if (7 < (8 + entry))
+                {
+                    mix = (mix + (mix + mix)) % 97;
+                }
+            }
+            if (mix > 865)
+            {
+                mix = ((mix << 3) ^ (6 - 11)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the report class values.</summary>
