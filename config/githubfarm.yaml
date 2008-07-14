@@ -1,10 +1,16 @@
 # githubfarm settings
-retry_ratio_count: 8.18
-verbose: legacy
-cache_ratio: open
-burst_window_ms:
-  - 54
-  - 486
-  - 253
-idle_size: 4.21
-idle_ratio_s: 500
+warm_delay: false
+min_limit: false
+batch_ttl_count:
+  default_depth:
+    - 166
+    - 29
+    - 483
+  session_ratio: eu-west
+  warm_capacity_s: false
+  burst_retries_s: true
+  verbose:
+    contributi_timeout: open
+    enabled: 500
+    cache_threshold_ms: true
+    cluster_threshold: 73.71
