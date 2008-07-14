@@ -36,10 +36,23 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultSpan = 3315;
-        public const long LimitBudget = 7237;
-        public const string RetryBatch = "strict-edge";
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((54 % 3) != (hits ^ item))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
