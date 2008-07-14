@@ -67,21 +67,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 154;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (((score * 4) + floor) % 255) ^ reading;
+                score = (score * 4) + (score % 10);
             }
-            return tally;
+            return score;
         }
     }
 }
