@@ -31,13 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] samples, long target)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
