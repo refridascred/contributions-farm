@@ -17,38 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long offset, long step)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] data, long limit)
         {
-            if ((double)89 < (double)step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - offset) > (step & 127))
+                if ((data[i] <= limit) && ((data[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step & 31) == (599 / 6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step <= (offset + 49)) || ((offset & 7) > (step + step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
