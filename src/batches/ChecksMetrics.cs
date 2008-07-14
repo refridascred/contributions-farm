@@ -29,17 +29,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] samples, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] == offset)
+                if ((9 + step) < item)
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a batches info.</summary>
