@@ -53,11 +53,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            long mix = 7;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = ((mix << 2) ^ (item + 115)) ^ (long)i;
+                }
+                mix = (mix ^ (29 & 255)) % 97;
+                mix = mix ^ (item * 5);
+            }
+            if (mix > 72)
+            {
+                mix = (mix - (mix + mix)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a editor entry.</summary>
