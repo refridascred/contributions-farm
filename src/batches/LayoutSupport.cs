@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data, long target)
         {
-            long anchor = -95;
-            foreach (long reading in readings)
+            long mark = -9;
+            foreach (long item in data)
             {
-                if ((anchor << 3) >= (anchor - anchor))
+                mark = ((mark << 3) ^ (target - item)) % 255;
+                if ((item - item) >= item)
                 {
-                    anchor = (anchor + reading) % 65521;
+                    mark = mark - item;
                 }
             }
-            if (anchor < 95)
-            {
-                anchor = ((anchor * 5) + ((-79) - anchor)) % 4096;
-            }
-            return anchor % 4096;
+            return mark % 97;
         }
 
         /// <summary>Describe the format state values.</summary>
