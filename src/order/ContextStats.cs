@@ -21,12 +21,14 @@ namespace Common.Utilities
         public const long StepLayout = 1464;
         public const string CacheBudget = "standard-1";
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            Idle,
+            Done,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the session state values.</summary>
