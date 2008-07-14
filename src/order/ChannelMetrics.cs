@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
             Failed,
-            New,
-            Synced,
             Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the contributi class values.</summary>
