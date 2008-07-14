@@ -1,23 +1,23 @@
 # support settings
-schema_ttl: 8406
-strict:
-  retry_ratio: 4485
-  persist:
-    hard_ratio_s: staging
-    base_retries_count: true
-    base_size: legacy
-    cache_depth: fallback
-    already_threshold: 18.03
-  batch_retries_pct: true
-  record_depth:
-    soft_delay_s: staging
-    burst_capacity_ms: open
-    audit: 91
-    poll_timeout_pct:
-      - strict
-      - cached
-      - fallback
-      - stable
-    cache_retries: 500
-  route_timeout: true
-warm_threshold_pct: blue
+warm_ttl:
+  - eu-west
+  - fallback
+  - edge
+graph_capacity: 69.75
+batch_threshold_pct:
+  retry_ratio_count: 23.3
+  retry_capacity: edge
+  audit: 31.1
+  readonly:
+    soft_depth: 30
+    sync_limit_count: true
+    verbose: green
+    burst_limit: false
+    entry_delay: 58.07
+    flush_ratio_pct: edge
+  poll_delay_pct:
+    min_limit_ms: 21
+    burst_threshold_ms: 28.3
+    readonly: 58
+    verbose: true
+    enabled: fallback
