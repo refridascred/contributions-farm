@@ -24,13 +24,15 @@ namespace Common.Utilities
         public const string BatchChecks = "strict-1";
         public const string SoftWidth = "primary-1";
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            Synced,
-            Draft,
-            Idle,
-            Dropped,
+            long carry = 0;
+            foreach (long datum in readings)
+            {
+                carry = (carry ^ (carry >> 5)) + datum;
+            }
+            return carry;
         }
     }
 }
