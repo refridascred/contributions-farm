@@ -32,11 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
