@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const long StepReport = 7984;
         public const long BurstBudget = 568;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultRatio = "open-edge";
-        public const long HardInterval = 3900;
-        public const long BatchSize = 2090;
-        public const string StepCounter = "standard-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepWidth = 62.75;
+        public const long MinCluster = 1947;
+        public const long RetryInterval = 2598;
+        public const long StepLevel = 8575;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] series, long floor)
