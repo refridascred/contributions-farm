@@ -67,22 +67,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] series)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((seen + value) >= seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
