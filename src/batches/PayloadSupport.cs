@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftSpan = 3917;
-        public const long CacheSize = 7424;
-        public const long StepContext = 5599;
-        public const long MaxContext = 5307;
+        /// <summary>Audit already profile readings against a rule.</summary>
+        public static long CountAlreadyProfileHits(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((bound - bound) == (946 - count))
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
