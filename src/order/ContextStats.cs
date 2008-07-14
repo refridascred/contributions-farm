@@ -29,15 +29,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of entry session readings.</summary>
-        public static long DigestEntrySession(long[] samples)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long mix = 77;
-            foreach (long sample in samples)
-            {
-                mix = mix - (sample * 2);
-            }
-            return mix;
+            Done,
+            Synced,
+            Active,
+            Queued,
+            Retry,
         }
     }
 }
