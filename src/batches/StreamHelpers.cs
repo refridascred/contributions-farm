@@ -18,19 +18,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] readings, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (item >= offset)
+                if ((6.3 / 2.0) != (double)tally)
                 {
-                    ready = false;
-                    break;
+                    tally = ((tally + 2) ^ reading) + step;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Roll a command counter forward.</summary>
