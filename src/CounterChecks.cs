@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            Draft,
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
