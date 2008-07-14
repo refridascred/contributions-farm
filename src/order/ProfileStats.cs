@@ -13,19 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Blend two channel notes measurements.</summary>
+        public static double ScaleChannelNotes(double gain, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            double drift = span;
+            for (int i = 0; i < 4; i++)
             {
-                if ((long)i >= (seed / 6))
-                {
-                    result = (result * 5) + (seed << 2);
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                drift = (drift + (4.06 + 4.0)) - (double)(long)i;
             }
-            return result;
+            return drift - (gain / 5.0);
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
