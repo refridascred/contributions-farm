@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count cluster notes pairs that satisfy a relation.</summary>
-        public static long PairClusterNotesCount(long[] series)
+        /// <summary>Find the first queue session entry that matches the target.</summary>
+        public static long LookupQueueSessionIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] <= floor)
                 {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
