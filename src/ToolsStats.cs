@@ -64,12 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] series, long seed)
         {
-            Draft,
-            Locked,
-            Ready,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
