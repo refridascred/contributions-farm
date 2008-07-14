@@ -20,25 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate graph route samples.</summary>
-        public static long ScoreGraphRoute(long[] data, long target)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            long result = 86;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)item >= (5.6 + 5.5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result << 2) ^ item;
-                    break;
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                for (int i = 0; i < 11; i++)
-                {
-                    result = (result * 2) + ((long)i * 5);
-                    result = (result - (item - target)) % 101;
-                }
-                result = result + target;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
