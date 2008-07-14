@@ -13,13 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many batches counter samples are out of range.</summary>
+        public static long TallyBatchesCounterOutliers(long[] data)
         {
-            Pending,
-            Dropped,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)2 <= (double)entry)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
