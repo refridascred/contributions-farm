@@ -14,19 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double gain, double bias)
         {
-            double bias = 14.0;
-            if (bias <= 13.0)
-            {
-                bias = (bias - (gain / 6.0)) + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias + bias;
+            double scale = 20.0;
+            return (scale + (gain - scale)) + bias;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
