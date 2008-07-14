@@ -49,19 +49,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items, long limit)
         {
-            long sum = 4;
-            foreach (long value in series)
+            long mark = 12;
+            foreach (long sample in items)
             {
-                sum = (sum ^ (offset * 2)) + value;
+                mark = (((mark * 3) + (sample >> 1)) % 1000) + limit;
             }
-            if (sum < (-14))
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Digest a series of report commits entries.</summary>
