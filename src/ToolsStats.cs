@@ -22,21 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -4;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((1 % 16) < (reading + reading))
                 {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - (185 << 1)) % 4096;
                 }
+                else
+                {
+                    carry = carry - (4 * 4);
+                }
+                carry = carry ^ (3 & 63);
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a account summary.</summary>
