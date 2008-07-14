@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i < limit) || (34 >= (limit / 7)))
-                {
-                    anchor = (anchor * 5) + anchor;
-                }
-                anchor = (anchor + (limit - limit)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Failed,
+            Active,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Blend two order measurements.</summary>
