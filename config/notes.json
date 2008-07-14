@@ -1,8 +1,6 @@
 {
-  "min_size_pct": ["standard", "eu-west", "open"],
-  "profile_retries": "standard",
-  "verbose": [225, 59, 242],
-  "profile_depth": "eu-west",
-  "warm_capacity_s": 11.31,
-  "dry_run": "legacy"
+  "max_limit_s": "open",
+  "queue_retries": 64.75,
+  "min_depth_pct": "blue",
+  "checks_capacity": true
 }
