@@ -32,10 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLevel = 7922;
-        public const double BatchLayout = 20.33;
-        public const long BaseInterval = 7176;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            New,
+            Synced,
+            Retry,
+            Done,
+            Paused,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseBudget = 7101;
