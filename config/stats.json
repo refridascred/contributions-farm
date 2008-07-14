@@ -1,7 +1,20 @@
 {
-  "warm_retries_s": "edge",
-  "compress": 60,
-  "tools_threshold": "legacy",
-  "readonly": "standard",
-  "base_retries_ms": "green"
+  "commits_depth": {
+    "enabled": {
+      "base_depth": true,
+      "flush_limit": "stable",
+      "poll_delay_count": "primary",
+      "max_interval_s": [21, 381, 44, 452],
+      "verbose": "fallback"
+    },
+    "route_window": false,
+    "idle_delay_count": {
+      "poll_delay": "standard",
+      "hard_delay_count": 56.72,
+      "strict": 43.42
+    }
+  },
+  "checks_window": [235, 41, 201, 420],
+  "hard_threshold_count": 7334,
+  "channel_size": 73.62
 }
