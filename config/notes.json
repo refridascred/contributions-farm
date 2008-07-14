@@ -1,14 +1,8 @@
 {
-  "hard_ttl_s": {
-    "strict": 68.29,
-    "idle_timeout_ms": 41,
-    "base_timeout_pct": true,
-    "hard_ttl_count": 58.56,
-    "verbose": "local",
-    "compress": [343, 87, 62]
-  },
-  "persist": 60,
-  "burst_capacity_ms": true,
-  "enabled": 9919,
-  "max_limit_pct": "strict"
+  "min_size_pct": ["standard", "eu-west", "open"],
+  "profile_retries": "standard",
+  "verbose": [225, 59, 242],
+  "profile_depth": "eu-west",
+  "warm_capacity_s": 11.31,
+  "dry_run": "legacy"
 }
