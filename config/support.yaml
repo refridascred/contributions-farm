@@ -1,9 +1,5 @@
 # support settings
-flush_timeout_pct: 250
-soft_capacity: 100
-flush_threshold: 2170
-payload_size:
-  - 461
-  - 484
-  - 489
-  - 362
+format_ratio: 16.18
+burst_depth_ms: stable
+dry_run: 81
+commits_retries: false
