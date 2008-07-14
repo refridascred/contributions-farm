@@ -1,7 +1,30 @@
 {
-  "verbose": "open",
-  "warm_retries_count": 7,
-  "dry_run": 9.61,
-  "cache_depth_ms": 67.59,
-  "readonly": false
+  "report_threshold": {
+    "cache_ratio_ms": "strict",
+    "max_capacity": "primary",
+    "max_depth_ms": 1024,
+    "verbose": "local"
+  },
+  "retry_limit_pct": {
+    "batch_window": {
+      "burst_ttl_ms": 3204,
+      "persist": [120, 336, 252, 275],
+      "schema_interval": 1024
+    },
+    "default_size_pct": "legacy",
+    "readonly": ["edge", "cached", "edge"],
+    "verbose": [457, 213, 256, 445],
+    "compress": 8092,
+    "dry_run": {
+      "min_retries_ms": 7100,
+      "default_retries": "staging",
+      "retry_threshold_count": true,
+      "batch_window_s": "staging",
+      "verbose": true
+    }
+  },
+  "verbose": 71.86,
+  "readonly": 83.68,
+  "max_size_s": ["cached", "fallback"],
+  "cache_window_pct": [440, 192, 108]
 }
