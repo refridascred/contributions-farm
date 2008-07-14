@@ -33,12 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            New,
+            Dropped,
+            Draft,
+            Locked,
         }
     }
 }
