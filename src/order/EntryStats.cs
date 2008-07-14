@@ -50,18 +50,15 @@ namespace Common.Utilities
         public const double RetryInterval = 35.9;
         public const long BurstRecord = 7192;
 
-        /// <summary>Measure how many channel graph samples are out of range.</summary>
-        public static long CountChannelGraphGaps(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = 9;
+            foreach (long value in values)
             {
-                if (!((reading + hits) > (hits + 49)) && (((6.36 - 5.7) == (double)hits) || (reading <= (reading + reading))))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score ^ limit) % 101) ^ value;
             }
-            return hits;
+            return score;
         }
     }
 }
