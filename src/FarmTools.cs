@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] data, long bound)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 8841;
+        public const long IdleNotes = 4948;
+        public const long BurstBudget = 837;
+        public const long BatchNotes = 3438;
+        public const string WindowNotes = "open-v2";
 
         /// <summary>Combine command values into a single score.</summary>
         public static long DigestCommand(long[] items)
