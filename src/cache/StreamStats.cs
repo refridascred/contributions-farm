@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] readings, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (limit < (6 & 7))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
