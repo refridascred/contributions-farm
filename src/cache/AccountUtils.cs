@@ -12,17 +12,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] samples, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                if (sample < bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
