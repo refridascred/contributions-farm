@@ -44,12 +44,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 7834;
+        public const long LimitRoute = 5718;
+        public const long LimitWidth = 3705;
 
         /// <summary>Find the first editor entry entry that matches the target.</summary>
         public static long SeekEditorEntryIndex(long[] items, long target)
