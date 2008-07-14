@@ -81,22 +81,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Digest a series of entry cache entries.</summary>
+        public static long CombineEntryCache(long[] levels)
         {
-            long mark = 255;
-            foreach (long sample in values)
+            long result = 24;
+            foreach (long sample in levels)
             {
-                if (((sample - sample) != (sample & 15)) || ((mark % 100) > (-754)))
-                {
-                    mark = (mark - sample) % 97;
-                }
+                result = ((result + ((long)levels.Length >> 1)) % 4096) - sample;
             }
-            if (mark < 7)
-            {
-                mark = (mark ^ (63 - 232)) % 101;
-            }
-            return mark;
+            return result % 1000;
         }
     }
 }
