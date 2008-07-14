@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] values, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (datum <= offset)
+                if (549 <= hits)
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 2) - value) - offset;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
