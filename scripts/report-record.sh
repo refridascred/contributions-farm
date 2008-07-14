@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=292
-log "limit is ${RECORD_LIMIT}"
-
-for item in fallback open; do
+for item in fallback standard; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=87
+log "limit is ${RECORD_LIMIT}"
