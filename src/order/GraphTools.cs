@@ -51,24 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes editor value from a seed.</summary>
-        public static long SeriesNotesEditor(long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((9.62 * 4.36) == (double)mark) && ((0 * 5) >= (mark - offset)))
-                {
-                    mark = (mark << 3) ^ mark;
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark * 4) + mark) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Active,
+            Queued,
+            Draft,
+            Ready,
+            Dropped,
         }
     }
 }
