@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinFactor = 86.67;
-        public const string BurstChannel = "legacy";
-        public const double MaxChannel = 50.15;
-        public const long LimitChannel = 6301;
-        public const long HardChannel = 6483;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc ^ acc) % 4096;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long offset, long step)
