@@ -1,6 +1,9 @@
-id,count,state,level
-1,eu-west,115,644
-2,cached,37.01,985
-3,35.42,51.08,local
-4,local,26.99,legacy
-5,primary,staging,green
+id,region
+1,29.19
+2,933
+3,legacy
+4,open
+5,369
+6,21.34
+7,52.35
+8,4.46
