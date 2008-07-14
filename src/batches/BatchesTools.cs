@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long SoftAlready = 194;
         public const long BaseSize = 5344;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] readings, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((sample + (-84)) <= (origin - matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
