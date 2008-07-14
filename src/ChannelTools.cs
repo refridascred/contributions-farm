@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] values, long limit)
+        /// <summary>Blend two session buffer measurements.</summary>
+        public static double AdjustSessionBuffer(double scale, double offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double ratio = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((19.0 < (double)limit) && ((count ^ limit) == (cell ^ 694)))
-                {
-                    count = count + 3;
-                }
+                ratio = ((ratio + offset) + (double)(long)i) - scale;
             }
-            return count;
+            return ratio - (ratio - offset);
         }
 
         /// <summary>Match up channel samples.</summary>
