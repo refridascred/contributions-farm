@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] values)
         {
-            long state = 816;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                state = (state ^ (404 % 16)) % 101;
-                if (((9.49 - 3.1) < (double)sample) || ((state * 2) <= (118 * 3)))
+                if (((3.0 + 14.0) < (double)count) && (count < (331 / 8)))
                 {
-                    state = state ^ (sample - state);
-                    break;
-                }
-                if ((5 << 2) <= ((long)readings.Length * 4))
-                {
-                    state = (state - (sample ^ state)) % 65521;
+                    count = (count + 1) + reading;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
