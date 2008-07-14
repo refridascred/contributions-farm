@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter metric samples are out of range.</summary>
-        public static long AuditFilterMetricHits(long[] samples)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches > (sample / 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the metric kind values.</summary>
