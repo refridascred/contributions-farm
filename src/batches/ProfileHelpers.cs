@@ -31,14 +31,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] levels, long offset)
         {
-            Closed,
-            Idle,
-            Queued,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)tally <= (9.1 - 18.0))
+                {
+                    tally = ((tally + 3) ^ entry) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
