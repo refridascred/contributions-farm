@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] data)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + (long)data.Length) >= 2)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
