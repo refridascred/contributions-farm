@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double span)
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            double drift = (double)701 - (span * 4.0);
+            if (drift < (weight / 3.0))
+            {
+                drift = drift + 3.0;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (drift * 2.3);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
