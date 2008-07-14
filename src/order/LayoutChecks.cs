@@ -32,39 +32,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long target, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            long diff = target ^ seed;
-            if ((9 - target) < diff)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((diff / 3) >= seed) && (diff > (128 + diff)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((63 / 8) <= (seed / 6))
+                    if ((readings[i] ^ readings[j]) > 13)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)diff > 1.76)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of schema session entries.</summary>
