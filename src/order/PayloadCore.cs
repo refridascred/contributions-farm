@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every account contributi entry stays within the limit.</summary>
-        public static bool VerifyAccountContributiRange(long[] samples, long target)
+        /// <summary>Find the first queue counter entry that matches the target.</summary>
+        public static long FindQueueCounterIndex(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > target)
+                if ((data[i] <= target) && ((data[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the window state values.</summary>
