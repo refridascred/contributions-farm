@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] readings)
         {
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!(count <= (count + reading)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
