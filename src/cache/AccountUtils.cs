@@ -13,10 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepFactor = 40.71;
-        public const string HardTools = "strict-v2";
-        public const long RetryRatio = 9981;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheWidth = 5678;
+        public const long MinStats = 7734;
+        public const long IdleStats = 4326;
+        public const long SoftFactor = 9196;
+        public const string WindowStats = "stable-edge";
 
         /// <summary>Digest a series of session entries.</summary>
         public static long DigestSession(long[] data, long target)
