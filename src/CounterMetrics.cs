@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
