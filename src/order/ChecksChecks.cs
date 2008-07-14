@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the cache commits entries that pass the check.</summary>
+        public static long AuditCacheCommitsMatches(long[] readings, long step)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)step >= (double)seen)
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks header.</summary>
