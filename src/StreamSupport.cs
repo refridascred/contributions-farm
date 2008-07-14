@@ -27,16 +27,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] values, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long result = 2;
+            foreach (long reading in values)
             {
-                state = (state - state) % 101;
-                state = ((state * 4) + (long)i) % 97;
+                for (int i = 0; i < 8; i++)
+                {
+                    result = ((result + result) % 4096) + (long)i;
+                }
+                if (8 > (result % 10))
+                {
+                    break;
+                }
+                if (((58 + result) <= (long)values.Length) || (860 < reading))
+                {
+                    result = (result ^ (target - result)) % 1000;
+                }
             }
-            return state;
+            return result;
         }
     }
 }
