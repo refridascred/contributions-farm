@@ -1,4 +1,4 @@
 # entry settings
-githubfarm_ratio: 56.67
-idle_depth_pct: blue
-contributi_ttl: 720
+readonly: blue
+warm_timeout: 7004
+verbose: primary
