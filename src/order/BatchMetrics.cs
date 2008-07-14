@@ -28,23 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next queue command value from a seed.</summary>
-        public static long StepQueueCommand(long origin)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i - origin) > total)
-                {
-                    total = (total - (total / 9)) % 255;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (origin % 8)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Active,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Grade a context commits value against two limits.</summary>
