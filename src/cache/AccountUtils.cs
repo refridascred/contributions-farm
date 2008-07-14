@@ -48,10 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 6897;
-        public const long RetryGithubfarm = 2479;
-        public const double StepGithubfarm = 86.46;
-        public const long IdleGithubfarm = 3855;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell >> 4) > (19 ^ seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
