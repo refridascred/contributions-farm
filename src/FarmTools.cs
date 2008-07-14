@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] readings, long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long total = 988;
-            foreach (long cell in readings)
-            {
-                total = ((((total * 4) + (5 % 97)) % 97) + cell) + step;
-            }
-            return total;
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
