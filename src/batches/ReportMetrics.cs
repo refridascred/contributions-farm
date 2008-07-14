@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every support account entry stays within the limit.</summary>
-        public static bool GuardSupportAccountBounds(long[] items, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            bool found = true;
-            foreach (long value in items)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= floor)
+                if (!((state + (long)i) <= step))
                 {
-                    found = false;
-                    break;
+                    state = (state - (50 >> 5)) % 101;
+                    state = (state << 3) ^ (step / 2);
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state + (state >> 5)) % 101) - (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
