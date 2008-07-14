@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long StepCluster = 1144;
         public const string LimitInterval = "standard";
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double scale, double floor)
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            double weight = floor;
+            if (weight < (weight * 6.0))
+            {
+                weight = weight - scale;
+            }
+            return weight - (weight / 6.0);
         }
 
         /// <summary>Count the filter contributi entries that pass the check.</summary>
