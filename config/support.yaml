@@ -1,8 +1,4 @@
 # support settings
-batch_window_count: 76.35
-idle_delay:
-  - legacy
-  - standard
-  - standard
-metric_delay: edge
-batch_ttl_ms: true
+batch_ratio: false
+hard_retries_pct: standard
+default_retries: primary
