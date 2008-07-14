@@ -69,14 +69,16 @@ namespace Common.Utilities
             return ratio + (bias - 9.8);
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long offset)
         {
-            Queued,
-            Stale,
-            Closed,
-            Done,
-            Failed,
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = mark ^ (76 * 5);
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
