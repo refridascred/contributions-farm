@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            Draft,
+            Synced,
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
