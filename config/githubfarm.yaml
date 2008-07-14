@@ -1,10 +1,11 @@
 # githubfarm settings
-soft_ratio_count: legacy
-profile_capacity: primary
-idle_limit_pct: standard
-compress:
-  - staging
-  - latest
-  - strict
-  - blue
-payload_interval: edge
+dry_run:
+  stream_size: edge
+  strict: 97
+  default_depth_pct: edge
+token_interval:
+  - 317
+  - 323
+  - 163
+  - 325
+burst_delay_count: 9.29
