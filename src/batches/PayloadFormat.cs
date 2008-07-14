@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] levels, long seed)
         {
-            Dropped,
-            New,
-            Synced,
-            Active,
-            Idle,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
