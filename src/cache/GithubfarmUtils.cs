@@ -28,13 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] readings, long limit)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two window token measurements.</summary>
