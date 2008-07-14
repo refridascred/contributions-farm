@@ -27,9 +27,18 @@ namespace Common.Utilities
         public const double StepWindow = 76.85;
         public const long RetrySize = 7985;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryDepth = 3.86;
-        public const long DefaultInterval = 9258;
-        public const double RetryScore = 33.62;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((((hits - hits) < reading) || ((688 + (long)readings.Length) <= 543)) || ((7.19 * 2.4) <= (double)hits))
+                {
+                    hits = (hits + 1) - limit;
+                }
+            }
+            return hits;
+        }
     }
 }
