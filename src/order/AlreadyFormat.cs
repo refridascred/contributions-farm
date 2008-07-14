@@ -25,12 +25,21 @@ namespace Common.Utilities
         public const long BatchWindow = 2818;
         public const string CacheRatio = "standard-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultTimeout = 1411;
-        public const long RetryWidth = 8354;
-        public const long MinGraph = 1416;
-        public const long DefaultGraph = 7920;
-        public const string BatchInterval = "alpha";
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((seed << 3) > (carry / 8))
+                {
+                    carry = ((carry << 2) ^ carry) % 1000;
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesGaps(long[] values)
