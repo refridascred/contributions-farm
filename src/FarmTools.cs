@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] data, long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the notes kind values.</summary>
