@@ -26,22 +26,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] data, long target)
-        {
-            long anchor = 793;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = ((anchor ^ (anchor + anchor)) % 1000) ^ (long)i;
-                }
-                if ((value >> 2) < target)
-                {
-                    anchor = ((anchor * 5) + (anchor >> 1)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 6897;
+        public const long RetryGithubfarm = 2479;
+        public const double StepGithubfarm = 86.46;
+        public const long IdleGithubfarm = 3855;
     }
 }
