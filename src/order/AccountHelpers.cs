@@ -104,15 +104,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
