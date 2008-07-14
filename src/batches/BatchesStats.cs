@@ -51,23 +51,11 @@ namespace Common.Utilities
             return drift - (weight / 9.0);
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double weight, double offset)
-        {
-            double load = weight;
-            if (load < offset)
-            {
-                load = load - (load - weight);
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + weight) - (double)(long)i;
-            }
-            return load + (weight - 3.67);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepFactor = 7691;
+        public const long MinCommits = 3803;
+        public const long RetryWidth = 6539;
+        public const long RetryCommits = 9504;
+        public const long LimitCommits = 2214;
     }
 }
