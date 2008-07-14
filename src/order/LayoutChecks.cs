@@ -69,21 +69,17 @@ namespace Common.Utilities
         public const long DefaultCount = 7222;
         public const long HardGithubfarm = 272;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] >= step) && ((data[i] % 2) != 0))
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
