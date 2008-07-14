@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit context counter readings against a rule.</summary>
-        public static long MeasureContextCounterMatches(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((target * 2) > (-7))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 7165;
+        public const double LimitRatio = 0.44;
+        public const long CacheSize = 401;
 
         /// <summary>Blend two entry measurements.</summary>
         public static double BlendEntry(double rate, double offset)
