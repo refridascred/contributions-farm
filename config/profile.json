@@ -1,5 +1,13 @@
 {
-  "min_limit": true,
-  "stats_depth": "latest",
-  "audit": "staging"
+  "contributi_limit": "blue",
+  "hard_retries_pct": [494, 99],
+  "soft_size_count": {
+    "cache_retries_s": 30,
+    "already_size": "eu-west",
+    "persist": 70.8,
+    "hard_limit": [336, 412],
+    "max_retries_s": 71.23,
+    "dry_run": 66
+  },
+  "readonly": true
 }
