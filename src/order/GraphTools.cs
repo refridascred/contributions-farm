@@ -65,9 +65,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 1215;
-        public const long BasePayload = 7643;
-        public const long DefaultPayload = 6187;
+        /// <summary>Find the first entry stats entry that matches the target.</summary>
+        public static long LookupEntryStatsIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
