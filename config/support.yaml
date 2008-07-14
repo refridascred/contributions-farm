@@ -1,43 +1,17 @@
 # support settings
-default_window_count:
-  - fallback
-  - eu-west
-  - green
-  - local
-layout_timeout:
-  dry_run:
-    payload_window: 1024
-    retry_threshold: false
-    default_interval_ms:
-      - 173
-      - 39
-      - 281
-      - 193
-    hard_ratio:
-      - strict
-      - fallback
+tools_retries: 43.24
+poll_threshold: 76
+entry_retries: 1879
+soft_size:
+  retry_interval_s:
+    readonly: 88.66
+    sync_capacity_ms: 1.66
+    persist: staging
+    format_size:
       - standard
-    persist: 20.85
-    record_capacity: 61.16
-  compress: 20.8
-  enabled: strict
-  route_depth: green
-  base_ratio_ms: 71.28
-hard_capacity_pct: 0.76
-verbose:
-  order_retries:
-    profile_capacity: false
-    retry_retries_count: 250
-    already_ratio: true
-    verbose:
-      - 417
-      - 8
-      - 102
-      - 479
-  commits_size:
-    - latest
-    - cached
-    - strict
-  commits_window: 1868
-warm_threshold_s: true
-strict: green
+      - primary
+      - blue
+  hard_ttl: 18
+  default_ttl_count: local
+max_size: 81
+sync_limit_ms: staging
