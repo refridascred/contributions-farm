@@ -43,15 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items, long limit)
+        /// <summary>Validate token cluster readings against a bound.</summary>
+        public static bool ValidateTokenClusterBounds(long[] data, long step)
         {
-            long mark = 12;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                mark = (((mark * 3) + (sample >> 1)) % 1000) + limit;
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Digest a series of report commits entries.</summary>
