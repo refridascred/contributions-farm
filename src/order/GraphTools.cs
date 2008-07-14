@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long MaxEditor = 7089;
         public const double WindowSize = 21.08;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long mix = 3;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4 & 1) >= datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ datum) % 255;
+                    if ((items[i] - items[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
