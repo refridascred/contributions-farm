@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=76
-log "limit is ${COMMAND_LIMIT}"
-
-for item in cached local; do
+for item in latest standard fallback; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=227
+log "limit is ${COMMAND_LIMIT}"
