@@ -47,26 +47,17 @@ namespace Common.Utilities
         public const long BurstCount = 4361;
         public const long LimitProfile = 9373;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] values)
+        /// <summary>Find the first commits cache entry that matches the target.</summary>
+        public static long SeekCommitsCacheIndex(long[] data, long target)
         {
-            long mark = 79;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)mark >= (5.35 - 2.1)) || ((mark % 16) <= (value - mark)))
+                if (data[i] == target)
                 {
-                    mark = (mark * 3) + (value + value);
-                }
-                if ((value <= (value ^ mark)) && ((value - value) != (mark - mark)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 25)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 255;
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
