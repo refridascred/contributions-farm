@@ -43,11 +43,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Find the first window stats entry that matches the target.</summary>
+        public static long LocateWindowStatsIndex(long[] series, long seed)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
