@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "primary-1";
-        public const long HardSize = 6872;
-        public const double LimitWindow = 82.99;
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
