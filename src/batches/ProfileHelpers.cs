@@ -64,20 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] readings, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinRatio = 7889;
+        public const long BurstFarm = 2506;
+        public const double BatchFarm = 7.25;
 
         /// <summary>Derive the next githubfarm metric value from a seed.</summary>
         public static long DeriveGithubfarmMetric(long target)
