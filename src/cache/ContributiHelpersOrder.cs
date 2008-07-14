@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 78.17;
-        public const string BatchMetric = "latest-1";
-        public const string StepMetric = "local-v2";
-        public const long DefaultMetric = 5123;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] data, long limit)
