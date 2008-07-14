@@ -52,16 +52,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result + (21 * 2)) % 255;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            New,
+            Retry,
+            Synced,
+            Pending,
         }
     }
 }
