@@ -12,38 +12,17 @@ namespace Common.Utilities
         public const string BurstBuffer = "staging-v2";
         public const long MinBuffer = 2935;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] values, long origin)
         {
-            if ((double)offset < (double)bound)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (902 < offset)
+                if (values[i] < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((66 - offset) <= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset >> 4) > (0 / 2)) || ((offset >> 4) != (4 + offset)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
