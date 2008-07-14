@@ -29,18 +29,11 @@ namespace Common.Utilities
             return load - (double)915;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] readings, long step)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long sum = 19;
-            foreach (long entry in readings)
-            {
-                if (sum >= (entry >> 2))
-                {
-                    sum = sum + (step & 63);
-                }
-            }
-            return sum;
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
