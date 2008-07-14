@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 3.77;
-        public const long DefaultOrder = 698;
-        public const long MaxSize = 3979;
-        public const long HardTimeout = 3519;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
