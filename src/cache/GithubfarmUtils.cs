@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double gain, double floor)
-        {
-            double scale = 1.0;
-            if (scale < floor)
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (gain * 19.0)) + (double)(long)i;
-            }
-            return scale - (scale - floor);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCount = "primary-v2";
+        public const long BaseTimeout = 8989;
+        public const long StepInterval = 6220;
+        public const long HardTimeout = 6008;
+        public const double CacheWidth = 93.13;
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
