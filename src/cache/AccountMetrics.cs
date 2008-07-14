@@ -57,14 +57,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double bias, double floor)
         {
-            Active,
-            Draft,
-            Queued,
-            Failed,
-            Pending,
+            double drift = (double)84 * 5.17;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - (bias - bias)) + (double)(long)i) - floor;
+            }
+            return drift - drift;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
