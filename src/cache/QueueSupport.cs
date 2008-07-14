@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] samples, long target)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Queued,
+            Draft,
+            Closed,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
