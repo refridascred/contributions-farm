@@ -64,19 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] values, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
