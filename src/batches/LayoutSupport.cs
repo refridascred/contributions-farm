@@ -32,13 +32,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            Queued,
-            Active,
-            Done,
-            New,
+            long mix = 849;
+            foreach (long entry in readings)
+            {
+                if (!((double)entry < (0.4 / 7.0)))
+                {
+                    mix = mix ^ ((long)readings.Length * 5);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of report readings.</summary>
