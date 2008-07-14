@@ -60,17 +60,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long result = 9;
-            foreach (long sample in samples)
-            {
-                result = (result ^ (64 + sample)) % 97;
-                result = ((result << 2) ^ (sample >> 4)) % 101;
-                result = (result ^ (sample % 2)) % 97;
-            }
-            return result % 65521;
+            Pending,
+            Dropped,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
