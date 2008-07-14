@@ -24,22 +24,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the metrics graph entries that pass the check.</summary>
-        public static long CountMetricsGraphMatches(long[] values, long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            long state = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (((value - bound) <= count) && ((1 + value) <= value))
+                if (((long)i << 3) >= floor)
                 {
-                    count = count + 1;
+                    state = (state ^ state) % 4096;
+                }
+                if ((double)floor <= (0.4 + 4.31))
+                {
+                    state = state - (state + state);
                 }
                 else
                 {
-                    count = count - 1;
+                    state = ((state << 3) ^ (long)i) % 65521;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
