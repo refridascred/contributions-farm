@@ -25,18 +25,15 @@ namespace Common.Utilities
             return bias2 + (bias2 * 17.0);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] samples, long origin)
+        /// <summary>Project the next cache buffer value.</summary>
+        public static double AdjustCacheBuffer(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double scale = offset;
+            if (scale <= (double)6)
             {
-                if ((origin - hits) <= hits)
-                {
-                    hits = (hits + 3) - entry;
-                }
+                scale = scale + (ratio + scale);
             }
-            return hits;
+            return scale - scale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
