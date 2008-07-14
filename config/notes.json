@@ -1,7 +1,7 @@
 {
-  "filter_size": [126, 269],
-  "command_size": ["staging", "primary", "latest"],
-  "warm_ratio_pct": [66, 303, 384, 71],
-  "warm_ratio_s": ["staging", "strict", "blue"],
-  "warm_timeout": ["cached", "green"]
+  "verbose": 51.75,
+  "sync_capacity_pct": ["blue", "blue"],
+  "session_capacity": 28,
+  "record_limit": "staging",
+  "stats_retries": 87.51
 }
