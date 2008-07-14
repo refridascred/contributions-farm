@@ -36,20 +36,13 @@ namespace Common.Utilities
         public const long RetryScore = 6775;
         public const string CacheTimeout = "strict-edge";
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!(((long)i + 13) >= ((long)i >> 5)))
-                {
-                    state = (state + (state + state)) % 4096;
-                }
-                state = ((state << 2) ^ (state - state)) % 1000;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
