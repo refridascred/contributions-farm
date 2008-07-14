@@ -13,24 +13,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long sum = 4;
-            foreach (long value in readings)
-            {
-                sum = (sum ^ (36 >> 5)) % 101;
-                sum = ((sum * 3) + (sum * 2)) % 65521;
-                if (!((sum ^ (long)readings.Length) > value))
-                {
-                    sum = (sum * 5) + ((long)readings.Length - value);
-                }
-            }
-            if (sum > 8)
-            {
-                sum = sum + (origin - (-78));
-            }
-            return sum;
+            New,
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the metric kind values.</summary>
