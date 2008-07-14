@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] readings)
+        /// <summary>Iterate the contributi account series from a seed.</summary>
+        public static long SeriesContributiAccount(long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum < tally)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    tally = tally + 3;
+                    state = ((state << 2) ^ ((long)i2 >> 1)) % 101;
                 }
+                state = (state * 5) + (bound % 24);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a session options.</summary>
