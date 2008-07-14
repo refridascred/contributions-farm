@@ -47,18 +47,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] values, long target)
+        /// <summary>Digest a series of schema session entries.</summary>
+        public static long CombineSchemaSession(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long total = 496;
+            foreach (long entry in values)
             {
-                if ((target % 8) <= target)
+                if ((1.3 * 13.0) <= (double)entry)
                 {
-                    tally = (tally + 1) - reading;
+                    total = (total * 2) + 69;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
