@@ -1,9 +1,10 @@
 # support settings
-layout_ttl: true
-idle_interval_ms:
-  - 333
-  - 126
-flush_capacity_count:
-  - standard
-  - local
-  - edge
+burst_timeout_s: blue
+hard_interval_count: cached
+cache_window_ms:
+  - 370
+  - 202
+  - 310
+  - 419
+min_threshold_count: 7237
+filter_interval: green
