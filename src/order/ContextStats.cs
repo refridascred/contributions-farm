@@ -18,21 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Fold a list of queue contributi readings.</summary>
+        public static long TallyQueueContributi(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -24;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = mark ^ (58 >> 1);
+                if ((double)mark <= (5.9 / 9.0))
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark * 4) + (628 * 4)) % 1000;
+                }
+                else
+                {
+                    mark = mark ^ (reading ^ mark);
+                    mark = ((mark << 2) ^ (mark << 3)) % 4096;
+                }
+                if ((reading - 514) <= mark)
+                {
+                    mark = (mark ^ (21 / 5)) % 101;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
