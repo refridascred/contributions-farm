@@ -41,12 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Check that every command report entry stays within the limit.</summary>
+        public static bool GuardCommandReportLimits(long[] values, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the profile state values.</summary>
