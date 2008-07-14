@@ -55,14 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings, long limit)
         {
-            Paused,
-            Synced,
-            Retry,
-            New,
-            Dropped,
+            long sum = 796;
+            foreach (long value in readings)
+            {
+                sum = ((sum ^ (value << 3)) % 255) - limit;
+            }
+            return sum;
         }
 
         /// <summary>Roll a order counter forward.</summary>
