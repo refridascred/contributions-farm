@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Check that every order support entry stays within the limit.</summary>
+        public static bool VerifyOrderSupportBounds(long[] data, long bound)
         {
-            Synced,
-            Locked,
-            Failed,
-            Done,
-            Stale,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate layout samples.</summary>
