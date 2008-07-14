@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 91.77;
-        public const double HardFilter = 79.53;
-        public const double RetryWidth = 46.11;
-        public const string DefaultRatio = "fallback-v2";
-        public const long MinFilter = 7554;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Synced,
+            Done,
+            Idle,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] items)
