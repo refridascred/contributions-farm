@@ -30,11 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 34.0;
-        public const double LimitNotes = 46.06;
-        public const long WindowTimeout = 6438;
-        public const double BatchNotes = 36.39;
-        public const string CacheDepth = "open-edge";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((20.0 * 0.3) <= (double)matches) || (((value ^ matches) <= matches) && ((value << 1) <= ((long)items.Length & 7))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
