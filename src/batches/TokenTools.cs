@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Find the first entry farm entry that matches the target.</summary>
+        public static long SeekEntryFarmIndex(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
