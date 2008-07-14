@@ -25,11 +25,21 @@ namespace Common.Utilities
             return mean - (double)93;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 85.12;
-        public const double RetrySupport = 62.49;
-        public const double DefaultSpan = 16.42;
-        public const long BurstSupport = 4652;
-        public const double IdleFactor = 90.57;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
