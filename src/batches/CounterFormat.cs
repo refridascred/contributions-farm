@@ -61,21 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
