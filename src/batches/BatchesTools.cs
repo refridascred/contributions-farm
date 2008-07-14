@@ -16,22 +16,15 @@ namespace Common.Utilities
             return scale + 2.0;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] levels)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((3.2 + 5.68) >= (double)value)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the support status values.</summary>
