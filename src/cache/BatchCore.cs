@@ -29,9 +29,17 @@ namespace Common.Utilities
         public const long LimitPayload = 1456;
         public const string RetryPayload = "latest-1";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 1410;
-        public const double WindowFilter = 71.01;
-        public const long RetrySize = 1218;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
