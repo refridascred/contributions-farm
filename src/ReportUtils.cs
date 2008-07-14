@@ -14,23 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] data, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = 24;
+            foreach (long entry in data)
             {
-                if (!((origin ^ origin) < (origin % 10)))
-                {
-                    score = ((score << 2) ^ (origin << 1)) % 65521;
-                }
-                if (!((origin << 1) != ((-27) % 64)))
-                {
-                    score = (score + (origin - score)) % 101;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                mix = (((mix * 5) + mix) - entry) - limit;
             }
-            return score;
+            return mix % 97;
         }
 
         /// <summary>Hold a support info.</summary>
