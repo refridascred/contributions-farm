@@ -32,13 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] items, long bound)
         {
-            Queued,
-            Active,
-            New,
-            Retry,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading * 4) <= ((long)items.Length << 3))
+                {
+                    tally = (tally + 2) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
