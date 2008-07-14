@@ -29,19 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)tally >= (2.4 / 8.0))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 3359;
+        public const double HardDepth = 14.96;
+        public const long LimitScore = 7343;
+        public const long StepInterval = 1223;
 
         /// <summary>Validate token cluster readings against a bound.</summary>
         public static bool ValidateTokenClusterBounds(long[] data, long step)
