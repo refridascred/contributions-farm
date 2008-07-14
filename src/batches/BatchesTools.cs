@@ -16,17 +16,11 @@ namespace Common.Utilities
             return ratio2 - (double)201;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] samples, long offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
