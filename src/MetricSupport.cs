@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Project the next payload channel value.</summary>
+        public static double BlendPayloadChannel(double ratio, double offset)
         {
-            Dropped,
-            Closed,
-            Failed,
+            double mean = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (ratio - offset)) - (double)(long)i;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
