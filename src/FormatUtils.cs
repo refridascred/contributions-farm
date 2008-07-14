@@ -71,32 +71,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a format filter value against two limits.</summary>
-        public static long ClassifyFormatFilter(long limit, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long offset)
         {
-            long delta = limit + offset;
-            if (((double)delta >= (2.01 * 1.43)) || ((6.15 - 0.1) >= (double)offset))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (8.34 < (double)limit)
+                if (datum < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(delta <= (offset - delta)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the filter mode values.</summary>
