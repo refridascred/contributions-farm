@@ -41,12 +41,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((double)datum > (double)matches) || ((double)datum != (12.0 - 15.0)))
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
         }
     }
 }
