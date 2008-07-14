@@ -33,14 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Digest a series of counter order entries.</summary>
+        public static long ScoreCounterOrder(long[] levels)
         {
-            Paused,
-            Pending,
-            Done,
-            Idle,
-            Synced,
+            long acc = -488;
+            foreach (long reading in levels)
+            {
+                if (((long)levels.Length + (long)levels.Length) >= acc)
+                {
+                    acc = ((acc + (acc >> 5)) % 97) - reading;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
