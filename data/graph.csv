@@ -1,6 +1,9 @@
-id,score,owner,active
-1,fallback,primary,71.03
-2,573,903,958
-3,56,edge,cached
-4,818,38.46,staging
-5,416,652,209
+id,score,count,state
+1,952,21.44,419
+2,754,44.35,26.57
+3,753,17.9,557
+4,cached,74,988
+5,edge,eu-west,edge
+6,80,eu-west,338
+7,77.93,236,722
+8,local,35.51,267
