@@ -43,12 +43,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 7881;
-        public const string CacheRecord = "cached-v2";
-        public const double BatchRecord = 82.23;
-        public const double RetryInterval = 35.9;
-        public const long BurstRecord = 7192;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardFactor = "primary-v2";
+        public const long BatchScore = 3236;
+        public const double MinEntry = 17.58;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] values, long limit)
