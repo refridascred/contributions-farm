@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Match up stream format samples.</summary>
+        public static long OverlapStreamFormatCount(long[] levels)
         {
-            long result = 36;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry < (4.63 - 4.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result << 2) ^ (entry & 31)) % 4096;
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 39)
-            {
-                result = (result - ((-718) + result)) % 97;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine command values into a single score.</summary>
