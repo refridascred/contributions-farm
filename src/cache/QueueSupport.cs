@@ -24,18 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] readings, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (tally < origin)
+                if ((hits - hits) != (cell - cell))
                 {
-                    tally = (tally + 3) + value;
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
