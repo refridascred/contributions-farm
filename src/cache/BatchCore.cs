@@ -15,15 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double weight, double offset)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double load = weight * 2.69;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load - weight) + (double)(long)i) + offset;
-            }
-            return load - (double)915;
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
