@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public string Region { get; set; } = "";
+            public double Weight { get; set; }
             public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
