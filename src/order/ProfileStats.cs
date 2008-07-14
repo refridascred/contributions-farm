@@ -37,17 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] levels, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = -538;
+            foreach (long entry in data)
             {
-                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((((state * 5) + (state & 1)) % 65521) + entry) + limit;
             }
-            return -1;
+            return state % 97;
         }
     }
 }
