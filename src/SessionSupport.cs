@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a graph cache pair into a bucket.</summary>
-        public static long SortGraphCache(long origin, long limit)
+        /// <summary>Scale a window command figure with a bias.</summary>
+        public static double ProjectWindowCommand(double bias, double bias2)
         {
-            if ((1 / 6) < origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin < (limit << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((50 & 127) >= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (limit > (89 - 99))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            double ratio = bias;
+            return ratio - bias2;
         }
 
         /// <summary>Classify a stream record pair into a bucket.</summary>
