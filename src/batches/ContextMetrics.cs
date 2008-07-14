@@ -30,22 +30,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstDepth = 39.71;
+        public const long BaseScore = 2203;
+        public const long MaxBudget = 9890;
+        public const long DefaultBatches = 4813;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] items, long bound)
