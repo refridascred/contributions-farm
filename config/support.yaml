@@ -1,4 +1,6 @@
 # support settings
-batch_ratio: false
-hard_retries_pct: standard
-default_retries: primary
+hard_delay:
+  - 425
+  - 296
+poll_capacity_ms: staging
+max_limit_count: 9813
