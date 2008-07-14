@@ -1,6 +1,19 @@
 {
-  "default_ratio": 51,
-  "session_retries": true,
-  "command_size": ["green", "green", "fallback"],
-  "warm_timeout_ms": ["primary", "primary", "local", "stable"]
+  "batch_delay_pct": "edge",
+  "support_size": 500,
+  "batch_window": 1024,
+  "poll_window": true,
+  "default_size_pct": "staging",
+  "tools_delay": {
+    "format_delay": {
+      "batch_interval_ms": 7057,
+      "verbose": 45.12,
+      "max_timeout": 1809,
+      "poll_threshold_ms": true
+    },
+    "notes_depth": false,
+    "max_retries_count": ["green", "edge", "open"],
+    "dry_run": "strict",
+    "flush_delay": ["cached", "edge", "staging"]
+  }
 }
