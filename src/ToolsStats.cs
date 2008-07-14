@@ -41,19 +41,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every command report entry stays within the limit.</summary>
-        public static bool GuardCommandReportLimits(long[] values, long target)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= target)
+                if (levels[i] >= offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
