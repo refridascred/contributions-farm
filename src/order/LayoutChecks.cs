@@ -69,19 +69,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] values, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long mark = 255;
+            foreach (long sample in values)
             {
-                if (entry != floor)
+                if (((sample - sample) != (sample & 15)) || ((mark % 100) > (-754)))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark - sample) % 97;
                 }
             }
-            return valid;
+            if (mark < 7)
+            {
+                mark = (mark ^ (63 - 232)) % 101;
+            }
+            return mark;
         }
     }
 }
