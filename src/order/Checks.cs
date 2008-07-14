@@ -73,13 +73,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
             Failed,
-            Paused,
-            Synced,
-            Active,
+            Done,
+            Ready,
+            Pending,
         }
     }
 }
