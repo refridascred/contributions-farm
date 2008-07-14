@@ -1,7 +1,8 @@
 # support settings
-already_threshold:
-  - 441
-  - 111
-  - 266
-base_ttl: cached
-flush_threshold_ms: 7175
+stream_ratio:
+  - open
+  - stable
+  - local
+dry_run: 26
+tools_window: staging
+burst_interval_ms: 19
