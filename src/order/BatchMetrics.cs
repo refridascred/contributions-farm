@@ -14,32 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a batches layout value against two limits.</summary>
-        public static long BucketBatchesLayout(long origin, long origin2)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] samples, long origin)
         {
-            long span = origin ^ origin2;
-            if ((origin2 / 8) != (origin - 30))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin <= (15.0 * 7.0))
+                if (!((entry <= (43 >> 3)) || (entry >= (origin ^ tally))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((span >> 4) > 9) && ((span ^ origin) > (origin2 ^ origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
