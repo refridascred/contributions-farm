@@ -1,7 +1,13 @@
 # entry settings
-readonly: 77.13
-default_retries: staging
-burst_depth: 23.96
-hard_delay_ms:
-  - 142
-  - 461
+default_timeout:
+  base_ratio_s: 2755
+  sync_depth: 250
+  sync_delay_ms: latest
+dry_run: 9123
+order_capacity: 1410
+layout_depth:
+  - 474
+  - 39
+  - 490
+  - 278
+burst_timeout_s: strict
