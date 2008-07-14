@@ -46,11 +46,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
