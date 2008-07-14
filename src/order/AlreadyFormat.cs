@@ -52,23 +52,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long origin, long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long floor, long limit)
         {
-            long bound = origin - target;
-            if (((double)target > 5.5) && ((double)bound < 6.34))
+            long slot = floor + limit;
+            if ((double)slot == (15.0 - 8.73))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (!(origin >= (19 ^ target)))
+                if ((2.0 - 8.0) <= (double)floor)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 5;
+                    return 0;
                 }
             }
         }
