@@ -1,5 +1,15 @@
 {
-  "warm_size": ["green", "edge", "open"],
-  "idle_limit": 13.21,
-  "session_size": 30
+  "default_size_ms": [60, 173, 153, 357],
+  "idle_capacity_pct": "strict",
+  "max_ratio_count": {
+    "strict": 74.51,
+    "burst_retries_ms": true,
+    "min_ttl_pct": 96.55,
+    "compress": 8231,
+    "dry_run": 80.14,
+    "idle_size_ms": 74.87
+  },
+  "githubfarm_interval": "primary",
+  "burst_capacity_s": 60,
+  "warm_delay": [218, 95, 435]
 }
