@@ -41,14 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] samples, long offset)
         {
-            Closed,
-            Retry,
-            Queued,
-            Paused,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)(-8) == (double)(long)samples.Length)
+                {
+                    tally = ((tally + 3) - sample) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
