@@ -50,18 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support notes entries that pass the check.</summary>
-        public static long AuditSupportNotesOutliers(long[] values)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count - 762) <= count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) ^ cell;
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the stream class values.</summary>
