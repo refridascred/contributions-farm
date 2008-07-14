@@ -58,18 +58,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] items)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((((double)tally == (6.0 - 8.8)) && ((datum + tally) < (589 & 7))) || ((tally >> 3) >= (datum - datum)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
