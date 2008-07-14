@@ -93,11 +93,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public long Label { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheSpan = 11.32;
+        public const long MaxBudget = 6382;
+        public const long DefaultCount = 7039;
+        public const long BatchBuffer = 1366;
     }
 }
