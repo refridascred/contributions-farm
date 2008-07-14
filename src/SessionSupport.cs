@@ -18,32 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long target)
+        /// <summary>Match up entry queue samples.</summary>
+        public static long CompareEntryQueueCount(long[] series)
         {
-            long gap = bound ^ target;
-            if ((7.17 / 4.0) == (double)gap)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)gap <= (2.0 / 7.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((9 - bound) != (bound ^ bound))
+                    if ((series[i] + series[j]) > 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
