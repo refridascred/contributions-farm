@@ -1,6 +1,15 @@
 {
-  "sync_capacity_ms": true,
-  "soft_interval_s": 82,
-  "max_window_count": 8.08,
-  "record_timeout": "edge"
+  "retry_ratio": [15, 38, 47],
+  "dry_run": 1618,
+  "report_depth": {
+    "min_window_ms": "standard",
+    "buffer_window": false,
+    "dry_run": 100,
+    "contributi_ratio": "fallback",
+    "persist": 90,
+    "min_interval_pct": false
+  },
+  "max_threshold": 20.07,
+  "hard_ttl": 8714,
+  "support_capacity": "stable"
 }
