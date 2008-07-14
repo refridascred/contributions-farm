@@ -13,18 +13,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] items, long target)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((double)bound < (9.71 * 17.0))
             {
-                if ((double)(long)items.Length > 8.64)
+                return 2;
+            }
+            else
+            {
+                if (limit > (bound % 24))
                 {
-                    hits = ((hits + 3) ^ sample) + target;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + bound) <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + bound) < bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
