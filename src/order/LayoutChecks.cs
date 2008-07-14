@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels, long bound)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            long state = 1;
+            foreach (long value in levels)
+            {
+                if ((double)state == (7.17 / 8.0))
+                {
+                    state = (((state * 2) + (bound - state)) % 4096) ^ value;
+                }
+            }
+            if (state > 843)
+            {
+                state = (state - (bound - state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Measure how many editor buffer samples are out of range.</summary>
