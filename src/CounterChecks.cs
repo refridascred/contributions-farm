@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] levels)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum % 5) <= datum) && ((2.69 - 7.7) >= (double)seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the entry phase values.</summary>
