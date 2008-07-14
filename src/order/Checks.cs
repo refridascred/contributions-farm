@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const long MaxSize = 3979;
         public const long HardTimeout = 3519;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] data)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (datum >= (5 * 4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
