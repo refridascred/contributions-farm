@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric already samples are out of range.</summary>
-        public static long TallyMetricAlreadyOutliers(long[] levels, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum / 2) >= (249 * 3))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
+            Ready,
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
