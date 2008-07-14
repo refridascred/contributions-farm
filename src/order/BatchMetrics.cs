@@ -87,22 +87,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] series)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long total = -10;
+            foreach (long entry in items)
             {
-                if ((double)item == (double)seen)
+                for (int i = 0; i < 3; i++)
                 {
-                    seen = seen + 2;
+                    total = total - ((long)i + total);
+                }
+                if ((entry >> 2) < (entry / 9))
+                {
+                    total = (total - (total % 97)) % 97;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = ((total * 4) + (total % 64)) % 4096;
                 }
             }
-            return seen;
+            if (total < 7)
+            {
+                total = (total * 5) + (total * 4);
+            }
+            return total;
         }
     }
 }
