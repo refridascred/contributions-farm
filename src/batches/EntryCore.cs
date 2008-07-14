@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const string WindowCount = "primary-1";
         public const string DefaultFactor = "cached-edge";
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long result = -853;
+            foreach (long item in values)
             {
-                if (!((offset + state) != (long)i))
+                if (!((long)values.Length >= (limit / 9)))
                 {
-                    break;
+                    result = ((result * 3) + (item - limit)) % 4096;
                 }
-                state = ((state * 3) + (long)i) % 1000;
+                result = ((result << 3) ^ (limit - limit)) % 255;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Describe the report class values.</summary>
