@@ -32,13 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Synced,
-            New,
-            Locked,
-            Done,
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
