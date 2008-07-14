@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] samples, long floor)
         {
-            Ready,
-            Synced,
-            Closed,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a filter reading.</summary>
