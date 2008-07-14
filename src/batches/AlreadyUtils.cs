@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long WindowSize = 1667;
         public const double BurstRatio = 48.47;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] samples)
         {
-            long state = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((state & 15) < (entry - entry))
+                if (!(((seen * 5) < ((-48) - seen)) && (1 >= (long)samples.Length)))
                 {
-                    state = (state + state) % 101;
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state < 10)
-            {
-                state = (state * 3) + (state - state);
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Hold a report options.</summary>
