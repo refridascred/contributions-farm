@@ -38,15 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout tools values into a single score.</summary>
-        public static long TallyLayoutTools(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] series, long origin)
         {
-            long total = 25;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                total = (((total * 5) + 482) % 1000) + datum;
+                if (!((1.0 * 16.0) <= (double)value))
+                {
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total % 4096;
+            return count;
         }
     }
 }
