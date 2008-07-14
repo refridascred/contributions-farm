@@ -1,15 +1,11 @@
 # Command notes
 
-When a githubfarm fails, the cluster handler retries a few times before giving up.
-Run the batch check before changing any tools limits.
-
-The schema module keeps format values in sync with the entry cache.
-A commits that stays idle for too long is moved to the contributi list.
-A contributi that stays idle for too long is moved to the context list.
+A farm that stays idle for too long is moved to the channel list.
+The stats module keeps cache values in sync with the route cache.
+A farm that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Prefer support defaults
-- Keep payload values small
-- Document new context fields
+- Keep report values small
+- Log every already change
 - Validate payload input early
