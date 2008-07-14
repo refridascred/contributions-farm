@@ -65,17 +65,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first entry stats entry that matches the target.</summary>
-        public static long LookupEntryStatsIndex(long[] items, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 330;
+            foreach (long reading in samples)
             {
-                if ((items[i] >= step) && ((items[i] % 5) == 0))
+                if ((score + score) != (reading << 1))
                 {
-                    return (long)i;
+                    score = score - reading;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
