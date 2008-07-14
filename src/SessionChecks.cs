@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!((15.0 / 9.0) != (double)cell))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
