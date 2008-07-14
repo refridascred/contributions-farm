@@ -27,15 +27,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Roll a metrics token counter forward.</summary>
+        public static long SeriesMetricsToken(long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = ((acc << 3) ^ acc) - (long)i2;
+                }
+                acc = acc ^ seed;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
     }
 }
