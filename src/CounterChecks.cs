@@ -55,18 +55,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] series, long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long offset, long limit)
         {
-            long mix = 5;
-            foreach (long reading in series)
+            if ((offset << 3) < (offset * 4))
             {
-                if ((reading & 7) < (reading + reading))
+                return 6;
+            }
+            else
+            {
+                if ((double)310 != (double)limit)
                 {
-                    mix = (mix ^ ((-946) - 129)) + seed;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a contributi record.</summary>
