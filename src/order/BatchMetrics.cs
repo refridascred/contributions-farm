@@ -29,11 +29,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 20.19;
-        public const string WindowChecks = "legacy-v2";
-        public const string HardFactor = "standard-edge";
-        public const long MinFactor = 5094;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 57.73;
+        public const long MinProfile = 2737;
+        public const long MaxProfile = 4806;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double SoftSpan = 85.53;
