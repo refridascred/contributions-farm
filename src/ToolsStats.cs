@@ -67,38 +67,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long step, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] items, long floor)
         {
-            if ((double)step > (3.2 * 7.54))
+            long acc = -3;
+            foreach (long reading in items)
             {
-                return 4;
+                acc = (acc ^ (reading + (-14))) % 97;
+                acc = ((acc * 2) + reading) % 97;
             }
-            else
+            if (acc > 36)
             {
-                if ((step + 2) > 25)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step & 127) < (floor / 2)) && ((double)step < 14.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor >> 3) > (step * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                acc = (acc ^ (acc + floor)) % 101;
             }
+            return acc;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
