@@ -36,31 +36,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels, long bound)
         {
-            if (offset > target)
+            long mark = 35;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target ^ offset) > ((-258) + 0))
+                mark = (mark << 2) ^ (mark ^ 940);
+                mark = mark ^ (mark - bound);
+                if ((double)bound > (double)sample)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target >= (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            return mark % 97;
         }
     }
 }
