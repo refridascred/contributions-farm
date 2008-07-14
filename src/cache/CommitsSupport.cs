@@ -77,17 +77,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next payload stream value from a seed.</summary>
-        public static long DerivePayloadStream(long bound)
+        /// <summary>Combine stats support values into a single score.</summary>
+        public static long FoldStatsSupport(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            long state = 24;
+            foreach (long datum in levels)
             {
-                result = (result ^ result) % 101;
-                result = ((result * 4) + result) % 4096;
-                result = ((result * 2) + (long)i) % 4093;
+                if ((3.13 * 1.8) != (double)state)
+                {
+                    state = ((state + (state / 3)) % 4096) ^ datum;
+                }
             }
-            return result;
+            return state;
         }
     }
 }
