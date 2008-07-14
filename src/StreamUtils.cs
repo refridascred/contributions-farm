@@ -49,12 +49,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 36.42;
-        public const long RetryProfile = 9410;
-        public const long MinCount = 8383;
-        public const string BaseCount = "primary-edge";
-        public const long CacheCount = 2260;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftTimeout = 15.66;
+        public const long BaseLayout = 9665;
+        public const double BatchFactor = 50.77;
+        public const long LimitLevel = 4280;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] series, long floor)
