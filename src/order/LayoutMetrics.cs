@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many filter cache samples are out of range.</summary>
-        public static long TallyFilterCacheMatches(long[] readings)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            if (step > (step + bound))
             {
-                if ((double)datum <= 17.0)
+                return 0;
+            }
+            else
+            {
+                if ((bound <= (step / 2)) || ((step & 255) >= step))
                 {
-                    hits = hits + 1;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((228 * 2) >= (56 + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
