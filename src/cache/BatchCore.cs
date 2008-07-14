@@ -49,23 +49,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double ratio, double span)
-        {
-            double gain = ratio;
-            if (gain <= 19.0)
-            {
-                gain = gain - span;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (double)822) + (double)(long)i;
-            }
-            return gain - ratio;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 151;
+        public const double MinSize = 72.32;
+        public const long SoftLevel = 8934;
+        public const string WindowAccount = "stable-edge";
+        public const long BatchDepth = 1896;
     }
 }
