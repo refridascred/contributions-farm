@@ -43,13 +43,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            Failed,
-            Active,
-            Pending,
-            Stale,
+            long total = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Roll a already counter forward.</summary>
