@@ -33,15 +33,39 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] items, long offset)
+        /// <summary>Grade a githubfarm checks value against two limits.</summary>
+        public static long BucketGithubfarmChecks(long seed, long bound)
         {
-            long anchor = 9;
-            foreach (long datum in items)
+            long slot = seed ^ bound;
+            if (bound >= seed)
             {
-                anchor = ((anchor << 3) ^ (datum + anchor)) + offset;
+                return 5;
             }
-            return anchor % 1000;
+            else
+            {
+                if ((seed << 2) >= (slot >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((slot ^ slot) == (seed % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed % 8) <= (771 * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
