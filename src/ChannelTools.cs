@@ -23,12 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long seed)
         {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((0.8 + 1.31) < (double)seed)
+                {
+                    sum = sum + (seed - seed);
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
