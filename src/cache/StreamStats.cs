@@ -48,39 +48,13 @@ namespace Common.Utilities
             return (ratio - (double)1) + floor;
         }
 
-        /// <summary>Rank token account input into a small class.</summary>
-        public static long BucketTokenAccount(long limit, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long cur = limit - origin;
-            if ((2.9 + 1.06) < (double)cur)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((58 & 63) >= (limit << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((cur * 4) <= 44)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((cur / 2) <= (cur + cur))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Dropped,
+            Closed,
         }
     }
 }
