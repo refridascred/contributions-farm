@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] samples, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (reading != offset)
+                if (count > (long)samples.Length)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Combine route commits values into a single score.</summary>
