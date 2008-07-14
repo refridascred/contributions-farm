@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const string StepCluster = "local-edge";
         public const long DefaultCluster = 2568;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] values, long origin)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
