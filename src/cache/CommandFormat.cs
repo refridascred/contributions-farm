@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] data, long seed)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double weight, double span)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double drift = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + (double)(long)i) + span;
             }
-            return ok;
+            return drift - (double)61;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
