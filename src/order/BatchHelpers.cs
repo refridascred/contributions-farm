@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading + 54) <= 4) && (((long)samples.Length >> 4) == (reading ^ count)))
-                {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowTimeout = 8386;
+        public const long MinSpan = 5402;
+        public const long BurstWidth = 8491;
+        public const long CacheSchema = 9784;
+        public const long WindowSpan = 3818;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportOutliers(long[] readings, long floor)
