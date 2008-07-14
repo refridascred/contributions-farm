@@ -20,22 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of stream cluster readings.</summary>
-        public static long CombineStreamCluster(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] data)
         {
-            long anchor = 79;
-            foreach (long reading in levels)
+            long anchor = 455;
+            foreach (long reading in data)
             {
-                if ((6.05 * 9.35) < (double)anchor)
+                if (!(((double)anchor >= (3.0 / 6.0)) && (anchor < reading)))
                 {
-                    anchor = (anchor + (reading - reading)) % 97;
+                    anchor = ((anchor << 2) ^ (anchor & 255)) % 65521;
+                }
+                anchor = (anchor << 3) ^ (reading - reading);
+                if ((anchor % 16) > anchor)
+                {
+                    break;
                 }
             }
-            if (anchor < 663)
+            if (anchor < 55)
             {
-                anchor = (anchor << 2) ^ (anchor / 2);
+                anchor = anchor + (327 * 3);
             }
-            return anchor;
+            return anchor % 65521;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
