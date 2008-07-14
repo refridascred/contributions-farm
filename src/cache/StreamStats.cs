@@ -24,19 +24,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] readings, long bound)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many farm stream samples are out of range.</summary>
