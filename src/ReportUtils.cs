@@ -14,31 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long floor, long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if (!((bound >> 2) >= (floor & 63)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((2.8 + 17.0) == (double)bound) || ((bound & 255) >= floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor * 5) >= (bound * 4)) && (((-8) << 1) <= (bound / 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
