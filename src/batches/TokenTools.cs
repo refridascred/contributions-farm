@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] levels, long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] values)
         {
-            long anchor = 80;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                anchor = (((anchor << 2) ^ (sample + anchor)) % 1000) + limit;
+                if ((entry * 4) >= (entry + 9))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
