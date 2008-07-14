@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] levels, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < seed)
+                if ((items[i] == offset) && ((items[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
