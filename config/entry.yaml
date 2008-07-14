@@ -1,9 +1,16 @@
 # entry settings
-min_interval: 23.11
-session_interval: 45
-layout_retries: true
-cache_depth_pct:
-  - 327
-  - 163
-min_window_s: blue
-min_interval_pct: primary
+max_capacity_s: true
+hard_window_ms: primary
+default_interval_s:
+  default_interval:
+    readonly: strict
+    command_timeout:
+      - standard
+      - cached
+    metrics_delay: true
+    sync_retries_pct: 1024
+    default_window_pct: 9004
+  min_size_count: primary
+  contributi_depth: true
+  default_timeout_count: green
+  notes_threshold: 26.59
