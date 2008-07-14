@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] values, long origin)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
