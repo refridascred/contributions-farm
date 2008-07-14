@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepWidth = 62.75;
-        public const long MinCluster = 1947;
-        public const long RetryInterval = 2598;
-        public const long StepLevel = 8575;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many batch buffer samples are out of range.</summary>
         public static long MeasureBatchBufferMatches(long[] items)
