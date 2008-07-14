@@ -58,16 +58,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long cur = origin ^ seed;
+            if ((double)cur < (double)1)
             {
-                anchor = (anchor + (anchor * 2)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (5.5 >= (9.6 - 6.8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((cur * 5) >= (seed / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed << 3) == (cur % 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
