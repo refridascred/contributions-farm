@@ -37,24 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long score = 40;
-            foreach (long reading in items)
-            {
-                score = (score << 2) ^ score;
-                score = (score + reading) % 4096;
-                if (((reading + reading) >= (reading / 6)) && ((557 * 2) <= (reading % 100)))
-                {
-                    break;
-                }
-            }
-            if (score > 59)
-            {
-                score = score - (score - score);
-            }
-            return score % 4096;
+            Closed,
+            Synced,
+            Done,
+            Retry,
         }
     }
 }
