@@ -25,20 +25,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (((mark * 5) + (seed + 2)) % 1000) - (long)i2;
-                    mark = (mark + (mark >> 1)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
