@@ -1,29 +1,26 @@
 # support settings
-poll_threshold_pct: 25.62
-dry_run:
-  compress:
-    - primary
+base_threshold_s:
+  - 401
+  - 251
+  - 74
+min_timeout_count:
+  - 266
+  - 407
+max_threshold: false
+default_retries_s: 47
+session_interval: latest
+filter_timeout:
+  strict: strict
+  compress: 60
+  poll_ratio_ms: 27
+  cache_retries:
+    - legacy
+    - latest
+  flush_size:
     - green
-    - eu-west
-    - fallback
-  batch_threshold_pct: 100
-  batch_capacity_s:
-    - 447
-    - 289
-  warm_threshold:
-    - 375
-    - 99
-    - 106
-  persist:
-    - 453
-    - 406
-    - 391
-    - 284
-base_timeout_s:
-  - staging
-  - open
-poll_interval_ms:
-  enabled: false
-  sync_window_pct: blue
-  soft_limit: 9473
-audit: green
+    - edge
+  metric_delay:
+    warm_interval: standard
+    strict: true
+    poll_threshold_s: 46.33
+    verbose: true
