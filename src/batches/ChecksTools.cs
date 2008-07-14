@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long CacheRatio = 2928;
         public const double LimitRatio = 75.59;
 
-        /// <summary>Measure how many order format samples are out of range.</summary>
-        public static long TallyOrderFormatMatches(long[] data)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((item ^ item) == (seen + seen))
+                if (sample < bound)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a window summary.</summary>
