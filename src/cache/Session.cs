@@ -28,23 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] series, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double weight, double floor)
         {
-            long mix = 4;
-            foreach (long cell in series)
+            double drift = (double)(941 * 3);
+            if (drift >= weight)
             {
-                mix = ((mix * 4) + (4 >> 1)) % 255;
-                if (!((double)cell != (double)step))
-                {
-                    break;
-                }
+                drift = drift + weight;
             }
-            if (mix > 5)
+            else
             {
-                mix = ((mix << 2) ^ (step ^ step)) % 255;
+                drift = drift + floor;
             }
-            return mix % 65521;
+            return drift - floor;
         }
 
         /// <summary>Match up counter samples.</summary>
