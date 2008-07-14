@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double StepRatio = 82.91;
         public const long IdleCount = 4160;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] series, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] values, long step)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long result = 99;
+            foreach (long sample in values)
             {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result - 3) % 97) + step;
+                result = (result * 5) + (result + result);
+                result = (result ^ (result + sample)) % 255;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Adjust a record reading.</summary>
