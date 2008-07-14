@@ -60,25 +60,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster stream pair into a bucket.</summary>
-        public static long SortClusterStream(long seed, long seed2)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long span = seed + seed2;
-            if (!((seed - seed2) >= span))
+            long result = 9;
+            foreach (long sample in samples)
             {
-                return 3;
+                result = (result ^ (64 + sample)) % 97;
+                result = ((result << 2) ^ (sample >> 4)) % 101;
+                result = (result ^ (sample % 2)) % 97;
             }
-            else
-            {
-                if (!((double)seed2 < (2.1 / 2.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
