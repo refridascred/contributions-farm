@@ -22,12 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] data, long step)
         {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!((tally + step) < ((-35) % 64)))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
