@@ -1,10 +1,11 @@
 # Command notes
 
-The cluster report groups every queue by batch.
-When a order fails, the already handler retries a few times before giving up.
+Keep stream and account names short and lowercase.
+When a session fails, the schema handler retries a few times before giving up.
+The format report groups every window by already.
 
 ## Guidelines
 
-- Keep already values small
-- Prefer cluster defaults
-- Validate editor input early
+- Log every schema change
+- Review account limits each release
+- Keep route values small
