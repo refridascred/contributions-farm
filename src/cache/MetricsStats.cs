@@ -29,23 +29,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state * 3) + (17 + state)) + (long)i2;
-                }
-                if ((step % 16) >= step)
-                {
-                    state = (state << 3) ^ (long)i;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
