@@ -71,14 +71,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Classify a already account pair into a bucket.</summary>
+        public static long RankAlreadyAccount(long target, long target2)
         {
-            Stale,
-            Locked,
-            Failed,
-            Retry,
-            Dropped,
+            long bound = target ^ target2;
+            if ((double)target == (5.9 * 6.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((847 * 5) <= (bound << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the filter mode values.</summary>
