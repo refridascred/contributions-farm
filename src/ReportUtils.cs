@@ -33,13 +33,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Adjust a record stats reading.</summary>
