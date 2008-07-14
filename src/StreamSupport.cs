@@ -36,11 +36,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseSpan = 6631;
-        public const double DefaultEditor = 35.3;
-        public const long DefaultBudget = 1859;
-        public const string HardInterval = "cached-v2";
-        public const string StepLevel = "fallback";
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
