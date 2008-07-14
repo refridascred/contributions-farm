@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double gain, double offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double ratio = gain - (double)364;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio + (1.19 * 5.4)) + (double)(long)i) + offset;
-            }
-            return ratio + (double)2;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
