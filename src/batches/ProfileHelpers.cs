@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many commits profile samples are out of range.</summary>
+        public static long MeasureCommitsProfileGaps(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - cell) < (cell * 2))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a token entry.</summary>
