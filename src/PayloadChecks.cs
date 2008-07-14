@@ -37,10 +37,10 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinWidth = 73.25;
-        public const long StepToken = 3614;
-        public const long WindowWidth = 5393;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftScore = 42;
+        public const long BatchLevel = 7793;
+        public const double MinTimeout = 7.87;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterMatches(long[] items, long seed)
