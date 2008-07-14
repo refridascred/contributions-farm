@@ -22,15 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload metric values into a single score.</summary>
-        public static long ScorePayloadMetric(long[] values, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long carry = 97;
-            foreach (long entry in values)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                carry = ((carry << 3) ^ origin) + entry;
+                anchor = ((anchor << 2) ^ (92 ^ (long)i)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
