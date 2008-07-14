@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double weight, double floor)
         {
-            Failed,
-            Locked,
-            Dropped,
+            double gain = 9.36;
+            if (gain >= weight)
+            {
+                gain = gain - (floor * 1.4);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Match up route format samples.</summary>
