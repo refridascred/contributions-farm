@@ -1,5 +1,8 @@
 {
-  "default_capacity": 9006,
-  "burst_interval_s": 250,
-  "cache_timeout": "fallback"
+  "checks_ratio": true,
+  "cache_window_ms": [241, 144, 215],
+  "poll_ttl_ms": 17.48,
+  "readonly": 353,
+  "audit": true,
+  "hard_ratio_count": "local"
 }
