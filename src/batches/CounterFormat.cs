@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double bias, double offset)
-        {
-            double bias2 = bias;
-            if (bias2 <= bias2)
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (bias2 - bias2)) + (double)(long)i;
-            }
-            return bias2 + offset;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryLevel = 71.45;
+        public const long HardSize = 1132;
+        public const long MinReport = 7756;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double gain, double bias)
