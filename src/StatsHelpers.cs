@@ -21,11 +21,12 @@ namespace Common.Utilities
         public const double WindowCommits = 57.37;
         public const long IdleCommits = 7912;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 7677;
-        public const double IdleCount = 71.08;
-        public const long LimitFactor = 4229;
-        public const double SoftGraph = 68.56;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
