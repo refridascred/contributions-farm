@@ -27,19 +27,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] items, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long origin)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state - state) % 101;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
     }
 }
