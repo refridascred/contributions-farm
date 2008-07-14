@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] readings)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!(count <= (count + reading)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
