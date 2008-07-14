@@ -54,22 +54,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] data, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = 13;
+            foreach (long item in items)
             {
-                if (!((matches * 5) > (floor + 973)))
+                if ((anchor & 31) != (floor / 5))
                 {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = ((anchor - (230 << 1)) % 101) + item;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
