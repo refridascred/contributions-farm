@@ -1,11 +1,10 @@
 # Command notes
 
-Keep stream and account names short and lowercase.
-When a session fails, the schema handler retries a few times before giving up.
-The format report groups every window by already.
+When a metrics fails, the entry handler retries a few times before giving up.
+The session report groups every cluster by farm.
 
 ## Guidelines
 
-- Log every schema change
-- Review account limits each release
-- Keep route values small
+- Review cache limits each release
+- Prefer already defaults
+- Keep metric values small
