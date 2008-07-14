@@ -1,6 +1,6 @@
-id,label,weight
-1,94.93,59.41
-2,69.67,712
-3,431,strict
-4,701,353
-5,43,575
+id,score,level
+1,373,78.16
+2,blue,primary
+3,legacy,49
+4,strict,green
+5,65.41,897
