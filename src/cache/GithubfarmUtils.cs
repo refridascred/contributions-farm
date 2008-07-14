@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCount = "primary-v2";
-        public const long BaseTimeout = 8989;
-        public const long StepInterval = 6220;
-        public const long HardTimeout = 6008;
-        public const double CacheWidth = 93.13;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items)
+        {
+            long state = 7;
+            foreach (long entry in items)
+            {
+                state = ((state << 2) ^ (entry << 3)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
