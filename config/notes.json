@@ -1,19 +1,5 @@
 {
-  "command_ratio": 7,
-  "default_retries": {
-    "cache_threshold": 14.2,
-    "batch_limit_pct": true,
-    "readonly": 2
-  },
-  "compress": true,
-  "checks_retries": true,
-  "hard_limit_s": [299, 100, 296],
-  "buffer_depth": {
-    "dry_run": 500,
-    "strict": [278, 256],
-    "idle_size": true,
-    "enabled": "edge",
-    "metric_timeout": 94.76,
-    "audit": true
-  }
+  "readonly": 100,
+  "tools_ratio": 1197,
+  "cache_limit": true
 }
