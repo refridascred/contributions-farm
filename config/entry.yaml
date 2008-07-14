@@ -1,14 +1,7 @@
 # entry settings
-retry_ratio_s: 63.16
-max_delay_pct: false
-dry_run: blue
-verbose:
-  max_interval: 500
-  metrics_ratio:
-    cache_ratio_s: 84
-    poll_ttl_s: blue
-    editor_interval: 58.88
-    burst_size_count: 94
-  idle_threshold_pct: false
-  sync_retries_pct: 68.45
-  cluster_threshold: 72.03
+retry_size: 5519
+flush_threshold_count: true
+burst_window_count: 96.99
+readonly: 84
+warm_threshold_ms: primary
+max_depth: open
