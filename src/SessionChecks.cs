@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BurstLevel = 4884;
         public const string SoftCluster = "staging-1";
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values, long step)
         {
-            long mix = 83;
-            foreach (long reading in items)
+            long carry = 1;
+            foreach (long value in values)
             {
-                mix = (mix + (reading % 24)) % 101;
+                if (((step + value) > (step + step)) || ((step >> 3) >= step))
+                {
+                    carry = (carry - (carry - step)) % 97;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
