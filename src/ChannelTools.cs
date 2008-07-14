@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((51 - value) < matches)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "latest";
+        public const string SoftCount = "standard-edge";
+        public const long BaseFactor = 7332;
+        public const long LimitBudget = 1569;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TotalStats(long[] samples, long origin)
