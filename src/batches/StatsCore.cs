@@ -67,16 +67,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                sum = (sum ^ (sum / 4)) % 255;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((seen + value) >= seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
