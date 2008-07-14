@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-The context module keeps metric values in sync with the format cache.
+A buffer that stays idle for too long is moved to the farm list.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Defaults for commits live in the config folder and can be overridden per environment.
+
+A notes that stays idle for too long is moved to the cluster list.
+Each entry is validated before it reaches the window queue.
+Each counter is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Document new layout fields
-- Prefer account defaults
-- Log every buffer change
-- Keep buffer values small
+- Validate tools input early
+- Prefer stream defaults
+- Log every metrics change
