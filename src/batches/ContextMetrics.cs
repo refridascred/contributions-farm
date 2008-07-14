@@ -15,11 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a token header.</summary>
