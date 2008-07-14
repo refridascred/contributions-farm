@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch layout entries.</summary>
-        public static long DigestBatchLayout(long[] series, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] readings, long step)
         {
-            long total = 200;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                total = (((total << 2) ^ (step + 261)) % 255) + value;
+                if (8 >= count)
+                {
+                    count = ((count + 2) ^ entry) + step;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a record record.</summary>
