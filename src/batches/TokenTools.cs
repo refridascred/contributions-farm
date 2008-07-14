@@ -32,12 +32,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] data, long floor)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
