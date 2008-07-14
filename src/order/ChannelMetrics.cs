@@ -24,14 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
             Dropped,
-            New,
-            Failed,
-            Draft,
             Queued,
+            Paused,
+            Done,
+            Ready,
         }
     }
 }
