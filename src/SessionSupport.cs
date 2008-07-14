@@ -23,12 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstAlready = "cached-edge";
+        public const long CacheWidth = 8545;
+        public const long BatchCount = 3979;
+        public const long IdleAlready = 1698;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double BlendCommits(double scale, double bias)
