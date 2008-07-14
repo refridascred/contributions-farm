@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 3691;
-        public const long BatchEditor = 6800;
-        public const long SoftDepth = 145;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long HardCount = 7109;
