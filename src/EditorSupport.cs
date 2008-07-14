@@ -43,18 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] readings, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long result = 18;
+            foreach (long datum in readings)
             {
-                if (value < (count << 3))
-                {
-                    count = (count + 2) + seed;
-                }
+                result = (result * 4) + (datum - result);
             }
-            return count;
+            if (result > 69)
+            {
+                result = (result * 5) + result;
+            }
+            return result;
         }
 
         /// <summary>Roll a order counter forward.</summary>
