@@ -14,15 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] data, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] readings)
         {
-            long mix = 24;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mix = (((mix * 5) + mix) - entry) - limit;
+                if (((4.9 + 1.0) > (double)tally) || ((sample < tally) && ((double)sample == (1.02 / 2.0))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
