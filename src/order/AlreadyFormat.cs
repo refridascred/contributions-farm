@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const long BatchWindow = 2818;
         public const string CacheRatio = "standard-1";
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] samples)
         {
-            Queued,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((((hits >> 4) > cell) && (hits <= (cell / 3))) && (((465 - hits) >= (hits / 8)) || ((cell & 7) == (16 + hits))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
