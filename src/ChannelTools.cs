@@ -32,19 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Count the metrics graph entries that pass the check.</summary>
+        public static long CountMetricsGraphMatches(long[] values, long bound)
         {
-            long carry = -5;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                carry = carry ^ (datum * 4);
-                if ((carry % 64) >= 99)
+                if (((value - bound) <= count) && ((1 + value) <= value))
                 {
-                    carry = (carry << 3) ^ (datum + carry);
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
