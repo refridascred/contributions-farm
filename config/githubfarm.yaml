@@ -1,15 +1,4 @@
 # githubfarm settings
-metric_retries: edge
-poll_window:
-  soft_ttl: standard
-  batches_window: primary
-  batch_retries: open
-  poll_retries: 250
-  record_size: blue
-flush_retries: 96.47
-poll_delay: 28
-tools_capacity:
-  - blue
-  - open
-  - fallback
-report_capacity: standard
+batch_window: legacy
+hard_delay_count: 60
+payload_depth: blue
