@@ -47,16 +47,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = carry ^ (509 + seed);
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstLevel = "local";
+        public const double StepFactor = 66.46;
+        public const string CacheFarm = "local-v2";
+        public const long SoftFarm = 7709;
     }
 }
