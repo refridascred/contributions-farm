@@ -32,14 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Failed,
-            Paused,
-            Ready,
             Stale,
-            New,
+            Pending,
+            Active,
+            Queued,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
