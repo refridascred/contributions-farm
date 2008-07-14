@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] items, long origin)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Closed,
+            Failed,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
