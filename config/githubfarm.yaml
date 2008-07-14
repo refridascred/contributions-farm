@@ -1,5 +1,10 @@
 # githubfarm settings
-hard_timeout_pct: true
-session_ttl: local
-compress: open
-counter_ttl: 82
+tools_delay: 60
+default_limit_ms: stable
+poll_retries_count:
+  - primary
+  - legacy
+  - open
+  - blue
+sync_limit: false
+record_ttl: false
