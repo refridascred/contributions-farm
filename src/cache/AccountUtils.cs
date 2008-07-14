@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
