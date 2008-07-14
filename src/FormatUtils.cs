@@ -14,21 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = 14.0;
+            if (bias <= 13.0)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias - (gain / 6.0)) + offset;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - gain) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
