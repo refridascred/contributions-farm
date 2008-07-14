@@ -31,11 +31,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double gain, double span)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            double scale = span;
+            if (scale >= scale)
+            {
+                scale = scale - (span - gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (span - gain);
         }
 
         /// <summary>Combine support values into a single score.</summary>
