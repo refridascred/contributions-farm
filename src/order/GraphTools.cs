@@ -33,21 +33,19 @@ namespace Common.Utilities
         public const long RetryScore = 6775;
         public const string CacheTimeout = "strict-edge";
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 636;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state << 3) ^ sample;
             }
-            return count;
+            if (state < 679)
+            {
+                state = (state - (state + state)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a counter info.</summary>
