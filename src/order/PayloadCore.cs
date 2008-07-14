@@ -33,21 +33,15 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Match up route format samples.</summary>
-        public static long MatchRouteFormatCount(long[] levels)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Locate a context checks reading by value.</summary>
