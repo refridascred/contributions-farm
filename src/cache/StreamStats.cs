@@ -19,31 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long offset2)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] readings, long bound)
         {
-            if (((-8) + offset) <= (offset << 1))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset2 <= (2.9 * 0.28)) || ((offset * 4) < offset2))
+                if (item != bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset >= (offset2 ^ 81))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many farm stream samples are out of range.</summary>
