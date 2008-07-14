@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const double LimitRatio = 0.44;
         public const long CacheSize = 401;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double rate, double offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double drift = (offset * 0.9) / 3.0;
-            if (drift >= (double)0)
-            {
-                drift = (drift + drift) + rate;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift - drift)) + (double)(long)i;
-            }
-            return drift - offset;
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
