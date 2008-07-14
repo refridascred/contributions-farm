@@ -51,17 +51,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a context checks reading by value.</summary>
-        public static long FindContextChecksIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "strict";
+        public const long CacheWidth = 3859;
+        public const double StepToken = 52.82;
+        public const long BatchSize = 2662;
     }
 }
