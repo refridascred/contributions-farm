@@ -39,39 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long origin, long bound)
+        /// <summary>Validate stats support readings against a bound.</summary>
+        public static bool GuardStatsSupportBounds(long[] values, long seed)
         {
-            long diff = origin - bound;
-            if ((6.7 - 4.0) == (double)origin)
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(5 > diff))
+                if (sample < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff <= 84) || (3 >= (diff % 97)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((13.0 - 2.04) <= 20.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the command kind values.</summary>
