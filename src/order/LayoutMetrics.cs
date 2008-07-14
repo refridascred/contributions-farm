@@ -32,12 +32,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Check that every graph metrics entry stays within the limit.</summary>
+        public static bool VerifyGraphMetricsRange(long[] levels, long origin)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
