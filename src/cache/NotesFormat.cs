@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            Draft,
-            Active,
-            Retry,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stream phase values.</summary>
