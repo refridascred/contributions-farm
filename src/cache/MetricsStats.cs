@@ -48,11 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 1112;
-        public const string HardStats = "staging-edge";
-        public const string DefaultLevel = "legacy-edge";
-        public const long CacheDepth = 677;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits >> 2) >= hits)
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] series)
