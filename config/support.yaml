@@ -1,5 +1,8 @@
 # support settings
-sync_interval: true
-retry_threshold_count: stable
-default_ttl_count: 87
-persist: 48
+strict: fallback
+persist: 30
+max_capacity_pct: 53
+cache_delay_ms:
+  - 51
+  - 17
+  - 431
