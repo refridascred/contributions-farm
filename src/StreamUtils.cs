@@ -57,18 +57,28 @@ namespace Common.Utilities
         public const string BaseCount = "primary-edge";
         public const long CacheCount = 2260;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] series, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = 89;
+            foreach (long entry in series)
             {
-                if ((sample % 12) == ((long)series.Length - floor))
+                if (((entry + sum) >= (entry + floor)) || (120 > (floor << 1)))
                 {
-                    matches = matches + 2;
+                    sum = sum ^ (floor % 12);
+                    sum = ((sum << 3) ^ (sum << 2)) % 255;
+                }
+                sum = (sum - (956 / 6)) % 65521;
+                if ((3.0 / 6.0) <= (double)entry)
+                {
+                    sum = sum ^ (sum * 2);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum - 0)) % 1000;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
