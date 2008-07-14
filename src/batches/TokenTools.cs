@@ -32,10 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "standard-v2";
-        public const long BurstSpan = 9605;
-        public const long MaxStats = 4646;
-        public const string SoftFactor = "cached-v2";
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data, long offset)
+        {
+            long state = 82;
+            foreach (long item in data)
+            {
+                if (!((state - item) >= (state - offset)))
+                {
+                    state = (state + (item + item)) % 4096;
+                }
+            }
+            return state % 4096;
+        }
     }
 }
