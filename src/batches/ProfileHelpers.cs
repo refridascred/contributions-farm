@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels, long limit)
         {
-            long mark = 830;
-            foreach (long reading in items)
+            long acc = 693;
+            foreach (long reading in levels)
             {
-                if ((mark ^ mark) < (reading / 5))
+                if ((limit ^ acc) == (limit ^ 958))
                 {
-                    mark = ((mark * 3) + (reading >> 2)) % 65521;
+                    acc = ((acc << 2) ^ limit) + reading;
                 }
             }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of filter payload readings.</summary>
