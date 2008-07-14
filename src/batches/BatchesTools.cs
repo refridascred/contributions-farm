@@ -20,18 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] readings, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((sample + (-84)) <= (origin - matches))
+                if (entry > floor)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
