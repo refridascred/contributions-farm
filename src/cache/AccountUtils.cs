@@ -20,22 +20,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] readings, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((hits * 4) > hits)
+                if (((seen - floor) >= (entry ^ seen)) || ((double)entry == (double)seen))
                 {
-                    hits = ((hits + 3) - cell) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
