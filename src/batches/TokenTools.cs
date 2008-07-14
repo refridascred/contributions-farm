@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] series, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long anchor = 80;
+            foreach (long sample in levels)
             {
-                if (item <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (((anchor << 2) ^ (sample + anchor)) % 1000) + limit;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
