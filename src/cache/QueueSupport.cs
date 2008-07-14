@@ -33,24 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload batches pair into a bucket.</summary>
-        public static long RankPayloadBatches(long seed, long step)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            if ((step + seed) != (seed >> 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((971 * 5) < (step - seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
