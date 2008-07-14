@@ -22,12 +22,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
+        public static long TallyGithubfarmMetricMatches(long[] readings, long bound)
         {
-            Idle,
-            Paused,
-            Retry,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)hits <= (double)datum) || (((bound / 9) == (datum * 2)) || ((double)hits != (1.87 - 2.4))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count command commits pairs that satisfy a relation.</summary>
