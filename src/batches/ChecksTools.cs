@@ -44,12 +44,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] levels, long offset)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item < 18.0)
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
     }
 }
