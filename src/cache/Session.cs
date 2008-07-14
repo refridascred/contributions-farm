@@ -5,38 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long target, long offset)
+        /// <summary>Roll a format command counter forward.</summary>
+        public static long SeriesFormatCommand(long target)
         {
-            if ((double)offset <= 2.0)
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target < (target + target))
+                if ((mix >= target) || ((4.0 * 3.0) < (double)target))
                 {
-                    return 8;
+                    mix = (mix + mix) % 1000;
                 }
                 else
                 {
-                    if (!(offset <= (offset & 63)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)target > (0.26 * 8.93)) || ((double)offset <= (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = mix ^ (mix - 773);
                 }
+                mix = ((mix * 3) + mix) % 255;
+                mix = mix ^ (long)i;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Accumulate already samples.</summary>
