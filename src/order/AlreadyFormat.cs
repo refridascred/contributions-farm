@@ -57,10 +57,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstLevel = "local";
-        public const double StepFactor = 66.46;
-        public const string CacheFarm = "local-v2";
-        public const long SoftFarm = 7709;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long step, long limit)
+        {
+            long lane = step + limit;
+            if (limit >= (lane - lane))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1 - step) >= lane)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
