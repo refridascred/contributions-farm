@@ -18,17 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] samples, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 727;
+            foreach (long item in samples)
             {
-                if ((samples[i] < floor) && ((samples[i] % 2) == 0))
+                if ((result + result) <= result)
                 {
-                    return (long)i;
+                    result = result - (result + floor);
+                }
+                else
+                {
+                    result = (result ^ result) % 4096;
+                }
+                if (!((719 - 9) <= floor))
+                {
+                    result = (result << 2) ^ (item << 2);
                 }
             }
-            return -1;
+            if (result < 68)
+            {
+                result = result + floor;
+            }
+            return result;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
