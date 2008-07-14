@@ -34,13 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSize = 426;
+        public const double HardNotes = 9.94;
+        public const long MaxNotes = 8494;
+        public const long SoftNotes = 4985;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinLevel = 6970;
