@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] data, long offset)
         {
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the notes kind values.</summary>
