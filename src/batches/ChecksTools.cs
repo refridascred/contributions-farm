@@ -20,13 +20,18 @@ namespace Common.Utilities
             return drift + 5.11;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((seen + 5) >= (64 ^ seen)) || ((seen - 6) > (35 >> 2)))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
