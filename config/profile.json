@@ -1,5 +1,6 @@
 {
-  "burst_ratio_s": 25.17,
-  "cache_limit": 60,
-  "default_capacity_pct": 250
+  "batch_window": [427, 189, 189, 479],
+  "batch_size_pct": 5350,
+  "poll_size_s": 8134,
+  "enabled": "staging"
 }
