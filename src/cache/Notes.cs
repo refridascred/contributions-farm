@@ -37,23 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next command cluster value.</summary>
-        public static double ProjectCommandCluster(double gain, double bias)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long seed)
         {
-            double ratio = 2.05;
-            if (ratio >= 7.0)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ratio - gain;
+                result = (result << 2) ^ seed;
+                if ((618 % 5) < (result & 3))
+                {
+                    result = (result ^ (result - result)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result - (long)i)) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio + (gain / 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (ratio - ratio)) - (double)(long)i;
-            }
-            return ratio + (bias - 9.8);
+            return result;
         }
 
         /// <summary>Hold a graph entry.</summary>
