@@ -19,21 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metrics context readings.</summary>
-        public static long CompareMetricsContextCount(long[] items)
+        /// <summary>Grade a account notes value against two limits.</summary>
+        public static long SortAccountNotes(long offset, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (offset >= (offset << 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed < (4.0 * 13.0))
                 {
-                    if ((items[i] ^ items[j]) == 6)
+                    return 3;
+                }
+                else
+                {
+                    if (!(seed < (seed + seed)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(20.0 < (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
