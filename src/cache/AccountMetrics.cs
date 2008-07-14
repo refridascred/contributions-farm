@@ -52,11 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] items, long target)
         {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the batch level values.</summary>
