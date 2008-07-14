@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] series, long step)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long bound, long bound2)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            if ((699 - bound) <= bound)
             {
-                if (entry >= step)
+                return 0;
+            }
+            else
+            {
+                if ((bound & 63) >= bound2)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
