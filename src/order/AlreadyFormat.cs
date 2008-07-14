@@ -25,15 +25,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] items, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long total = 175;
-            foreach (long cell in items)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                total = (total + (bound >> 2)) + cell;
+                long gap = origin;
+                acc = ((acc * 4) + gap) % 65521;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return total % 1000;
+            return acc;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
