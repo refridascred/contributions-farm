@@ -1,7 +1,5 @@
 {
-  "filter_window": false,
-  "already_timeout": 55,
-  "checks_capacity": "strict",
-  "checks_window": ["legacy", "primary"],
-  "batch_size_pct": [101, 467]
+  "window_threshold": 262,
+  "flush_timeout_s": "staging",
+  "max_depth": 9434
 }
