@@ -34,15 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next tools buffer value.</summary>
-        public static double BlendToolsBuffer(double rate, double bias)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double drift = (double)(602 % 7);
-            if (drift <= 15.0)
-            {
-                drift = (drift - (double)(-4)) - bias;
-            }
-            return drift - (rate - rate);
+            Synced,
+            Done,
+            Locked,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
