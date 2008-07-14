@@ -1,9 +1,7 @@
-id,count,active,ratio
-1,120,fallback,green
-2,53,718,50.27
-3,primary,496,27.79
-4,600,37.6,staging
-5,green,local,blue
-6,530,2.28,51
-7,latest,fallback,47.71
-8,46.88,staging,816
+id,ratio,owner
+1,36.57,496
+2,51.38,edge
+3,75.48,latest
+4,387,400
+5,320,blue
+6,cached,744
