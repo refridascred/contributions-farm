@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a layout options.</summary>
