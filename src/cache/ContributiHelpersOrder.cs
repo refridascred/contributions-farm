@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] values, long seed)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Match up contributi commits samples.</summary>
