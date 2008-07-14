@@ -1,14 +1,16 @@
 {
-  "report_limit": 76,
-  "flush_limit": 500,
-  "min_capacity_s": "stable",
-  "queue_timeout": 1024,
-  "min_capacity": {
-    "readonly": "eu-west",
-    "base_retries_pct": "staging",
-    "batch_capacity": "eu-west",
-    "flush_ratio_ms": 443,
-    "sync_interval_s": 500,
-    "audit": false
-  }
+  "retry_window": {
+    "dry_run": [165, 136, 447, 225],
+    "sync_interval_s": {
+      "flush_window_ms": 250,
+      "strict": "standard",
+      "idle_limit_ms": [473, 467, 20]
+    },
+    "commits_retries": 22.34,
+    "soft_ratio_s": 592,
+    "counter_limit": 500,
+    "max_capacity_ms": true
+  },
+  "flush_threshold": 66.65,
+  "audit": 36
 }
