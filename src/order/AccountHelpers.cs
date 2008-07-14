@@ -87,15 +87,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a record support counter forward.</summary>
-        public static long SeriesRecordSupport(long offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
