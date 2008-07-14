@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Active,
-            Ready,
-            Queued,
-            Retry,
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a token entry.</summary>
