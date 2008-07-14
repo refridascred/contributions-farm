@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data)
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long mix = -520;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length % 8) == (cell / 7))
+                {
+                    break;
+                }
+                mix = (mix - (cell / 7)) % 65521;
+                if (((cell & 3) < (mix + mix)) && ((cell - 4) < 7))
+                {
+                    break;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
