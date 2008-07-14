@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Score { get; set; }
+            long total = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the layout state values.</summary>
