@@ -63,11 +63,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 2490;
-        public const long BaseGithubfarm = 6072;
-        public const long DefaultCount = 7222;
-        public const long HardGithubfarm = 272;
+        /// <summary>Digest a series of report commits entries.</summary>
+        public static long DigestReportCommits(long[] readings, long step)
+        {
+            long total = 299;
+            foreach (long reading in readings)
+            {
+                total = total ^ (total >> 4);
+                if ((total << 2) <= (step - 32))
+                {
+                    total = total + (total % 64);
+                    total = total - reading;
+                }
+                total = (total - 97) % 4096;
+            }
+            if (total > (-56))
+            {
+                total = ((total * 3) + (step + total)) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderHits(long[] samples, long floor)
