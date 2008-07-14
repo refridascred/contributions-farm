@@ -1,6 +1,4 @@
 # githubfarm settings
-command_size:
-  - 126
-  - 275
-support_interval: false
-burst_ttl_s: 5239
+readonly: green
+hard_limit_ms: 250
+retry_threshold_pct: true
