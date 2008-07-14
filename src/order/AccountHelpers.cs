@@ -87,21 +87,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Roll a record support counter forward.</summary>
+        public static long SeriesRecordSupport(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
     }
 }
