@@ -41,15 +41,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double weight, double span)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] readings)
         {
-            double drift = weight;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                drift = drift - (double)(long)i;
+                if (((tally << 1) != (long)readings.Length) && ((double)tally != (8.0 * 2.3)))
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            return drift - span;
+            return tally;
         }
 
         /// <summary>Grade a profile session value against two limits.</summary>
