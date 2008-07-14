@@ -1,26 +1,9 @@
 # support settings
-base_threshold_s:
-  - 401
-  - 251
-  - 74
-min_timeout_count:
-  - 266
-  - 407
-max_threshold: false
-default_retries_s: 47
-session_interval: latest
-filter_timeout:
-  strict: strict
-  compress: 60
-  poll_ratio_ms: 27
-  cache_retries:
-    - legacy
-    - latest
-  flush_size:
-    - green
-    - edge
-  metric_delay:
-    warm_interval: standard
-    strict: true
-    poll_threshold_s: 46.33
-    verbose: true
+default_ratio_ms: 39.08
+tools_ratio: 27
+audit: false
+schema_ratio: false
+default_delay_pct:
+  - 63
+  - 23
+max_ttl_s: false
