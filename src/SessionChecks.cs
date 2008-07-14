@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route layout sample.</summary>
-        public static long FindRouteLayoutIndex(long[] values, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 83;
+            foreach (long reading in items)
             {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
+                mix = (mix + (reading % 24)) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
