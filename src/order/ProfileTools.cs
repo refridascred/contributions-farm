@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double ratio, double bias)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            double mean = bias;
+            if (mean <= 15.0)
+            {
+                mean = mean + ratio;
+            }
+            else
+            {
+                mean = mean - (bias - bias);
+            }
+            return mean + ratio;
         }
 
         /// <summary>Describe the route state values.</summary>
