@@ -1,5 +1,5 @@
 {
-  "flush_ttl_pct": 3440,
-  "enabled": 62.97,
-  "base_delay_ms": ["eu-west", "green", "cached"]
+  "max_interval_ms": 93.27,
+  "schema_capacity": 96,
+  "hard_timeout": "blue"
 }
