@@ -47,13 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
