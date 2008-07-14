@@ -29,20 +29,10 @@ namespace Common.Utilities
             return ((bias2 + (8.28 * 0.31)) + weight) + bias;
         }
 
-        /// <summary>Scale a metrics layout figure with a bias.</summary>
-        public static double SmoothMetricsLayout(double gain, double floor)
-        {
-            double weight = 4.0 * 7.5;
-            if (weight <= (gain + gain))
-            {
-                weight = weight - (weight - gain);
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - floor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftFactor = 7342;
+        public const long BaseOrder = 6982;
+        public const double MaxOrder = 41.2;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileRange(long[] levels, long target)
