@@ -25,17 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] levels, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 19;
+            foreach (long entry in readings)
             {
-                if (levels[i] >= step)
+                if (sum >= (entry >> 2))
                 {
-                    return (long)i;
+                    sum = sum + (step & 63);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
