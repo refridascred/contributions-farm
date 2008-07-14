@@ -28,20 +28,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metrics token counter forward.</summary>
-        public static long SeriesMetricsToken(long seed)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long score = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = ((acc << 3) ^ acc) - (long)i2;
-                }
-                acc = acc ^ seed;
-                acc = ((acc * 3) + (long)i) % 4093;
+                score = score + ((long)i ^ limit);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return acc;
+            return score;
         }
     }
 }
