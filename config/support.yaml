@@ -1,8 +1,17 @@
 # support settings
-strict: fallback
-persist: 30
-max_capacity_pct: 53
-cache_delay_ms:
-  - 51
-  - 17
-  - 431
+dry_run: latest
+sync_window_pct: 73.56
+batch_timeout:
+  graph_size: cached
+  poll_delay_s: standard
+  max_delay_ms: 2223
+  idle_delay_ms: 91
+verbose: blue
+max_delay: legacy
+default_depth:
+  enabled: 86
+  session_delay: local
+  warm_threshold_s: true
+  base_capacity_pct: 60
+  batch_capacity_s: standard
+  metric_window: 1873
