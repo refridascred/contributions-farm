@@ -1,8 +1,15 @@
 {
-  "readonly": 61,
-  "retry_limit_s": 3053,
-  "flush_limit_pct": 500,
-  "cache_size": "primary",
-  "poll_interval_count": 84,
-  "soft_ttl_s": true
+  "cache_delay": 96.76,
+  "already_capacity": {
+    "max_capacity_pct": {
+      "stats_timeout": 37.74,
+      "max_limit_count": true,
+      "warm_retries": 8404,
+      "idle_ttl_s": 8090
+    },
+    "audit": "strict",
+    "entry_delay": true,
+    "idle_retries_count": "eu-west"
+  },
+  "report_depth": false
 }
