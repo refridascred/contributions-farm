@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Paused,
-            Stale,
-            Draft,
-            Pending,
+            Closed,
+            New,
+            Ready,
+            Idle,
             Done,
         }
 
