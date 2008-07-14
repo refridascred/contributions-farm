@@ -1,6 +1,6 @@
 {
-  "profile_ratio": "open",
-  "retry_size": ["stable", "fallback", "edge"],
-  "flush_retries_ms": ["primary", "fallback"],
-  "max_ratio_s": false
+  "schema_threshold": 82.02,
+  "counter_retries": "staging",
+  "schema_timeout": 100,
+  "poll_retries": 500
 }
