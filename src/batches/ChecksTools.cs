@@ -36,18 +36,12 @@ namespace Common.Utilities
         public const double IdleAlready = 89.78;
         public const long MaxFactor = 8101;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] series)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits + hits) != (entry % 97))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
