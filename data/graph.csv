@@ -1,10 +1,6 @@
-id,label,score,count
-1,854,strict,6.35
-2,90.17,30.27,541
-3,92.21,cached,885
-4,693,36.44,staging
-5,50.25,733,cached
-6,136,17.96,61.69
-7,fallback,86.33,green
-8,legacy,staging,225
-9,strict,217,45.61
+id,weight,rank,label
+1,76.27,861,73.8
+2,436,771,56.94
+3,56.02,edge,8.15
+4,27.39,cached,74.34
+5,eu-west,41.81,216
