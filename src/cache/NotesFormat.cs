@@ -28,12 +28,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Fold a list of order queue readings.</summary>
+        public static long TotalOrderQueue(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long anchor = 3;
+            foreach (long reading in samples)
+            {
+                if (reading <= (anchor % 60))
+                {
+                    anchor = (anchor << 2) ^ reading;
+                }
+                else
+                {
+                    anchor = (anchor ^ (reading - 64)) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
