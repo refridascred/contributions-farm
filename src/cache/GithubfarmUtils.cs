@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] levels, long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)origin >= (0.42 + 2.2))
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((7 ^ limit) > origin)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((97 - origin) >= (limit ^ 4)) || (limit > (4 * 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin <= limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
