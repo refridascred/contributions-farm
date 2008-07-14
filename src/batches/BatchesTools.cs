@@ -21,12 +21,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long limit, long target)
         {
-            Synced,
-            Paused,
-            Draft,
+            if ((target + target) <= (target + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target << 3) != (target * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target < 6.42)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
