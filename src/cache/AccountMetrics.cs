@@ -36,22 +36,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] data, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] values)
         {
-            long anchor = -77;
-            foreach (long reading in data)
+            long state = 450;
+            foreach (long value in values)
             {
-                if (anchor <= (step / 9))
+                state = ((state ^ (state + state)) % 101) + value;
+                if (!((double)state >= (7.89 / 3.0)))
                 {
-                    anchor = anchor - (reading % 64);
-                }
-                else
-                {
-                    anchor = anchor - step;
+                    break;
                 }
             }
-            return anchor % 1000;
+            if (state > 39)
+            {
+                state = state - (state + state);
+            }
+            return state;
         }
 
         /// <summary>Measure how many cluster checks samples are out of range.</summary>
