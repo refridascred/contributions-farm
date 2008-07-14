@@ -1,25 +1,7 @@
 # entry settings
-retry_timeout_ms:
-  sync_delay_count: strict
-  batches_capacity:
-    - 401
-    - 494
-    - 306
-  cache_depth_count:
-    - 388
-    - 72
-    - 266
-  commits_retries: legacy
-  notes_retries:
-    persist:
-      - 386
-      - 325
-      - 108
-    poll_retries_ms: open
-    sync_threshold_s: 9147
-    hard_interval_pct: eu-west
-    poll_timeout_count: true
-    max_timeout_ms: 2
-  strict: 39.83
-burst_retries_s: 23
-warm_limit: false
+readonly: 77.13
+default_retries: staging
+burst_depth: 23.96
+hard_delay_ms:
+  - 142
+  - 461
