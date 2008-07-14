@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardFactor = 4558;
-        public const long DefaultWindow = 4550;
-        public const long IdleWindow = 1652;
-        public const long BatchWindow = 2818;
-        public const string CacheRatio = "standard-1";
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public double Region { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long DigestTools(long[] items, long bound)
