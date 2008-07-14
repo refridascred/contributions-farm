@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long WindowSize = 1667;
         public const double BurstRatio = 48.47;
 
-        /// <summary>Measure how many farm format samples are out of range.</summary>
-        public static long TallyFarmFormatMatches(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long state = 0;
+            foreach (long entry in items)
             {
-                if (entry > (entry / 2))
+                if ((state & 15) < (entry - entry))
                 {
-                    hits = hits + 3;
+                    state = (state + state) % 101;
                 }
             }
-            return hits;
+            if (state < 10)
+            {
+                state = (state * 3) + (state - state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
