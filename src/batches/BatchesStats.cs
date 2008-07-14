@@ -63,10 +63,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 7412;
-        public const double LimitTimeout = 80.91;
-        public const long RetrySpan = 1894;
-        public const double MinTimeout = 0.37;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] values)
+        {
+            long acc = 0;
+            foreach (long sample in values)
+            {
+                acc = (acc << 3) ^ (sample + acc);
+                acc = acc + acc;
+            }
+            return acc % 1000;
+        }
     }
 }
