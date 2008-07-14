@@ -15,15 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double span)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] samples, long bound)
         {
-            double load = (gain + gain) / 8.0;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + (double)(-999)) + (double)(long)i;
+                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - span;
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
