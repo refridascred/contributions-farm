@@ -31,11 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 3285;
-        public const long IdleScore = 1139;
-        public const long RetryInterval = 981;
-        public const long RetrySize = 963;
-        public const double DefaultWidth = 61.55;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Idle,
+            Done,
+            Closed,
+        }
     }
 }
