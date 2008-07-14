@@ -1,5 +1,8 @@
 {
-  "cache_threshold_ms": 37,
-  "cache_threshold_s": [448, 491],
-  "warm_depth": 309
+  "readonly": 61,
+  "retry_limit_s": 3053,
+  "flush_limit_pct": 500,
+  "cache_size": "primary",
+  "poll_interval_count": 84,
+  "soft_ttl_s": true
 }
