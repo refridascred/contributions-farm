@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two queue commits measurements.</summary>
-        public static double BlendQueueCommits(double weight, double bias)
-        {
-            double mean = bias;
-            if (mean < (bias / 6.0))
-            {
-                mean = mean + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (double)78) - (double)(long)i;
-            }
-            return mean - (bias * 0.63);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryTimeout = "cached-v2";
+        public const string MaxWindow = "primary-1";
+        public const long WindowTimeout = 3526;
+        public const string CacheWindow = "fallback-edge";
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long SeekLayoutIndex(long[] values, long origin)
