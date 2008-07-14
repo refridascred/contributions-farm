@@ -13,11 +13,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up graph stats samples.</summary>
