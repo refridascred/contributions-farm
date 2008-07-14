@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string StepCluster = "local-edge";
         public const long DefaultCluster = 2568;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] series, long offset)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((offset ^ (long)series.Length) < (offset - offset)) && ((double)cell > (double)matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metrics class values.</summary>
