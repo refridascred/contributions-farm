@@ -16,18 +16,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] samples)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long target)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((cell * 4) > (tally ^ cell)) && ((tally + tally) != (7 + cell))) || ((tally % 24) < (cell + tally)))
+                sum = (sum << 2) ^ sum;
+                if (sum > (long)i)
                 {
-                    tally = tally + 2;
+                    sum = (sum - (long)i) % 101;
+                    continue;
                 }
+                else
+                {
+                    sum = (sum + (sum / 3)) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
