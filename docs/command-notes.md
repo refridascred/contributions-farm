@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-Run the order check before changing any report limits.
-The metrics module keeps stream values in sync with the cluster cache.
+Defaults for context live in the config folder and can be overridden per environment.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+The account report groups every token by cluster.
 
 ## Guidelines
 
-- Keep tools values small
-- Prefer route defaults
-- Document new cache fields
+- Keep cluster values small
+- Prefer checks defaults
+- Validate batches input early
+- Review context limits each release
