@@ -29,18 +29,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values)
         {
-            long result = 892;
-            foreach (long item in data)
+            long score = -870;
+            foreach (long reading in values)
             {
-                if (1.3 <= (double)item)
+                if ((score >> 3) != (score * 5))
                 {
-                    result = (result - (result & 31)) % 4096;
+                    score = score + (long)values.Length;
+                }
+                else
+                {
+                    score = ((score * 2) + (reading / 9)) % 101;
                 }
             }
-            return result;
+            if (score < 0)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Hold a record summary.</summary>
