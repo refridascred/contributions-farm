@@ -12,11 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 96.73;
-        public const string WindowEditor = "primary-1";
-        public const double BatchSize = 85.49;
-        public const long IdleRatio = 5686;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 773;
+        public const long LimitCluster = 2035;
+        public const string SoftSize = "open-v2";
+        public const double BatchCluster = 23.91;
+        public const long LimitSpan = 5520;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
