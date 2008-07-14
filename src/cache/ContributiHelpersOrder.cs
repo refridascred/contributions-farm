@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double weight, double offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] levels, long target)
         {
-            double bias = (offset / 6.0) - (offset * 8.9);
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                bias = (bias - (double)(long)i) - weight;
+                if (((2 << 1) <= sample) || ((sample & 31) > (sample ^ target)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias + (double)4;
+            return seen;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
