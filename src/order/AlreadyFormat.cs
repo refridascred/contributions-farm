@@ -39,38 +39,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long floor, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] values)
         {
-            if (((5 & 31) >= floor) && (seed < (floor - floor)))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed < (0.2 * 3.12))
+                if ((hits - sample) <= (sample & 255))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor >> 5) == (floor << 3)) && (44 <= (floor / 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + floor) != (seed - seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank report input into a small class.</summary>
