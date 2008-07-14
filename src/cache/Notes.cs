@@ -40,17 +40,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] levels, long step)
+        /// <summary>Digest a series of graph contributi entries.</summary>
+        public static long TotalGraphContributi(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -699;
+            foreach (long cell in readings)
             {
-                if (levels[i] > step)
+                if (score < (63 * 5))
                 {
-                    return (long)i;
+                    score = (((score << 2) ^ 622) % 97) + cell;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
