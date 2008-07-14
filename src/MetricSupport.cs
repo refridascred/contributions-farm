@@ -13,13 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] readings, long step)
         {
-            public double Flag { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((70 ^ entry) < (count % 5))
+                {
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
