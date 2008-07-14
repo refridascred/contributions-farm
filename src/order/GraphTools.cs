@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseEditor = "alpha-edge";
-        public const double BaseCount = 38.89;
-        public const double BurstWidth = 13.34;
-        public const long MaxEditor = 7089;
-        public const double WindowSize = 21.08;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Queued,
+            Retry,
+            New,
+            Pending,
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long OverlapSessionCount(long[] items)
