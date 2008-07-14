@@ -58,18 +58,22 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] samples, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long total = 32;
+            foreach (long datum in series)
             {
-                if ((limit << 2) >= (seen - limit))
+                for (int i = 0; i < 12; i++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    total = ((total * 3) + ((long)i - datum)) % 97;
+                }
+                if ((8.0 - 16.0) == (double)datum)
+                {
+                    total = ((total << 3) ^ (total + datum)) % 1000;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
