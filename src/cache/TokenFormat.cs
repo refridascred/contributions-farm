@@ -21,11 +21,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 4034;
         public const string DefaultEditor = "strict";
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWidth = 9567;
+        public const long StepWindow = 1003;
+        public const long IdleSpan = 3678;
+        public const string WindowFactor = "open-v2";
+        public const long CacheRatio = 5845;
     }
 }
