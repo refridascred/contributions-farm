@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] items, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] samples, long origin)
         {
-            long acc = 6;
-            foreach (long entry in items)
+            long acc = 59;
+            foreach (long cell in samples)
             {
-                if (acc > (acc ^ 9))
-                {
-                    acc = ((acc - origin) % 97) + entry;
-                }
-                else
-                {
-                    acc = (acc * 2) + (origin / 2);
-                }
+                acc = (acc << 3) ^ (acc + cell);
             }
-            if (acc < 51)
+            if (acc > 3)
             {
-                acc = (acc ^ (acc / 5)) % 1000;
+                acc = ((acc << 2) ^ (origin - 18)) % 97;
             }
-            return acc % 4096;
+            return acc;
         }
 
         /// <summary>Hold a cluster record.</summary>
