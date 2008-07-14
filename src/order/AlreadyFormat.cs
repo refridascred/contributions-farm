@@ -25,23 +25,12 @@ namespace Common.Utilities
         public const long BatchWindow = 2818;
         public const string CacheRatio = "standard-1";
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((((hits >> 4) > cell) && (hits <= (cell / 3))) && (((465 - hits) >= (hits / 8)) || ((cell & 7) == (16 + hits))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultTimeout = 1411;
+        public const long RetryWidth = 8354;
+        public const long MinGraph = 1416;
+        public const long DefaultGraph = 7920;
+        public const string BatchInterval = "alpha";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesGaps(long[] values)
