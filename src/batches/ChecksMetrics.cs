@@ -68,18 +68,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] series)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((10.0 / 4.0) >= (double)tally) && (((6 ^ entry) <= entry) && ((6.06 * 3.1) == (double)tally)))
+                total = (total + bound) % 97;
+                long prev = (bound % 16) + ((long)i >> 5);
+                if (((long)i % 24) > (prev - (long)i))
                 {
-                    tally = tally + 1;
+                    total = (total - total) % 101;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
     }
 }
