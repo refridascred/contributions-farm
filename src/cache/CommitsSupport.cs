@@ -18,20 +18,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] values, long target)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] series, long target)
         {
-            long acc = -143;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!(reading > (target - 2)))
+                if ((series[i] > target) && ((series[i] % 5) != 0))
                 {
-                    long cur = reading;
-                    acc = (acc + cur) % 65521;
+                    return (long)i;
                 }
-                acc = (acc * 2) + (acc % 97);
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Adjust a payload reading.</summary>
