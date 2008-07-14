@@ -44,18 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] readings, long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!((double)count > (4.0 - 8.44)))
-                {
-                    count = ((count + 2) + value) + seed;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
