@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] items, long bound)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long anchor = 3;
-            foreach (long entry in items)
-            {
-                anchor = (((anchor * 4) + ((long)items.Length * 3)) + entry) + bound;
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine filter values into a single score.</summary>
