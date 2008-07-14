@@ -1,5 +1,12 @@
 # githubfarm settings
-githubfarm_retries: 46.75
-sync_capacity_ms: 500
-token_ttl: false
-warm_capacity_s: 2.56
+idle_size_count: 10
+strict:
+  - strict
+  - standard
+command_retries: 11.43
+enabled:
+  - 334
+  - 329
+  - 139
+  - 127
+flush_delay: 1501
