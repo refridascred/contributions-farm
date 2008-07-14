@@ -19,18 +19,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of graph contributi entries.</summary>
-        public static long TotalGraphContributi(long[] readings)
+        /// <summary>Count the filter contributi entries that pass the check.</summary>
+        public static long AuditFilterContributiOutliers(long[] series, long target)
         {
-            long score = -699;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (score < (63 * 5))
+                if ((target + target) > target)
                 {
-                    score = (((score << 2) ^ 622) % 97) + cell;
+                    tally = (tally + 3) + item;
                 }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
