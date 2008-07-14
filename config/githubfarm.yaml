@@ -1,4 +1,8 @@
 # githubfarm settings
-stream_ratio: true
-enabled: 59.54
-cache_retries: 35.9
+hard_delay_count:
+  - 474
+  - 472
+  - 86
+  - 385
+flush_interval: eu-west
+buffer_depth: 40.64
