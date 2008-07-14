@@ -44,13 +44,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] data)
         {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            long mix = 410;
+            foreach (long item in data)
+            {
+                if ((item + mix) <= item)
+                {
+                    mix = ((mix << 2) ^ (mix + item)) % 4096;
+                }
+            }
+            return mix;
         }
     }
 }
