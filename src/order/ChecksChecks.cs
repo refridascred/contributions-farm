@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (7.0 < (double)matches)
-                {
-                    matches = ((matches + 1) ^ item) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepSize = 98.27;
+        public const long SoftInterval = 235;
+        public const long StepSpan = 7525;
 
         /// <summary>Blend two stats measurements.</summary>
         public static double ScaleStats(double gain, double offset)
