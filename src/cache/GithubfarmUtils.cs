@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] series, long offset)
+        /// <summary>Measure how many command format samples are out of range.</summary>
+        public static long AuditCommandFormatGaps(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (((offset ^ (long)series.Length) < (offset - offset)) && ((double)cell > (double)matches))
+                if ((((long)series.Length >> 5) != (item ^ hits)) && ((6.0 + 4.7) < (double)item))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the metrics class values.</summary>
