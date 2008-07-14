@@ -1,7 +1,8 @@
-id,ratio,owner
-1,36.57,496
-2,51.38,edge
-3,75.48,latest
-4,387,400
-5,320,blue
-6,cached,744
+id,owner,count,score
+1,blue,49.93,stable
+2,38.82,6.32,15.74
+3,310,4.72,611
+4,981,55.97,92.77
+5,green,primary,26.95
+6,stable,879,434
+7,34.85,706,3.18
