@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit already profile readings against a rule.</summary>
-        public static long CountAlreadyProfileHits(long[] data, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] samples)
         {
             long count = 0;
-            foreach (long item in data)
+            foreach (long datum in samples)
             {
-                if ((bound - bound) == (946 - count))
+                if ((count % 16) > count)
                 {
-                    count = (count + 3) ^ item;
+                    count = (count + 3) + datum;
                 }
             }
             return count;
