@@ -29,17 +29,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] <= target)
+                if (((hits * 3) == (limit + hits)) || (hits <= (limit - hits)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
