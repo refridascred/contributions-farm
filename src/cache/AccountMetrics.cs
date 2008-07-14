@@ -38,28 +38,18 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] samples, long limit)
         {
-            long result = 2;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                result = ((result << 2) ^ (step / 8)) % 101;
-                result = result + sample;
-                if ((8.5 / 5.0) <= (double)result)
+                if ((5 ^ entry) != (961 + entry))
                 {
-                    result = (result - (sample % 24)) % 1000;
-                }
-                else
-                {
-                    result = result + (result * 5);
+                    count = (count + 3) + limit;
                 }
             }
-            if (result > 652)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a stream options.</summary>
