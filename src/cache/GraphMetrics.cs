@@ -41,20 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Digest a series of metrics record entries.</summary>
+        public static long TotalMetricsRecord(long[] readings, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long result = 9;
+            foreach (long reading in readings)
             {
-                anchor = anchor - anchor;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (((anchor * 5) + (anchor & 15)) % 65521) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                result = ((result * 3) + (7 - origin)) + reading;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Describe the route level values.</summary>
