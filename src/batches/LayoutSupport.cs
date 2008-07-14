@@ -50,19 +50,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph githubfarm readings against a bound.</summary>
-        public static bool ValidateGraphGithubfarmBounds(long[] levels, long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long offset, long step)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            if (151 >= offset)
             {
-                if (sample != offset)
+                return 2;
+            }
+            else
+            {
+                if ((0.69 / 6.0) >= (double)offset)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
