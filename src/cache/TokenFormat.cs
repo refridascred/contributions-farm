@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] readings)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mix = 21;
+            foreach (long datum in items)
             {
-                if ((((entry % 3) > (374 % 7)) && ((double)entry <= (2.09 - 7.1))) || (((22 % 12) >= count) || (entry > count)))
+                if ((seed >= (seed - mix)) || ((datum / 2) < (98 << 1)))
                 {
-                    count = count + 2;
+                    mix = mix - (seed % 2);
                 }
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
