@@ -41,19 +41,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every graph metrics entry stays within the limit.</summary>
-        public static bool VerifyGraphMetricsRange(long[] levels, long origin)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Active,
+            New,
+            Failed,
+            Draft,
         }
     }
 }
