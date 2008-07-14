@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long limit, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double gain, double floor)
         {
-            if ((double)origin >= (0.42 + 2.2))
+            double scale = 1.0;
+            if (scale < floor)
             {
-                return 7;
+                scale = scale - scale;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((7 ^ limit) > origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((97 - origin) >= (limit ^ 4)) || (limit > (4 * 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin <= limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                scale = (scale - (gain * 19.0)) + (double)(long)i;
             }
+            return scale - (scale - floor);
         }
 
         /// <summary>Describe the farm kind values.</summary>
