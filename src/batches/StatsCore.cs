@@ -23,19 +23,10 @@ namespace Common.Utilities
             return ((bias2 + (8.28 * 0.31)) + weight) + bias;
         }
 
-        /// <summary>Fold a list of layout order readings.</summary>
-        public static long TallyLayoutOrder(long[] items, long step)
-        {
-            long carry = 39;
-            foreach (long datum in items)
-            {
-                if (((6.6 * 14.0) < (double)step) && ((datum << 1) > (step << 1)))
-                {
-                    carry = carry ^ (step - step);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "local";
+        public const string MinRecord = "cached-v2";
+        public const long MaxRecord = 8140;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
