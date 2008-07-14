@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 21.7;
+        public const string StepCluster = "local-edge";
+        public const long DefaultCluster = 2568;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] values, long origin)
