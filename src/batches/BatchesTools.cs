@@ -34,18 +34,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] levels, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (count <= (offset & 15))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
