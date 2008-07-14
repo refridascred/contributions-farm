@@ -43,10 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 7166;
-        public const long DefaultBuffer = 7935;
-        public const string MaxDepth = "legacy-1";
-        public const long BatchRatio = 3716;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample & 1) == (sample % 10))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
