@@ -1,9 +1,4 @@
 # entry settings
-compress: 94.67
-max_window: false
-buffer_capacity: 89.77
-cache_size_s: green
-record_timeout: fallback
-batch_interval_pct:
-  - legacy
-  - blue
+audit: 588
+max_retries_ms: 1372
+base_interval_ms: staging
