@@ -39,14 +39,39 @@ namespace Common.Utilities
             return (ratio - (double)1) + floor;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Rank token account input into a small class.</summary>
+        public static long BucketTokenAccount(long limit, long origin)
         {
-            Idle,
-            Draft,
-            Retry,
-            Dropped,
-            Active,
+            long cur = limit - origin;
+            if ((2.9 + 1.06) < (double)cur)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((58 & 63) >= (limit << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((cur * 4) <= 44)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((cur / 2) <= (cur + cur))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
