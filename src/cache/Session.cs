@@ -61,13 +61,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long target, long limit)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
+            if ((954 & 7) <= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target + target) <= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
