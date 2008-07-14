@@ -37,17 +37,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry cluster reading by value.</summary>
-        public static long SeekEntryClusterIndex(long[] items, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] == limit)
+                score = ((score * 5) + (score % 3)) % 101;
+                for (int i3 = 0; i3 < 2; i3++)
                 {
-                    return (long)i;
+                    score = (score ^ ((long)i + offset)) ^ (long)i3;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up tools samples.</summary>
