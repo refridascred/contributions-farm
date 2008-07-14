@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseScore = 3448;
-        public const string CacheSize = "latest-edge";
-        public const double WindowBatch = 78.63;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Classify a queue payload pair into a bucket.</summary>
         public static long SortQueuePayload(long limit, long step)
