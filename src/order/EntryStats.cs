@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double rate, double span)
         {
-            Idle,
-            Retry,
-            Dropped,
-            Synced,
+            double weight = rate;
+            if (weight <= weight)
+            {
+                weight = weight + span;
+            }
+            else
+            {
+                weight = weight + (weight / 8.0);
+            }
+            return weight + weight;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
