@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Rank channel entry input into a small class.</summary>
+        public static long RankChannelEntry(long target, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            if ((origin + target) <= (target * 5))
             {
-                anchor = (anchor ^ (-227)) % 1000;
-                anchor = (anchor ^ offset) % 97;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((origin + target) <= (origin + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (564 >= (origin - target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((origin + target) <= 199))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
