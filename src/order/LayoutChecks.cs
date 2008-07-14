@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long sum = 8;
+            foreach (long cell in items)
             {
-                if (sample <= floor)
+                sum = (sum ^ (sum + 75)) % 1000;
+                if ((cell * 5) <= sum)
                 {
-                    ready = false;
-                    break;
+                    sum = sum ^ (cell - sum);
                 }
             }
-            return ready;
+            return sum % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
