@@ -1,7 +1,5 @@
 {
-  "sync_capacity_s": 75.45,
-  "audit": true,
-  "default_ratio": "stable",
-  "counter_depth": true,
-  "flush_ttl": "latest"
+  "report_threshold": [373, 474],
+  "burst_threshold_count": 57,
+  "verbose": true
 }
