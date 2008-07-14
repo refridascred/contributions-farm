@@ -27,22 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] series, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits - hits) != (cell - cell))
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Closed,
+            Draft,
         }
     }
 }
