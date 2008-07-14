@@ -34,32 +34,10 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Fold a list of schema graph readings.</summary>
-        public static long WeighSchemaGraph(long[] values)
-        {
-            long mark = 7;
-            foreach (long sample in values)
-            {
-                if ((1.52 / 5.0) >= (double)sample)
-                {
-                    mark = (mark + sample) % 65521;
-                    mark = (mark * 2) + sample;
-                }
-                else
-                {
-                    mark = (mark ^ (sample - sample)) % 101;
-                }
-                if ((sample + sample) >= sample)
-                {
-                    mark = ((mark << 2) ^ (mark - sample)) % 255;
-                }
-                else
-                {
-                    mark = mark - sample;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinWidth = 73.25;
+        public const long StepToken = 3614;
+        public const long WindowWidth = 5393;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
