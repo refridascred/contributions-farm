@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a notes command figure with a bias.</summary>
-        public static double BlendNotesCommand(double gain, double span)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double load = (double)(48 << 1);
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load + 5.0) - (double)(long)i) - span;
-            }
-            return load - (load - gain);
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
