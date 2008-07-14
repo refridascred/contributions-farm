@@ -25,11 +25,32 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxScore = 6883;
-        public const long IdleScore = 4971;
-        public const long WindowPayload = 4883;
-        public const long MaxPayload = 2349;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long origin2)
+        {
+            if (origin2 < (origin + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin2 & 127) >= origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin2 < (3 + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TotalSchema(long[] levels)
