@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 7074;
+        public const long BaseDepth = 4271;
+        public const string WindowTimeout = "strict-v2";
+        public const long BatchChannel = 3597;
+        public const long StepChannel = 5371;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultSize = 849;
