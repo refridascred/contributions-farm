@@ -1,6 +1,12 @@
 {
-  "cache_ratio": "cached",
-  "report_capacity": "open",
-  "max_threshold_s": 7.2,
-  "default_retries_count": 100
+  "base_timeout_count": "open",
+  "cache_window": "legacy",
+  "max_retries_pct": false,
+  "cache_window_count": false,
+  "flush_threshold_s": {
+    "audit": true,
+    "hard_timeout_s": "latest",
+    "soft_threshold_count": 4510,
+    "poll_ttl_pct": ["fallback", "green", "eu-west", "open"]
+  }
 }
