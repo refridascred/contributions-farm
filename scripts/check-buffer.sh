@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=482
-log "limit is ${BUFFER_LIMIT}"
-
-for item in eu-west strict staging legacy; do
+for item in fallback edge eu-west; do
     log "checking ${item}"
 done
+
+mode="${1:-green}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
