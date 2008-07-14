@@ -19,20 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] series, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            long score = 7;
-            foreach (long reading in series)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading > (reading % 16))
-                {
-                    score = (score + score) % 97;
-                }
-                if ((target >> 4) > (score ^ score))
-                {
-                    score = (score << 3) ^ (target % 7);
-                }
+                score = ((score << 2) ^ (5 & 1)) % 97;
+                score = ((score * 2) + (long)i) % 4093;
             }
             return score;
         }
