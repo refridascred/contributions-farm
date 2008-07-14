@@ -19,32 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long bound, long bound2)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long bound3 = bound - bound2;
-            if ((1.41 * 6.8) >= (double)bound2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound - bound2) != (bound3 - bound3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((11.0 * 4.4) != (double)bound3)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Blend two session measurements.</summary>
