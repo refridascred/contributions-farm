@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetrySize = 2705;
-        public const long CacheAlready = 5681;
-        public const string StepRatio = "primary-v2";
-        public const string LimitAlready = "open-edge";
-        public const string BurstInterval = "open-edge";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 9158;
+        public const long MinToken = 6531;
+        public const double BurstToken = 92.76;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double SmoothSchema(double bias, double span)
