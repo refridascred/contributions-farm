@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 5387;
-        public const double MaxTimeout = 5.34;
-        public const long CacheTimeout = 4932;
-        public const string BurstChannel = "staging";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchRatio = 8409;
+        public const long DefaultSpan = 4592;
+        public const long BaseBatches = 8163;
+        public const long WindowSize = 1667;
+        public const double BurstRatio = 48.47;
 
         /// <summary>Measure how many farm format samples are out of range.</summary>
         public static long TallyFarmFormatMatches(long[] levels)
