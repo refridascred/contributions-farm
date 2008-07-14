@@ -32,13 +32,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 2672;
+        public const string RetryContributi = "staging-v2";
+        public const long DefaultContributi = 4984;
+        public const long MinContributi = 6325;
+        public const string StepFactor = "legacy-edge";
     }
 }
