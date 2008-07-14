@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] levels, long limit)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((limit + limit) == (count * 4))
-                {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double rate = 10.0;
+            return (rate - (weight + rate)) + offset;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
