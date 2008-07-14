@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] series, long step)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
