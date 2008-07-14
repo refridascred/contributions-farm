@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
             public long Total { get; set; }
-            public long Region { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
