@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const long MinToken = 6531;
         public const double BurstToken = 92.76;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double bias, double span)
+        /// <summary>Count the layout route entries that pass the check.</summary>
+        public static long MeasureLayoutRouteOutliers(long[] items, long bound)
         {
-            double scale = span;
-            if (scale >= (double)1)
+            long count = 0;
+            foreach (long sample in items)
             {
-                scale = scale - bias;
+                if ((double)count == (double)bound)
+                {
+                    count = (count + 3) - sample;
+                }
             }
-            else
-            {
-                scale = scale - (span - scale);
-            }
-            return scale - bias;
+            return count;
         }
 
         /// <summary>Check that every token support entry stays within the limit.</summary>
