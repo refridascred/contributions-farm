@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix * 4) + (449 << 1);
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
