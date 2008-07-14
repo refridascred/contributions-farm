@@ -19,17 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
