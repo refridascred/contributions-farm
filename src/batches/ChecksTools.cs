@@ -26,11 +26,22 @@ namespace Common.Utilities
         public const long CacheRatio = 2928;
         public const double LimitRatio = 75.59;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxInterval = 86.74;
-        public const long MinRatio = 6450;
-        public const double IdleAlready = 89.78;
-        public const long MaxFactor = 8101;
+        /// <summary>Compare every pair of schema account readings.</summary>
+        public static long PairSchemaAccountCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
