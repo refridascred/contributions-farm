@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] readings)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((((entry % 3) > (374 % 7)) && ((double)entry <= (2.09 - 7.1))) || (((22 % 12) >= count) || (entry > count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
