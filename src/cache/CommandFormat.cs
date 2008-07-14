@@ -20,21 +20,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Match up graph stats samples.</summary>
+        public static long PairGraphStatsCount(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry << 3) ^ (2 - (long)i2);
-                    carry = (carry ^ (-6)) % 255;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = ((carry * 2) + ((long)i - seed)) % 4096;
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a format entry.</summary>
