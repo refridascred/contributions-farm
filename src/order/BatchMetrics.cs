@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] samples, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double ratio = (double)(52 % 10);
+            if (ratio > rate)
             {
-                if (!((entry <= (43 >> 3)) || (entry >= (origin ^ tally))))
-                {
-                    tally = tally + 1;
-                }
+                ratio = ratio + bias;
             }
-            return tally;
+            return ratio + (double)612;
         }
 
         /// <summary>Describe the counter level values.</summary>
