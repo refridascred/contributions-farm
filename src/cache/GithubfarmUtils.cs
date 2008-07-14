@@ -14,14 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Active,
-            Stale,
-            Retry,
-            Synced,
+            Ready,
+            Pending,
             Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
