@@ -25,13 +25,10 @@ namespace Common.Utilities
         public const long CacheCluster = 6688;
         public const long WindowCluster = 7416;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Closed,
-            Retry,
-            Paused,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 7166;
+        public const long DefaultBuffer = 7935;
+        public const string MaxDepth = "legacy-1";
+        public const long BatchRatio = 3716;
     }
 }
