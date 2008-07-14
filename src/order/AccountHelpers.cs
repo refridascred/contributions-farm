@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
