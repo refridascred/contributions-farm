@@ -24,11 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] data, long limit)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the stats state values.</summary>
