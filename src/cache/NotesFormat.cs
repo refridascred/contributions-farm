@@ -28,22 +28,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate payload editor samples.</summary>
-        public static long DigestPayloadEditor(long[] samples)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double rate, double floor)
         {
-            long mix = 1;
-            foreach (long item in samples)
+            double scale = rate - 5.3;
+            if (scale > (floor * 5.1))
             {
-                if ((item & 15) <= mix)
-                {
-                    mix = (mix + (7 % 100)) % 97;
-                }
-                if (!((mix & 255) >= (mix - mix)))
-                {
-                    mix = (mix - (65 >> 3)) % 65521;
-                }
+                scale = scale + scale;
             }
-            return mix % 1000;
+            return scale + scale;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
