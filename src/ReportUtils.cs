@@ -53,15 +53,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Validate report graph readings against a bound.</summary>
+        public static bool CheckReportGraphRange(long[] values, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
     }
 }
