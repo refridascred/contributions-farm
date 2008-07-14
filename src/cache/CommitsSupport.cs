@@ -47,23 +47,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double bias, double bias2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            double scale = (double)5 / 9.0;
-            if (scale >= scale)
+            long mix = 36;
+            foreach (long cell in readings)
             {
-                scale = ((scale + (scale - scale)) + bias) - bias2;
+                mix = ((mix + 231) % 65521) - cell;
+                mix = (mix ^ (3 << 2)) % 101;
             }
-            else
+            if (mix < (-25))
             {
-                scale = scale + (scale - scale);
+                mix = mix + (mix - mix);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 0.8) - (double)(long)i;
-            }
-            return scale - (double)31;
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
