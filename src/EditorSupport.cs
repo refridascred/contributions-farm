@@ -16,19 +16,21 @@ namespace Common.Utilities
         public const long RetryInterval = 2598;
         public const long StepLevel = 8575;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series, long floor)
+        /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
+        public static long PairQueueMetricsCount(long[] readings)
         {
-            long state = 253;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state - 755) - cell) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (state > 93)
-            {
-                state = ((state * 5) + (state * 4)) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Adjust a farm reading.</summary>
