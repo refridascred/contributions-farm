@@ -38,19 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double gain, double span)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double scale, double span)
         {
-            double scale = span;
-            if (scale >= scale)
+            double rate = scale;
+            if (rate >= (3.4 + 12.0))
             {
-                scale = scale - (span - gain);
+                rate = rate - span;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale = scale - (double)(long)i;
+                rate = rate + (double)4;
             }
-            return scale + (span - gain);
+            return rate - (span - scale);
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
