@@ -23,10 +23,19 @@ namespace Common.Utilities
             return ((bias2 + (8.28 * 0.31)) + weight) + bias;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "local";
-        public const string MinRecord = "cached-v2";
-        public const long MaxRecord = 8140;
+        /// <summary>Audit entry buffer readings against a rule.</summary>
+        public static long CountEntryBufferHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!!((5.4 - 9.56) == (double)hits))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
