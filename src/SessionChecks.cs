@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Look up the position of a route layout sample.</summary>
+        public static long FindRouteLayoutIndex(long[] values, long target)
         {
-            Paused,
-            Closed,
-            Ready,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
