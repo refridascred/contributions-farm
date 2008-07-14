@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] series, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (sample < bound)
+                if ((19.0 < (double)limit) && ((count ^ limit) == (cell ^ 694)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Match up channel samples.</summary>
