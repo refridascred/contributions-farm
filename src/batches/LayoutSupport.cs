@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 4344;
+        public const double RetryRatio = 3.67;
+        public const long MinTools = 3120;
+        public const long StepTools = 6392;
 
         /// <summary>Iterate the metrics record series from a seed.</summary>
         public static long SeriesMetricsRecord(long step)
