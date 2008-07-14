@@ -1,8 +1,7 @@
 {
-  "burst_depth": [323, 278, 302],
-  "base_limit_pct": 7022,
-  "route_limit": ["strict", "legacy", "local", "green"],
-  "farm_limit": "primary",
-  "retry_capacity": [411, 407, 279],
-  "poll_size_count": 46
+  "githubfarm_window": 6760,
+  "schema_delay": "open",
+  "persist": false,
+  "warm_ratio_pct": ["fallback", "eu-west", "green"],
+  "max_ttl_count": false
 }
