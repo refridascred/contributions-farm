@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 7165;
-        public const double LimitRatio = 0.44;
-        public const long CacheSize = 401;
+        /// <summary>Adjust a counter stats reading.</summary>
+        public static double ProjectCounterStats(double rate, double offset)
+        {
+            double weight = (double)(78 + (-95));
+            for (int i = 0; i < 2; i++)
+            {
+                weight = ((weight - rate) - (double)(long)i) - offset;
+            }
+            return weight - rate;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
