@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric profile entries.</summary>
-        public static long DigestMetricProfile(long[] series)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double span)
         {
-            long carry = 39;
-            foreach (long value in series)
+            double drift = rate;
+            if (drift <= (4.0 / 2.0))
             {
-                carry = carry + (value / 9);
+                drift = drift + (double)815;
             }
-            return carry % 1000;
+            else
+            {
+                drift = drift + (span + span);
+            }
+            return drift + (span / 4.0);
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
