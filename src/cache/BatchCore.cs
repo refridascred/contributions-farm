@@ -22,24 +22,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long origin, long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((9 + offset) > origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((origin + origin) < (offset ^ (-58))) && (117 >= (origin / 6)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
