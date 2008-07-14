@@ -52,11 +52,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepFactor = 7691;
-        public const long MinCommits = 3803;
-        public const long RetryWidth = 6539;
-        public const long RetryCommits = 9504;
-        public const long LimitCommits = 2214;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] data)
+        {
+            long anchor = 6;
+            foreach (long reading in data)
+            {
+                if ((double)anchor > (3.0 - 1.75))
+                {
+                    anchor = anchor + ((-4) - anchor);
+                }
+                else
+                {
+                    anchor = anchor - (reading & 63);
+                }
+                if (((anchor + anchor) < reading) || ((anchor + reading) <= (reading - anchor)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
