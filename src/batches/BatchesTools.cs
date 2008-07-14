@@ -16,12 +16,19 @@ namespace Common.Utilities
             return scale + 2.0;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            Done,
-            Idle,
-            Stale,
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((origin >> 1) < origin))
+                {
+                    anchor = anchor ^ (long)i;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
