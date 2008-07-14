@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] samples, long seed)
         {
-            Retry,
-            Pending,
-            Ready,
-            Paused,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((6 - count) <= seed)
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
