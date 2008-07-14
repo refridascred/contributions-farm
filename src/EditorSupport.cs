@@ -43,23 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double ratio, double floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] readings, long seed)
         {
-            double load = ratio;
-            if (load <= load)
+            long count = 0;
+            foreach (long value in readings)
             {
-                load = (load - (double)6) + floor;
+                if (value < (count << 3))
+                {
+                    count = (count + 2) + seed;
+                }
             }
-            else
-            {
-                load = load - (load / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (ratio * 13.0)) + (double)(long)i;
-            }
-            return load + (double)87;
+            return count;
         }
 
         /// <summary>Roll a order counter forward.</summary>
