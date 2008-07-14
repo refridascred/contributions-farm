@@ -1,6 +1,29 @@
 # support settings
-max_delay_ms: cached
-min_threshold: 2023
-hard_retries: 49.82
-soft_window: stable
-burst_size_count: 58
+poll_threshold_pct: 25.62
+dry_run:
+  compress:
+    - primary
+    - green
+    - eu-west
+    - fallback
+  batch_threshold_pct: 100
+  batch_capacity_s:
+    - 447
+    - 289
+  warm_threshold:
+    - 375
+    - 99
+    - 106
+  persist:
+    - 453
+    - 406
+    - 391
+    - 284
+base_timeout_s:
+  - staging
+  - open
+poll_interval_ms:
+  enabled: false
+  sync_window_pct: blue
+  soft_limit: 9473
+audit: green
