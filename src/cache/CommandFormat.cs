@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] samples, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] readings, long target)
         {
-            long acc = 59;
-            foreach (long cell in samples)
+            long score = 27;
+            foreach (long item in readings)
             {
-                acc = (acc << 3) ^ (acc + cell);
+                if ((target ^ 7) > (score - target))
+                {
+                    score = ((score * 2) + score) + item;
+                }
             }
-            if (acc > 3)
+            if (score > 0)
             {
-                acc = ((acc << 2) ^ (origin - 18)) % 97;
+                score = ((score * 5) + 7) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Hold a cluster record.</summary>
