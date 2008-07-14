@@ -14,18 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of contributi session readings.</summary>
-        public static long ScoreContributiSession(long[] values)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double rate, double floor)
         {
-            long anchor = 6;
-            foreach (long value in values)
+            double mean = 8.0;
+            if (mean < floor)
             {
-                if ((anchor / 3) > (anchor * 5))
-                {
-                    anchor = ((anchor * 2) + (946 ^ (long)values.Length)) - value;
-                }
+                mean = mean + (rate + floor);
             }
-            return anchor % 1000;
+            return mean - (double)93;
         }
 
         /// <summary>Define support limits and defaults.</summary>
