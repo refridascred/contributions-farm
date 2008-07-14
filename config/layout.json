@@ -1,7 +1,5 @@
 {
-  "verbose": 17,
-  "min_delay_ms": 7,
-  "cache_depth_ms": 60,
-  "sync_limit": "open",
-  "token_delay": 500
+  "default_ttl_ms": 28.3,
+  "batches_interval": 4061,
+  "batch_interval": "strict"
 }
