@@ -57,19 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support counter entries.</summary>
-        public static long FoldSupportCounter(long[] samples, long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long result = 240;
-            foreach (long reading in samples)
-            {
-                result = (result + (29 + floor)) - reading;
-            }
-            if (result < 18)
-            {
-                result = (result - (floor ^ (long)samples.Length)) % 101;
-            }
-            return result;
+            Synced,
+            Paused,
+            Ready,
+            Closed,
         }
     }
 }
