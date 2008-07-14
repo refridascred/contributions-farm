@@ -1,6 +1,7 @@
 {
-  "audit": 66.07,
-  "base_delay_s": "staging",
-  "warm_interval": 2.08,
-  "hard_delay": "primary"
+  "window_window": "strict",
+  "warm_window_pct": "strict",
+  "default_retries_ms": 4508,
+  "strict": 83.22,
+  "dry_run": 3915
 }
