@@ -16,15 +16,14 @@ namespace Common.Utilities
             return drift + (double)45;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] items)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long state = 5;
-            foreach (long value in items)
-            {
-                state = (state + (value & 1)) % 101;
-            }
-            return state;
+            Queued,
+            Synced,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Digest a series of counter order entries.</summary>
