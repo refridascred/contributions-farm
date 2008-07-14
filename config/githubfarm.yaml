@@ -1,4 +1,18 @@
 # githubfarm settings
-readonly: green
-hard_limit_ms: 250
-retry_threshold_pct: true
+flush_retries: true
+account_size: 30
+max_ratio: 250
+hard_capacity: 29
+max_size_count: true
+min_window_count:
+  warm_threshold_count: edge
+  verbose: stable
+  context_size: cached
+  batch_limit_s:
+    batch_delay: 66.58
+    soft_limit: local
+    flush_ttl_count: fallback
+  soft_capacity_s: legacy
+  audit:
+    - 396
+    - 300
