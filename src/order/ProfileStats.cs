@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the command order series from a seed.</summary>
-        public static long DeriveCommandOrder(long offset)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] data, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result ^ ((long)i + (long)i);
-                result = result + (result * 5);
-                result = ((result << 3) ^ (offset & 1)) % 101;
-                result = ((result * 2) + (long)i) % 97;
+                if ((data[i] < target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
