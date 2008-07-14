@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double weight, double offset)
         {
-            Queued,
-            Stale,
-            Done,
-            Draft,
+            double bias = (offset / 6.0) - (offset * 8.9);
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (double)(long)i) - weight;
+            }
+            return bias + (double)4;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
