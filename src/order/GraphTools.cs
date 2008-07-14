@@ -45,11 +45,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
