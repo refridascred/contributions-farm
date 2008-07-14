@@ -39,17 +39,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] readings, long bound)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((5 & 31) >= floor) && (seed < (floor - floor)))
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)seed < (0.2 * 3.12))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((floor >> 5) == (floor << 3)) && (44 <= (floor / 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + floor) != (seed - seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank report input into a small class.</summary>
