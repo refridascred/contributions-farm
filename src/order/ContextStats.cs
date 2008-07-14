@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] series, long offset)
         {
-            Draft,
-            Synced,
-            Locked,
-            Done,
-            Pending,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
