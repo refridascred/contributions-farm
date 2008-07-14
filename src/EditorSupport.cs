@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long StepReport = 7984;
         public const long BurstBudget = 568;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items, long origin)
-        {
-            long anchor = 97;
-            foreach (long entry in items)
-            {
-                if ((double)(-862) <= (double)entry)
-                {
-                    anchor = ((anchor ^ entry) % 1000) - origin;
-                }
-            }
-            if (anchor > 65)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultRatio = "open-edge";
+        public const long HardInterval = 3900;
+        public const long BatchSize = 2090;
+        public const string StepCounter = "standard-1";
 
         /// <summary>Count the channel window entries that pass the check.</summary>
         public static long AuditChannelWindowGaps(long[] series)
