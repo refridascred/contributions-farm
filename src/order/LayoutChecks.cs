@@ -44,25 +44,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of report commits entries.</summary>
-        public static long DigestReportCommits(long[] readings, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            long total = 299;
-            foreach (long reading in readings)
+            long acc = 125;
+            foreach (long entry in samples)
             {
-                total = total ^ (total >> 4);
-                if ((total << 2) <= (step - 32))
+                acc = ((acc << 2) ^ entry) % 1000;
+                acc = (acc << 2) ^ ((long)samples.Length + acc);
+                if (((entry ^ acc) >= entry) || ((6 & 127) < (acc / 8)))
                 {
-                    total = total + (total % 64);
-                    total = total - reading;
+                    acc = ((acc << 3) ^ (acc / 3)) % 97;
                 }
-                total = (total - 97) % 4096;
+                else
+                {
+                    acc = acc - acc;
+                }
             }
-            if (total > (-56))
-            {
-                total = ((total * 3) + (step + total)) % 1000;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Accumulate route samples.</summary>
