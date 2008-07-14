@@ -14,12 +14,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Idle,
-            Ready,
-            Retry,
+            Dropped,
+            Queued,
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
