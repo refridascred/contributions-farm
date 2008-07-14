@@ -28,22 +28,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of order queue readings.</summary>
-        public static long TotalOrderQueue(long[] samples)
+        /// <summary>Accumulate payload editor samples.</summary>
+        public static long DigestPayloadEditor(long[] samples)
         {
-            long anchor = 3;
-            foreach (long reading in samples)
+            long mix = 1;
+            foreach (long item in samples)
             {
-                if (reading <= (anchor % 60))
+                if ((item & 15) <= mix)
                 {
-                    anchor = (anchor << 2) ^ reading;
+                    mix = (mix + (7 % 100)) % 97;
                 }
-                else
+                if (!((mix & 255) >= (mix - mix)))
                 {
-                    anchor = (anchor ^ (reading - 64)) % 65521;
+                    mix = (mix - (65 >> 3)) % 65521;
                 }
             }
-            return anchor % 65521;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
