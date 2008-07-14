@@ -46,10 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseDepth = 47.03;
-        public const long DefaultProfile = 2874;
-        public const long MaxCount = 9390;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 5412;
