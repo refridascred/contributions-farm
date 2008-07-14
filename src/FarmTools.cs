@@ -13,22 +13,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 22.69;
+        public const long LimitStream = 1741;
+        public const long WindowCount = 1092;
 
         /// <summary>Accumulate report samples.</summary>
         public static long TallyReport(long[] levels, long seed)
