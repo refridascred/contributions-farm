@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] samples)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count % 16) > count)
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
