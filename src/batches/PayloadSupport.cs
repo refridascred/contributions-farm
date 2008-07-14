@@ -28,18 +28,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] samples, long limit)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches << 3) > limit)
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
                 {
-                    matches = (matches + 2) + entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
