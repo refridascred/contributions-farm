@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series, long seed)
         {
-            Retry,
-            Dropped,
-            Done,
+            long total = 72;
+            foreach (long reading in series)
+            {
+                total = ((total ^ (seed - total)) % 97) ^ reading;
+            }
+            return total;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
