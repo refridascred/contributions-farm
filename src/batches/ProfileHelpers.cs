@@ -20,13 +20,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] levels, long limit)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell > (7.03 + 5.27))
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of report entries.</summary>
