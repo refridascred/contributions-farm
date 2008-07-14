@@ -25,19 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long state = 4;
-            foreach (long item in samples)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                state = state ^ ((-305) - state);
-                if ((state + state) != (item % 3))
-                {
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return state;
+            return total;
         }
     }
 }
