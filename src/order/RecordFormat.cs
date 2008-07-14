@@ -26,12 +26,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 4412;
-        public const long BaseRatio = 383;
-        public const long DefaultRatio = 9028;
-        public const double BatchSize = 32.7;
-        public const long MaxRecord = 7345;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Rank { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long bound)
