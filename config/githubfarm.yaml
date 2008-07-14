@@ -1,24 +1,10 @@
 # githubfarm settings
-batch_delay: 90
-verbose:
-  - 69
-  - 56
-  - 340
-default_capacity_count:
-  buffer_limit:
-    - strict
-    - open
-    - standard
-  checks_window: stable
-  persist: staging
-  already_window:
-    - 75
-    - 486
-    - 204
-    - 366
-  min_capacity: true
-format_delay: primary
-base_size:
-  - edge
-  - green
-compress: 6820
+batch_retries_s: open
+format_limit: latest
+warm_window:
+  - 319
+  - 105
+  - 101
+retry_interval: 8.01
+hard_size_ms: 16
+soft_size_count: 364
