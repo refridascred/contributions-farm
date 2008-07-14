@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the layout commits entries that pass the check.</summary>
-        public static long AuditLayoutCommitsGaps(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (((value * 4) == (count << 3)) || (value <= (value + value)))
+                if (entry != seed)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
