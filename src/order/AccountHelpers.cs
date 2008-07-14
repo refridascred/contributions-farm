@@ -49,13 +49,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Fold a list of buffer format readings.</summary>
+        public static long TotalBufferFormat(long[] values, long target)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
+            long state = -88;
+            foreach (long reading in values)
+            {
+                state = ((state + (253 + reading)) % 101) + target;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a batches stats.</summary>
