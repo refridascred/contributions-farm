@@ -1,6 +1,14 @@
 {
-  "default_interval_pct": 500,
-  "warm_ratio_s": 76.61,
-  "default_retries_pct": "cached",
-  "poll_limit_ms": "blue"
+  "strict": "edge",
+  "flush_delay_ms": 83.89,
+  "batch_interval_count": "eu-west",
+  "queue_timeout": {
+    "support_ratio": "eu-west",
+    "counter_threshold": false,
+    "persist": 68,
+    "compress": 71.02,
+    "audit": 7803
+  },
+  "enabled": "stable",
+  "flush_window": "fallback"
 }
