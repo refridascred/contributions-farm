@@ -26,16 +26,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                score = score + ((long)i ^ limit);
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 5800;
+        public const long StepWindow = 4457;
+        public const double WindowBudget = 50.43;
+        public const long RetryFactor = 5549;
+        public const long RetryWindow = 7203;
     }
 }
