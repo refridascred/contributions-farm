@@ -63,11 +63,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 5412;
-        public const string BatchLevel = "standard-1";
-        public const string BatchStats = "alpha";
-        public const string CacheScore = "standard-v2";
-        public const long WindowSize = 807;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!((9 / 6) > (offset - offset)))
+                {
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
