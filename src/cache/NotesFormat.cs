@@ -28,21 +28,32 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long offset, long offset2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = offset + offset2;
+            if (925 > (offset + delta))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((offset2 ^ 0) < (283 / 2))
                 {
-                    if ((items[i] ^ items[j]) < 5)
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)delta <= (double)offset))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
