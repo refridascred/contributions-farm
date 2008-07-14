@@ -42,16 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context support value.</summary>
-        public static double ProjectContextSupport(double rate, double offset)
-        {
-            double gain = (offset * 6.11) * 12.0;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = ((gain - offset) - (double)(long)i) + rate;
-            }
-            return gain + (6.0 * 9.4);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 1414;
+        public const long LimitContributi = 7530;
+        public const long MaxTimeout = 8195;
 
         /// <summary>Iterate the payload stats series from a seed.</summary>
         public static long DerivePayloadStats(long bound)
