@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double span)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double ratio, double bias)
         {
-            double drift = (double)701 - (span * 4.0);
-            if (drift < (weight / 3.0))
+            double weight = 0.56 * 15.0;
+            if (weight < bias)
             {
-                drift = drift + 3.0;
+                weight = (weight + weight) - ratio;
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (drift * 2.3);
+            return weight - (double)29;
         }
 
         /// <summary>Check that every cluster cache entry stays within the limit.</summary>
