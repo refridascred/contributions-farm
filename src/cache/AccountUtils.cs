@@ -14,16 +14,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the layout support series from a seed.</summary>
-        public static long IterateLayoutSupport(long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long limit, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            if ((limit % 8) > limit)
             {
-                anchor = anchor ^ origin;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (limit < (limit - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit % 2) >= (limit << 1)) || ((double)origin != (2.48 * 5.6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin * 5) != (origin + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
