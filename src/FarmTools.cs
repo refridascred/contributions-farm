@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitDepth = "legacy";
-        public const string BaseRatio = "legacy-edge";
-        public const long WindowBudget = 6881;
-        public const long DefaultGithubfarm = 9043;
-        public const long DefaultDepth = 9801;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] readings, long step)
+        {
+            long total = 988;
+            foreach (long cell in readings)
+            {
+                total = ((((total * 4) + (5 % 97)) % 97) + cell) + step;
+            }
+            return total;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
