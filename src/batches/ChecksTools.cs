@@ -55,18 +55,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile githubfarm readings against a rule.</summary>
-        public static long AuditProfileGithubfarmGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (value <= (879 & 7))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "standard-v2";
+        public const long StepSpan = 9397;
+        public const long BatchWidth = 6504;
+        public const long RetryStats = 9033;
     }
 }
