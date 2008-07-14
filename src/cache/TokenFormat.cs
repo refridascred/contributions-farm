@@ -19,10 +19,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowBudget = 2689;
-        public const long IdleEditor = 4734;
-        public const long HardEditor = 9049;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] readings, long target)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseWidth = 6871;
