@@ -43,23 +43,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Blend two window token measurements.</summary>
+        public static double AdjustWindowToken(double gain, double bias)
         {
-            double scale = weight;
-            if (scale <= bias)
+            double bias2 = (double)(286 + 3);
+            if (bias2 < (bias2 - bias))
             {
-                scale = scale + (bias * 0.3);
+                bias2 = bias2 - 18.0;
             }
             else
             {
-                scale = scale + bias;
+                bias2 = bias2 + (gain + 16.0);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale - (double)390;
+            return bias2 - (double)9;
         }
     }
 }
