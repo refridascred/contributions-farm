@@ -94,13 +94,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] levels, long target)
         {
-            Idle,
-            Draft,
-            Synced,
-            Queued,
+            long anchor = 630;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor - (target << 1)) % 1000) + sample;
+            }
+            return anchor;
         }
     }
 }
