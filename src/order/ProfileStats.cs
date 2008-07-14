@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Idle,
-            Draft,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinRatio = 382;
+        public const long CacheMetrics = 4805;
+        public const long CacheRatio = 4561;
+        public const long DefaultRatio = 5668;
+        public const string MinSize = "legacy";
 
         /// <summary>Blend two channel notes measurements.</summary>
         public static double ScaleChannelNotes(double gain, double span)
