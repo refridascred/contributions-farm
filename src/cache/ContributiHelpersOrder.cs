@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BatchEditor = 6800;
         public const long SoftDepth = 145;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((double)origin < (19.0 * 14.0)) && ((value / 7) <= hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardCount = 7109;
+        public const long DefaultDepth = 4016;
+        public const long CacheWidth = 7479;
+        public const long CacheSize = 8523;
+        public const long IdleBuffer = 7664;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
