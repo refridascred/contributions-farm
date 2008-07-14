@@ -53,11 +53,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] levels, long seed)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seed ^ 8) != (6 * 5))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
