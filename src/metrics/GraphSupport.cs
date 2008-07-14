@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] data, long seed)
         {
-            Stale,
-            Locked,
-            Done,
-            Draft,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
