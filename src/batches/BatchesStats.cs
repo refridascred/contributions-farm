@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] values)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (!(seen >= 6) && ((2.0 * 8.0) != (double)seen))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
