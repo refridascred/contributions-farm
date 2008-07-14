@@ -20,31 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a queue payload pair into a bucket.</summary>
-        public static long SortQueuePayload(long limit, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] levels)
         {
-            if ((limit << 2) > (limit + step))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step >= (double)limit)
+                if ((((9.41 / 4.0) > (double)matches) || ((double)sample >= 6.37)) || ((matches + sample) < matches))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + step) >= ((-2) >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
