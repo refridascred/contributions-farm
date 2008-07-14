@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] items, long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long mix = 4;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix << 3) ^ (mix + target)) % 255) ^ item;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mix < 0)
-            {
-                mix = mix - (4 >> 3);
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Hold a account stats.</summary>
