@@ -1,9 +1,7 @@
-id,count,active
-1,60.8,18
-2,206,238
-3,905,edge
-4,745,775
-5,fallback,46.58
-6,cached,3.52
-7,961,eu-west
-8,fallback,staging
+id,ratio
+1,local
+2,160
+3,295
+4,375
+5,196
+6,standard
