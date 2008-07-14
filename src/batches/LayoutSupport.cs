@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema metrics samples are out of range.</summary>
-        public static long AuditSchemaMetricsHits(long[] series)
+        /// <summary>Iterate the metrics record series from a seed.</summary>
+        public static long SeriesMetricsRecord(long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((hits & 7) == (entry >> 1))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
