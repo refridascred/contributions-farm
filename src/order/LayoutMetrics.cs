@@ -52,39 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer contributi input into a small class.</summary>
-        public static long RankBufferContributi(long target, long target2)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long lane = target ^ target2;
-            if (((target ^ target2) == (target / 6)) && ((target2 + lane) > target2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)lane >= (3.03 * 1.85))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane << 3) > (target - lane))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (lane >= (target << 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Dropped,
         }
     }
 }
