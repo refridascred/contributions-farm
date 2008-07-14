@@ -1,14 +1,7 @@
 {
-  "strict": "edge",
-  "flush_delay_ms": 83.89,
-  "batch_interval_count": "eu-west",
-  "queue_timeout": {
-    "support_ratio": "eu-west",
-    "counter_threshold": false,
-    "persist": 68,
-    "compress": 71.02,
-    "audit": 7803
-  },
-  "enabled": "stable",
-  "flush_window": "fallback"
+  "support_retries": 60,
+  "queue_timeout": true,
+  "warm_timeout_count": 27.07,
+  "base_threshold": 56.26,
+  "token_retries": 4
 }
