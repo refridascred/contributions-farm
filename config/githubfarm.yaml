@@ -1,16 +1,9 @@
 # githubfarm settings
-min_window: green
-soft_interval: staging
-retry_depth:
-  - latest
-  - fallback
-  - open
-idle_retries: green
-record_window:
-  metrics_interval: 7102
-  enabled: 63.59
-  readonly: false
-  burst_depth: open
-  burst_ratio_count: standard
-  retry_interval_s: 33.69
-batch_threshold: 2
+retry_capacity:
+  - 459
+  - 369
+  - 38
+  - 230
+buffer_ttl: 81.21
+poll_retries_count: 44
+flush_limit: true
