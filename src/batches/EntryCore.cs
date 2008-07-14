@@ -46,38 +46,17 @@ namespace Common.Utilities
             return drift + (double)18;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long seed, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long origin)
         {
-            if (4.0 > (double)seed)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
+                total = total - origin;
+                total = (total + (total & 63)) % 101;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)step == (5.6 - 3.61))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step != (2.07 / 7.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6.0 + 2.09) <= (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit cache metrics readings against a rule.</summary>
