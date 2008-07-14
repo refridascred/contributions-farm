@@ -1,4 +1,5 @@
 # entry settings
-retry_retries: 1.76
-context_size: 654
-command_size: 3572
+retry_ttl_ms: 2764
+sync_timeout_count: 5935
+audit: local
+flush_limit: fallback
