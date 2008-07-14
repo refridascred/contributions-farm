@@ -21,14 +21,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Idle,
-            Synced,
-            Active,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryCount = 30.35;
+        public const long BaseBudget = 4001;
+        public const long WindowSize = 4855;
+        public const string WindowBudget = "standard-edge";
     }
 }
