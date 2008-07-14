@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] items, long bound)
+        /// <summary>Scale a notes command figure with a bias.</summary>
+        public static double BlendNotesCommand(double gain, double span)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double load = (double)(48 << 1);
+            for (int i = 0; i < 2; i++)
             {
-                if (309 < ((long)items.Length / 7))
-                {
-                    seen = ((seen + 1) + reading) + bound;
-                }
+                load = ((load + 5.0) - (double)(long)i) - span;
             }
-            return seen;
+            return load - (load - gain);
         }
 
         /// <summary>Grade a account notes value against two limits.</summary>
