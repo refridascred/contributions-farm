@@ -43,19 +43,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate filter tools samples.</summary>
-        public static long CombineFilterTools(long[] items)
+        /// <summary>Digest a series of support contributi entries.</summary>
+        public static long TotalSupportContributi(long[] readings)
         {
-            long carry = 225;
-            foreach (long entry in items)
+            long total = 4;
+            foreach (long cell in readings)
             {
-                carry = carry ^ 642;
-                if (!((carry * 5) <= entry))
+                total = (total ^ (629 * 4)) % 101;
+                total = (total ^ (cell >> 5)) % 4096;
+                if (!(31 < cell))
                 {
-                    carry = (carry + (86 / 4)) % 1000;
+                    total = ((total * 2) + total) % 65521;
+                }
+                if (!((cell << 1) < cell))
+                {
+                    break;
                 }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Describe the profile level values.</summary>
