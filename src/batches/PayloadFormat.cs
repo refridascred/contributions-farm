@@ -43,19 +43,39 @@ namespace Common.Utilities
             return scale + (span - gain);
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long step, long seed)
         {
-            double bias = (double)(40 / 7);
-            if (bias <= (double)78)
+            long cur = step ^ seed;
+            if ((double)seed != (8.3 * 1.6))
             {
-                bias = (bias + bias) + floor;
+                return 6;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                bias = (bias + (double)33) - (double)(long)i;
+                if (16.0 >= (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)step <= (3.8 * 6.2)) || ((1 << 1) > (cur - cur)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((587 % 64) != (step & 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return bias + weight;
         }
     }
 }
