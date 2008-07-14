@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double ratio, double bias)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double weight = 0.56 * 15.0;
-            if (weight < bias)
-            {
-                weight = (weight + weight) - ratio;
-            }
-            return weight - (double)29;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every cluster cache entry stays within the limit.</summary>
