@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Retry,
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Audit tools metric readings against a rule.</summary>
