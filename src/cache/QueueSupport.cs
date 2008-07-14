@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            New,
-            Queued,
-            Draft,
-            Closed,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
