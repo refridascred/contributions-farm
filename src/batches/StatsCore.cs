@@ -60,18 +60,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data, long seed)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long state = 7;
-            foreach (long sample in data)
-            {
-                if (((sample ^ 334) <= (417 - sample)) && (seed >= (sample * 5)))
-                {
-                    state = (state - 8) % 101;
-                }
-            }
-            return state;
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
