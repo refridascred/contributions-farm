@@ -1,9 +1,8 @@
-id,score,label,rank
-1,37.36,1.07,primary
-2,924,823,903
-3,726,833,staging
-4,cached,551,35.82
-5,primary,564,blue
-6,168,4.82,30
-7,977,legacy,blue
-8,151,local,37
+id,rank,level,region
+1,959,415,standard
+2,722,latest,66.24
+3,956,green,45.51
+4,7.3,920,stable
+5,62.03,stable,26.2
+6,172,primary,green
+7,350,105,461
