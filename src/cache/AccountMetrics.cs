@@ -71,15 +71,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double bias, double floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double drift = (double)84 * 5.17;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift - (bias - bias)) + (double)(long)i) - floor;
-            }
-            return drift - drift;
+            Closed,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
