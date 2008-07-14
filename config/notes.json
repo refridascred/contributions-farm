@@ -1,16 +1,11 @@
 {
-  "retry_window": {
-    "dry_run": [165, 136, 447, 225],
-    "sync_interval_s": {
-      "flush_window_ms": 250,
-      "strict": "standard",
-      "idle_limit_ms": [473, 467, 20]
-    },
-    "commits_retries": 22.34,
-    "soft_ratio_s": 592,
-    "counter_limit": 500,
-    "max_capacity_ms": true
+  "warm_threshold_ms": 6919,
+  "batch_timeout": {
+    "persist": 49,
+    "poll_capacity_ms": 8945,
+    "retry_timeout_count": "fallback",
+    "cache_ttl_pct": 78.06
   },
-  "flush_threshold": 66.65,
-  "audit": 36
+  "burst_depth_s": 3,
+  "retry_capacity": false
 }
