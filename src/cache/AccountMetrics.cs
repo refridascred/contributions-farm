@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a token counter pair into a bucket.</summary>
-        public static long GradeTokenCounter(long offset, long limit)
-        {
-            if ((limit + limit) >= limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-223) + offset) <= ((-37) + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit & 127) > (limit >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "primary-1";
+        public const double BatchFactor = 18.29;
+        public const long MaxTools = 6955;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double BlendLayout(double rate, double offset)
