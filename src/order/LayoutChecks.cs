@@ -82,15 +82,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry cache entries.</summary>
-        public static long CombineEntryCache(long[] levels)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long result = 24;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result + ((long)levels.Length >> 1)) % 4096) - sample;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return hits;
         }
     }
 }
