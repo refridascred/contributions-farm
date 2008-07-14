@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] values, long floor)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((datum << 3) > datum) && (hits > (floor * 4)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
