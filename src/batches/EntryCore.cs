@@ -27,23 +27,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double bias)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long target)
         {
-            double drift = (weight * 9.47) / 8.0;
-            if (drift >= (drift * 7.11))
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                drift = (drift + drift) - bias;
+                result = ((result * 4) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift + 7.1;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (double)52) + (double)(long)i;
-            }
-            return drift + (double)18;
+            return result;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
