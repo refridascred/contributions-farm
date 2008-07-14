@@ -25,17 +25,19 @@ namespace Common.Utilities
             return (scale + (gain - scale)) + bias;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] levels, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
+                if (sample < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
