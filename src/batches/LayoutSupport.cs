@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long MinTools = 3120;
         public const long StepTools = 6392;
 
-        /// <summary>Iterate the metrics record series from a seed.</summary>
-        public static long SeriesMetricsRecord(long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Retry,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the profile mode values.</summary>
