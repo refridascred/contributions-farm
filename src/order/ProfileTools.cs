@@ -39,20 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats support readings against a bound.</summary>
-        public static bool GuardStatsSupportBounds(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardRatio = "latest-v2";
+        public const long BurstCount = 4361;
+        public const long LimitProfile = 9373;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
