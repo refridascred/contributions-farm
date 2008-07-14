@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long floor, long limit)
+        /// <summary>Audit cluster support readings against a rule.</summary>
+        public static long TallyClusterSupportHits(long[] samples)
         {
-            if (floor <= (64 / 8))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor + floor) < floor) || ((4.1 / 4.0) != (double)limit))
+                if ((matches ^ value) <= (matches & 127))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
