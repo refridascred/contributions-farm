@@ -55,21 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter payload readings.</summary>
-        public static long CompareFilterPayloadCount(long[] series)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Roll a order counter forward.</summary>
