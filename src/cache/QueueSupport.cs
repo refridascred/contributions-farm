@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] levels, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (((-76) % 16) >= (limit - 691))
+                {
+                    count = (count + 2) + item;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the layout state values.</summary>
