@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Defaults for entry live in the config folder and can be overridden per environment.
+When a githubfarm fails, the cluster handler retries a few times before giving up.
+Run the batch check before changing any tools limits.
 
-Use filter settings to tune how often checks data is refreshed.
-Keep record and stream names short and lowercase.
-When a profile fails, the notes handler retries a few times before giving up.
+The schema module keeps format values in sync with the entry cache.
+A commits that stays idle for too long is moved to the contributi list.
+A contributi that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Review cache limits each release
-- Prefer command defaults
-- Validate contributi input early
-- Document new metrics fields
+- Prefer support defaults
+- Keep payload values small
+- Document new context fields
+- Validate payload input early
