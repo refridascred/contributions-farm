@@ -1,5 +1,7 @@
 {
-  "cache_ratio": 13.37,
-  "batches_ttl": true,
-  "compress": "standard"
+  "warm_retries_s": "edge",
+  "compress": 60,
+  "tools_threshold": "legacy",
+  "readonly": "standard",
+  "base_retries_ms": "green"
 }
