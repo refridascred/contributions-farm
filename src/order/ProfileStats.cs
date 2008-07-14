@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] data, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (reading > limit)
+                if ((double)(long)items.Length > 8.64)
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 3) ^ sample) + target;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the batches phase values.</summary>
