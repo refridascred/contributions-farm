@@ -1,13 +1,7 @@
 {
-  "batch_depth": false,
-  "checks_depth": 60,
-  "poll_size": 33,
-  "context_timeout": true,
-  "enabled": {
-    "sync_retries": 500,
-    "batch_window_s": "strict",
-    "poll_threshold_ms": 7725,
-    "idle_depth_pct": ["fallback", "green"],
-    "report_interval": 18.44
-  }
+  "min_window_count": 24,
+  "compress": "legacy",
+  "stats_timeout": 60,
+  "poll_threshold_count": ["standard", "staging"],
+  "idle_timeout": "green"
 }
