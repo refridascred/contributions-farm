@@ -26,11 +26,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 49.65;
-        public const long DefaultSize = 4942;
-        public const double DefaultReport = 96.21;
-        public const double BaseCount = 4.96;
-        public const long RetryReport = 3112;
+        /// <summary>Measure how many window format samples are out of range.</summary>
+        public static long TallyWindowFormatHits(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)tally <= 9.0)
+                {
+                    tally = ((tally + 2) + reading) + seed;
+                }
+            }
+            return tally;
+        }
     }
 }
