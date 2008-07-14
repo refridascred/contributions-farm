@@ -52,26 +52,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long anchor = 6;
-            foreach (long reading in data)
-            {
-                if ((double)anchor > (3.0 - 1.75))
-                {
-                    anchor = anchor + ((-4) - anchor);
-                }
-                else
-                {
-                    anchor = anchor - (reading & 63);
-                }
-                if (((anchor + anchor) < reading) || ((anchor + reading) <= (reading - anchor)))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            Dropped,
+            Locked,
+            Paused,
+            Ready,
+            Stale,
         }
     }
 }
