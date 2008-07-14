@@ -48,18 +48,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] values)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits >> 2) >= hits)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) ^ reading;
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
