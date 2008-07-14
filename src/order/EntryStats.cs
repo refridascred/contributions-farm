@@ -37,10 +37,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultScore = "legacy-1";
-        public const double CacheCommand = 15.53;
-        public const double IdleScore = 61.47;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double gain, double span)
