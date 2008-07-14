@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Count the account commits entries that pass the check.</summary>
+        public static long AuditAccountCommitsOutliers(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((-368) < (datum * 2))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
