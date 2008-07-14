@@ -41,19 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] levels, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell != target)
+                if ((mark * 5) <= mark)
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark * 5) + 8) % 65521;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
     }
 }
