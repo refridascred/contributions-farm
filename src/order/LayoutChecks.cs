@@ -23,15 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] items, long step)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long acc = -74;
-            foreach (long entry in items)
-            {
-                acc = ((acc + (entry << 2)) % 255) - step;
-            }
-            return acc;
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
