@@ -19,19 +19,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] data, long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= target)
+                if (items[i] >= target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the stream class values.</summary>
