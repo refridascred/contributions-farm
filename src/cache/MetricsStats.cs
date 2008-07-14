@@ -52,11 +52,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinFactor = 1128;
-        public const long MaxInterval = 3917;
-        public const long BatchTimeout = 6276;
-        public const long CacheLevel = 1346;
-        public const long BatchCount = 4419;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
