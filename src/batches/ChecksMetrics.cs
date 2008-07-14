@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double IdleTimeout = 24.11;
         public const string StepCount = "legacy-v2";
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double bias, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
+            double bias2 = floor;
+            if (bias2 >= bias)
+            {
+                bias2 = bias2 - (bias + 18.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + 0.45) + (double)(long)i;
+            }
+            return bias2 + (bias2 * 17.0);
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
