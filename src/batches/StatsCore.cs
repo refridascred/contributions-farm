@@ -60,21 +60,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 7;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((sample ^ 334) <= (417 - sample)) && (seed >= (sample * 5)))
                 {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state - 8) % 101;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
