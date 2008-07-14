@@ -33,19 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] samples, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (value >= origin)
+                if ((matches << 3) > limit)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
