@@ -1,8 +1,12 @@
 {
-  "flush_size_count": false,
-  "min_ratio_count": 24.42,
-  "base_delay": 31,
-  "order_window": false,
-  "batch_depth_count": 500,
-  "burst_window_ms": "latest"
+  "metrics_limit": false,
+  "dry_run": "local",
+  "flush_window": true,
+  "idle_threshold": false,
+  "enabled": {
+    "poll_capacity_ms": 5708,
+    "retry_limit": "eu-west",
+    "warm_delay_ms": "open",
+    "poll_ratio_s": ["strict", "green", "open"]
+  }
 }
