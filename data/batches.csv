@@ -1,7 +1,6 @@
-id,ratio,rank
-1,88.07,standard
-2,primary,edge
-3,813,cached
-4,7.0,fallback
-5,staging,46.02
-6,green,44.67
+id,label,weight
+1,94.93,59.41
+2,69.67,712
+3,431,strict
+4,701,353
+5,43,575
