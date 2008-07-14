@@ -37,25 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long bound, long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] levels, long origin)
         {
-            long bound2 = bound + floor;
-            if ((bound2 - bound2) <= floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (bound2 + bound2))
+                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
