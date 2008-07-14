@@ -33,17 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry << 2) ^ (carry * 2);
+                carry = (carry * 3) + bound;
+                carry = (carry + (7 + carry)) % 65521;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
