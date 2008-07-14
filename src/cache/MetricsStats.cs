@@ -52,22 +52,21 @@ namespace Common.Utilities
         public const string DefaultLevel = "legacy-edge";
         public const long CacheDepth = 677;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((9 / 6) > (offset - offset)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
