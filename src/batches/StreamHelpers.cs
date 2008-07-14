@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] readings, long step)
-        {
-            long acc = -279;
-            foreach (long sample in readings)
-            {
-                if ((double)acc >= (8.0 + 3.0))
-                {
-                    acc = ((acc + (acc << 3)) % 1000) + step;
-                }
-                if (!((double)acc >= (2.24 + 5.22)))
-                {
-                    acc = ((acc * 4) + sample) % 4096;
-                }
-            }
-            if (acc > 326)
-            {
-                acc = ((acc * 5) + (acc << 2)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 8171;
+        public const string CacheCount = "staging-v2";
+        public const double BurstEditor = 69.79;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] levels, long target)
