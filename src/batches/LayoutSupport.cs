@@ -70,38 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long step, long limit)
+        /// <summary>Audit cache order readings against a rule.</summary>
+        public static long AuditCacheOrderGaps(long[] values, long step)
         {
-            if (((-623) ^ limit) > 8)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit >> 3) <= limit)
+                if ((double)tally > (6.0 + 5.5))
                 {
-                    return 1;
+                    tally = ((tally + 3) ^ datum) + step;
                 }
                 else
                 {
-                    if ((6.0 + 1.1) < (8.49 - 4.4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((limit + limit) >= (limit << 1)) && ((915 + limit) != (step + 1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
