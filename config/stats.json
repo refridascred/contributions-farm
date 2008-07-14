@@ -1,5 +1,7 @@
 {
-  "queue_limit": ["stable", "local"],
-  "sync_retries": false,
-  "already_ratio": true
+  "persist": 1292,
+  "batch_delay": 5655,
+  "readonly": 68,
+  "flush_window": 575,
+  "idle_interval_ms": "green"
 }
