@@ -33,12 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Rank payload schema input into a small class.</summary>
+        public static long ClassifyPayloadSchema(long step, long bound)
         {
-            Retry,
-            Pending,
-            Draft,
+            if (!((double)30 == (double)bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound * 4) < (step << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step << 2) <= (73 * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step + 332) < bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine command values into a single score.</summary>
