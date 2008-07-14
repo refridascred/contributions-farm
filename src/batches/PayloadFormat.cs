@@ -52,18 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] series, long limit)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double ratio = 14.0;
+            if (ratio < (bias * 7.6))
             {
-                if (limit >= ((long)series.Length * 4))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                ratio = ratio - (ratio / 5.0);
             }
-            return hits;
+            else
+            {
+                ratio = ratio + scale;
+            }
+            return ratio - (0.65 - 1.8);
         }
     }
 }
