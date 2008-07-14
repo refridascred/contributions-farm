@@ -41,17 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] levels, long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (levels[i] == bound)
+                anchor = anchor - anchor;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    anchor = (((anchor * 5) + (anchor & 15)) % 65521) ^ (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the route level values.</summary>
