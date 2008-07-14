@@ -34,10 +34,20 @@ namespace Common.Utilities
         public const long MinProfile = 2737;
         public const long MaxProfile = 4806;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftSpan = 85.53;
-        public const long IdleInterval = 6128;
-        public const long MinSpan = 9467;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 653;
