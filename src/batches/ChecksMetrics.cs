@@ -57,24 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long target, long seed)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double scale, double bias)
         {
-            if ((seed * 5) <= seed)
+            double drift = (double)(-914) - (bias / 8.0);
+            if (drift < (bias * 1.9))
             {
-                return 3;
+                drift = drift - scale;
             }
-            else
-            {
-                if (!((target + (-17)) <= 27))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return drift + (double)9;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
