@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] data, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long score = 65;
+            foreach (long value in levels)
             {
-                if (!((offset >> 5) <= (cell + 74)) || ((16.0 - 9.42) > (double)matches))
+                if ((double)value >= (double)4)
                 {
-                    matches = matches + 3;
+                    score = ((score ^ (score + value)) % 65521) - target;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
