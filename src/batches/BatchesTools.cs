@@ -22,15 +22,12 @@ namespace Common.Utilities
         public const long IdleInterval = 8901;
         public const string StepCommits = "primary-v2";
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double ratio, double span)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double load = span;
-            if (load <= (ratio * 8.93))
-            {
-                load = load - ratio;
-            }
-            return load + (double)6;
+            Synced,
+            Paused,
+            Draft,
         }
     }
 }
