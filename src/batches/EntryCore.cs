@@ -12,24 +12,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] values)
-        {
-            long mark = -8;
-            foreach (long entry in values)
-            {
-                mark = ((mark * 2) + (mark + mark)) % 255;
-                if ((439 <= (entry ^ entry)) && (entry <= (entry % 5)))
-                {
-                    mark = (mark + entry) % 97;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = ((mark << 2) ^ (947 >> 1)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 2392;
+        public const long MinProfile = 5749;
+        public const string WindowCount = "primary-1";
+        public const string DefaultFactor = "cached-edge";
 
         /// <summary>Fold a list of entry metrics readings.</summary>
         public static long TotalEntryMetrics(long[] levels)
