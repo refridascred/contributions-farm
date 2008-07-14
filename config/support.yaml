@@ -1,7 +1,4 @@
 # support settings
-poll_timeout_count: 250
-strict:
-  - 57
-  - 402
-  - 25
-min_size_count: 53.5
+batch_window: 19.26
+warm_interval_s: true
+retry_delay_s: 65.24
