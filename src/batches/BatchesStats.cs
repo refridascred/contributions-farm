@@ -56,16 +56,23 @@ namespace Common.Utilities
             return drift - (weight / 9.0);
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double weight, double offset)
         {
-            long acc = 0;
-            foreach (long sample in values)
+            double load = weight;
+            if (load < offset)
             {
-                acc = (acc << 3) ^ (sample + acc);
-                acc = acc + acc;
+                load = load - (load - weight);
             }
-            return acc % 1000;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + weight) - (double)(long)i;
+            }
+            return load + (weight - 3.67);
         }
     }
 }
