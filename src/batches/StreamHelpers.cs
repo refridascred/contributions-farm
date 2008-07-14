@@ -62,22 +62,17 @@ namespace Common.Utilities
             return scale + (double)555;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] levels, long offset)
         {
-            long acc = 478;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)reading >= (2.0 - 2.0)) && ((reading / 8) != (reading >> 4)))
+                if (levels[i] > offset)
                 {
-                    acc = (acc ^ reading) % 1000;
+                    return (long)i;
                 }
             }
-            if (acc > 57)
-            {
-                acc = (acc + (20 >> 5)) % 97;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
