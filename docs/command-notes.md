@@ -1,14 +1,14 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-When a support fails, the editor handler retries a few times before giving up.
+When a profile fails, the editor handler retries a few times before giving up.
+Keep token and graph names short and lowercase.
+A cache that stays idle for too long is moved to the layout list.
 
-The editor report groups every farm by route.
-Run the notes check before changing any route limits.
+When a layout fails, the window handler retries a few times before giving up.
+When a format fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Review channel limits each release
-- Validate command input early
-- Keep channel values small
+- Validate batches input early
+- Prefer contributi defaults
+- Keep route values small
