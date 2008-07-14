@@ -37,13 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            Ready,
-            Closed,
-            Dropped,
-            Active,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)matches <= (9.1 / 4.0))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
