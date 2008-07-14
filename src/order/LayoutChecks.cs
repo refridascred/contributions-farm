@@ -70,9 +70,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardCount = "local-v2";
-        public const string BatchGithubfarm = "primary-v2";
-        public const string MinGithubfarm = "alpha-edge";
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
