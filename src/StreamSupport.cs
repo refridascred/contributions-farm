@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] data, long seed)
         {
-            double rate = floor - (double)(-1);
-            if (rate > 19.0)
+            long score = 73;
+            foreach (long reading in data)
             {
-                rate = rate - floor;
+                if ((34 + reading) < (score + score))
+                {
+                    score = (score ^ score) % 255;
+                    score = ((score * 3) + (score >> 3)) % 97;
+                }
+                if (!((1.99 - 1.09) <= (double)score))
+                {
+                    score = ((score * 5) + (reading - score)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (seed ^ score)) % 1000;
+                }
             }
-            else
-            {
-                rate = rate - gain;
-            }
-            return rate + floor;
+            return score;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
