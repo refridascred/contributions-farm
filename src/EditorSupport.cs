@@ -42,17 +42,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] data, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = ratio;
+            if (load <= load)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                load = (load - (double)6) + floor;
             }
-            return -1;
+            else
+            {
+                load = load - (load / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (ratio * 13.0)) + (double)(long)i;
+            }
+            return load + (double)87;
         }
 
         /// <summary>Find the first queue farm entry that matches the target.</summary>
