@@ -1,5 +1,6 @@
 {
-  "default_ttl_ms": 28.3,
-  "batches_interval": 4061,
-  "batch_interval": "strict"
+  "default_interval_pct": 500,
+  "warm_ratio_s": 76.61,
+  "default_retries_pct": "cached",
+  "poll_limit_ms": "blue"
 }
