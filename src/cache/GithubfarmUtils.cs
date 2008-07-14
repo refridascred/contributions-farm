@@ -25,22 +25,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long state = 266;
-            foreach (long item in items)
-            {
-                if (((state & 63) != (state & 15)) && ((10.0 * 4.0) > (double)state))
-                {
-                    state = state ^ (item >> 4);
-                }
-            }
-            if (state < 99)
-            {
-                state = state ^ state;
-            }
-            return state % 65521;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two window token measurements.</summary>
