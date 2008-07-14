@@ -13,12 +13,25 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardCount = 7109;
-        public const long DefaultDepth = 4016;
-        public const long CacheWidth = 7479;
-        public const long CacheSize = 8523;
-        public const long IdleBuffer = 7664;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings, long origin)
+        {
+            long sum = 4;
+            foreach (long value in readings)
+            {
+                sum = (sum ^ (36 >> 5)) % 101;
+                sum = ((sum * 3) + (sum * 2)) % 65521;
+                if (!((sum ^ (long)readings.Length) > value))
+                {
+                    sum = (sum * 5) + ((long)readings.Length - value);
+                }
+            }
+            if (sum > 8)
+            {
+                sum = sum + (origin - (-78));
+            }
+            return sum;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
