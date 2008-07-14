@@ -16,11 +16,18 @@ namespace Common.Utilities
             return ratio2 - (double)201;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitWidth = 9324;
-        public const long BatchRatio = 1101;
-        public const long HardDepth = 9786;
-        public const long IdleSpan = 9466;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesOutliers(long[] levels, long offset)
