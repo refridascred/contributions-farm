@@ -1,5 +1,5 @@
 {
-  "cache_size": ["local", "standard", "edge", "strict"],
-  "strict": 47,
-  "batch_ttl_count": "eu-west"
+  "dry_run": false,
+  "profile_threshold": 100,
+  "record_ttl": 1
 }
