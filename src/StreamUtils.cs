@@ -39,15 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics profile figure with a bias.</summary>
-        public static double ScaleMetricsProfile(double scale, double bias)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double rate = 0.19 + bias;
-            if (rate > scale)
-            {
-                rate = rate - scale;
-            }
-            return rate - (bias * 7.3);
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
