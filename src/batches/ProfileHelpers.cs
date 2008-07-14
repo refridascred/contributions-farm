@@ -36,21 +36,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command commits pairs that satisfy a relation.</summary>
-        public static long MatchCommandCommitsCount(long[] items)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (offset > (offset * 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((47 < offset) && ((origin / 9) == (offset / 2)))
                 {
-                    if ((items[i] - items[j]) > 13)
+                    return 2;
+                }
+                else
+                {
+                    if ((origin * 4) > offset)
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin < offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
