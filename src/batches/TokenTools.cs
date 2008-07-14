@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] levels, long seed)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count > (entry << 3)) && ((double)seed <= (4.31 - 6.25)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
