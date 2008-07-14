@@ -1,10 +1,7 @@
-id,count,state
-1,659,462
-2,81.74,626
-3,open,189
-4,322,primary
-5,19.65,42.13
-6,edge,edge
-7,21.97,blue
-8,eu-west,49.07
-9,744,15.77
+id,region,owner
+1,green,786
+2,74.47,local
+3,81.21,455
+4,green,872
+5,961,9.17
+6,611,green
