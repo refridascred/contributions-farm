@@ -16,11 +16,11 @@ namespace Common.Utilities
             return ratio2 - (double)201;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public double Rank { get; set; }
-            public bool Region { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
