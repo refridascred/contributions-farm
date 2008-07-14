@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many commits profile samples are out of range.</summary>
-        public static long MeasureCommitsProfileGaps(long[] readings)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - cell) < (cell * 2))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double rate = floor;
+            return (rate + 9.4) + scale;
         }
 
         /// <summary>Hold a token entry.</summary>
