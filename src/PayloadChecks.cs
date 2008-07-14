@@ -23,15 +23,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double floor)
+        /// <summary>Project the next batch channel value.</summary>
+        public static double ProjectBatchChannel(double ratio, double floor)
         {
-            double rate = floor;
-            if (rate >= (double)8)
+            double ratio2 = (double)(4 * 4);
+            if (ratio2 <= ratio)
             {
-                rate = (rate - (rate - floor)) - bias;
+                ratio2 = ratio2 + 15.0;
             }
-            return rate + (floor + 1.0);
+            return ratio2 - floor;
         }
 
         /// <summary>Fold a list of schema graph readings.</summary>
