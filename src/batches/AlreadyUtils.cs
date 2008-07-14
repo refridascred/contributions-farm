@@ -37,18 +37,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many farm payload samples are out of range.</summary>
-        public static long AuditFarmPayloadGaps(long[] items)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits + hits) == (hits ^ 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) - datum;
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
