@@ -22,12 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 6781;
+        public const long LimitWidth = 8635;
+        public const string DefaultMetrics = "legacy-edge";
+        public const double IdleInterval = 31.33;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
