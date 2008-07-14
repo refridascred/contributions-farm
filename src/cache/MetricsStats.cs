@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up payload stats samples.</summary>
-        public static long ComparePayloadStatsCount(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item > bound)
                 {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
