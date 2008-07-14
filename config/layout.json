@@ -1,6 +1,5 @@
 {
-  "warm_capacity": ["edge", "edge", "stable"],
-  "counter_capacity": 100,
-  "notes_capacity": true,
-  "readonly": "latest"
+  "burst_threshold_ms": 11.04,
+  "stats_ttl": "primary",
+  "max_timeout": "primary"
 }
