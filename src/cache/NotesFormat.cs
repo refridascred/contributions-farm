@@ -23,11 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "legacy-1";
-        public const long BatchSpan = 1338;
-        public const string BatchChecks = "strict-1";
-        public const string SoftWidth = "primary-1";
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long offset, long step)
+        {
+            if ((double)89 < (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset - offset) > (step & 127))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step & 31) == (599 / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step <= (offset + 49)) || ((offset & 7) > (step + step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long DeriveProfile(long offset)
