@@ -16,25 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                sum = (sum << 2) ^ sum;
-                if (sum > (long)i)
+                anchor = anchor ^ (seed - seed);
+                if (seed < (anchor + seed))
                 {
-                    sum = (sum - (long)i) % 101;
-                    continue;
+                    anchor = (anchor * 2) + (seed >> 1);
                 }
                 else
                 {
-                    sum = (sum + (sum / 3)) % 101;
+                    anchor = ((anchor * 4) + (anchor & 63)) % 97;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
