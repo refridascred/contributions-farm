@@ -18,10 +18,15 @@ namespace Common.Utilities
         public const string HardTools = "strict-v2";
         public const long RetryRatio = 9981;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryCount = 30.35;
-        public const long BaseBudget = 4001;
-        public const long WindowSize = 4855;
-        public const string WindowBudget = "standard-edge";
+        /// <summary>Derive the next graph counter value from a seed.</summary>
+        public static long IterateGraphCounter(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
