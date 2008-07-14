@@ -35,13 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 85.12;
+        public const double RetrySupport = 62.49;
+        public const double DefaultSpan = 16.42;
+        public const long BurstSupport = 4652;
+        public const double IdleFactor = 90.57;
     }
 }
