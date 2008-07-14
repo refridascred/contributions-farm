@@ -42,13 +42,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 6681;
+        public const long BurstRecord = 907;
+        public const long CacheRecord = 5619;
+        public const double WindowDepth = 62.12;
+        public const long CacheFactor = 2611;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] values, long limit)
