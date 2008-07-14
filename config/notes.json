@@ -1,15 +1,19 @@
 {
-  "retry_ratio": [15, 38, 47],
-  "dry_run": 1618,
-  "report_depth": {
-    "min_window_ms": "standard",
-    "buffer_window": false,
-    "dry_run": 100,
-    "contributi_ratio": "fallback",
-    "persist": 90,
-    "min_interval_pct": false
+  "command_ratio": 7,
+  "default_retries": {
+    "cache_threshold": 14.2,
+    "batch_limit_pct": true,
+    "readonly": 2
   },
-  "max_threshold": 20.07,
-  "hard_ttl": 8714,
-  "support_capacity": "stable"
+  "compress": true,
+  "checks_retries": true,
+  "hard_limit_s": [299, 100, 296],
+  "buffer_depth": {
+    "dry_run": 500,
+    "strict": [278, 256],
+    "idle_size": true,
+    "enabled": "edge",
+    "metric_timeout": 94.76,
+    "audit": true
+  }
 }
