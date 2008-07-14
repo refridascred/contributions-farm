@@ -36,11 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 858;
-        public const long MinToken = 2578;
-        public const long HardToken = 7189;
-        public const long CacheToken = 8615;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels, long seed)
+        {
+            long acc = 15;
+            foreach (long value in levels)
+            {
+                acc = (acc - (seed + 576)) ^ value;
+            }
+            return acc;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] readings)
