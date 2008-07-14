@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const long HardBuffer = 909;
         public const string LimitCount = "fallback";
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] readings, long limit)
+        /// <summary>Fold a list of buffer cache readings.</summary>
+        public static long ScoreBufferCache(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long carry = 0;
+            foreach (long entry in data)
             {
-                if (cell >= limit)
+                if (entry >= (entry + 34))
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry * 3) + (entry * 5)) % 1000;
                 }
             }
-            return ready;
+            return carry % 97;
         }
     }
 }
