@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const string CacheGraph = "fallback";
         public const double CacheRatio = 58.6;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] readings, long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 546;
+            foreach (long item in readings)
             {
-                if (readings[i] < seed)
+                if (!(((-9) / 9) < (item >> 2)))
                 {
-                    return (long)i;
+                    mix = (mix + (mix - 903)) % 4096;
                 }
             }
-            return -1;
+            if (mix < 8)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Project the next batch channel value.</summary>
