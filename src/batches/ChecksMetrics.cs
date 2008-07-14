@@ -58,22 +58,11 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] series)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long total = 32;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = ((total * 3) + ((long)i - datum)) % 97;
-                }
-                if ((8.0 - 16.0) == (double)datum)
-                {
-                    total = ((total << 3) ^ (total + datum)) % 1000;
-                }
-            }
-            return total;
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
