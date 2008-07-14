@@ -59,17 +59,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a githubfarm tools reading by value.</summary>
-        public static long LookupGithubfarmToolsIndex(long[] samples, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 37;
+            foreach (long sample in samples)
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                carry = (carry + (sample & 15)) % 4096;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
