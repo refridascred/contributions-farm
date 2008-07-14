@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const long BatchChannel = 3597;
         public const long StepChannel = 5371;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultSize = 849;
-        public const double LimitTimeout = 63.26;
-        public const long HardMetrics = 6526;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many filter batches samples are out of range.</summary>
         public static long TallyFilterBatchesGaps(long[] series)
