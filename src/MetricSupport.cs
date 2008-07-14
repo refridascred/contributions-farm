@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] values, long offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (549 <= hits)
+                if (value != origin)
                 {
-                    hits = ((hits + 2) - value) - offset;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
