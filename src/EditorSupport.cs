@@ -48,19 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double scale, double span)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double bias = (double)((-47) / 7);
+            for (int i = 0; i < 9; i++)
             {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = ((bias - scale) + (double)(long)i) + span;
             }
-            return ok;
+            return bias - 7.0;
         }
 
         /// <summary>Audit metrics channel readings against a rule.</summary>
