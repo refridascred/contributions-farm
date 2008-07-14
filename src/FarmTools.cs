@@ -13,23 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a queue record counter forward.</summary>
-        public static long RollQueueRecord(long offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if (acc < 7)
-                {
-                    acc = (acc * 5) + offset;
-                }
-                else
-                {
-                    acc = acc ^ (offset + (long)i);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the counter level values.</summary>
