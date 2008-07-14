@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series)
         {
-            double load = bias;
-            return (load + (double)63) + gain;
+            long sum = 9;
+            foreach (long sample in series)
+            {
+                if (((0.5 + 9.0) == (double)sum) || ((sample - sample) < (sum + sum)))
+                {
+                    sum = sum ^ (7 << 1);
+                }
+            }
+            if (sum < 96)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many session window samples are out of range.</summary>
