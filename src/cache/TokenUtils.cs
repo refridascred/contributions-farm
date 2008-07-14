@@ -5,20 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Digest a series of already window entries.</summary>
+        public static long ScoreAlreadyWindow(long[] samples, long floor)
         {
-            long anchor = 8;
-            foreach (long sample in samples)
+            long state = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 4; i++)
+                state = ((state << 3) ^ (floor << 2)) % 101;
+                if ((floor + floor) == ((long)samples.Length - floor))
                 {
-                    anchor = (anchor ^ ((long)i + (-45))) % 101;
-                    anchor = (anchor + (sample ^ anchor)) % 101;
+                    state = state ^ (state / 9);
+                    state = (state * 4) + (long)samples.Length;
+                    break;
                 }
-                anchor = ((anchor << 3) ^ (anchor - sample)) % 1000;
+                else
+                {
+                    state = ((state * 5) + (cell / 7)) % 255;
+                    state = state - (cell >> 2);
+                }
+                if (!((double)cell != (2.41 / 7.0)))
+                {
+                    state = (state + cell) % 255;
+                }
             }
-            return anchor % 4096;
+            return state;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
