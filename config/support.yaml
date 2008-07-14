@@ -1,4 +1,7 @@
 # support settings
-cache_window_s: 36
-tools_timeout: false
-buffer_limit: false
+already_threshold:
+  - 441
+  - 111
+  - 266
+base_ttl: cached
+flush_threshold_ms: 7175
