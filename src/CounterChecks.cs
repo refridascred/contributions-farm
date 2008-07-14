@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] levels)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (((datum % 5) <= datum) && ((2.69 - 7.7) >= (double)seen))
+                if (entry >= bound)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the entry phase values.</summary>
