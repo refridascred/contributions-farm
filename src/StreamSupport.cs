@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate schema farm samples.</summary>
-        public static long CombineSchemaFarm(long[] values, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] samples, long floor)
         {
-            long carry = 3;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 3) + (sample - (-41))) + origin;
-                carry = ((carry << 3) ^ (carry / 4)) % 4096;
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return ok;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
