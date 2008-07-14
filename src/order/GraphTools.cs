@@ -44,13 +44,11 @@ namespace Common.Utilities
         public const long LimitOrder = 8009;
         public const double LimitCount = 63.75;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 6364;
+        public const string DefaultFactor = "stable-1";
+        public const double HardGithubfarm = 55.32;
+        public const double SoftLevel = 4.37;
+        public const string MaxGithubfarm = "strict-edge";
     }
 }
