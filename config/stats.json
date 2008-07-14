@@ -1,10 +1,8 @@
 {
-  "sync_capacity_pct": "open",
-  "batch_delay_ms": 26.44,
-  "retry_depth_s": {
-    "max_ttl": "blue",
-    "schema_size": ["eu-west", "eu-west", "standard", "standard"],
-    "audit": 139
-  },
-  "contributi_retries": [490, 276, 299]
+  "persist": 57,
+  "payload_window": "blue",
+  "commits_ttl": "legacy",
+  "hard_ttl_ms": 2070,
+  "poll_window": "local",
+  "session_retries": "standard"
 }
