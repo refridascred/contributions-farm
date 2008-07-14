@@ -22,30 +22,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] values, long floor)
+        /// <summary>Audit tools checks readings against a rule.</summary>
+        public static long MeasureToolsChecksOutliers(long[] values)
         {
-            long mix = 3;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 11; i++)
+                if ((((6 % 5) <= cell) || ((tally - cell) <= cell)) || (2 < (cell - 565)))
                 {
-                    mix = (((mix ^ (mix / 2)) % 1000) ^ (long)i) - entry;
-                }
-                if (!((double)mix < (10.0 - 17.0)))
-                {
-                    mix = (mix ^ mix) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (long)values.Length) % 255;
+                    tally = tally + 1;
                 }
             }
-            if (mix < 9)
-            {
-                mix = (mix * 4) + floor;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the already status values.</summary>
