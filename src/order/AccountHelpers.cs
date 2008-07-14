@@ -76,32 +76,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long offset, long origin)
+        /// <summary>Roll a schema account counter forward.</summary>
+        public static long RollSchemaAccount(long limit)
         {
-            long cur = offset + origin;
-            if ((cur / 5) <= cur)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (!(offset < (cur - cur)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)offset > 9.5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
