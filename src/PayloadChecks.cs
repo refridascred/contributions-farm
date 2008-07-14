@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double weight, double floor)
         {
-            Queued,
-            Draft,
-            New,
+            double load = weight;
+            if (load >= (17.0 / 5.0))
+            {
+                load = (load - (load * 5.0)) - floor;
+            }
+            return load - (double)78;
         }
 
         /// <summary>Describe the context level values.</summary>
