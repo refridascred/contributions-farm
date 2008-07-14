@@ -40,25 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long target, long target2)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            long slot = target - target2;
-            if ((slot <= (target2 ^ slot)) || ((11.0 - 5.9) >= (double)slot))
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
+                acc = (acc - (acc * 3)) % 65521;
+                acc = (acc ^ (origin >> 5)) % 4096;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((target2 & 7) <= (84 + slot))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a format info.</summary>
