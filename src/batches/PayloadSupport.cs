@@ -13,16 +13,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total + 5) % 1000;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            New,
+            Ready,
+            Failed,
+            Locked,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
