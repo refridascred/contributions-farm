@@ -64,10 +64,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitCount = 1863;
-        public const double WindowSupport = 54.01;
-        public const double BurstScore = 57.63;
-        public const string WindowInterval = "cached-edge";
+        /// <summary>Scale a payload record figure with a bias.</summary>
+        public static double ScalePayloadRecord(double rate, double span)
+        {
+            double load = (span + rate) * 20.0;
+            return load + load;
+        }
     }
 }
