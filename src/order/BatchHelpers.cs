@@ -25,18 +25,11 @@ namespace Common.Utilities
             return mean - (double)93;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] items, long origin)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((593 - tally) > (2 ^ sample)) || ((origin ^ 15) <= origin))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
     }
 }
