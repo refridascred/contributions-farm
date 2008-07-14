@@ -1,6 +1,6 @@
 {
-  "max_limit_s": "open",
-  "queue_retries": 64.75,
-  "min_depth_pct": "blue",
-  "checks_capacity": true
+  "record_timeout": true,
+  "warm_window": 41,
+  "batch_depth_pct": ["standard", "green", "stable"],
+  "enabled": 76.45
 }
