@@ -1,5 +1,6 @@
 # githubfarm settings
-flush_window_s: 1717
-base_window_s: 8687
-commits_delay: true
-batch_delay_s: true
+retry_timeout: false
+profile_retries: 11
+compress: 500
+burst_timeout: 60
+warm_limit_s: stable
