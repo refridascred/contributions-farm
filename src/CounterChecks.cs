@@ -13,23 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double ratio, double span)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double bias = span;
-            if (bias > bias)
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (span + span)) + (double)(long)i;
-            }
-            return bias + (ratio * 1.4);
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
