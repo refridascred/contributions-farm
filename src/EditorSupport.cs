@@ -43,19 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long limit)
         {
-            long result = 18;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long item in items)
             {
-                result = (result * 4) + (datum - result);
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result > 69)
-            {
-                result = (result * 5) + result;
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Roll a order counter forward.</summary>
