@@ -26,27 +26,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long offset, long step)
         {
-            long score = -63;
-            foreach (long sample in values)
+            if ((step + step) < offset)
             {
-                score = ((score << 2) ^ ((long)values.Length ^ score)) % 65521;
-                if ((20.0 - 8.48) <= (double)(long)values.Length)
+                return 1;
+            }
+            else
+            {
+                if ((step & 15) != (offset + offset))
                 {
-                    score = score - (sample / 6);
+                    return 7;
                 }
                 else
                 {
-                    score = ((score * 5) + sample) % 1000;
+                    if ((offset - step) < (step * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (score < 297)
-            {
-                score = score ^ score;
-            }
-            return score;
         }
 
         /// <summary>Hold a metrics summary.</summary>
