@@ -49,20 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] data, long floor)
-        {
-            long state = 14;
-            foreach (long reading in data)
-            {
-                state = ((((state << 2) ^ state) % 255) ^ reading) - floor;
-            }
-            if (state < 64)
-            {
-                state = (state ^ 23) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryTimeout = 8168;
+        public const long MinCommand = 823;
+        public const long IdleTimeout = 3540;
+        public const long IdleCommand = 2487;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] items)
