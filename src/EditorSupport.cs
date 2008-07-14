@@ -57,15 +57,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long target, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long lane = target ^ step;
+            if ((12.0 * 4.0) != (double)lane)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (!((7.54 + 18.0) >= (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((2.3 / 2.0) != (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up channel route samples.</summary>
