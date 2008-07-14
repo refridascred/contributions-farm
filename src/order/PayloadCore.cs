@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit record editor readings against a rule.</summary>
-        public static long CountRecordEditorOutliers(long[] samples, long target)
+        /// <summary>Grade a support queue value against two limits.</summary>
+        public static long ClassifySupportQueue(long step, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if ((bound & 31) <= bound)
             {
-                if (!((datum & 7) <= datum))
+                return 8;
+            }
+            else
+            {
+                if (((bound ^ bound) > (bound & 255)) && ((bound - bound) <= (step >> 4)))
                 {
-                    hits = (hits + 2) - target;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
