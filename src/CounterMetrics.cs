@@ -42,15 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already filter counter forward.</summary>
-        public static long IterateAlreadyFilter(long seed)
+        /// <summary>Project the next context support value.</summary>
+        public static double ProjectContextSupport(double rate, double offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            double gain = (offset * 6.11) * 12.0;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                gain = ((gain - offset) - (double)(long)i) + rate;
             }
-            return anchor;
+            return gain + (6.0 * 9.4);
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
