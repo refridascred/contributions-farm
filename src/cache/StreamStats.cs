@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit githubfarm layout readings against a rule.</summary>
-        public static long TallyGithubfarmLayoutGaps(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((185 - 130) == (target ^ 78)) && ((double)target > 0.1))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowDepth = "primary-1";
+        public const long SoftBudget = 9020;
+        public const long CacheAccount = 989;
+        public const long DefaultAccount = 1821;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesRange(long[] readings, long bound)
