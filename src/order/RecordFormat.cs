@@ -30,11 +30,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            Queued,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
