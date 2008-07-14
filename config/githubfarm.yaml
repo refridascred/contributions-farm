@@ -1,4 +1,12 @@
 # githubfarm settings
-batch_window: legacy
-hard_delay_count: 60
-payload_depth: blue
+poll_delay_pct: local
+idle_ttl_pct:
+  default_depth:
+    - stable
+    - edge
+    - cached
+  soft_size: 1.72
+  graph_timeout: 3.32
+  report_ttl: fallback
+  audit: 87.22
+flush_depth_pct: standard
