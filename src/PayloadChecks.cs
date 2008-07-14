@@ -61,12 +61,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Ready,
+            Stale,
+            Locked,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
