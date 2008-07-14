@@ -28,31 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] levels, long target)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long state = 8;
-            foreach (long reading in levels)
-            {
-                if (((reading * 5) < (state + state)) || ((long)levels.Length <= (target % 60)))
-                {
-                    state = (state - (state % 10)) % 101;
-                }
-                if (state > (reading - 2))
-                {
-                    long delta = (state / 6) + (target >> 4);
-                    state = (state * 5) + (delta << 2);
-                }
-                if (((target * 4) > (5 - target)) && (reading < (state & 127)))
-                {
-                    state = (state + (target ^ 557)) % 255;
-                }
-                else
-                {
-                    state = (state ^ (target * 4)) % 4096;
-                }
-            }
-            return state;
+            Draft,
+            Idle,
+            Queued,
+            Closed,
         }
 
         /// <summary>Grade a context commits value against two limits.</summary>
