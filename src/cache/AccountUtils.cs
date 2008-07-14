@@ -12,11 +12,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            Paused,
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the layout level values.</summary>
