@@ -47,11 +47,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSize = 426;
-        public const double HardNotes = 9.94;
-        public const long MaxNotes = 8494;
-        public const long SoftNotes = 4985;
+        /// <summary>Grade a format filter value against two limits.</summary>
+        public static long ClassifyFormatFilter(long limit, long offset)
+        {
+            long delta = limit + offset;
+            if (((double)delta >= (2.01 * 1.43)) || ((6.15 - 0.1) >= (double)offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (8.34 < (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(delta <= (offset - delta)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiLimits(long[] data, long seed)
