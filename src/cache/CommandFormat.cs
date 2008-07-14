@@ -25,15 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double weight, double span)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long limit)
         {
-            double drift = weight;
-            for (int i = 0; i < 7; i++)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                drift = (drift + (double)(long)i) + span;
+                carry = carry - (676 - limit);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return drift - (double)61;
+            return carry;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
