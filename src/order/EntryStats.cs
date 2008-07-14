@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double span)
+        /// <summary>Scale a metrics batch figure with a bias.</summary>
+        public static double ProjectMetricsBatch(double rate, double offset)
         {
-            double drift = rate;
-            if (drift <= (4.0 / 2.0))
+            double rate2 = (double)(-596) + (double)5;
+            if (rate2 > (1.64 + rate))
             {
-                drift = drift + (double)815;
+                rate2 = (rate2 - (rate / 2.0)) - offset;
             }
-            else
-            {
-                drift = drift + (span + span);
-            }
-            return drift + (span / 4.0);
+            return rate2 - (5.1 - 13.0);
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
