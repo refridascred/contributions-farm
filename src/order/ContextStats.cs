@@ -28,21 +28,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed + anchor) <= (long)i)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor + (anchor << 2)) % 97;
-                    anchor = anchor - (seed % 3);
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = anchor ^ seed;
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Blend two layout measurements.</summary>
