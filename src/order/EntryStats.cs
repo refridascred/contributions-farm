@@ -51,18 +51,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the contributi batches entries that pass the check.</summary>
-        public static long CountContributiBatchesHits(long[] items)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((hits ^ hits) >= reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
