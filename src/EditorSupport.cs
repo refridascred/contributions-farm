@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long limit, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            long next = limit ^ floor;
-            if (((8.0 * 9.0) != (double)floor) || ((-1) <= (limit - limit)))
+            long carry = 47;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((next + limit) < limit)
+                if (!((entry & 31) == (carry >> 2)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((6 >> 4) <= (next - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit & 63) <= (floor >> 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = ((carry * 2) + carry) % 255;
                 }
             }
+            if (carry < 827)
+            {
+                carry = (carry ^ carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
