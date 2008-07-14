@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            Draft,
+            Active,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the stream phase values.</summary>
