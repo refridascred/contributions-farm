@@ -1,6 +1,13 @@
 {
-  "warm_ttl_s": [497, 305, 166],
-  "audit": false,
-  "metric_depth": false,
-  "sync_capacity_count": 64
+  "cache_retries": true,
+  "counter_retries": 65.29,
+  "verbose": "latest",
+  "min_limit": ["cached", "local"],
+  "base_retries_pct": {
+    "audit": 7815,
+    "enabled": false,
+    "warm_window_s": true,
+    "order_retries": true
+  },
+  "poll_capacity": 88
 }
