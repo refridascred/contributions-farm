@@ -42,19 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double weight, double offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] levels, long seed)
         {
-            double ratio = offset;
-            if (ratio < (double)6)
+            long mark = -16;
+            foreach (long item in levels)
             {
-                ratio = ratio - 8.62;
+                mark = ((mark ^ (3 / 2)) ^ item) + seed;
             }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            return ratio - offset;
+            return mark;
         }
 
         /// <summary>Grade a format filter value against two limits.</summary>
