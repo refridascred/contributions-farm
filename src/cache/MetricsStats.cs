@@ -15,11 +15,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 6781;
-        public const long LimitWidth = 8635;
-        public const string DefaultMetrics = "legacy-edge";
-        public const double IdleInterval = 31.33;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
