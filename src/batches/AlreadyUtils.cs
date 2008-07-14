@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchRatio = 8409;
-        public const long DefaultSpan = 4592;
-        public const long BaseBatches = 8163;
-        public const long WindowSize = 1667;
-        public const double BurstRatio = 48.47;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportHits(long[] samples)
