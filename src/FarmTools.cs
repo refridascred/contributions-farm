@@ -33,38 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload schema input into a small class.</summary>
-        public static long ClassifyPayloadSchema(long step, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] data, long bound)
         {
-            if (!((double)30 == (double)bound))
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound * 4) < (step << 3))
+                if (value > bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 2) <= (73 * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step + 332) < bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine command values into a single score.</summary>
