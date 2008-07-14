@@ -42,19 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the profile status values.</summary>
