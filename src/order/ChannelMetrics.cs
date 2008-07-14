@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double bias, double span)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long target, long floor)
         {
-            double weight = span;
-            for (int i = 0; i < 8; i++)
+            long edge = target + floor;
+            if ((floor / 8) >= (target + target))
             {
-                weight = ((weight + span) + (double)(long)i) + bias;
+                return 8;
             }
-            return weight + weight;
+            else
+            {
+                if (((-4) + edge) >= (edge & 31))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
