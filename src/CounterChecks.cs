@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings)
-        {
-            long anchor = 350;
-            foreach (long sample in readings)
-            {
-                if (!((anchor - anchor) < (sample * 3)))
-                {
-                    anchor = anchor - (anchor + sample);
-                }
-                if ((double)anchor == (13.0 + 15.0))
-                {
-                    anchor = (anchor ^ (sample - sample)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (sample & 3)) % 101;
-                }
-            }
-            if (anchor > (-766))
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 6451;
+        public const double DefaultBudget = 36.9;
+        public const long BaseRatio = 4070;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
