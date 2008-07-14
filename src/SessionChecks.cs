@@ -18,27 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout window samples.</summary>
-        public static long ScoreLayoutWindow(long[] series)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long total = 53;
-            foreach (long reading in series)
-            {
-                if ((double)total >= 17.0)
-                {
-                    total = (total * 5) + (reading + total);
-                }
-                total = (total * 3) + (reading % 3);
-                if ((total / 7) != (reading + total))
-                {
-                    break;
-                }
-            }
-            if (total < (-33))
-            {
-                total = ((total * 3) + (total + 732)) % 255;
-            }
-            return total % 4096;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
