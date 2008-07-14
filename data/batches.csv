@@ -1,9 +1,6 @@
-id,weight,rank,active
-1,367,92.12,771
-2,primary,525,edge
-3,green,783,legacy
-4,569,98.23,open
-5,92.52,82,53.98
-6,38,71.06,staging
-7,35.47,738,blue
-8,964,141,25.12
+id,owner,token,rank
+1,edge,blue,stable
+2,61.29,legacy,16.1
+3,primary,145,379
+4,open,11.29,307
+5,599,6.59,17.45
