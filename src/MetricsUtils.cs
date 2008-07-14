@@ -26,11 +26,31 @@ namespace Common.Utilities
         public const long IdleSpan = 8786;
         public const double StepBudget = 97.81;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] readings, long offset)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long anchor = 686;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor ^ anchor) % 101;
+                if (((2.1 + 9.2) < (double)offset) || ((offset + entry) <= offset))
+                {
+                    continue;
+                }
+                if ((7 + 419) >= (offset >> 1))
+                {
+                    anchor = anchor ^ (offset / 9);
+                }
+                else
+                {
+                    anchor = anchor - entry;
+                }
+            }
+            if (anchor < 703)
+            {
+                anchor = (anchor + offset) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
