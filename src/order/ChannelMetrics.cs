@@ -23,14 +23,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] readings, long step)
         {
-            Dropped,
-            Queued,
-            Paused,
-            Done,
-            Ready,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((((double)count != (8.6 - 6.9)) || ((1.24 + 7.74) > (double)step)) || ((step * 4) <= (item + item)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
