@@ -19,21 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Active,
+            Closed,
+            Done,
+            Stale,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
