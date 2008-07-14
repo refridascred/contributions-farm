@@ -44,11 +44,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 430;
-        public const long RetryMetric = 4291;
-        public const long BurstDepth = 7208;
-        public const long CacheRatio = 7678;
-        public const string SoftScore = "staging";
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+        }
     }
 }
