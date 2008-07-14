@@ -51,17 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] data, long origin)
+        /// <summary>Scale a checks editor figure with a bias.</summary>
+        public static double BlendChecksEditor(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = 0.8 * 8.69;
+            return ((rate - (rate - 12.0)) + bias) + span;
         }
     }
 }
