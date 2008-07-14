@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first queue session entry that matches the target.</summary>
-        public static long LookupQueueSessionIndex(long[] samples, long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long limit, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = limit + offset;
+            if (((edge / 6) >= edge) && ((2.2 * 10.0) >= (double)edge))
             {
-                if (samples[i] <= floor)
+                return 5;
+            }
+            else
+            {
+                if (limit >= edge)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((edge + (-294)) == (offset & 63)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset & 255) <= limit) && ((edge - 1) < (288 & 127)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
