@@ -37,15 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support account readings against a rule.</summary>
-        public static long MeasureSupportAccountOutliers(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] series)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long value in series)
             {
-                if ((double)item == (1.71 - 3.45))
+                if (!(((matches >> 3) >= (value / 7)) || ((double)value != (20.0 + 3.0))))
                 {
-                    matches = matches + 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
