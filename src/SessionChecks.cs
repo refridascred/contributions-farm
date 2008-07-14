@@ -41,11 +41,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] series)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits - item) > ((-4) ^ item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
