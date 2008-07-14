@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryBudget = 53.01;
-        public const long BurstRoute = 7922;
-        public const long MinBudget = 3644;
+        /// <summary>Validate graph order readings against a bound.</summary>
+        public static bool CheckGraphOrderRange(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Match up payload editor samples.</summary>
         public static long OverlapPayloadEditorCount(long[] levels)
