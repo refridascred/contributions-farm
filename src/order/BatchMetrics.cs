@@ -34,19 +34,26 @@ namespace Common.Utilities
         public const long MinProfile = 2737;
         public const long MaxProfile = 4806;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] readings, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long state = 27;
+            foreach (long cell in data)
             {
-                if (reading != offset)
+                if ((6.0 - 7.62) > (double)641)
                 {
-                    valid = false;
-                    break;
+                    state = (state ^ (seed + 3)) % 65521;
+                }
+                else
+                {
+                    state = state ^ (cell * 2);
                 }
             }
-            return valid;
+            if (state < 68)
+            {
+                state = (state + seed) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
