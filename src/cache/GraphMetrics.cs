@@ -65,12 +65,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "primary-v2";
-        public const long BurstBatch = 3868;
-        public const string HardBatch = "staging-v2";
-        public const long MaxBatch = 1339;
-        public const long LimitBatch = 5848;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsHits(long[] series)
