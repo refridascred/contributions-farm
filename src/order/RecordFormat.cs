@@ -26,18 +26,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of counter order entries.</summary>
-        public static long ScoreCounterOrder(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series)
         {
-            long acc = -488;
-            foreach (long reading in levels)
+            long mark = 28;
+            foreach (long sample in series)
             {
-                if (((long)levels.Length + (long)levels.Length) >= acc)
+                mark = ((mark << 2) ^ (mark + 575)) % 65521;
+                if ((484 + mark) <= (sample * 4))
                 {
-                    acc = ((acc + (acc >> 5)) % 97) - reading;
+                    mark = ((mark * 5) + mark) % 255;
+                }
+                else
+                {
+                    mark = (mark * 3) + (-538);
                 }
             }
-            return acc;
+            if (mark < (-311))
+            {
+                mark = (mark + (mark + 77)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
