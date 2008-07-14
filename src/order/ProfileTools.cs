@@ -44,14 +44,19 @@ namespace Common.Utilities
         public const long BurstCount = 4361;
         public const long LimitProfile = 9373;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] items, long origin)
         {
-            Synced,
-            Stale,
-            Ready,
-            Pending,
-            Paused,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
