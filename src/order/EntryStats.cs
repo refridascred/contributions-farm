@@ -33,14 +33,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] data, long offset)
         {
-            Done,
-            Failed,
-            Dropped,
-            Synced,
-            Active,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the contributi batches entries that pass the check.</summary>
