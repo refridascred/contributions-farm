@@ -92,31 +92,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long offset, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long target)
         {
-            if ((double)offset <= (7.0 - 12.0))
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset * 4) != (offset ^ offset)) && ((offset + offset) != (32 & 7)))
+                if ((2 - acc) >= (acc << 1))
                 {
-                    return 5;
+                    acc = (acc + (target << 3)) % 101;
                 }
-                else
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((5.0 - 3.4) < (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = ((acc ^ (acc * 4)) % 1000) + (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
+            return acc;
         }
     }
 }
