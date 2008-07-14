@@ -29,18 +29,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] readings, long limit)
+        /// <summary>Find the first stats route entry that matches the target.</summary>
+        public static long LookupStatsRouteIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((hits * 3) == (limit + hits)) || (hits <= (limit - hits)))
+                if (values[i] > limit)
                 {
-                    hits = (hits + 3) - datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
