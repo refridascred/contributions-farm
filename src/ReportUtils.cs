@@ -60,18 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] items, long target)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)236 == (double)cell)
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Done,
+            Draft,
         }
     }
 }
