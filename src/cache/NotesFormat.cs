@@ -28,32 +28,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long offset, long offset2)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long delta = offset + offset2;
-            if (925 > (offset + delta))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 ^ 0) < (283 / 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)delta <= (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
