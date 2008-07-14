@@ -34,12 +34,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitSize = "local-v2";
-        public const double RetryReport = 91.99;
-        public const long SoftReport = 7762;
-        public const long RetryScore = 6775;
-        public const string CacheTimeout = "strict-edge";
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (((score * 5) + (4 / 5)) % 65521) - (long)i2;
+                }
+                if ((score - (long)i) > (floor ^ floor))
+                {
+                    score = score ^ (score - 5);
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double StepWidth = 91.65;
