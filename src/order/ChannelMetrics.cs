@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinRatio = 60.79;
-        public const long CacheMetric = 8045;
-        public const string BatchMetric = "legacy-edge";
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double bias, double span)
+        {
+            double weight = span;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight + span) + (double)(long)i) + bias;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
