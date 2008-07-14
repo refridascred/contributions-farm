@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitSpan = 1802;
-        public const double StepDepth = 62.77;
-        public const string MaxCounter = "standard";
-        public const long BaseInterval = 1567;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (309 < ((long)items.Length / 7))
+                {
+                    seen = ((seen + 1) + reading) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of metrics context readings.</summary>
         public static long CompareMetricsContextCount(long[] items)
