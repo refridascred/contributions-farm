@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable legacy fallback open; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in latest fallback open legacy; do
     log "checking ${item}"
 done
-
-mode="${1:-edge}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
