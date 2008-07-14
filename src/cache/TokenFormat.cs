@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "standard";
+        public const double BurstScore = 40.47;
+        public const string BaseTools = "standard-edge";
+        public const long SoftTools = 1738;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsGaps(long[] values)
