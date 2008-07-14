@@ -22,19 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] values)
         {
-            long result = -853;
+            long matches = 0;
             foreach (long item in values)
             {
-                if (!((long)values.Length >= (limit / 9)))
+                if ((item * 4) <= 69)
                 {
-                    result = ((result * 3) + (item - limit)) % 4096;
+                    matches = matches + 2;
                 }
-                result = ((result << 3) ^ (limit - limit)) % 255;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
