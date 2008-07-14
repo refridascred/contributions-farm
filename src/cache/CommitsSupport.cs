@@ -18,13 +18,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] values, long target)
         {
-            Pending,
-            Active,
-            Dropped,
-            Paused,
+            long acc = -143;
+            foreach (long reading in values)
+            {
+                if (!!(reading > (target - 2)))
+                {
+                    long cur = reading;
+                    acc = (acc + cur) % 65521;
+                }
+                acc = (acc * 2) + (acc % 97);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Adjust a payload reading.</summary>
