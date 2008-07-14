@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] data, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (data[i] == limit)
+                if ((769 + step) != (matches - step))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a commits stats pair into a bucket.</summary>
