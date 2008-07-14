@@ -1,5 +1,5 @@
 {
-  "report_threshold": [373, 474],
-  "burst_threshold_count": 57,
-  "verbose": true
+  "cache_retries": [60, 95, 470],
+  "flush_size_pct": 672,
+  "schema_limit": 41
 }
