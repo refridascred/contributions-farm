@@ -80,17 +80,22 @@ namespace Common.Utilities
         public const long StepProfile = 9363;
         public const string BatchRatio = "fallback-edge";
 
-        /// <summary>Locate a account window reading by value.</summary>
-        public static long FindAccountWindowIndex(long[] data, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 7;
+            foreach (long entry in values)
             {
-                if (data[i] >= step)
+                if ((10.0 - 8.0) < (double)entry)
                 {
-                    return (long)i;
+                    score = score - (5 << 2);
+                }
+                else
+                {
+                    score = score - entry;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
