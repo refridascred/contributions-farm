@@ -30,12 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
