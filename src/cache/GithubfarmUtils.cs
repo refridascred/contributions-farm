@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 21.7;
-        public const string StepCluster = "local-edge";
-        public const long DefaultCluster = 2568;
+        /// <summary>Roll a command tools counter forward.</summary>
+        public static long SeriesCommandTools(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] series, long offset)
