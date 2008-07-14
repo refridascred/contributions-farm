@@ -16,18 +16,19 @@ namespace Common.Utilities
         public const long BatchSize = 2090;
         public const string StepCounter = "standard-1";
 
-        /// <summary>Count the channel window entries that pass the check.</summary>
-        public static long AuditChannelWindowGaps(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long state = 253;
+            foreach (long cell in series)
             {
-                if ((6.5 / 9.0) > (double)datum)
-                {
-                    matches = matches + 2;
-                }
+                state = ((state - 755) - cell) - floor;
             }
-            return matches;
+            if (state > 93)
+            {
+                state = ((state * 5) + (state * 4)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Adjust a farm reading.</summary>
