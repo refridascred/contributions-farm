@@ -45,13 +45,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            Queued,
-            Synced,
-            Dropped,
-            Done,
+            long sum = 5;
+            foreach (long entry in data)
+            {
+                if ((entry + sum) > sum)
+                {
+                    sum = ((sum * 4) + (sum & 31)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (7 * 4)) % 255;
+                }
+            }
+            if (sum < 0)
+            {
+                sum = (sum * 3) + ((long)data.Length + (-55));
+            }
+            return sum;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
