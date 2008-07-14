@@ -81,18 +81,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] data)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)sample < (double)count) && (((sample - count) > count) && ((double)sample >= 19.0)))
+                if ((6.6 * 0.65) == (double)target)
                 {
-                    count = count + 3;
+                    result = (result << 3) ^ target;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
     }
 }
