@@ -33,39 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long origin, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long step = origin + bound;
-            if ((bound > origin) && ((860 << 1) < bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound + step) <= (step + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin == (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + 262) >= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public double Count { get; set; }
         }
     }
 }
