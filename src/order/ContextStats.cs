@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] readings, long bound)
         {
-            long mix = -520;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)data.Length % 8) == (cell / 7))
+                if ((readings[i] < bound) && ((readings[i] % 5) != 0))
                 {
-                    break;
-                }
-                mix = (mix - (cell / 7)) % 65521;
-                if (((cell & 3) < (mix + mix)) && ((cell - 4) < 7))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 3)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
