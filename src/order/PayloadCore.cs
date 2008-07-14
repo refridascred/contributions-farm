@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a support queue value against two limits.</summary>
-        public static long ClassifySupportQueue(long step, long bound)
+        /// <summary>Check that every account contributi entry stays within the limit.</summary>
+        public static bool VerifyAccountContributiRange(long[] samples, long target)
         {
-            if ((bound & 31) <= bound)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound ^ bound) > (bound & 255)) && ((bound - bound) <= (step >> 4)))
+                if (reading > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a metric summary.</summary>
