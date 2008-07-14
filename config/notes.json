@@ -1,5 +1,14 @@
 {
-  "dry_run": false,
-  "profile_threshold": 100,
-  "record_ttl": 1
+  "report_limit": 76,
+  "flush_limit": 500,
+  "min_capacity_s": "stable",
+  "queue_timeout": 1024,
+  "min_capacity": {
+    "readonly": "eu-west",
+    "base_retries_pct": "staging",
+    "batch_capacity": "eu-west",
+    "flush_ratio_ms": 443,
+    "sync_interval_s": 500,
+    "audit": false
+  }
 }
