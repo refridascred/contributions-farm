@@ -14,14 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long offset)
         {
-            Synced,
-            Failed,
-            Draft,
-            Queued,
-            Locked,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
