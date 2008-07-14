@@ -1,8 +1,43 @@
 # support settings
-hard_limit_s: 60
-flush_retries_s:
-  - legacy
+default_window_count:
+  - fallback
+  - eu-west
   - green
-  - strict
-readonly: 79.02
-warm_threshold_ms: 67.02
+  - local
+layout_timeout:
+  dry_run:
+    payload_window: 1024
+    retry_threshold: false
+    default_interval_ms:
+      - 173
+      - 39
+      - 281
+      - 193
+    hard_ratio:
+      - strict
+      - fallback
+      - standard
+    persist: 20.85
+    record_capacity: 61.16
+  compress: 20.8
+  enabled: strict
+  route_depth: green
+  base_ratio_ms: 71.28
+hard_capacity_pct: 0.76
+verbose:
+  order_retries:
+    profile_capacity: false
+    retry_retries_count: 250
+    already_ratio: true
+    verbose:
+      - 417
+      - 8
+      - 102
+      - 479
+  commits_size:
+    - latest
+    - cached
+    - strict
+  commits_window: 1868
+warm_threshold_s: true
+strict: green
