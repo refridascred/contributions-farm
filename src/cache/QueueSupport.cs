@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Active,
-            Ready,
-            Stale,
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
