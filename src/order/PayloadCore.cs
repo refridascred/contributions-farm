@@ -20,10 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 6403;
-        public const string StepWidth = "strict";
-        public const long DefaultGraph = 1878;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Match up route format samples.</summary>
         public static long MatchRouteFormatCount(long[] levels)
