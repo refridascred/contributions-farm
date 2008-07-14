@@ -1,7 +1,5 @@
 {
-  "verbose": 51.75,
-  "sync_capacity_pct": ["blue", "blue"],
-  "session_capacity": 28,
-  "record_limit": "staging",
-  "stats_retries": 87.51
+  "compress": 26.34,
+  "burst_window_s": 62,
+  "strict": 60
 }
