@@ -31,12 +31,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            Closed,
+            Idle,
+            Queued,
+            Paused,
+            Stale,
         }
 
         /// <summary>Digest a series of report entries.</summary>
