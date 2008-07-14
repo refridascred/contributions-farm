@@ -24,15 +24,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long floor, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            if (((limit - floor) <= (limit % 100)) || ((floor + floor) != (limit + limit)))
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((limit * 5) <= (limit / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((961 + floor) > floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
