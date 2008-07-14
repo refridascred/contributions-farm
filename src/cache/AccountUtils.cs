@@ -26,17 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] levels, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
+                carry = carry - (target + target);
+                carry = carry + ((long)i + carry);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
