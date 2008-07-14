@@ -19,19 +19,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] readings, long target)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
