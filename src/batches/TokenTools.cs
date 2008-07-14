@@ -29,18 +29,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] levels, long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (floor > (floor + floor))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
