@@ -66,11 +66,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] series, long floor)
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (datum <= (floor / 6))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
