@@ -34,18 +34,14 @@ namespace Common.Utilities
         public const long LimitScore = 7343;
         public const long StepInterval = 1223;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] samples, long limit)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (count >= (3 - count))
-                {
-                    count = ((count + 2) ^ sample) + limit;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Digest a series of report commits entries.</summary>
