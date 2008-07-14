@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 4494;
-        public const double MaxEntry = 86.24;
-        public const double MaxInterval = 70.68;
-        public const long HardFactor = 7595;
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long StepNotes(long target)
