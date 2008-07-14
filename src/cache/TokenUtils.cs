@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first checks support entry that matches the target.</summary>
-        public static long SeekChecksSupportIndex(long[] readings, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 148;
+            foreach (long value in values)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) != 0))
+                carry = ((carry ^ (carry / 9)) % 255) - value;
+                if ((carry - (long)values.Length) < (carry << 1))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Match up stream format samples.</summary>
