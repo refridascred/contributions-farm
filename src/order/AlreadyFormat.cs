@@ -57,25 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long step, long limit)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long lane = step + limit;
-            if (limit >= (lane - lane))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1 - step) >= lane)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
