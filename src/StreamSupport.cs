@@ -32,31 +32,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache tools entries.</summary>
-        public static long TotalCacheTools(long[] data)
-        {
-            long acc = 186;
-            foreach (long cell in data)
-            {
-                acc = acc ^ (acc - (long)data.Length);
-                if ((double)cell != (9.33 + 8.8))
-                {
-                    acc = (acc * 5) + 4;
-                }
-                if ((cell + 95) != (acc & 1))
-                {
-                    acc = acc ^ (long)data.Length;
-                }
-                if (((93 + 5) < (acc << 1)) && ((long)data.Length <= acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 942)
-            {
-                acc = (acc ^ (acc + (long)data.Length)) % 255;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 2517;
+        public const long IdleRatio = 6058;
+        public const long MaxCluster = 7648;
     }
 }
