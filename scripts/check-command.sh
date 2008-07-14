@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=263
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=76
 log "limit is ${COMMAND_LIMIT}"
 
-for item in edge staging stable strict; do
+for item in cached local; do
     log "checking ${item}"
 done
