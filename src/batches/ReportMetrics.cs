@@ -29,20 +29,15 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Roll a format token counter forward.</summary>
-        public static long DeriveFormatToken(long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] items, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            long anchor = 9;
+            foreach (long datum in items)
             {
-                if (!((double)carry != (7.9 / 9.0)))
-                {
-                    carry = carry - (carry ^ carry);
-                    carry = (carry ^ (carry / 4)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                anchor = ((anchor << 3) ^ (datum + anchor)) + offset;
             }
-            return carry;
+            return anchor % 1000;
         }
     }
 }
