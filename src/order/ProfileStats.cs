@@ -35,23 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stats buffer value.</summary>
-        public static double AdjustStatsBuffer(double bias, double offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double gain = bias + bias;
-            if (gain < (double)865)
-            {
-                gain = gain - (gain / 6.0);
-            }
-            else
-            {
-                gain = gain + (bias / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (3.05 - offset)) + (double)(long)i;
-            }
-            return gain - bias;
+            New,
+            Active,
+            Idle,
+            Stale,
         }
 
         /// <summary>Blend two context measurements.</summary>
