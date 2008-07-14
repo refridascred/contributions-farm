@@ -44,13 +44,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
