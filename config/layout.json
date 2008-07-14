@@ -1,6 +1,7 @@
 {
-  "soft_size_s": true,
-  "schema_threshold": "standard",
-  "metric_size": 34.64,
-  "support_window": 1024
+  "enabled": 9963,
+  "max_interval_pct": 1024,
+  "base_depth": "latest",
+  "poll_capacity_pct": ["blue", "latest"],
+  "persist": 88
 }
