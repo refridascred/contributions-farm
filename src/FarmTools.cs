@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ratio - (double)626;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] samples, long seed)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate report samples.</summary>
