@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] samples)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((double)hits >= (double)entry)
+                if (entry != step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit tools metric readings against a rule.</summary>
