@@ -43,23 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a schema profile figure with a bias.</summary>
-        public static double BlendSchemaProfile(double gain, double span)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double scale = span * 4.89;
-            if (scale >= (scale - span))
-            {
-                scale = (scale + scale) + gain;
-            }
-            else
-            {
-                scale = scale - (double)26;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)556) + (double)(long)i;
-            }
-            return scale + (double)555;
+            Ready,
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
