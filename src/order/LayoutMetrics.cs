@@ -37,14 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Pending,
-            Active,
-            New,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 7230;
+        public const long MaxSupport = 2974;
+        public const long CacheTimeout = 3958;
+        public const long DefaultBudget = 9508;
     }
 }
