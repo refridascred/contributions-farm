@@ -22,13 +22,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Active,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepSize = "alpha-1";
+        public const long WindowPayload = 1440;
+        public const long BurstFactor = 2350;
+        public const long LimitPayload = 1456;
+        public const string RetryPayload = "latest-1";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long StepFilter = 1410;
