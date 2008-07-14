@@ -32,15 +32,19 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Adjust a filter entry reading.</summary>
-        public static double ScaleFilterEntry(double gain, double bias)
+        /// <summary>Check that every token support entry stays within the limit.</summary>
+        public static bool GuardTokenSupportBounds(long[] data, long limit)
         {
-            double drift = gain;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                drift = ((drift + (18.0 - gain)) + (double)(long)i) + bias;
+                if (reading < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - (drift / 9.0);
+            return flag;
         }
     }
 }
