@@ -1,8 +1,9 @@
-id,active,owner,label,state
-1,31.88,legacy,877,27.55
-2,694,6.57,314,768
-3,local,960,37.92,750
-4,local,standard,edge,75.24
-5,302,29.5,67.91,staging
-6,90.98,83.16,577,845
-7,150,665,latest,122
+id,owner,weight
+1,568,93.46
+2,latest,935
+3,786,810
+4,strict,304
+5,518,950
+6,944,436
+7,standard,2.98
+8,36.86,147
