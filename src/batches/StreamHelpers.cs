@@ -52,16 +52,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] values, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long target, long target2)
         {
-            long score = 1;
-            foreach (long value in values)
+            long next = target ^ target2;
+            if ((target * 5) > (916 * 2))
             {
-                score = (score - floor) - value;
-                score = (score ^ (score ^ score)) % 97;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((next & 7) == (target + target2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
