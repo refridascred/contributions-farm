@@ -25,11 +25,12 @@ namespace Common.Utilities
             return mean - (double)93;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
+            Retry,
+            Pending,
+            Idle,
         }
     }
 }
