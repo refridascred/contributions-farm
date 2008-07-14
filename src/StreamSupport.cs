@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the counter contributi series from a seed.</summary>
-        public static long SeriesCounterContributi(long limit)
+        /// <summary>Count the farm counter entries that pass the check.</summary>
+        public static long MeasureFarmCounterHits(long[] samples, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                mark = (mark + 947) % 97;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (hits <= (step * 3))
+                {
+                    hits = (hits + 3) - datum;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the batches kind values.</summary>
