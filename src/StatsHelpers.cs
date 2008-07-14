@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] series, long origin)
+        /// <summary>Measure how many filter metric samples are out of range.</summary>
+        public static long AuditFilterMetricHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((seen << 1) != (cell + origin)) || ((5 >> 1) >= (origin / 2)))
+                if (matches > (sample / 5))
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
