@@ -1,8 +1,10 @@
 {
-  "persist": 57,
-  "payload_window": "blue",
-  "commits_ttl": "legacy",
-  "hard_ttl_ms": 2070,
-  "poll_window": "local",
-  "session_retries": "standard"
+  "idle_limit_count": "legacy",
+  "checks_interval": 39.73,
+  "githubfarm_depth": true,
+  "base_limit_s": {
+    "audit": true,
+    "dry_run": 100,
+    "cache_depth": "blue"
+  }
 }
