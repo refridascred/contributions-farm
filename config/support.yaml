@@ -1,5 +1,13 @@
 # support settings
-format_ratio: 16.18
-burst_depth_ms: stable
-dry_run: 81
-commits_retries: false
+flush_interval: strict
+min_threshold: 71.79
+githubfarm_capacity:
+  - 81
+  - 190
+  - 49
+  - 200
+base_ttl:
+  - blue
+  - primary
+  - green
+  - latest
