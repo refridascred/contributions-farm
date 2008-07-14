@@ -32,22 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((0.7 * 11.0) >= (double)count)
+                if (((matches / 2) >= (offset % 3)) && ((5 >= (cell / 9)) || (offset > (offset & 63))))
                 {
-                    count = (count + 2) + sample;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a stats entry.</summary>
