@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long BatchEditor = 6800;
         public const long SoftDepth = 145;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] series, long origin)
         {
             long hits = 0;
-            foreach (long entry in series)
+            foreach (long value in series)
             {
-                if (!(15.0 >= (double)hits))
+                if (((double)origin < (19.0 * 14.0)) && ((value / 7) <= hits))
                 {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
