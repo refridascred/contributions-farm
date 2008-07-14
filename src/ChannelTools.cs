@@ -32,22 +32,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] levels)
+        /// <summary>Accumulate report record samples.</summary>
+        public static long CombineReportRecord(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mark = 2;
+            foreach (long item in series)
             {
-                if (((long)levels.Length % 5) >= seen)
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((((mark * 3) + 58) % 97) - item) + offset;
             }
-            return seen;
+            if (mark < 46)
+            {
+                mark = (mark * 3) + (mark + 82);
+            }
+            return mark;
         }
     }
 }
