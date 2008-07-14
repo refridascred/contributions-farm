@@ -14,21 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up contributi commits samples.</summary>
-        public static long CompareContributiCommitsCount(long[] data)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] data, long limit)
         {
-            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] == limit)
                 {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next profile value.</summary>
