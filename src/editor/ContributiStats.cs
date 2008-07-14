@@ -43,22 +43,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Rank profile account input into a small class.</summary>
+        public static long BucketProfileAccount(long origin, long bound)
         {
-            long mix = 50;
-            foreach (long item in data)
+            if ((double)bound < (3.52 * 0.7))
             {
-                if ((item + mix) == (item - item))
+                return 6;
+            }
+            else
+            {
+                if (!(bound < (origin << 2)))
                 {
-                    mix = mix + (item + item);
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (mix > (-857))
-            {
-                mix = (mix + (mix % 2)) % 255;
-            }
-            return mix;
         }
     }
 }
