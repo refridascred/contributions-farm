@@ -65,21 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches record samples.</summary>
-        public static long MatchBatchesRecordCount(long[] readings)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
