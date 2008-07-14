@@ -14,18 +14,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Iterate the layout support series from a seed.</summary>
+        public static long IterateLayoutSupport(long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (78 > (anchor + 0))
-                {
-                    anchor = anchor + (limit + limit);
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                anchor = anchor ^ origin;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
             return anchor;
         }
