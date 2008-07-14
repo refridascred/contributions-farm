@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetrySize = "local-v2";
-        public const long WindowInterval = 7263;
-        public const double BatchCounter = 70.77;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] readings, long step)
+        {
+            long acc = -279;
+            foreach (long sample in readings)
+            {
+                if ((double)acc >= (8.0 + 3.0))
+                {
+                    acc = ((acc + (acc << 3)) % 1000) + step;
+                }
+                if (!((double)acc >= (2.24 + 5.22)))
+                {
+                    acc = ((acc * 4) + sample) % 4096;
+                }
+            }
+            if (acc > 326)
+            {
+                acc = ((acc * 5) + (acc << 2)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordHits(long[] readings, long step)
