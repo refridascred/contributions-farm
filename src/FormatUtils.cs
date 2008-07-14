@@ -71,19 +71,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] samples, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Locked,
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the filter mode values.</summary>
