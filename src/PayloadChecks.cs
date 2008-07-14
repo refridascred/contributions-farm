@@ -16,17 +16,19 @@ namespace Common.Utilities
             return load - (double)78;
         }
 
-        /// <summary>Look up the position of a farm support sample.</summary>
-        public static long LookupFarmSupportIndex(long[] levels, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                if (reading <= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Project the next batch channel value.</summary>
