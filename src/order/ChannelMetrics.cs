@@ -24,18 +24,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] data, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = -123;
+            foreach (long sample in data)
             {
-                if ((double)entry != (double)hits)
-                {
-                    hits = (hits + 1) + floor;
-                }
+                result = (((result * 4) + (target + result)) % 65521) - sample;
             }
-            return hits;
+            return result;
         }
     }
 }
