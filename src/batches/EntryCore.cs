@@ -30,10 +30,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 279;
-        public const long SoftSpan = 2702;
-        public const string BatchChecks = "strict-1";
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Closed,
+            Pending,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenMatches(long[] items)
