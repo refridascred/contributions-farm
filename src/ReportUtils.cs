@@ -42,14 +42,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Adjust a record stats reading.</summary>
+        public static double ScaleRecordStats(double rate, double offset)
         {
-            Dropped,
-            Ready,
-            Failed,
-            Paused,
-            Queued,
+            double drift = (double)814 - offset;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - drift) + (double)(long)i) + rate;
+            }
+            return drift + drift;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
