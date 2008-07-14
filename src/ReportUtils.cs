@@ -14,15 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Dropped,
-            Queued,
-            Failed,
-            Active,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftSpan = 1212;
+        public const double DefaultCommand = 79.82;
+        public const long MinCommand = 4644;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
