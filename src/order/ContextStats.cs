@@ -42,12 +42,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 5190;
-        public const double StepWindow = 94.94;
-        public const double BatchSize = 28.84;
-        public const long IdleSize = 3460;
-        public const long MaxTimeout = 9702;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state << 2) ^ (290 * 5)) - (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long bound)
