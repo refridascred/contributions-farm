@@ -59,16 +59,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] samples)
-        {
-            long carry = 37;
-            foreach (long sample in samples)
-            {
-                carry = (carry + (sample & 15)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseDepth = 47.03;
+        public const long DefaultProfile = 2874;
+        public const long MaxCount = 9390;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 5412;
