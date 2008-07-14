@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] levels, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (datum < target)
+                if ((matches << 1) != (matches ^ matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
