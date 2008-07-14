@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] levels, long seed)
         {
-            Locked,
-            Queued,
-            Draft,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next metrics value.</summary>
