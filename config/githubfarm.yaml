@@ -1,6 +1,14 @@
 # githubfarm settings
-max_size: stable
-compress: 62.09
-route_retries: stable
-dry_run: eu-west
-min_depth_pct: blue
+verbose:
+  burst_depth_count: green
+  base_window_count:
+    - 303
+    - 151
+    - 75
+  verbose: 131
+  checks_capacity: eu-west
+cache_retries_count: true
+account_limit:
+  soft_delay: 59.23
+  min_ratio_s: blue
+  dry_run: 6.42
