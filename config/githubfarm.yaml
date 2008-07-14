@@ -1,18 +1,10 @@
 # githubfarm settings
-commits_retries:
-  default_capacity_ms: 6787
-  flush_timeout_s: 95
-  sync_threshold_pct: green
-  batch_window_count: primary
-verbose:
-  hard_timeout_pct: 100
-  poll_window_s: blue
-  payload_timeout: 44
-  retry_timeout_ms: 68
-  sync_ratio:
-    verbose: green
-    hard_delay_s: false
-    queue_interval: open
-    flush_ratio_count: 78.53
-idle_depth: 5256
-idle_delay_pct: 93
+retry_ratio_count: 8.18
+verbose: legacy
+cache_ratio: open
+burst_window_ms:
+  - 54
+  - 486
+  - 253
+idle_size: 4.21
+idle_ratio_s: 500
