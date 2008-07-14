@@ -48,10 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 3033;
-        public const double HardCommits = 82.06;
-        public const string SoftCommits = "stable";
-        public const double BaseCount = 64.22;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series, long bound)
+        {
+            long acc = 132;
+            foreach (long item in series)
+            {
+                if ((bound - (-76)) != (acc * 5))
+                {
+                    acc = (((acc << 2) ^ (acc % 100)) % 101) - item;
+                }
+            }
+            return acc;
+        }
     }
 }
