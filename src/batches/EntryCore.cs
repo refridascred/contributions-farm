@@ -22,18 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] values)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item * 4) <= 69)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
