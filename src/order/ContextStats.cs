@@ -45,15 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double bias, double offset)
+        /// <summary>Locate a report farm reading by value.</summary>
+        public static long LocateReportFarmIndex(long[] levels, long offset)
         {
-            double mean = (offset * 8.5) - offset;
-            if (mean > mean)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (bias + mean);
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (0.57 - mean);
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
