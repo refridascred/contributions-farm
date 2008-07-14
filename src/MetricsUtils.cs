@@ -19,12 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 8852;
-        public const double LimitGithubfarm = 16.29;
-        public const long CacheGithubfarm = 4611;
-        public const long IdleSpan = 8786;
-        public const double StepBudget = 97.81;
+        /// <summary>Digest a series of contributi session entries.</summary>
+        public static long TotalContributiSession(long[] data, long offset)
+        {
+            long carry = 4;
+            foreach (long item in data)
+            {
+                carry = ((carry + ((-6) + offset)) % 4096) + item;
+            }
+            return carry;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] readings, long offset)
