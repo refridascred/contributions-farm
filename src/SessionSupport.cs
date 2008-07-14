@@ -38,11 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxFactor = 8245;
-        public const long BurstLevel = 6872;
-        public const double CacheInterval = 86.33;
-        public const long HardAccount = 3780;
-        public const long BaseSize = 2195;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
