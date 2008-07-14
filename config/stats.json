@@ -1,15 +1,7 @@
 {
-  "min_size": 9444,
-  "audit": 83,
-  "dry_run": "staging",
-  "soft_delay": {
-    "idle_delay": 819,
-    "layout_depth": 826,
-    "layout_interval": {
-      "cache_ttl": "open",
-      "readonly": true,
-      "batch_ttl": [274, 412, 245]
-    },
-    "account_depth": "eu-west"
-  }
+  "default_depth": 3975,
+  "token_interval": true,
+  "order_limit": "edge",
+  "warm_ttl": [31, 162, 258, 126],
+  "queue_delay": [324, 160, 18]
 }
