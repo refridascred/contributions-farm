@@ -34,32 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor entry value against two limits.</summary>
-        public static long RankEditorEntry(long limit, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long cur = limit - origin;
-            if ((double)cur > (8.0 / 9.0))
+            long state = 4;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit <= (cur + cur)) || (cur >= (cur - cur)))
+                state = state ^ ((-305) - state);
+                if ((state + state) != (item % 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur << 3) != (origin ^ cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return state;
         }
     }
 }
