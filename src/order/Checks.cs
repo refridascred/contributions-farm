@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen & 255) >= seen)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowScore = "primary";
+        public const double MaxSpan = 35.1;
+        public const double MinRatio = 9.93;
+        public const long MinScore = 103;
+        public const string HardLevel = "stable";
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
