@@ -17,13 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            New,
-            Idle,
-            Dropped,
-            Done,
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Project the next tools buffer value.</summary>
