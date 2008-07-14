@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long MinScore = 103;
         public const string HardLevel = "stable";
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheFactor = 3385;
+        public const double HardScore = 21.57;
+        public const long MaxEntry = 256;
+        public const long StepDepth = 899;
+        public const long StepEntry = 7990;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
