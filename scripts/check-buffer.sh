@@ -12,5 +12,9 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=450
+BUFFER_LIMIT=482
 log "limit is ${BUFFER_LIMIT}"
+
+for item in eu-west strict staging legacy; do
+    log "checking ${item}"
+done
