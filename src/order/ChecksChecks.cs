@@ -23,18 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] readings, long floor)
+        /// <summary>Locate a layout report reading by value.</summary>
+        public static long LocateLayoutReportIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((item & 7) < 0))
+                if ((data[i] >= target) && ((data[i] % 3) != 0))
                 {
-                    seen = (seen + 2) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the format kind values.</summary>
