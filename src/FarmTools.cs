@@ -20,26 +20,21 @@ namespace Common.Utilities
             return ratio - (double)626;
         }
 
-        /// <summary>Digest a series of githubfarm token entries.</summary>
-        public static long ScoreGithubfarmToken(long[] levels)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            long carry = 84;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((3 - 324) != (reading + carry)) || ((carry - carry) >= (reading % 64)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (carry + reading)) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ (carry - carry);
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 978)
-            {
-                carry = ((carry * 2) + carry) % 65521;
-            }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
