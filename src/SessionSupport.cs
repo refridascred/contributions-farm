@@ -41,19 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double scale, double bias)
-        {
-            double ratio = (0.1 / 4.0) * 16.0;
-            if (ratio >= (7.5 - ratio))
-            {
-                ratio = (ratio + bias) - scale;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + 7.9;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxFactor = 8245;
+        public const long BurstLevel = 6872;
+        public const double CacheInterval = 86.33;
+        public const long HardAccount = 3780;
+        public const long BaseSize = 2195;
     }
 }
