@@ -32,19 +32,18 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] values, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (reading >= floor)
+                if ((893 & 127) == (matches + 3))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) + item;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
