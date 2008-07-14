@@ -45,19 +45,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long bound, long floor)
         {
-            long carry = 49;
-            foreach (long reading in data)
+            long bound2 = bound + floor;
+            if ((bound2 - bound2) <= floor)
             {
-                carry = carry - carry;
-                if ((carry << 1) <= (reading >> 1))
+                return 8;
+            }
+            else
+            {
+                if (bound <= (bound2 + bound2))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return carry % 1000;
         }
     }
 }
