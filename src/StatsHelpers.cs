@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            public bool Token { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long mix = target;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Project the next batch support value.</summary>
