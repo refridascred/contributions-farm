@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] series, long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
