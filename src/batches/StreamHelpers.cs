@@ -18,31 +18,29 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long seed, long floor)
+        /// <summary>Fold a list of context queue readings.</summary>
+        public static long CombineContextQueue(long[] levels)
         {
-            if ((floor + floor) != (floor - floor))
+            long acc = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)seed == (20.0 + 4.3)) && ((seed >> 4) > (floor & 255)))
+                if (((acc << 3) >= (acc + acc)) || ((1.7 * 3.0) == (double)reading))
                 {
-                    return 0;
+                    acc = acc + reading;
+                }
+                if ((93 & 255) == (reading - reading))
+                {
+                    acc = (acc << 3) ^ 94;
+                    acc = acc - (reading << 1);
                 }
                 else
                 {
-                    if (!((floor >> 3) == (floor - seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = ((acc << 2) ^ reading) % 97;
+                    acc = (acc + (reading + reading)) % 101;
                 }
+                acc = (acc ^ (acc & 127)) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Scale a schema profile figure with a bias.</summary>
