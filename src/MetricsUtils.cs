@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] items, long bound)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
