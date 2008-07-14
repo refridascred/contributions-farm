@@ -14,12 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Dropped,
-            Done,
-            New,
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
