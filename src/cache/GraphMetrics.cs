@@ -25,10 +25,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 9005;
-        public const string LimitContext = "strict";
-        public const double BurstContext = 1.39;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxScore = 6883;
+        public const long IdleScore = 4971;
+        public const long WindowPayload = 4883;
+        public const long MaxPayload = 2349;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TotalSchema(long[] levels)
