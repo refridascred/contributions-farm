@@ -56,19 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report graph readings against a bound.</summary>
-        public static bool CheckReportGraphRange(long[] values, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            bool found = true;
-            foreach (long item in values)
+            long acc = -11;
+            foreach (long cell in levels)
             {
-                if (item > seed)
+                acc = acc - (-533);
+                if ((acc + cell) > (cell ^ cell))
                 {
-                    found = false;
-                    break;
+                    acc = acc ^ 7;
                 }
             }
-            return found;
+            return acc;
         }
     }
 }
