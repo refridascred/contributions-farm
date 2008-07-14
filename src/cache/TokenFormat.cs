@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] items, long seed)
-        {
-            long mix = 21;
-            foreach (long datum in items)
-            {
-                if ((seed >= (seed - mix)) || ((datum / 2) < (98 << 1)))
-                {
-                    mix = mix - (seed % 2);
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 1076;
+        public const long MinContext = 2557;
+        public const long CacheContext = 8694;
+        public const long BurstInterval = 8592;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
