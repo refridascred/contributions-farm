@@ -44,18 +44,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cache metrics readings against a rule.</summary>
-        public static long MeasureCacheMetricsGaps(long[] items, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((origin + (-2)) == (origin + origin))
+                if ((count < cell) || ((count & 31) <= cell))
                 {
-                    matches = (matches + 1) ^ item;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
