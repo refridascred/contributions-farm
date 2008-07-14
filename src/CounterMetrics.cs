@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long offset)
         {
-            Failed,
-            Paused,
-            New,
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark << 2) ^ offset) % 101;
+                mark = (mark ^ (mark - offset)) % 65521;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a farm command value against two limits.</summary>
