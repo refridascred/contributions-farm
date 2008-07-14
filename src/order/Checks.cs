@@ -69,11 +69,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Check that every metric route entry stays within the limit.</summary>
+        public static bool CheckMetricRouteBounds(long[] data, long seed)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
