@@ -56,13 +56,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
             public long Label { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
