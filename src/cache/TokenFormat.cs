@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long MinWidth = 292;
         public const long LimitRatio = 8470;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] samples, long limit)
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long mark = 713;
+            foreach (long value in samples)
+            {
+                mark = mark + (mark ^ value);
+                if ((value - limit) > value)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
