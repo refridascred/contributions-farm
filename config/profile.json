@@ -1,11 +1,6 @@
 {
-  "editor_timeout": 10,
-  "warm_interval": {
-    "persist": "staging",
-    "base_capacity_s": 96,
-    "max_retries": [189, 288]
-  },
-  "context_capacity": [227, 404, 441, 177],
-  "contributi_timeout": "fallback",
-  "profile_ratio": ["open", "open"]
+  "soft_retries_pct": 100,
+  "base_depth_s": ["stable", "standard"],
+  "idle_delay_ms": 81,
+  "poll_size_count": 0.97
 }
