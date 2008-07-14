@@ -13,14 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] samples, long step)
         {
-            Pending,
-            Active,
-            Closed,
-            Done,
-            Stale,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((step / 5) == (96 - seen)) && ((step + seen) != (step - step)))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the counter level values.</summary>
