@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowScore = "primary";
-        public const double MaxSpan = 35.1;
-        public const double MinRatio = 9.93;
-        public const long MinScore = 103;
-        public const string HardLevel = "stable";
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (reading <= (seen >> 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheFactor = 3385;
