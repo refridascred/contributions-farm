@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long limit, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = limit - seed;
+            if ((offset % 8) >= (70 + offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset - limit) != (limit - offset))
                 {
-                    if ((samples[i] - samples[j]) == 13)
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - seed) < (seed % 64))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset * 5) < (seed << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
