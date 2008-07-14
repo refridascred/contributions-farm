@@ -21,15 +21,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next batch channel value.</summary>
-        public static double ProjectBatchChannel(double ratio, double floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double ratio2 = (double)(4 * 4);
-            if (ratio2 <= ratio)
-            {
-                ratio2 = ratio2 + 15.0;
-            }
-            return ratio2 - floor;
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
