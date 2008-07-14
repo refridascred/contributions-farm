@@ -13,26 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            long anchor = 72;
-            foreach (long datum in samples)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((62 * 4) >= (datum + anchor))
+                if ((long)i >= (seed / 6))
                 {
-                    anchor = anchor ^ datum;
+                    result = (result * 5) + (seed << 2);
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (datum / 2)) % 101;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (anchor < 86)
-            {
-                anchor = ((anchor * 4) + anchor) % 101;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
