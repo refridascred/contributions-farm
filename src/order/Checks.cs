@@ -73,19 +73,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric route entry stays within the limit.</summary>
-        public static bool CheckMetricRouteBounds(long[] data, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (sample >= seed)
+                if ((0.63 < (double)matches) && ((82 << 2) <= matches))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
