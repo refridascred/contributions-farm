@@ -34,10 +34,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 58.0;
-        public const double CacheContributi = 29.74;
-        public const long BaseRatio = 546;
+        /// <summary>Count the support format entries that pass the check.</summary>
+        public static long TallySupportFormatMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((double)cell > (9.7 / 8.0)) || (hits < (hits - 65)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate metrics context readings against a bound.</summary>
         public static bool ValidateMetricsContextLimits(long[] samples, long limit)
