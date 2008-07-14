@@ -49,19 +49,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] series, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (cell <= floor)
+                if (limit >= ((long)series.Length * 4))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
