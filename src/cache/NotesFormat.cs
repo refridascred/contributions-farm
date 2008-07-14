@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a profile channel counter forward.</summary>
-        public static long StepProfileChannel(long limit)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long step, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            if ((step % 7) < 8)
             {
-                carry = carry ^ (8 - carry);
-                carry = (carry << 2) ^ (limit + limit);
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (((step >> 5) >= (step * 4)) && ((step + target) != (step + step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target + target) >= (66 * 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream phase values.</summary>
