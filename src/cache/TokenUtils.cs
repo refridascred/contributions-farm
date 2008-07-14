@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 8;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((series[i] + series[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ ((long)i + (-45))) % 101;
+                    anchor = (anchor + (sample ^ anchor)) % 101;
                 }
+                anchor = ((anchor << 3) ^ (anchor - sample)) % 1000;
             }
-            return tally;
+            return anchor % 4096;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
