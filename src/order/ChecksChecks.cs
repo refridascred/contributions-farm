@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] samples, long limit)
         {
             long matches = 0;
-            foreach (long item in values)
+            foreach (long item in samples)
             {
-                if ((double)matches > (double)item)
+                if (7.0 < (double)matches)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = ((matches + 1) ^ item) + limit;
                 }
             }
             return matches;
