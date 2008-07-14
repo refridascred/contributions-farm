@@ -15,11 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepScore = 87.47;
-        public const long WindowSize = 171;
-        public const long CacheContext = 4633;
-        public const long CacheRatio = 8504;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultWidth = 5785;
+        public const long IdleInterval = 2157;
+        public const long CacheTimeout = 4034;
+        public const string DefaultEditor = "strict";
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
