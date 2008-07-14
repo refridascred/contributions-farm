@@ -73,18 +73,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] values)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((0.63 < (double)matches) && ((82 << 2) <= matches))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            Failed,
+            Paused,
+            Synced,
+            Active,
         }
     }
 }
