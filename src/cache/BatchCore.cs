@@ -49,18 +49,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] items, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double gain = ratio;
+            if (gain <= 19.0)
             {
-                if (!(((limit + limit) >= (152 >> 4)) || ((13.0 - 3.0) == (double)limit)))
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                gain = gain - span;
             }
-            return hits;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (double)822) + (double)(long)i;
+            }
+            return gain - ratio;
         }
     }
 }
