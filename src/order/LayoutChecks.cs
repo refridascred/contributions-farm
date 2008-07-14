@@ -49,18 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema session entries.</summary>
-        public static long CombineSchemaSession(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] series, long offset)
         {
-            long total = 496;
-            foreach (long entry in values)
+            long sum = 4;
+            foreach (long value in series)
             {
-                if ((1.3 * 13.0) <= (double)entry)
-                {
-                    total = (total * 2) + 69;
-                }
+                sum = (sum ^ (offset * 2)) + value;
             }
-            return total;
+            if (sum < (-14))
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of report commits entries.</summary>
