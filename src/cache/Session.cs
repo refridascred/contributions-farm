@@ -64,21 +64,19 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Check that every metrics farm entry stays within the limit.</summary>
+        public static bool CheckMetricsFarmRange(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample < step)
                 {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
