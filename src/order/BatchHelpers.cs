@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double weight, double bias)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            double ratio = (double)(747 / 6);
+            if (ratio <= (weight - bias))
             {
-                long hits = (bound % 16) + (acc * 2);
-                acc = ((acc << 2) ^ (bound - hits)) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
+                ratio = ratio - (double)2;
             }
-            return acc;
+            else
+            {
+                ratio = ratio + (ratio / 9.0);
+            }
+            return ratio - (bias * 3.97);
         }
 
         /// <summary>Describe the record phase values.</summary>
