@@ -14,32 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long seed, long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            long next = seed - floor;
-            if ((0.83 * 7.7) > (double)next)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - next) < seed)
+                if (((long)i << 2) > ((long)i + 7))
                 {
-                    return 5;
+                    anchor = ((anchor << 3) ^ offset) % 97;
                 }
-                else
-                {
-                    if ((seed + floor) == (next & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
