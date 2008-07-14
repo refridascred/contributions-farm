@@ -36,17 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -5;
+            foreach (long datum in readings)
             {
-                if (readings[i] == target)
+                carry = carry ^ (datum * 4);
+                if ((carry % 64) >= 99)
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ (datum + carry);
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
