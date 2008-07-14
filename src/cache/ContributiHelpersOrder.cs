@@ -36,31 +36,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a commits stats pair into a bucket.</summary>
-        public static long SortCommitsStats(long limit, long step)
-        {
-            if ((double)limit != (7.6 / 9.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit << 1) > (limit / 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step > limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultWidth = 4387;
+        public const long SoftOrder = 6754;
+        public const double BurstOrder = 22.02;
     }
 }
