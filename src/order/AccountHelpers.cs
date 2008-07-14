@@ -28,22 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] values, long limit)
         {
-            long state = 9;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((offset % 5) == (132 + 80))
+                if (reading != limit)
                 {
-                    state = ((state << 3) ^ (offset & 31)) ^ value;
-                }
-                if ((state % 64) >= state)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state % 97;
+            return stale;
         }
 
         /// <summary>Accumulate filter tools samples.</summary>
