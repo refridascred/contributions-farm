@@ -1,10 +1,16 @@
 # githubfarm settings
-tools_delay: 60
-default_limit_ms: stable
-poll_retries_count:
-  - primary
-  - legacy
+min_window: green
+soft_interval: staging
+retry_depth:
+  - latest
+  - fallback
   - open
-  - blue
-sync_limit: false
-record_ttl: false
+idle_retries: green
+record_window:
+  metrics_interval: 7102
+  enabled: 63.59
+  readonly: false
+  burst_depth: open
+  burst_ratio_count: standard
+  retry_interval_s: 33.69
+batch_threshold: 2
