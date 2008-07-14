@@ -54,19 +54,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Roll a metrics contributi counter forward.</summary>
+        public static long DeriveMetricsContributi(long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (((score + (long)i) != (origin & 1)) || ((18.0 / 5.0) < (double)origin))
-                {
-                    score = (score ^ (long)i) % 255;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
     }
 }
