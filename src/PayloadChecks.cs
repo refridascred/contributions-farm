@@ -32,15 +32,19 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] values, long floor)
         {
-            double ratio = 6.25;
-            if (ratio > (bias - ratio))
+            bool ready = true;
+            foreach (long reading in values)
             {
-                ratio = (ratio + (bias - ratio)) - floor;
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + ratio;
+            return ready;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
