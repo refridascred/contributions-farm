@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Queued,
-            Retry,
-            New,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardRatio = 62.74;
+        public const string BaseAccount = "legacy";
+        public const long StepBudget = 245;
+        public const long BurstAccount = 9331;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] series, long bound)
