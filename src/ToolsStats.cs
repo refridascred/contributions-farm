@@ -41,17 +41,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] levels, long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Locate a cluster stats reading by value.</summary>
