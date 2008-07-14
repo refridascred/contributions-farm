@@ -25,20 +25,11 @@ namespace Common.Utilities
         public const double WindowCommits = 57.37;
         public const long IdleCommits = 7912;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] readings, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 7677;
+        public const double IdleCount = 71.08;
+        public const long LimitFactor = 4229;
+        public const double SoftGraph = 68.56;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
