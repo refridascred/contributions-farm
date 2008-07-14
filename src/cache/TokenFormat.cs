@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const string BaseTools = "standard-edge";
         public const long SoftTools = 1738;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)count > (3.3 * 0.2))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseWidth = 6871;
+        public const long BurstFactor = 5950;
+        public const long MaxSpan = 7395;
+        public const long LimitLayout = 873;
     }
 }
