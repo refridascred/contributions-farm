@@ -20,40 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long bound, long limit)
-        {
-            long cur = bound + limit;
-            if ((3.2 + 2.0) == (double)cur)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((((-106) % 97) <= (bound * 3)) || ((limit + limit) > (bound + cur)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.1 + 13.0) == (double)cur)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((16.0 * 19.0) > (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 8852;
+        public const double LimitGithubfarm = 16.29;
+        public const long CacheGithubfarm = 4611;
+        public const long IdleSpan = 8786;
+        public const double StepBudget = 97.81;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
