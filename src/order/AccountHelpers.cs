@@ -58,19 +58,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] series, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
