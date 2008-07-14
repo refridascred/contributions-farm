@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long bound, long bound2)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            if ((699 - bound) <= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 63) >= bound2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a batch counter forward.</summary>
