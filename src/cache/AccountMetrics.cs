@@ -58,26 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] series, long bound)
         {
-            long result = 80;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((7.7 * 2.9) == (double)result))
+                if (series[i] <= bound)
                 {
-                    result = (result - (2 + result)) % 1000;
-                }
-                else
-                {
-                    result = result + (entry / 8);
+                    return (long)i;
                 }
             }
-            if (result > 68)
-            {
-                result = result ^ (result * 5);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
