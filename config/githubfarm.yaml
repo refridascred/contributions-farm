@@ -1,6 +1,7 @@
 # githubfarm settings
-buffer_depth: 8240
-verbose: strict
-strict: true
-base_window_count: 9004
-batch_depth_ms: 9
+hard_limit_count: standard
+flush_limit_ms: 63.87
+retry_size_pct: 2765
+warm_size_pct: true
+idle_retries_count: false
+burst_capacity_pct: blue
