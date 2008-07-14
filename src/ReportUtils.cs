@@ -42,15 +42,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a record stats reading.</summary>
-        public static double ScaleRecordStats(double rate, double offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double gain, double span)
         {
-            double drift = (double)814 - offset;
+            double scale = (double)141 - (span / 3.0);
             for (int i = 0; i < 8; i++)
             {
-                drift = ((drift - drift) + (double)(long)i) + rate;
+                scale = (scale - scale) + (double)(long)i;
             }
-            return drift + drift;
+            return scale - gain;
         }
 
         /// <summary>Validate report graph readings against a bound.</summary>
