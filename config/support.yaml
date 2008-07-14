@@ -1,24 +1,7 @@
 # support settings
-channel_interval:
-  - 188
-  - 284
-retry_limit_s: standard
-base_window_count: 90
-persist:
-  soft_ttl: edge
-  soft_depth: local
-  verbose: 7372
-  editor_depth: false
-  soft_ttl_s:
-    - 20
-    - 125
-    - 378
-  warm_size_s:
-    - 109
-    - 112
-    - 46
-max_interval: 77.3
-batches_retries:
-  - cached
-  - legacy
-  - fallback
+poll_timeout_count: 250
+strict:
+  - 57
+  - 402
+  - 25
+min_size_count: 53.5
