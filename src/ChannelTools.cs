@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the contributi account series from a seed.</summary>
-        public static long SeriesContributiAccount(long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long total = 2;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((-625) + total) <= 950)
                 {
-                    state = ((state << 2) ^ ((long)i2 >> 1)) % 101;
+                    total = (total ^ (item * 2)) % 65521;
                 }
-                state = (state * 5) + (bound % 24);
-                state = ((state * 2) + (long)i) % 65521;
+                else
+                {
+                    total = (total * 2) + item;
+                }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Hold a session options.</summary>
