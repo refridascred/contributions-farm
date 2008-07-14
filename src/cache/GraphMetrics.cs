@@ -14,19 +14,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long floor, long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            if ((floor + floor) < (floor >> 5))
             {
-                if (entry > floor)
+                return 5;
+            }
+            else
+            {
+                if (!(floor <= (floor + floor)))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (origin < (origin & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Locate a report reading by value.</summary>
