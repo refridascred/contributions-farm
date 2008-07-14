@@ -1,10 +1,11 @@
 # Command notes
 
-The window module keeps cluster values in sync with the stats cache.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Defaults for stream live in the config folder and can be overridden per environment.
+Run the order check before changing any report limits.
+The metrics module keeps stream values in sync with the cluster cache.
 
 ## Guidelines
 
-- Log every context change
-- Document new buffer fields
-- Prefer tools defaults
+- Keep tools values small
+- Prefer route defaults
+- Document new cache fields
