@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] values)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry * 4) >= (entry + 9))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
