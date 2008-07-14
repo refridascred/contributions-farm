@@ -39,30 +39,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] items, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long acc = 821;
-            foreach (long datum in items)
-            {
-                if ((acc / 6) < acc)
-                {
-                    continue;
-                }
-                if (!(acc <= (acc - floor)))
-                {
-                    acc = ((acc * 4) + ((-99) ^ datum)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (floor - (long)items.Length)) % 97;
-                }
-            }
-            if (acc > (-89))
-            {
-                acc = (acc * 2) + (1 * 4);
-            }
-            return acc % 4096;
+            Active,
+            Paused,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Digest a series of account entries.</summary>
