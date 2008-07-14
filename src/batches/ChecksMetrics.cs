@@ -57,14 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long target, long seed)
         {
-            Active,
-            Paused,
-            Locked,
-            Synced,
-            Stale,
+            if ((seed * 5) <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((target + (-17)) <= 27))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
