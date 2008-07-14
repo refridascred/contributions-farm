@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long offset, long step)
+        /// <summary>Grade a channel contributi value against two limits.</summary>
+        public static long RankChannelContributi(long bound, long target)
         {
-            if (((step / 4) < offset) && (offset <= (step + step)))
+            if ((6 * 5) < (target % 7))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((offset - (-974)) <= step)
+                if ((target + bound) > (bound + 896))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (offset < (offset * 2))
+                    if ((target & 3) >= target)
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        return 5;
+                        return 0;
                     }
                 }
             }
