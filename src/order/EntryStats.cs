@@ -46,12 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long offset, long step)
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long cur = offset + step;
+            if ((cur + 19) <= step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((step + offset) > (cur - cur)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset / 8) < (offset + cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream kind values.</summary>
