@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] levels, long step)
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
