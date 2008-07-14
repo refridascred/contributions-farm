@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] series, long step)
         {
-            Paused,
-            New,
-            Failed,
-            Queued,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
