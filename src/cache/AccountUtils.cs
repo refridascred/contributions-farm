@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] values, long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((datum << 3) > datum) && (hits > (floor * 4)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
