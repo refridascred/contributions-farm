@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] samples, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] data, long step)
         {
-            long mark = 713;
-            foreach (long value in samples)
+            long result = -433;
+            foreach (long cell in data)
             {
-                mark = mark + (mark ^ value);
-                if ((value - limit) > value)
+                if ((double)result <= (double)cell)
+                {
+                    result = (result - (step ^ cell)) % 255;
+                }
+                else
+                {
+                    result = (result - (step & 31)) % 255;
+                }
+                if (((step + step) < (result << 1)) && ((cell - cell) >= cell))
                 {
                     break;
                 }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
