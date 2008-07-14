@@ -36,15 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels, long seed)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double floor)
         {
-            long acc = 15;
-            foreach (long value in levels)
-            {
-                acc = (acc - (seed + 576)) ^ value;
-            }
-            return acc;
+            double ratio = scale;
+            return (ratio - (double)1) + floor;
         }
 
         /// <summary>Describe the checks kind values.</summary>
