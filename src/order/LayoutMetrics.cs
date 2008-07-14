@@ -32,22 +32,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] readings)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell >= (11.0 - 3.79))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
