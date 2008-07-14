@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy local standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-staging}"
 case "${mode}" in
-    primary)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
