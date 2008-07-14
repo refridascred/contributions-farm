@@ -26,17 +26,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Look up the position of a tools command sample.</summary>
-        public static long LocateToolsCommandIndex(long[] values, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Retry,
+            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
