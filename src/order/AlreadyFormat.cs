@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] data, long limit)
         {
-            long sum = 9;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((0.5 + 9.0) == (double)sum) || ((sample - sample) < (sum + sum)))
+                if (data[i] > limit)
                 {
-                    sum = sum ^ (7 << 1);
+                    return (long)i;
                 }
             }
-            if (sum < 96)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
