@@ -21,13 +21,18 @@ namespace Common.Utilities
         public const double SoftWidth = 22.72;
         public const string StepLayout = "standard-v2";
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] series)
         {
-            Closed,
-            Done,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum < (2.47 - 0.37))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
