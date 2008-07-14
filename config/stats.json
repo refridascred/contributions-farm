@@ -1,44 +1,5 @@
 {
-  "cache_capacity": "edge",
-  "sync_interval": {
-    "contributi_limit": 60.43,
-    "counter_interval": true,
-    "cache_ratio": "eu-west",
-    "route_capacity": true,
-    "default_capacity_count": {
-      "max_window_count": 81.7,
-      "cache_window_count": ["staging", "local"],
-      "contributi_interval": 60,
-      "layout_threshold": "cached"
-    },
-    "idle_threshold_pct": {
-      "default_ratio_count": 1635,
-      "burst_limit_pct": "edge",
-      "audit": 36,
-      "hard_delay_count": 8535
-    }
-  },
-  "idle_capacity": {
-    "min_depth": {
-      "hard_limit": 7706,
-      "idle_threshold_count": "local",
-      "default_interval": "local",
-      "route_timeout": [364, 270],
-      "dry_run": "open"
-    },
-    "base_threshold_s": "primary",
-    "base_depth_ms": 8570,
-    "verbose": {
-      "persist": ["primary", "staging", "strict", "eu-west"],
-      "sync_limit_count": 500,
-      "githubfarm_timeout": "latest",
-      "cache_ratio_count": [281, 2],
-      "min_delay_count": [385, 311, 341, 145]
-    },
-    "sync_ratio_s": 46.67,
-    "cache_ratio_count": 14
-  },
-  "default_ratio": ["standard", "edge", "eu-west"],
-  "contributi_ttl": 43,
-  "tools_delay": true
+  "cache_ratio": 13.37,
+  "batches_ttl": true,
+  "compress": "standard"
 }
