@@ -1,10 +1,6 @@
-id,active,count
-1,edge,40
-2,712,primary
-3,edge,green
-4,71.79,strict
-5,451,fallback
-6,44.15,522
-7,89.35,legacy
-8,41,668
-9,stable,925
+id,count,weight,active
+1,814,staging,78.55
+2,944,300,36.9
+3,36,849,209
+4,70.99,edge,latest
+5,48.69,16.66,legacy
