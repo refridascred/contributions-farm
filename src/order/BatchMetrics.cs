@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Locked,
-            Idle,
-            Retry,
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
