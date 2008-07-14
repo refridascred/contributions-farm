@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] readings)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((6.8 - 6.8) > (double)count)
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a filter options.</summary>
