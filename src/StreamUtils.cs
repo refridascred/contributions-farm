@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public double Flag { get; set; }
+            Retry,
+            Idle,
+            Draft,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
