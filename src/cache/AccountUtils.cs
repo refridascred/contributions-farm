@@ -40,17 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = carry - (target + target);
-                carry = carry + ((long)i + carry);
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Idle,
+            Synced,
+            Active,
+            Paused,
+            Failed,
         }
     }
 }
