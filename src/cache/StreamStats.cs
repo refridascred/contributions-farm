@@ -59,14 +59,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] series, long step)
         {
-            Locked,
-            New,
-            Ready,
-            Idle,
-            Done,
+            long anchor = 2;
+            foreach (long reading in series)
+            {
+                if ((step - anchor) != (anchor >> 5))
+                {
+                    anchor = (anchor ^ (anchor - reading)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + anchor;
+                }
+                anchor = anchor ^ ((long)series.Length - 90);
+                if (((458 << 2) >= (step + anchor)) || ((anchor >> 2) >= reading))
+                {
+                    anchor = anchor + (reading + reading);
+                }
+            }
+            if (anchor < (-755))
+            {
+                anchor = (anchor + (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
