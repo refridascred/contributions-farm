@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] data, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!(count <= (count << 2)))
-                {
-                    count = ((count + 3) - entry) - limit;
-                }
-            }
-            return count;
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the layout state values.</summary>
