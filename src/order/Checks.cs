@@ -37,18 +37,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] samples, long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long floor, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((floor / 3) < (step % 2))
             {
-                if ((double)(-8) == (double)(long)samples.Length)
+                return 1;
+            }
+            else
+            {
+                if ((double)step >= 6.0)
                 {
-                    tally = ((tally + 3) - sample) - offset;
+                    return 4;
+                }
+                else
+                {
+                    if (floor < (floor - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step * 2) >= floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
