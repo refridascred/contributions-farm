@@ -32,13 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double rate, double floor)
         {
-            Stale,
-            Pending,
-            Active,
-            Queued,
+            double mean = floor;
+            if (mean <= (double)65)
+            {
+                mean = (mean - floor) - rate;
+            }
+            else
+            {
+                mean = mean - floor;
+            }
+            return mean - (double)888;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
