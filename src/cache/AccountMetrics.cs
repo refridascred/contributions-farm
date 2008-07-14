@@ -91,32 +91,23 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long floor, long step)
+        /// <summary>Blend two editor farm measurements.</summary>
+        public static double ProjectEditorFarm(double bias, double bias2)
         {
-            long cur = floor ^ step;
-            if (4 > (step >> 3))
+            double bias3 = bias;
+            if (bias3 <= (double)8)
             {
-                return 5;
+                bias3 = bias3 - bias;
             }
             else
             {
-                if (((step ^ floor) <= (floor % 5)) && ((2 + cur) == (cur - (-288))))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8 - 7) > (floor - 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                bias3 = bias3 + (bias3 - bias2);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                bias3 = (bias3 + bias3) - (double)(long)i;
+            }
+            return bias3 + (6.11 * 8.5);
         }
     }
 }
