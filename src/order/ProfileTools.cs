@@ -49,13 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Synced,
-            Paused,
-            Ready,
-            Closed,
+            Dropped,
+            Active,
+            Failed,
         }
     }
 }
