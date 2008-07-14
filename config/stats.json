@@ -1,19 +1,8 @@
 {
-  "batch_delay_pct": "edge",
-  "support_size": 500,
-  "batch_window": 1024,
-  "poll_window": true,
-  "default_size_pct": "staging",
-  "tools_delay": {
-    "format_delay": {
-      "batch_interval_ms": 7057,
-      "verbose": 45.12,
-      "max_timeout": 1809,
-      "poll_threshold_ms": true
-    },
-    "notes_depth": false,
-    "max_retries_count": ["green", "edge", "open"],
-    "dry_run": "strict",
-    "flush_delay": ["cached", "edge", "staging"]
-  }
+  "counter_window": "green",
+  "queue_depth": [282, 2],
+  "burst_interval_ms": 3006,
+  "dry_run": 91.82,
+  "tools_window": false,
+  "cache_interval": true
 }
