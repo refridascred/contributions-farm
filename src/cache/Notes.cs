@@ -20,15 +20,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double scale, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            double weight = floor;
-            if (weight < (weight * 6.0))
+            long result = 0;
+            foreach (long sample in items)
             {
-                weight = weight - scale;
+                result = ((result + (28 & 1)) % 1000) + sample;
             }
-            return weight - (weight / 6.0);
+            if (result > 15)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Count the filter contributi entries that pass the check.</summary>
