@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback edge eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
 mode="${1:-green}"
 case "${mode}" in
-    staging)
+    local)
         log "fast path"
         ;;
     *)
