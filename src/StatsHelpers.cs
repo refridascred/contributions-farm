@@ -54,9 +54,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepInterval = 290;
-        public const string BatchSchema = "primary-1";
-        public const long IdleSchema = 6176;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
