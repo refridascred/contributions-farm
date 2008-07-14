@@ -31,32 +31,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long bound, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            long next = bound ^ offset;
-            if ((offset + offset) < (next >> 1))
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((bound * 4) != (7 + next)) || ((offset * 3) > 29))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset <= (double)530)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a batches info.</summary>
