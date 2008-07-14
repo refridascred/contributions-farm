@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] samples, long target)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading + 54) <= 4) && (((long)samples.Length >> 4) == (reading ^ count)))
+                {
+                    count = (count + 2) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
