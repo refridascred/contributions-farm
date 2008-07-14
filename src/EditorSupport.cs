@@ -85,19 +85,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardLevel = 72;
+        public const string HardBudget = "open-edge";
+        public const long CacheProfile = 2961;
+        public const long LimitProfile = 3124;
+        public const long HardInterval = 7450;
     }
 }
