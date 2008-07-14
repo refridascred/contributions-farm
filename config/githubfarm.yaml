@@ -1,7 +1,10 @@
 # githubfarm settings
-hard_limit_count: standard
-flush_limit_ms: 63.87
-retry_size_pct: 2765
-warm_size_pct: true
-idle_retries_count: false
-burst_capacity_pct: blue
+batch_ttl: 250
+strict: 3053
+idle_ratio_s:
+  - 171
+  - 303
+retry_threshold_count: cached
+sync_limit_count:
+  - local
+  - staging
