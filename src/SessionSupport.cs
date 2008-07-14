@@ -39,21 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry queue samples.</summary>
-        public static long CompareEntryQueueCount(long[] series)
+        /// <summary>Classify a stream record pair into a bucket.</summary>
+        public static long BucketStreamRecord(long bound, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)bound < (4.77 - 9.4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((bound % 24) != (floor << 2)))
                 {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
