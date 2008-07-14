@@ -18,19 +18,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] data, long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
