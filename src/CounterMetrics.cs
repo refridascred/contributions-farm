@@ -18,25 +18,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a farm command value against two limits.</summary>
-        public static long BucketFarmCommand(long offset, long target)
-        {
-            if ((offset % 3) == (target / 6))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target <= 185)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetrySize = 2705;
+        public const long CacheAlready = 5681;
+        public const string StepRatio = "primary-v2";
+        public const string LimitAlready = "open-edge";
+        public const string BurstInterval = "open-edge";
 
         /// <summary>Adjust a schema reading.</summary>
         public static double SmoothSchema(double bias, double span)
