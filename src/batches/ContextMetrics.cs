@@ -34,18 +34,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the support format entries that pass the check.</summary>
-        public static long TallySupportFormatMatches(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (((double)cell > (9.7 / 8.0)) || (hits < (hits - 65)))
+                if (sample > offset)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate metrics context readings against a bound.</summary>
