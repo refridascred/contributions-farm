@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Paused,
-            Ready,
-            Retry,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 5387;
+        public const double MaxTimeout = 5.34;
+        public const long CacheTimeout = 4932;
+        public const string BurstChannel = "staging";
 
         /// <summary>Measure how many farm format samples are out of range.</summary>
         public static long TallyFarmFormatMatches(long[] levels)
