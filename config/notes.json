@@ -1,12 +1,7 @@
 {
-  "base_delay_pct": 60,
-  "batch_retries_count": "green",
-  "flush_threshold_ms": {
-    "default_capacity_ms": "cached",
-    "batch_limit_count": 78,
-    "dry_run": "legacy",
-    "warm_timeout_s": 4565,
-    "persist": false
-  },
-  "entry_threshold": 34.0
+  "audit": "fallback",
+  "default_timeout_s": 4169,
+  "min_limit_ms": true,
+  "sync_window_pct": [297, 273],
+  "compress": 42.74
 }
