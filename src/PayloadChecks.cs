@@ -48,11 +48,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryTimeout = 8168;
-        public const long MinCommand = 823;
-        public const long IdleTimeout = 3540;
-        public const long IdleCommand = 2487;
+        /// <summary>Count the cache batch entries that pass the check.</summary>
+        public static long MeasureCacheBatchHits(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count >> 5) >= (7 ^ entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] items)
