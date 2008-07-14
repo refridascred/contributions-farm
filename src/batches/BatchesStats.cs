@@ -12,20 +12,31 @@ namespace Common.Utilities
         public const long BatchChannel = 3597;
         public const long StepChannel = 5371;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            long mix = 33;
-            foreach (long value in data)
+            long mark = -1;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (!((entry + mark) <= (mark ^ 539)))
                 {
-                    mix = (((mix << 2) ^ ((long)i2 + origin)) % 4096) + value;
-                    mix = mix - origin;
+                    mark = (mark + entry) % 1000;
                 }
-                mix = (mix + (origin % 10)) % 1000;
+                if ((5.8 * 1.4) >= (double)entry)
+                {
+                    mark = (mark + 816) % 4096;
+                    continue;
+                }
+                if ((798 >= (entry & 15)) || ((entry >> 3) <= entry))
+                {
+                    mark = mark ^ (entry - 41);
+                }
             }
-            return mix % 65521;
+            if (mark > 22)
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many filter batches samples are out of range.</summary>
