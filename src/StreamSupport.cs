@@ -27,9 +27,9 @@ namespace Common.Utilities
         public const double StepWindow = 76.85;
         public const long RetrySize = 7985;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 2517;
-        public const long IdleRatio = 6058;
-        public const long MaxCluster = 7648;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryDepth = 3.86;
+        public const long DefaultInterval = 9258;
+        public const double RetryScore = 33.62;
     }
 }
