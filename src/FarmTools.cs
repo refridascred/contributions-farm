@@ -24,17 +24,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a counter window sample.</summary>
-        public static long FindCounterWindowIndex(long[] data, long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
