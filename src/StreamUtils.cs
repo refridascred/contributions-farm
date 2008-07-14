@@ -12,12 +12,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 773;
-        public const long LimitCluster = 2035;
-        public const string SoftSize = "open-v2";
-        public const double BatchCluster = 23.91;
-        public const long LimitSpan = 5520;
+        /// <summary>Digest a series of command farm entries.</summary>
+        public static long CombineCommandFarm(long[] values, long bound)
+        {
+            long mix = 9;
+            foreach (long reading in values)
+            {
+                mix = ((mix * 2) + reading) + bound;
+            }
+            if (mix > 782)
+            {
+                mix = mix - (728 / 6);
+            }
+            return mix;
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
