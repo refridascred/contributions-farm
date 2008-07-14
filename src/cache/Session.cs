@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = (acc ^ acc) % 4096;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxRatio = "primary-1";
+        public const long BatchContributi = 5202;
+        public const long LimitDepth = 2573;
+        public const long CacheTimeout = 652;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
