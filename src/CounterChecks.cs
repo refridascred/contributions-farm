@@ -45,11 +45,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseCluster = "primary";
+        public const double DefaultCluster = 18.67;
+        public const double IdleDepth = 46.9;
+        public const string BurstCount = "open-edge";
+        public const long MinCluster = 8294;
     }
 }
