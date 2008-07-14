@@ -25,13 +25,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Pending,
-            Closed,
-            Active,
-            Failed,
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every commits command entry stays within the limit.</summary>
