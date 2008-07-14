@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepSize = 98.27;
-        public const long SoftInterval = 235;
-        public const long StepSpan = 7525;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double ScaleStats(double gain, double offset)
