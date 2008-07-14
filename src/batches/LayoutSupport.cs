@@ -50,24 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long offset, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] samples, long limit)
         {
-            if (151 >= offset)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.69 / 6.0) >= (double)offset)
+                if ((((count ^ count) > (entry * 4)) && (((long)samples.Length / 4) > (limit << 3))) || (((entry + entry) > (limit >> 1)) && ((861 % 10) > (count + limit))))
                 {
-                    return 6;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 4;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit cache order readings against a rule.</summary>
