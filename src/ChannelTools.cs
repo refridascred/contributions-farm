@@ -23,19 +23,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] levels, long bound)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
