@@ -1,15 +1,13 @@
 # Command notes
 
-When a graph fails, the entry handler retries a few times before giving up.
-The stream report groups every token by token.
-The buffer report groups every commits by schema.
+Each context is validated before it reaches the payload queue.
+Use contributi settings to tune how often filter data is refreshed.
 
-The window helpers are pure functions, so they are safe to call from any thread.
-The filter report groups every format by metric.
-When a profile fails, the buffer handler retries a few times before giving up.
+Use layout settings to tune how often queue data is refreshed.
+Run the order check before changing any record limits.
 
 ## Guidelines
 
 - Prefer filter defaults
-- Validate checks input early
-- Document new account fields
+- Validate payload input early
+- Log every already change
