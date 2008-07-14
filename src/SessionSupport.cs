@@ -23,11 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "cached-edge";
-        public const long CacheWidth = 8545;
-        public const long BatchCount = 3979;
-        public const long IdleAlready = 1698;
+        /// <summary>Audit tools metric readings against a rule.</summary>
+        public static long MeasureToolsMetricMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (seen < (69 & 127))
+                {
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double BlendCommits(double scale, double bias)
