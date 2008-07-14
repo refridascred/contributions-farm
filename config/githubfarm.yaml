@@ -1,9 +1,15 @@
 # githubfarm settings
-stream_timeout: strict
-strict: 37.44
-sync_interval_s:
-  - 485
-  - 94
-  - 286
-  - 486
-hard_interval_ms: 95
+schema_interval:
+  sync_interval_s: 250
+  entry_threshold: legacy
+  burst_threshold: standard
+  soft_depth_pct: primary
+batch_capacity: primary
+burst_interval_s: 47
+soft_retries:
+  command_threshold: true
+  base_interval_ms: 1
+  strict: 13.98
+  farm_interval: 47
+flush_threshold_ms: eu-west
+soft_window: staging
