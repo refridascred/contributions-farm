@@ -15,15 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a buffer stats.</summary>
