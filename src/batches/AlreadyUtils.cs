@@ -51,21 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up command token samples.</summary>
-        public static long PairCommandTokenCount(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (10.0 < (double)seen)
                 {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 1) + entry) + origin;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
