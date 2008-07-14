@@ -23,12 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Pending,
-            Done,
-            Failed,
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
