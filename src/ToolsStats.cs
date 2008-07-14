@@ -67,22 +67,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - tally) > 437)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 6112;
+        public const string StepSpan = "alpha-v2";
+        public const long CacheRatio = 7336;
     }
 }
