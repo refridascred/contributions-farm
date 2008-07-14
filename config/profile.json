@@ -1,12 +1,7 @@
 {
-  "default_capacity": true,
-  "editor_interval": [475, 366],
-  "burst_ttl": {
-    "sync_threshold": 6093,
-    "base_retries_pct": "fallback",
-    "session_delay": 100
-  },
-  "retry_ratio_count": 250,
-  "warm_window_s": 17,
-  "burst_retries_s": "edge"
+  "max_capacity_s": 13,
+  "account_window": false,
+  "githubfarm_ttl": "staging",
+  "poll_limit": ["latest", "local"],
+  "token_delay": "green"
 }
