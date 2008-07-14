@@ -31,22 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleBudget = 5420;
+        public const double HardSpan = 22.21;
+        public const double IdleDepth = 38.14;
+        public const double LimitSize = 44.87;
+        public const double SoftSpan = 97.54;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long IterateBuffer(long bound)
