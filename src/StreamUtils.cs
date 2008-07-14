@@ -92,15 +92,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] levels, long target)
+        /// <summary>Locate a record window reading by value.</summary>
+        public static long SeekRecordWindowIndex(long[] levels, long seed)
         {
-            long anchor = 630;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor - (target << 1)) % 1000) + sample;
+                if ((levels[i] < seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
