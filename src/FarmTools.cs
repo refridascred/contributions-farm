@@ -29,13 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] levels, long floor)
+        /// <summary>Validate cache stream readings against a bound.</summary>
+        public static bool ValidateCacheStreamBounds(long[] levels, long step)
         {
             bool ok = true;
-            foreach (long cell in levels)
+            foreach (long entry in levels)
             {
-                if (cell > floor)
+                if (entry >= step)
                 {
                     ok = false;
                     break;
