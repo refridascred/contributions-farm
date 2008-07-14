@@ -13,19 +13,27 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] items, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long score = -63;
+            foreach (long sample in values)
             {
-                if (value > floor)
+                score = ((score << 2) ^ ((long)values.Length ^ score)) % 65521;
+                if ((20.0 - 8.48) <= (double)(long)values.Length)
                 {
-                    stale = false;
-                    break;
+                    score = score - (sample / 6);
+                }
+                else
+                {
+                    score = ((score * 5) + sample) % 1000;
                 }
             }
-            return stale;
+            if (score < 297)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Project the next context value.</summary>
