@@ -52,19 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order batch samples.</summary>
-        public static long DigestOrderBatch(long[] data, long step)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
         {
-            long state = 793;
-            foreach (long datum in data)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state ^ (state % 2)) % 255) - datum;
+                total = (total ^ (target % 64)) % 4096;
+                long next = total;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = (total + (next - total)) + (long)i2;
+                    next = (next + next) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (state > (-10))
-            {
-                state = ((state * 3) + (step * 5)) % 255;
-            }
-            return state % 65521;
+            return total;
         }
     }
 }
