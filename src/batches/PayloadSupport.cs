@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Done,
-            Paused,
-            Retry,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultDepth = "legacy";
+        public const long BaseRatio = 5073;
+        public const double RetryToken = 74.23;
+        public const long WindowTimeout = 7037;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long SoftAccount = 5099;
