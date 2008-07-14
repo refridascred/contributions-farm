@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum < seed)
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Grade a editor entry value against two limits.</summary>
