@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] values)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (!(seen >= 6) && ((2.0 * 8.0) != (double)seen))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
