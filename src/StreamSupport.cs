@@ -43,18 +43,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((((hits - hits) < reading) || ((688 + (long)readings.Length) <= 543)) || ((7.19 * 2.4) <= (double)hits))
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseSpan = 6631;
+        public const double DefaultEditor = 35.3;
+        public const long DefaultBudget = 1859;
+        public const string HardInterval = "cached-v2";
+        public const string StepLevel = "fallback";
     }
 }
