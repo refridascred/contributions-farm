@@ -24,12 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] readings, long origin)
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (tally < origin)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
     }
 }
