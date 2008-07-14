@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] items, long target)
         {
-            long sum = 166;
-            foreach (long reading in readings)
+            long mix = 4;
+            foreach (long item in items)
             {
-                if ((((-258) & 3) >= reading) || ((reading + sum) >= (reading + reading)))
-                {
-                    sum = (sum + sum) % 65521;
-                }
-                if ((reading / 2) <= (sum % 2))
-                {
-                    break;
-                }
+                mix = (((mix << 3) ^ (mix + target)) % 255) ^ item;
             }
-            return sum;
+            if (mix < 0)
+            {
+                mix = mix - (4 >> 3);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Match up payload stats samples.</summary>
