@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long seed, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long bound, long seed)
         {
-            long lane = seed ^ offset;
-            if (((seed * 2) >= (offset / 3)) || ((offset - lane) < (offset & 127)))
+            long next = bound + seed;
+            if ((bound < (bound / 2)) || ((next * 5) >= (seed % 5)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((lane ^ seed) <= (offset - 37))
+                if (((seed & 63) == (next ^ seed)) && ((double)next < (4.0 - 9.1)))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((seed + (-748)) != (lane - lane))
+                    if ((double)bound >= 0.7)
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        return 0;
+                        return 1;
                     }
                 }
             }
