@@ -1,7 +1,9 @@
 # githubfarm settings
-retry_depth_count: eu-west
-base_limit: 100
-flush_capacity_pct: 1
-persist: 1544
-poll_limit: local
-flush_retries_ms: 35.46
+stream_timeout: strict
+strict: 37.44
+sync_interval_s:
+  - 485
+  - 94
+  - 286
+  - 486
+hard_interval_ms: 95
