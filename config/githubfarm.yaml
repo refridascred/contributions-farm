@@ -1,12 +1,6 @@
 # githubfarm settings
-idle_size_count: 10
-strict:
-  - strict
-  - standard
-command_retries: 11.43
-enabled:
-  - 334
-  - 329
-  - 139
-  - 127
-flush_delay: 1501
+max_size: stable
+compress: 62.09
+route_retries: stable
+dry_run: eu-west
+min_depth_pct: blue
