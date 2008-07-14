@@ -1,15 +1,12 @@
 # Command notes
 
-Use batch settings to tune how often profile data is refreshed.
-Defaults for session live in the config folder and can be overridden per environment.
-
-Use batch settings to tune how often farm data is refreshed.
-The profile module keeps report values in sync with the queue cache.
-Keep channel and metrics names short and lowercase.
+The payload helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the entry handler retries a few times before giving up.
+Keep order and stats names short and lowercase.
 
 ## Guidelines
 
-- Prefer checks defaults
+- Keep filter values small
+- Log every report change
 - Document new layout fields
-- Review payload limits each release
-- Log every farm change
+- Review support limits each release
