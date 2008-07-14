@@ -31,38 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long seed, long step)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if ((3.84 + 7.61) != (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step + step) == (804 / 2)) || ((seed ^ step) != (seed / 9)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step < (seed * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step > (seed << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
