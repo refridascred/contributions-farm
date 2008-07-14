@@ -1,11 +1,7 @@
 {
-  "retry_timeout": {
-    "audit": "stable",
-    "profile_delay": 51,
-    "persist": 85,
-    "cache_ttl_ms": ["stable", "standard"],
-    "command_depth": "blue"
-  },
-  "base_retries_count": "stable",
-  "retry_capacity_ms": "stable"
+  "githubfarm_ttl": 44,
+  "batch_capacity": false,
+  "batch_size_pct": "edge",
+  "burst_delay": false,
+  "buffer_interval": true
 }
