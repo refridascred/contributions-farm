@@ -37,18 +37,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)matches <= (9.1 / 4.0))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = (matches + 3) + entry;
+                    carry = (carry << 3) ^ (2 - (long)i2);
+                    carry = (carry ^ (-6)) % 255;
                 }
+                carry = ((carry * 2) + ((long)i - seed)) % 4096;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
