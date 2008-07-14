@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a contributi stream pair into a bucket.</summary>
-        public static long GradeContributiStream(long bound, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] samples, long bound)
         {
-            if ((bound + bound) <= (limit + bound))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((7.1 * 4.0) == (double)bound) && ((double)limit < (7.01 / 3.0)))
+                if (((175 - seen) == (cell * 3)) || (((cell / 9) <= (67 + seen)) && ((double)cell > (2.4 + 4.2))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - limit) < bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + 1) - bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
