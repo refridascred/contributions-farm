@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] levels, long origin)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long state = 657;
-            foreach (long reading in levels)
-            {
-                if (((43 - state) <= (reading / 7)) || (71 < reading))
-                {
-                    state = (state << 2) ^ ((-2) + origin);
-                }
-            }
-            return state;
+            Locked,
+            Ready,
+            Failed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Blend two order measurements.</summary>
