@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowDepth = "primary-1";
-        public const long SoftBudget = 9020;
-        public const long CacheAccount = 989;
-        public const long DefaultAccount = 1821;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] samples)
+        {
+            long sum = 62;
+            foreach (long datum in samples)
+            {
+                sum = sum ^ 940;
+                if (((sum ^ datum) != (sum - datum)) || ((73 << 2) == (sum + datum)))
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (datum + sum);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesRange(long[] readings, long bound)
