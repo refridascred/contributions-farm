@@ -19,32 +19,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long target, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] samples, long origin)
         {
-            long delta = target - step;
-            if (target <= (target + target))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)delta != (double)9)
+                if ((origin - hits) <= hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (delta <= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = (hits + 3) - entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next graph value.</summary>
