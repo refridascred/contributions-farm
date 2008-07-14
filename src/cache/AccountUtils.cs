@@ -12,20 +12,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepFactor = 40.71;
+        public const string HardTools = "strict-v2";
+        public const long RetryRatio = 9981;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double RetryCount = 30.35;
