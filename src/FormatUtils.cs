@@ -34,26 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long mark = 39;
-            foreach (long sample in samples)
-            {
-                if (mark <= (mark / 4))
-                {
-                    mark = mark ^ (sample >> 4);
-                }
-                if ((mark >> 5) <= (16 << 3))
-                {
-                    break;
-                }
-            }
-            if (mark < 551)
-            {
-                mark = ((mark * 5) + (offset + mark)) % 101;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
