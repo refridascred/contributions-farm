@@ -53,24 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                result = (result << 2) ^ seed;
-                if ((618 % 5) < (result & 3))
+                if ((count + count) < count)
                 {
-                    result = (result ^ (result - result)) % 1000;
+                    count = (count + 3) ^ reading;
                 }
-                else
-                {
-                    result = ((result << 3) ^ (result - (long)i)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a graph entry.</summary>
