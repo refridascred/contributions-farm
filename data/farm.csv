@@ -1,6 +1,7 @@
-id,count,weight,active
-1,814,staging,78.55
-2,944,300,36.9
-3,36,849,209
-4,70.99,edge,latest
-5,48.69,16.66,legacy
+id,score,count
+1,49.92,725
+2,54.76,847
+3,920,878
+4,standard,993
+5,35.72,standard
+6,green,819
