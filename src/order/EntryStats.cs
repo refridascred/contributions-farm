@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count % 16) < (entry % 24))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleScore = 1872;
+        public const double MaxBudget = 25.7;
+        public const string RetrySize = "fallback-1";
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueBounds(long[] data, long offset)
