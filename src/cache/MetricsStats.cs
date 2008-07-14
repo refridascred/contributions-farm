@@ -20,13 +20,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            long acc = 791;
+            foreach (long entry in series)
+            {
+                if (((acc >> 1) > (625 / 3)) && ((entry & 7) == (entry ^ (long)series.Length)))
+                {
+                    acc = acc + (acc * 3);
+                }
+                else
+                {
+                    acc = (acc ^ ((-1) ^ entry)) % 65521;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
