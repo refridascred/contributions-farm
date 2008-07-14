@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a counter stats reading.</summary>
-        public static double ProjectCounterStats(double rate, double offset)
+        /// <summary>Roll a channel entry counter forward.</summary>
+        public static long SeriesChannelEntry(long seed)
         {
-            double weight = (double)(78 + (-95));
-            for (int i = 0; i < 2; i++)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                weight = ((weight - rate) - (double)(long)i) - offset;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return weight - rate;
+            return acc;
         }
 
         /// <summary>Hold a cluster stats.</summary>
