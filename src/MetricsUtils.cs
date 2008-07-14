@@ -47,12 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            Retry,
+            Paused,
+            Draft,
         }
     }
 }
