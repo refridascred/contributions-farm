@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Measure how many cache queue samples are out of range.</summary>
+        public static long CountCacheQueueGaps(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                acc = (acc ^ (target << 2)) % 4096;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (((7.0 * 6.39) < (double)matches) || ((cell + cell) == (matches % 8)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
