@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] readings)
         {
-            Failed,
-            Ready,
-            New,
-            Pending,
-            Idle,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (datum < tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a session options.</summary>
