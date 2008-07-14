@@ -1,7 +1,12 @@
 # entry settings
-dry_run: local
-cache_capacity_s: blue
-strict:
-  strict: 80.49
-  session_ratio: cached
-  burst_interval_ms: green
+idle_threshold: standard
+min_limit_s:
+  - 345
+  - 497
+  - 196
+strict: 34.99
+min_retries_count:
+  - edge
+  - stable
+  - latest
+editor_interval: legacy
