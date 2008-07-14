@@ -1,24 +1,6 @@
 {
-  "readonly": "eu-west",
-  "warm_interval_s": {
-    "format_timeout": 2513,
-    "flush_window_count": 30.51,
-    "window_retries": {
-      "compress": 5.86,
-      "default_threshold_count": "green",
-      "strict": "strict",
-      "persist": "cached",
-      "channel_size": 22.28
-    },
-    "soft_limit": {
-      "dry_run": true,
-      "notes_threshold": 96.85,
-      "default_capacity": "strict"
-    },
-    "idle_ratio_pct": 100
-  },
-  "base_window_ms": 100,
-  "verbose": "latest",
-  "session_capacity": 83.74,
-  "enabled": 7754
+  "warm_capacity": ["edge", "edge", "stable"],
+  "counter_capacity": 100,
+  "notes_capacity": true,
+  "readonly": "latest"
 }
