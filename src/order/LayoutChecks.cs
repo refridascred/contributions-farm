@@ -69,17 +69,18 @@ namespace Common.Utilities
         public const long DefaultCount = 7222;
         public const long HardGithubfarm = 272;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] data, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((data[i] >= step) && ((data[i] % 2) != 0))
+                if ((cell + (long)samples.Length) >= (6 + floor))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
