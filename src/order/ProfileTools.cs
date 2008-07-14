@@ -25,13 +25,21 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Compare every pair of checks channel readings.</summary>
+        public static long PairChecksChannelCount(long[] data)
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
