@@ -1,7 +1,11 @@
 {
-  "strict": 5707,
-  "entry_capacity": "eu-west",
-  "cluster_capacity": "fallback",
-  "compress": [235, 102, 259, 400],
-  "persist": true
+  "base_depth_count": 2879,
+  "idle_size": [465, 420, 149, 175],
+  "max_window_s": {
+    "warm_interval_count": "strict",
+    "warm_limit_count": 1024,
+    "flush_ratio": 2610
+  },
+  "checks_window": "standard",
+  "burst_timeout_count": 1024
 }
