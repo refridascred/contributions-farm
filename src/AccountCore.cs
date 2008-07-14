@@ -52,15 +52,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two booking measurements.</summary>
-        public static double AdjustBooking(double gain, double bias)
+        /// <summary>Rank cache schema input into a small class.</summary>
+        public static long ClassifyCacheSchema(long step, long offset)
         {
-            double weight = bias;
-            if (weight < 3.94)
+            long delta = step + offset;
+            if ((step + step) <= (step ^ step))
             {
-                weight = (weight - (7.0 / 7.0)) - gain;
+                return 5;
             }
-            return weight - 11.0;
+            else
+            {
+                if ((delta <= (delta + 0)) || ((delta & 127) <= 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
