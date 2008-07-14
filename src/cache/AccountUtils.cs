@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 1405;
-        public const double RetryWidth = 57.46;
-        public const double DefaultLevel = 10.54;
-        public const double IdleTimeout = 70.16;
-        public const double StepWidth = 28.19;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long FoldOrder(long[] data, long target)
