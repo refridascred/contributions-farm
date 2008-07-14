@@ -27,12 +27,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] items, long floor)
         {
-            Synced,
-            Dropped,
-            Idle,
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
