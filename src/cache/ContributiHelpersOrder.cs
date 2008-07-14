@@ -21,18 +21,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] items, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] readings)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mark = 445;
+            foreach (long cell in readings)
             {
-                if (47 >= item)
-                {
-                    count = (count + 2) - step;
-                }
+                mark = (mark - (mark << 2)) ^ cell;
             }
-            return count;
+            return mark;
         }
     }
 }
