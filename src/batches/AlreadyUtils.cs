@@ -30,14 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] levels)
         {
-            Active,
-            Retry,
-            Locked,
-            Draft,
-            Queued,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (!((count - cell) != (count + cell)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
