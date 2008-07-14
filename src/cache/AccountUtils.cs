@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double IdleTimeout = 70.16;
         public const double StepWidth = 28.19;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] series, long floor)
+        /// <summary>Count the commits format entries that pass the check.</summary>
+        public static long TallyCommitsFormatOutliers(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((seen - floor) >= (entry ^ seen)) || ((double)entry == (double)seen))
+                if ((bound >> 2) <= (count / 5))
                 {
-                    seen = seen + 3;
+                    count = (count + 2) - value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a account counter forward.</summary>
