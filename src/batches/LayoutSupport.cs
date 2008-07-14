@@ -57,12 +57,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] values)
         {
-            Done,
-            Stale,
-            Draft,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item + tally) < item)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
