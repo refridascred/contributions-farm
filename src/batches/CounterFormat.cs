@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long HardSize = 1132;
         public const long MinReport = 7756;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double gain, double bias)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] values, long step)
         {
-            double ratio = 18.0;
-            if (ratio < (2.4 / 8.0))
+            bool valid = true;
+            foreach (long item in values)
             {
-                ratio = (ratio - gain) + bias;
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + 9.12) - (double)(long)i;
-            }
-            return ratio + (double)(-303);
+            return valid;
         }
 
         /// <summary>Hold a order info.</summary>
