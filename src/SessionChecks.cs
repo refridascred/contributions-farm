@@ -32,18 +32,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] data, long seed)
+        /// <summary>Classify a channel filter pair into a bucket.</summary>
+        public static long BucketChannelFilter(long step, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if ((596 * 2) <= bound)
             {
-                if (1 <= seed)
+                return 2;
+            }
+            else
+            {
+                if ((8.79 * 15.0) == (double)bound)
                 {
-                    seen = (seen + 2) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    if (!((step / 6) == (bound >> 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7.7 / 8.0) < (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
