@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of already window entries.</summary>
-        public static long ScoreAlreadyWindow(long[] samples, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long state = 0;
-            foreach (long cell in samples)
-            {
-                state = ((state << 3) ^ (floor << 2)) % 101;
-                if ((floor + floor) == ((long)samples.Length - floor))
-                {
-                    state = state ^ (state / 9);
-                    state = (state * 4) + (long)samples.Length;
-                    break;
-                }
-                else
-                {
-                    state = ((state * 5) + (cell / 7)) % 255;
-                    state = state - (cell >> 2);
-                }
-                if (!((double)cell != (2.41 / 7.0)))
-                {
-                    state = (state + cell) % 255;
-                }
-            }
-            return state;
+            Closed,
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
