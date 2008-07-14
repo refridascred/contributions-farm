@@ -36,13 +36,16 @@ namespace Common.Utilities
         public const long RetryScore = 6775;
         public const string CacheTimeout = "strict-edge";
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long seed)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long state = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state - (78 - 973)) % 97;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a queue stats.</summary>
