@@ -13,22 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] samples, long step)
+        /// <summary>Roll a queue record counter forward.</summary>
+        public static long RollQueueRecord(long offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (((step / 5) == (96 - seen)) && ((step + seen) != (step - step)))
+                if (acc < 7)
                 {
-                    seen = (seen + 2) ^ cell;
+                    acc = (acc * 5) + offset;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = acc ^ (offset + (long)i);
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the counter level values.</summary>
