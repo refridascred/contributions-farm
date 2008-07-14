@@ -34,19 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] items, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < target)
+                if (samples[i] == seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
