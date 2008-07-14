@@ -12,23 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double weight, double floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double bias = 7.0;
-            if (bias <= (weight / 2.0))
-            {
-                bias = bias + 8.0;
-            }
-            else
-            {
-                bias = bias + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + weight) + (double)(long)i;
-            }
-            return bias + (double)85;
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a commits options.</summary>
