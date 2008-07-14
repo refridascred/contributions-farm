@@ -16,18 +16,18 @@ namespace Common.Utilities
             return drift + (double)45;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] values, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] items)
         {
-            long acc = 345;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((double)entry == (3.6 - 3.0))
+                if ((count & 63) >= (count << 2))
                 {
-                    acc = (((acc << 2) ^ entry) % 97) - floor;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
