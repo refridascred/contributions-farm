@@ -1,10 +1,5 @@
 # githubfarm settings
-batch_retries_s: open
-format_limit: latest
-warm_window:
-  - 319
-  - 105
-  - 101
-retry_interval: 8.01
-hard_size_ms: 16
-soft_size_count: 364
+githubfarm_retries: 46.75
+sync_capacity_ms: 500
+token_ttl: false
+warm_capacity_s: 2.56
