@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const string CacheGraph = "fallback";
         public const double CacheRatio = 58.6;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mix = 546;
-            foreach (long item in readings)
-            {
-                if (!(((-9) / 9) < (item >> 2)))
-                {
-                    mix = (mix + (mix - 903)) % 4096;
-                }
-            }
-            if (mix < 8)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
+            Synced,
+            Retry,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Project the next batch channel value.</summary>
