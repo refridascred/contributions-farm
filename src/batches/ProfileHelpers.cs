@@ -65,21 +65,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count profile channel pairs that satisfy a relation.</summary>
-        public static long CompareProfileChannelCount(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
     }
 }
