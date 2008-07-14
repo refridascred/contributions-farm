@@ -1,9 +1,6 @@
 {
-  "account_interval": [251, 426],
-  "sync_retries_ms": 85.05,
-  "base_interval_s": {
-    "audit": 39,
-    "batch_retries_pct": 4485,
-    "soft_ratio_ms": 9.31
-  }
+  "idle_size_ms": ["primary", "strict", "legacy"],
+  "sync_threshold_count": 91.72,
+  "dry_run": "blue",
+  "batch_delay_pct": true
 }
