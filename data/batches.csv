@@ -1,9 +1,6 @@
-id,active,ratio,region,count
-1,97.65,67.69,27.64,eu-west
-2,stable,local,41.99,52.01
-3,973,28.11,59.2,54.41
-4,92.82,944,standard,latest
-5,62.62,759,987,458
-6,standard,473,2.72,765
-7,441,347,970,760
-8,94.47,37.53,fallback,930
+id,label,level,owner
+1,primary,17.78,open
+2,3.93,290,latest
+3,15.11,1.41,strict
+4,310,977,610
+5,469,58.34,911
