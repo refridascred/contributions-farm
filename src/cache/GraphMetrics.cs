@@ -46,13 +46,16 @@ namespace Common.Utilities
         public const string LimitContext = "strict";
         public const double BurstContext = 1.39;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            Idle,
-            Synced,
-            Failed,
-            Locked,
+            long anchor = 73;
+            foreach (long datum in levels)
+            {
+                anchor = anchor + (datum >> 5);
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
