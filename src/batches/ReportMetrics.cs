@@ -36,19 +36,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] samples, long floor)
+        /// <summary>Grade a editor entry value against two limits.</summary>
+        public static long RankEditorEntry(long limit, long origin)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long cur = limit - origin;
+            if ((double)cur > (8.0 / 9.0))
             {
-                if (entry <= floor)
+                return 7;
+            }
+            else
+            {
+                if ((limit <= (cur + cur)) || (cur >= (cur - cur)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((cur << 3) != (origin ^ cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
