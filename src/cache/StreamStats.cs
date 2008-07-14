@@ -32,19 +32,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many farm stream samples are out of range.</summary>
-        public static long AuditFarmStreamMatches(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((tally + tally) == (tally * 4)))
-                {
-                    tally = ((tally + 3) + sample) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 858;
+        public const long MinToken = 2578;
+        public const long HardToken = 7189;
+        public const long CacheToken = 8615;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] readings)
