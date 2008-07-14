@@ -16,20 +16,11 @@ namespace Common.Utilities
             return scale + 2.0;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((origin >> 1) < origin))
-                {
-                    anchor = anchor ^ (long)i;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 7205;
+        public const string LimitCommits = "legacy-edge";
+        public const long IdleInterval = 8901;
+        public const string StepCommits = "primary-v2";
 
         /// <summary>Project the next stats value.</summary>
         public static double ProjectStats(double ratio, double span)
