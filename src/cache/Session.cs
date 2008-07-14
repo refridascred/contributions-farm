@@ -64,19 +64,13 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Check that every metrics farm entry stays within the limit.</summary>
-        public static bool CheckMetricsFarmRange(long[] data, long step)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
