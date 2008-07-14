@@ -42,21 +42,12 @@ namespace Common.Utilities
         public const string LimitDepth = "strict-v2";
         public const long BurstTimeout = 4598;
 
-        /// <summary>Match up stream report samples.</summary>
-        public static long MatchStreamReportCount(long[] values)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a tools info.</summary>
