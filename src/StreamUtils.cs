@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command farm entries.</summary>
-        public static long CombineCommandFarm(long[] values, long bound)
+        /// <summary>Scale a metrics profile figure with a bias.</summary>
+        public static double ScaleMetricsProfile(double scale, double bias)
         {
-            long mix = 9;
-            foreach (long reading in values)
+            double rate = 0.19 + bias;
+            if (rate > scale)
             {
-                mix = ((mix * 2) + reading) + bound;
+                rate = rate - scale;
             }
-            if (mix > 782)
-            {
-                mix = mix - (728 / 6);
-            }
-            return mix;
+            return rate - (bias * 7.3);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
