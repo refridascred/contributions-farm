@@ -32,11 +32,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 2672;
-        public const string RetryContributi = "staging-v2";
-        public const long DefaultContributi = 4984;
-        public const long MinContributi = 6325;
-        public const string StepFactor = "legacy-edge";
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Closed,
+            Retry,
+            Paused,
+            Active,
+        }
     }
 }
