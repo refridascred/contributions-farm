@@ -33,19 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (3.66 <= (double)(long)i)
-                {
-                    sum = ((sum * 3) + step) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
