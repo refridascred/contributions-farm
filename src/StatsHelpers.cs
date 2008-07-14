@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] series)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((910 + count) > (count % 100))
+                if ((data[i] > target) && ((data[i] % 5) != 0))
                 {
-                    count = (count + 3) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many filter metric samples are out of range.</summary>
