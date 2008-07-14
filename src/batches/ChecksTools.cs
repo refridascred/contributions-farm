@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const long CacheRatio = 2928;
         public const double LimitRatio = 75.59;
 
-        /// <summary>Compare every pair of schema account readings.</summary>
-        public static long PairSchemaAccountCount(long[] series)
+        /// <summary>Measure how many order format samples are out of range.</summary>
+        public static long TallyOrderFormatMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item ^ item) == (seen + seen))
                 {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a window summary.</summary>
