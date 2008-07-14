@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardRatio = 4075;
-        public const double LimitMetric = 76.72;
-        public const double DefaultScore = 38.41;
-        public const long CacheRatio = 2928;
-        public const double LimitRatio = 75.59;
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiLimits(long[] samples, long bound)
