@@ -29,10 +29,22 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinSpan = "legacy";
-        public const double BatchFormat = 51.58;
-        public const long DefaultRatio = 3746;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaRange(long[] items, long target)
