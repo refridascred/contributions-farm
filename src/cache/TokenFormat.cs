@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 1076;
-        public const long MinContext = 2557;
-        public const long CacheContext = 8694;
-        public const long BurstInterval = 8592;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long bound, long target)
+        {
+            if (target < (432 >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((1.0 + 7.15) <= (double)bound) || ((5.9 * 5.01) <= (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
