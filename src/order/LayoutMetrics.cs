@@ -15,11 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of schema metrics readings.</summary>
