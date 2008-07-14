@@ -49,19 +49,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] items, long bound)
-        {
-            long acc = 445;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = (acc - (value + (long)i)) - bound;
-                }
-                acc = (acc << 2) ^ (value - acc);
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "primary";
+        public const string BurstCount = "cached-v2";
+        public const double StepContext = 57.66;
+        public const long CacheContext = 2548;
     }
 }
