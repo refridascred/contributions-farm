@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items)
-        {
-            long sum = 8;
-            foreach (long cell in items)
-            {
-                sum = (sum ^ (sum + 75)) % 1000;
-                if ((cell * 5) <= sum)
-                {
-                    sum = sum ^ (cell - sum);
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 37.22;
+        public const double BaseCommand = 64.08;
+        public const long DefaultWidth = 5975;
+        public const long CacheBudget = 7272;
+        public const double LimitCommand = 73.34;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long HardOrder = 3359;
