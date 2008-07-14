@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Fold a list of cache commits readings.</summary>
+        public static long WeighCacheCommits(long[] levels, long step)
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            long result = 19;
+            foreach (long sample in levels)
+            {
+                result = (result ^ 22) + step;
+                if ((sample * 3) >= sample)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Classify a queue payload pair into a bucket.</summary>
