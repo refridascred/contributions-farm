@@ -25,11 +25,24 @@ namespace Common.Utilities
             return load - (double)915;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long origin, long offset)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            if ((9 + offset) > origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin + origin) < (offset ^ (-58))) && (117 >= (origin / 6)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
