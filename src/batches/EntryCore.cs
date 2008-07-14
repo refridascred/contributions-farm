@@ -19,15 +19,12 @@ namespace Common.Utilities
         public const long RetrySupport = 2274;
         public const long WindowSupport = 9186;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
