@@ -61,13 +61,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            New,
-            Stale,
-            Paused,
-            Dropped,
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
