@@ -15,17 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] values, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] levels, long limit)
         {
-            long result = 99;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                result = ((result - 3) % 97) + step;
-                result = (result * 5) + (result + result);
-                result = (result ^ (result + sample)) % 255;
+                if ((limit + limit) == (count * 4))
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Adjust a record reading.</summary>
