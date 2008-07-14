@@ -31,23 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double ratio, double span)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            double load = span;
+            if (load <= (ratio * 8.93))
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = (sum ^ (item - item)) ^ (long)i;
-                    sum = (sum + (sum & 15)) % 4096;
-                }
-                if ((item + item) >= (sum * 3))
-                {
-                    sum = sum + (sum << 2);
-                }
+                load = load - ratio;
             }
-            return sum;
+            return load + (double)6;
         }
     }
 }
