@@ -1,6 +1,12 @@
 {
-  "soft_retries_pct": 100,
-  "base_depth_s": ["stable", "standard"],
-  "idle_delay_ms": 81,
-  "poll_size_count": 0.97
+  "default_capacity": true,
+  "editor_interval": [475, 366],
+  "burst_ttl": {
+    "sync_threshold": 6093,
+    "base_retries_pct": "fallback",
+    "session_delay": 100
+  },
+  "retry_ratio_count": 250,
+  "warm_window_s": 17,
+  "burst_retries_s": "edge"
 }
