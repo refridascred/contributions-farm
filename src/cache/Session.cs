@@ -52,13 +52,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] items, long offset)
         {
-            Ready,
-            New,
-            Retry,
-            Paused,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
