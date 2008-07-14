@@ -1,7 +1,10 @@
-id,ratio
-1,local
-2,160
-3,295
-4,375
-5,196
-6,standard
+id,rank,level,token
+1,82.21,local,69.66
+2,375,eu-west,70.13
+3,74.94,14.95,82.88
+4,751,745,46.66
+5,443,staging,78.41
+6,48.09,75.76,381
+7,stable,blue,817
+8,stable,62,legacy
+9,158,152,243
