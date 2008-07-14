@@ -17,11 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long result = 661;
+            foreach (long datum in samples)
+            {
+                result = ((result ^ result) % 1000) + datum;
+                result = (result ^ (0 << 2)) % 255;
+                result = result + (result ^ 4);
+            }
+            if (result < 47)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Project the next tools buffer value.</summary>
