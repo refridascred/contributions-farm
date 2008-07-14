@@ -23,19 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session window samples are out of range.</summary>
-        public static long MeasureSessionWindowHits(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!((double)datum >= 3.95))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardFactor = 4558;
+        public const long DefaultWindow = 4550;
+        public const long IdleWindow = 1652;
+        public const long BatchWindow = 2818;
+        public const string CacheRatio = "standard-1";
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
