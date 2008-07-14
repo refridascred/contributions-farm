@@ -16,14 +16,17 @@ namespace Common.Utilities
             return load - (double)78;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Look up the position of a farm support sample.</summary>
+        public static long LookupFarmSupportIndex(long[] levels, long offset)
         {
-            Closed,
-            Synced,
-            Retry,
-            New,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next batch channel value.</summary>
