@@ -16,22 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] samples)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (reading > ((-4) & 7))
+                if (datum < origin)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Match up profile samples.</summary>
