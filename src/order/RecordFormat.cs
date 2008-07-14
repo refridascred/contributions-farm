@@ -26,28 +26,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] series)
-        {
-            long mark = 28;
-            foreach (long sample in series)
-            {
-                mark = ((mark << 2) ^ (mark + 575)) % 65521;
-                if ((484 + mark) <= (sample * 4))
-                {
-                    mark = ((mark * 5) + mark) % 255;
-                }
-                else
-                {
-                    mark = (mark * 3) + (-538);
-                }
-            }
-            if (mark < (-311))
-            {
-                mark = (mark + (mark + 77)) % 4096;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 4412;
+        public const long BaseRatio = 383;
+        public const long DefaultRatio = 9028;
+        public const double BatchSize = 32.7;
+        public const long MaxRecord = 7345;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long bound)
