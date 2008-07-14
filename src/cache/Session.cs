@@ -53,24 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long mix = 7;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = ((mix << 2) ^ (item + 115)) ^ (long)i;
-                }
-                mix = (mix ^ (29 & 255)) % 97;
-                mix = mix ^ (item * 5);
-            }
-            if (mix > 72)
-            {
-                mix = (mix - (mix + mix)) % 101;
-            }
-            return mix % 65521;
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a editor entry.</summary>
