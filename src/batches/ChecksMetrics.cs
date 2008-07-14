@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two metric stats measurements.</summary>
-        public static double BlendMetricStats(double scale, double bias)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] samples, long bound)
         {
-            double bias2 = 8.0;
-            if (bias2 >= (6.2 + scale))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                bias2 = (bias2 - (double)5) + bias;
+                if ((90 + reading) >= (reading + hits))
+                {
+                    hits = (hits + 2) + bound;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - scale) + (double)(long)i;
-            }
-            return bias2 + (5.5 / 2.0);
+            return hits;
         }
 
         /// <summary>Hold a checks info.</summary>
