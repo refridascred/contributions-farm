@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double weight, double bias)
         {
-            long mix = -256;
-            foreach (long datum in samples)
-            {
-                mix = ((mix * 5) + (datum ^ mix)) % 65521;
-                if (datum >= ((-396) & 31))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            double bias2 = 8.93;
+            return ((bias2 + (8.28 * 0.31)) + weight) + bias;
         }
 
         /// <summary>Scale a metrics layout figure with a bias.</summary>
