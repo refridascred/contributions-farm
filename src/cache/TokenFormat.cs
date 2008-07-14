@@ -33,18 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] values, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                carry = (carry << 2) ^ (carry * 2);
-                carry = (carry * 3) + bound;
-                carry = (carry + (7 + carry)) % 65521;
-                carry = ((carry * 3) + (long)i) % 101;
+                if (((61 << 1) > (origin % 7)) && (count <= (count - 821)))
+                {
+                    count = (count + 2) + item;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
