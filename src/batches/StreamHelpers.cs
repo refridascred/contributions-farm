@@ -48,21 +48,10 @@ namespace Common.Utilities
         public const long LimitRoute = 5718;
         public const long LimitWidth = 3705;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data, long step)
-        {
-            long anchor = 72;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor * 2) + (step / 3)) ^ cell;
-                anchor = (anchor * 2) + (step / 9);
-            }
-            if (anchor > 92)
-            {
-                anchor = anchor - step;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 50.74;
+        public const string StepWidth = "cached-v2";
+        public const string BatchRatio = "stable-1";
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] values)
