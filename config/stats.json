@@ -1,19 +1,7 @@
 {
-  "base_size": false,
-  "persist": {
-    "idle_limit_s": 51,
-    "session_delay": false,
-    "verbose": "latest",
-    "warm_delay_pct": true,
-    "warm_capacity_s": 81.82,
-    "window_ttl": {
-      "dry_run": "legacy",
-      "flush_capacity_s": 45,
-      "batch_retries": true,
-      "graph_retries": 6422
-    }
-  },
-  "report_ratio": true,
-  "verbose": 51,
-  "stream_ratio": [68, 434, 45]
+  "flush_size": true,
+  "counter_interval": 17.31,
+  "warm_window_ms": 61,
+  "batch_depth_pct": [493, 470, 4],
+  "githubfarm_limit": "blue"
 }
