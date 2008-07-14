@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] readings, long limit)
         {
-            long carry = 4;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((value >> 5) == (carry + carry))
+                if (limit < (6 & 7))
                 {
-                    carry = ((carry << 3) ^ (891 * 4)) + target;
+                    tally = (tally + 2) + entry;
                 }
             }
-            if (carry > 759)
-            {
-                carry = carry + ((-442) + carry);
-            }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
