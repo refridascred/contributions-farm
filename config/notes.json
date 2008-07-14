@@ -1,5 +1,14 @@
 {
-  "readonly": 100,
-  "tools_ratio": 1197,
-  "cache_limit": true
+  "hard_ttl_s": {
+    "strict": 68.29,
+    "idle_timeout_ms": 41,
+    "base_timeout_pct": true,
+    "hard_ttl_count": 58.56,
+    "verbose": "local",
+    "compress": [343, 87, 62]
+  },
+  "persist": 60,
+  "burst_capacity_ms": true,
+  "enabled": 9919,
+  "max_limit_pct": "strict"
 }
