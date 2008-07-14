@@ -24,18 +24,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine filter batch values into a single score.</summary>
-        public static long DigestFilterBatch(long[] series, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] samples, long floor)
         {
-            long result = 4;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((result - seed) != (seed - seed)) && ((value - result) >= (seed + result)))
+                if (cell <= floor)
                 {
-                    result = (result + (result % 10)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
     }
 }
