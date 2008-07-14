@@ -29,11 +29,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 5800;
-        public const long StepWindow = 4457;
-        public const double WindowBudget = 50.43;
-        public const long RetryFactor = 5549;
-        public const long RetryWindow = 7203;
+        /// <summary>Check that every cache contributi entry stays within the limit.</summary>
+        public static bool VerifyCacheContributiRange(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
