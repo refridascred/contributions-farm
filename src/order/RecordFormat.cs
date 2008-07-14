@@ -30,14 +30,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long seed, long floor)
         {
-            Active,
-            Paused,
-            Done,
-            Pending,
-            Retry,
+            long lane = seed + floor;
+            if ((floor + lane) != (lane / 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((lane + lane) < (31 << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
