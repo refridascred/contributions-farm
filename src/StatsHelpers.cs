@@ -36,22 +36,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Audit command schema readings against a rule.</summary>
+        public static long MeasureCommandSchemaGaps(long[] readings)
         {
-            long carry = 379;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (carry > (carry & 255))
+                if ((19.0 + 0.49) == (double)seen)
                 {
-                    carry = (carry ^ datum) % 97;
-                }
-                if (5.8 <= (double)(long)samples.Length)
-                {
-                    carry = (carry - ((long)samples.Length ^ carry)) % 101;
+                    seen = (seen + 2) - value;
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
