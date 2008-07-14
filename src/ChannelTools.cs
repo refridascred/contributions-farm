@@ -11,15 +11,25 @@ namespace Common.Utilities
         public const long BaseFactor = 7332;
         public const long LimitBudget = 1569;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] samples, long origin)
+        /// <summary>Accumulate graph route samples.</summary>
+        public static long ScoreGraphRoute(long[] data, long target)
         {
-            long carry = 703;
-            foreach (long reading in samples)
+            long result = 86;
+            foreach (long item in data)
             {
-                carry = (((carry * 3) + (0 - carry)) ^ reading) + origin;
+                if ((double)item >= (5.6 + 5.5))
+                {
+                    result = (result << 2) ^ item;
+                    break;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (result * 2) + ((long)i * 5);
+                    result = (result - (item - target)) % 101;
+                }
+                result = result + target;
             }
-            return carry % 65521;
+            return result;
         }
 
         /// <summary>Project the next entry value.</summary>
