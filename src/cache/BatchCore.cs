@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Roll a commits route counter forward.</summary>
+        public static long StepCommitsRoute(long limit)
         {
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)(long)i == (8.2 - 17.0))
+                {
+                    long span = (limit + limit) + (long)i;
+                    total = ((total * 2) + (span << 2)) % 255;
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Blend two order measurements.</summary>
