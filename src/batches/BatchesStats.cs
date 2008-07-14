@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const long BatchChannel = 3597;
         public const long StepChannel = 5371;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Failed,
+            Idle,
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Measure how many filter batches samples are out of range.</summary>
