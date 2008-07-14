@@ -63,20 +63,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] items, long floor)
+        /// <summary>Grade a profile session value against two limits.</summary>
+        public static long SortProfileSession(long bound, long step)
         {
-            long acc = -3;
-            foreach (long reading in items)
+            long diff = bound + step;
+            if (!(40 >= diff))
             {
-                acc = (acc ^ (reading + (-14))) % 97;
-                acc = ((acc * 2) + reading) % 97;
+                return 0;
             }
-            if (acc > 36)
+            else
             {
-                acc = (acc ^ (acc + floor)) % 101;
+                if ((bound + step) < diff)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step > 1.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((18.0 / 4.0) >= (double)diff) && ((920 - step) == (6 + 89)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
