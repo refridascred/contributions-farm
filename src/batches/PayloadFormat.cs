@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 1.3;
+        public const double StepRatio = 82.91;
+        public const long IdleCount = 4160;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool GuardProfileLimits(long[] series, long origin)
