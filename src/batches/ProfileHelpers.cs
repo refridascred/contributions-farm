@@ -22,18 +22,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
-        public static long TallyGithubfarmMetricMatches(long[] readings, long bound)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)hits <= (double)datum) || (((bound / 9) == (datum * 2)) || ((double)hits != (1.87 - 2.4))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
