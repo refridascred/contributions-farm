@@ -30,15 +30,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of command entry readings.</summary>
-        public static long TallyCommandEntry(long[] items)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long result = 77;
-            foreach (long reading in items)
-            {
-                result = ((result - (result + 900)) % 65521) + reading;
-            }
-            return result;
+            Pending,
+            Active,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
