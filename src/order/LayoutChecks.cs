@@ -23,18 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor buffer samples are out of range.</summary>
-        public static long CountEditorBufferGaps(long[] items, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] items, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long acc = -74;
+            foreach (long entry in items)
             {
-                if ((70 + sample) < (2 + sample))
-                {
-                    count = (count + 1) + offset;
-                }
+                acc = ((acc + (entry << 2)) % 255) - step;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
