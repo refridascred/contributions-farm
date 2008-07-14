@@ -27,13 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Synced,
-            Locked,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 36.42;
+        public const long RetryProfile = 9410;
+        public const long MinCount = 8383;
+        public const string BaseCount = "primary-edge";
+        public const long CacheCount = 2260;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsHits(long[] series, long floor)
