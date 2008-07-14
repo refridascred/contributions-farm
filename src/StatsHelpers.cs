@@ -42,23 +42,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] readings, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            long mark = 73;
-            foreach (long cell in readings)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                long matches = (mark & 31) << 3;
-                if ((target % 10) >= target)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    mark = (mark - (matches - target)) % 97;
+                    result = ((result + (result + result)) % 255) ^ (long)i2;
                 }
-                if ((double)cell != (4.9 * 9.2))
-                {
-                    mark = ((mark << 3) ^ (cell - 23)) % 97;
-                }
+                result = ((result * 4) + (30 - limit)) % 65521;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
