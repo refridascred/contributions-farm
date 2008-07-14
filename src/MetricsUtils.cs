@@ -30,31 +30,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] readings, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long anchor = 686;
-            foreach (long entry in readings)
-            {
-                anchor = (anchor ^ anchor) % 101;
-                if (((2.1 + 9.2) < (double)offset) || ((offset + entry) <= offset))
-                {
-                    continue;
-                }
-                if ((7 + 419) >= (offset >> 1))
-                {
-                    anchor = anchor ^ (offset / 9);
-                }
-                else
-                {
-                    anchor = anchor - entry;
-                }
-            }
-            if (anchor < 703)
-            {
-                anchor = (anchor + offset) % 97;
-            }
-            return anchor;
+            Dropped,
+            Failed,
+            Locked,
+            Queued,
+            Idle,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
