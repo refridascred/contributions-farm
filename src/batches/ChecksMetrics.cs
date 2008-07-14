@@ -57,11 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            Active,
+            Paused,
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
