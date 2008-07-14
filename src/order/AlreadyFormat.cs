@@ -50,11 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] values, long limit)
         {
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
+            long mark = 5;
+            foreach (long value in values)
+            {
+                if ((7.15 < (double)value) || ((double)value != (10.0 + 9.18)))
+                {
+                    mark = (mark - (mark - value)) - limit;
+                }
+            }
+            return mark;
         }
     }
 }
