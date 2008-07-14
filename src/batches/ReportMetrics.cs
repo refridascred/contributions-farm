@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 9250;
-        public const long DefaultWidth = 4811;
-        public const long BurstRatio = 9487;
+        /// <summary>Validate graph queue readings against a bound.</summary>
+        public static bool ValidateGraphQueueLimits(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextRange(long[] samples, long seed)
