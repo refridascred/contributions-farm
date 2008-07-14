@@ -39,23 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double gain, double span)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double scale = 4.27;
-            if (scale < (double)720)
-            {
-                scale = scale + 8.3;
-            }
-            else
-            {
-                scale = scale - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + span;
+            public bool Total { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
