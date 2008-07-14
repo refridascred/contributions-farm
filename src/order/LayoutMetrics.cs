@@ -15,13 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            Active,
+            Dropped,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Project the next schema value.</summary>
