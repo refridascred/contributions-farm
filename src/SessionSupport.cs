@@ -22,19 +22,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] items)
         {
-            double rate = (double)(74 + 13);
-            if (rate >= (3.0 + rate))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - (gain + 8.3)) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + gain) - (double)(long)i;
-            }
-            return rate - 7.25;
+            return matches;
         }
     }
 }
