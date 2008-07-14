@@ -14,10 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftSpan = 1212;
-        public const double DefaultCommand = 79.82;
-        public const long MinCommand = 4644;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((origin ^ origin) < (origin % 10)))
+                {
+                    score = ((score << 2) ^ (origin << 1)) % 65521;
+                }
+                if (!((origin << 1) != ((-27) % 64)))
+                {
+                    score = (score + (origin - score)) % 101;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
