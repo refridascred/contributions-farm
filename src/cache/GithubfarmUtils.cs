@@ -16,14 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] values, long origin)
         {
-            Ready,
-            Pending,
-            Locked,
-            Draft,
-            Idle,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the metrics class values.</summary>
