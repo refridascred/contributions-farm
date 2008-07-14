@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels, long offset)
+        /// <summary>Blend two queue commits measurements.</summary>
+        public static double BlendQueueCommits(double weight, double bias)
         {
-            long total = 69;
-            foreach (long cell in levels)
+            double mean = bias;
+            if (mean < (bias / 6.0))
             {
-                long lane = (4 << 3) << 3;
-                total = (total - lane) + offset;
-                total = (total << 2) ^ (cell * 4);
+                mean = mean + weight;
             }
-            return total;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (double)78) - (double)(long)i;
+            }
+            return mean - (bias * 0.63);
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
