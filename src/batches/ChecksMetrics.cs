@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((90 + reading) >= (reading + hits))
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 78.8;
+        public const double IdleTimeout = 24.11;
+        public const string StepCount = "legacy-v2";
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
