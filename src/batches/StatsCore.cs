@@ -67,21 +67,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum ^ (sum / 4)) % 255;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
