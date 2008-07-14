@@ -22,24 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long floor, long floor2)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            if (6.4 <= (double)floor2)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((floor2 & 3) == (floor + floor)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
