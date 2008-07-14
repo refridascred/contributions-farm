@@ -1,11 +1,25 @@
 # githubfarm settings
-compress:
-  strict: 500
-  flush_ratio_s: true
-  poll_delay_s: blue
-  batches_capacity: 5592
-contributi_limit: 4704
-account_limit: 62.77
-batch_window: 5677
-default_delay_pct: true
-report_timeout: 500
+cache_ratio:
+  poll_timeout_pct: true
+  sync_timeout_count: 59.46
+  readonly: 41.2
+  soft_timeout:
+    - 89
+    - 182
+    - 401
+    - 105
+  hard_size: 97.71
+stats_ttl:
+  - 436
+  - 206
+  - 492
+  - 358
+flush_interval: 1607
+cache_ratio_pct:
+  - green
+  - local
+  - stable
+  - cached
+verbose:
+  - latest
+  - blue
