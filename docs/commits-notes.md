@@ -1,14 +1,10 @@
 # Commits notes
 
-A layout that stays idle for too long is moved to the tools list.
-The booking report groups every queue by window.
-The order report groups every format by stream.
-
-Defaults for filter live in the config folder and can be overridden per environment.
-A cluster that stays idle for too long is moved to the metrics list.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The token report groups every cluster by stream.
 
 ## Guidelines
 
-- Log every queue change
-- Document new commits fields
-- Prefer cluster defaults
+- Keep farm values small
+- Review already limits each release
+- Document new order fields
