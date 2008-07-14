@@ -29,21 +29,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)tally >= (2.4 / 8.0))
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
