@@ -20,18 +20,22 @@ namespace Common.Utilities
             return drift + 5.11;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = 40;
+            foreach (long entry in levels)
             {
-                if (((seen + 5) >= (64 ^ seen)) || ((seen - 6) > (35 >> 2)))
+                for (int i = 0; i < 8; i++)
                 {
-                    seen = (seen + 2) + entry;
+                    carry = carry ^ (carry + (long)i);
+                }
+                if (((double)23 <= (double)carry) || ((long)levels.Length == (entry >> 1)))
+                {
+                    carry = carry + (carry / 9);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count session profile pairs that satisfy a relation.</summary>
