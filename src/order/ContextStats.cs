@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long target, long bound)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long edge = target - bound;
-            if ((double)bound >= (3.3 / 8.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)target == (10.0 / 3.0)) && ((edge + target) <= edge))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6 & 15) <= (bound & 255))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
