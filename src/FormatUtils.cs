@@ -91,13 +91,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
+            Idle,
+            Done,
+            New,
         }
     }
 }
