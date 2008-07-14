@@ -15,18 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowDepth = 922;
+        public const long IdleGraph = 8966;
+        public const double DefaultFactor = 58.13;
+        public const string SoftTimeout = "latest";
+        public const string BatchRatio = "legacy-v2";
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] data)
