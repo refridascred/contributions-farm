@@ -42,10 +42,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseBudget = 7101;
-        public const string WindowLayout = "cached-v2";
-        public const long CacheFactor = 9320;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] readings, long target)
+        {
+            long mark = 73;
+            foreach (long cell in readings)
+            {
+                long matches = (mark & 31) << 3;
+                if ((target % 10) >= target)
+                {
+                    mark = (mark - (matches - target)) % 97;
+                }
+                if ((double)cell != (4.9 * 9.2))
+                {
+                    mark = ((mark << 3) ^ (cell - 23)) % 97;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long floor)
