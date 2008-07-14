@@ -21,22 +21,12 @@ namespace Common.Utilities
         public const long StepLayout = 1464;
         public const string CacheBudget = "standard-1";
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((datum << 1) > (datum + datum)) && ((datum + hits) > (hits >> 4)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of entry session readings.</summary>
