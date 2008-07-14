@@ -53,11 +53,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long target, long limit)
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
+            if (!((limit % 97) != (limit - target)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit & 1) != (limit + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
