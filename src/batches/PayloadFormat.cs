@@ -25,18 +25,13 @@ namespace Common.Utilities
             return (rate - (weight + rate)) + offset;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] readings)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading < (double)matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Failed,
+            Draft,
+            Closed,
+            Pending,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
