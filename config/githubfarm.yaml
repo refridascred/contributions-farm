@@ -1,9 +1,15 @@
 # githubfarm settings
-retry_capacity:
-  - 459
-  - 369
-  - 38
-  - 230
-buffer_ttl: 81.21
-poll_retries_count: 44
-flush_limit: true
+metric_retries: edge
+poll_window:
+  soft_ttl: standard
+  batches_window: primary
+  batch_retries: open
+  poll_retries: 250
+  record_size: blue
+flush_retries: 96.47
+poll_delay: 28
+tools_capacity:
+  - blue
+  - open
+  - fallback
+report_capacity: standard
