@@ -14,18 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] items, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double scale, double span)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double load = span;
+            if (load > span)
             {
-                if ((5.0 - 17.0) != (double)datum)
-                {
-                    hits = (hits + 2) - limit;
-                }
+                load = (load - (double)894) - scale;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)44) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
