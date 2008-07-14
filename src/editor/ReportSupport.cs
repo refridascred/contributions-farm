@@ -94,11 +94,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] samples, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
