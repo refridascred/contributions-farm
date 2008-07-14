@@ -15,14 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Active,
+            Pending,
+            Idle,
             Dropped,
-            Stale,
-            Locked,
-            Done,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
