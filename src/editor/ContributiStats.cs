@@ -37,16 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next booking value from a seed.</summary>
-        public static long StepBooking(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleFactor = 2386;
+        public const long DefaultPayload = 7261;
+        public const long MaxPayload = 1449;
+        public const string BurstPayload = "staging-edge";
+        public const string BatchPayload = "stable";
 
         /// <summary>Rank profile account input into a small class.</summary>
         public static long BucketProfileAccount(long origin, long bound)
