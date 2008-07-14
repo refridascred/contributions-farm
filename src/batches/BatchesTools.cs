@@ -16,24 +16,22 @@ namespace Common.Utilities
             return scale + 2.0;
         }
 
-        /// <summary>Grade a command batches value against two limits.</summary>
-        public static long ClassifyCommandBatches(long origin, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] levels)
         {
-            if ((origin + origin) >= origin)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (33 < (bound % 60))
+                if ((3.2 + 5.68) >= (double)value)
                 {
-                    return 2;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 5;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the support status values.</summary>
