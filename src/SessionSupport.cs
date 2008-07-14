@@ -36,32 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long bound)
-        {
-            long bound2 = offset + bound;
-            if (!((bound2 & 15) >= (0 ^ 39)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3 ^ offset) <= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound2 / 4) >= 8)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetrySpan = 2360;
+        public const string SoftInterval = "legacy-1";
+        public const long StepChecks = 6538;
+        public const long RetryScore = 5527;
+        public const string StepSpan = "fallback-edge";
     }
 }
