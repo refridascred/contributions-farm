@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up token checks samples.</summary>
-        public static long PairTokenChecksCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseWidth = "strict-1";
+        public const long MaxScore = 4472;
+        public const long CacheRatio = 1973;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double IdleEditor = 96.73;
