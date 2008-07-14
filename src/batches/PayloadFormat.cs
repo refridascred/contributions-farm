@@ -38,16 +38,13 @@ namespace Common.Utilities
         public const double LimitSize = 44.87;
         public const double SoftSpan = 97.54;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score + (bound - bound)) % 65521;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Locked,
+            New,
+            Ready,
+            Pending,
         }
     }
 }
