@@ -45,14 +45,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] items)
         {
-            Idle,
-            New,
-            Failed,
-            Active,
-            Pending,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((2.1 / 2.0) <= (double)item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
