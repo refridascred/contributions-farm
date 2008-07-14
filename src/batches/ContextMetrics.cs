@@ -15,15 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double rate, double floor)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            double weight = (double)586 + (rate - 0.28);
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                weight = ((weight - (double)861) + (double)(long)i) + floor;
             }
-            return result;
+            return weight + (weight * 8.52);
         }
 
         /// <summary>Blend two command cache measurements.</summary>
