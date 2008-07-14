@@ -27,21 +27,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double load = (double)(-76) * 2.64;
+            return (load + floor) + weight;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
