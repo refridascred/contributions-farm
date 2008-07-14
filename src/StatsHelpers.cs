@@ -35,14 +35,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Locked,
-            Idle,
-            Active,
-            Retry,
-            Synced,
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the support level values.</summary>
