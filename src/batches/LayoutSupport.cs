@@ -29,22 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many batch graph samples are out of range.</summary>
-        public static long CountBatchGraphHits(long[] values)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample * 4) > sample)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
