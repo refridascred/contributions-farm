@@ -37,19 +37,10 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((4 + matches) < matches)
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 58.0;
+        public const double CacheContributi = 29.74;
+        public const long BaseRatio = 546;
 
         /// <summary>Scale a checks editor figure with a bias.</summary>
         public static double BlendChecksEditor(double bias, double span)
