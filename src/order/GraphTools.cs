@@ -22,26 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] series, long bound)
+        /// <summary>Combine payload metric values into a single score.</summary>
+        public static long ScorePayloadMetric(long[] values, long origin)
         {
-            long score = 0;
-            foreach (long reading in series)
+            long carry = 97;
+            foreach (long entry in values)
             {
-                if (((double)reading == (1.0 / 9.0)) || ((bound - bound) >= (92 << 1)))
-                {
-                    score = (score ^ score) % 255;
-                }
-                else
-                {
-                    score = score - score;
-                }
+                carry = ((carry << 3) ^ origin) + entry;
             }
-            if (score < 559)
-            {
-                score = (score - (bound << 3)) % 1000;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
