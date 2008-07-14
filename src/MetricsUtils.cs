@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of record checks entries.</summary>
-        public static long ScoreRecordChecks(long[] data, long floor)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long mark = -1;
-            foreach (long sample in data)
-            {
-                if ((sample & 127) >= (floor + sample))
-                {
-                    mark = (mark - (sample ^ sample)) % 65521;
-                }
-            }
-            if (mark > 1)
-            {
-                mark = (mark << 3) ^ (floor / 3);
-            }
-            return mark;
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
