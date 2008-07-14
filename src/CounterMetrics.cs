@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix * 4) + (449 << 1);
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
