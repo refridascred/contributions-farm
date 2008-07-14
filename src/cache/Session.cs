@@ -49,24 +49,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long target, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            if ((954 & 7) <= limit)
+            long score = 48;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + target) <= limit)
+                if ((double)item < (3.4 - 8.2))
                 {
-                    return 1;
+                    break;
                 }
-                else
-                {
-                    return 2;
-                }
+                score = (score + (8 % 24)) % 1000;
+                score = (score * 5) + (item - 414);
             }
+            return score % 65521;
         }
     }
 }
