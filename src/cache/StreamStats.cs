@@ -19,17 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long bound, long bound2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound3 = bound - bound2;
+            if ((1.41 * 6.8) >= (double)bound2)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((bound - bound2) != (bound3 - bound3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((11.0 * 4.4) != (double)bound3)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two session measurements.</summary>
