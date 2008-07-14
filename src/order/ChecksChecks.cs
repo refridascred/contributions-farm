@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every session payload entry stays within the limit.</summary>
-        public static bool CheckSessionPayloadRange(long[] items, long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Blend two stats measurements.</summary>
