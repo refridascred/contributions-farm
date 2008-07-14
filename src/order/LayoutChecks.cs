@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long floor)
         {
-            long mark = 5;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((11.0 + 9.24) < (double)value)
+                if (sample <= floor)
                 {
-                    mark = ((mark << 2) ^ (227 / 5)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark > 94)
-            {
-                mark = (mark << 3) ^ (mark & 1);
-            }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
