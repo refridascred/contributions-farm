@@ -29,13 +29,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Failed,
-            Active,
-            Retry,
+            Paused,
             New,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
