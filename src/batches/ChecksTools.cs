@@ -34,15 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue format value from a seed.</summary>
-        public static long StepQueueFormat(long target)
+        /// <summary>Count session profile pairs that satisfy a relation.</summary>
+        public static long PairSessionProfileCount(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
