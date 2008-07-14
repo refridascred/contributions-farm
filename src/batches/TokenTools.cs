@@ -27,12 +27,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long origin, long bound)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            long step = origin + bound;
+            if ((bound > origin) && ((860 << 1) < bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound + step) <= (step + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin == (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + 262) >= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
