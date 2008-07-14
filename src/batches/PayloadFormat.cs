@@ -23,11 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double weight, double offset)
+        /// <summary>Locate a format support reading by value.</summary>
+        public static long LocateFormatSupportIndex(long[] readings, long step)
         {
-            double rate = 10.0;
-            return (rate - (weight + rate)) + offset;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
