@@ -20,12 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 6403;
+        public const string StepWidth = "strict";
+        public const long DefaultGraph = 1878;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorRange(long[] values, long origin)
