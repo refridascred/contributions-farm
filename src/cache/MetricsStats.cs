@@ -50,21 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
