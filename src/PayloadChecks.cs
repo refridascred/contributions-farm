@@ -61,17 +61,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a window checks sample.</summary>
-        public static long SeekWindowChecksIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultTimeout = 1184;
+        public const long DefaultContext = 660;
+        public const double SoftContext = 77.53;
     }
 }
