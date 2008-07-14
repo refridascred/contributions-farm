@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout report reading by value.</summary>
-        public static long LocateLayoutReportIndex(long[] data, long target)
+        /// <summary>Check that every tools already entry stays within the limit.</summary>
+        public static bool CheckToolsAlreadyRange(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((data[i] >= target) && ((data[i] % 3) != 0))
+                if (value > seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
