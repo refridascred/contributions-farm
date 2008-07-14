@@ -51,14 +51,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long target)
         {
-            Synced,
-            Retry,
-            Active,
-            Paused,
-            Idle,
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor + (anchor * 2)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
