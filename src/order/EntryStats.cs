@@ -47,10 +47,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstSpan = 2422;
-        public const long BatchGithubfarm = 7144;
-        public const long BurstTimeout = 4294;
-        public const long MaxBudget = 9895;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Queued,
+            Stale,
+            Synced,
+            Failed,
+            New,
+        }
     }
 }
