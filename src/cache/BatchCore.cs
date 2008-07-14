@@ -30,12 +30,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepSize = "alpha-1";
-        public const long WindowPayload = 1440;
-        public const long BurstFactor = 2350;
-        public const long LimitPayload = 1456;
-        public const string RetryPayload = "latest-1";
+        /// <summary>Check that every context editor entry stays within the limit.</summary>
+        public static bool CheckContextEditorLimits(long[] levels, long bound)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] levels, long limit)
