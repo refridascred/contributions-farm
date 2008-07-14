@@ -36,16 +36,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 2032;
+        public const string MinLayout = "staging-v2";
+        public const double LimitLayout = 85.33;
 
         /// <summary>Match up stream report samples.</summary>
         public static long MatchStreamReportCount(long[] values)
