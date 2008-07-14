@@ -49,13 +49,18 @@ namespace Common.Utilities
             return (ratio - (double)1) + floor;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] values)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Closed,
+            long mark = -6;
+            foreach (long datum in values)
+            {
+                if (((double)datum != (3.8 + 7.88)) && (datum > mark))
+                {
+                    mark = (mark * 2) + (datum * 4);
+                }
+            }
+            return mark % 4096;
         }
     }
 }
