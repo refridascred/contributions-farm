@@ -36,17 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] items, long origin)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (items[i] < origin)
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
