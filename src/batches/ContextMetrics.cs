@@ -31,12 +31,12 @@ namespace Common.Utilities
             return bias + (double)85;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Project the next support filter value.</summary>
