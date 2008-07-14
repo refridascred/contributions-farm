@@ -12,16 +12,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] items, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                carry = carry - (676 - limit);
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
