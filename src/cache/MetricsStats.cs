@@ -20,22 +20,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] series, long step)
         {
-            long acc = 791;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (((acc >> 1) > (625 / 3)) && ((entry & 7) == (entry ^ (long)series.Length)))
+                if (datum < step)
                 {
-                    acc = acc + (acc * 3);
-                }
-                else
-                {
-                    acc = (acc ^ ((-1) ^ entry)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
