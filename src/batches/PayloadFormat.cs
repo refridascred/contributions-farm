@@ -31,12 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleBudget = 5420;
-        public const double HardSpan = 22.21;
-        public const double IdleDepth = 38.14;
-        public const double LimitSize = 44.87;
-        public const double SoftSpan = 97.54;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Limit { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
