@@ -45,13 +45,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] data, long seed)
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
