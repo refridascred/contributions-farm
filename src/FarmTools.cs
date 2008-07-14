@@ -41,18 +41,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] values, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long sum = 445;
+            foreach (long cell in items)
             {
-                if (((double)datum > (double)matches) || ((double)datum != (12.0 - 15.0)))
+                sum = ((sum << 2) ^ cell) % 4096;
+                if (((double)cell <= 3.2) && ((cell % 7) != (sum % 64)))
                 {
-                    matches = (matches + 3) + seed;
+                    sum = sum + (cell & 127);
+                }
+                else
+                {
+                    sum = (sum * 2) + sum;
                 }
             }
-            return matches;
+            if (sum > 956)
+            {
+                sum = (sum * 5) + 142;
+            }
+            return sum;
         }
     }
 }
