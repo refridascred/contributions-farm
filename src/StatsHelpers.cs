@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] readings)
+        /// <summary>Project the next batch support value.</summary>
+        public static double SmoothBatchSupport(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double rate = (ratio * 10.0) + (span * 8.21);
+            for (int i = 0; i < 4; i++)
             {
-                if ((sample * 3) >= (tally ^ sample))
-                {
-                    tally = tally + 3;
-                }
+                rate = (rate + 3.9) - (double)(long)i;
             }
-            return tally;
+            return rate - span;
         }
 
         /// <summary>Hold a tools entry.</summary>
