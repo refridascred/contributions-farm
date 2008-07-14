@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetrySize = 7708;
+        public const long WindowRatio = 1688;
+        public const long WindowTimeout = 9344;
+        public const string BurstBuffer = "staging-v2";
+        public const long MinBuffer = 2935;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
