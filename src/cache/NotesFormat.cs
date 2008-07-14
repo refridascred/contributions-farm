@@ -22,22 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long floor, long floor2)
         {
-            long sum = 224;
-            foreach (long sample in values)
+            if (6.4 <= (double)floor2)
             {
-                if (((sum * 3) < (10 * 5)) || ((sample ^ sample) > 8))
+                return 5;
+            }
+            else
+            {
+                if (!((floor2 & 3) == (floor + floor)))
                 {
-                    sum = (sum << 2) ^ (7 << 2);
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (sum < 14)
-            {
-                sum = sum + (sum & 15);
-            }
-            return sum;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
