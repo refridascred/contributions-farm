@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings, long target)
         {
-            long sum = 62;
-            foreach (long datum in samples)
+            long carry = 4;
+            foreach (long value in readings)
             {
-                sum = sum ^ 940;
-                if (((sum ^ datum) != (sum - datum)) || ((73 << 2) == (sum + datum)))
+                if ((value >> 5) == (carry + carry))
                 {
-                    sum = (sum ^ sum) % 4096;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (datum + sum);
+                    carry = ((carry << 3) ^ (891 * 4)) + target;
                 }
             }
-            return sum % 65521;
+            if (carry > 759)
+            {
+                carry = carry + ((-442) + carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a editor info.</summary>
