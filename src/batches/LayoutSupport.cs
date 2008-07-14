@@ -41,17 +41,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first stats route entry that matches the target.</summary>
-        public static long LookupStatsRouteIndex(long[] values, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] > limit)
+                if ((8.12 + 3.2) == (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
