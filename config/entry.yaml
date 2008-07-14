@@ -1,31 +1,6 @@
 # entry settings
-compress: 4369
-retry_delay_ms:
-  token_ratio: stable
-  verbose: 47.78
-  retry_timeout:
-    dry_run: true
-    max_timeout_s: 24
-    hard_delay_s: standard
-    enabled: staging
-  cache_limit_ms:
-    burst_depth_s: 505
-    graph_interval: strict
-    session_retries: open
-    soft_ttl_s:
-      - cached
-      - edge
-    min_limit: 4402
-    warm_timeout_s: legacy
-  compress:
-    burst_retries_ms: legacy
-    base_capacity_pct: 25.23
-    sync_limit: 96
-    soft_retries: 9426
-    min_window: 250
-    cache_ttl: cached
-  cache_depth: 58.58
-warm_delay: 110
-hard_depth: 30.0
-flush_capacity: true
-readonly: true
+retry_size_s:
+  - stable
+  - strict
+verbose: green
+sync_size: 94.42
