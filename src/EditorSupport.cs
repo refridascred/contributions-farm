@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 14.45;
-        public const long StepReport = 7984;
-        public const long BurstBudget = 568;
+        /// <summary>Validate layout profile readings against a bound.</summary>
+        public static bool CheckLayoutProfileLimits(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double StepWidth = 62.75;
