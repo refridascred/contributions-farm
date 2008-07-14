@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            public string Token { get; set; } = "";
             public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
