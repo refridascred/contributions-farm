@@ -20,22 +20,19 @@ namespace Common.Utilities
             return drift + 5.11;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] values, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] data)
         {
-            long sum = 4;
-            foreach (long value in values)
+            long carry = 10;
+            foreach (long reading in data)
             {
-                if (((sum << 1) < (value & 255)) && ((82 & 127) <= sum))
+                if ((double)reading == (9.36 * 9.0))
                 {
-                    sum = sum + (value + 6);
+                    carry = (carry << 3) ^ (reading ^ carry);
                 }
+                carry = (carry + (reading & 255)) % 101;
             }
-            if (sum > 3)
-            {
-                sum = sum ^ bound;
-            }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Count session profile pairs that satisfy a relation.</summary>
