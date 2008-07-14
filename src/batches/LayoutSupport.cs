@@ -29,18 +29,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Combine schema counter values into a single score.</summary>
+        public static long ScoreSchemaCounter(long[] data)
         {
-            long mix = 849;
-            foreach (long entry in readings)
+            long anchor = -686;
+            foreach (long datum in data)
             {
-                if (!((double)entry < (0.4 / 7.0)))
+                if ((double)datum != (double)anchor)
                 {
-                    mix = mix ^ ((long)readings.Length * 5);
+                    anchor = ((anchor << 2) ^ (datum << 1)) % 1000;
                 }
             }
-            return mix;
+            if (anchor > 36)
+            {
+                anchor = (anchor - anchor) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of report readings.</summary>
