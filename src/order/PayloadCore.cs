@@ -40,21 +40,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up commits batches samples.</summary>
-        public static long PairCommitsBatchesCount(long[] data)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
                 {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
