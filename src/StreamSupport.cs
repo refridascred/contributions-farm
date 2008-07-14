@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double ratio, double span)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            double rate = 7.9;
+            if (rate < ratio)
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (6.6 - ratio)) + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
