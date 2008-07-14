@@ -71,20 +71,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double bias, double bias2)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            double bias3 = (bias / 2.0) / 8.0;
+            if (bias3 < (bias3 / 3.0))
             {
-                if ((total % 24) == (bound + (long)i))
-                {
-                    total = (total ^ bound) % 101;
-                }
-                total = ((total << 2) ^ 57) % 65521;
-                total = ((total * 2) + (long)i) % 1000;
+                bias3 = bias3 + bias;
             }
-            return total;
+            else
+            {
+                bias3 = bias3 + (6.61 / 7.0);
+            }
+            return bias3 - bias2;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
