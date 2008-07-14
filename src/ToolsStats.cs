@@ -63,14 +63,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long step, long floor)
         {
-            Pending,
-            Dropped,
-            Idle,
-            Closed,
-            Paused,
+            if ((double)step > (3.2 * 7.54))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step + 2) > 25)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step & 127) < (floor / 2)) && ((double)step < 14.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor >> 3) > (step * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
