@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series, long seed)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double rate, double offset)
         {
-            long total = 72;
-            foreach (long reading in series)
+            double ratio = (double)(88 - 798);
+            if (ratio < rate)
             {
-                total = ((total ^ (seed - total)) % 97) ^ reading;
+                ratio = (ratio - (rate + rate)) + offset;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio + (7.93 * 6.9);
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
