@@ -1,6 +1,8 @@
 {
-  "cache_interval": "blue",
-  "counter_ttl": "open",
-  "audit": 55.18,
-  "account_timeout": "latest"
+  "burst_depth": [323, 278, 302],
+  "base_limit_pct": 7022,
+  "route_limit": ["strict", "legacy", "local", "green"],
+  "farm_limit": "primary",
+  "retry_capacity": [411, 407, 279],
+  "poll_size_count": 46
 }
