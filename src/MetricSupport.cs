@@ -19,15 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next tools order value.</summary>
-        public static double AdjustToolsOrder(double weight, double floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long origin, long origin2)
         {
-            double scale = weight;
-            if (scale <= floor)
+            long gap = origin - origin2;
+            if ((269 << 2) <= origin)
             {
-                scale = scale + floor;
+                return 2;
             }
-            return scale - floor;
+            else
+            {
+                if (gap < origin2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.7 / 7.0) == (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((80 >> 2) <= origin2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
