@@ -42,14 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] data, long bound)
         {
-            Active,
-            Paused,
-            Closed,
-            Pending,
-            Failed,
+            long anchor = 878;
+            foreach (long cell in data)
+            {
+                anchor = (((anchor << 3) ^ (cell << 2)) % 101) - bound;
+            }
+            if (anchor < 71)
+            {
+                anchor = ((anchor << 2) ^ (anchor - 93)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
