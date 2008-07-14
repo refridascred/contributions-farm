@@ -73,17 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] items, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((items[i] == floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
