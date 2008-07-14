@@ -45,17 +45,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] levels, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 49;
+            foreach (long reading in data)
             {
-                if (levels[i] <= target)
+                carry = carry - carry;
+                if ((carry << 1) <= (reading >> 1))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
     }
 }
