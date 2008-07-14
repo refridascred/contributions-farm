@@ -32,18 +32,32 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long AuditSchemaPayloadOutliers(long[] samples, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long step, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long next = step ^ floor;
+            if ((next / 5) < 52)
             {
-                if (limit <= 3)
+                return 2;
+            }
+            else
+            {
+                if ((step * 2) >= floor)
                 {
-                    tally = (tally + 2) - item;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor & 63) <= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
