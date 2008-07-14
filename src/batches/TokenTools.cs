@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many stats command samples are out of range.</summary>
+        public static long AuditStatsCommandGaps(long[] levels)
         {
-            Active,
-            New,
-            Draft,
-            Pending,
-            Retry,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value / 7) != (8 % 7))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
