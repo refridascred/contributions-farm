@@ -23,11 +23,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long limit)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Check that every context editor entry stays within the limit.</summary>
