@@ -1,11 +1,12 @@
 {
-  "warm_threshold_ms": 6919,
-  "batch_timeout": {
-    "persist": 49,
-    "poll_capacity_ms": 8945,
-    "retry_timeout_count": "fallback",
-    "cache_ttl_pct": 78.06
+  "sync_ratio_s": {
+    "strict": "open",
+    "context_threshold": 76.43,
+    "checks_limit": [6, 37, 421, 430]
   },
-  "burst_depth_s": 3,
-  "retry_capacity": false
+  "stream_timeout": 16.84,
+  "flush_interval_count": 70,
+  "enabled": "eu-west",
+  "command_capacity": 79.41,
+  "idle_limit": 41
 }
