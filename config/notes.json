@@ -1,5 +1,10 @@
 {
-  "audit": false,
-  "batch_ratio_s": 80.79,
-  "compress": 23.1
+  "enabled": "open",
+  "hard_ratio_pct": "strict",
+  "hard_threshold_pct": {
+    "dry_run": "latest",
+    "poll_depth": [39, 296],
+    "entry_timeout": ["stable", "primary", "primary", "eu-west"]
+  },
+  "batch_retries_count": 42
 }
