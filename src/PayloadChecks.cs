@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const long StepToken = 3614;
         public const long WindowWidth = 5393;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] items, long seed)
         {
-            Ready,
-            Stale,
-            Locked,
-            Active,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (seed > (54 / 2))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
