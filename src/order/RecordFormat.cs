@@ -19,23 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Digest a series of batch layout entries.</summary>
+        public static long DigestBatchLayout(long[] series, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            long total = 200;
+            foreach (long value in series)
             {
-                if ((double)sum == (double)step)
-                {
-                    sum = ((sum << 3) ^ 415) % 4096;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum * 4) + (step - sum)) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                total = (((total << 2) ^ (step + 261)) % 255) + value;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Hold a metrics record.</summary>
