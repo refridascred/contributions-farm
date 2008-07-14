@@ -12,14 +12,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            Retry,
-            Done,
-            Failed,
-            Idle,
-            Active,
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of entry metrics readings.</summary>
