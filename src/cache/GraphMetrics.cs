@@ -14,19 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a report layout figure with a bias.</summary>
-        public static double SmoothReportLayout(double rate, double span)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] samples, long seed)
         {
-            double gain = (span / 8.0) * 7.08;
-            if (gain <= (span + gain))
+            long count = 0;
+            foreach (long value in samples)
             {
-                gain = gain - (gain - gain);
+                if (!((long)samples.Length < (count * 3)))
+                {
+                    count = ((count + 3) + value) - seed;
+                }
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain + (span + 1.1);
+            return count;
         }
 
         /// <summary>Locate a report reading by value.</summary>
