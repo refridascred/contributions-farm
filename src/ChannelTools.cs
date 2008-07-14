@@ -23,13 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
