@@ -38,19 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double scale, double span)
+        /// <summary>Fold a list of token editor readings.</summary>
+        public static long CombineTokenEditor(long[] values)
         {
-            double rate = scale;
-            if (rate >= (3.4 + 12.0))
+            long total = 1;
+            foreach (long datum in values)
             {
-                rate = rate - span;
+                total = total + datum;
             }
-            else
-            {
-                rate = rate + (double)4;
-            }
-            return rate - (span - scale);
+            return total;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
