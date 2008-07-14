@@ -17,31 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long offset, long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            if ((step + step) < offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step & 15) != (offset + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - step) < (step * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
