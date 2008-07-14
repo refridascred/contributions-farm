@@ -1,10 +1,12 @@
 # Command notes
 
-The filter report groups every payload by filter.
-When a context fails, the format handler retries a few times before giving up.
+Run the window check before changing any cache limits.
+Each route is validated before it reaches the order queue.
+Run the metrics check before changing any command limits.
 
 ## Guidelines
 
-- Review cache limits each release
-- Log every queue change
-- Validate notes input early
+- Keep stream values small
+- Log every farm change
+- Prefer report defaults
+- Review tools limits each release
