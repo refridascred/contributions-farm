@@ -1,12 +1,7 @@
 # entry settings
-cache_retries_pct:
-  - legacy
-  - stable
-  - primary
-  - eu-west
-warm_ttl:
-  - 488
-  - 122
-flush_ttl_ms:
-  - 208
-  - 110
+record_threshold: legacy
+burst_ratio_s:
+  - latest
+  - green
+  - fallback
+warm_timeout_ms: 60
