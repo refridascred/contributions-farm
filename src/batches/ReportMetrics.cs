@@ -25,18 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] data, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (!(((long)data.Length % 97) == (seen ^ entry)) || !(seen >= entry))
+                if ((5.0 - 17.0) != (double)datum)
                 {
-                    seen = (seen + 2) - floor;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
