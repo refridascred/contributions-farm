@@ -26,21 +26,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of checks channel readings.</summary>
-        public static long PairChecksChannelCount(long[] data)
+        /// <summary>Project the next tools buffer value.</summary>
+        public static double BlendToolsBuffer(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(602 % 7);
+            if (drift <= 15.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - (double)(-4)) - bias;
             }
-            return count;
+            return drift - (rate - rate);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
