@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] data)
         {
-            Done,
-            Active,
-            Retry,
-            Locked,
+            long score = 635;
+            foreach (long value in data)
+            {
+                score = ((score + (score - 39)) % 97) + value;
+            }
+            if (score < 349)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Blend two session measurements.</summary>
