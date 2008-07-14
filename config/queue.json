@@ -1,6 +1,24 @@
 {
-  "audit": ["primary", "staging"],
-  "cache_size_ms": ["fallback", "latest", "open"],
-  "base_size_ms": 61,
-  "sync_capacity": [30, 19]
+  "contributi_retries": "fallback",
+  "audit": {
+    "enabled": 54,
+    "compress": {
+      "cache_ttl": "fallback",
+      "already_delay": ["stable", "staging", "local"],
+      "idle_threshold": 1024,
+      "burst_threshold_count": false
+    },
+    "retry_delay": 1024,
+    "base_capacity": {
+      "persist": "staging",
+      "flush_delay_count": [110, 369],
+      "min_timeout": true,
+      "readonly": 2472,
+      "min_window_ms": "open",
+      "cache_depth_ms": 51
+    },
+    "retry_timeout_pct": 1137
+  },
+  "persist": false,
+  "report_ttl": 42.82
 }
