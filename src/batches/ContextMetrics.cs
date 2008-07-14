@@ -30,11 +30,24 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstDepth = 39.71;
-        public const long BaseScore = 2203;
-        public const long MaxBudget = 9890;
-        public const long DefaultBatches = 4813;
+        /// <summary>Project the next support filter value.</summary>
+        public static double AdjustSupportFilter(double ratio, double span)
+        {
+            double gain = ratio;
+            if (gain < span)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - 0.6) + (double)(long)i;
+            }
+            return gain + (double)3;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] items, long bound)
