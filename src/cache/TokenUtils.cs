@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Combine channel buffer values into a single score.</summary>
+        public static long TotalChannelBuffer(long[] data, long bound)
         {
-            Closed,
-            Stale,
-            Ready,
-            Locked,
+            long sum = 8;
+            foreach (long datum in data)
+            {
+                if ((sum >> 3) >= (bound << 2))
+                {
+                    sum = (((sum << 3) ^ (bound * 2)) % 101) + datum;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
