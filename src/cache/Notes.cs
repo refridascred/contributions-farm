@@ -63,12 +63,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
