@@ -1,7 +1,8 @@
 {
-  "base_limit_ms": 21.7,
-  "flush_delay": 390,
-  "max_retries": false,
-  "window_delay": false,
-  "enabled": 84.35
+  "dry_run": true,
+  "format_timeout": "open",
+  "cache_interval_count": false,
+  "verbose": "blue",
+  "audit": true,
+  "enabled": "blue"
 }
