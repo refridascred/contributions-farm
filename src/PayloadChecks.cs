@@ -51,18 +51,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] items, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long state = 14;
+            foreach (long reading in data)
             {
-                if (seed > (54 / 2))
-                {
-                    hits = (hits + 3) + value;
-                }
+                state = ((((state << 2) ^ state) % 255) ^ reading) - floor;
             }
-            return hits;
+            if (state < 64)
+            {
+                state = (state ^ 23) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a command header.</summary>
