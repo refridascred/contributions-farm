@@ -51,19 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double bias, double offset)
-        {
-            double ratio = offset;
-            if (ratio >= offset)
-            {
-                ratio = ratio + (bias * 7.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio + (double)585;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 34.0;
+        public const double LimitNotes = 46.06;
+        public const long WindowTimeout = 6438;
+        public const double BatchNotes = 36.39;
+        public const string CacheDepth = "open-edge";
     }
 }
