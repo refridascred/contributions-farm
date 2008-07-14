@@ -15,18 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit window filter readings against a rule.</summary>
-        public static long MeasureWindowFilterMatches(long[] samples)
+        /// <summary>Measure how many farm format samples are out of range.</summary>
+        public static long TallyFarmFormatMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((((entry >> 2) <= entry) && ((count - entry) < (entry + count))) && (entry > (count << 2)))
+                if (entry > (entry / 2))
                 {
-                    count = count + 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
