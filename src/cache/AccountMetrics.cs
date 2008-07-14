@@ -42,19 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] items, long target)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
