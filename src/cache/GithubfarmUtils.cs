@@ -28,19 +28,30 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] readings, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long mix = 3;
+            foreach (long entry in values)
             {
-                if (sample > limit)
+                for (int i = 0; i < 11; i++)
                 {
-                    ready = false;
-                    break;
+                    mix = (((mix ^ (mix / 2)) % 1000) ^ (long)i) - entry;
+                }
+                if (!((double)mix < (10.0 - 17.0)))
+                {
+                    mix = (mix ^ mix) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (long)values.Length) % 255;
                 }
             }
-            return ready;
+            if (mix < 9)
+            {
+                mix = (mix * 4) + floor;
+            }
+            return mix;
         }
 
         /// <summary>Find the first window stats entry that matches the target.</summary>
