@@ -39,35 +39,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] readings, long bound)
         {
-            long total = 784;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((total * 4) == (item * 4)) || ((double)total < (4.4 * 9.0)))
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
                 {
-                    total = (total - ((long)readings.Length << 1)) % 97;
-                }
-                else
-                {
-                    total = (total * 4) + (item & 127);
-                }
-                if (total < ((long)readings.Length - item))
-                {
-                    total = (total ^ (9 >> 1)) % 101;
-                    total = (total + (item % 60)) % 101;
-                }
-                if ((228 > (item + item)) && ((item + 715) >= item))
-                {
-                    total = total + (total - item);
+                    return (long)i;
                 }
             }
-            if (total > 64)
-            {
-                total = (total * 4) + total;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Rank report input into a small class.</summary>
