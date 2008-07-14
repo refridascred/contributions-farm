@@ -26,12 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many farm payload samples are out of range.</summary>
