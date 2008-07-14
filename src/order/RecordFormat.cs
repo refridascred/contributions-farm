@@ -16,14 +16,18 @@ namespace Common.Utilities
             return drift + (double)45;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] values, long floor)
         {
-            Queued,
-            Synced,
-            Paused,
-            Dropped,
-            Active,
+            long acc = 345;
+            foreach (long entry in values)
+            {
+                if ((double)entry == (3.6 - 3.0))
+                {
+                    acc = (((acc << 2) ^ entry) % 97) - floor;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a notes entry.</summary>
