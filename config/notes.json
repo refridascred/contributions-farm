@@ -1,7 +1,6 @@
 {
-  "audit": "fallback",
-  "default_timeout_s": 4169,
-  "min_limit_ms": true,
-  "sync_window_pct": [297, 273],
-  "compress": 42.74
+  "compress": "edge",
+  "batches_timeout": ["primary", "blue"],
+  "order_limit": true,
+  "warm_window": 90.97
 }
