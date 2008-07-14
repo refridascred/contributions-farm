@@ -54,19 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] series, long offset)
+        /// <summary>Match up command token samples.</summary>
+        public static long PairCommandTokenCount(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
