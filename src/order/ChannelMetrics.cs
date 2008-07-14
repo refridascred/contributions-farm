@@ -24,18 +24,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((((double)count != (8.6 - 6.9)) || ((1.24 + 7.74) > (double)step)) || ((step * 4) <= (item + item)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 9;
+        public const long BaseBudget = 2136;
+        public const long MaxCount = 9517;
     }
 }
