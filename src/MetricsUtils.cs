@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 3325;
-        public const double LimitTimeout = 9.58;
-        public const long BurstMetrics = 3442;
-        public const string IdleMetrics = "standard-edge";
+        /// <summary>Digest a series of record checks entries.</summary>
+        public static long ScoreRecordChecks(long[] data, long floor)
+        {
+            long mark = -1;
+            foreach (long sample in data)
+            {
+                if ((sample & 127) >= (floor + sample))
+                {
+                    mark = (mark - (sample ^ sample)) % 65521;
+                }
+            }
+            if (mark > 1)
+            {
+                mark = (mark << 3) ^ (floor / 3);
+            }
+            return mark;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsHits(long[] levels, long floor)
