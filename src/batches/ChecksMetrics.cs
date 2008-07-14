@@ -49,19 +49,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double bias, double bias2)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            double bias3 = (bias / 2.0) / 8.0;
-            if (bias3 < (bias3 / 3.0))
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                bias3 = bias3 + bias;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                bias3 = bias3 + (6.61 / 7.0);
-            }
-            return bias3 - bias2;
+            return mix;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
