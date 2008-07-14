@@ -72,8 +72,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 89.35;
-        public const long IdleNotes = 7244;
-        public const long SoftNotes = 6451;
+        public const long RetryDepth = 4585;
+        public const double BurstNotes = 75.73;
+        public const long DefaultBudget = 6028;
+        public const string StepNotes = "open-1";
+        public const long LimitInterval = 9288;
     }
 }
