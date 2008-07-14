@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of record queue readings.</summary>
-        public static long MatchRecordQueueCount(long[] data)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] < origin)
                 {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate layout window samples.</summary>
