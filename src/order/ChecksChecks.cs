@@ -23,25 +23,12 @@ namespace Common.Utilities
             return ratio + (double)2;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((seed - carry) < seed)
-                {
-                    carry = carry + ((long)i + seed);
-                    carry = (carry - ((long)i + carry)) % 4096;
-                    continue;
-                }
-                if (((5 / 6) != (seed & 255)) || ((double)carry != (5.9 - 1.0)))
-                {
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
