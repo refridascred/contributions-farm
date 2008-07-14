@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)value == (15.0 + 7.0))
-                {
-                    tally = tally + 1;
-                }
+                sum = ((sum * 4) + (sum * 4)) % 97;
+                sum = (sum ^ (9 << 2)) % 65521;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
