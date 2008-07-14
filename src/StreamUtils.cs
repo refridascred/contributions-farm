@@ -53,21 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count layout notes pairs that satisfy a relation.</summary>
-        public static long CompareLayoutNotesCount(long[] readings)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Draft,
+            Synced,
+            Queued,
         }
     }
 }
