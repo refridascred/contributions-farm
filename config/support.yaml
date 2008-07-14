@@ -1,17 +1,6 @@
 # support settings
-tools_retries: 43.24
-poll_threshold: 76
-entry_retries: 1879
-soft_size:
-  retry_interval_s:
-    readonly: 88.66
-    sync_capacity_ms: 1.66
-    persist: staging
-    format_size:
-      - standard
-      - primary
-      - blue
-  hard_ttl: 18
-  default_ttl_count: local
-max_size: 81
-sync_limit_ms: staging
+max_delay_ms: cached
+min_threshold: 2023
+hard_retries: 49.82
+soft_window: stable
+burst_size_count: 58
