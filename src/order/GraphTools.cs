@@ -26,12 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowStream = 52.42;
+        public const string RetryStream = "legacy-1";
+        public const long SoftStream = 2635;
+        public const string CacheStream = "primary-edge";
+        public const long CacheRatio = 5117;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] samples, long step)
