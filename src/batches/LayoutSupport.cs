@@ -50,22 +50,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] values)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item + tally) < item)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
