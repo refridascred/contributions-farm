@@ -41,18 +41,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long sum = 434;
+            foreach (long cell in readings)
             {
-                if ((8.12 + 3.2) == (double)seen)
+                if (6.09 >= (double)sum)
                 {
-                    seen = (seen + 1) - entry;
+                    sum = ((sum + (bound << 2)) % 97) ^ cell;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the cache kind values.</summary>
