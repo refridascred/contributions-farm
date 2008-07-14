@@ -30,18 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!((count - cell) != (count + cell)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
