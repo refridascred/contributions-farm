@@ -34,15 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the farm graph series from a seed.</summary>
-        public static long DeriveFarmGraph(long floor)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
