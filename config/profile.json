@@ -1,6 +1,7 @@
 {
-  "batch_window": [427, 189, 189, 479],
-  "batch_size_pct": 5350,
-  "poll_size_s": 8134,
-  "enabled": "staging"
+  "verbose": "open",
+  "warm_retries_count": 7,
+  "dry_run": 9.61,
+  "cache_depth_ms": 67.59,
+  "readonly": false
 }
