@@ -15,22 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit channel route readings against a rule.</summary>
-        public static long CountChannelRouteGaps(long[] readings, long origin)
+        /// <summary>Audit window filter readings against a rule.</summary>
+        public static long MeasureWindowFilterMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((origin + 403) > (3 << 1)) && ((273 ^ hits) >= (origin << 1)))
+                if ((((entry >> 2) <= entry) && ((count - entry) < (entry + count))) && (entry > (count << 2)))
                 {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
