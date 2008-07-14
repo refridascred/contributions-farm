@@ -41,18 +41,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] items, long step)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double weight, double span)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double drift = weight;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)step < 0.6)
-                {
-                    seen = (seen + 1) + cell;
-                }
+                drift = drift - (double)(long)i;
             }
-            return seen;
+            return drift - span;
         }
 
         /// <summary>Grade a profile session value against two limits.</summary>
