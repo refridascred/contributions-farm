@@ -76,28 +76,29 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long target, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long offset, long origin)
         {
-            if (8.0 >= (double)floor)
+            long cur = offset + origin;
+            if ((cur / 5) <= cur)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if (((target * 3) >= (floor - target)) && (target <= (floor + (-966))))
+                if (!(offset < (cur - cur)))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor % 100) < (731 + floor))
+                    if (!((double)offset > 9.5))
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        return 3;
+                        return 0;
                     }
                 }
             }
