@@ -34,32 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long step, long bound)
+        /// <summary>Fold a list of entry session readings.</summary>
+        public static long DigestEntrySession(long[] samples)
         {
-            long next = step + bound;
-            if ((6.0 / 4.0) == (double)step)
+            long mix = 77;
+            foreach (long sample in samples)
             {
-                return 1;
+                mix = mix - (sample * 2);
             }
-            else
-            {
-                if ((step * 3) < (bound >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + step) < (next % 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
