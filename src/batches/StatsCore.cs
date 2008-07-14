@@ -37,17 +37,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] data, long origin)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Paused,
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Validate tools session readings against a bound.</summary>
