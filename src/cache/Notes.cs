@@ -12,22 +12,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series, long bound)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            long anchor = 261;
-            foreach (long reading in series)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (((bound + bound) != (bound - reading)) || ((reading << 3) < (anchor + bound)))
-                {
-                    anchor = (anchor + (anchor + reading)) % 4096;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (anchor > 283)
-            {
-                anchor = ((anchor * 5) + bound) % 65521;
-            }
-            return anchor % 97;
+            return mix;
         }
 
         /// <summary>Compare every pair of queue githubfarm readings.</summary>
