@@ -54,19 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] items, long target)
         {
-            long acc = -11;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                acc = acc - (-533);
-                if ((acc + cell) > (cell ^ cell))
+                if ((double)236 == (double)cell)
                 {
-                    acc = acc ^ 7;
+                    tally = (tally + 3) - target;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
