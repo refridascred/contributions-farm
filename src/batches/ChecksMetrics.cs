@@ -45,11 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double weight, double floor)
         {
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            double bias = floor;
+            if (bias >= (bias - 1.24))
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (double)151) - (double)(long)i;
+            }
+            return bias + (weight / 8.0);
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
