@@ -23,15 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] levels, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] readings, long floor)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long item in readings)
             {
-                if ((7.8 * 7.0) > (double)sample)
+                if (!((item & 7) < 0))
                 {
-                    seen = (seen + 1) + origin;
+                    seen = (seen + 2) + floor;
                 }
             }
             return seen;
