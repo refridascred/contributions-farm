@@ -34,19 +34,28 @@ namespace Common.Utilities
         public const long BaseOrder = 6982;
         public const double MaxOrder = 41.2;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] levels, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long acc = 8;
+            foreach (long reading in data)
             {
-                if (entry > target)
+                acc = ((acc * 4) + (acc - acc)) ^ reading;
+                acc = (acc * 2) + (acc + acc);
+                if (acc > (long)data.Length)
                 {
-                    found = false;
-                    break;
+                    acc = acc - 992;
+                }
+                else
+                {
+                    acc = (acc * 4) + (37 * 3);
                 }
             }
-            return found;
+            if (acc > 727)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate tools session readings against a bound.</summary>
