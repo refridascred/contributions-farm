@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 814;
+            foreach (long cell in data)
             {
-                if ((items[i] == offset) && ((items[i] % 5) != 0))
+                if (!((cell ^ cell) <= (cell + carry)))
                 {
-                    return (long)i;
+                    carry = (carry - carry) % 4096;
                 }
             }
-            return -1;
+            if (carry > 2)
+            {
+                carry = (carry ^ (carry >> 1)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a command reading.</summary>
