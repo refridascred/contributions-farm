@@ -29,22 +29,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine schema counter values into a single score.</summary>
-        public static long ScoreSchemaCounter(long[] data)
+        /// <summary>Measure how many batch graph samples are out of range.</summary>
+        public static long CountBatchGraphHits(long[] values)
         {
-            long anchor = -686;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((double)datum != (double)anchor)
+                if ((sample * 4) > sample)
                 {
-                    anchor = ((anchor << 2) ^ (datum << 1)) % 1000;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor > 36)
-            {
-                anchor = (anchor - anchor) % 255;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
