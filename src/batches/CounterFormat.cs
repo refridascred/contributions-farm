@@ -19,11 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 2099;
-        public const long LimitBudget = 8364;
-        public const long CacheCluster = 6688;
-        public const long WindowCluster = 7416;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long target, long target2)
+        {
+            long slot = target - target2;
+            if ((slot <= (target2 ^ slot)) || ((11.0 - 5.9) >= (double)slot))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target2 & 7) <= (84 + slot))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long HardBuffer = 7166;
