@@ -1,11 +1,12 @@
 # Command notes
 
-When a metrics fails, the farm handler retries a few times before giving up.
-The cluster report groups every cache by cache.
-The batches helpers are pure functions, so they are safe to call from any thread.
+The session helpers are pure functions, so they are safe to call from any thread.
+Keep stream and format names short and lowercase.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer farm defaults
+- Log every order change
+- Validate cache input early
+- Prefer token defaults
 - Document new githubfarm fields
-- Log every cluster change
