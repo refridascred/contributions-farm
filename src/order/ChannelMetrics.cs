@@ -14,12 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Idle,
+            Synced,
+            Failed,
+            Draft,
             Queued,
-            New,
+            Locked,
         }
 
         /// <summary>Combine filter batch values into a single score.</summary>
