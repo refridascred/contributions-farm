@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const string CacheGraph = "fallback";
         public const double CacheRatio = 58.6;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] readings, long seed)
         {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next batch channel value.</summary>
