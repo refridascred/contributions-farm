@@ -1,23 +1,4 @@
 # entry settings
-hard_depth_ms: true
-readonly:
-  command_retries: 90.39
-  base_window_s: 9642
-  idle_delay_ms: eu-west
-filter_delay:
-  - edge
-  - latest
-  - staging
-max_size_s:
-  support_delay: 13
-  warm_limit_ms: green
-  burst_timeout_pct: 93
-  cluster_limit: 250
-  cache_retries_s:
-    soft_limit: 96.69
-    batch_ttl_s: 39.36
-    max_ratio_pct: 40
-    farm_ratio:
-      - 486
-      - 430
-      - 266
+audit: false
+metrics_retries: true
+warm_capacity_count: true
