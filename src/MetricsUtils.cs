@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (((3.0 + 14.0) < (double)count) && (count < (331 / 8)))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 3325;
+        public const double LimitTimeout = 9.58;
+        public const long BurstMetrics = 3442;
+        public const string IdleMetrics = "standard-edge";
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsHits(long[] levels, long floor)
