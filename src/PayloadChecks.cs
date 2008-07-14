@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 259;
-        public const long HardInterval = 4031;
-        public const string CacheGraph = "fallback";
-        public const double CacheRatio = 58.6;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
