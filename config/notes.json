@@ -1,6 +1,13 @@
 {
-  "record_timeout": true,
-  "warm_window": 41,
-  "batch_depth_pct": ["standard", "green", "stable"],
-  "enabled": 76.45
+  "poll_ttl_count": {
+    "base_depth_count": "local",
+    "persist": "cached",
+    "support_retries": 95,
+    "default_interval_pct": "stable",
+    "account_interval": 15.07
+  },
+  "readonly": [357, 493, 96],
+  "max_ttl_pct": false,
+  "cache_ttl": false,
+  "checks_interval": 50.24
 }
