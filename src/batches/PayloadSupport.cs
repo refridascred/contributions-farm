@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftSpan = 3917;
+        public const long CacheSize = 7424;
+        public const long StepContext = 5599;
+        public const long MaxContext = 5307;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
