@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] data)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample & 1) == (sample % 10))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
