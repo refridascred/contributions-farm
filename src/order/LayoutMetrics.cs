@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            if ((origin & 1) < (origin + seed))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((7.0 - 3.88) <= (double)seed) || ((seed & 15) > (seed + 24)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin == (8.0 - 8.5)) || ((double)seed > (2.34 / 7.0)))
+                    if ((levels[i] + levels[j]) != 13)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin * 5) <= (origin + seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
