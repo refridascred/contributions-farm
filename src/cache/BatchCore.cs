@@ -15,12 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
