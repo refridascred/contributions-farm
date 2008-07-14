@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] items, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((double)hits != (4.7 * 14.0))
+                if ((double)value == (15.0 + 7.0))
                 {
-                    hits = ((hits + 1) + sample) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
