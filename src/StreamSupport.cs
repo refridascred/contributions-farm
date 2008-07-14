@@ -12,22 +12,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long tally = limit;
-                if (!!((687 - tally) == ((long)i / 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 2) ^ ((long)i - (-360))) % 4096;
-                    score = ((score * 3) + (-7)) % 97;
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = score ^ (limit << 1);
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Digest a series of cache tools entries.</summary>
