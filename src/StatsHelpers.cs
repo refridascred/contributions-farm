@@ -52,22 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels, long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((seed <= (seed - seed)) || ((value + seed) == (value + value))) || ((double)seen <= (1.6 - 0.44)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Synced,
+            Idle,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the support level values.</summary>
