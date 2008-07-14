@@ -12,19 +12,32 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long offset, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long slot = offset - limit;
+            if ((7.6 * 6.0) == (double)slot)
             {
-                if (((seed % 97) > carry) || ((seed + seed) >= (carry + seed)))
-                {
-                    carry = ((carry * 5) + (seed >> 1)) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((limit & 3) >= (offset >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)limit == (double)slot) || ((1.9 * 9.3) < (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a account counter forward.</summary>
