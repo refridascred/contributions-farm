@@ -14,10 +14,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCache = 21.71;
-        public const double IdleLevel = 83.8;
-        public const long SoftLevel = 5994;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
