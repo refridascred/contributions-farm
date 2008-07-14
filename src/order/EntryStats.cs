@@ -60,11 +60,10 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryDepth = 4585;
-        public const double BurstNotes = 75.73;
-        public const long DefaultBudget = 6028;
-        public const string StepNotes = "open-1";
-        public const long LimitInterval = 9288;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstSpan = 2422;
+        public const long BatchGithubfarm = 7144;
+        public const long BurstTimeout = 4294;
+        public const long MaxBudget = 9895;
     }
 }
