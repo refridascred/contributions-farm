@@ -1,7 +1,7 @@
 # entry settings
-retry_size: 5519
-flush_threshold_count: true
-burst_window_count: 96.99
-readonly: 84
-warm_threshold_ms: primary
-max_depth: open
+idle_retries: 38
+cache_timeout: true
+hard_ttl_count: 42
+context_capacity: 85
+poll_delay_s: cached
+poll_threshold: 9677
