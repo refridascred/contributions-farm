@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] values, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 2) ^ offset) % 101;
-                mark = (mark ^ (mark - offset)) % 65521;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
