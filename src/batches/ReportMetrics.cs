@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double gain, double bias)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double load = gain;
-            return load + (bias / 5.0);
+            Paused,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
