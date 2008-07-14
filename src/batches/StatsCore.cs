@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const double MinCache = 27.7;
         public const long BaseCache = 984;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double weight, double bias)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] samples, long step)
         {
-            double bias2 = 8.93;
-            return ((bias2 + (8.28 * 0.31)) + weight) + bias;
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((step >> 3) < (cell - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit entry buffer readings against a rule.</summary>
