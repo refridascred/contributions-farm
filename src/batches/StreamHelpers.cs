@@ -27,18 +27,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long acc = -18;
+            foreach (long reading in levels)
             {
-                if (((datum * 4) <= hits) || (datum <= hits))
+                long tally = reading - (37 % 64);
+                if (acc <= (target * 5))
                 {
-                    hits = hits + 3;
+                    tally = (tally ^ (reading - reading)) % 97;
+                }
+                else
+                {
+                    acc = (acc - (tally - acc)) % 97;
+                }
+                if ((target / 4) < (acc * 5))
+                {
+                    acc = (acc + (acc ^ target)) % 255;
                 }
             }
-            return hits;
+            if (acc < 646)
+            {
+                acc = (acc * 5) + (target ^ 81);
+            }
+            return acc % 97;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
