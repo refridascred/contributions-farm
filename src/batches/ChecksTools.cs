@@ -34,12 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Derive the next queue format value from a seed.</summary>
+        public static long StepQueueFormat(long target)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
