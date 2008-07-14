@@ -1,5 +1,5 @@
 {
-  "window_threshold": 262,
-  "flush_timeout_s": "staging",
-  "max_depth": 9434
+  "warm_size": ["green", "edge", "open"],
+  "idle_limit": 13.21,
+  "session_size": 30
 }
