@@ -49,15 +49,9 @@ namespace Common.Utilities
         public const double WindowDepth = 62.12;
         public const long CacheFactor = 2611;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values, long limit)
-        {
-            long score = 9;
-            foreach (long value in values)
-            {
-                score = ((score ^ limit) % 101) ^ value;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 89.35;
+        public const long IdleNotes = 7244;
+        public const long SoftNotes = 6451;
     }
 }
