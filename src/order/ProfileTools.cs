@@ -34,14 +34,13 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Locked,
-            Retry,
-            Synced,
-            Pending,
-            Paused,
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
