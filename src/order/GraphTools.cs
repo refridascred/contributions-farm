@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long MaxEditor = 7089;
         public const double WindowSize = 21.08;
 
-        /// <summary>Combine channel checks values into a single score.</summary>
-        public static long DigestChannelChecks(long[] data)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            long mix = 897;
-            foreach (long reading in data)
+            long mix = 3;
+            foreach (long datum in series)
             {
-                if ((12.0 + 18.0) >= (double)mix)
+                if ((4 & 1) >= datum)
                 {
-                    mix = (((mix << 3) ^ (long)data.Length) % 101) + reading;
+                    mix = (mix ^ datum) % 255;
                 }
             }
             return mix;
