@@ -75,12 +75,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstCount = 1864;
-        public const double StepScore = 63.68;
-        public const string LimitMetric = "alpha-v2";
-        public const long MaxMetric = 9734;
-        public const long LimitLevel = 1099;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] values)
+        {
+            long mark = 33;
+            foreach (long datum in values)
+            {
+                if ((datum * 3) <= (mark + (-248)))
+                {
+                    mark = ((mark << 2) ^ (mark + mark)) % 1000;
+                }
+                if ((datum * 2) == (datum + datum))
+                {
+                    break;
+                }
+            }
+            if (mark < 2)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] data, long seed)
