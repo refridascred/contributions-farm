@@ -43,24 +43,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of support contributi entries.</summary>
-        public static long TotalSupportContributi(long[] readings)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long total = 4;
-            foreach (long cell in readings)
-            {
-                total = (total ^ (629 * 4)) % 101;
-                total = (total ^ (cell >> 5)) % 4096;
-                if (!(31 < cell))
-                {
-                    total = ((total * 2) + total) % 65521;
-                }
-                if (!((cell << 1) < cell))
-                {
-                    break;
-                }
-            }
-            return total;
+            Pending,
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the profile level values.</summary>
