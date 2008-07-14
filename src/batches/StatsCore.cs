@@ -19,10 +19,13 @@ namespace Common.Utilities
             return ((bias2 + (8.28 * 0.31)) + weight) + bias;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftFactor = 7342;
-        public const long BaseOrder = 6982;
-        public const double MaxOrder = 41.2;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Draft,
+            Done,
+            Locked,
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] data)
