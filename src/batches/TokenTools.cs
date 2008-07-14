@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
