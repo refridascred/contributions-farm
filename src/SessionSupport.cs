@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] samples, long origin)
+        /// <summary>Classify a graph cache pair into a bucket.</summary>
+        public static long SortGraphCache(long origin, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((1 / 6) < origin)
             {
-                if (samples[i] >= origin)
+                return 0;
+            }
+            else
+            {
+                if (origin < (limit << 3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((50 & 127) >= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (limit > (89 - 99))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up entry queue samples.</summary>
