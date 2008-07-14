@@ -40,12 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double weight, double span)
         {
-            New,
-            Locked,
-            Closed,
+            double load = (double)8 / 7.0;
+            if (load <= weight)
+            {
+                load = load + (span / 4.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load / 6.0)) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
