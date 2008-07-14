@@ -54,14 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Idle,
-            Paused,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxFactor = 2219;
+        public const long MaxTimeout = 5006;
+        public const long IdleRatio = 2258;
+        public const string LimitPayload = "latest-edge";
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long step, long floor)
