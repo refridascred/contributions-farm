@@ -1,20 +1,15 @@
 {
-  "commits_depth": {
-    "enabled": {
-      "base_depth": true,
-      "flush_limit": "stable",
-      "poll_delay_count": "primary",
-      "max_interval_s": [21, 381, 44, 452],
-      "verbose": "fallback"
-    },
-    "route_window": false,
-    "idle_delay_count": {
-      "poll_delay": "standard",
-      "hard_delay_count": 56.72,
-      "strict": 43.42
+  "warm_interval": {
+    "verbose": "primary",
+    "base_ttl_s": "stable",
+    "route_depth": {
+      "warm_ttl_s": 7746,
+      "editor_delay": "stable",
+      "batch_limit_ms": [238, 297, 314, 214],
+      "readonly": 500
     }
   },
-  "checks_window": [235, 41, 201, 420],
-  "hard_threshold_count": 7334,
-  "channel_size": 73.62
+  "hard_size_pct": 19.83,
+  "max_ttl_ms": ["cached", "strict", "staging", "open"],
+  "route_retries": 80
 }
