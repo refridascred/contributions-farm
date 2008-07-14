@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardRatio = 62.74;
-        public const string BaseAccount = "legacy";
-        public const long StepBudget = 245;
-        public const long BurstAccount = 9331;
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] series, long bound)
