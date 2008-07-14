@@ -63,11 +63,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitLevel = 9696;
-        public const double HardNotes = 39.67;
-        public const string LimitCount = "fallback-v2";
-        public const long SoftNotes = 9291;
+        /// <summary>Audit metrics channel readings against a rule.</summary>
+        public static long MeasureMetricsChannelMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches - value) == (value - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardLevel = 72;
