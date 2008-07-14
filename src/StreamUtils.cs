@@ -48,22 +48,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream graph readings against a rule.</summary>
-        public static long TallyStreamGraphGaps(long[] values, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (hits >= datum)
-                {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix << 2) ^ (limit - limit);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Accumulate order batch samples.</summary>
