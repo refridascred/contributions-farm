@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long RetryWidth = 3096;
         public const long CacheFilter = 7653;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double rate, double span)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            double weight = rate;
-            if (weight <= weight)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight + span;
+                if ((floor - result) >= floor)
+                {
+                    result = (result + (result & 1)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight + (weight / 8.0);
-            }
-            return weight + weight;
+            return result;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
