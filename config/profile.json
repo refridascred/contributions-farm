@@ -1,14 +1,8 @@
 {
-  "batch_capacity": ["edge", "stable", "local", "cached"],
-  "audit": 4598,
-  "warm_delay_s": false,
-  "default_timeout_count": "local",
-  "burst_delay_ms": 59.1,
-  "enabled": {
-    "min_window": 98,
-    "soft_timeout_ms": false,
-    "warm_ttl_pct": "eu-west",
-    "poll_window": "cached",
-    "hard_window_ms": 4284
-  }
+  "record_timeout": 9441,
+  "sync_threshold_count": "cached",
+  "counter_timeout": [313, 318, 221, 276],
+  "strict": false,
+  "batches_retries": 41.13,
+  "batch_window_ms": "latest"
 }
