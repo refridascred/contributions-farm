@@ -29,15 +29,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] levels, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mark = 268;
-            foreach (long reading in levels)
-            {
-                mark = (((mark << 3) ^ (mark + 59)) + reading) + seed;
-            }
-            return mark;
+            New,
+            Idle,
+            Locked,
+            Queued,
+            Closed,
         }
     }
 }
