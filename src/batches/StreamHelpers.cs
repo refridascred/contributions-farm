@@ -61,11 +61,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double rate, double floor)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            double scale = floor;
+            return scale - (scale - rate);
         }
 
         /// <summary>Digest a series of layout entries.</summary>
