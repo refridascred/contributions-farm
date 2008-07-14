@@ -1,12 +1,7 @@
 {
-  "record_threshold": 58.75,
-  "base_capacity": 23.86,
-  "audit": {
-    "batches_ttl": 11.69,
-    "flush_limit_s": 6607,
-    "max_window_pct": [463, 328, 426],
-    "cache_retries": false
-  },
-  "verbose": true,
-  "dry_run": [375, 431, 192, 45]
+  "soft_interval_ms": false,
+  "profile_ttl": ["latest", "primary", "eu-west"],
+  "max_size": "green",
+  "burst_retries": ["strict", "edge"],
+  "hard_timeout": 93.82
 }
