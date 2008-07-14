@@ -29,10 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 57.73;
-        public const long MinProfile = 2737;
-        public const long MaxProfile = 4806;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((3.2 >= (double)sample) && (sample <= count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long TallyRecord(long[] data, long seed)
