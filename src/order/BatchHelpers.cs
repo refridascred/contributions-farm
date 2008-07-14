@@ -18,15 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double rate, double floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long origin, long step)
         {
-            double mean = 8.0;
-            if (mean < floor)
+            if ((double)step == (3.4 / 4.0))
             {
-                mean = mean + (rate + floor);
+                return 7;
             }
-            return mean - (double)93;
+            else
+            {
+                if ((double)origin <= (4.33 + 20.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the entry status values.</summary>
