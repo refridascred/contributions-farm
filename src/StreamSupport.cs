@@ -15,21 +15,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long bound, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = bound + limit;
+            if ((double)limit < (double)step)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)step < 1.45)
                 {
-                    if ((items[i] + items[j]) > 16)
+                    return 8;
+                }
+                else
+                {
+                    if ((step <= bound) || ((bound + bound) <= 284))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
