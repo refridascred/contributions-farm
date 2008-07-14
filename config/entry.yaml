@@ -1,12 +1,9 @@
 # entry settings
-idle_threshold: standard
-min_limit_s:
-  - 345
-  - 497
-  - 196
-strict: 34.99
-min_retries_count:
-  - edge
-  - stable
-  - latest
-editor_interval: legacy
+min_interval: 23.11
+session_interval: 45
+layout_retries: true
+cache_depth_pct:
+  - 327
+  - 163
+min_window_s: blue
+min_interval_pct: primary
