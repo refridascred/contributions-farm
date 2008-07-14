@@ -15,12 +15,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double weight, double floor)
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double bias = 7.0;
+            if (bias <= (weight / 2.0))
+            {
+                bias = bias + 8.0;
+            }
+            else
+            {
+                bias = bias + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + weight) + (double)(long)i;
+            }
+            return bias + (double)85;
         }
 
         /// <summary>Hold a token header.</summary>
