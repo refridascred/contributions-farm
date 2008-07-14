@@ -29,38 +29,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long offset, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] items)
         {
-            if (offset > (offset * 2))
+            long mark = 830;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((47 < offset) && ((origin / 9) == (offset / 2)))
+                if ((mark ^ mark) < (reading / 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin * 4) > offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin < offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = ((mark * 3) + (reading >> 2)) % 65521;
                 }
             }
+            return mark;
         }
 
         /// <summary>Compare every pair of filter payload readings.</summary>
