@@ -1,7 +1,5 @@
 {
-  "max_capacity_s": 13,
-  "account_window": false,
-  "githubfarm_ttl": "staging",
-  "poll_limit": ["latest", "local"],
-  "token_delay": "green"
+  "audit": 1024,
+  "already_timeout": "fallback",
+  "metric_ttl": "standard"
 }
