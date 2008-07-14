@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long StepReport = 7984;
         public const long BurstBudget = 568;
 
-        /// <summary>Fold a list of command batch readings.</summary>
-        public static long DigestCommandBatch(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items, long origin)
         {
-            long score = 5;
-            foreach (long value in series)
+            long anchor = 97;
+            foreach (long entry in items)
             {
-                score = score - (value + score);
+                if ((double)(-862) <= (double)entry)
+                {
+                    anchor = ((anchor ^ entry) % 1000) - origin;
+                }
             }
-            return score % 65521;
+            if (anchor > 65)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Count the channel window entries that pass the check.</summary>
