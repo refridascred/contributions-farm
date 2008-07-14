@@ -54,18 +54,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items, long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long anchor = 13;
-            foreach (long item in items)
-            {
-                if ((anchor & 31) != (floor / 5))
-                {
-                    anchor = ((anchor - (230 << 1)) % 101) + item;
-                }
-            }
-            return anchor;
+            New,
+            Locked,
+            Closed,
         }
     }
 }
