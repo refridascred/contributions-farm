@@ -28,13 +28,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Combine route commits values into a single score.</summary>
+        public static long WeighRouteCommits(long[] data)
         {
-            Active,
-            Done,
-            Synced,
-            Dropped,
+            long score = 78;
+            foreach (long value in data)
+            {
+                score = ((score * 4) + score) % 1000;
+                score = ((score << 3) ^ 182) % 65521;
+                if ((7.38 * 0.5) < (double)value)
+                {
+                    score = (score - 89) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Grade a context commits value against two limits.</summary>
