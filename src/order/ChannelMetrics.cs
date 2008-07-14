@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long WindowTimeout = 3526;
         public const string CacheWindow = "fallback-edge";
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] values, long origin)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the layout level values.</summary>
