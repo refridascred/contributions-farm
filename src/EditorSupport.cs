@@ -64,33 +64,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long target, long step)
-        {
-            long lane = target ^ step;
-            if ((12.0 * 4.0) != (double)lane)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((7.54 + 18.0) >= (double)target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.3 / 2.0) != (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitLevel = 9696;
+        public const double HardNotes = 39.67;
+        public const string LimitCount = "fallback-v2";
+        public const long SoftNotes = 9291;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardLevel = 72;
