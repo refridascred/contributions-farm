@@ -1,6 +1,6 @@
-id,label,region,owner,count
-1,54.48,712,10.8,38.94
-2,895,448,449,primary
-3,519,blue,59.35,cached
-4,11.35,566,strict,836
-5,local,65.41,609,staging
+id,count,state,level
+1,eu-west,115,644
+2,cached,37.01,985
+3,35.42,51.08,local
+4,local,26.99,legacy
+5,primary,staging,green
