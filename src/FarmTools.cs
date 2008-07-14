@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] readings)
         {
-            double ratio = (double)13 * 5.9;
-            if (ratio <= floor)
+            long count = 0;
+            foreach (long value in readings)
             {
-                ratio = (ratio - (double)0) - scale;
+                if ((count % 3) <= (value + value))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (double)626;
+            return count;
         }
 
         /// <summary>Hold a stream stats.</summary>
