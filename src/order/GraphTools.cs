@@ -26,12 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowStream = 52.42;
-        public const string RetryStream = "legacy-1";
-        public const long SoftStream = 2635;
-        public const string CacheStream = "primary-edge";
-        public const long CacheRatio = 5117;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitSize = "local-v2";
+        public const double RetryReport = 91.99;
+        public const long SoftReport = 7762;
+        public const long RetryScore = 6775;
+        public const string CacheTimeout = "strict-edge";
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
