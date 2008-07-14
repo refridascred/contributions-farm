@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Roll a profile channel counter forward.</summary>
+        public static long StepProfileChannel(long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                state = (state - (state / 5)) % 65521;
-                state = ((state * 2) + (long)i) % 101;
+                carry = carry ^ (8 - carry);
+                carry = (carry << 2) ^ (limit + limit);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
