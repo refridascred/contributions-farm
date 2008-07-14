@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
