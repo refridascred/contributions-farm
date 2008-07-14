@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double weight, double bias)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            double ratio = (double)(747 / 6);
-            if (ratio <= (weight - bias))
-            {
-                ratio = ratio - (double)2;
-            }
-            else
-            {
-                ratio = ratio + (ratio / 9.0);
-            }
-            return ratio - (bias * 3.97);
+            Paused,
+            Pending,
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
