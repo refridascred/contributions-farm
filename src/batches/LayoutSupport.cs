@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Measure how many schema metrics samples are out of range.</summary>
+        public static long AuditSchemaMetricsHits(long[] series)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits & 7) == (entry >> 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
