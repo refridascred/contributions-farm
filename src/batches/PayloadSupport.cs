@@ -19,13 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            Ready,
-            Retry,
-            Idle,
-            Synced,
+            long total = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total + 5) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
