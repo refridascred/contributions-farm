@@ -16,22 +16,22 @@ namespace Common.Utilities
             return ratio2 - (double)201;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] levels)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long mark = 6;
+            foreach (long reading in data)
             {
-                if (((datum + datum) >= datum) || (((542 / 2) <= hits) || ((datum + hits) <= datum)))
+                if (((double)reading > 0.85) || ((243 >> 1) > reading))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = (mark + (reading ^ reading)) % 255;
                 }
             }
-            return hits;
+            if (mark > 6)
+            {
+                mark = ((mark << 2) ^ mark) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
