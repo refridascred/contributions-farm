@@ -22,23 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long carry = -4;
-            foreach (long reading in series)
-            {
-                if ((1 % 16) < (reading + reading))
-                {
-                    carry = (carry - (185 << 1)) % 4096;
-                }
-                else
-                {
-                    carry = carry - (4 * 4);
-                }
-                carry = carry ^ (3 & 63);
-            }
-            return carry;
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the route state values.</summary>
