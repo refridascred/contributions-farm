@@ -23,13 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long limit)
         {
-            Synced,
-            Stale,
-            Active,
-            Pending,
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark * 3) + limit;
+                mark = (mark - (limit ^ 5)) % 1000;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter options.</summary>
