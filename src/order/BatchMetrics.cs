@@ -29,18 +29,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] samples)
+        /// <summary>Derive the next queue command value from a seed.</summary>
+        public static long StepQueueCommand(long origin)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((3.2 >= (double)sample) && (sample <= count))
+                if (((long)i - origin) > total)
                 {
-                    count = count + 2;
+                    total = (total - (total / 9)) % 255;
                 }
+                else
+                {
+                    total = ((total << 3) ^ (origin % 8)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Accumulate record samples.</summary>
