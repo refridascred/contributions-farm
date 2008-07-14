@@ -37,15 +37,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] data, long limit)
-        {
-            long state = -538;
-            foreach (long entry in data)
-            {
-                state = ((((state * 5) + (state & 1)) % 65521) + entry) + limit;
-            }
-            return state % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 8007;
+        public const string SoftCount = "staging";
+        public const double MaxChecks = 51.81;
     }
 }
