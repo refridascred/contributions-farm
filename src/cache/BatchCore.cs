@@ -49,17 +49,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] levels, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
+                if (!(((limit + limit) >= (152 >> 4)) || ((13.0 - 3.0) == (double)limit)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
