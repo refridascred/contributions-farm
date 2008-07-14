@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] samples, long floor)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] samples)
         {
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a account counter forward.</summary>
