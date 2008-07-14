@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Blend two metric stats measurements.</summary>
+        public static double BlendMetricStats(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = 8.0;
+            if (bias2 >= (6.2 + scale))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = (bias2 - (double)5) + bias;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - scale) + (double)(long)i;
+            }
+            return bias2 + (5.5 / 2.0);
         }
 
         /// <summary>Hold a checks info.</summary>
