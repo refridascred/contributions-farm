@@ -49,12 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBuffer = "strict";
-        public const long CacheBuffer = 5143;
-        public const long DefaultWidth = 8263;
-        public const long LimitRatio = 8598;
-        public const long StepRatio = 9708;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] readings, long floor)
