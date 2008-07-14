@@ -20,20 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitWidth = 9324;
+        public const long BatchRatio = 1101;
+        public const long HardDepth = 9786;
+        public const long IdleSpan = 9466;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] samples)
