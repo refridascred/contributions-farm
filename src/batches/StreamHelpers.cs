@@ -52,17 +52,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] levels, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 1;
+            foreach (long value in values)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                score = (score - floor) - value;
+                score = (score ^ (score ^ score)) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
