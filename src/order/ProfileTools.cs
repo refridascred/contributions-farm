@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double MinStream = 15.46;
         public const string DefaultLevel = "stable-1";
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double ratio, double bias)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double mean = bias;
-            if (mean <= 15.0)
-            {
-                mean = mean + ratio;
-            }
-            else
-            {
-                mean = mean - (bias - bias);
-            }
-            return mean + ratio;
+            New,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Compare every pair of checks channel readings.</summary>
