@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout buffer readings against a rule.</summary>
-        public static long AuditLayoutBufferMatches(long[] samples, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((double)hits >= 6.5)
+                if ((7.8 * 7.0) > (double)sample)
                 {
-                    hits = ((hits + 3) ^ cell) - limit;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the format kind values.</summary>
