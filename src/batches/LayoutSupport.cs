@@ -22,32 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long step2 = floor - step;
-            if ((3.0 / 8.0) < (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step2 >= (floor * 2)) || (step >= (step - 507)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step <= (step2 + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Dropped,
+            Closed,
+            Retry,
+            Synced,
+            Failed,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
