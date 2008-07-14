@@ -42,21 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm order pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmOrderCount(long[] samples)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
