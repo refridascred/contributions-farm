@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double rate, double offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double drift = 5.58;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift + rate) + (double)(long)i) - offset;
-            }
-            return drift - (drift * 8.0);
+            Stale,
+            Idle,
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
