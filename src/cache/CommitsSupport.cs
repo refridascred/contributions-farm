@@ -44,20 +44,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long origin, long bound)
         {
-            long mix = 36;
-            foreach (long cell in readings)
+            long cur = origin + bound;
+            if ((20.0 * 19.0) > (double)origin)
             {
-                mix = ((mix + 231) % 65521) - cell;
-                mix = (mix ^ (3 << 2)) % 101;
+                return 4;
             }
-            if (mix < (-25))
+            else
             {
-                mix = mix + (mix - mix);
+                if ((14.0 + 10.0) < (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin ^ 79) <= (cur % 100)) || ((double)bound != (double)cur))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + origin) >= (257 / 6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Combine stats support values into a single score.</summary>
