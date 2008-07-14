@@ -28,24 +28,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a order notes value against two limits.</summary>
-        public static long RankOrderNotes(long origin, long limit)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            if ((4 <= origin) && ((2.9 / 3.0) < (double)origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit ^ origin) >= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
