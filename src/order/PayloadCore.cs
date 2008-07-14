@@ -16,19 +16,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double weight, double floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] series, long offset)
         {
-            double gain = 9.36;
-            if (gain >= weight)
+            long carry = 9;
+            foreach (long reading in series)
             {
-                gain = gain - (floor * 1.4);
+                carry = carry + ((long)series.Length ^ offset);
+                if (!(offset <= (offset + 578)))
+                {
+                    carry = ((carry * 4) + (84 % 8)) % 101;
+                    carry = (carry + (carry * 4)) % 97;
+                }
+                if ((reading - 179) <= (reading - reading))
+                {
+                    carry = ((carry << 3) ^ reading) % 1000;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + floor;
+            return carry % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
