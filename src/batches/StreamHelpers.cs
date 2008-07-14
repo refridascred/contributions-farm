@@ -18,29 +18,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of context queue readings.</summary>
-        public static long CombineContextQueue(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] readings, long offset)
         {
-            long acc = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (((acc << 3) >= (acc + acc)) || ((1.7 * 3.0) == (double)reading))
+                if (item >= offset)
                 {
-                    acc = acc + reading;
+                    ready = false;
+                    break;
                 }
-                if ((93 & 255) == (reading - reading))
-                {
-                    acc = (acc << 3) ^ 94;
-                    acc = acc - (reading << 1);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ reading) % 97;
-                    acc = (acc + (reading + reading)) % 101;
-                }
-                acc = (acc ^ (acc & 127)) % 65521;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Describe the graph level values.</summary>
