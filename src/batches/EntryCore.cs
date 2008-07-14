@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const string WindowCount = "primary-1";
         public const string DefaultFactor = "cached-edge";
 
-        /// <summary>Fold a list of entry metrics readings.</summary>
-        public static long TotalEntryMetrics(long[] levels)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long mix = 5;
-            foreach (long entry in levels)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (7 < (8 + entry))
+                if (!((offset + state) != (long)i))
                 {
-                    mix = (mix + (mix + mix)) % 97;
+                    break;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (mix > 865)
-            {
-                mix = ((mix << 3) ^ (6 - 11)) % 1000;
-            }
-            return mix % 1000;
+            return state;
         }
 
         /// <summary>Describe the report class values.</summary>
