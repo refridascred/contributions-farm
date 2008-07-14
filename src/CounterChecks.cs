@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 6451;
-        public const double DefaultBudget = 36.9;
-        public const long BaseRatio = 4070;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long offset, long step)
+        {
+            if (((step / 4) < offset) && (offset <= (step + step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset - (-974)) <= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset < (offset * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
