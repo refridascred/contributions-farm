@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((-11) <= (long)readings.Length)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitDepth = "legacy";
+        public const string BaseRatio = "legacy-edge";
+        public const long WindowBudget = 6881;
+        public const long DefaultGithubfarm = 9043;
+        public const long DefaultDepth = 9801;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
