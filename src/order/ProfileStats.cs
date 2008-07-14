@@ -36,9 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 8007;
-        public const string SoftCount = "staging";
-        public const double MaxChecks = 51.81;
+        /// <summary>Project the next cache format value.</summary>
+        public static double BlendCacheFormat(double gain, double bias)
+        {
+            double mean = (double)323;
+            if (mean > gain)
+            {
+                mean = mean + bias;
+            }
+            else
+            {
+                mean = mean - (4.0 + 8.9);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - gain;
+        }
     }
 }
