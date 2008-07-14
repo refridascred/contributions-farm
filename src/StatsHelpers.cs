@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Locked,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
