@@ -27,11 +27,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long limit)
         {
-            double ratio = scale;
-            return (ratio - (double)1) + floor;
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the farm status values.</summary>
