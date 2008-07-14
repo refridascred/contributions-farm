@@ -49,11 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Validate tools session readings against a bound.</summary>
+        public static bool CheckToolsSessionBounds(long[] readings, long bound)
         {
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
