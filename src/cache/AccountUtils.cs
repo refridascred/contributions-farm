@@ -12,32 +12,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long offset, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long slot = offset - limit;
-            if ((7.6 * 6.0) == (double)slot)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit & 3) >= (offset >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)limit == (double)slot) || ((1.9 * 9.3) < (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
