@@ -42,18 +42,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels, long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] series, long offset)
         {
-            long acc = 693;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit ^ acc) == (limit ^ 958))
+                if ((series[i] >= offset) && ((series[i] % 2) == 0))
                 {
-                    acc = ((acc << 2) ^ limit) + reading;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of filter payload readings.</summary>
