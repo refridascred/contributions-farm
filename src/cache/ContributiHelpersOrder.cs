@@ -13,13 +13,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
+            Synced,
             New,
-            Draft,
-            Idle,
-            Paused,
+            Done,
         }
 
         /// <summary>Combine order values into a single score.</summary>
