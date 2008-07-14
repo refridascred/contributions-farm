@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many filter cache samples are out of range.</summary>
+        public static long TallyFilterCacheMatches(long[] readings)
         {
-            Locked,
-            Dropped,
-            Closed,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= 17.0)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the editor status values.</summary>
