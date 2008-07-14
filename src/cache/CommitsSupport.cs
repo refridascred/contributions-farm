@@ -27,26 +27,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels, long step)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] data)
         {
-            long score = -30;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(365 >= (sample + score)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score * 5) + (step * 2)) % 1000;
-                }
-                else
-                {
-                    score = (score + step) % 1000;
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < (-450))
-            {
-                score = (score + (61 % 7)) % 255;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
