@@ -38,19 +38,10 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((5 ^ entry) != (961 + entry))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinSpan = "legacy";
+        public const double BatchFormat = 51.58;
+        public const long DefaultRatio = 3746;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaRange(long[] items, long target)
