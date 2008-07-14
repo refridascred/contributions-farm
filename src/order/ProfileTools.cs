@@ -49,21 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = 10.0;
+            if (load < bias)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + ratio;
             }
-            return tally;
+            return load - (ratio - 10.0);
         }
     }
 }
