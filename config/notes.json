@@ -1,5 +1,5 @@
 {
-  "cache_interval": "cached",
-  "idle_ratio_count": "legacy",
-  "poll_window": "eu-west"
+  "audit": false,
+  "batch_ratio_s": 80.79,
+  "compress": 23.1
 }
