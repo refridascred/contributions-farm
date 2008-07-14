@@ -25,22 +25,21 @@ namespace Common.Utilities
         public const string StepWidth = "strict";
         public const long DefaultGraph = 1878;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] samples)
+        /// <summary>Match up route format samples.</summary>
+        public static long MatchRouteFormatCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen ^ value) != (value * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] - levels[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
