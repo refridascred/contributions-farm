@@ -13,10 +13,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "primary-v2";
-        public const long BurstRatio = 5124;
-        public const long WindowGithubfarm = 4715;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
