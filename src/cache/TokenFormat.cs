@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a schema filter sample.</summary>
-        public static long SeekSchemaFilterIndex(long[] levels, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Fold a list of command readings.</summary>
