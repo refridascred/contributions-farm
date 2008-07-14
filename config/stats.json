@@ -1,8 +1,13 @@
 {
-  "farm_ttl": 3208,
-  "persist": 95.22,
-  "burst_delay_pct": 88,
-  "idle_limit_s": 45,
-  "max_threshold_pct": "strict",
-  "hard_depth": "standard"
+  "default_size": 12.53,
+  "poll_interval_ms": 26.57,
+  "max_ttl": false,
+  "token_capacity": {
+    "enabled": "standard",
+    "payload_retries": 60,
+    "sync_ratio_s": 2085,
+    "min_ttl_ms": "edge",
+    "audit": [173, 129, 273],
+    "soft_retries_pct": 65
+  }
 }
