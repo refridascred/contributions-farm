@@ -35,18 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch buffer samples are out of range.</summary>
-        public static long MeasureBatchBufferMatches(long[] items)
+        /// <summary>Locate a tools checks reading by value.</summary>
+        public static long FindToolsChecksIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum ^ seen) <= (56 << 1))
+                if (readings[i] <= seed)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
