@@ -31,15 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] readings, long step)
         {
-            long mark = 445;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                mark = (mark - (mark << 2)) ^ cell;
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
     }
 }
