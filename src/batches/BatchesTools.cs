@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const long HardDepth = 9786;
         public const long IdleSpan = 9466;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] levels, long offset)
         {
-            long score = 17;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                score = ((score << 2) ^ (score & 1)) % 255;
-                score = (score * 3) + (8 % 100);
-                score = ((score * 2) + item) % 65521;
+                if (count <= (offset & 15))
+                {
+                    count = (count + 2) + datum;
+                }
             }
-            if (score < 78)
-            {
-                score = score - (score % 60);
-            }
-            return score;
+            return count;
         }
     }
 }
