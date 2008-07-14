@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Stale,
-            Active,
-            Closed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 413;
+        public const double MaxDepth = 19.72;
+        public const long RetryWidth = 3096;
+        public const long CacheFilter = 7653;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double BlendQueue(double rate, double span)
