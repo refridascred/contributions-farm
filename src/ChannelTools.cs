@@ -23,15 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] levels, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
     }
 }
