@@ -14,18 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] samples, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (!((long)samples.Length < (count * 3)))
+                if (entry > floor)
                 {
-                    count = ((count + 3) + value) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Locate a report reading by value.</summary>
