@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryLevel = 71.45;
-        public const long HardSize = 1132;
-        public const long MinReport = 7756;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc ^ (target << 2)) % 4096;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesRange(long[] values, long step)
