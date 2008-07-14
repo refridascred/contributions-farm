@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] values, long seed)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up contributi commits samples.</summary>
