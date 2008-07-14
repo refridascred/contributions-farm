@@ -1,17 +1,5 @@
 {
-  "idle_delay_ms": "edge",
-  "default_interval_pct": true,
-  "strict": 1024,
-  "default_depth": "open",
-  "token_window": {
-    "retry_retries": {
-      "window_ratio": 41,
-      "warm_retries_ms": true,
-      "burst_window_s": [260, 344, 282, 423],
-      "token_ttl": 13
-    },
-    "hard_limit_s": false,
-    "min_threshold": [210, 111]
-  },
-  "min_ratio_ms": 39.28
+  "dry_run": 75.41,
+  "record_window": 76.9,
+  "min_interval_pct": ["strict", "blue", "edge"]
 }
