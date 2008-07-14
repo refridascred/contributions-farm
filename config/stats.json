@@ -1,7 +1,5 @@
 {
-  "githubfarm_ttl": 44,
-  "batch_capacity": false,
-  "batch_size_pct": "edge",
-  "burst_delay": false,
-  "buffer_interval": true
+  "cache_threshold_ms": 37,
+  "cache_threshold_s": [448, 491],
+  "warm_depth": 309
 }
