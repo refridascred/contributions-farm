@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] items, long origin)
         {
-            Ready,
-            Retry,
-            Pending,
-            Active,
+            long acc = 6;
+            foreach (long entry in items)
+            {
+                if (acc > (acc ^ 9))
+                {
+                    acc = ((acc - origin) % 97) + entry;
+                }
+                else
+                {
+                    acc = (acc * 2) + (origin / 2);
+                }
+            }
+            if (acc < 51)
+            {
+                acc = (acc ^ (acc / 5)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a cluster record.</summary>
