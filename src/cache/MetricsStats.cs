@@ -24,25 +24,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long bound, long floor)
+        /// <summary>Fold a list of channel counter readings.</summary>
+        public static long WeighChannelCounter(long[] values, long limit)
         {
-            long step = bound - floor;
-            if (((step % 16) == (bound + step)) && ((bound ^ bound) == (bound + bound)))
+            long sum = 7;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < (step + floor))
+                if ((double)34 > (double)limit)
                 {
-                    return 1;
+                    break;
                 }
                 else
                 {
-                    return 7;
+                    sum = ((sum << 2) ^ (525 % 24)) % 97;
+                    sum = (sum ^ (limit - sum)) % 4096;
+                }
+                if (!(sum < (cell + limit)))
+                {
+                    sum = ((sum << 2) ^ (limit ^ cell)) % 97;
                 }
             }
+            if (sum > 774)
+            {
+                sum = (sum + (sum % 8)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
