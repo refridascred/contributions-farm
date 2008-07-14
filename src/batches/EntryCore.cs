@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Closed,
-            Draft,
-            Locked,
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
