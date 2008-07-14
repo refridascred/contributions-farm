@@ -1,11 +1,10 @@
 # Command notes
 
-The context report groups every support by window.
-Each order is validated before it reaches the order queue.
-Use profile settings to tune how often farm data is refreshed.
+The filter report groups every payload by filter.
+When a context fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Log every filter change
-- Document new stream fields
+- Review cache limits each release
+- Log every queue change
+- Validate notes input early
