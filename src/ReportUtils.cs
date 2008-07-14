@@ -33,13 +33,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Iterate the schema queue series from a seed.</summary>
+        public static long RollSchemaQueue(long limit)
         {
-            Retry,
-            Failed,
-            Paused,
-            Stale,
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count the schema payload entries that pass the check.</summary>
