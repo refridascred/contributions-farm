@@ -52,24 +52,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long target, long limit)
-        {
-            if (!((limit % 97) != (limit - target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 1) != (limit + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinFactor = 1128;
+        public const long MaxInterval = 3917;
+        public const long BatchTimeout = 6276;
+        public const long CacheLevel = 1346;
+        public const long BatchCount = 4419;
     }
 }
