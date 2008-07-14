@@ -25,19 +25,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every layout cluster entry stays within the limit.</summary>
-        public static bool VerifyLayoutClusterLimits(long[] values, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (sample >= target)
+                if (count >= (count + entry))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Adjust a account reading.</summary>
