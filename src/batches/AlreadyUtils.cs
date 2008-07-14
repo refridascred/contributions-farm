@@ -50,18 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] levels, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (10.0 < (double)seen)
-                {
-                    seen = ((seen + 1) + entry) + origin;
-                }
+                score = score - score;
+                score = (score - (-752)) % 1000;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
     }
 }
