@@ -36,11 +36,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleLevel = 1573;
-        public const double WindowEntry = 80.01;
-        public const long RetryEntry = 33;
-        public const long BatchEntry = 438;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long origin, long bound)
+        {
+            long diff = origin - bound;
+            if ((6.7 - 4.0) == (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(5 > diff))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((diff <= 84) || (3 >= (diff % 97)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((13.0 - 2.04) <= 20.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
