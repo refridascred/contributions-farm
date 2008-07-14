@@ -37,16 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = (mix << 2) ^ (limit - limit);
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Accumulate order batch samples.</summary>
