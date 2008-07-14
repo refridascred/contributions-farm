@@ -57,18 +57,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] series)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((((tally + entry) < (25 - tally)) && ((double)entry > (5.74 * 9.3))) || ((tally % 3) < tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
     }
 }
