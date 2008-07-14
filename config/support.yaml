@@ -1,12 +1,23 @@
 # support settings
-stats_ratio: 31
-compress:
-  - 488
-  - 495
-notes_window:
-  - 97
-  - 226
-audit:
-  - 211
-  - 421
-hard_size_s: 1001
+compress: 60
+soft_retries_ms: 15
+profile_timeout: 6420
+queue_size: 2820
+readonly:
+  max_delay: open
+  idle_ttl: blue
+  poll_timeout:
+    editor_window:
+      - staging
+      - edge
+      - staging
+      - latest
+    record_limit: strict
+    hard_interval: 2621
+    hard_depth_ms:
+      - 212
+      - 16
+  batch_limit:
+    - 50
+    - 421
+    - 400
