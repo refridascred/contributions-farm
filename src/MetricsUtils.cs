@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi session entries.</summary>
-        public static long TotalContributiSession(long[] data, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] levels, long floor)
         {
-            long carry = 4;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry + ((-6) + offset)) % 4096) + item;
+                if ((double)cell > (3.94 + 4.0))
+                {
+                    count = (count + 3) + floor;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
