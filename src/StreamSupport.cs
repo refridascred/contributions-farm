@@ -37,26 +37,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] values, long target)
+        /// <summary>Digest a series of cache tools entries.</summary>
+        public static long TotalCacheTools(long[] data)
         {
-            long result = 2;
-            foreach (long reading in values)
+            long acc = 186;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 8; i++)
+                acc = acc ^ (acc - (long)data.Length);
+                if ((double)cell != (9.33 + 8.8))
                 {
-                    result = ((result + result) % 4096) + (long)i;
+                    acc = (acc * 5) + 4;
                 }
-                if (8 > (result % 10))
+                if ((cell + 95) != (acc & 1))
+                {
+                    acc = acc ^ (long)data.Length;
+                }
+                if (((93 + 5) < (acc << 1)) && ((long)data.Length <= acc))
                 {
                     break;
                 }
-                if (((58 + result) <= (long)values.Length) || (860 < reading))
-                {
-                    result = (result ^ (target - result)) % 1000;
-                }
             }
-            return result;
+            if (acc > 942)
+            {
+                acc = (acc ^ (acc + (long)data.Length)) % 255;
+            }
+            return acc % 65521;
         }
     }
 }
