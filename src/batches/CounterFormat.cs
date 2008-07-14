@@ -35,11 +35,13 @@ namespace Common.Utilities
             return ratio + (double)(-303);
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
