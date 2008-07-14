@@ -1,13 +1,4 @@
 # support settings
-flush_interval: strict
-min_threshold: 71.79
-githubfarm_capacity:
-  - 81
-  - 190
-  - 49
-  - 200
-base_ttl:
-  - blue
-  - primary
-  - green
-  - latest
+cache_window_s: 36
+tools_timeout: false
+buffer_limit: false
