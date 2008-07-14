@@ -36,26 +36,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            long state = 27;
-            foreach (long datum in data)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((state < (state >> 2)) && ((5.04 + 6.0) != (double)state))
-                {
-                    state = (((state * 4) + (state % 8)) % 65521) ^ datum;
-                }
-                if ((state - 11) < (state / 9))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (state > 4)
-            {
-                state = ((state * 2) + (state + 347)) % 97;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
