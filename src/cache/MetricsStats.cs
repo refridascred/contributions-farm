@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double ratio, double floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double gain = ratio / 5.0;
-            if (gain < floor)
-            {
-                gain = gain + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (floor * 15.0)) + (double)(long)i;
-            }
-            return gain + (gain - 2.8);
+            Paused,
+            Stale,
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
