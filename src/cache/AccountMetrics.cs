@@ -16,13 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
