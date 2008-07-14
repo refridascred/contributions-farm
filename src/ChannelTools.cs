@@ -15,13 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Active,
-            Paused,
-            Queued,
+            New,
             Pending,
+            Locked,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
