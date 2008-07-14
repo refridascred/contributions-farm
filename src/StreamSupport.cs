@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] samples, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long acc = 63;
+            foreach (long item in readings)
             {
-                if (sample < floor)
+                if ((item <= (acc + item)) && (acc >= (item ^ item)))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 3) ^ (acc ^ item);
                 }
             }
-            return ok;
+            if (acc > 52)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
