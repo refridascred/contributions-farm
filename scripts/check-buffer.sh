@@ -6,22 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
 count=0
 while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in primary staging strict green; do
+for item in stable primary blue; do
     log "checking ${item}"
 done
