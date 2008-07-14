@@ -13,16 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSpan = 8339;
+        public const long MinSupport = 3462;
+        public const long WindowDepth = 5194;
+        public const long RetrySupport = 2274;
+        public const long WindowSupport = 9186;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long DeriveToken(long offset)
