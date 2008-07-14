@@ -12,14 +12,20 @@ namespace Common.Utilities
         public const long BatchChannel = 3597;
         public const long StepChannel = 5371;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data, long origin)
         {
-            Failed,
-            Idle,
-            Queued,
-            Retry,
-            Stale,
+            long mix = 33;
+            foreach (long value in data)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = (((mix << 2) ^ ((long)i2 + origin)) % 4096) + value;
+                    mix = mix - origin;
+                }
+                mix = (mix + (origin % 10)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many filter batches samples are out of range.</summary>
