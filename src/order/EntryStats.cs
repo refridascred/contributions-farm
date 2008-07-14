@@ -43,10 +43,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardFactor = "primary-v2";
-        public const long BatchScore = 3236;
-        public const double MinEntry = 17.58;
+        /// <summary>Count the contributi batches entries that pass the check.</summary>
+        public static long CountContributiBatchesHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((hits ^ hits) >= reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] values, long limit)
