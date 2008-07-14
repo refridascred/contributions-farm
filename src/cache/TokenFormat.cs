@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long bound, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double rate, double offset)
         {
-            if (target < (432 >> 3))
+            double drift = 5.58;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                drift = ((drift + rate) + (double)(long)i) - offset;
             }
-            else
-            {
-                if (((1.0 + 7.15) <= (double)bound) || ((5.9 * 5.01) <= (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return drift - (drift * 8.0);
         }
 
         /// <summary>Hold a layout stats.</summary>
