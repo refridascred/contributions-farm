@@ -31,11 +31,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long seed, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            if ((3.84 + 7.61) != (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step + step) == (804 / 2)) || ((seed ^ step) != (seed / 9)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step < (seed * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step > (seed << 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
