@@ -50,17 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] readings, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                score = score - score;
-                score = (score - (-752)) % 1000;
-                score = ((score * 2) + (long)i) % 65521;
+                if (cell >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
