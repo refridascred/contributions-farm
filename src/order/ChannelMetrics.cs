@@ -24,9 +24,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 9;
-        public const long BaseBudget = 2136;
-        public const long MaxCount = 9517;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry != (double)hits)
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
+        }
     }
 }
