@@ -52,19 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] items, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (sample > target)
+                if (((seed <= (seed - seed)) || ((value + seed) == (value + value))) || ((double)seen <= (1.6 - 0.44)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the support level values.</summary>
