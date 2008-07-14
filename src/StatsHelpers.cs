@@ -52,21 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample > target)
                 {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the support level values.</summary>
