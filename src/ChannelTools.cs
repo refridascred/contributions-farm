@@ -23,27 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] data, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (((long)i << 3) >= floor)
+                if (datum != seed)
                 {
-                    state = (state ^ state) % 4096;
+                    ok = false;
+                    break;
                 }
-                if ((double)floor <= (0.4 + 4.31))
-                {
-                    state = state - (state + state);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (long)i) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return ok;
         }
     }
 }
