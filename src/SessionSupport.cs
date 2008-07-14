@@ -30,21 +30,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (0.1 / 4.0) * 16.0;
+            if (ratio >= (7.5 - ratio))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio + bias) - scale;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + 7.9;
         }
     }
 }
