@@ -47,19 +47,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics context readings against a bound.</summary>
-        public static bool ValidateMetricsContextLimits(long[] samples, long limit)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long floor, long seed)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            if ((floor + seed) > floor)
             {
-                if (cell >= limit)
+                return 1;
+            }
+            else
+            {
+                if (((-96) + 8) < seed)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
     }
 }
