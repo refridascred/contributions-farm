@@ -74,15 +74,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a schema account counter forward.</summary>
-        public static long RollSchemaAccount(long limit)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
