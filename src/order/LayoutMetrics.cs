@@ -34,10 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 7230;
-        public const long MaxSupport = 2974;
-        public const long CacheTimeout = 3958;
-        public const long DefaultBudget = 9508;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstGraph = 96.83;
+        public const long HardGraph = 7507;
+        public const double IdleGraph = 4.51;
+        public const long SoftGraph = 813;
+        public const long WindowBudget = 5398;
     }
 }
