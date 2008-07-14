@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit filter batch readings against a rule.</summary>
-        public static long MeasureFilterBatchGaps(long[] data)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (((datum & 15) >= (16 & 127)) && ((9.5 * 2.69) > (double)hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state - (state / 5)) % 65521;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
