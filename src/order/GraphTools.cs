@@ -59,11 +59,9 @@ namespace Common.Utilities
         public const long LimitOrder = 8009;
         public const double LimitCount = 63.75;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 6364;
-        public const string DefaultFactor = "stable-1";
-        public const double HardGithubfarm = 55.32;
-        public const double SoftLevel = 4.37;
-        public const string MaxGithubfarm = "strict-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 1215;
+        public const long BasePayload = 7643;
+        public const long DefaultPayload = 6187;
     }
 }
