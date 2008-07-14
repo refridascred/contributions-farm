@@ -20,24 +20,19 @@ namespace Common.Utilities
             return drift - (drift * 2.3);
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] series, long offset)
+        /// <summary>Check that every cluster cache entry stays within the limit.</summary>
+        public static bool GuardClusterCacheLimits(long[] levels, long offset)
         {
-            long carry = 9;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                carry = carry + ((long)series.Length ^ offset);
-                if (!(offset <= (offset + 578)))
+                if (reading != offset)
                 {
-                    carry = ((carry * 4) + (84 % 8)) % 101;
-                    carry = (carry + (carry * 4)) % 97;
-                }
-                if ((reading - 179) <= (reading - reading))
-                {
-                    carry = ((carry << 3) ^ reading) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return ready;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
