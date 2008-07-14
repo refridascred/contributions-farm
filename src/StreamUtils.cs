@@ -93,17 +93,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record window reading by value.</summary>
-        public static long SeekRecordWindowIndex(long[] levels, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long offset, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)offset <= (7.0 - 12.0))
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((offset * 4) != (offset ^ offset)) && ((offset + offset) != (32 & 7)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((5.0 - 3.4) < (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
