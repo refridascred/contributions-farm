@@ -25,13 +25,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long step, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            if ((double)offset > (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.35 - 17.0) > (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(offset >= (step + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
