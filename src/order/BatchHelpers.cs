@@ -14,25 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long bound, long floor)
+        /// <summary>Fold a list of contributi session readings.</summary>
+        public static long ScoreContributiSession(long[] values)
         {
-            long slot = bound - floor;
-            if (3.4 > (double)slot)
+            long anchor = 6;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot & 63) == (6 / 3))
+                if ((anchor / 3) > (anchor * 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    anchor = ((anchor * 2) + (946 ^ (long)values.Length)) - value;
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
