@@ -1,13 +1,14 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    label TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    score REAL NOT NULL DEFAULT 0
+    rank INTEGER,
+    level INTEGER,
+    token TEXT,
+    created_at TIMESTAMP,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_count ON stream_events (count);
+CREATE INDEX IF NOT EXISTS idx_stream_events_token ON stream_events (token);
 
-INSERT INTO stream_events (label, count, score) VALUES ('cached', 23, 18.78);
-INSERT INTO stream_events (label, count, score) VALUES ('blue', 9, 85.89);
-INSERT INTO stream_events (label, count, score) VALUES ('legacy', 41, 62.34);
+INSERT INTO stream_events (rank, level, token, owner) VALUES (97, 60, 'cached', 'latest');
+INSERT INTO stream_events (rank, level, token, owner) VALUES (19, 32, 'stable', 'primary');
