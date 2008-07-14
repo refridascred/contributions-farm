@@ -74,13 +74,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            New,
-            Locked,
+            Synced,
+            Stale,
+            Ready,
             Pending,
-            Done,
+            Paused,
         }
     }
 }
