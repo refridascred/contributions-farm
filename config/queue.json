@@ -1,7 +1,6 @@
 {
-  "window_window": "strict",
-  "warm_window_pct": "strict",
-  "default_retries_ms": 4508,
-  "strict": 83.22,
-  "dry_run": 3915
+  "audit": ["primary", "staging"],
+  "cache_size_ms": ["fallback", "latest", "open"],
+  "base_size_ms": 61,
+  "sync_capacity": [30, 19]
 }
