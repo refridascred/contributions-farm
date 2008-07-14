@@ -45,12 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long offset)
+        /// <summary>Locate a context checks reading by value.</summary>
+        public static long FindContextChecksIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
