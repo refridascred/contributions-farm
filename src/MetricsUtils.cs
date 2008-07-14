@@ -50,18 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long hits = 0;
+            long total = 0;
             foreach (long value in readings)
             {
-                if ((value * 5) <= hits)
+                if (((1.5 * 7.0) >= (double)total) || ((value + value) <= (total % 100)))
                 {
-                    hits = hits + 3;
+                    total = ((total << 2) ^ total) % 255;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Blend two token measurements.</summary>
