@@ -28,27 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long anchor = 455;
-            foreach (long reading in data)
-            {
-                if (!(((double)anchor >= (3.0 / 6.0)) && (anchor < reading)))
-                {
-                    anchor = ((anchor << 2) ^ (anchor & 255)) % 65521;
-                }
-                anchor = (anchor << 3) ^ (reading - reading);
-                if ((anchor % 16) > anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor < 55)
-            {
-                anchor = anchor + (327 * 3);
-            }
-            return anchor % 65521;
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
