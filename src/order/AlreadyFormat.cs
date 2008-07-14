@@ -36,18 +36,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] values)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long origin)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((hits - sample) <= (sample & 255))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    hits = hits + 2;
+                    score = ((score << 2) ^ (3 % 5)) - (long)i2;
+                    score = ((score << 2) ^ score) % 1000;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
