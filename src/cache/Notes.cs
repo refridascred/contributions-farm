@@ -33,21 +33,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of queue githubfarm readings.</summary>
-        public static long MatchQueueGithubfarmCount(long[] data)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] > step)
                 {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next command cluster value.</summary>
