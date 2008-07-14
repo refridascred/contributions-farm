@@ -55,26 +55,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] samples, long seed)
         {
-            long score = -870;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((score >> 3) != (score * 5))
+                if ((seed % 16) < (sample * 2))
                 {
-                    score = score + (long)values.Length;
+                    count = count + 3;
                 }
                 else
                 {
-                    score = ((score * 2) + (reading / 9)) % 101;
+                    count = count - 1;
                 }
             }
-            if (score < 0)
-            {
-                score = score + score;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Check that every metric route entry stays within the limit.</summary>
