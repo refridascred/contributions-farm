@@ -22,10 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleScore = 1872;
-        public const double MaxBudget = 25.7;
-        public const string RetrySize = "fallback-1";
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Idle,
+            Retry,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueBounds(long[] data, long offset)
