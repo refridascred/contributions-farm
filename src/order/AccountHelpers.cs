@@ -43,15 +43,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of buffer format readings.</summary>
-        public static long TotalBufferFormat(long[] values, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels, long bound)
         {
-            long state = -88;
-            foreach (long reading in values)
+            long score = 21;
+            foreach (long datum in levels)
             {
-                state = ((state + (253 + reading)) % 101) + target;
+                score = (((score << 2) ^ (bound & 3)) % 101) ^ datum;
             }
-            return state % 1000;
+            if (score > 2)
+            {
+                score = (score * 5) + (bound % 16);
+            }
+            return score;
         }
 
         /// <summary>Hold a batches stats.</summary>
