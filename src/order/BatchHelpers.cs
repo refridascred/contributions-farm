@@ -25,21 +25,18 @@ namespace Common.Utilities
             return mean - (double)93;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((593 - tally) > (2 ^ sample)) || ((origin ^ 15) <= origin))
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
