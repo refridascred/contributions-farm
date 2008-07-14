@@ -33,12 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Stale,
-            Synced,
-            Retry,
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
