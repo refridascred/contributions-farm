@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the farm counter entries that pass the check.</summary>
-        public static long MeasureFarmCounterHits(long[] samples, long step)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (hits <= (step * 3))
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
