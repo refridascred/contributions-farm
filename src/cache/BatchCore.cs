@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] samples, long floor)
         {
-            Failed,
-            Active,
-            Done,
-            Pending,
-            Stale,
+            long carry = 534;
+            foreach (long cell in samples)
+            {
+                if (!(carry < (floor << 3)))
+                {
+                    carry = (carry + (cell % 24)) % 4096;
+                }
+            }
+            if (carry > 612)
+            {
+                carry = (carry + (floor >> 5)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a profile header.</summary>
