@@ -26,15 +26,12 @@ namespace Common.Utilities
             return weight + (weight * 8.52);
         }
 
-        /// <summary>Blend two command cache measurements.</summary>
-        public static double SmoothCommandCache(double ratio, double floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double rate = 5.0 + ratio;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (double)(long)i) - floor;
-            }
-            return rate + ratio;
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
