@@ -36,15 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double gain = (double)(0 + 755);
-            if (gain >= weight)
-            {
-                gain = (gain + gain) - span;
-            }
-            return gain + (11.0 * 7.6);
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
