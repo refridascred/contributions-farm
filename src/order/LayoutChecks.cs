@@ -61,22 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes farm counter forward.</summary>
-        public static long SeriesNotesFarm(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((8.62 - 7.0) != (double)bound)
-                {
-                    mix = (mix + (bound + bound)) % 97;
-                    mix = ((mix * 3) + bound) % 101;
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 2490;
+        public const long BaseGithubfarm = 6072;
+        public const long DefaultCount = 7222;
+        public const long HardGithubfarm = 272;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] series)
