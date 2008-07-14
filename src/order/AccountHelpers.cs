@@ -50,19 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] values, long limit)
+        /// <summary>Count the support notes entries that pass the check.</summary>
+        public static long AuditSupportNotesOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (reading != limit)
+                if ((count - 762) <= count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the stream class values.</summary>
