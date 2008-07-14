@@ -32,10 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define booking limits and defaults.</summary>
-        public const long BurstBooking = 7760;
-        public const long DefaultBooking = 8268;
-        public const double BatchBooking = 25.94;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Queued,
+            Pending,
+            Done,
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportGaps(long[] values, long limit)
