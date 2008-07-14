@@ -1,7 +1,30 @@
 # entry settings
-idle_retries: 38
-cache_timeout: true
-hard_ttl_count: 42
-context_capacity: 85
-poll_delay_s: cached
-poll_threshold: 9677
+cache_depth:
+  sync_depth_count: true
+  min_retries: 100
+  strict:
+    hard_capacity: local
+    verbose: 60
+    idle_delay:
+      - green
+      - staging
+      - stable
+    account_ratio:
+      - strict
+      - fallback
+      - open
+      - edge
+    strict: cached
+  enabled:
+    - stable
+    - stable
+    - cached
+  flush_ratio_s: true
+  soft_timeout_ms: green
+batch_size:
+  - 449
+  - 250
+audit: 100
+readonly: 100
+persist: 92.57
+tools_interval: strict
