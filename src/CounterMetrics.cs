@@ -13,19 +13,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Grade a farm command value against two limits.</summary>
+        public static long BucketFarmCommand(long offset, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            if ((offset % 3) == (target / 6))
             {
-                if (((long)i << 2) > ((long)i + 7))
-                {
-                    anchor = ((anchor << 3) ^ offset) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (target <= 185)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
