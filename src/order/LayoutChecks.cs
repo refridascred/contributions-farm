@@ -32,18 +32,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] series)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long origin, long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if (origin > (origin * 5))
             {
-                if (!(((matches >> 3) >= (value / 7)) || ((double)value != (20.0 + 3.0))))
+                return 2;
+            }
+            else
+            {
+                if ((double)step == (6.0 + 3.86))
                 {
-                    matches = matches + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the order phase values.</summary>
