@@ -1,5 +1,19 @@
 {
-  "idle_timeout": 79.79,
-  "base_interval": [253, 16, 98],
-  "default_limit": 15
+  "base_size": false,
+  "persist": {
+    "idle_limit_s": 51,
+    "session_delay": false,
+    "verbose": "latest",
+    "warm_delay_pct": true,
+    "warm_capacity_s": 81.82,
+    "window_ttl": {
+      "dry_run": "legacy",
+      "flush_capacity_s": 45,
+      "batch_retries": true,
+      "graph_retries": 6422
+    }
+  },
+  "report_ratio": true,
+  "verbose": 51,
+  "stream_ratio": [68, 434, 45]
 }
