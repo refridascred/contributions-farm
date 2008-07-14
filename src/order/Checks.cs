@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((tally & 31) > entry) && ((3.6 / 4.0) != (double)entry))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 3.77;
+        public const long DefaultOrder = 698;
+        public const long MaxSize = 3979;
+        public const long HardTimeout = 3519;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesMatches(long[] data)
