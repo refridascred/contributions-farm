@@ -23,17 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] readings)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark * 3) + limit;
-                mark = (mark - (limit ^ 5)) % 1000;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((6.8 - 6.8) > (double)count)
+                {
+                    count = (count + 3) + entry;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a filter options.</summary>
