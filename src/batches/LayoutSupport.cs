@@ -33,23 +33,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item ^ hits) >= (79 >> 4))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinScore = "latest-edge";
+        public const long MinBudget = 6714;
+        public const long MinDepth = 8145;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long SeekAlreadyIndex(long[] readings, long target)
