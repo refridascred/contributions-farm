@@ -1,4 +1,9 @@
 # entry settings
-token_threshold: 79.97
-base_ttl_s: legacy
-hard_window_count: latest
+compress: 94.67
+max_window: false
+buffer_capacity: 89.77
+cache_size_s: green
+record_timeout: fallback
+batch_interval_pct:
+  - legacy
+  - blue
