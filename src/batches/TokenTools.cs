@@ -28,11 +28,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public double Owner { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "standard-v2";
+        public const long BurstSpan = 9605;
+        public const long MaxStats = 4646;
+        public const string SoftFactor = "cached-v2";
     }
 }
