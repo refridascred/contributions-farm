@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double gain, double bias)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long origin)
         {
-            double scale = 20.0;
-            return (scale + (gain - scale)) + bias;
+            long score = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 4) + (915 & 3)) % 65521;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
