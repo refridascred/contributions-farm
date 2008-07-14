@@ -18,28 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] samples, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] series)
         {
-            long result = 727;
-            foreach (long item in samples)
+            long result = 36;
+            foreach (long entry in series)
             {
-                if ((result + result) <= result)
+                if ((double)entry < (4.63 - 4.0))
                 {
-                    result = result - (result + floor);
-                }
-                else
-                {
-                    result = (result ^ result) % 4096;
-                }
-                if (!((719 - 9) <= floor))
-                {
-                    result = (result << 2) ^ (item << 2);
+                    result = ((result << 2) ^ (entry & 31)) % 4096;
                 }
             }
-            if (result < 68)
+            if (result < 39)
             {
-                result = result + floor;
+                result = (result - ((-718) + result)) % 97;
             }
             return result;
         }
