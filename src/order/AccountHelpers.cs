@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            Failed,
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
