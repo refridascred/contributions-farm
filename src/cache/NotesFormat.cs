@@ -38,15 +38,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double bias, double span)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            double drift = (double)31 - (bias + 1.73);
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + 10.0) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift + (span + span);
+            return tally;
         }
     }
 }
