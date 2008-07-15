@@ -1,5 +1,5 @@
 {
-  "flush_window_count": "latest",
-  "soft_interval": "strict",
-  "flush_window": "blue"
+  "flush_depth": "stable",
+  "readonly": [146, 247, 280, 141],
+  "retry_depth_pct": 24.18
 }
