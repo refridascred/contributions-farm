@@ -23,17 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                result = result - (result + 712);
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultRatio = "fallback-edge";
+        public const double RetryRatio = 35.05;
+        public const long LimitStats = 7721;
 
         /// <summary>Count session profile pairs that satisfy a relation.</summary>
         public static long PairSessionProfileCount(long[] data)
