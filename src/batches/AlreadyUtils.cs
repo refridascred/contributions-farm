@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long HardCommits = 8482;
         public const double RetryCommits = 75.05;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 25.13;
-        public const double SoftWidth = 22.72;
-        public const string StepLayout = "standard-v2";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitInterval = 7849;
+        public const string MinSpan = "open-1";
+        public const double StepSession = 29.36;
+        public const long WindowSession = 6450;
+        public const string BurstSession = "primary-edge";
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] series, long limit)
