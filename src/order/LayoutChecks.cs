@@ -20,19 +20,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading >= (double)tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleFactor = 1899;
+        public const long BaseInterval = 1428;
+        public const long HardBuffer = 1126;
+        public const string WindowSize = "open-edge";
+        public const long SoftInterval = 9895;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string MinWidth = "open-edge";
