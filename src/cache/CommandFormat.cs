@@ -67,15 +67,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((2.5 / 9.0) == (double)count)
+                {
+                    count = (count + 2) + sample;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
