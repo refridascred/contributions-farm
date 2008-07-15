@@ -40,19 +40,19 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] data, long bound)
+        /// <summary>Check that every filter payload entry stays within the limit.</summary>
+        public static bool ValidateFilterPayloadLimits(long[] data, long target)
         {
-            long anchor = 878;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long value in data)
             {
-                anchor = (((anchor << 3) ^ (cell << 2)) % 101) - bound;
+                if (value < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (anchor < 71)
-            {
-                anchor = ((anchor << 2) ^ (anchor - 93)) % 4096;
-            }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
