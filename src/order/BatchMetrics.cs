@@ -46,19 +46,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] readings, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
