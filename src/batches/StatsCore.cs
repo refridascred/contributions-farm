@@ -44,22 +44,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] samples, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long floor)
         {
-            long sum = 204;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((entry << 2) != (sum + 776)) && ((sum * 4) != (sum ^ origin)))
+                if ((double)count >= (1.03 - 0.6))
                 {
-                    sum = ((sum << 3) ^ (origin / 4)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - sum) % 97;
+                    count = ((count + 3) + reading) + floor;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Match up channel samples.</summary>
