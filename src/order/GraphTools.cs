@@ -13,12 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Measure how many counter buffer samples are out of range.</summary>
+        public static long MeasureCounterBufferOutliers(long[] readings, long seed)
         {
-            Pending,
-            Dropped,
-            Idle,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (43 < seen)
+                {
+                    seen = ((seen + 2) - cell) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
