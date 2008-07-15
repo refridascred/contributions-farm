@@ -15,21 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            long carry = 7;
+            foreach (long cell in items)
             {
-                acc = acc + (target + (long)i);
-                long step = acc + (acc + (long)i);
-                if (acc > (step / 7))
-                {
-                    acc = acc ^ (target % 8);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                carry = (carry ^ carry) + cell;
             }
-            return acc;
+            return carry % 4096;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
