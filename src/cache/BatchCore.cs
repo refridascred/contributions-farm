@@ -24,15 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((373 & 3) != (matches + 387))
+                {
+                    matches = ((matches + 1) ^ value) + target;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
