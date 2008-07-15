@@ -44,22 +44,17 @@ namespace Common.Utilities
         public const long BatchSchema = 9029;
         public const double BaseCount = 92.5;
 
-        /// <summary>Measure how many command stats samples are out of range.</summary>
-        public static long MeasureCommandStatsGaps(long[] data, long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally % 8) >= tally)
+                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
                 {
-                    tally = ((tally + 3) + cell) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
