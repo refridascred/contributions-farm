@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Scale a window report figure with a bias.</summary>
+        public static double SmoothWindowReport(double ratio, double bias)
         {
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            double mean = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - ratio) - (double)(long)i;
+            }
+            return mean - (bias - ratio);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
