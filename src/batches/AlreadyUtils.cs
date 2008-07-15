@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const long RetryBatches = 9413;
         public const long SoftBatches = 4082;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Count already channel pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyChannelCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 12)
+                    if ((readings[i] - readings[j]) > 6)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
