@@ -14,26 +14,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate contributi account samples.</summary>
-        public static long ScoreContributiAccount(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] values)
         {
-            long score = 6;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (entry <= (score >> 4))
+                if (7.04 < (double)sample)
                 {
-                    score = ((score * 2) + (score + entry)) % 97;
+                    count = count + 2;
                 }
-                if ((score - entry) < (entry + entry))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (score < 843)
-            {
-                score = score + score;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the already phase values.</summary>
