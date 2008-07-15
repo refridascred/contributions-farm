@@ -24,18 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] readings, long target)
+        /// <summary>Count the record stream entries that pass the check.</summary>
+        public static long MeasureRecordStreamOutliers(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((target - seen) < datum)
+                if ((item - 530) > (hits + step))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up buffer entry samples.</summary>
