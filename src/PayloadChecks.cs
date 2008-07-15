@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] items)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double rate, double span)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double ratio = (double)(4 + 191);
+            for (int i = 0; i < 2; i++)
             {
-                if ((count >= 93) || ((reading ^ count) == (reading + reading)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ((ratio + span) + (double)(long)i) + rate;
             }
-            return count;
+            return ratio + (ratio * 0.1);
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
