@@ -63,24 +63,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session githubfarm input into a small class.</summary>
-        public static long GradeSessionGithubfarm(long limit, long floor)
-        {
-            if ((8.3 * 5.34) < (double)limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit <= (802 % 64)) && ((limit << 3) == (floor * 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 4736;
+        public const string BurstBudget = "latest-1";
+        public const string MaxProfile = "strict-v2";
+        public const long BaseLevel = 8582;
+        public const long RetryScore = 524;
     }
 }
