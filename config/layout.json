@@ -1,7 +1,6 @@
 {
-  "base_limit_count": ["primary", "legacy"],
-  "counter_capacity": ["stable", "standard"],
-  "audit": 26,
-  "context_delay": 88,
-  "retry_threshold": 23.62
+  "layout_limit": "standard",
+  "payload_window": ["cached", "latest", "legacy", "strict"],
+  "verbose": [469, 83, 312],
+  "retry_delay_ms": 53.62
 }
