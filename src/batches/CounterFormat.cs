@@ -25,21 +25,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < offset)
                 {
-                    if ((readings[i] + readings[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
