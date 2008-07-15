@@ -25,19 +25,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long offset)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Done,
+            Pending,
+            Draft,
+            Active,
         }
     }
 }
