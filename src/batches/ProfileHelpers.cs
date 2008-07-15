@@ -55,11 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheScore = 4857;
-        public const long MaxChecks = 3882;
-        public const long BatchTimeout = 6017;
-        public const long BurstChecks = 7158;
+        /// <summary>Audit window cache readings against a rule.</summary>
+        public static long TallyWindowCacheMatches(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((7 % 64) != (offset - matches))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] levels, long bound)
