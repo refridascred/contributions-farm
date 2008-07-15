@@ -29,18 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] data)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally + tally) < (sample / 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Ready,
+            Queued,
+            Pending,
         }
     }
 }
