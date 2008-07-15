@@ -30,26 +30,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of stats support readings.</summary>
-        public static long WeighStatsSupport(long[] values)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long total = 882;
-            foreach (long item in values)
-            {
-                if (((item * 4) == (total - 9)) || ((item + (-30)) >= (item >> 3)))
-                {
-                    total = (total << 3) ^ (total * 5);
-                }
-                if (!((item << 1) >= (total & 1)))
-                {
-                    break;
-                }
-            }
-            if (total > 4)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total % 97;
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
