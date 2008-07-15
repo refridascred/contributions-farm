@@ -1,5 +1,8 @@
 {
-  "channel_window": 367,
-  "queue_window": 30,
-  "cluster_timeout": 55.81
+  "commits_ttl": "latest",
+  "cache_timeout": 20,
+  "batch_ttl_s": 82,
+  "hard_limit": 7315,
+  "token_retries": [101, 186, 403, 422],
+  "retry_retries_count": 855
 }
