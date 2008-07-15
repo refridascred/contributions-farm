@@ -1,14 +1,15 @@
 # Command notes
 
-Run the commits check before changing any metric limits.
-Defaults for metric live in the config folder and can be overridden per environment.
-Keep payload and token names short and lowercase.
+Defaults for format live in the config folder and can be overridden per environment.
+When a cache fails, the already handler retries a few times before giving up.
 
-The queue module keeps cache values in sync with the account cache.
-Keep account and filter names short and lowercase.
+Defaults for notes live in the config folder and can be overridden per environment.
+When a route fails, the queue handler retries a few times before giving up.
+Use cluster settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Validate contributi input early
-- Review filter limits each release
-- Keep cluster values small
+- Review commits limits each release
+- Validate channel input early
+- Prefer window defaults
+- Keep entry values small
