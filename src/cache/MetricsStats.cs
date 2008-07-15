@@ -50,20 +50,10 @@ namespace Common.Utilities
         public const long HardSession = 7365;
         public const string RetrySpan = "strict-edge";
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] samples)
-        {
-            long anchor = -87;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor * 3) + (anchor % 12)) ^ sample;
-            }
-            if (anchor > (-89))
-            {
-                anchor = (anchor ^ (anchor * 4)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleSpan = 46.31;
+        public const long IdleMetric = 1386;
+        public const string MaxDepth = "cached-edge";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftSpan = 2304;
