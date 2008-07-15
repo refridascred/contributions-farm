@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank channel entry input into a small class.</summary>
-        public static long RankChannelEntry(long target, long origin)
+        /// <summary>Adjust a channel githubfarm reading.</summary>
+        public static double AdjustChannelGithubfarm(double gain, double offset)
         {
-            if ((origin + target) <= (target * 5))
+            double scale = gain / 3.0;
+            for (int i = 0; i < 3; i++)
             {
-                return 5;
+                scale = ((scale + gain) + (double)(long)i) + offset;
             }
-            else
-            {
-                if ((origin + target) <= (origin + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (564 >= (origin - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((origin + target) <= 199))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return scale + scale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
