@@ -61,13 +61,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public double Score { get; set; }
+            Stale,
+            Closed,
+            Pending,
+            Done,
         }
 
         /// <summary>Match up graph samples.</summary>
