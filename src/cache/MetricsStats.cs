@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Dropped,
-            Closed,
-            Synced,
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of channel counter readings.</summary>
