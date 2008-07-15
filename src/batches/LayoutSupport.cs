@@ -75,13 +75,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] levels, long step)
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((step ^ step) > (hits + step))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
