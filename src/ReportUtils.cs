@@ -62,22 +62,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] levels)
+        /// <summary>Measure how many farm format samples are out of range.</summary>
+        public static long TallyFarmFormatMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((hits - value) == (value >> 1))
+                if ((double)count <= (3.38 - 1.8))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
