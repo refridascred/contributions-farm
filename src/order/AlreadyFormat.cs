@@ -60,21 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (double)331 - span;
+            if (bias2 <= (double)291)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = (bias2 + bias2) + bias;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - bias2) - (double)(long)i;
+            }
+            return bias2 - (0.67 * 3.0);
         }
     }
 }
