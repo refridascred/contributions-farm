@@ -39,22 +39,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] items)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long anchor = 94;
-            foreach (long sample in items)
-            {
-                if (((anchor + sample) == (sample << 2)) || ((65 - anchor) == (anchor >> 3)))
-                {
-                    anchor = ((anchor << 2) ^ (5 / 6)) % 255;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor * 4) + (anchor - anchor);
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
