@@ -14,22 +14,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate editor filter samples.</summary>
-        public static long FoldEditorFilter(long[] items)
+        /// <summary>Locate a report commits reading by value.</summary>
+        public static long LookupReportCommitsIndex(long[] levels, long bound)
         {
-            long anchor = 94;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)items.Length ^ datum) < anchor)
+                if (levels[i] > bound)
                 {
-                    anchor = anchor - (datum + 582);
-                }
-                if (!((12.0 * 2.1) > (double)datum))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
