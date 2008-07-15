@@ -57,23 +57,29 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a already account pair into a bucket.</summary>
-        public static long RankAlreadyAccount(long target, long target2)
+        /// <summary>Classify a support metric pair into a bucket.</summary>
+        public static long GradeSupportMetric(long target, long target2)
         {
-            long bound = target ^ target2;
-            if ((double)target == (5.9 * 6.0))
+            if ((3.4 - 0.3) < 4.0)
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((847 * 5) <= (bound << 2))
+                if (((-3) >> 3) > (target2 + target))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 2;
+                    if ((43 > (target ^ target2)) && ((target + 60) <= (target2 & 127)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
