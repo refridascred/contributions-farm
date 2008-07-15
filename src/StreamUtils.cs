@@ -24,11 +24,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 5794;
-        public const long CachePayload = 8520;
-        public const long IdleScore = 1359;
-        public const double IdleWidth = 92.79;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading % 5) == (hits * 5)) || (hits < (step % 8)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many token batch samples are out of range.</summary>
         public static long CountTokenBatchMatches(long[] items, long offset)
