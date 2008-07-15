@@ -28,16 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema queue counter forward.</summary>
-        public static long SeriesSchemaQueue(long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] levels, long target)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score - ((long)i << 1)) % 101;
-                score = ((score * 2) + (long)i) % 97;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
