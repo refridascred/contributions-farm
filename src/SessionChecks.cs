@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long BurstLevel = 4884;
         public const string SoftCluster = "staging-1";
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((origin >> 1) == (cell << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowBudget = "staging-v2";
+        public const double HardRatio = 2.15;
+        public const long StepCommand = 6811;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] samples)
