@@ -43,19 +43,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] data, long seed)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
