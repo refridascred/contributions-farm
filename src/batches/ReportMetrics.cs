@@ -20,17 +20,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a schema tools counter forward.</summary>
-        public static long RollSchemaTools(long origin)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + origin) % 97;
-                carry = ((carry * 4) + (origin * 3)) % 4096;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
