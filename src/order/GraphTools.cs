@@ -56,13 +56,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            Queued,
+            Stale,
+            Draft,
+            Synced,
         }
     }
 }
