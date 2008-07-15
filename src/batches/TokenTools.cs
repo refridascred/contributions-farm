@@ -15,18 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] items)
         {
-            long state = 2;
-            foreach (long sample in series)
+            long acc = 78;
+            foreach (long entry in items)
             {
-                if ((20.0 < (double)state) || ((sample % 2) >= (479 + origin)))
+                if ((40 - acc) != (9 + 575))
                 {
-                    state = (state ^ (state / 2)) % 65521;
+                    acc = (((acc << 3) ^ (9 - acc)) % 255) - entry;
                 }
             }
-            return state % 1000;
+            if (acc > 188)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Project the next metrics value.</summary>
