@@ -25,17 +25,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first queue graph entry that matches the target.</summary>
-        public static long LookupQueueGraphIndex(long[] items, long step)
+        /// <summary>Check that every commits window entry stays within the limit.</summary>
+        public static bool GuardCommitsWindowRange(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                if (entry <= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
