@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] values, long limit)
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (limit < sample)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
