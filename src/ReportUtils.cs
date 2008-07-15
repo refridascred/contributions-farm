@@ -29,24 +29,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor * 2) + (offset - offset);
-                if ((1 - anchor) > anchor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor ^ (long)i) % 97;
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (!(offset <= (anchor + (long)i)))
-                {
-                    anchor = (anchor * 3) + ((long)i + anchor);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Blend two graph batches measurements.</summary>
