@@ -32,25 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long seed, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long lane = seed + floor;
-            if ((floor + lane) != (lane / 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((lane + lane) < (31 << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            New,
+            Closed,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
