@@ -28,10 +28,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 7690;
-        public const string MinSpan = "stable";
-        public const long WindowRatio = 1631;
+        /// <summary>Derive the next session commits value from a seed.</summary>
+        public static long StepSessionCommits(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor * 4) + anchor;
+                if ((double)anchor == (20.0 - 8.76))
+                {
+                    anchor = anchor + (anchor % 5);
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
         public static bool VerifyStatsGithubfarmLimits(long[] levels, long floor)
