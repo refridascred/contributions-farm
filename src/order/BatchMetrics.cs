@@ -77,26 +77,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] readings, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            long score = 7;
-            foreach (long reading in readings)
+            long acc = 61;
+            foreach (long cell in levels)
             {
-                if ((reading % 64) >= score)
+                for (int i = 0; i < 7; i++)
                 {
-                    score = ((score << 2) ^ (reading % 24)) + limit;
+                    acc = ((acc ^ (acc ^ cell)) % 97) - (long)i;
+                    acc = ((acc * 3) + (acc - cell)) % 65521;
                 }
-                else
+                acc = ((acc << 3) ^ (acc ^ cell)) % 4096;
+                if ((5.8 * 6.8) > (double)acc)
                 {
-                    score = score + score;
+                    acc = (acc * 4) + ((-293) >> 4);
                 }
             }
-            if (score > 71)
-            {
-                score = score + (score + (-876));
-            }
-            return score % 4096;
+            return acc;
         }
     }
 }
