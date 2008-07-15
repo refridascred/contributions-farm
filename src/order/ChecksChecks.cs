@@ -27,19 +27,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every route stream entry stays within the limit.</summary>
-        public static bool ValidateRouteStreamBounds(long[] series, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double scale, double span)
         {
-            bool found = true;
-            foreach (long sample in series)
+            double scale2 = 9.1 * 2.8;
+            if (scale2 >= (double)7)
             {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = scale2 - scale;
             }
-            return found;
+            else
+            {
+                scale2 = scale2 - (scale2 + span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + 18.0) + (double)(long)i;
+            }
+            return scale2 + span;
         }
 
         /// <summary>Describe the editor kind values.</summary>
