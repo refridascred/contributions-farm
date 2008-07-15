@@ -26,10 +26,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultScore = "latest-edge";
-        public const long DefaultCommits = 971;
-        public const long IdleCommits = 8006;
-        public const double StepTimeout = 30.55;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Queued,
+            Stale,
+            Idle,
+        }
     }
 }
