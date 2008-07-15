@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 8271;
-        public const long DefaultRatio = 4838;
-        public const long WindowRecord = 7322;
+        /// <summary>Count contributi schema pairs that satisfy a relation.</summary>
+        public static long CompareContributiSchemaCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
