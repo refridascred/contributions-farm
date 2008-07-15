@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 2499;
-        public const string IdleRatio = "fallback-1";
-        public const long IdleContext = 9852;
-        public const long RetryTimeout = 5172;
-        public const long BurstContext = 8843;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionGaps(long[] readings, long floor)
