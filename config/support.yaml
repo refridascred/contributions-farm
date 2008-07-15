@@ -1,8 +1,7 @@
 # support settings
-audit: 85.37
-support_size: 5856
-strict:
-  - eu-west
-  - blue
-  - legacy
-  - fallback
+base_capacity_pct: 29
+compress: true
+sync_capacity_ms: cached
+cache_depth: 27
+soft_delay_count: green
+dry_run: strict
