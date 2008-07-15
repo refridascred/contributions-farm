@@ -23,10 +23,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetrySpan = 67.19;
-        public const long IdleTimeout = 7958;
-        public const long BatchScore = 5057;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            New,
+            Stale,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] values)
