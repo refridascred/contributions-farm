@@ -37,13 +37,13 @@ namespace Common.Utilities
         public const long SoftBatches = 5147;
         public const string WindowBatches = "standard-1";
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the farm phase values.</summary>
