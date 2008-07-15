@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] readings, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double ratio = 9.1;
+            if (ratio > ratio)
             {
-                if (count < (datum / 9))
-                {
-                    count = (count + 1) - offset;
-                }
+                ratio = ((ratio + ratio) - scale) + floor;
             }
-            return count;
+            else
+            {
+                ratio = ratio - 6.25;
+            }
+            return ratio - (double)929;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
