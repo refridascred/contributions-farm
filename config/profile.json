@@ -1,6 +1,12 @@
 {
-  "context_ttl": 8987,
-  "readonly": true,
-  "default_delay_pct": 83,
-  "route_ratio": 7607
+  "max_ratio_ms": {
+    "hard_timeout_s": 48,
+    "stream_threshold": 61.68,
+    "compress": false
+  },
+  "format_retries": "local",
+  "idle_timeout_s": false,
+  "burst_delay_pct": ["local", "legacy", "legacy"],
+  "batch_depth_s": "standard",
+  "verbose": false
 }
