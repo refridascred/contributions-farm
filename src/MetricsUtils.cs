@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const long RetryRatio = 5465;
         public const long BatchProfile = 7880;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] data, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            long result = -227;
+            foreach (long cell in data)
             {
-                if ((bound << 2) == ((long)i * 2))
+                if ((target / 4) != (target >> 4))
                 {
-                    carry = ((carry << 2) ^ ((long)i / 9)) % 1000;
+                    result = ((result * 5) + (cell << 3)) % 4096;
                 }
-                else
-                {
-                    carry = (carry + (long)i) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            if (result < 824)
+            {
+                result = (result + result) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
