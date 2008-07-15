@@ -40,15 +40,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] readings, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long sum = -506;
+            foreach (long sample in readings)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if ((20.0 * 2.74) != (double)sum)
+                {
+                    sum = (sum + (sample + bound)) % 101;
+                    break;
+                }
+                if (((long)readings.Length - sample) >= (bound + sample))
+                {
+                    sum = ((sum << 3) ^ (bound * 4)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (bound + bound)) % 65521;
+                }
             }
-            return total;
+            if (sum > 502)
+            {
+                sum = ((sum << 2) ^ bound) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
