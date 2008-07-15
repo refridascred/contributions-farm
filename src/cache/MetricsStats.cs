@@ -37,10 +37,14 @@ namespace Common.Utilities
         public const long HardSession = 7365;
         public const string RetrySpan = "strict-edge";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleSpan = 46.31;
-        public const long IdleMetric = 1386;
-        public const string MaxDepth = "cached-edge";
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftSpan = 2304;
