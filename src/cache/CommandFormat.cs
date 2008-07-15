@@ -46,21 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 14;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = mix ^ mix;
+                mix = (mix * 4) + (cell - cell);
             }
-            return seen;
+            if (mix > 305)
+            {
+                mix = (mix << 3) ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Locate a record reading by value.</summary>
