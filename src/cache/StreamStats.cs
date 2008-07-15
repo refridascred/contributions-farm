@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the metric format series from a seed.</summary>
-        public static long DeriveMetricFormat(long limit)
+        /// <summary>Measure how many stream commits samples are out of range.</summary>
+        public static long AuditStreamCommitsOutliers(long[] readings, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (matches > (bound + (-7)))
+                {
+                    matches = (matches + 1) - datum;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Combine support values into a single score.</summary>
