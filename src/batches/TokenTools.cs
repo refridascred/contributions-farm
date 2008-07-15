@@ -32,18 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] samples, long target)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((9.21 * 12.0) != (double)count)
-                {
-                    count = ((count + 3) + reading) - target;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
