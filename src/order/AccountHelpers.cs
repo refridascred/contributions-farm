@@ -65,15 +65,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] samples, long seed)
-        {
-            long mark = 450;
-            foreach (long datum in samples)
-            {
-                mark = (((mark * 2) + ((-76) + mark)) + datum) + seed;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSize = 7084;
+        public const string StepCounter = "primary-edge";
+        public const long RetryDepth = 6773;
     }
 }
