@@ -30,11 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 4452;
+        public const long BurstRatio = 2752;
+        public const long CacheOrder = 9669;
+        public const long SoftCount = 2260;
+        public const long BurstOrder = 9552;
     }
 }
