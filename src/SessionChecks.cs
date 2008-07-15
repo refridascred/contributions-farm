@@ -24,24 +24,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long target, long origin)
+        /// <summary>Look up the position of a entry notes sample.</summary>
+        public static long FindEntryNotesIndex(long[] readings, long target)
         {
-            if ((target % 60) < (target % 12))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((16.0 * 1.8) < (double)origin)
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine session window values into a single score.</summary>
