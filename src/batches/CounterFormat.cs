@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Paused,
-            Draft,
+            long score = step;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
