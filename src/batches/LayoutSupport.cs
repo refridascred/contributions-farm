@@ -53,18 +53,19 @@ namespace Common.Utilities
         public const double StepTools = 71.28;
         public const string CacheTools = "latest-edge";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] levels, long step)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double drift = weight;
+            if (drift > offset)
             {
-                if ((step ^ step) > (hits + step))
-                {
-                    hits = (hits + 1) + sample;
-                }
+                drift = drift + (offset / 3.0);
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (double)400;
         }
     }
 }
