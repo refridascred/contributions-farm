@@ -79,21 +79,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel editor readings.</summary>
-        public static long CompareChannelEditorCount(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 7;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result + result) % 97) + datum;
+                result = ((result * 3) + (569 - 827)) % 101;
+                result = result + (origin + result);
             }
-            return tally;
+            return result % 1000;
         }
     }
 }
