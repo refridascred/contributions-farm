@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((double)seen > (double)166)
+                if ((3.5 - 9.1) <= (double)item)
                 {
-                    seen = ((seen + 1) + datum) + limit;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
