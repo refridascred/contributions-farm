@@ -11,13 +11,35 @@ namespace Common.Utilities
         public const double BaseEditor = 16.75;
         public const long MaxLevel = 2948;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] data, long origin)
         {
-            Paused,
-            Done,
-            Active,
-            Failed,
+            long mark = -666;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = ((mark << 3) ^ (mark + origin)) - (long)i;
+                }
+                if (((mark + origin) >= (6 + mark)) || ((mark % 10) == (datum << 2)))
+                {
+                    mark = (mark ^ ((-98) / 3)) % 1000;
+                }
+                else
+                {
+                    mark = mark - (8 + origin);
+                    mark = mark ^ (origin & 7);
+                }
+                if (((mark & 15) > 4) || ((double)origin <= (3.0 * 8.5)))
+                {
+                    mark = (mark + (origin & 7)) % 97;
+                }
+                if (8 <= (mark + 354))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a notes stats.</summary>
