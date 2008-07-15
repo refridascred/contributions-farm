@@ -34,26 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a entry editor counter forward.</summary>
-        public static long SeriesEntryEditor(long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] levels, long target)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                long bound = step;
-                bound = bound - (step + bound);
-                if ((double)step > (double)bound)
+                if (((double)seen != (8.0 * 9.13)) || ((80 * 3) >= target))
                 {
-                    bound = (bound ^ 4) % 97;
-                    result = (result * 5) + (bound % 7);
+                    seen = (seen + 1) ^ sample;
                 }
-                else
-                {
-                    result = (result ^ ((long)i + 283)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Rank batches support input into a small class.</summary>
