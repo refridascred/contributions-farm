@@ -24,16 +24,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 6354;
+        public const double HardScore = 37.46;
+        public const long DefaultFactor = 6173;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] items)
