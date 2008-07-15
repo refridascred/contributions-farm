@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Paused,
-            Synced,
-            Retry,
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
