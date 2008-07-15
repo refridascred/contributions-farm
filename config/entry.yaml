@@ -1,7 +1,5 @@
 # entry settings
-dry_run: false
-retry_interval_ms: 100
-format_ttl: edge
-payload_limit: eu-west
-burst_ratio_count: 3
-burst_timeout: 3730
+soft_retries_count: stable
+idle_window_ms: 4661
+strict: 1108
+stats_window: 100
