@@ -70,11 +70,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 48.41;
+        public const long DefaultCount = 8476;
+        public const long StepCache = 2335;
     }
 }
