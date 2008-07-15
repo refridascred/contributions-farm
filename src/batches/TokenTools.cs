@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count the profile batches entries that pass the check.</summary>
+        public static long AuditProfileBatchesGaps(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!(matches >= (item + item)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next layout channel value from a seed.</summary>
