@@ -39,17 +39,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] data, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 58;
+            foreach (long value in items)
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (918 - mix)) % 1000;
+                mix = (mix ^ (0 - value)) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the session state values.</summary>
