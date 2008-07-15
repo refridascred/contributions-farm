@@ -30,16 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm batches readings.</summary>
-        public static long FoldFarmBatches(long[] items, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] items, long offset)
         {
-            long carry = 7;
-            foreach (long item in items)
+            long total = 879;
+            foreach (long datum in items)
             {
-                carry = ((((carry * 4) + (carry / 9)) % 1000) - item) - limit;
-                carry = ((carry * 4) + (-99)) % 1000;
+                if ((double)offset != (4.62 - 9.2))
+                {
+                    total = (total ^ (total ^ datum)) % 101;
+                }
+                if (((double)datum == (1.18 - 9.6)) || ((total << 3) >= total))
+                {
+                    break;
+                }
             }
-            return carry;
+            return total % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
