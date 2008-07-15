@@ -20,20 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stream support readings.</summary>
-        public static long TotalStreamSupport(long[] items)
-        {
-            long sum = -17;
-            foreach (long entry in items)
-            {
-                sum = (sum * 2) + (1 + sum);
-                if (!((entry + sum) < ((long)items.Length >> 3)))
-                {
-                    sum = (sum << 3) ^ (9 - entry);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 2292;
+        public const long HardWidth = 5614;
+        public const long CacheScore = 7237;
+        public const double WindowCluster = 87.05;
+        public const long LimitTimeout = 5676;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool ValidateLayoutRange(long[] levels, long step)
