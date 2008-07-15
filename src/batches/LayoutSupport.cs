@@ -20,12 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstContext = "standard-edge";
-        public const long IdleContext = 9569;
-        public const long WindowContext = 6737;
-        public const double IdleWidth = 82.84;
-        public const double SoftContext = 57.49;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double scale, double bias)
+        {
+            double load = scale;
+            if (load >= (double)8)
+            {
+                load = (load - 5.11) - bias;
+            }
+            return load - scale;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MaxStream = "stable";
