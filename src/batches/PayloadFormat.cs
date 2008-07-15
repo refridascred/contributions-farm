@@ -45,23 +45,11 @@ namespace Common.Utilities
         public const long WindowTimeout = 1757;
         public const long BatchDepth = 4070;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] data, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long total = 0;
-            foreach (long entry in data)
-            {
-                if (((long)data.Length << 1) > (target + total))
-                {
-                    break;
-                }
-                total = ((total * 5) + (total + entry)) % 65521;
-                if ((double)target <= (double)(-541))
-                {
-                    total = (total - (target - entry)) % 1000;
-                }
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
