@@ -76,17 +76,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 2681;
+        public const long HardSchema = 6112;
+        public const string MaxScore = "staging-v2";
+        public const long SoftInterval = 1513;
     }
 }
