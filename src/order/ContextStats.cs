@@ -39,18 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm filter entries that pass the check.</summary>
-        public static long MeasureFarmFilterHits(long[] levels, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6 * 4) > (hits + target))
+                if (data[i] < limit)
                 {
-                    hits = (hits + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the session state values.</summary>
