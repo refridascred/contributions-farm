@@ -38,21 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = -2;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = mix + 2;
+                if (mix <= (mix - value))
                 {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (mix > 155)
+            {
+                mix = ((mix * 5) + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stream record.</summary>
