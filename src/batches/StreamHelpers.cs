@@ -60,11 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double bias, double floor)
+        /// <summary>Locate a token record reading by value.</summary>
+        public static long LookupTokenRecordIndex(long[] series, long bound)
         {
-            double bias2 = (double)(25 - 3);
-            return ((bias2 + 6.8) + bias) + floor;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
