@@ -21,13 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double ratio, double span)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            double mean = span;
+            return mean + ratio;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
