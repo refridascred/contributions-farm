@@ -1,6 +1,9 @@
-id,active,label
-1,666,641
-2,62,47.76
-3,1.44,605
-4,fallback,266
-5,19.38,0.34
+id,label,rank
+1,green,969
+2,fallback,blue
+3,194,legacy
+4,472,15.68
+5,blue,93.08
+6,3.19,27.07
+7,latest,82.8
+8,464,91
