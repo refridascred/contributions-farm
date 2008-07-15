@@ -47,19 +47,18 @@ namespace Common.Utilities
             return gain + 6.0;
         }
 
-        /// <summary>Scale a layout session figure with a bias.</summary>
-        public static double AdjustLayoutSession(double rate, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] series, long floor)
         {
-            double scale = rate;
-            if (scale < 8.09)
+            long tally = 0;
+            foreach (long value in series)
             {
-                scale = scale + (rate - floor);
+                if (!((floor ^ tally) >= floor) && ((tally + 246) < value))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (floor - 3.8)) + (double)(long)i;
-            }
-            return scale + (scale / 3.0);
+            return tally;
         }
     }
 }
