@@ -44,19 +44,10 @@ namespace Common.Utilities
         public const long BatchLayout = 4357;
         public const double IdleBudget = 86.8;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSpan = 540;
+        public const long BurstFilter = 871;
+        public const long SoftFilter = 3054;
+        public const string LimitFilter = "primary";
     }
 }
