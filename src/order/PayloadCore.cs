@@ -51,18 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi cluster readings against a rule.</summary>
-        public static long CountContributiClusterHits(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits << 2) <= hits)
-                {
-                    hits = ((hits + 2) - datum) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 713;
+        public const long MinOrder = 923;
+        public const double MaxInterval = 40.32;
+        public const double IdleRatio = 27.51;
+        public const string BatchOrder = "local";
     }
 }
