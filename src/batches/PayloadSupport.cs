@@ -29,13 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] values, long limit)
         {
-            Draft,
-            Ready,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum <= (9.97 - 6.0))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
         }
     }
 }
