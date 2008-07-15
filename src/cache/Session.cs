@@ -58,14 +58,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] items, long floor)
         {
-            Queued,
-            Closed,
-            Idle,
-            New,
-            Stale,
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
