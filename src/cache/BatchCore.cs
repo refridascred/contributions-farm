@@ -51,15 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long origin)
         {
-            long mix = 37;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in samples)
             {
-                mix = (mix - (mix / 2)) + entry;
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
