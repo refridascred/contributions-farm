@@ -53,19 +53,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] data, long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long anchor = 68;
+            foreach (long datum in samples)
             {
-                if (value != offset)
+                for (int i = 0; i < 5; i++)
                 {
-                    ready = false;
-                    break;
+                    anchor = (((anchor << 2) ^ (datum >> 1)) % 101) - (long)i;
                 }
+                anchor = (anchor + (3 + datum)) % 65521;
             }
-            return ready;
+            if (anchor > (-726))
+            {
+                anchor = (anchor - target) % 255;
+            }
+            return anchor % 65521;
         }
     }
 }
