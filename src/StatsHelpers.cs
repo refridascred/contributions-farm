@@ -38,22 +38,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long floor, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((98 <= (948 + floor)) || ((5.7 + 0.6) >= (9.89 - 4.48)))
             {
-                if ((double)matches < 7.7)
+                return 1;
+            }
+            else
+            {
+                if (step <= (step + step))
                 {
-                    matches = (matches + 2) ^ entry;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((727 + floor) > floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (9.0 > (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a layout session figure with a bias.</summary>
