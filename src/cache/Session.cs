@@ -58,19 +58,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] data, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long floor, long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            if (bound <= (bound / 2))
             {
-                if (entry < floor)
+                return 4;
+            }
+            else
+            {
+                if (!(bound < (bound / 2)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (8.7 >= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (828 <= (floor - floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
