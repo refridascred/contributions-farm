@@ -42,18 +42,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many token batch samples are out of range.</summary>
-        public static long CountTokenBatchMatches(long[] items, long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((offset + tally) == (95 << 3))
+                if (sample != offset)
                 {
-                    tally = (tally + 2) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Combine already values into a single score.</summary>
