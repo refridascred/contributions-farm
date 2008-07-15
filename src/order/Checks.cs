@@ -59,19 +59,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double ratio, double bias)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            double rate = 2.1;
+            if (rate > bias)
             {
-                if ((6.6 * 0.65) == (double)target)
-                {
-                    result = (result << 3) ^ target;
-                }
-                result = ((result * 4) + (long)i) % 101;
+                rate = rate - 4.0;
             }
-            return result;
+            return rate - ratio;
         }
     }
 }
