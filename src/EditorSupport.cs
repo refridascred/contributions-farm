@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Paused,
             Draft,
-            New,
-            Done,
-            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
