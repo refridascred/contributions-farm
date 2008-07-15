@@ -53,23 +53,9 @@ namespace Common.Utilities
         public const long BaseRatio = 3293;
         public const string BaseDepth = "stable-edge";
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((2 - acc) >= (acc << 1))
-                {
-                    acc = (acc + (target << 3)) % 101;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = ((acc ^ (acc * 4)) % 1000) + (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 4916;
+        public const long SoftOrder = 3968;
+        public const long MinOrder = 9671;
     }
 }
