@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next payload channel value.</summary>
-        public static double BlendPayloadChannel(double ratio, double offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long seed)
         {
-            double mean = offset;
-            for (int i = 0; i < 4; i++)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                mean = (mean + (ratio - offset)) - (double)(long)i;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return mean - ratio;
+            return state;
         }
 
         /// <summary>Hold a stream options.</summary>
