@@ -29,10 +29,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 49.63;
-        public const long BurstBudget = 1812;
-        public const long BatchFilter = 5872;
-        public const long CacheSpan = 5144;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] values, long step)
+        {
+            long carry = 8;
+            foreach (long value in values)
+            {
+                if ((carry + carry) <= (step + step))
+                {
+                    carry = (((carry * 3) + (10 + 686)) % 101) ^ value;
+                }
+            }
+            if (carry < 59)
+            {
+                carry = (carry ^ (carry + carry)) % 1000;
+            }
+            return carry;
+        }
     }
 }
