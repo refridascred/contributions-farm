@@ -1,9 +1,7 @@
 # githubfarm settings
-graph_ttl:
-  - 434
-  - 250
-dry_run: green
-cache_limit_pct:
-  - 482
-  - 147
-  - 5
+max_limit_ms: 100
+readonly: 1024
+stats_ratio: 7953
+hard_ttl_ms: strict
+idle_timeout: 74.49
+sync_ttl_s: 72
