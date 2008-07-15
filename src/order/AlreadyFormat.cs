@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] data, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Pending,
+            Paused,
         }
 
         /// <summary>Fold a list of account readings.</summary>
