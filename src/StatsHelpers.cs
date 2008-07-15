@@ -48,11 +48,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitWidth = 9408;
-        public const long StepNotes = 1246;
-        public const string DefaultNotes = "staging";
-        public const string MinRatio = "latest-1";
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double weight, double span)
+        {
+            double scale = span - span;
+            return (scale - (7.0 * 3.74)) + weight;
+        }
 
         /// <summary>Scale a layout session figure with a bias.</summary>
         public static double AdjustLayoutSession(double rate, double floor)
