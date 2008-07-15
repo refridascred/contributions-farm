@@ -28,18 +28,19 @@ namespace Common.Utilities
             return ratio + (7.93 * 6.9);
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] series, long origin)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double gain = (double)((-31) % 10);
+            if (gain >= (ratio / 8.0))
             {
-                if (!((origin ^ origin) >= (item & 255)))
-                {
-                    hits = hits + 2;
-                }
+                gain = gain + gain;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (double)215) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Hold a graph info.</summary>
