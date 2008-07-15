@@ -32,12 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Pending,
-            New,
             Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
