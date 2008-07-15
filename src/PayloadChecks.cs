@@ -14,14 +14,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Synced,
-            Retry,
-            Idle,
-            Stale,
-            Paused,
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
