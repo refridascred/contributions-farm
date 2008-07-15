@@ -67,22 +67,10 @@ namespace Common.Utilities
             return ((bias2 + 6.8) + bias) + floor;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "local";
+        public const long MinToken = 4994;
+        public const long DefaultFactor = 7037;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
