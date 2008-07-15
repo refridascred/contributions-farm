@@ -1,5 +1,13 @@
 {
-  "verbose": 9,
-  "metrics_retries": 66.25,
-  "burst_timeout": 89
+  "payload_size": 4481,
+  "cluster_threshold": 10,
+  "token_retries": {
+    "order_delay": 16.43,
+    "record_delay": 1768,
+    "persist": true,
+    "enabled": 5016,
+    "min_capacity_s": 13.72
+  },
+  "base_window_count": 56.7,
+  "verbose": "blue"
 }
