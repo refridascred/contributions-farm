@@ -66,14 +66,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Retry,
-            Pending,
-            Locked,
-            Closed,
-            Active,
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
