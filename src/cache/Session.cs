@@ -27,11 +27,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "strict";
-        public const string DefaultInterval = "latest-edge";
-        public const long DefaultChannel = 3260;
-        public const string IdleScore = "latest-edge";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 8901;
+        public const long RetryBudget = 7956;
+        public const long SoftWidth = 3939;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LookupContributiIndex(long[] items, long origin)
