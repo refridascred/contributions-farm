@@ -34,11 +34,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 5991;
-        public const long BaseWindow = 2545;
-        public const long BaseInterval = 1336;
-        public const long MaxWindow = 852;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long bound, long origin)
+        {
+            if (((double)bound >= (2.0 - 1.0)) || ((double)origin >= (5.0 * 13.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + bound) >= (-20))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= (origin / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound >= (origin ^ 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next filter cache value from a seed.</summary>
         public static long SeriesFilterCache(long limit)
