@@ -47,22 +47,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] readings, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (sample > ((-66) ^ origin))
+                if (entry < origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
