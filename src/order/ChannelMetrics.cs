@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next report layout value from a seed.</summary>
-        public static long RollReportLayout(long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                result = result - (bound + bound);
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Pending,
+            Draft,
+            New,
+            Active,
         }
 
         /// <summary>Hold a filter record.</summary>
