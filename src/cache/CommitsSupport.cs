@@ -62,15 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double rate, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            double scale = (double)((-595) * 4);
+            if (scale > (rate - span))
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                scale = scale - 5.8;
             }
-            return anchor;
+            else
+            {
+                scale = scale - (scale / 6.0);
+            }
+            return scale - (double)54;
         }
     }
 }
