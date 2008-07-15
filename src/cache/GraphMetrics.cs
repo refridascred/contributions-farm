@@ -23,12 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] levels, long step)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length < 78) || (((count % 7) >= (step - 37)) || ((0.7 * 3.11) <= (double)entry)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
