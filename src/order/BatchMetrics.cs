@@ -14,24 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long target, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] values, long offset)
         {
-            if ((57 / 6) < (bound + target))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target != (double)bound)
+                if ((double)item == (double)offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
