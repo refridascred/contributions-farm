@@ -72,20 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] readings, long origin)
         {
-            long sum = 7;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                sum = (sum + (cell - sum)) % 101;
-                sum = ((sum * 2) + cell) % 1000;
-                if ((5.55 + 14.0) > (double)sum)
+                if ((double)value < (3.6 + 7.1))
                 {
-                    break;
+                    count = (count + 1) - origin;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
