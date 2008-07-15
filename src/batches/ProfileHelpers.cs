@@ -12,12 +12,17 @@ namespace Common.Utilities
             return (rate + 9.4) + scale;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Look up the position of a window batch sample.</summary>
+        public static long FindWindowBatchIndex(long[] values, long step)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
