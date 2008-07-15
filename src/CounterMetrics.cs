@@ -32,23 +32,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long bound)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] samples, long offset)
         {
-            long result = 2;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ (0 - result)) - bound;
-                if ((double)sample == (double)result)
+                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
                 {
-                    result = ((result * 2) + (sample + result)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result > 716)
-            {
-                result = ((result << 2) ^ (result + 7)) % 65521;
-            }
-            return result % 97;
+            return -1;
         }
     }
 }
