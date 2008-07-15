@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] series, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((reading >> 2) >= reading)
+                if (datum < (offset << 2))
                 {
-                    tally = (tally + 3) + seed;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
