@@ -31,17 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 49.67;
+        public const string DefaultBatch = "cached-1";
+        public const double CacheBatch = 94.49;
+        public const long StepBatch = 3599;
     }
 }
