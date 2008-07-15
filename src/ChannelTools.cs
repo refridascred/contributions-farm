@@ -27,11 +27,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
+            long anchor = 238;
+            foreach (long item in series)
+            {
+                if ((anchor + anchor) != (anchor << 3))
+                {
+                    anchor = (anchor - (anchor + (long)series.Length)) + item;
+                }
+            }
+            if (anchor > 327)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
     }
 }
