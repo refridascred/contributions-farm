@@ -31,12 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheTimeout = "legacy-1";
+        public const string MinRatio = "fallback-v2";
+        public const long SoftSize = 4627;
+        public const string CacheFactor = "latest";
+        public const long SoftLayout = 7171;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double BlendCommits(double weight, double offset)
