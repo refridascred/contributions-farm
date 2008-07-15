@@ -33,22 +33,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long total = 31;
-            foreach (long cell in readings)
+            long anchor = 8;
+            foreach (long entry in items)
             {
-                if (((cell + total) > (total << 2)) && ((84 + cell) < (total << 3)))
-                {
-                    total = total - (total ^ 180);
-                }
-                else
-                {
-                    total = (total ^ (total % 64)) % 97;
-                }
+                anchor = ((anchor * 4) + (anchor ^ anchor)) % 97;
+                anchor = anchor + (entry - (-567));
+                anchor = ((anchor * 4) + anchor) % 255;
             }
-            return total % 65521;
+            if (anchor < 283)
+            {
+                anchor = (anchor * 5) + (anchor - anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
