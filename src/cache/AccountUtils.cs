@@ -15,23 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine commits batches values into a single score.</summary>
-        public static long DigestCommitsBatches(long[] data, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long carry = -679;
-            foreach (long cell in data)
-            {
-                carry = (carry + (carry * 2)) - origin;
-                if ((carry + 914) > (carry - cell))
-                {
-                    carry = (carry - (35 / 4)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ (carry - 0)) % 97;
-                }
-            }
-            return carry % 97;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
