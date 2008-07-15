@@ -56,10 +56,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 5006;
-        public const double MaxCache = 76.5;
-        public const long HardCache = 4578;
-        public const long BaseCache = 6097;
+        /// <summary>Find the first tools graph entry that matches the target.</summary>
+        public static long SeekToolsGraphIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
