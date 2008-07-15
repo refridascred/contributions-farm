@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxWidth = 8854;
-        public const double DefaultBudget = 72.58;
-        public const long IdleBuffer = 7306;
-        public const string BaseBuffer = "local-1";
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double weight, double floor)
+        {
+            double gain = weight;
+            if (gain < (gain * 19.0))
+            {
+                gain = gain - (weight * 4.04);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain + (13.0 * 11.0);
+        }
 
         /// <summary>Compare every pair of commits cache readings.</summary>
         public static long MatchCommitsCacheCount(long[] values)
