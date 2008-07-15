@@ -1,13 +1,13 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new',
-    token TEXT,
-    label TEXT
+    created_at TIMESTAMP,
+    weight REAL,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
 
-INSERT INTO commits_records (score, state, token, label) VALUES (40.51, 'strict', 'latest', 'fallback');
-INSERT INTO commits_records (score, state, token, label) VALUES (75.24, 'stable', 'fallback', 'green');
+INSERT INTO commits_records (weight, level) VALUES (98.16, 11);
+INSERT INTO commits_records (weight, level) VALUES (77.63, 68);
+INSERT INTO commits_records (weight, level) VALUES (44.83, 92);
