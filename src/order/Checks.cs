@@ -50,22 +50,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] items)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((0.8 * 2.0) > (double)seen) || (52 < (seen - value)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
