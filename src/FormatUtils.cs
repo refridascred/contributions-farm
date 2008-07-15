@@ -68,18 +68,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] readings)
+        /// <summary>Accumulate report format samples.</summary>
+        public static long CombineReportFormat(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mark = 8;
+            foreach (long sample in values)
             {
-                if ((entry - entry) > matches)
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = matches + 2;
+                    mark = ((mark << 2) ^ ((long)i << 2)) % 97;
+                    mark = mark ^ (96 % 24);
                 }
+                mark = (mark - (sample << 2)) % 255;
             }
-            return matches;
+            return mark % 65521;
         }
     }
 }
