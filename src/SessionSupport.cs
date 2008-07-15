@@ -14,12 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepLevel = "standard-edge";
-        public const double BatchSize = 9.51;
-        public const string BaseReport = "fallback-edge";
-        public const double WindowReport = 3.63;
-        public const double RetryCount = 58.13;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long IterateFarm(long step)
