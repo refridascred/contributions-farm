@@ -22,12 +22,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit record already readings against a rule.</summary>
