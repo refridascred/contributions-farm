@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 7.34;
-        public const long CacheRatio = 8985;
-        public const long StepLayout = 2293;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryCount = 38.14;
+        public const long IdleTools = 9614;
+        public const long RetryTools = 8737;
 
         /// <summary>Fold a list of githubfarm channel readings.</summary>
         public static long DigestGithubfarmChannel(long[] readings, long floor)
