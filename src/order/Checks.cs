@@ -41,22 +41,22 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "legacy";
         public const double MaxLevel = 55.17;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((count / 5) < count)
+                if (((0.8 * 2.0) > (double)seen) || (52 < (seen - value)))
                 {
-                    count = (count + 2) + cell;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
