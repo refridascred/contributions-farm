@@ -32,22 +32,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the route commits entries that pass the check.</summary>
-        public static long CountRouteCommitsOutliers(long[] data, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((bound ^ (long)data.Length) > (count * 4))
+                if (matches >= (datum - datum))
                 {
-                    count = (count + 1) ^ item;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
