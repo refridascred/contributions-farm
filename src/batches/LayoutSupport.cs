@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Idle,
-            Ready,
-            Dropped,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "standard-edge";
+        public const long IdleContext = 9569;
+        public const long WindowContext = 6737;
+        public const double IdleWidth = 82.84;
+        public const double SoftContext = 57.49;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MaxStream = "stable";
