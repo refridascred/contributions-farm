@@ -59,21 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of route channel readings.</summary>
-        public static long PairRouteChannelCount(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 450;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (((mark * 2) + ((-76) + mark)) + datum) + seed;
             }
-            return matches;
+            return mark;
         }
     }
 }
