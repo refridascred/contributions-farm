@@ -16,22 +16,13 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] readings, long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((70 ^ entry) < (count % 5))
-                {
-                    count = (count + 3) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
