@@ -1,7 +1,7 @@
-id,rank,token,label
-1,31.15,130,122
-2,42.41,739,672
-3,fallback,latest,190
-4,108,fallback,standard
-5,open,719,89.64
-6,latest,stable,625
+id,count,rank
+1,stable,blue
+2,590,55.19
+3,827,standard
+4,26.09,181
+5,7.07,607
+6,875,7.21
