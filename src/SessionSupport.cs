@@ -49,13 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 3225;
+        public const long BurstCluster = 1810;
+        public const string BatchInterval = "alpha";
+        public const long MaxCluster = 9051;
+        public const long SoftInterval = 7252;
     }
 }
