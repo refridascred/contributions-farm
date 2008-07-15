@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitSize = 4330;
-        public const string WindowReport = "open-edge";
-        public const long StepReport = 4122;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] items)
