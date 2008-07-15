@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the notes batch series from a seed.</summary>
-        public static long IterateNotesBatch(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 8.02;
+        public const long RetryBatch = 9455;
+        public const long SoftBatch = 2349;
+        public const double MaxCount = 59.16;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamBounds(long[] data, long target)
