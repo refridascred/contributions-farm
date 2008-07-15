@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached staging open stable; do
+for item in staging green open; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-CHANNEL_LIMIT=26
+CHANNEL_LIMIT=49
 log "limit is ${CHANNEL_LIMIT}"
