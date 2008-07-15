@@ -66,22 +66,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of farm account readings.</summary>
-        public static long CompareFarmAccountCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 2820;
+        public const double RetryBatches = 16.47;
+        public const long RetryLevel = 7305;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long target, long bound)
