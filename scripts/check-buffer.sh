@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open local green; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in stable strict blue; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-strict}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=14
+log "limit is ${BUFFER_LIMIT}"
