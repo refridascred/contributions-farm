@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 9718;
-        public const long WindowRatio = 1877;
-        public const long DefaultScore = 4539;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Combine record command values into a single score.</summary>
         public static long WeighRecordCommand(long[] readings, long limit)
