@@ -64,12 +64,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinCount = 8030;
-        public const string RetryFilter = "alpha-1";
-        public const long StepFilter = 8100;
-        public const double BatchInterval = 17.75;
-        public const long LimitInterval = 6587;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Draft,
+            Synced,
+            Idle,
+            Done,
+            Pending,
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
