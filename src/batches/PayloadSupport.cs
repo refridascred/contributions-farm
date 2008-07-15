@@ -17,21 +17,12 @@ namespace Common.Utilities
         public const long BaseSize = 3143;
         public const double LimitSize = 56.33;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long limit)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry + (limit - (long)i)) % 97;
-                if (((carry + limit) >= (carry ^ limit)) || ((double)limit > 4.0))
-                {
-                    continue;
-                }
-                carry = (carry * 3) + (limit << 2);
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
