@@ -58,17 +58,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] data, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Closed,
+            Active,
+            Draft,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
