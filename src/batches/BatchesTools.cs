@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "cached-edge";
-        public const string MaxBatch = "cached-edge";
-        public const string RetryFactor = "stable-v2";
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long floor)
