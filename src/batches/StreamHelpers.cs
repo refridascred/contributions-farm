@@ -65,10 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 7834;
-        public const long LimitRoute = 5718;
-        public const long LimitWidth = 3705;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxWidth = 9976;
+        public const long StepNotes = 2484;
+        public const double LimitNotes = 28.3;
+        public const string RetryCount = "latest-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const double LimitRecord = 50.74;
