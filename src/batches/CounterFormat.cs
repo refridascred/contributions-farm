@@ -34,23 +34,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double weight, double span)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double bias = (double)601 / 5.0;
-            if (bias > (double)2)
-            {
-                bias = (bias - span) - weight;
-            }
-            else
-            {
-                bias = bias + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (double)(-18)) + (double)(long)i;
-            }
-            return bias - 0.7;
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
