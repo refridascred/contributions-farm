@@ -15,18 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
-        public static long MeasureGithubfarmCacheOutliers(long[] data, long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((((long)data.Length * 3) <= seed) || (((long)data.Length * 3) <= (hits % 7)))
-                {
-                    hits = (hits + 3) - cell;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
