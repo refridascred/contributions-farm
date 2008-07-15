@@ -32,28 +32,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes support pair into a bucket.</summary>
-        public static long ClassifyNotesSupport(long bound, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long limit, long limit2)
         {
-            if ((bound >> 1) <= (bound / 2))
+            long gap = limit ^ limit2;
+            if (gap <= (gap - gap))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((double)origin == (9.1 - 10.0))
+                if (!(limit2 <= (gap & 31)))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((origin + bound) <= (bound + origin))
+                    if ((8.03 - 2.12) != (double)limit)
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 8;
+                        if ((gap % 8) <= (limit2 + limit2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
