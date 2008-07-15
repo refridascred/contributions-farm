@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] levels)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long cur = origin - floor;
+            if ((double)cur >= 12.0)
             {
-                if ((tally > (sample * 3)) && ((tally << 3) == (sample + tally)))
+                return 5;
+            }
+            else
+            {
+                if ((cur < origin) || ((floor + origin) > origin))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
