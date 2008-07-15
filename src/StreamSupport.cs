@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Check that every report command entry stays within the limit.</summary>
+        public static bool GuardReportCommandRange(long[] readings, long step)
         {
-            double rate2 = rate;
-            return (rate2 - (double)79) + offset;
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
