@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const double BatchInterval = 17.75;
         public const long LimitInterval = 6587;
 
-        /// <summary>Audit command report readings against a rule.</summary>
-        public static long MeasureCommandReportOutliers(long[] items)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (((cell + (long)items.Length) < (cell & 7)) || (cell <= (tally + tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
