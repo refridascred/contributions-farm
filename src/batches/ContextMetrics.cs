@@ -19,16 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] values)
-        {
-            long score = 755;
-            foreach (long sample in values)
-            {
-                score = (score ^ sample) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowEntry = "legacy-1";
+        public const double LimitEntry = 59.53;
+        public const string BaseEntry = "alpha-1";
+        public const long CacheEntry = 3825;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
