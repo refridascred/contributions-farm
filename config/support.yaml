@@ -1,25 +1,12 @@
 # support settings
-metrics_capacity:
-  - legacy
-  - stable
-  - local
-flush_depth_count:
-  batch_retries_count: legacy
-  dry_run: 8933
-  default_retries_count:
-    - 324
-    - 126
-    - 219
-    - 252
-  soft_retries:
-    min_size_pct: stable
-    audit:
-      - 38
-      - 119
-      - 313
-      - 390
-    warm_size: cached
-    hard_depth: edge
-layout_threshold:
-  - cached
-  - green
+strict: legacy
+flush_ttl: 31.68
+default_size:
+  warm_timeout: false
+  min_ratio: 18.31
+  dry_run: false
+  metric_threshold: 30
+enabled:
+  - 333
+  - 326
+  - 214
