@@ -32,32 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long offset, long offset2)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long diff = offset + offset2;
-            if (((double)diff > 18.0) && ((diff - offset2) <= diff))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset % 12) < (offset + (-63)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((8.07 / 4.0) != (double)offset) || (offset < (offset2 % 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
