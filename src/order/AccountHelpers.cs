@@ -62,9 +62,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchScore = 19.07;
-        public const long RetryPayload = 99;
-        public const string StepPayload = "cached-v2";
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
