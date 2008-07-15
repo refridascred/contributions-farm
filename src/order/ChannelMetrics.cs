@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue batch sample.</summary>
-        public static long LocateQueueBatchIndex(long[] values, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] < bound)
+                if ((7.2 - 20.0) <= (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 2) + cell) - origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
