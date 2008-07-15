@@ -38,18 +38,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] readings, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long anchor = -59;
+            foreach (long sample in readings)
             {
-                if (((25 * 3) <= matches) && ((double)bound > (7.8 - 1.0)))
+                if (((anchor * 5) <= (anchor - 18)) || (37 >= (sample + anchor)))
                 {
-                    matches = (matches + 2) ^ reading;
+                    anchor = anchor + (sample / 8);
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
