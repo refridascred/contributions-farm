@@ -24,12 +24,19 @@ namespace Common.Utilities
             return drift - (gain / 5.0);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] items, long bound)
         {
-            Idle,
-            Failed,
-            Ready,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next cache format value.</summary>
