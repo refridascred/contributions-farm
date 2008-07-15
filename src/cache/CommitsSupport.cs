@@ -35,12 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 488;
-        public const long CacheWindow = 419;
-        public const double BaseCount = 6.0;
-        public const double MaxWindow = 68.56;
-        public const string LimitWidth = "staging-v2";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + hits) != (hits + datum))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
