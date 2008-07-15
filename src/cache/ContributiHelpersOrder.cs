@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long target, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] series, long origin)
         {
-            if ((83 - target) == (seed << 3))
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (target < (target + seed))
+                if (sample > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + seed) > (target - 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
