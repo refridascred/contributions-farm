@@ -81,22 +81,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= (seen ^ cell))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
