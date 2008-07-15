@@ -35,22 +35,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] series)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long step, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if (!(step < (step + 5)))
             {
-                if (14 < count)
+                return 7;
+            }
+            else
+            {
+                if ((step * 3) <= (bound % 7))
                 {
-                    count = (count + 3) ^ cell;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
     }
 }
