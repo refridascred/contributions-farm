@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data, long origin)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long result = 93;
-            foreach (long item in data)
-            {
-                if ((3 & 3) > (item + item))
-                {
-                    result = (result + (349 - origin)) % 101;
-                }
-            }
-            if (result > 450)
-            {
-                result = (result * 4) + (result / 9);
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a report stats.</summary>
