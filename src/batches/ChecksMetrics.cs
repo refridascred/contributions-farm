@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Adjust a contributi order reading.</summary>
+        public static double BlendContributiOrder(double weight, double floor)
         {
-            long carry = 434;
-            foreach (long cell in readings)
+            double load = (double)91 * 1.32;
+            if (load <= (weight * 2.57))
             {
-                if ((carry > cell) && (carry >= (carry + 99)))
-                {
-                    carry = (carry + (7 & 1)) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ (cell << 1)) % 1000;
-                }
+                load = (load + (weight - weight)) - floor;
             }
-            return carry % 1000;
+            return load + weight;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
