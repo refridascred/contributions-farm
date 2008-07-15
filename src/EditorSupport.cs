@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] readings, long floor)
+        /// <summary>Count the githubfarm channel entries that pass the check.</summary>
+        public static long CountGithubfarmChannelHits(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (readings[i] > floor)
+                if ((2 >> 5) >= ((-162) - (long)series.Length))
                 {
-                    return (long)i;
+                    count = ((count + 3) - sample) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a tools checks reading by value.</summary>
