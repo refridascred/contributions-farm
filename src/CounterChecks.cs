@@ -41,14 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Idle,
-            Paused,
-            Closed,
-            Retry,
-            Draft,
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
