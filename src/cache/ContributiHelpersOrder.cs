@@ -38,21 +38,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of filter schema readings.</summary>
-        public static long MatchFilterSchemaCount(long[] readings)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result - ((long)i + result)) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
     }
 }
