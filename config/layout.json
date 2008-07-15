@@ -1,5 +1,7 @@
 {
-  "channel_ttl": 5003,
-  "batch_ttl": 250,
-  "warm_capacity_s": "legacy"
+  "batch_size": "stable",
+  "burst_delay_s": false,
+  "idle_window_pct": 63.61,
+  "layout_interval": ["open", "staging", "staging"],
+  "base_size_count": 97
 }
