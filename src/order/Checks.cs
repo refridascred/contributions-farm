@@ -46,11 +46,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] readings, long seed)
         {
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (seed >= (datum / 8))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a support snapshot.</summary>
