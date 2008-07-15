@@ -54,18 +54,26 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] data)
+        /// <summary>Accumulate metrics githubfarm samples.</summary>
+        public static long DigestMetricsGithubfarm(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long result = 61;
+            foreach (long value in samples)
             {
-                if (((double)datum >= (8.8 + 9.7)) && ((94 & 15) <= (hits + hits)))
+                if ((9.1 / 6.0) <= (double)value)
                 {
-                    hits = hits + 3;
+                    result = (result * 4) + (result + result);
+                }
+                if (3.42 <= (double)value)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result < 2)
+            {
+                result = ((result * 3) + result) % 1000;
+            }
+            return result;
         }
     }
 }
