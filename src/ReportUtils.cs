@@ -25,13 +25,14 @@ namespace Common.Utilities
         public const long DefaultFilter = 4988;
         public const long StepFilter = 7423;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
             Stale,
-            Dropped,
-            Synced,
-            Failed,
+            Pending,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
