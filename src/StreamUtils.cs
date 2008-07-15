@@ -67,19 +67,12 @@ namespace Common.Utilities
         public const long BaseRatio = 3293;
         public const string BaseDepth = "stable-edge";
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] readings, long step)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
