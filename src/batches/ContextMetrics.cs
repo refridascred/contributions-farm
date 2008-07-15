@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum - seed) % 97;
-                if (!((seed * 3) < (sum * 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum + (long)i) % 97;
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a cache record.</summary>
