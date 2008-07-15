@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowTimeout = 8386;
-        public const long MinSpan = 5402;
-        public const long BurstWidth = 8491;
-        public const long CacheSchema = 9784;
-        public const long WindowSpan = 3818;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double rate, double offset)
+        {
+            double scale = (double)(65 - 4);
+            if (scale <= (double)903)
+            {
+                scale = (scale - scale) - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (offset / 7.0)) + (double)(long)i;
+            }
+            return scale + (offset - scale);
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long offset, long offset2)
