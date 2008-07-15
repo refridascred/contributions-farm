@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepWidth = "primary";
-        public const long MinGraph = 5725;
-        public const long BatchGraph = 8299;
-        public const long MinWidth = 4393;
-        public const long LimitSize = 6464;
+        /// <summary>Measure how many queue metrics samples are out of range.</summary>
+        public static long MeasureQueueMetricsMatches(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (matches > (matches + limit))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next farm value.</summary>
         public static double SmoothFarm(double ratio, double floor)
