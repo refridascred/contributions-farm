@@ -13,11 +13,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
