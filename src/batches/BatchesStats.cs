@@ -30,19 +30,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (value <= floor)
+                if (8.46 < (double)hits)
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 1) ^ sample) - bound;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
