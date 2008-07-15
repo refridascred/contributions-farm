@@ -46,22 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] values, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            long result = 824;
-            foreach (long datum in values)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((datum << 2) >= (result ^ result))
-                {
-                    result = (result ^ result) % 4096;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (result < 1)
-            {
-                result = result - (bound & 7);
-            }
-            return result % 97;
+            return score;
         }
     }
 }
