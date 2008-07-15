@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a already buffer reading by value.</summary>
-        public static long SeekAlreadyBufferIndex(long[] items, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                if ((seen - value) >= value)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
