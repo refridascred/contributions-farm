@@ -44,11 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] data, long origin)
         {
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((4 % 16) > (sample * 3)) && ((1.4 + 9.1) >= (double)origin))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a notes reading.</summary>
