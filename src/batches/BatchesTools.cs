@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "cached-edge";
+        public const string MaxBatch = "cached-edge";
+        public const string RetryFactor = "stable-v2";
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionGaps(long[] readings, long floor)
