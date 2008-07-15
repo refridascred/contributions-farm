@@ -22,21 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(0 & 63);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (((weight + (weight - weight)) + (double)(long)i) + rate) - floor;
             }
-            return seen;
+            return weight - (double)(-2);
         }
 
         /// <summary>Hold a context entry.</summary>
