@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] series)
         {
-            long total = 4;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                total = (total - (entry - entry)) % 101;
+                if (4.5 < (double)item)
+                {
+                    hits = hits + 2;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
