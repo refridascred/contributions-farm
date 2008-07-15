@@ -28,23 +28,14 @@ namespace Common.Utilities
         public const string HardInterval = "latest-1";
         public const long CacheContributi = 6699;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double gain, double bias)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double rate = bias;
-            if (rate < bias)
-            {
-                rate = rate - (gain / 8.0);
-            }
-            else
-            {
-                rate = rate - (6.6 - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (bias / 4.0)) + (double)(long)i;
-            }
-            return rate - gain;
+            Paused,
+            Done,
+            Retry,
+            Draft,
+            Stale,
         }
     }
 }
