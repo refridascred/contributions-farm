@@ -40,18 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate queue session samples.</summary>
-        public static long DigestQueueSession(long[] values, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] values)
         {
-            long acc = 43;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (((entry >> 1) >= ((-2) / 3)) || ((entry - acc) <= (93 >> 1)))
+                if ((reading - count) >= (reading ^ reading))
                 {
-                    acc = (((acc << 2) ^ 12) % 101) + origin;
+                    count = count + 1;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
