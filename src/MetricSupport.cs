@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Scale a editor payload figure with a bias.</summary>
+        public static double SmoothEditorPayload(double ratio, double span)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            double scale = (double)(93 + 4);
+            if (scale <= span)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                scale = scale - (ratio + span);
             }
-            return state;
+            return scale + ratio;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
