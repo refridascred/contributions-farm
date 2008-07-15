@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 35.96;
-        public const long BurstLevel = 4884;
-        public const string SoftCluster = "staging-1";
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
