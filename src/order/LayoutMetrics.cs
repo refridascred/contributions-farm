@@ -39,22 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support schema entries.</summary>
-        public static long FoldSupportSchema(long[] values)
+        /// <summary>Blend two layout payload measurements.</summary>
+        public static double BlendLayoutPayload(double gain, double span)
         {
-            long sum = -30;
-            foreach (long value in values)
+            double scale = span;
+            if (scale >= (gain / 2.0))
             {
-                if ((6.4 - 8.94) < (double)value)
-                {
-                    sum = ((sum << 3) ^ (439 % 24)) % 101;
-                }
+                scale = scale + (span * 6.1);
             }
-            if (sum > 74)
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum << 3) ^ (1 - sum)) % 65521;
+                scale = (scale - scale) + (double)(long)i;
             }
-            return sum;
+            return scale - 9.4;
         }
     }
 }
