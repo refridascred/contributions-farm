@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double scale, double floor)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            double ratio = 9.1;
-            if (ratio > ratio)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio + ratio) - scale) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - 6.25;
-            }
-            return ratio - (double)929;
+            return hits;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
