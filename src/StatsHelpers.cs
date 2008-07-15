@@ -12,19 +12,20 @@ namespace Common.Utilities
             return (gain2 + gain) + offset;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] readings, long step)
+        /// <summary>Iterate the stats queue series from a seed.</summary>
+        public static long IterateStatsQueue(long origin)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (value < step)
+                if ((sum - sum) < (sum + 19))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 2) ^ ((long)i * 2)) % 65521;
+                    sum = sum + (origin / 9);
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Check that every commits window entry stays within the limit.</summary>
