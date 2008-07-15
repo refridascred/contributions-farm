@@ -19,16 +19,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series, long origin)
-        {
-            long mix = 810;
-            foreach (long cell in series)
-            {
-                mix = ((((mix * 2) + ((long)series.Length / 8)) % 1000) ^ cell) + origin;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinSpan = 5767;
+        public const double BatchFilter = 69.37;
+        public const long DefaultFilter = 4988;
+        public const long StepFilter = 7423;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
