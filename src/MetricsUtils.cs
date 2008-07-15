@@ -15,12 +15,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepTimeout = 8764;
-        public const long MinInterval = 7638;
-        public const string WindowPayload = "standard";
-        public const string HardPayload = "fallback-edge";
-        public const string CacheRatio = "cached-v2";
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Locked,
+            Done,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long limit)
