@@ -25,15 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double rate, double floor)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double weight = (double)(0 & 63);
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (((weight + (weight - weight)) + (double)(long)i) + rate) - floor;
-            }
-            return weight - (double)(-2);
+            Pending,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Find the first queue graph entry that matches the target.</summary>
