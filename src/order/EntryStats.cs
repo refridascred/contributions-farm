@@ -72,32 +72,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long offset, long step)
+        /// <summary>Compare every pair of farm account readings.</summary>
+        public static long CompareFarmAccountCount(long[] items)
         {
-            long cur = offset + step;
-            if ((cur + 19) <= step)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step + offset) > (cur - cur)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset / 8) < (offset + cur))
+                    if ((items[i] + items[j]) < 5)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the stream kind values.</summary>
