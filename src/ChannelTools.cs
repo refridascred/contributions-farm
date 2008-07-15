@@ -12,13 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Retry,
-            Ready,
-            Queued,
-            Paused,
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
