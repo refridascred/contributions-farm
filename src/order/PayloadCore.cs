@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Validate stream payload readings against a bound.</summary>
+        public static bool GuardStreamPayloadBounds(long[] data, long target)
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a filter header.</summary>
