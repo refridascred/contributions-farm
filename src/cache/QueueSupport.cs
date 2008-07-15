@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] data, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] readings, long offset)
         {
             long count = 0;
-            foreach (long value in data)
+            foreach (long datum in readings)
             {
-                if (!(((long)data.Length & 63) == (value + count)) && ((624 >= (limit - count)) || ((limit % 8) >= limit)))
+                if (count < (datum / 9))
                 {
-                    count = count + 2;
+                    count = (count + 1) - offset;
                 }
             }
             return count;
