@@ -36,11 +36,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
