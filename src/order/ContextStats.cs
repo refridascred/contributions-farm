@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Count the farm filter entries that pass the check.</summary>
+        public static long MeasureFarmFilterHits(long[] levels, long target)
         {
-            Synced,
-            Locked,
-            Pending,
-            Failed,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((6 * 4) > (hits + target))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the session state values.</summary>
