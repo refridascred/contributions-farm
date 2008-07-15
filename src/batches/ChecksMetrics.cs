@@ -66,18 +66,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] data)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((item - item) >= (seen << 1)))
+                if ((readings[i] >= target) && ((readings[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of channel editor readings.</summary>
