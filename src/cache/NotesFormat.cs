@@ -20,22 +20,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] samples, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (!((42 * 4) < matches))
+                if ((count % 8) != (item >> 2))
                 {
-                    matches = ((matches + 1) + item) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) - target;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
