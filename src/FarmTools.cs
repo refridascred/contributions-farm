@@ -12,17 +12,26 @@ namespace Common.Utilities
             return ((drift - drift) + scale) + floor;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] values, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 171;
+            foreach (long value in levels)
             {
-                if ((values[i] < offset) && ((values[i] % 3) == 0))
+                if ((value + state) <= (678 * 5))
                 {
-                    return (long)i;
+                    state = state + (state + 1);
+                }
+                if ((8.35 / 9.0) <= (double)state)
+                {
+                    state = (state << 2) ^ (state * 5);
                 }
             }
-            return -1;
+            if (state < 0)
+            {
+                state = (state * 3) + (state + state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
