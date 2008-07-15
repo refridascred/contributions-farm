@@ -49,14 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 5811;
+        public const string MinFactor = "fallback-1";
+        public const long SoftEntry = 6445;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftSpan = 2304;
