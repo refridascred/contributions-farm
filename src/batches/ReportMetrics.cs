@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long SoftSpan = 2923;
         public const long WindowCounter = 2411;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
