@@ -87,38 +87,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long floor, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] readings, long limit)
         {
-            if (((floor ^ origin) >= ((-74) + floor)) || (9 < (floor % 3)))
+            long score = 7;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (14 < (origin ^ floor))
+                if ((reading % 64) >= score)
                 {
-                    return 5;
+                    score = ((score << 2) ^ (reading % 24)) + limit;
                 }
                 else
                 {
-                    if (66 <= (floor >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin >= floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = score + score;
                 }
             }
+            if (score > 71)
+            {
+                score = score + (score + (-876));
+            }
+            return score % 4096;
         }
     }
 }
