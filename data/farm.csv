@@ -1,6 +1,11 @@
-id,state,label,count,rank
-1,open,local,fallback,811
-2,763,317,299,28.24
-3,79.16,88.57,686,strict
-4,primary,94.57,612,fallback
-5,68.24,979,cached,staging
+id,rank,active
+1,187,77
+2,edge,664
+3,stable,standard
+4,302,935
+5,25.54,25.85
+6,39.11,463
+7,81.07,19.98
+8,128,750
+9,latest,staging
+10,828,981
