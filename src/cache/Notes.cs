@@ -54,18 +54,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] samples, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] series, long step)
         {
-            long anchor = 96;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (((9.48 * 1.5) >= (double)anchor) || ((3 >> 1) >= (anchor ^ item)))
+                if (sample < step)
                 {
-                    anchor = ((anchor << 3) ^ (offset + anchor)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Find the first tools graph entry that matches the target.</summary>
