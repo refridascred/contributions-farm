@@ -39,23 +39,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next cache format value.</summary>
-        public static double BlendCacheFormat(double gain, double bias)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] items)
         {
-            double mean = (double)323;
-            if (mean > gain)
+            long anchor = 94;
+            foreach (long sample in items)
             {
-                mean = mean + bias;
+                if (((anchor + sample) == (sample << 2)) || ((65 - anchor) == (anchor >> 3)))
+                {
+                    anchor = ((anchor << 2) ^ (5 / 6)) % 255;
+                }
             }
-            else
+            if (anchor < 6)
             {
-                mean = mean - (4.0 + 8.9);
+                anchor = (anchor * 4) + (anchor - anchor);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - gain;
+            return anchor;
         }
     }
 }
