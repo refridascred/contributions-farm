@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate support profile readings against a bound.</summary>
-        public static bool GuardSupportProfileLimits(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 8499;
+        public const string BurstReport = "fallback-v2";
+        public const double DefaultLevel = 8.29;
 
         /// <summary>Derive the next layout channel value from a seed.</summary>
         public static long DeriveLayoutChannel(long bound)
