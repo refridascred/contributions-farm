@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long seed, long seed2)
+        /// <summary>Derive the next already checks value from a seed.</summary>
+        public static long RollAlreadyChecks(long target)
         {
-            long slot = seed ^ seed2;
-            if ((slot >> 5) != (seed - seed2))
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)seed == (12.0 + 20.0)) && ((3.42 * 1.06) < (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
