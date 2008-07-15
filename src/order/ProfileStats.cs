@@ -35,12 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardSpan = "strict-1";
-        public const long WindowSize = 6810;
-        public const double RetryWidth = 71.3;
-        public const double RetryMetrics = 85.71;
-        public const long CacheMetrics = 4562;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Queued,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksMatches(long[] samples, long limit)
