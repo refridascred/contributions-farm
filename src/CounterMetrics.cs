@@ -24,12 +24,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] items, long offset)
         {
-            Active,
-            Dropped,
-            Ready,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!((double)seen >= (double)value))
+                {
+                    seen = (seen + 2) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next filter value.</summary>
