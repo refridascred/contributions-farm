@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 3879;
-        public const long HardChecks = 8310;
-        public const long DefaultCount = 3589;
-        public const long SoftChecks = 5788;
+        /// <summary>Compare every pair of window queue readings.</summary>
+        public static long MatchWindowQueueCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ScaleStats(double scale, double bias)
