@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (datum <= (datum % 7))
+                if ((seen % 16) != (seen ^ reading))
                 {
-                    tally = tally + 2;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
