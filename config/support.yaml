@@ -1,4 +1,5 @@
 # support settings
-max_size: 60
-strict: 74
-route_timeout: edge
+warm_limit: open
+readonly: edge
+max_depth_pct: blue
+burst_delay: strict
