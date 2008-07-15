@@ -34,22 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] values, long limit)
         {
-            long result = 404;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((double)value == (double)6)
+                if (datum != limit)
                 {
-                    result = (result - ((-22) + value)) % 97;
-                }
-                else
-                {
-                    result = ((result * 3) + ((-519) + result)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return flag;
         }
     }
 }
