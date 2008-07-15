@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 9236;
-        public const double DefaultEditor = 59.33;
-        public const double BaseEditor = 16.75;
-        public const long MaxLevel = 2948;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Accumulate editor filter samples.</summary>
         public static long FoldEditorFilter(long[] items)
