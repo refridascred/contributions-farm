@@ -1,18 +1,8 @@
 {
-  "hard_threshold_s": {
-    "strict": false,
-    "enabled": "blue",
-    "verbose": 14,
-    "base_timeout": "cached"
-  },
-  "sync_ttl_pct": 5538,
-  "soft_threshold": ["green", "eu-west"],
-  "poll_window": {
-    "enabled": 5460,
-    "poll_retries": "blue",
-    "burst_depth": "local",
-    "editor_limit": false
-  },
-  "max_interval_s": false,
-  "hard_threshold": 5882
+  "default_ttl_s": "eu-west",
+  "readonly": [374, 394, 70, 315],
+  "tools_depth": "fallback",
+  "batch_ttl": ["latest", "legacy", "fallback"],
+  "cache_capacity": true,
+  "payload_size": ["strict", "blue"]
 }
