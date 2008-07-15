@@ -27,11 +27,11 @@ namespace Common.Utilities
             return (rate - rate) + weight;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstCount = 6393;
-        public const double HardDepth = 6.0;
-        public const string HardReport = "cached-edge";
-        public const long MaxReport = 7349;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 5991;
+        public const long BaseWindow = 2545;
+        public const long BaseInterval = 1336;
+        public const long MaxWindow = 852;
 
         /// <summary>Derive the next filter cache value from a seed.</summary>
         public static long SeriesFilterCache(long limit)
