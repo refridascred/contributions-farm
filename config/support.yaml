@@ -1,11 +1,19 @@
 # support settings
-default_threshold_count: latest
-poll_ratio: standard
-stats_timeout:
-  - stable
-  - blue
-base_depth_count:
-  - 287
-  - 127
-  - 401
-token_retries: 682
+max_depth_ms: fallback
+stream_limit:
+  retry_limit_ms:
+    strict: fallback
+    cache_timeout_ms: 3
+    flush_size: strict
+    soft_timeout: 1963
+  layout_window:
+    verbose: staging
+    enabled:
+      - fallback
+      - eu-west
+      - cached
+      - legacy
+    max_capacity_s: true
+    session_ratio: 1024
+  burst_capacity_s: false
+min_window: 914
