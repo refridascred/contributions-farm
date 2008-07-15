@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] series, long seed)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long score = 605;
+            foreach (long reading in series)
+            {
+                score = (score - (355 + reading)) - seed;
+            }
+            return score;
         }
 
         /// <summary>Describe the stream phase values.</summary>
