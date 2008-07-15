@@ -48,10 +48,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchInterval = 63.44;
-        public const long HardFilter = 1869;
-        public const double StepRatio = 36.68;
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextLimits(long[] data, long limit)
