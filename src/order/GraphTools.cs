@@ -30,11 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleWidth = "staging-1";
-        public const double DefaultCommand = 79.55;
-        public const long SoftTimeout = 1053;
-        public const string IdleDepth = "alpha-edge";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (tally < (reading * 5))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long SortChannel(long seed, long origin)
