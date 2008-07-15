@@ -12,38 +12,14 @@ namespace Common.Utilities
             return ((scale + (double)(-958)) + ratio) + floor;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long bound, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            if ((limit * 3) > (501 - limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit < (7.41 / 2.0)) || ((bound & 63) != (bound + bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)limit != (17.0 / 8.0)) && ((limit & 127) < limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7 << 1) <= (limit * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a layout entry.</summary>
