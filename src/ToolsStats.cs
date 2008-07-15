@@ -71,13 +71,12 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            Locked,
+            Idle,
+            Done,
         }
     }
 }
