@@ -1,10 +1,5 @@
 # entry settings
-hard_interval_ms: cached
-max_capacity:
-  - cached
-  - cached
-  - green
-already_limit: eu-west
-hard_capacity_count: 30
-strict: eu-west
-dry_run: false
+strict: fallback
+enabled: 69.45
+persist: true
+default_size: fallback
