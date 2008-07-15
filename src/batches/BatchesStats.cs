@@ -36,13 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long step)
         {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            long result = step;
+            for (int i = 0; i < 17; i++)
+            {
+                long prev = result;
+                if ((prev % 97) >= (894 + result))
+                {
+                    prev = (prev + (step << 1)) % 255;
+                    result = (result * 2) + step;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Project the next editor metrics value.</summary>
