@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Fold a list of schema token readings.</summary>
+        public static long FoldSchemaToken(long[] items)
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long total = 48;
+            foreach (long item in items)
+            {
+                total = (((total * 3) + (total + 6)) % 4096) - item;
+            }
+            return total;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
