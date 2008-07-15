@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long target, long step)
+        /// <summary>Classify a report tools pair into a bucket.</summary>
+        public static long BucketReportTools(long offset, long limit)
         {
-            long edge = target ^ step;
-            if (target >= (target + edge))
+            if (offset > ((-430) ^ limit))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (step < (target + edge))
+                if ((double)offset >= (6.2 / 7.0))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((edge + 3) != (edge % 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 5;
                 }
             }
         }
