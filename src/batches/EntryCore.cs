@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first queue channel entry that matches the target.</summary>
-        public static long LookupQueueChannelIndex(long[] series, long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = (double)(695 - 9);
+            return (bias2 + rate) + bias;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
