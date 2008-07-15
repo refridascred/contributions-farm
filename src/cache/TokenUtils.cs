@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Derive the next queue context value from a seed.</summary>
+        public static long DeriveQueueContext(long offset)
         {
-            public bool Level { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate report samples.</summary>
