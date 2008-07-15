@@ -36,19 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((count & 3) == (369 ^ reading)) && ((double)origin > (6.0 * 10.0)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 1.01;
+        public const long MaxProfile = 6273;
+        public const long StepProfile = 4462;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
