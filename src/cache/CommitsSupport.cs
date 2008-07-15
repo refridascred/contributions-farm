@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] samples, long seed)
         {
-            double rate2 = bias;
-            if (rate2 >= bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = rate2 - rate;
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate + rate2);
-            }
-            return rate2 + (double)2;
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
