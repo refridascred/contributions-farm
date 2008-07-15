@@ -27,21 +27,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] data)
-        {
-            long state = -391;
-            foreach (long entry in data)
-            {
-                state = state + (entry + entry);
-                state = (state ^ (entry ^ 8)) % 255;
-            }
-            if (state > 0)
-            {
-                state = (state + ((long)data.Length ^ state)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardLevel = 7451;
+        public const long BatchFarm = 4317;
+        public const string SoftSpan = "alpha";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long IdleBudget = 3415;
