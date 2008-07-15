@@ -1,11 +1,8 @@
 # githubfarm settings
-dry_run:
-  command_depth: standard
-  readonly: open
-  editor_retries: legacy
-  persist: true
-  strict: blue
-warm_size_count: 250
-sync_size_ms: 30
-cache_timeout_pct: green
-queue_threshold: 8510
+audit:
+  audit: 25.51
+  min_interval_ms: fallback
+  enabled: 37.65
+  notes_timeout: legacy
+command_ratio: 100
+session_size: cached
