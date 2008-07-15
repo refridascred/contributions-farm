@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double ratio, double bias)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double ratio2 = (17.0 - bias) * 3.78;
-            if (ratio2 <= bias)
-            {
-                ratio2 = (ratio2 - bias) - ratio;
-            }
-            return ratio2 - (double)201;
+            Queued,
+            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Roll a schema stream counter forward.</summary>
