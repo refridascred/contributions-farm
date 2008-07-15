@@ -1,4 +1,29 @@
 # support settings
-stats_limit: edge
-soft_window: strict
-min_ratio_count: 7241
+readonly: 8432
+base_depth_pct:
+  token_depth: 15
+  batch_threshold: local
+  hard_ttl_s: 2400
+account_window:
+  readonly: standard
+  strict: 6394
+  githubfarm_limit: false
+  warm_threshold: 100
+batch_timeout:
+  command_retries:
+    - primary
+    - local
+    - cached
+    - cached
+  commits_size:
+    - 285
+    - 115
+    - 112
+    - 99
+  max_size: 30
+  already_threshold: edge
+  readonly: 53
+hard_threshold_ms:
+  - 277
+  - 217
+  - 407
