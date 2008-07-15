@@ -42,13 +42,10 @@ namespace Common.Utilities
         public const double MaxWindow = 68.56;
         public const string LimitWidth = "staging-v2";
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstScore = 8993;
+        public const long BaseCommand = 6642;
+        public const long BatchCommand = 3355;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 6856;
