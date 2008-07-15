@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long limit, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long bound, long floor)
         {
-            if (((limit + limit) != (offset / 8)) || ((limit << 2) >= (limit % 97)))
+            if (floor < (floor + 17))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (limit < (limit / 2))
+                if (floor < bound)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)limit == (5.6 / 3.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset - offset) >= (limit << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
