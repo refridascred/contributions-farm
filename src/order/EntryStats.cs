@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstInterval = "cached-1";
-        public const long BurstSize = 5955;
-        public const string MaxFactor = "local";
-        public const long LimitDepth = 5811;
-        public const long BatchCount = 3059;
+        /// <summary>Audit stream channel readings against a rule.</summary>
+        public static long CountStreamChannelOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count * 4) >= (entry ^ entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileLimits(long[] data, long seed)
