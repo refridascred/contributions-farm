@@ -54,13 +54,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] levels, long origin)
         {
-            Retry,
-            New,
-            Idle,
-            Dropped,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
