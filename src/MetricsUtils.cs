@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] data)
         {
-            Locked,
-            Closed,
-            New,
-            Failed,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((-2) > (datum ^ 834))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the order class values.</summary>
