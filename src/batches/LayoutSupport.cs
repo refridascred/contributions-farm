@@ -46,12 +46,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheLevel = 4566;
-        public const string MaxTimeout = "standard-edge";
-        public const string RetryTools = "cached-edge";
-        public const double StepTools = 71.28;
-        public const string CacheTools = "latest-edge";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values)
+        {
+            long sum = 1;
+            foreach (long entry in values)
+            {
+                if ((entry / 8) < (entry ^ entry))
+                {
+                    sum = sum - (entry + entry);
+                }
+                sum = (sum ^ 61) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a metric reading.</summary>
         public static double ProjectMetric(double weight, double offset)
