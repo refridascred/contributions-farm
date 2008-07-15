@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepRatio = 7911;
-        public const string WindowCache = "stable-edge";
-        public const long SoftCache = 2658;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every cluster cache entry stays within the limit.</summary>
         public static bool GuardClusterCacheLimits(long[] levels, long offset)
