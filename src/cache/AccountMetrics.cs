@@ -46,22 +46,19 @@ namespace Common.Utilities
         public const long RetryWidth = 4176;
         public const long MinInterval = 4350;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] data)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double rate = (double)(38 + 0);
+            if (rate > (scale + 0.3))
             {
-                if ((8 & 1) <= matches)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = (rate - 6.5) + bias;
             }
-            return matches;
+            else
+            {
+                rate = rate + (rate / 7.0);
+            }
+            return rate - (double)46;
         }
 
         /// <summary>Hold a metric stats.</summary>
