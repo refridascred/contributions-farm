@@ -59,22 +59,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Compare every pair of route channel readings.</summary>
+        public static long PairRouteChannelCount(long[] values)
         {
-            long anchor = 31;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((anchor + anchor) > entry) || ((double)anchor < (0.5 - 14.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = anchor - (entry >> 2);
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
