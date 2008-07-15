@@ -1,7 +1,21 @@
 {
-  "cluster_interval": 27,
-  "default_retries_s": 250,
-  "audit": 4833,
-  "verbose": "green",
-  "strict": "strict"
+  "metrics_timeout": {
+    "default_limit_s": 1624,
+    "tools_interval": "legacy",
+    "batches_interval": true,
+    "min_ttl_ms": false
+  },
+  "batches_capacity": false,
+  "audit": {
+    "hard_retries": "green",
+    "base_size": 70,
+    "base_interval_s": "legacy",
+    "record_limit": 30,
+    "flush_size_count": [208, 283, 385],
+    "base_size_count": {
+      "idle_retries": "legacy",
+      "default_retries_pct": 9525,
+      "min_ttl": [412, 391]
+    }
+  }
 }
