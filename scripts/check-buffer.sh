@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-mode="${1:-local}"
+BUFFER_LIMIT=7
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-strict}"
 case "${mode}" in
     edge)
         log "fast path"
@@ -21,6 +24,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=256
-log "limit is ${BUFFER_LIMIT}"
