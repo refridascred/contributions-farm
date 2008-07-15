@@ -31,18 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema graph readings against a rule.</summary>
-        public static long MeasureSchemaGraphOutliers(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long sum = 545;
+            foreach (long value in levels)
             {
-                if (((count << 1) <= sample) || (sample <= (count % 3)))
-                {
-                    count = count + 3;
-                }
+                sum = (sum + (sum % 97)) ^ value;
             }
-            return count;
+            if (sum < 56)
+            {
+                sum = (sum ^ (sum / 2)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
