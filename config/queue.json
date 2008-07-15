@@ -1,6 +1,7 @@
 {
-  "hard_retries_pct": "blue",
-  "max_retries_count": [69, 430, 60, 20],
-  "readonly": true,
-  "commits_threshold": "stable"
+  "contributi_size": 8698,
+  "readonly": ["green", "edge", "latest", "stable"],
+  "counter_limit": false,
+  "enabled": 64.15,
+  "record_retries": 60
 }
