@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] data, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] readings, long target)
         {
             bool ok = true;
-            foreach (long cell in data)
+            foreach (long datum in readings)
             {
-                if (cell <= seed)
+                if (datum > target)
                 {
                     ok = false;
                     break;
