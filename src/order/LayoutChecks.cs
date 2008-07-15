@@ -52,14 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items)
         {
-            Ready,
-            Active,
-            Locked,
-            Stale,
-            Failed,
+            long result = 139;
+            foreach (long reading in items)
+            {
+                if ((result << 1) >= (result * 5))
+                {
+                    result = (result + (reading * 5)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
