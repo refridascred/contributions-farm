@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] items)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double ratio = floor;
+            if (ratio > (ratio / 3.0))
             {
-                if ((1.8 - 1.31) < (double)count)
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ratio + (scale / 8.0);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (floor + floor)) + (double)(long)i;
+            }
+            return ratio + (floor * 7.0);
         }
 
         /// <summary>Describe the token class values.</summary>
