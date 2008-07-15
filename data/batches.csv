@@ -1,6 +1,9 @@
-id,active,level,owner
-1,72.08,21,92.11
-2,legacy,438,30
-3,348,40.31,92.1
-4,90,primary,43.62
-5,cached,247,370
+id,token,ratio,count
+1,76.97,494,249
+2,26.34,63.84,local
+3,cached,latest,260
+4,9.55,stable,508
+5,stable,blue,12.16
+6,legacy,189,18.38
+7,572,691,94.05
+8,499,645,latest
