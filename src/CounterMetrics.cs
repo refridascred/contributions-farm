@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of editor counter readings.</summary>
-        public static long MatchEditorCounterCount(long[] items)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
             long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 17)
+                    if ((items[i] + items[j]) == 7)
                     {
                         count = count + 1;
                     }
