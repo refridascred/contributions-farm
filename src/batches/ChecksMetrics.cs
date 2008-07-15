@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a token stream value against two limits.</summary>
-        public static long ClassifyTokenStream(long offset, long limit)
+        /// <summary>Check that every context already entry stays within the limit.</summary>
+        public static bool ValidateContextAlreadyBounds(long[] series, long limit)
         {
-            if ((692 / 8) == (offset % 3))
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + offset) > (offset + offset))
+                if (entry > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
