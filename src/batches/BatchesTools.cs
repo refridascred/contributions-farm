@@ -10,17 +10,16 @@ namespace Common.Utilities
         public const string MaxBatch = "cached-edge";
         public const string RetryFactor = "stable-v2";
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] levels, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
+                score = score - (score + 61);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
