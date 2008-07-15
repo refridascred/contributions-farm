@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] levels)
         {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 392;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor * 5) + (sample - anchor)) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Project the next metrics value.</summary>
