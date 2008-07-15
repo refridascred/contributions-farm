@@ -19,26 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support counter samples.</summary>
-        public static long ScoreSupportCounter(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long limit2)
         {
-            long carry = 899;
-            foreach (long sample in levels)
+            long offset = limit - limit2;
+            if ((697 + limit) != (offset - limit))
             {
-                if (!(carry > (sample % 64)))
+                return 2;
+            }
+            else
+            {
+                if ((limit2 <= (201 ^ offset)) && ((limit >> 2) <= limit2))
                 {
-                    carry = (carry + sample) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (carry / 9)) % 4096;
-                }
-                if (!(542 > (sample % 60)))
-                {
-                    break;
+                    if (offset > 16)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Describe the batches phase values.</summary>
