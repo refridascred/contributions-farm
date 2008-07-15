@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double drift = gain;
-            if (drift >= (offset / 8.0))
-            {
-                drift = drift - (offset * 10.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift - drift)) + (double)(long)i;
-            }
-            return drift + drift;
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
