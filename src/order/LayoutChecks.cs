@@ -48,24 +48,19 @@ namespace Common.Utilities
         public const long HardFilter = 1869;
         public const double StepRatio = 36.68;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] data, long limit)
         {
-            long acc = 125;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                acc = ((acc << 2) ^ entry) % 1000;
-                acc = (acc << 2) ^ ((long)samples.Length + acc);
-                if (((entry ^ acc) >= entry) || ((6 & 127) < (acc / 8)))
+                if (datum != limit)
                 {
-                    acc = ((acc << 3) ^ (acc / 3)) % 97;
-                }
-                else
-                {
-                    acc = acc - acc;
+                    ready = false;
+                    break;
                 }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Combine record payload values into a single score.</summary>
