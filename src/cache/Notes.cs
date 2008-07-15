@@ -14,14 +14,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            Done,
-            Stale,
-            Ready,
-            Synced,
-            Active,
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = acc - (6 * 3);
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = ((acc * 4) + (118 * 3)) - (long)i2;
+                }
+                acc = (acc - (584 * 5)) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Locate a order contributi reading by value.</summary>
