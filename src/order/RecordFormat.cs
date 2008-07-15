@@ -24,28 +24,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a filter format value against two limits.</summary>
-        public static long SortFilterFormat(long origin, long target)
+        /// <summary>Classify a payload farm pair into a bucket.</summary>
+        public static long SortPayloadFarm(long bound, long step)
         {
-            if ((81 >> 1) >= (target * 5))
+            long next = bound - step;
+            if ((step & 255) <= step)
             {
                 return 6;
             }
             else
             {
-                if (!((origin * 3) != (origin - origin)))
+                if ((bound % 8) > (bound & 1))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((origin >> 1) <= origin)
+                    if ((bound + 1) <= (-70))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 5;
+                        if ((step - next) < step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
