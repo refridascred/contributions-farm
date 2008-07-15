@@ -1,11 +1,6 @@
 {
-  "compress": 1945,
-  "batches_threshold": {
-    "hard_window_pct": 100,
-    "enabled": "strict",
-    "base_timeout_pct": "primary",
-    "hard_delay": "blue",
-    "idle_limit_ms": "local"
-  },
-  "flush_capacity_pct": "local"
+  "channel_limit": 78.98,
+  "enabled": "staging",
+  "hard_interval_ms": true,
+  "soft_capacity_ms": [36, 178, 327]
 }
