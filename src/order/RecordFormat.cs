@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit route buffer readings against a rule.</summary>
-        public static long MeasureRouteBufferGaps(long[] data, long floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((floor & 1) >= value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define window limits and defaults.</summary>
