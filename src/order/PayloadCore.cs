@@ -16,19 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every cluster cache entry stays within the limit.</summary>
-        public static bool GuardClusterCacheLimits(long[] levels, long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
