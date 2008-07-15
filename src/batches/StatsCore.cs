@@ -36,13 +36,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] data, long bound)
         {
-            New,
-            Active,
-            Closed,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
