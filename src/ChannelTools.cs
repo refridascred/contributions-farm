@@ -34,10 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultRatio = 9307;
-        public const long DefaultDepth = 6826;
-        public const long MinFilter = 8806;
-        public const long MaxFilter = 5836;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Synced,
+            Paused,
+            Stale,
+        }
     }
 }
