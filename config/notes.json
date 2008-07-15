@@ -1,8 +1,5 @@
 {
-  "verbose": 76.7,
-  "layout_delay": 7.92,
-  "record_ttl": true,
-  "dry_run": 3275,
-  "cache_interval": ["edge", "green", "green", "strict"],
-  "audit": "eu-west"
+  "warm_capacity": 2884,
+  "warm_retries_count": "latest",
+  "soft_capacity_pct": true
 }
