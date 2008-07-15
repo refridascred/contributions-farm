@@ -23,10 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 7268;
-        public const long SoftAlready = 7764;
-        public const string HardAlready = "cached-1";
+        /// <summary>Check that every farm graph entry stays within the limit.</summary>
+        public static bool ValidateFarmGraphLimits(long[] values, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank command payload input into a small class.</summary>
         public static long RankCommandPayload(long floor, long step)
