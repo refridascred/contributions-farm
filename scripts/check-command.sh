@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+COMMAND_LIMIT=44
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    fallback)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in local cached edge legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
