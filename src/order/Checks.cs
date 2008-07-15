@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] series, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
