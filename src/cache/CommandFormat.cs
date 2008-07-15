@@ -54,18 +54,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] data)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((2.5 / 9.0) == (double)count)
+                if (((double)datum >= (8.8 + 9.7)) && ((94 & 15) <= (hits + hits)))
                 {
-                    count = (count + 2) + sample;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
