@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 2084;
         public const string DefaultSpan = "open-edge";
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double ratio, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            double ratio2 = offset;
+            if (ratio2 < ratio2)
             {
-                if ((long)i != (anchor + 741))
-                {
-                    anchor = ((anchor * 3) + limit) % 4096;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (anchor - limit) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                ratio2 = ratio2 + (offset * 2.7);
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + offset) + (double)(long)i;
+            }
+            return ratio2 + (ratio / 7.0);
         }
 
         /// <summary>Roll a graph counter forward.</summary>
