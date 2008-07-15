@@ -20,22 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long result = -520;
+            foreach (long item in items)
             {
-                if ((reading - 895) >= reading)
+                if (((result & 7) == (item / 6)) && ((result >> 4) <= result))
                 {
-                    seen = seen + 3;
+                    result = ((result << 3) ^ (-58)) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = result + (4 & 7);
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
