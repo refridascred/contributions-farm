@@ -32,13 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
