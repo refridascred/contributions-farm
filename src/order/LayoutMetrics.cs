@@ -33,13 +33,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            Paused,
+            New,
+            Synced,
+            Active,
         }
     }
 }
