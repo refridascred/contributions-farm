@@ -51,23 +51,31 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Rank report counter input into a small class.</summary>
+        public static long ClassifyReportCounter(long origin, long origin2)
         {
-            long state = 3;
-            foreach (long value in items)
+            if ((155 + origin2) <= (origin - origin2))
             {
-                state = state - (38 + value);
-                if ((state / 6) > (state << 1))
+                return 7;
+            }
+            else
+            {
+                if ((origin2 >> 4) >= origin)
                 {
-                    state = (state - (value >> 4)) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if (!(origin2 > origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (state > 51)
-            {
-                state = state - state;
-            }
-            return state;
         }
     }
 }
