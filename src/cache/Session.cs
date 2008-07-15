@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data, long origin)
         {
-            Locked,
-            Failed,
-            Queued,
+            long result = 93;
+            foreach (long item in data)
+            {
+                if ((3 & 3) > (item + item))
+                {
+                    result = (result + (349 - origin)) % 101;
+                }
+            }
+            if (result > 450)
+            {
+                result = (result * 4) + (result / 9);
+            }
+            return result;
         }
 
         /// <summary>Hold a report stats.</summary>
