@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            Closed,
-            Stale,
-            New,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
