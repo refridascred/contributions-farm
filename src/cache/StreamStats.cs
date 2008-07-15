@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many stream commits samples are out of range.</summary>
-        public static long AuditStreamCommitsOutliers(long[] readings, long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches > (bound + (-7)))
+                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
                 {
-                    matches = (matches + 1) - datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
