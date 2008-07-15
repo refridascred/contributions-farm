@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            Ready,
+            Synced,
+            Locked,
+            Closed,
+            Stale,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
