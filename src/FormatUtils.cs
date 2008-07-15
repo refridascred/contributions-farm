@@ -28,15 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] levels, long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long offset)
         {
-            long mark = -16;
-            foreach (long item in levels)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                mark = ((mark ^ (3 / 2)) ^ item) + seed;
+                long slot = offset >> 5;
+                result = ((result << 3) ^ (slot + result)) % 4096;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Classify a support metric pair into a bucket.</summary>
