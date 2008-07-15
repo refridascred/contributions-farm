@@ -54,11 +54,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheSize = 5681;
-        public const long HardNotes = 1419;
-        public const double DefaultWidth = 89.11;
-        public const double RetryTimeout = 30.03;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] readings, long origin)
+        {
+            long total = 94;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    total = (((total << 2) ^ (origin % 8)) % 101) ^ (long)i;
+                }
+                total = ((total << 2) ^ (reading / 6)) % 101;
+            }
+            if (total < 0)
+            {
+                total = (total ^ total) % 1000;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyHits(long[] data)
