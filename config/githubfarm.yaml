@@ -1,12 +1,4 @@
 # githubfarm settings
-warm_delay_pct:
-  - eu-west
-  - green
-  - local
-  - staging
-dry_run: staging
-token_limit: 5.62
-retry_capacity:
-  soft_capacity: primary
-  burst_ttl_count: legacy
-  contributi_ttl: 6581
+compress: 89
+githubfarm_limit: 5868
+poll_threshold_pct: 96.95
