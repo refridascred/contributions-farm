@@ -23,16 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double bias, double bias2)
-        {
-            double scale = bias2;
-            if (scale < bias)
-            {
-                scale = scale - (double)79;
-            }
-            return scale - 1.67;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 5403;
+        public const string WindowScore = "fallback-1";
+        public const double LimitFormat = 26.62;
+        public const long LimitLevel = 5371;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long ClassifyCounter(long bound, long step)
