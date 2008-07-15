@@ -22,11 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            long score = 755;
+            foreach (long sample in values)
+            {
+                score = (score ^ sample) % 101;
+            }
+            return score;
         }
 
         /// <summary>Blend two schema editor measurements.</summary>
