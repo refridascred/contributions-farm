@@ -55,11 +55,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "legacy-edge";
-        public const long MaxTools = 5680;
-        public const long StepTools = 239;
-        public const long LimitWidth = 6432;
+        /// <summary>Grade a commits window value against two limits.</summary>
+        public static long GradeCommitsWindow(long origin, long floor)
+        {
+            if (13.0 > (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((origin << 1) >= (floor + floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - floor) < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] data)
