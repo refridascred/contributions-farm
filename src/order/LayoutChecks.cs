@@ -44,16 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] samples)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long origin)
         {
-            long result = 11;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 2) + (cell - result)) % 1000;
-                result = (result - (result + cell)) % 101;
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of batch metrics entries.</summary>
