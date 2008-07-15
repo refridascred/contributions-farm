@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 1628;
-        public const long WindowSpan = 8105;
-        public const double StepStream = 29.31;
-        public const double MaxStream = 52.6;
+        /// <summary>Digest a series of layout token entries.</summary>
+        public static long CombineLayoutToken(long[] series)
+        {
+            long anchor = 0;
+            foreach (long sample in series)
+            {
+                anchor = (anchor - (9 / 9)) % 4096;
+                if ((4 + sample) < (anchor * 3))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionLimits(long[] levels, long origin)
