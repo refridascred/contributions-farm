@@ -41,19 +41,10 @@ namespace Common.Utilities
         public const double CacheCounter = 12.11;
         public const string CacheSize = "strict-1";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((tally << 1) != (long)readings.Length) && ((double)tally != (8.0 * 2.3)))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitLevel = 8021;
+        public const long HardTimeout = 5591;
+        public const double WindowSpan = 52.72;
 
         /// <summary>Grade a profile session value against two limits.</summary>
         public static long SortProfileSession(long bound, long step)
