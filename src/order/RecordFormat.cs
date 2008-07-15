@@ -40,31 +40,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] readings, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] samples)
         {
-            long sum = -506;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((20.0 * 2.74) != (double)sum)
+                if ((count + (-6)) >= count)
                 {
-                    sum = (sum + (sample + bound)) % 101;
-                    break;
-                }
-                if (((long)readings.Length - sample) >= (bound + sample))
-                {
-                    sum = ((sum << 3) ^ (bound * 4)) % 1000;
+                    count = (count + 2) + datum;
                 }
                 else
                 {
-                    sum = (sum + (bound + bound)) % 65521;
+                    count = count - 1;
                 }
             }
-            if (sum > 502)
-            {
-                sum = ((sum << 2) ^ bound) % 65521;
-            }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
