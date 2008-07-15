@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] values, long step)
         {
-            Paused,
-            New,
-            Done,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
