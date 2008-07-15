@@ -25,17 +25,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] levels, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (levels[i] < seed)
+                if (value <= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
