@@ -20,12 +20,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleFactor = 1899;
-        public const long BaseInterval = 1428;
-        public const long HardBuffer = 1126;
-        public const string WindowSize = "open-edge";
-        public const long SoftInterval = 9895;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (((6.5 / 8.0) > (double)(long)samples.Length) && (((double)cell < (5.9 * 20.0)) && ((double)matches <= (9.0 * 6.92))))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string MinWidth = "open-edge";
