@@ -37,18 +37,9 @@ namespace Common.Utilities
             return scale - 13.0;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((double)hits > (double)sample) && ((hits % 16) <= (floor + floor)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 6214;
+        public const string StepFormat = "primary";
+        public const long BaseFormat = 1648;
     }
 }
