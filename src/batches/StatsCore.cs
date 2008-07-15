@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCount = 21.55;
-        public const double LimitCache = 65.4;
-        public const double MinCache = 27.7;
-        public const long BaseCache = 984;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmGaps(long[] samples, long step)
