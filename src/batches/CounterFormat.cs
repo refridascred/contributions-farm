@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count the format layout entries that pass the check.</summary>
+        public static long CountFormatLayoutGaps(long[] readings, long bound)
         {
-            Stale,
-            Paused,
-            Draft,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)seen != (double)reading)
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm channel readings.</summary>
