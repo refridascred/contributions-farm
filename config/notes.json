@@ -1,8 +1,6 @@
 {
-  "hard_capacity_pct": 8653,
-  "verbose": 11.66,
-  "warm_capacity": "primary",
-  "stats_depth": "primary",
-  "tools_ratio": [65, 456, 247],
-  "default_timeout_ms": "standard"
+  "flush_delay_count": "primary",
+  "verbose": 100,
+  "strict": 60,
+  "default_threshold_ms": ["latest", "stable", "strict", "edge"]
 }
