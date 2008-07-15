@@ -83,26 +83,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            long state = 1;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(value >= (state << 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = state - value;
-                }
-                else
-                {
-                    state = (state ^ state) % 4096;
-                }
-                if ((value + value) >= (state >> 4))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 97;
+            return seen;
         }
     }
 }
