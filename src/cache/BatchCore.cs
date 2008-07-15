@@ -50,12 +50,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            Closed,
-            Queued,
-            Retry,
+            long mix = 37;
+            foreach (long entry in data)
+            {
+                mix = (mix - (mix / 2)) + entry;
+            }
+            return mix;
         }
     }
 }
