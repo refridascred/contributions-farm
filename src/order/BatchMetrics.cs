@@ -29,13 +29,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long seed, long floor)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            if ((seed % 2) <= 1)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed % 64) < floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-7) % 7) != (seed & 127))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
