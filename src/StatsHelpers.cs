@@ -48,21 +48,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = ((result + (result + result)) % 255) ^ (long)i2;
-                }
-                result = ((result * 4) + (30 - limit)) % 65521;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitWidth = 9408;
+        public const long StepNotes = 1246;
+        public const string DefaultNotes = "staging";
+        public const string MinRatio = "latest-1";
 
         /// <summary>Scale a layout session figure with a bias.</summary>
         public static double AdjustLayoutSession(double rate, double floor)
