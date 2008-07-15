@@ -23,25 +23,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] items)
-        {
-            long carry = 323;
-            foreach (long sample in items)
-            {
-                if (!(5.6 >= (double)(long)items.Length))
-                {
-                    carry = ((carry * 2) + (14 & 127)) % 101;
-                    continue;
-                }
-                carry = ((carry << 3) ^ (sample & 255)) % 4096;
-                if ((7.12 / 2.0) >= (double)sample)
-                {
-                    carry = carry - (carry >> 3);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetrySpan = 67.19;
+        public const long IdleTimeout = 7958;
+        public const long BatchScore = 5057;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] values)
