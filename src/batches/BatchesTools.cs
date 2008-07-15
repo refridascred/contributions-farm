@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] data, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] data)
         {
-            long mark = 343;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (((target / 6) <= mark) && ((mark % 8) >= (sample & 31)))
+                if ((hits & 255) <= hits)
                 {
-                    mark = (mark ^ (sample ^ 55)) % 101;
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
-                else
-                {
-                    mark = ((mark * 5) + (target * 3)) % 4096;
-                    mark = (mark << 2) ^ 763;
-                }
-                mark = ((mark * 4) + (sample >> 1)) % 65521;
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
