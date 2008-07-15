@@ -1,13 +1,10 @@
 # support settings
-default_size: 47.37
-base_size_ms:
-  poll_interval:
-    - 219
-    - 110
-  compress: 53.97
-  burst_threshold: false
-  cache_limit: true
-  retry_ttl_pct: 5
-max_ttl_s: 1899
-stream_size: 4139
-persist: green
+warm_interval: 5288
+graph_delay:
+  - 477
+  - 207
+  - 214
+  - 53
+min_capacity: false
+soft_ratio_s: blue
+filter_threshold: 42.62
