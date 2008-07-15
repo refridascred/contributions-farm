@@ -36,19 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
-        public static bool VerifyStatsGithubfarmLimits(long[] levels, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
