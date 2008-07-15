@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long MinContext = 7317;
         public const long IdleContext = 302;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            Active,
+            Closed,
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the report status values.</summary>
