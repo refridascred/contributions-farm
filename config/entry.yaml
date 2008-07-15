@@ -1,25 +1,19 @@
 # entry settings
-verbose: 9339
-burst_limit_pct:
-  retry_interval_pct: local
-  min_capacity_s: true
-  readonly:
-    - eu-west
-    - open
-    - standard
-    - eu-west
-  hard_delay_s: staging
-  audit: legacy
-  batch_limit:
-    strict: latest
-    poll_size: cached
-    editor_limit: latest
-    sync_timeout: strict
-    poll_timeout_count: 9.59
-idle_size: edge
-githubfarm_limit:
-  channel_limit: edge
-  soft_threshold: 9280
-  batch_size: 5682
-  audit: latest
-commits_limit: 9
+default_capacity_count:
+  dry_run: 40
+  sync_threshold_count: eu-west
+  cache_threshold_s: 22.66
+  account_delay: fallback
+  base_window_pct:
+    metrics_timeout: 500
+    flush_size_pct: 500
+    dry_run: 500
+    editor_window: 1024
+    verbose: false
+  idle_retries_s: 36.37
+readonly: true
+soft_size_pct: 7059
+warm_capacity_pct: 60
+cache_threshold:
+  - 157
+  - 247
