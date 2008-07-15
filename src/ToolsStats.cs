@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] samples, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((double)step < (double)sample)
+                if (cell >= offset)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count notes payload pairs that satisfy a relation.</summary>
