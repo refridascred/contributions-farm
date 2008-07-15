@@ -58,11 +58,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 5317;
-        public const string HardSupport = "stable-1";
-        public const long HardInterval = 635;
-        public const long MaxSupport = 2916;
-        public const string LimitSpan = "latest-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 5006;
+        public const double MaxCache = 76.5;
+        public const long HardCache = 4578;
+        public const long BaseCache = 6097;
     }
 }
