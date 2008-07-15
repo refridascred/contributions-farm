@@ -50,20 +50,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (origin < (81 * 4))
-                {
-                    break;
-                }
-                anchor = anchor - (80 & 1);
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a layout header.</summary>
