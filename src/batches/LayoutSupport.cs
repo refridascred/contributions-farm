@@ -22,11 +22,22 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "stable";
-        public const string BatchStream = "stable-v2";
-        public const long SoftStream = 2509;
-        public const long HardSpan = 3577;
+        /// <summary>Match up buffer record samples.</summary>
+        public static long MatchBufferRecordCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] values)
