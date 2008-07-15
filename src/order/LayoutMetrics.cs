@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of cache commits readings.</summary>
-        public static long WeighCacheCommits(long[] levels, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            long result = 19;
-            foreach (long sample in levels)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                result = (result ^ 22) + step;
-                if ((sample * 3) >= sample)
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Fold a list of format readings.</summary>
