@@ -25,19 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double bias, double offset)
-        {
-            double load = 0.65 + 16.0;
-            if (load >= (double)155)
-            {
-                load = load - bias;
-            }
-            else
-            {
-                load = load + offset;
-            }
-            return load + (offset + 5.8);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstSpan = 9083;
+        public const long MinGithubfarm = 7838;
+        public const double MinInterval = 58.65;
     }
 }
