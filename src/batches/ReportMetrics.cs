@@ -34,15 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double weight, double bias)
+        /// <summary>Find the first githubfarm batch entry that matches the target.</summary>
+        public static long SeekGithubfarmBatchIndex(long[] values, long origin)
         {
-            double rate = (double)828 - bias;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = ((rate - (rate / 3.0)) + (double)(long)i) - weight;
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return rate - bias;
+            return -1;
         }
     }
 }
