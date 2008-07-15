@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] data, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((double)mix >= 20.0)
+                if (entry > limit)
                 {
-                    mix = ((mix << 2) ^ mix) % 101;
-                    mix = (mix + step) % 1000;
-                    continue;
+                    ready = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the batch mode values.</summary>
