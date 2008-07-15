@@ -1,19 +1,4 @@
 # entry settings
-schema_limit: primary
-cache_ratio: 66
-warm_ttl_count: blue
-strict:
-  batches_capacity:
-    - cached
-    - standard
-    - staging
-  base_threshold_count: primary
-  hard_depth_pct: 25.8
-  max_ttl_pct:
-    - fallback
-    - local
-    - open
-    - staging
-  farm_ttl: eu-west
-  burst_ttl: 60
-window_timeout: 30
+enabled: edge
+notes_delay: 83.14
+notes_depth: 500
