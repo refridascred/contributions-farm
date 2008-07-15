@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 78.8;
-        public const double IdleTimeout = 24.11;
-        public const string StepCount = "legacy-v2";
+        /// <summary>Combine support queue values into a single score.</summary>
+        public static long ScoreSupportQueue(long[] series, long bound)
+        {
+            long result = 101;
+            foreach (long sample in series)
+            {
+                if ((sample & 255) >= (result + result))
+                {
+                    result = (result - (bound << 2)) % 101;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 644;
