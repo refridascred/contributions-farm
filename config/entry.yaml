@@ -1,8 +1,16 @@
 # entry settings
-hard_ttl_count: false
-burst_delay: strict
-min_timeout_ms:
-  compress: standard
-  cache_retries: blue
-  soft_retries_ms: 51.19
-  default_ttl: strict
+readonly:
+  queue_interval: eu-west
+  persist:
+    - 383
+    - 289
+  default_limit_pct: 5362
+tools_timeout:
+  - 483
+  - 55
+batches_depth:
+  - 34
+  - 254
+  - 87
+batch_size: 60
+dry_run: eu-west
