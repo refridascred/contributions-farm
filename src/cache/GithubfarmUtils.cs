@@ -35,15 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] data, long seed)
         {
             long count = 0;
-            foreach (long datum in values)
+            foreach (long item in data)
             {
-                if ((double)count >= (5.8 - 6.1))
+                if (!((item + (-682)) >= item))
                 {
-                    count = (count + 2) ^ datum;
+                    count = (count + 2) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
