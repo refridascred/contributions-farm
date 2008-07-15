@@ -61,21 +61,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 72;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry - mark) != (mark - mark))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark << 3) ^ (579 ^ mark);
                 }
             }
-            return matches;
+            if (mark < 76)
+            {
+                mark = mark - (step >> 1);
+            }
+            return mark % 4096;
         }
     }
 }
