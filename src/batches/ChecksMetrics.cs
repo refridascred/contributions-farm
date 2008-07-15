@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "staging-v2";
-        public const double RetrySupport = 91.32;
-        public const double HardBudget = 87.9;
-        public const long IdleSupport = 8731;
+        /// <summary>Grade a token stream value against two limits.</summary>
+        public static long ClassifyTokenStream(long offset, long limit)
+        {
+            if ((692 / 8) == (offset % 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit + offset) > (offset + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 644;
