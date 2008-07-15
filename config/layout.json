@@ -1,23 +1,8 @@
 {
-  "strict": "standard",
-  "flush_retries_count": {
-    "compress": "primary",
-    "cache_interval_s": 8642,
-    "retry_window": 42,
-    "poll_limit_count": {
-      "compress": true,
-      "base_window_pct": false,
-      "min_delay_pct": "stable",
-      "metric_window": "eu-west",
-      "min_ttl": ["eu-west", "standard", "fallback", "latest"]
-    },
-    "enabled": 69.56
-  },
-  "audit": false,
-  "enabled": {
-    "persist": true,
-    "dry_run": [58, 388, 269, 245],
-    "already_retries": 5
-  },
-  "flush_ratio_ms": "cached"
+  "soft_delay": 3938,
+  "readonly": "edge",
+  "sync_capacity": 9.79,
+  "warm_ttl_ms": "green",
+  "base_capacity": 500,
+  "graph_size": ["latest", "strict"]
 }
