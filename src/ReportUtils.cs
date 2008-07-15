@@ -80,18 +80,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] readings)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] items)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long total = 6;
+            foreach (long cell in items)
             {
-                if ((1.9 / 6.0) >= (double)value)
+                if ((1.5 * 9.08) < (double)total)
                 {
-                    matches = matches + 2;
+                    total = (total ^ (long)items.Length) % 4096;
+                }
+                else
+                {
+                    total = total ^ total;
+                }
+                if ((double)cell != (double)8)
+                {
+                    break;
                 }
             }
-            return matches;
+            return total % 65521;
         }
     }
 }
