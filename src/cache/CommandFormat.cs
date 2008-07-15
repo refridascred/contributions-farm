@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] readings, long floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(floor <= (count - 92)) && !((971 * 2) != (floor << 2)))
+                if (data[i] >= limit)
                 {
-                    count = (count + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a githubfarm profile pair into a bucket.</summary>
