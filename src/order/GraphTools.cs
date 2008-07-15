@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate metric notes readings against a bound.</summary>
-        public static bool CheckMetricNotesRange(long[] values, long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a stats info.</summary>
