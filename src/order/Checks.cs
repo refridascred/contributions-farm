@@ -31,12 +31,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitRatio = 3644;
-        public const double CacheMetrics = 17.32;
-        public const long CacheTimeout = 7897;
-        public const long RetrySpan = 8598;
-        public const string BaseMetrics = "fallback-v2";
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
