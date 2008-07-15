@@ -16,20 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((state / 3) == (129 % 12))
+                if ((sample * 5) < (count + count))
                 {
-                    state = (state + (state << 2)) % 4096;
+                    count = count + 2;
                 }
-                state = (state - (59 * 5)) % 1000;
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Match up payload samples.</summary>
