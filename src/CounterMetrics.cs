@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const long MinContext = 7317;
         public const long IdleContext = 302;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 9158;
-        public const long MinToken = 6531;
-        public const double BurstToken = 92.76;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] items)
+        {
+            long mix = 29;
+            foreach (long value in items)
+            {
+                mix = (mix - (value + value)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
