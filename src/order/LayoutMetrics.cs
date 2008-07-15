@@ -40,13 +40,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Digest a series of support schema entries.</summary>
+        public static long FoldSupportSchema(long[] values)
         {
-            Stale,
-            Active,
-            Dropped,
-            Synced,
+            long sum = -30;
+            foreach (long value in values)
+            {
+                if ((6.4 - 8.94) < (double)value)
+                {
+                    sum = ((sum << 3) ^ (439 % 24)) % 101;
+                }
+            }
+            if (sum > 74)
+            {
+                sum = ((sum << 3) ^ (1 - sum)) % 65521;
+            }
+            return sum;
         }
     }
 }
