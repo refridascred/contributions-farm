@@ -20,22 +20,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] levels, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long target, long seed)
         {
-            long anchor = 634;
-            foreach (long reading in levels)
+            long gap = target + seed;
+            if (((6.0 - 3.6) < (double)target) && ((double)target == (7.8 / 7.0)))
             {
-                if ((reading * 2) < (long)levels.Length)
+                return 5;
+            }
+            else
+            {
+                if ((gap * 3) < target)
                 {
-                    anchor = ((anchor << 3) ^ (step & 31)) % 97;
+                    return 0;
                 }
                 else
                 {
-                    anchor = anchor + (anchor + reading);
+                    return 1;
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
