@@ -19,12 +19,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Done,
-            Retry,
-            Ready,
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
