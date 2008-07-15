@@ -42,24 +42,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] samples)
-        {
-            long score = 4;
-            foreach (long reading in samples)
-            {
-                double gain = (double)reading;
-                if (!((gain * 4.9) <= (gain * 4.68)))
-                {
-                    score = score - (score * 2);
-                }
-                score = (score * 3) + reading;
-            }
-            if (score > 4)
-            {
-                score = (score * 2) + score;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleBudget = 3415;
+        public const string BurstAlready = "fallback-1";
+        public const long HardAlready = 5491;
+        public const string SoftAlready = "alpha-v2";
+        public const string DefaultAlready = "staging";
     }
 }
