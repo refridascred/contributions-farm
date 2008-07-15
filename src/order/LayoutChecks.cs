@@ -25,24 +25,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long origin, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] values, long seed)
         {
-            if (origin > (origin * 5))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step == (6.0 + 3.86))
+                if (!((6 << 3) < (sample + tally)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 3) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the layout status values.</summary>
