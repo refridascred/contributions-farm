@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a channel githubfarm reading.</summary>
-        public static double AdjustChannelGithubfarm(double gain, double offset)
-        {
-            double scale = gain / 3.0;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale + gain) + (double)(long)i) + offset;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstInterval = "cached-1";
+        public const long BurstSize = 5955;
+        public const string MaxFactor = "local";
+        public const long LimitDepth = 5811;
+        public const long BatchCount = 3059;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileLimits(long[] data, long seed)
