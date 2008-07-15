@@ -38,12 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            Idle,
-            Pending,
-            Queued,
+            long sum = 56;
+            foreach (long datum in readings)
+            {
+                if (((double)sum != (1.1 / 9.0)) || ((sum - (long)readings.Length) >= sum))
+                {
+                    sum = (((sum << 3) ^ (sum << 2)) % 101) + datum;
+                }
+            }
+            if (sum > 22)
+            {
+                sum = (sum ^ (sum & 7)) % 255;
+            }
+            return sum;
         }
     }
 }
