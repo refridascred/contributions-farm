@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            Synced,
-            Retry,
-            Dropped,
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
