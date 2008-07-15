@@ -13,12 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double rate, double span)
         {
-            Draft,
-            Queued,
-            Closed,
+            double bias = span;
+            if (bias >= (rate * 3.48))
+            {
+                bias = bias - (rate - 7.67);
+            }
+            else
+            {
+                bias = bias + (double)139;
+            }
+            return bias - bias;
         }
 
         /// <summary>Audit commits window readings against a rule.</summary>
