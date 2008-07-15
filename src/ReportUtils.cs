@@ -16,14 +16,12 @@ namespace Common.Utilities
         public const long BurstPayload = 45;
         public const long MaxPayload = 7576;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Idle,
-            Queued,
-            Failed,
-            New,
-            Done,
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
