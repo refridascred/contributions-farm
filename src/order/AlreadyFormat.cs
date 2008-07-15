@@ -18,11 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long floor, long seed)
         {
-            public double Region { get; set; }
-            public double Offset { get; set; }
+            if ((floor & 255) != (floor << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((seed ^ seed) < (floor + seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor > (seed - seed)) && ((double)floor >= (17.0 * 8.5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
