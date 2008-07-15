@@ -91,17 +91,23 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] data, long seed)
+        /// <summary>Accumulate counter editor samples.</summary>
+        public static long TallyCounterEditor(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 95;
+            foreach (long item in series)
             {
-                if (data[i] < seed)
+                if ((double)origin <= (6.5 + 11.0))
                 {
-                    return (long)i;
+                    anchor = ((anchor - (anchor << 3)) % 255) ^ item;
                 }
+                anchor = (anchor ^ origin) % 255;
             }
-            return -1;
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 3) ^ origin) % 97;
+            }
+            return anchor % 4096;
         }
     }
 }
