@@ -47,11 +47,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxLevel = 21.87;
-        public const long SoftRoute = 7310;
-        public const long IdleRoute = 4124;
-        public const long IdleDepth = 859;
-        public const long SoftTimeout = 598;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
