@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] samples, long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] items, long seed)
         {
-            long result = 526;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((reading ^ 37) == (result >> 4))
+                if (sample >= seed)
                 {
-                    result = result - (step + reading);
+                    ok = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
