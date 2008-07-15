@@ -23,13 +23,23 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((long)i != (anchor + 741))
+                {
+                    anchor = ((anchor * 3) + limit) % 4096;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = (anchor - limit) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
