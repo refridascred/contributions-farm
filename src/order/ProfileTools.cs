@@ -17,21 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] series, long target)
         {
-            long result = 661;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long value in series)
             {
-                result = ((result ^ result) % 1000) + datum;
-                result = (result ^ (0 << 2)) % 255;
-                result = result + (result ^ 4);
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result < 47)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Count the route commits entries that pass the check.</summary>
