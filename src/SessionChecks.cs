@@ -16,21 +16,13 @@ namespace Common.Utilities
             return gain + (double)546;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
