@@ -32,15 +32,15 @@ namespace Common.Utilities
         public const long SoftStream = 2509;
         public const long HardSpan = 3577;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 18)
+                    if ((series[i] - series[j]) != 13)
                     {
                         count = count + 1;
                     }
