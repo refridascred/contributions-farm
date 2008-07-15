@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] levels)
+        /// <summary>Check that every entry tools entry stays within the limit.</summary>
+        public static bool GuardEntryToolsLimits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (matches > (matches * 3))
+                if (datum != seed)
                 {
-                    matches = (matches + 3) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Fold a list of account readings.</summary>
