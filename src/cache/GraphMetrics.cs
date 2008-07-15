@@ -15,18 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] samples, long seed)
+        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
+        public static long MeasureGithubfarmCacheOutliers(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((double)seed == (double)matches)
+                if ((((long)data.Length * 3) <= seed) || (((long)data.Length * 3) <= (hits % 7)))
                 {
-                    matches = (matches + 2) ^ reading;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
