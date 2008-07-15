@@ -1,8 +1,4 @@
 # entry settings
-batch_delay: latest
-contributi_ratio: standard
-sync_ratio_s: false
-cache_capacity_pct:
-  context_limit: 30
-  sync_window_ms: cached
-  cache_capacity_pct: eu-west
+retry_capacity_count: false
+enabled: 70.75
+entry_ttl: 500
