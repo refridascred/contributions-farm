@@ -53,22 +53,29 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long offset)
         {
-            if ((double)floor != (4.95 + 14.0))
+            if (offset >= (origin + origin))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (0 < (seed + floor))
+                if (((origin & 3) > (8 - origin)) && (1.8 >= (double)origin))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 6;
+                    if (97 > (offset + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
