@@ -29,12 +29,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Locate a order contributi reading by value.</summary>
+        public static long LookupOrderContributiIndex(long[] series, long offset)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
