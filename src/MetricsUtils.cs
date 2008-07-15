@@ -56,18 +56,24 @@ namespace Common.Utilities
             return bias2 - (11.0 * 2.0);
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Grade a farm checks value against two limits.</summary>
+        public static long SortFarmChecks(long target, long floor)
         {
-            long total = 0;
-            foreach (long value in readings)
+            if (!((target >> 5) > (target & 15)))
             {
-                if (((1.5 * 7.0) >= (double)total) || ((value + value) <= (total % 100)))
+                return 7;
+            }
+            else
+            {
+                if (((target + target) > target) && (target >= (target + target)))
                 {
-                    total = ((total << 2) ^ total) % 255;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return total;
         }
 
         /// <summary>Describe the context phase values.</summary>
