@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)tally >= (2.52 / 7.0)) && ((3.0 - 18.0) == (double)sample))
-                {
-                    tally = (tally + 1) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftCount = "primary";
+        public const long DefaultCount = 7741;
+        public const long RetryTimeout = 7019;
+        public const string BurstFactor = "fallback-v2";
+        public const string LimitCount = "latest-v2";
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long CombineBatch(long[] series, long limit)
