@@ -1,5 +1,4 @@
 # entry settings
-route_ttl: true
-default_delay: 49.77
-batches_delay: edge
-warm_delay: 6126
+default_retries_count: 7908
+idle_limit: 38.92
+flush_timeout_ms: false
