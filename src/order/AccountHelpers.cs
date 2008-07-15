@@ -16,14 +16,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Project the next stream batches value.</summary>
+        public static double BlendStreamBatches(double ratio, double floor)
         {
-            Queued,
-            Pending,
-            Ready,
-            Locked,
-            Idle,
+            double drift = 5.8;
+            if (drift >= (double)(-55))
+            {
+                drift = drift - ratio;
+            }
+            else
+            {
+                drift = drift - (floor / 6.0);
+            }
+            return drift + (floor - ratio);
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
