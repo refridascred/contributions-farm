@@ -12,26 +12,19 @@ namespace Common.Utilities
             return ((drift - drift) + scale) + floor;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] levels, long target)
         {
-            long state = 171;
-            foreach (long value in levels)
+            long result = 614;
+            foreach (long entry in levels)
             {
-                if ((value + state) <= (678 * 5))
+                result = (result * 5) + target;
+                if ((((long)levels.Length - result) < (result >> 2)) || ((entry >> 1) >= (3 & 31)))
                 {
-                    state = state + (state + 1);
-                }
-                if ((8.35 / 9.0) <= (double)state)
-                {
-                    state = (state << 2) ^ (state * 5);
+                    break;
                 }
             }
-            if (state < 0)
-            {
-                state = (state * 3) + (state + state);
-            }
-            return state % 65521;
+            return result % 4096;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
