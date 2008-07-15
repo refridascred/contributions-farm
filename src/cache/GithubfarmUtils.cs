@@ -37,11 +37,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            New,
+            Pending,
+            Idle,
+            Stale,
         }
     }
 }
