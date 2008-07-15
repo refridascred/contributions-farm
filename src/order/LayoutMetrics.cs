@@ -34,24 +34,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long step, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] series, long step)
         {
-            if (!(step < (step + 5)))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step * 3) <= (bound % 7))
+                if (value > step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
