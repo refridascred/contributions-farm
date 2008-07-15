@@ -1,10 +1,11 @@
 # Command notes
 
-The batches module keeps batches values in sync with the layout cache.
-Keep support and cluster names short and lowercase.
+When a batch fails, the batch handler retries a few times before giving up.
+Each order is validated before it reaches the token queue.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new entry fields
-- Keep support values small
-- Log every buffer change
+- Keep account values small
+- Validate token input early
+- Document new cluster fields
