@@ -45,18 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long result = 139;
-            foreach (long reading in items)
-            {
-                if ((result << 1) >= (result * 5))
-                {
-                    result = (result + (reading * 5)) % 1000;
-                }
-            }
-            return result;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine filter values into a single score.</summary>
