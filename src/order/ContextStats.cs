@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long floor)
         {
-            long total = 716;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total - total) + entry;
+                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 1)
-            {
-                total = ((total * 2) + (total >> 3)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every batch stream entry stays within the limit.</summary>
