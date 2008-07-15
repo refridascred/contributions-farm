@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (step < seen)
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "open-1";
+        public const long WindowRatio = 9717;
+        public const string BaseCommand = "stable-edge";
+        public const long IdleCommand = 5668;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] data)
