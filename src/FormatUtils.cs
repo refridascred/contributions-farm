@@ -69,15 +69,18 @@ namespace Common.Utilities
         public const double RetryMetric = 61.94;
         public const long DefaultSpan = 8678;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((23 - count) <= count)
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
