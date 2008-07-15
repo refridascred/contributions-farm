@@ -1,5 +1,11 @@
 # githubfarm settings
-already_ratio: open
-tools_interval: false
-min_timeout_pct: edge
-batch_depth_ms: 1024
+warm_delay:
+  - 223
+  - 396
+warm_depth_count: false
+retry_depth_ms: stable
+min_depth_pct:
+  record_timeout: false
+  idle_interval_ms: true
+  sync_ttl: cached
+cluster_delay: 37.32
