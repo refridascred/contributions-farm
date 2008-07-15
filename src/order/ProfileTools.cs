@@ -55,20 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleSize = 26.04;
+        public const long BatchBuffer = 5033;
+        public const double SoftLevel = 27.9;
+        public const long HardBuffer = 9278;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] data, long seed)
