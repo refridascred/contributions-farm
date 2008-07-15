@@ -1,7 +1,7 @@
-id,ratio,rank
-1,16.55,369
-2,standard,736
-3,415,26.69
-4,open,strict
-5,233,23.52
-6,green,612
+id,score,token,label
+1,fallback,fallback,strict
+2,local,strict,fallback
+3,51.61,44.82,fallback
+4,61.05,826,13.46
+5,30.66,cached,blue
+6,eu-west,36.9,85
