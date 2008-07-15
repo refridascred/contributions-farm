@@ -40,21 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch window readings.</summary>
-        public static long PairBatchWindowCount(long[] readings)
+        /// <summary>Accumulate editor contributi samples.</summary>
+        public static long TotalEditorContributi(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 9;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ (floor / 3)) - cell;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
