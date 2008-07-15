@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] data, long seed)
         {
-            Idle,
-            Active,
-            Pending,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - seed) >= count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
