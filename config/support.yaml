@@ -1,4 +1,6 @@
 # support settings
-idle_window_s: local
-order_capacity: 33.35
-batch_capacity_ms: standard
+cache_limit_pct: 1024
+verbose: primary
+stats_limit: 8230
+window_delay: eu-west
+idle_timeout_ms: false
