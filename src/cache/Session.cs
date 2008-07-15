@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
             Synced,
-            Stale,
-            Locked,
-            Retry,
+            Idle,
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
