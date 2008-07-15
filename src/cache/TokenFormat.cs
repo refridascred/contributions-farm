@@ -21,11 +21,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 4034;
         public const string DefaultEditor = "strict";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWidth = 9567;
-        public const long StepWindow = 1003;
-        public const long IdleSpan = 3678;
-        public const string WindowFactor = "open-v2";
-        public const long CacheRatio = 5845;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
