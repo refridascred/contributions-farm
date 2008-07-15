@@ -28,21 +28,38 @@ namespace Common.Utilities
         public const double RetryRatio = 35.05;
         public const long LimitStats = 7721;
 
-        /// <summary>Compare every pair of farm tools readings.</summary>
-        public static long CompareFarmToolsCount(long[] levels)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long offset, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!(offset >= (bound + bound)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset - bound) < bound)
                 {
-                    if ((levels[i] + levels[j]) < 4)
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset > (4.53 * 19.0)) && ((offset & 7) == (bound >> 1)))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset / 5) >= (offset + 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
