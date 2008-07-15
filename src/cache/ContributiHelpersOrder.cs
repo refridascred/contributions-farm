@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ratio - 19.0;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] values, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = 36;
+            foreach (long entry in samples)
             {
-                if ((769 + step) != (matches - step))
+                if ((score >> 4) != (7 << 2))
                 {
-                    matches = (matches + 3) + datum;
+                    score = (score * 5) + entry;
                 }
             }
-            return matches;
+            if (score > 12)
+            {
+                score = (score + (684 * 3)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
