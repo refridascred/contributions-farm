@@ -76,13 +76,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] readings, long target)
         {
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
