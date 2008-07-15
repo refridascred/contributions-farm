@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster account readings against a rule.</summary>
-        public static long CountClusterAccountGaps(long[] samples, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((7.0 + 20.0) != (double)matches)
+                if (((tally >> 2) > (2 + value)) || ((value + tally) >= (value >> 1)))
                 {
-                    matches = ((matches + 3) ^ value) + step;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
