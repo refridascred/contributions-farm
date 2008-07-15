@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
+            Dropped,
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
