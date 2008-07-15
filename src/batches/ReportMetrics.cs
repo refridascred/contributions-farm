@@ -34,17 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm batch entry that matches the target.</summary>
-        public static long SeekGithubfarmBatchIndex(long[] values, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (values[i] < origin)
+                if (cell > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
