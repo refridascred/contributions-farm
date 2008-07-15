@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] series, long offset)
-        {
-            long acc = 17;
-            foreach (long entry in series)
-            {
-                if ((entry % 10) > (entry ^ offset))
-                {
-                    acc = (acc - entry) % 101;
-                    acc = (acc << 2) ^ (offset % 8);
-                }
-                if ((offset - entry) != (offset ^ offset))
-                {
-                    acc = (acc << 2) ^ (4 * 3);
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 7273;
+        public const long MinFilter = 755;
+        public const double DefaultDepth = 79.9;
+        public const long CacheWidth = 6620;
+        public const long SoftSize = 1798;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long WeighProfile(long[] data, long bound)
