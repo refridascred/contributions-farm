@@ -1,8 +1,6 @@
 # entry settings
-cache_threshold_pct: 1024
-batch_window_ms:
-  - cached
-  - blue
-command_limit: stable
-cache_capacity_pct: standard
-githubfarm_delay: 69.45
+audit: 1024
+burst_ratio_count: staging
+flush_limit_s: false
+metric_size: 48
+poll_capacity_s: open
