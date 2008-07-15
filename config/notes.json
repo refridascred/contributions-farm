@@ -1,13 +1,7 @@
 {
-  "payload_size": 4481,
-  "cluster_threshold": 10,
-  "token_retries": {
-    "order_delay": 16.43,
-    "record_delay": 1768,
-    "persist": true,
-    "enabled": 5016,
-    "min_capacity_s": 13.72
-  },
-  "base_window_count": 56.7,
-  "verbose": "blue"
+  "default_ratio": [188, 351, 72],
+  "warm_ratio_ms": "strict",
+  "format_ratio": 6169,
+  "cache_depth_ms": 44,
+  "batch_size_count": [93, 84]
 }
