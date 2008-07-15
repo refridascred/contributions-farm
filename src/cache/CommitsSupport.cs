@@ -14,11 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            public double Size { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
