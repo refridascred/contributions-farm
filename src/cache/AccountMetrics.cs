@@ -25,15 +25,17 @@ namespace Common.Utilities
             return ratio + (7.93 * 6.9);
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] levels, long target)
         {
-            long carry = 761;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry * 3) + (reading >> 4);
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
