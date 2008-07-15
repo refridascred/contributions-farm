@@ -52,17 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a token record reading by value.</summary>
-        public static long LookupTokenRecordIndex(long[] series, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (series[i] < bound)
+                if ((datum + datum) == (hits >> 2))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
