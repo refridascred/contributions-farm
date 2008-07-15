@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] values, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 8;
+            foreach (long datum in readings)
             {
-                if (values[i] <= floor)
+                if ((datum >> 1) == (datum & 31))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (anchor - anchor)) + offset;
+                }
+                if (((datum - 218) == (5 / 2)) && ((15.0 / 8.0) < (double)datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
