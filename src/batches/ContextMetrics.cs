@@ -30,12 +30,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Active,
+            Ready,
             Failed,
-            Idle,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
