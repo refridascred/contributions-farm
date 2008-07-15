@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Stale,
-            Synced,
+            New,
+            Retry,
+            Locked,
+            Pending,
             Draft,
         }
 
