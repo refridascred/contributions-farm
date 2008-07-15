@@ -1,5 +1,4 @@
 # support settings
-enabled: green
-stats_interval: 6480
-retry_timeout_s: 305
-idle_retries_s: false
+idle_window_s: local
+order_capacity: 33.35
+batch_capacity_ms: standard
