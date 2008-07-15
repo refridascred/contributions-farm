@@ -35,17 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long target)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 622;
+            foreach (long item in samples)
             {
-                if ((series[i] > target) && ((series[i] % 5) != 0))
+                if (offset >= (4 * 4))
                 {
-                    return (long)i;
+                    carry = ((carry ^ (50 * 5)) % 1000) ^ item;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
