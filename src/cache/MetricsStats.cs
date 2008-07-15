@@ -36,11 +36,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Accumulate counter editor samples.</summary>
