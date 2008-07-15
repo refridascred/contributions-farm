@@ -15,19 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] levels, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long state = 448;
+            foreach (long cell in values)
             {
-                if (item != floor)
+                if ((origin & 1) < state)
                 {
-                    found = false;
-                    break;
+                    state = (state + (cell + origin)) % 255;
                 }
             }
-            return found;
+            if (state < 5)
+            {
+                state = ((state * 5) + (origin - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
