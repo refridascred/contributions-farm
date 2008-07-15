@@ -39,16 +39,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Rank command payload input into a small class.</summary>
+        public static long RankCommandPayload(long floor, long step)
         {
-            long mix = 58;
-            foreach (long value in items)
+            if ((step % 16) <= (step + step))
             {
-                mix = ((mix * 5) + (918 - mix)) % 1000;
-                mix = (mix ^ (0 - value)) % 101;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (((step - floor) >= (floor & 1)) || ((step / 2) >= floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine already values into a single score.</summary>
