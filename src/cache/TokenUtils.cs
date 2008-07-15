@@ -30,25 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long floor, long bound)
+        /// <summary>Audit batch profile readings against a rule.</summary>
+        public static long TallyBatchProfileGaps(long[] items)
         {
-            long edge = floor + bound;
-            if ((5.0 > (double)floor) || ((5.2 * 18.0) < (double)floor))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (6 >= (edge / 3))
+                if ((value < (value ^ value)) && (((3.9 / 8.0) < (double)hits) && ((value + hits) != (value / 4))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
