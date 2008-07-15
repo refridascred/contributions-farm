@@ -1,12 +1,4 @@
 # support settings
-readonly: 92
-profile_interval:
-  max_delay_pct: blue
-  format_size: false
-  default_threshold_pct: primary
-  min_limit: 38.18
-  verbose: stable
-  base_ttl: open
-retry_capacity: 250
-stream_timeout: 62.64
-hard_depth_ms: 94.15
+contributi_ratio: stable
+checks_depth: 48
+persist: cached
