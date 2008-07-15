@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long SoftNotes = 5987;
         public const long CacheWidth = 8356;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] levels, long seed)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] == offset)
+                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
