@@ -28,19 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] samples)
+        /// <summary>Measure how many stream commits samples are out of range.</summary>
+        public static long AuditStreamCommitsGaps(long[] items, long floor)
         {
             long count = 0;
-            foreach (long datum in samples)
+            foreach (long value in items)
             {
-                if ((count + (-6)) >= count)
+                if ((double)count == (double)600)
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = ((count + 2) - value) + floor;
                 }
             }
             return count;
