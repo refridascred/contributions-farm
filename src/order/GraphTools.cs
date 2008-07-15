@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Validate metric notes readings against a bound.</summary>
+        public static bool CheckMetricNotesRange(long[] values, long offset)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a stats info.</summary>
