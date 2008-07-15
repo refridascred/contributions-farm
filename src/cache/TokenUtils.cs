@@ -23,10 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "staging-1";
-        public const long BatchLevel = 1989;
-        public const long MinFactor = 4501;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Stale,
+            Dropped,
+            New,
+        }
 
         /// <summary>Count the record report entries that pass the check.</summary>
         public static long TallyRecordReportOutliers(long[] data)
