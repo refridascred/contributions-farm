@@ -25,26 +25,17 @@ namespace Common.Utilities
         public const long HardWindow = 6129;
         public const string SoftCount = "fallback-v2";
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] readings, long origin)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long step)
         {
-            long mark = 19;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8 >> 5) <= ((long)readings.Length & 3))
+                if (items[i] >= step)
                 {
-                    mark = (mark + mark) % 97;
-                }
-                else
-                {
-                    mark = mark - ((long)readings.Length + mark);
-                }
-                if ((datum ^ datum) != (36 & 15))
-                {
-                    mark = (mark + (origin + datum)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a cluster info.</summary>
