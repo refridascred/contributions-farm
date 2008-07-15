@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] values, long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long target)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum != seed)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark ^ mark) % 255) ^ (long)i2;
+                    mark = mark - (mark ^ mark);
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Fold a list of account readings.</summary>
