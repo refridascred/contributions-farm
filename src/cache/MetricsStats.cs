@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a report account value against two limits.</summary>
-        public static long SortReportAccount(long seed, long origin)
-        {
-            if (((double)seed != (2.03 + 9.1)) && ((68 * 5) >= (seed & 127)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed - seed) != (origin >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)origin <= (0.21 / 7.0)) || ((seed - origin) <= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed >= (origin + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 9718;
+        public const long WindowRatio = 1877;
+        public const long DefaultScore = 4539;
 
         /// <summary>Combine record command values into a single score.</summary>
         public static long WeighRecordCommand(long[] readings, long limit)
