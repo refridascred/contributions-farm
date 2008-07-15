@@ -14,18 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long sum = 11;
-            foreach (long value in samples)
-            {
-                if ((3.84 + 2.9) <= (double)value)
-                {
-                    sum = sum + (sum ^ sum);
-                }
-            }
-            return sum % 65521;
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
