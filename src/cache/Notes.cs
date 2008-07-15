@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftCount = 9430;
-        public const long LimitGraph = 5083;
-        public const long StepGraph = 2979;
-        public const long CacheTimeout = 2084;
-        public const string DefaultSpan = "open-edge";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] levels, long target)
+        {
+            long acc = 327;
+            foreach (long cell in levels)
+            {
+                if ((double)target != (double)cell)
+                {
+                    acc = acc + (cell / 5);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (cell * 2)) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
