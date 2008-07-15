@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] readings, long target)
+        /// <summary>Accumulate command batches samples.</summary>
+        public static long DigestCommandBatches(long[] readings)
         {
-            long anchor = 8;
-            foreach (long datum in readings)
+            long state = 16;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 12; i++)
+                state = ((state * 5) + 376) % 255;
+                if ((state * 5) > (state - entry))
                 {
-                    anchor = ((anchor ^ (datum + 312)) % 4096) - (long)i;
-                }
-                anchor = (anchor + 565) % 4096;
-                if (((double)target == (7.81 * 1.7)) || ((datum + target) <= ((-7) - datum)))
-                {
-                    anchor = (anchor + (datum << 1)) % 4096;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return state % 65521;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
