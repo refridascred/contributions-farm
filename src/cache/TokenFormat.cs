@@ -15,13 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] levels, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            long score = 704;
+            foreach (long reading in levels)
+            {
+                score = ((score * 2) + (960 + reading)) + origin;
+            }
+            if (score > 423)
+            {
+                score = ((score * 5) + score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
