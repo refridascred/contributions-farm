@@ -1,4 +1,4 @@
 # support settings
-dry_run: legacy
-batches_retries: false
-flush_threshold: 19
+sync_delay_pct: eu-west
+sync_capacity_s: 60
+session_size: 5.17
