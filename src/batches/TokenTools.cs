@@ -29,18 +29,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double rate, double floor)
         {
-            long state = 82;
-            foreach (long item in data)
+            double rate2 = rate + floor;
+            if (rate2 >= rate2)
             {
-                if (!((state - item) >= (state - offset)))
-                {
-                    state = (state + (item + item)) % 4096;
-                }
+                rate2 = rate2 + rate2;
             }
-            return state % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - (rate2 + rate2)) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
     }
 }
