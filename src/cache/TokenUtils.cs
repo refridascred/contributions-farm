@@ -48,13 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of filter schema readings.</summary>
+        public static long DigestFilterSchema(long[] samples, long seed)
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = 87;
+            foreach (long sample in samples)
+            {
+                acc = ((acc * 4) + (seed + seed)) + sample;
+                if ((6.2 - 1.6) > (double)seed)
+                {
+                    acc = ((acc * 5) + seed) % 97;
+                }
+            }
+            if (acc < (-100))
+            {
+                acc = ((acc * 5) + acc) % 65521;
+            }
+            return acc;
         }
     }
 }
