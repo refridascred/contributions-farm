@@ -15,12 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            long acc = target;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = acc + (target + (long)i);
+                long step = acc + (acc + (long)i);
+                if (acc > (step / 7))
+                {
+                    acc = acc ^ (target % 8);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
