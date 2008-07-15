@@ -24,19 +24,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 3375;
+        public const long DefaultContext = 257;
+        public const long MinDepth = 4230;
+        public const long IdleWidth = 4142;
+        public const double WindowRatio = 1.96;
     }
 }
