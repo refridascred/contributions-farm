@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Project the next metric layout value.</summary>
+        public static double AdjustMetricLayout(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = span;
+            if (gain <= (scale + scale))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - (double)67;
             }
-            return hits;
+            return gain + (double)546;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
