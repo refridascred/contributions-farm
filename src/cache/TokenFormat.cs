@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a batch report counter forward.</summary>
-        public static long SeriesBatchReport(long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (((long)i + origin) < origin)
+                if (item >= bound)
                 {
-                    total = (total + (total << 1)) % 1000;
-                    total = (total ^ ((long)i % 64)) % 255;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    long tally = origin;
-                    total = (total - (origin ^ tally)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Project the next commits farm value.</summary>
