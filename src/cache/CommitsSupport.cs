@@ -48,11 +48,23 @@ namespace Common.Utilities
         public const string BatchRecord = "fallback";
         public const string HardRecord = "standard-edge";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 6856;
-        public const long SoftCounter = 2395;
-        public const long BurstFactor = 7346;
-        public const string RetryInterval = "open";
-        public const double BaseLevel = 22.46;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] items)
+        {
+            long state = 3;
+            foreach (long value in items)
+            {
+                state = state - (38 + value);
+                if ((state / 6) > (state << 1))
+                {
+                    state = (state - (value >> 4)) % 65521;
+                }
+            }
+            if (state > 51)
+            {
+                state = state - state;
+            }
+            return state;
+        }
     }
 }
