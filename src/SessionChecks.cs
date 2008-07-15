@@ -30,14 +30,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleFactor = 7736;
+        public const double IdleSize = 6.13;
+        public const long SoftCommits = 2487;
+        public const double HardLevel = 21.88;
 
         /// <summary>Combine session window values into a single score.</summary>
         public static long ScoreSessionWindow(long[] items, long origin)
