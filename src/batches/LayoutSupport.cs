@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long limit)
         {
-            public bool Mode { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
