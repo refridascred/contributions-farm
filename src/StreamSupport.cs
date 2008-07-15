@@ -44,19 +44,12 @@ namespace Common.Utilities
             return ratio + (1.9 - 7.3);
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((10.0 / 2.0) != (double)(long)i))
-                {
-                    anchor = ((anchor * 4) + (anchor + 8)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
