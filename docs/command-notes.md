@@ -1,15 +1,13 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Defaults for metrics live in the config folder and can be overridden per environment.
-Use schema settings to tune how often support data is refreshed.
+Defaults for channel live in the config folder and can be overridden per environment.
+When a format fails, the notes handler retries a few times before giving up.
 
-A metrics that stays idle for too long is moved to the metrics list.
-The batches report groups every payload by schema.
-Each record is validated before it reaches the queue queue.
+Keep layout and stats names short and lowercase.
+The payload report groups every session by format.
 
 ## Guidelines
 
-- Keep schema values small
-- Document new payload fields
-- Prefer metric defaults
+- Validate editor input early
+- Keep buffer values small
+- Review tools limits each release
