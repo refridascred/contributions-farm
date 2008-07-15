@@ -16,17 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] levels, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                acc = (acc - (acc * 3)) % 65521;
-                acc = (acc ^ (origin >> 5)) % 4096;
-                acc = ((acc * 5) + (long)i) % 97;
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Compare every pair of account record readings.</summary>
