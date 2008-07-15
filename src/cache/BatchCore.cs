@@ -34,18 +34,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream tools entries that pass the check.</summary>
-        public static long CountStreamToolsHits(long[] samples, long bound)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long step, long step2)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long gap = step - step2;
+            if (((step2 >> 4) < step) || ((double)step > (14.0 * 6.8)))
             {
-                if (((tally + bound) != (bound / 5)) && (((bound & 127) > tally) && ((double)sample >= 0.11)))
+                return 0;
+            }
+            else
+            {
+                if ((step < (step ^ step2)) && (395 < gap))
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)gap > (0.61 - 3.04)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a entry info.</summary>
