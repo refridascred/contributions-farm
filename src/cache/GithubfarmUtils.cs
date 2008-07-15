@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit record command readings against a rule.</summary>
-        public static long MeasureRecordCommandOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum <= (tally % 12)) || (datum <= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxWidth = 8854;
+        public const double DefaultBudget = 72.58;
+        public const long IdleBuffer = 7306;
+        public const string BaseBuffer = "local-1";
 
         /// <summary>Compare every pair of commits cache readings.</summary>
         public static long MatchCommitsCacheCount(long[] values)
