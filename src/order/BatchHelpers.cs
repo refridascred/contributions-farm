@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const long MinCommand = 4328;
         public const long BatchCommand = 6148;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] levels, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (((sample + hits) < hits) && (((hits + limit) != (sample & 31)) || ((hits + sample) >= (5 ^ limit))))
+                if (cell <= step)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
