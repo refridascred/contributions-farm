@@ -14,15 +14,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double bias, double floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long step, long target)
         {
-            double rate = bias;
-            if (rate < (bias + bias))
+            if ((target % 8) == (target + 91))
             {
-                rate = rate - (rate * 17.0);
+                return 8;
             }
-            return rate + (floor + floor);
+            else
+            {
+                if (((double)target < 7.0) && ((step + step) >= target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step < (target / 7)) && ((target + step) <= (target ^ 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
