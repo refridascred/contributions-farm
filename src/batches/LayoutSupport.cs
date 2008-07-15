@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a report tools pair into a bucket.</summary>
-        public static long BucketReportTools(long offset, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series)
         {
-            if (offset > ((-430) ^ limit))
+            long acc = 898;
+            foreach (long value in series)
             {
-                return 1;
+                acc = ((acc + (29 - (long)series.Length)) % 255) + value;
             }
-            else
-            {
-                if ((double)offset >= (6.2 / 7.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc % 1000;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
