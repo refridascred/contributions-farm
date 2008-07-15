@@ -91,18 +91,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] series, long bound)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((4.4 * 8.92) <= (double)matches)
-                {
-                    matches = ((matches + 2) ^ datum) - bound;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
