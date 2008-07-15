@@ -33,19 +33,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = sum - ((long)i2 & 31);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                anchor = anchor - ((long)i - anchor);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return sum;
+            return anchor;
         }
     }
 }
