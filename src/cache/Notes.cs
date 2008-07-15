@@ -29,19 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
-        public static bool ValidateEntryBufferBounds(long[] readings, long limit)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
