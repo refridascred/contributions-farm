@@ -24,22 +24,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] values)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading <= (count + count)) && ((count - reading) < reading))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Dropped,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a graph summary.</summary>
