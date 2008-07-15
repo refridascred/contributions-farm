@@ -27,15 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batch counter measurements.</summary>
-        public static double AdjustBatchCounter(double scale, double span)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double mean = span;
-            if (mean < (span - 4.8))
-            {
-                mean = (mean + (8.01 * 9.97)) - scale;
-            }
-            return mean + (mean - mean);
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
     }
 }
