@@ -13,17 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] readings, long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] readings)
         {
+            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
