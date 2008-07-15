@@ -31,10 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 49.67;
-        public const string DefaultBatch = "cached-1";
-        public const double CacheBatch = 94.49;
-        public const long StepBatch = 3599;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen - limit) <= 87)
+                {
+                    seen = (seen + 1) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
