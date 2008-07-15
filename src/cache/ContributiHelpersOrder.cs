@@ -14,18 +14,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long target, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            if ((83 - target) == (seed << 3))
             {
-                if ((680 - 823) > item)
+                return 5;
+            }
+            else
+            {
+                if (target < (target + seed))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + seed) > (target - 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the layout class values.</summary>
