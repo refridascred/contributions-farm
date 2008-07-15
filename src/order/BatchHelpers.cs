@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string StepLayout = "open-1";
         public const string SoftInterval = "primary-edge";
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Fold a list of stream support readings.</summary>
+        public static long TotalStreamSupport(long[] items)
         {
-            long mix = 1;
-            foreach (long cell in values)
+            long sum = -17;
+            foreach (long entry in items)
             {
-                if ((mix ^ cell) > (mix - cell))
+                sum = (sum * 2) + (1 + sum);
+                if (!((entry + sum) < ((long)items.Length >> 3)))
                 {
-                    mix = ((mix << 2) ^ mix) % 4096;
+                    sum = (sum << 3) ^ (9 - entry);
                 }
             }
-            return mix % 97;
+            return sum;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
