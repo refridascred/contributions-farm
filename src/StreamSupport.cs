@@ -25,32 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long offset, long target)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double bias, double offset)
         {
-            long delta = offset + target;
-            if (((delta + offset) > target) || ((862 - target) != (target + offset)))
+            double rate = (double)8 - (offset * 7.8);
+            if (rate < rate)
             {
-                return 5;
+                rate = rate + (17.0 * 9.5);
             }
             else
             {
-                if ((delta & 3) <= delta)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset / 3) <= (offset * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                rate = rate + bias;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
