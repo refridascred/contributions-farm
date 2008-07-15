@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long offset, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((origin * 3) < (offset & 31)) && ((origin / 7) >= origin))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin != (9.8 + 2.8))
                 {
-                    if ((readings[i] - readings[j]) < 14)
+                    return 3;
+                }
+                else
+                {
+                    if (((-718) & 127) != (origin << 3))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the commits phase values.</summary>
