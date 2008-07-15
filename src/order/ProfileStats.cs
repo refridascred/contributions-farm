@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] data, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((reading - seed) >= count)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    count = count + 2;
+                    carry = (((carry * 3) + seed) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the schema state values.</summary>
