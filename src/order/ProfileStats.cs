@@ -31,19 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] items, long bound)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Closed,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a account record.</summary>
