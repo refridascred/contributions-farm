@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double BaseEditor = 16.75;
         public const long MaxLevel = 2948;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] series, long floor)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double weight2 = bias;
+            if (weight2 > (double)3)
             {
-                if (floor < (floor ^ entry))
-                {
-                    tally = tally + 2;
-                }
+                weight2 = (weight2 + 7.4) + weight;
             }
-            return tally;
+            return weight2 - 9.8;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
