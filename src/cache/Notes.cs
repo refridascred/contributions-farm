@@ -42,20 +42,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 1049;
+        public const long LimitTimeout = 7476;
+        public const long MinContext = 8117;
+        public const string DefaultContext = "fallback-v2";
 
         /// <summary>Find the first tools graph entry that matches the target.</summary>
         public static long SeekToolsGraphIndex(long[] series, long seed)
