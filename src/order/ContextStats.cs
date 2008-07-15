@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long seed, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long limit)
         {
-            long prev = seed ^ limit;
-            if (prev < (seed ^ prev))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((prev / 3) < prev)
+                if ((double)seen > (double)166)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    seen = ((seen + 1) + datum) + limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
