@@ -47,13 +47,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Match up cache command samples.</summary>
+        public static long PairCacheCommandCount(long[] samples)
         {
-            Queued,
-            Done,
-            Locked,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
