@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of githubfarm channel readings.</summary>
-        public static long DigestGithubfarmChannel(long[] readings, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] data, long step)
         {
-            long mix = 5;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                mix = ((mix + (long)readings.Length) % 65521) - sample;
+                if ((step % 3) >= (step >> 4))
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            if (mix > 67)
-            {
-                mix = ((mix << 2) ^ floor) % 65521;
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Hold a cache stats.</summary>
