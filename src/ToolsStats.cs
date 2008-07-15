@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double weight, double offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            double load = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load - 6.9) + (double)(long)i) - weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - (offset / 2.0);
+            return seen;
         }
 
         /// <summary>Validate contributi entry readings against a bound.</summary>
