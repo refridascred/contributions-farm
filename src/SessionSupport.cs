@@ -22,24 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already support value against two limits.</summary>
-        public static long RankAlreadySupport(long floor, long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] values, long target)
         {
-            if ((floor >> 2) >= (9 << 3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((43 / 9) > seed)
+                if (values[i] < target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a already counter forward.</summary>
