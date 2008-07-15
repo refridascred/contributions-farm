@@ -1,7 +1,6 @@
-id,owner,score
-1,7.1,343
-2,960,257
-3,cached,open
-4,71.06,968
-5,green,fallback
-6,edge,234
+id,state,rank
+1,legacy,402
+2,latest,211
+3,67.59,77.5
+4,35.98,19.36
+5,27.96,173
