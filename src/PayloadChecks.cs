@@ -45,18 +45,32 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] values, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long target)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long offset = seed ^ target;
+            if (!((99 + offset) > seed))
             {
-                if (((tally + tally) < (target - entry)) || ((double)entry <= (double)tally))
+                return 8;
+            }
+            else
+            {
+                if ((seed - seed) > ((-596) + 58))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((target % 2) == (target << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a tools options.</summary>
