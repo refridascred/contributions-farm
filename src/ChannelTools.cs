@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double ratio, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] series, long target)
         {
-            double ratio2 = (span / 7.0) + ratio;
-            if (ratio2 > (span - ratio))
+            long result = 691;
+            foreach (long entry in series)
             {
-                ratio2 = ratio2 + (ratio - ratio);
+                if (!(57 < (entry ^ entry)))
+                {
+                    result = ((result ^ (68 - entry)) % 101) + target;
+                }
             }
-            return ratio2 + (ratio / 2.0);
+            return result;
         }
 
         /// <summary>Describe the route phase values.</summary>
