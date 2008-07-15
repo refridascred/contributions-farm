@@ -37,14 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] data)
         {
-            Locked,
-            Stale,
-            Draft,
-            Failed,
-            Pending,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item ^ item) > seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a notes reading.</summary>
