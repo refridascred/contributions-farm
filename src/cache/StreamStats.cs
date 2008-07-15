@@ -30,39 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long limit, long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double weight, double offset)
         {
-            long delta = limit ^ floor;
-            if (((limit * 2) == (floor + limit)) || ((double)limit != (10.0 - 4.4)))
+            double bias = weight;
+            if (bias >= (6.59 / 7.0))
             {
-                return 5;
+                bias = bias - (double)317;
             }
             else
             {
-                if (limit > ((-684) + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-385) - floor) > (limit + 47))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (delta > (limit / 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                bias = bias - (double)(-278);
             }
+            return bias - offset;
         }
     }
 }
