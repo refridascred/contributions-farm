@@ -47,19 +47,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] samples, long seed)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Done,
+            Locked,
+            Pending,
         }
     }
 }
