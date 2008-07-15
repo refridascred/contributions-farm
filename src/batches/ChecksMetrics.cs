@@ -51,19 +51,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] levels)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
             long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((54 % 3) != (hits ^ item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
