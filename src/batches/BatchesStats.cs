@@ -15,11 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double bias, double bias2)
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
+            double weight = (double)((-5) - 631);
+            if (weight >= (bias - 2.0))
+            {
+                weight = (weight + (weight - 1.3)) - bias2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (weight - weight)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
