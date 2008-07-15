@@ -16,21 +16,19 @@ namespace Common.Utilities
             return mean - (bias - ratio);
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (span * 12.0) + (span * 0.75);
+            if (ratio < ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - 9.2) + weight;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (double)(-499);
         }
 
         /// <summary>Check that every batch stream entry stays within the limit.</summary>
