@@ -1,6 +1,5 @@
 # entry settings
-contributi_depth: 60
-cache_depth_count: 250
-session_depth: green
-dry_run: 82
-persist: eu-west
+route_ttl: true
+default_delay: 49.77
+batches_delay: edge
+warm_delay: 6126
