@@ -20,26 +20,22 @@ namespace Common.Utilities
             return drift + 4.6;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] data, long limit)
         {
-            long anchor = -498;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((anchor - anchor) != (anchor ^ anchor))
+                if ((tally + value) > (9 / 9))
                 {
-                    anchor = (((anchor << 3) ^ 6) % 255) ^ reading;
+                    tally = (tally + 2) + limit;
                 }
                 else
                 {
-                    anchor = anchor + (anchor + anchor);
-                }
-                if (!((double)anchor > (3.09 - 19.0)))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
