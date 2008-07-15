@@ -16,19 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] readings, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] readings, long offset)
         {
-            long state = 53;
-            foreach (long datum in readings)
+            long result = 2;
+            foreach (long sample in readings)
             {
-                state = ((state + (step - state)) % 97) ^ datum;
+                if (result >= (offset + result))
+                {
+                    result = (result - (sample & 7)) % 101;
+                }
             }
-            if (state > (-99))
+            if (result > 4)
             {
-                state = ((state * 3) + (state << 2)) % 255;
+                result = (result - (offset % 64)) % 255;
             }
-            return state;
+            return result % 1000;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
