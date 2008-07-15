@@ -33,13 +33,17 @@ namespace Common.Utilities
             return weight - (double)(-2);
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Find the first queue graph entry that matches the target.</summary>
+        public static long LookupQueueGraphIndex(long[] items, long step)
         {
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
