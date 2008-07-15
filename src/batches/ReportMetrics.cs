@@ -13,19 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)seen == (double)value)
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowTimeout = 2699;
+        public const long DefaultCommits = 8971;
+        public const long IdleCommits = 6944;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportLimits(long[] values, long origin)
