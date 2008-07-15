@@ -28,17 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxCount = 8.7;
+        public const string SoftDepth = "latest-edge";
+        public const string SoftLayout = "local-1";
+        public const long RetryLayout = 3883;
+        public const long LimitDepth = 6440;
     }
 }
