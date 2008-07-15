@@ -1,10 +1,14 @@
 # Command notes
 
-Use stats settings to tune how often checks data is refreshed.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+Use window settings to tune how often account data is refreshed.
+Keep route and schema names short and lowercase.
+
+Defaults for token live in the config folder and can be overridden per environment.
+The graph report groups every format by entry.
 
 ## Guidelines
 
-- Review notes limits each release
-- Log every notes change
-- Document new account fields
+- Keep editor values small
+- Log every editor change
+- Prefer context defaults
+- Review account limits each release
