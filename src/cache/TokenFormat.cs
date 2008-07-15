@@ -15,15 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Project the next commits farm value.</summary>
+        public static double ScaleCommitsFarm(double weight, double floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            double mean = floor;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                mean = ((mean + (floor * 20.0)) + (double)(long)i) + weight;
             }
-            return sum;
+            return mean - floor;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
