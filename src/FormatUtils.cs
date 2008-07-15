@@ -76,18 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] readings, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item - item) < (target + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Accumulate report format samples.</summary>
