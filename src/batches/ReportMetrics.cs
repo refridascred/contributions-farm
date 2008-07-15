@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)tally >= (0.8 / 9.0))
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) - cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
