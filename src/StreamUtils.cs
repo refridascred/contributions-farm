@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const long IdleScore = 1359;
         public const double IdleWidth = 92.79;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double bias, double bias2)
+        /// <summary>Measure how many token batch samples are out of range.</summary>
+        public static long CountTokenBatchMatches(long[] items, long offset)
         {
-            double rate = bias2;
-            if (rate > (rate - bias2))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                rate = (rate - (rate + bias2)) + bias;
+                if ((offset + tally) == (95 << 3))
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            return rate - rate;
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
