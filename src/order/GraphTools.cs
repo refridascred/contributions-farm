@@ -27,18 +27,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 9489;
+        public const long WindowInterval = 4352;
+        public const long BurstProfile = 4412;
+        public const string CacheInterval = "alpha-edge";
 
         /// <summary>Digest a series of format metrics entries.</summary>
         public static long FoldFormatMetrics(long[] values)
