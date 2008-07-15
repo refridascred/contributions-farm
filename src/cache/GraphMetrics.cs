@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] items)
         {
-            Pending,
-            Done,
-            New,
-            Synced,
-            Paused,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((18.0 + 6.6) > (double)datum)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric header.</summary>
