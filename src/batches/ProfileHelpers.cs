@@ -26,12 +26,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryCount = 75.9;
-        public const long WindowContext = 91;
-        public const double IdleRatio = 91.48;
-        public const double CacheScore = 56.52;
-        public const long RetryLevel = 1103;
+        /// <summary>Scale a filter tools figure with a bias.</summary>
+        public static double AdjustFilterTools(double weight, double floor)
+        {
+            double gain = (double)0 + floor;
+            if (gain < (4.0 * 17.0))
+            {
+                gain = gain + 1.7;
+            }
+            else
+            {
+                gain = gain + 8.7;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)619) + (double)(long)i;
+            }
+            return gain + weight;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] series, long offset)
