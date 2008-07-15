@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Paused,
-            Failed,
-            Dropped,
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
