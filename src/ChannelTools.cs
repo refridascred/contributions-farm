@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
+            Failed,
+            Closed,
+            New,
+            Active,
         }
 
         /// <summary>Roll a route counter counter forward.</summary>
