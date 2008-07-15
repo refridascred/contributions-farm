@@ -33,18 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream schema readings against a rule.</summary>
-        public static long AuditStreamSchemaHits(long[] readings)
+        /// <summary>Look up the position of a farm route sample.</summary>
+        public static long LocateFarmRouteIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5.8 + 2.4) == (double)count)
+                if (levels[i] == floor)
                 {
-                    count = (count + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
