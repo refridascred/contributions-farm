@@ -42,23 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long state = 450;
-            foreach (long value in values)
-            {
-                state = ((state ^ (state + state)) % 101) + value;
-                if (!((double)state >= (7.89 / 3.0)))
-                {
-                    break;
-                }
-            }
-            if (state > 39)
-            {
-                state = state - (state + state);
-            }
-            return state;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the route status values.</summary>
