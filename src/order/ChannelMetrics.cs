@@ -24,12 +24,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double scale, double span)
         {
-            Queued,
-            Stale,
-            Idle,
+            double rate = (span - span) - (span / 6.0);
+            return (rate - rate) + scale;
         }
     }
 }
