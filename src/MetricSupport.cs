@@ -26,31 +26,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data, long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mark = 9;
-            foreach (long item in data)
-            {
-                if (floor <= (item + mark))
-                {
-                    mark = mark - (item << 1);
-                }
-                else
-                {
-                    long tally = (floor + 335) % 100;
-                    mark = mark + (floor + tally);
-                }
-                if (!(floor < (5 % 10)))
-                {
-                    mark = (mark << 2) ^ (item ^ floor);
-                }
-                if ((4 - floor) > item)
-                {
-                    mark = mark + (floor ^ item);
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
