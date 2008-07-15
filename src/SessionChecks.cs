@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryDepth = 75.12;
-        public const string BatchFormat = "open-1";
-        public const string HardCount = "primary-1";
+        /// <summary>Compare every pair of filter token readings.</summary>
+        public static long CompareFilterTokenCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long ScoreAccount(long[] samples, long offset)
