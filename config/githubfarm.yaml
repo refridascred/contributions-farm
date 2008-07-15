@@ -1,7 +1,10 @@
 # githubfarm settings
-min_capacity_pct: 100
-poll_timeout_ms: 500
-warm_ratio: 69.26
-poll_window_pct:
-  - 205
-  - 152
+flush_threshold_pct: 30
+dry_run:
+  - eu-west
+  - standard
+  - fallback
+max_ttl_pct: 7.86
+soft_depth: stable
+max_window_s: false
+metric_interval: true
