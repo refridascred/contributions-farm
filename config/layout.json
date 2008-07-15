@@ -1,10 +1,7 @@
 {
-  "idle_depth_s": "strict",
-  "cluster_threshold": {
-    "sync_ratio": 500,
-    "warm_capacity": "strict",
-    "dry_run": "legacy",
-    "warm_retries_s": "local"
-  },
-  "route_interval": 1361
+  "burst_threshold_s": 97,
+  "poll_ttl_s": 12.98,
+  "verbose": false,
+  "min_delay_s": 94.77,
+  "layout_retries": 7279
 }
