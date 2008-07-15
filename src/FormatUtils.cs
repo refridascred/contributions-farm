@@ -36,26 +36,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] data)
         {
-            long mix = -2;
-            foreach (long item in items)
+            long sum = 867;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 9; i++)
+                for (int i = 0; i < 8; i++)
                 {
-                    mix = ((((mix * 2) + (mix - mix)) % 101) - (long)i) - item;
+                    sum = sum + ((long)i - (long)i);
                 }
-                if (!((double)origin != (4.74 - 1.76)))
-                {
-                    mix = (mix - origin) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (31 * 2)) % 65521;
-                }
+                sum = sum - reading;
             }
-            return mix % 1000;
+            return sum % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
