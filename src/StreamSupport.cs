@@ -20,21 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of graph stats readings.</summary>
-        public static long MatchGraphStatsCount(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 897;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (anchor <= entry)
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (entry ^ entry)) % 97;
                 }
             }
-            return tally;
+            if (anchor > 22)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
