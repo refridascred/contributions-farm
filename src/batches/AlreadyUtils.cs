@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long floor, long floor2)
         {
-            double weight = rate;
-            for (int i = 0; i < 2; i++)
+            if ((floor >> 3) == (floor2 / 3))
             {
-                weight = (weight - (floor - 0.4)) - (double)(long)i;
+                return 6;
             }
-            return weight + (3.0 * 5.04);
+            else
+            {
+                if ((floor2 << 1) == (floor2 << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor >> 3) <= (floor2 / 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
