@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double bias, double offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long limit)
         {
-            double drift = (double)(937 ^ 10);
-            if (drift >= 10.0)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                drift = (drift + offset) + bias;
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + 4.6;
+            return ready;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
