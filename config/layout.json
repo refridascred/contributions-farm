@@ -1,16 +1,5 @@
 {
-  "dry_run": 250,
-  "enabled": "blue",
-  "default_threshold_s": {
-    "cache_ratio": ["cached", "open"],
-    "sync_size_pct": 77.98,
-    "order_depth": ["fallback", "cached"],
-    "cache_timeout": {
-      "commits_retries": ["local", "staging"],
-      "queue_threshold": false,
-      "compress": "strict"
-    },
-    "retry_timeout": "primary"
-  },
-  "persist": 14.09
+  "channel_ttl": 5003,
+  "batch_ttl": 250,
+  "warm_capacity_s": "legacy"
 }
