@@ -52,19 +52,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every stream stats entry stays within the limit.</summary>
-        public static bool ValidateStreamStatsBounds(long[] samples, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a filter record.</summary>
