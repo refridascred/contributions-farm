@@ -1,9 +1,6 @@
-id,level,score
-1,edge,fallback
-2,948,eu-west
-3,local,8.48
-4,edge,93.01
-5,427,blue
-6,633,79.66
-7,18.36,28.35
-8,160,latest
+id,state,label,count,rank
+1,open,local,fallback,811
+2,763,317,299,28.24
+3,79.16,88.57,686,strict
+4,primary,94.57,612,fallback
+5,68.24,979,cached,staging
