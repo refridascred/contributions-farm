@@ -14,19 +14,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Stale,
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Locate a order contributi reading by value.</summary>
