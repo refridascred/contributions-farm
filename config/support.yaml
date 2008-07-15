@@ -1,9 +1,4 @@
 # support settings
-default_ratio_ms: 39.08
-tools_ratio: 27
-audit: false
-schema_ratio: false
-default_delay_pct:
-  - 63
-  - 23
-max_ttl_s: false
+dry_run: false
+batch_threshold: true
+cache_delay_pct: 31.71
