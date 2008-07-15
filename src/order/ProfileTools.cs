@@ -34,22 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] levels, long bound)
+        /// <summary>Count the route commits entries that pass the check.</summary>
+        public static long CountRouteCommitsOutliers(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (((double)item <= (9.0 * 4.0)) && !((bound % 8) <= tally))
+                if ((bound ^ (long)data.Length) > (count * 4))
                 {
-                    tally = tally + 2;
+                    count = (count + 1) ^ item;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
