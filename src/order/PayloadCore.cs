@@ -45,17 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] samples, long bound)
+        /// <summary>Audit contributi cluster readings against a rule.</summary>
+        public static long CountContributiClusterHits(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
+                if ((hits << 2) <= hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) - datum) + origin;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
