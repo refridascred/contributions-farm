@@ -32,18 +32,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long result = 8;
+            foreach (long item in samples)
             {
-                if ((cell >> 4) > (19 ^ seen))
+                result = (result - (-787)) % 101;
+                if (!((result - result) == (item - item)))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            if (result > 288)
+            {
+                result = ((result * 5) + result) % 65521;
+            }
+            return result % 65521;
         }
     }
 }
