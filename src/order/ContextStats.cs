@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many commits entry samples are out of range.</summary>
-        public static long MeasureCommitsEntryHits(long[] readings)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long prev = seed ^ limit;
+            if (prev < (seed ^ prev))
             {
-                if ((value - hits) == (value + 24))
+                return 3;
+            }
+            else
+            {
+                if ((prev / 3) < prev)
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
