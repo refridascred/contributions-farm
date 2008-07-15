@@ -36,18 +36,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] readings, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] data)
         {
-            long sum = 434;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (6.09 >= (double)sum)
+                if (2.3 < (double)count)
                 {
-                    sum = ((sum + (bound << 2)) % 97) ^ cell;
+                    count = (count + 3) + sample;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a layout options.</summary>
