@@ -54,18 +54,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] values, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mark = 5;
-            foreach (long value in values)
-            {
-                if ((7.15 < (double)value) || ((double)value != (10.0 + 9.18)))
-                {
-                    mark = (mark - (mark - value)) - limit;
-                }
-            }
-            return mark;
+            Retry,
+            New,
+            Idle,
+            Dropped,
         }
     }
 }
