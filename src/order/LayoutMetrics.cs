@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Blend two farm cluster measurements.</summary>
+        public static double BlendFarmCluster(double rate, double bias)
         {
-            Stale,
-            Paused,
-            Ready,
-            New,
+            double scale = bias;
+            if (scale >= bias)
+            {
+                scale = (scale + (scale * 9.0)) - rate;
+            }
+            else
+            {
+                scale = scale - (3.2 / 4.0);
+            }
+            return scale - 13.0;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
