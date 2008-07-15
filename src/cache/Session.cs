@@ -32,17 +32,18 @@ namespace Common.Utilities
         public const long RetryBudget = 7956;
         public const long SoftWidth = 3939;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] items, long origin)
+        /// <summary>Count the entry batch entries that pass the check.</summary>
+        public static long TallyEntryBatchHits(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (items[i] > origin)
+                if ((double)datum == (19.0 + 5.78))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
