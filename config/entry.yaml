@@ -1,7 +1,20 @@
 # entry settings
-persist: primary
-strict: blue
-sync_threshold: 89.75
-base_ratio: local
-base_size: 475
-batch_size: open
+cache_timeout_count: 80.51
+filter_capacity:
+  soft_window_ms: primary
+  stream_capacity: strict
+  warm_timeout_ms:
+    - 324
+    - 199
+  burst_limit_s:
+    idle_ratio: 36
+    persist: 8247
+    compress: false
+    readonly: legacy
+    sync_capacity: legacy
+    soft_size_s: 5011
+  counter_interval: 55.57
+strict:
+  - 182
+  - 67
+compress: 60
