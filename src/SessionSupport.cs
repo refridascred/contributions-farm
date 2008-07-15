@@ -20,26 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series, long floor)
+        /// <summary>Rank githubfarm stats input into a small class.</summary>
+        public static long SortGithubfarmStats(long step, long step2)
         {
-            long acc = 10;
-            foreach (long item in series)
+            if (!((15.0 * 2.53) >= (double)step))
             {
-                if (((floor ^ floor) < (acc << 2)) && ((439 << 1) > (floor + floor)))
+                return 0;
+            }
+            else
+            {
+                if ((step2 * 2) >= (4 ^ step2))
                 {
-                    acc = acc - (floor & 1);
+                    return 7;
                 }
                 else
                 {
-                    acc = acc - item;
+                    if ((0.25 + 8.17) == (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (acc < 140)
-            {
-                acc = acc + (acc + (-28));
-            }
-            return acc % 1000;
         }
 
         /// <summary>Hold a channel stats.</summary>
