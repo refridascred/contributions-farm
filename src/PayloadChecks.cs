@@ -43,16 +43,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            if ((double)58 >= (double)floor)
             {
-                state = state - (state % 60);
-                state = ((state * 2) + (long)i) % 4093;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((3.29 - 13.0) > (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.3 - 7.64) <= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of account entries.</summary>
