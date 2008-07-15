@@ -1,6 +1,6 @@
 {
-  "context_size": 30,
-  "graph_threshold": 22.92,
-  "base_ratio_pct": 40.99,
-  "hard_capacity": [114, 144, 363, 59]
+  "retry_delay": "edge",
+  "burst_delay": true,
+  "default_depth": false,
+  "burst_capacity_pct": 250
 }
