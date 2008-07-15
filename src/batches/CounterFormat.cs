@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Locked,
-            Pending,
             Closed,
-            Ready,
-            Queued,
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
