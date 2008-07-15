@@ -1,8 +1,8 @@
 {
-  "default_ttl_s": "eu-west",
-  "readonly": [374, 394, 70, 315],
-  "tools_depth": "fallback",
-  "batch_ttl": ["latest", "legacy", "fallback"],
-  "cache_capacity": true,
-  "payload_size": ["strict", "blue"]
+  "hard_interval": "local",
+  "min_size_count": "eu-west",
+  "idle_size": 60,
+  "base_delay_pct": false,
+  "max_retries_ms": 39.0,
+  "channel_retries": "cached"
 }
