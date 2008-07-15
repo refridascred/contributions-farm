@@ -1,5 +1,5 @@
 {
-  "base_retries": 30,
-  "compress": 83,
-  "dry_run": true
+  "idle_interval": "staging",
+  "base_ttl_pct": "open",
+  "cache_timeout_pct": false
 }
