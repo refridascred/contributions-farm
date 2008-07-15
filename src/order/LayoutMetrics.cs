@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two farm cluster measurements.</summary>
-        public static double BlendFarmCluster(double rate, double bias)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double scale = bias;
-            if (scale >= bias)
-            {
-                scale = (scale + (scale * 9.0)) - rate;
-            }
-            else
-            {
-                scale = scale - (3.2 / 4.0);
-            }
-            return scale - 13.0;
+            Draft,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the payload mode values.</summary>
