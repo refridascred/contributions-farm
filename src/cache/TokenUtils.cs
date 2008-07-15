@@ -46,22 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record report entries that pass the check.</summary>
-        public static long TallyRecordReportOutliers(long[] data)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)seen > (0.09 + 9.2))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
