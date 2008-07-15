@@ -1,6 +1,8 @@
 {
-  "layout_limit": "standard",
-  "payload_window": ["cached", "latest", "legacy", "strict"],
-  "verbose": [469, 83, 312],
-  "retry_delay_ms": 53.62
+  "batch_ratio_pct": [146, 2, 262],
+  "min_delay": ["strict", "primary", "latest", "legacy"],
+  "batch_capacity_count": "green",
+  "burst_delay_pct": true,
+  "retry_delay_ms": 1.55,
+  "enabled": 60
 }
