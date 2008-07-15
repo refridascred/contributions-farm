@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long SoftBatches = 5147;
         public const string WindowBatches = "standard-1";
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit editor command readings against a rule.</summary>
+        public static long MeasureEditorCommandOutliers(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches % 2) < (matches << 1))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the farm phase values.</summary>
