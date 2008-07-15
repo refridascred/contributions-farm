@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string DefaultFormat = "cached-1";
         public const long MinBudget = 3621;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] samples, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((step >> 3) < (cell - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
