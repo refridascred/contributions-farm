@@ -20,21 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double rate = (floor * 8.94) / 5.0;
+            return (rate - rate) + weight;
         }
 
         /// <summary>Define report limits and defaults.</summary>
