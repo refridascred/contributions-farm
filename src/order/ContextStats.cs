@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of commits editor readings.</summary>
-        public static long CombineCommitsEditor(long[] items, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] data, long target)
         {
-            long carry = 637;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((carry % 100) <= (carry << 1))
+                if ((double)target > (double)hits)
                 {
-                    carry = ((carry ^ (origin << 3)) % 1000) - item;
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
