@@ -22,10 +22,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 8901;
-        public const long RetryBudget = 7956;
-        public const long SoftWidth = 3939;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((acc + origin) <= (origin % 60)))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                if (!(acc <= origin))
+                {
+                    acc = (acc * 3) + ((long)i + origin);
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricOutliers(long[] series)
