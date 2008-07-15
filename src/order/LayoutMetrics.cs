@@ -23,12 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            Retry,
+            Failed,
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
