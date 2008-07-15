@@ -22,18 +22,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] readings)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(matches >= (90 ^ (long)readings.Length)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) ^ datum;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the farm filter entries that pass the check.</summary>
