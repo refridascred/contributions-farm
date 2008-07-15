@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen <= (seen - value))
+                if ((values[i] > target) && ((values[i] % 5) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate contributi entry readings against a bound.</summary>
