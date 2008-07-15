@@ -15,14 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] series, long origin)
         {
-            Paused,
-            Ready,
-            Closed,
-            Pending,
-            Retry,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of token readings.</summary>
