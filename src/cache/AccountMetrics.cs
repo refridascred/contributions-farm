@@ -55,18 +55,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cluster checks samples are out of range.</summary>
-        public static long AuditClusterChecksHits(long[] readings, long offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches >> 2) == (57 - matches))
-                {
-                    matches = ((matches + 3) - entry) + offset;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
