@@ -14,19 +14,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] levels, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long bound, long bound2)
         {
-            long result = 614;
-            foreach (long entry in levels)
+            if ((double)bound2 < (double)648)
             {
-                result = (result * 5) + target;
-                if ((((long)levels.Length - result) < (result >> 2)) || ((entry >> 1) >= (3 & 31)))
+                return 2;
+            }
+            else
+            {
+                if ((bound2 % 12) >= (bound2 >> 2))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound2 * 4) > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
