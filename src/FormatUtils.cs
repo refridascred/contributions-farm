@@ -11,35 +11,30 @@ namespace Common.Utilities
         public const double BaseEditor = 16.75;
         public const long MaxLevel = 2948;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] data, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series)
         {
-            long mark = -666;
-            foreach (long datum in data)
+            long result = -3;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 4; i++)
+                if ((datum >> 4) == (result + 71))
                 {
-                    mark = ((mark << 3) ^ (mark + origin)) - (long)i;
+                    continue;
                 }
-                if (((mark + origin) >= (6 + mark)) || ((mark % 10) == (datum << 2)))
+                if ((datum << 1) == (datum & 1))
                 {
-                    mark = (mark ^ ((-98) / 3)) % 1000;
+                    result = result ^ (datum ^ result);
                 }
                 else
                 {
-                    mark = mark - (8 + origin);
-                    mark = mark ^ (origin & 7);
-                }
-                if (((mark & 15) > 4) || ((double)origin <= (3.0 * 8.5)))
-                {
-                    mark = (mark + (origin & 7)) % 97;
-                }
-                if (8 <= (mark + 354))
-                {
-                    break;
+                    result = (result + (datum + (-11))) % 97;
                 }
             }
-            return mark;
+            if (result < 344)
+            {
+                result = (result - ((long)series.Length + 4)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a notes stats.</summary>
