@@ -1,4 +1,42 @@
 # entry settings
-idle_timeout_ms: 7010
-strict: false
-burst_size: edge
+readonly: 49.27
+sync_threshold_s:
+  already_retries: edge
+  min_timeout_ms: false
+  verbose:
+    - local
+    - green
+    - edge
+    - primary
+  audit:
+    poll_retries:
+      - 392
+      - 459
+      - 80
+    retry_window_ms: 4310
+    contributi_size: green
+    compress: open
+  hard_ratio_count: 71
+  format_interval:
+    max_retries_s: edge
+    dry_run:
+      - local
+      - open
+      - edge
+      - green
+    audit: false
+    compress: 86.94
+    enabled:
+      - 252
+      - 105
+    poll_threshold_pct: eu-west
+min_size_pct:
+  audit: staging
+  min_size_count: 30
+  retry_ratio: 49.0
+  cache_threshold:
+    enabled: green
+    min_ttl_s: 6400
+    poll_interval_count: strict
+    poll_threshold: latest
+    idle_window_s: open
