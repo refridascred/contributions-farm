@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const double RetryBuffer = 47.73;
         public const string BaseTimeout = "standard-v2";
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings, long target)
+        /// <summary>Count the account report entries that pass the check.</summary>
+        public static long CountAccountReportGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((373 & 3) != (matches + 387))
+                if (!((count >> 1) >= (cell % 16)))
                 {
-                    matches = ((matches + 1) ^ value) + target;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
