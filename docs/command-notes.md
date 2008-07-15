@@ -1,11 +1,11 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-The graph report groups every session by report.
+When a payload fails, the buffer handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Run the metric check before changing any cluster limits.
 
 ## Guidelines
 
-- Review command limits each release
-- Log every counter change
-- Document new route fields
-- Validate githubfarm input early
+- Review schema limits each release
+- Keep metrics values small
+- Document new batch fields
