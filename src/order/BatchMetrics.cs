@@ -34,17 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] samples, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
+                if ((double)item >= (6.5 * 6.0))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
