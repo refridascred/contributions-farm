@@ -1,8 +1,7 @@
 {
-  "dry_run": true,
-  "format_timeout": "open",
-  "cache_interval_count": false,
-  "verbose": "blue",
-  "audit": true,
-  "enabled": "blue"
+  "retry_interval": false,
+  "cache_depth_count": 250,
+  "enabled": false,
+  "warm_limit": 559,
+  "base_depth_ms": true
 }
