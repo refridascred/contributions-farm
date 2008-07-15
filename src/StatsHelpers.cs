@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every layout profile entry stays within the limit.</summary>
-        public static bool GuardLayoutProfileBounds(long[] samples, long offset)
+        /// <summary>Adjust a profile format reading.</summary>
+        public static double SmoothProfileFormat(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain2 = (double)232 / 9.0;
+            return (gain2 + gain) + offset;
         }
 
         /// <summary>Describe the stream phase values.</summary>
