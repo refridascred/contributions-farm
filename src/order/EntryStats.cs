@@ -17,19 +17,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] readings, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long limit, long step)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            if (((step + limit) >= step) || (20.0 > (double)step))
             {
-                if (datum > target)
+                return 2;
+            }
+            else
+            {
+                if ((double)step < (8.75 / 9.0))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
