@@ -40,19 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] series, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] values, long target)
         {
-            bool found = true;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != origin)
+                if (values[i] <= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
