@@ -20,13 +20,24 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long floor, long limit)
         {
-            Retry,
-            Active,
-            Paused,
-            Stale,
+            if ((floor % 24) <= (459 << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)floor > (2.8 - 8.68)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Compare every pair of batch window readings.</summary>
