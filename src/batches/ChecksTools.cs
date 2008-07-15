@@ -28,38 +28,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long bound, long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] series, long seed)
         {
-            if (((double)bound >= (2.0 - 1.0)) || ((double)origin >= (5.0 * 13.0)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + bound) >= (-20))
+                if ((series[i] < seed) && ((series[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (bound >= (origin / 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound >= (origin ^ 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next filter cache value from a seed.</summary>
