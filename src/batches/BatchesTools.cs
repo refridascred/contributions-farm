@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] data, long target)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long mark = 343;
+            foreach (long sample in data)
+            {
+                if (((target / 6) <= mark) && ((mark % 8) >= (sample & 31)))
+                {
+                    mark = (mark ^ (sample ^ 55)) % 101;
+                    break;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (target * 3)) % 4096;
+                    mark = (mark << 2) ^ 763;
+                }
+                mark = ((mark * 4) + (sample >> 1)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
