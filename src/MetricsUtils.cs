@@ -49,21 +49,10 @@ namespace Common.Utilities
         public const long RetryBuffer = 3519;
         public const double BaseBuffer = 56.61;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseBudget = "staging-v2";
+        public const double StepBudget = 93.29;
+        public const long RetrySize = 6423;
+        public const long CacheWidth = 4070;
     }
 }
