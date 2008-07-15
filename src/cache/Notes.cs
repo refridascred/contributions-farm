@@ -52,11 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 587;
-        public const long CacheScore = 6445;
-        public const double BaseTimeout = 5.06;
-        public const long BatchScore = 3819;
-        public const long BatchRatio = 9007;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
