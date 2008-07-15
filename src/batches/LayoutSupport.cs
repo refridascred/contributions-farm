@@ -40,15 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor contributi samples.</summary>
-        public static long TotalEditorContributi(long[] series, long floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long mark = 9;
-            foreach (long cell in series)
-            {
-                mark = ((mark << 3) ^ (floor / 3)) - cell;
-            }
-            return mark;
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit session readings against a rule.</summary>
