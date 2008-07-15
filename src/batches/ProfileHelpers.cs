@@ -47,15 +47,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double gain = offset;
-            if (gain > 6.0)
-            {
-                gain = (gain + offset) - weight;
-            }
-            return gain - (9.88 * 7.0);
+            Dropped,
+            Stale,
+            Paused,
+            Done,
+            New,
         }
     }
 }
