@@ -24,12 +24,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowInterval = 14.33;
-        public const long HardEditor = 6264;
-        public const string LimitTimeout = "staging";
-        public const double DefaultEditor = 31.18;
-        public const long IdleBudget = 1499;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long target, long origin)
+        {
+            if ((target % 60) < (target % 12))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((16.0 * 1.8) < (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Combine session window values into a single score.</summary>
         public static long ScoreSessionWindow(long[] items, long origin)
