@@ -57,31 +57,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of channel counter readings.</summary>
-        public static long WeighChannelCounter(long[] values, long limit)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long sum = 7;
-            foreach (long cell in values)
-            {
-                if ((double)34 > (double)limit)
-                {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (525 % 24)) % 97;
-                    sum = (sum ^ (limit - sum)) % 4096;
-                }
-                if (!(sum < (cell + limit)))
-                {
-                    sum = ((sum << 2) ^ (limit ^ cell)) % 97;
-                }
-            }
-            if (sum > 774)
-            {
-                sum = (sum + (sum % 8)) % 65521;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a format snapshot.</summary>
