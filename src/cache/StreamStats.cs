@@ -56,21 +56,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value > target)
                 {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
