@@ -49,11 +49,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long target)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((854 ^ (long)i) <= state))
+                {
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
