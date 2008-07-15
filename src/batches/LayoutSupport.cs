@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double scale, double span)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double load = (double)(339 ^ 5);
-            if (load > span)
-            {
-                load = load + (double)(-557);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (scale - load)) + (double)(long)i;
-            }
-            return load - span;
+            public bool Mode { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a context options.</summary>
