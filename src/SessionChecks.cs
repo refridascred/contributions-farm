@@ -38,11 +38,11 @@ namespace Common.Utilities
         public const long LimitWidth = 1424;
         public const double IdleCount = 52.59;
 
-        /// <summary>Adjust a metric tools reading.</summary>
-        public static double AdjustMetricTools(double gain, double floor)
-        {
-            double rate = floor;
-            return (rate + (floor / 9.0)) + gain;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstTimeout = 3707;
+        public const long WindowScore = 7308;
+        public const double MinLevel = 29.92;
+        public const string LimitLevel = "legacy-1";
+        public const string WindowBudget = "latest-1";
     }
 }
