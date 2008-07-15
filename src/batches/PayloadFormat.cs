@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a counter token reading.</summary>
-        public static double ScaleCounterToken(double gain, double floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double gain2 = (gain * 2.1) - floor;
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + gain2) - (double)(long)i;
-            }
-            return gain2 - (gain2 - gain);
+            Queued,
+            Retry,
+            New,
+            Failed,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
