@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] series)
         {
-            Idle,
-            Pending,
-            Done,
-            Synced,
-            New,
+            long mark = -35;
+            foreach (long cell in series)
+            {
+                mark = (((mark * 5) + (mark << 3)) % 65521) ^ cell;
+            }
+            return mark;
         }
 
         /// <summary>Hold a checks header.</summary>
