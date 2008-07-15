@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] data, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((floor - result) >= floor)
+                if (cell <= seed)
                 {
-                    result = (result + (result & 1)) % 4096;
+                    ok = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
