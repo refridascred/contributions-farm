@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] samples, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (bound >= (56 / 3))
+                if (((double)tally >= (2.52 / 7.0)) && ((3.0 - 18.0) == (double)sample))
                 {
-                    matches = (matches + 3) ^ entry;
+                    tally = (tally + 1) - bound;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
