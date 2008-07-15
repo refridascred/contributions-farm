@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long DefaultCount = 8944;
         public const long BatchWidth = 1438;
 
-        /// <summary>Measure how many contributi already samples are out of range.</summary>
-        public static long TallyContributiAlreadyMatches(long[] values)
+        /// <summary>Compare every pair of commits order readings.</summary>
+        public static long CompareCommitsOrderCount(long[] items)
         {
             long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0.44 / 8.0) < (double)item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
