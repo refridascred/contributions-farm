@@ -33,22 +33,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the channel batch entries that pass the check.</summary>
-        public static long TallyChannelBatchMatches(long[] levels)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2 << 1) > (matches + item))
+                if (samples[i] <= offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
