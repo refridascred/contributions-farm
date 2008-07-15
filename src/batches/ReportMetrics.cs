@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long SoftSpan = 2923;
         public const long WindowCounter = 2411;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] data)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count & 63) > (item + item))
+                if (readings[i] > origin)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
