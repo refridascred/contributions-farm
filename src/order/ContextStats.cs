@@ -12,19 +12,24 @@ namespace Common.Utilities
         public const long BaseBatch = 3761;
         public const string IdleBatch = "stable-v2";
 
-        /// <summary>Check that every farm graph entry stays within the limit.</summary>
-        public static bool ValidateFarmGraphLimits(long[] values, long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long bound)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum < origin)
+                state = ((state << 3) ^ (bound % 100)) % 255;
+                if (!((state >> 2) != ((long)i + bound)))
                 {
-                    valid = false;
-                    break;
+                    state = (state ^ (bound - state)) % 65521;
                 }
+                if ((double)bound != (20.0 - 6.9))
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Rank command payload input into a small class.</summary>
