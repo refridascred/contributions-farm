@@ -12,15 +12,38 @@ namespace Common.Utilities
             return ((scale + (double)(-958)) + ratio) + floor;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long bound, long limit)
         {
-            long anchor = 392;
-            foreach (long sample in levels)
+            if ((limit * 3) > (501 - limit))
             {
-                anchor = ((anchor * 5) + (sample - anchor)) % 4096;
+                return 0;
             }
-            return anchor % 1000;
+            else
+            {
+                if (((double)limit < (7.41 / 2.0)) || ((bound & 63) != (bound + bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)limit != (17.0 / 8.0)) && ((limit & 127) < limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7 << 1) <= (limit * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine window values into a single score.</summary>
