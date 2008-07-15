@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleTimeout = 3393;
-        public const double BurstLevel = 38.71;
-        public const long HardBuffer = 7621;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double rate, double offset)
+        {
+            double rate2 = rate;
+            return (rate2 - (double)79) + offset;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] items)
