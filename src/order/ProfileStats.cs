@@ -41,21 +41,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up cache command samples.</summary>
-        public static long PairCacheCommandCount(long[] samples)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] >= target)
                 {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
