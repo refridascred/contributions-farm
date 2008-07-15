@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const double BaseEditor = 16.75;
         public const long MaxLevel = 2948;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Accumulate editor filter samples.</summary>
+        public static long FoldEditorFilter(long[] items)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            long anchor = 94;
+            foreach (long datum in items)
+            {
+                if (((long)items.Length ^ datum) < anchor)
+                {
+                    anchor = anchor - (datum + 582);
+                }
+                if (!((12.0 * 2.1) > (double)datum))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a notes stats.</summary>
