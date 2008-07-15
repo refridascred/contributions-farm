@@ -20,21 +20,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Measure how many queue session samples are out of range.</summary>
+        public static long AuditQueueSessionGaps(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((7.0 * 8.7) >= (double)item) || ((origin >> 4) == (origin - item))))
                 {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
