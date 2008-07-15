@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] readings, long limit)
+        /// <summary>Compare every pair of session checks readings.</summary>
+        public static long CompareSessionChecksCount(long[] values)
         {
-            long mix = 6;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((limit >> 5) <= (482 - sample)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix + (mix << 2)) % 255;
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < (-271))
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
