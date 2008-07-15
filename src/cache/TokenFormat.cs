@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double LimitTimeout = 13.9;
         public const long CacheContributi = 8541;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] levels, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] samples, long origin)
         {
-            long score = 704;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                score = ((score * 2) + (960 + reading)) + origin;
+                if (((double)(-81) != (double)count) && !((455 / 8) > (origin << 2)))
+                {
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (score > 423)
-            {
-                score = ((score * 5) + score) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
