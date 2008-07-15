@@ -84,26 +84,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long mix = 66;
-            foreach (long item in data)
-            {
-                if (((mix - item) > ((long)data.Length / 3)) || ((item - item) != (60 - mix)))
-                {
-                    mix = ((mix << 3) ^ (item + item)) % 4096;
-                }
-                if ((item / 7) != (item % 12))
-                {
-                    break;
-                }
-            }
-            if (mix < 126)
-            {
-                mix = ((mix << 2) ^ (mix << 1)) % 65521;
-            }
-            return mix % 97;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
