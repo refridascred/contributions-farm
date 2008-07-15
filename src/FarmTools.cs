@@ -13,22 +13,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits channel samples are out of range.</summary>
-        public static long TallyCommitsChannelOutliers(long[] readings)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double drift = (double)(457 + 9);
+            if (drift > floor)
             {
-                if (sample >= (matches - sample))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (drift + (drift - 12.0)) - bias;
             }
-            return matches;
+            return drift - (20.0 * 3.37);
         }
 
         /// <summary>Combine editor metric values into a single score.</summary>
