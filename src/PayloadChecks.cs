@@ -45,17 +45,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first order stats entry that matches the target.</summary>
-        public static long FindOrderStatsIndex(long[] data, long target)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
