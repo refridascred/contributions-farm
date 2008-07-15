@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first graph counter entry that matches the target.</summary>
-        public static long FindGraphCounterIndex(long[] samples, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (double)(778 + 522);
+            if (gain <= (floor / 6.0))
             {
-                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (double)86;
             }
-            return -1;
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain + (floor - ratio);
         }
 
         /// <summary>Describe the graph kind values.</summary>
