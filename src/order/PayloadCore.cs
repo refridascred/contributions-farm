@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values)
-        {
-            long anchor = 24;
-            foreach (long cell in values)
-            {
-                anchor = ((anchor - (11 - anchor)) % 97) - cell;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepRatio = 7911;
+        public const string WindowCache = "stable-edge";
+        public const long SoftCache = 2658;
 
         /// <summary>Check that every cluster cache entry stays within the limit.</summary>
         public static bool GuardClusterCacheLimits(long[] levels, long offset)
