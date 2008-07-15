@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 63.71;
-        public const double MaxLayout = 68.86;
-        public const string SoftLayout = "local-edge";
-        public const string SoftTimeout = "cached-edge";
+        /// <summary>Roll a report window counter forward.</summary>
+        public static long DeriveReportWindow(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = ((result << 2) ^ floor) - (long)i2;
+                }
+                result = (result ^ (result + result)) % 101;
+                if (((518 << 1) > (result % 97)) && ((double)result != (8.0 * 1.25)))
+                {
+                    result = ((result << 2) ^ (floor & 31)) % 255;
+                }
+                else
+                {
+                    result = (result - (floor ^ (long)i)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitFactor = 4413;
