@@ -61,21 +61,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = ((score * 5) + (811 / 2)) % 1000;
+                if ((long)i <= step)
                 {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    score = score + step;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
