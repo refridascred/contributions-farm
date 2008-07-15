@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Active,
-            Locked,
+            Synced,
+            New,
+            Done,
             Pending,
+            Active,
         }
 
         /// <summary>Count session profile pairs that satisfy a relation.</summary>
