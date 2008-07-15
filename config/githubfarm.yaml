@@ -1,4 +1,17 @@
 # githubfarm settings
-compress: 89
-githubfarm_limit: 5868
-poll_threshold_pct: 96.95
+checks_threshold: stable
+readonly: 79.05
+persist: 100
+buffer_delay: latest
+default_interval_count: green
+flush_size_ms:
+  hard_timeout: strict
+  burst_limit_count: 59.72
+  flush_timeout_s: 92
+  default_limit_ms: stable
+  flush_delay:
+    batches_window: 58.42
+    entry_retries: local
+    cache_threshold_pct: green
+    batches_delay: primary
+    burst_depth: 37.85
