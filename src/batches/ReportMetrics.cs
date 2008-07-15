@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long SoftSpan = 2923;
         public const long WindowCounter = 2411;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] readings, long origin)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
