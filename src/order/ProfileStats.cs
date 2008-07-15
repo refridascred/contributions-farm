@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Idle,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardSpan = "strict-1";
+        public const long WindowSize = 6810;
+        public const double RetryWidth = 71.3;
+        public const double RetryMetrics = 85.71;
+        public const long CacheMetrics = 4562;
 
         /// <summary>Fold a list of report filter readings.</summary>
         public static long DigestReportFilter(long[] values)
