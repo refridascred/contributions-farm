@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double bias, double floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double scale = bias;
-            return (scale - (bias + bias)) + floor;
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Compare every pair of commits order readings.</summary>
