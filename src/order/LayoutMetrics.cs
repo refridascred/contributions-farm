@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the batch mode values.</summary>
