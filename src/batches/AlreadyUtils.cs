@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long RetryBatches = 9413;
         public const long SoftBatches = 4082;
 
-        /// <summary>Count already channel pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyChannelCount(long[] readings)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
