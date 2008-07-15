@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next queue context value from a seed.</summary>
-        public static long DeriveQueueContext(long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] samples, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((9 % 5) < (entry << 3))
+                {
+                    matches = (matches + 3) + seed;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Accumulate format samples.</summary>
