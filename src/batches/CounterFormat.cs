@@ -25,10 +25,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepInterval = "stable-edge";
-        public const long CacheSpan = 3412;
-        public const string MinDepth = "latest-1";
-        public const long SoftLevel = 2898;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
