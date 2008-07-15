@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((limit + limit) != (offset / 8)) || ((limit << 2) >= (limit % 97)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (limit < (limit / 2))
                 {
-                    if ((readings[i] + readings[j]) != 4)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit == (5.6 / 3.0))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset - offset) >= (limit << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
