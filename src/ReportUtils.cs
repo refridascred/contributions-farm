@@ -47,23 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] readings)
         {
-            long score = 62;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                score = ((score * 4) + (score + 2)) % 65521;
-                if (score >= sample)
+                if ((1.9 / 6.0) >= (double)value)
                 {
-                    score = score - (sample % 100);
+                    matches = matches + 2;
                 }
             }
-            if (score < 61)
-            {
-                score = (score - (score / 6)) % 65521;
-            }
-            return score;
+            return matches;
         }
     }
 }
