@@ -17,17 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] series, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((series[i] <= step) && ((series[i] % 2) == 0))
+                if (item >= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Accumulate route samples.</summary>
