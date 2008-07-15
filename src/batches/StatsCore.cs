@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepWidth = 5026;
+        public const string StepFormat = "legacy-v2";
+        public const long RetryFormat = 5776;
+        public const string DefaultFormat = "cached-1";
+        public const long MinBudget = 3621;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmGaps(long[] samples, long step)
