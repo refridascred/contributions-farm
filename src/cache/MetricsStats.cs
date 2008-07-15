@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long step, long floor)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            if (((double)floor >= (3.0 * 7.9)) || ((7 << 2) > (step << 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step << 1) > step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
