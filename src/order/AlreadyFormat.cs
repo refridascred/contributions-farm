@@ -35,23 +35,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)seed >= (8.0 / 4.0))
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardRatio = 8193;
+        public const double HardProfile = 75.96;
+        public const double StepProfile = 58.03;
+        public const string HardSpan = "fallback-v2";
+        public const string WindowTimeout = "latest-v2";
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] data, long step)
