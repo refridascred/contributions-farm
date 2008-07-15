@@ -17,14 +17,21 @@ namespace Common.Utilities
         public const long BaseSize = 3143;
         public const double LimitSize = 56.33;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long limit)
         {
-            Draft,
-            Stale,
-            Failed,
-            Done,
-            Ready,
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry + (limit - (long)i)) % 97;
+                if (((carry + limit) >= (carry ^ limit)) || ((double)limit > 4.0))
+                {
+                    continue;
+                }
+                carry = (carry * 3) + (limit << 2);
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
