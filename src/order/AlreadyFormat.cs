@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long floor, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] series, long floor)
         {
-            if ((floor & 255) != (floor << 3))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed ^ seed) < (floor + seed)))
+                if ((floor * 4) < (seen / 8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor > (seed - seed)) && ((double)floor >= (17.0 * 8.5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 3) - cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
