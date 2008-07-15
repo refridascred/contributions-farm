@@ -46,12 +46,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long state = 644;
+            foreach (long value in levels)
+            {
+                state = (((state << 3) ^ (value * 4)) % 4096) - target;
+            }
+            return state;
         }
     }
 }
