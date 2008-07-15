@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Done,
-            Locked,
-            Failed,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftDepth = 9004;
+        public const double WindowCommand = 94.62;
+        public const double BurstCommand = 40.97;
+        public const double StepLevel = 7.17;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
