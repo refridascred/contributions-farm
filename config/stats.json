@@ -1,8 +1,21 @@
 {
-  "base_threshold_ms": ["cached", "local", "stable", "cached"],
-  "verbose": "eu-west",
-  "burst_interval": 23.47,
-  "warm_capacity_s": 6897,
-  "retry_threshold": "eu-west",
-  "readonly": ["eu-west", "local"]
+  "soft_ttl_s": ["standard", "stable", "green"],
+  "retry_retries": {
+    "batch_limit_pct": ["staging", "legacy"],
+    "batch_capacity_ms": [284, 407, 200],
+    "base_capacity_count": false,
+    "dry_run": 1024,
+    "order_limit": 83.46,
+    "queue_depth": {
+      "batch_depth_ms": true,
+      "readonly": true,
+      "strict": "latest",
+      "retry_limit_count": 16.2,
+      "warm_threshold": true
+    }
+  },
+  "min_timeout_s": "standard",
+  "cache_delay": 43.18,
+  "warm_capacity_count": "latest",
+  "checks_threshold": "stable"
 }
