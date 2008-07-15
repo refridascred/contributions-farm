@@ -1,9 +1,4 @@
 # githubfarm settings
-enabled: latest
-verbose:
-  - 416
-  - 342
-  - 285
-soft_delay: false
-retry_capacity: 89.13
-farm_timeout: fallback
+payload_window: 7264
+flush_interval_pct: fallback
+soft_timeout_pct: 70.98
