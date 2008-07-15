@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long seed, long offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if (277 <= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + 3) == (seed * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
