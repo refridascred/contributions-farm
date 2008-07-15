@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchTimeout = "cached-1";
-        public const double MinTimeout = 15.0;
-        public const long DefaultMetrics = 6298;
-        public const long MinMetrics = 8281;
-        public const long IdleWidth = 7527;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public double Count { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long WeighFormat(long[] series)
