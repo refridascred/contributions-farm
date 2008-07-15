@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Audit cluster account readings against a rule.</summary>
+        public static long CountClusterAccountGaps(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((7.0 + 20.0) != (double)matches)
                 {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 3) ^ value) + step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
