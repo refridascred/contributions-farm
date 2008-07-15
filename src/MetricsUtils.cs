@@ -20,38 +20,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long target, long target2)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            if ((8.45 - 9.6) <= (double)target2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target2 - 941) > target2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.0 + 7.2) == (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((88 >> 1) <= (target * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
