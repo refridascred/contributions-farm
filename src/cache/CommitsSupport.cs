@@ -42,10 +42,11 @@ namespace Common.Utilities
         public const double MaxWindow = 68.56;
         public const string LimitWidth = "staging-v2";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstScore = 8993;
-        public const long BaseCommand = 6642;
-        public const long BatchCommand = 3355;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 2402;
+        public const long SoftRecord = 2964;
+        public const string BatchRecord = "fallback";
+        public const string HardRecord = "standard-edge";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 6856;
