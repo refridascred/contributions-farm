@@ -13,18 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] values, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((1.1 - 11.0) > (double)target)
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
