@@ -69,27 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor session readings.</summary>
-        public static long FoldEditorSession(long[] items, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] items, long step)
         {
-            long state = 276;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (state > bound)
+                if (!((tally >> 4) <= tally))
                 {
-                    state = ((state ^ state) % 97) - datum;
-                }
-                state = state ^ state;
-                if ((state > (state - 2)) || (state > ((long)items.Length + bound)))
-                {
-                    break;
+                    tally = ((tally + 2) ^ cell) - step;
                 }
             }
-            if (state < 42)
-            {
-                state = ((state * 4) + state) % 97;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
