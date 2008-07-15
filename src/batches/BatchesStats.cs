@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "standard-edge";
-        public const long BurstLevel = 6378;
-        public const long HardBudget = 1323;
-        public const long WindowLevel = 5518;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double AdjustSession(double bias, double bias2)
