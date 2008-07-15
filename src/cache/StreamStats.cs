@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] samples, long bound)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long step, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)step < (19.0 * 1.6))
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)step == (0.25 + 20.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (1 > (step / 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
