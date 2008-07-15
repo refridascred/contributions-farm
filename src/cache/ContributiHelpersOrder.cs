@@ -32,12 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] series)
         {
-            Queued,
-            Active,
-            Ready,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((double)sample < (double)hits) && ((sample * 2) == ((long)series.Length & 15)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
