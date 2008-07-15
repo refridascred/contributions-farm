@@ -43,11 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 713;
-        public const long MinOrder = 923;
-        public const double MaxInterval = 40.32;
-        public const double IdleRatio = 27.51;
-        public const string BatchOrder = "local";
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public double Label { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
