@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((tally + tally) != (37 % 100))
+                if (bound >= (56 / 3))
                 {
-                    tally = (tally + 1) + value;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a record info.</summary>
