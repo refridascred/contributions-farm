@@ -68,25 +68,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long offset, long step)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long delta = offset + step;
-            if (offset > step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((61 + 2) >= (delta & 127))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
