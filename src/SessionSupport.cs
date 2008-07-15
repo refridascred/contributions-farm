@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseTimeout = 7947;
+        public const long MinSize = 9187;
+        public const long StepTimeout = 1700;
+        public const double HardMetric = 38.34;
 
         /// <summary>Rank githubfarm stats input into a small class.</summary>
         public static long SortGithubfarmStats(long step, long step2)
