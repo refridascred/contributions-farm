@@ -34,21 +34,27 @@ namespace Common.Utilities
             return mean + 1.0;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 3;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = ((result << 3) ^ reading) % 97;
+                if (limit > (7 ^ limit))
                 {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - result) % 101;
+                }
+                else
+                {
+                    result = (result ^ (result + reading)) % 101;
                 }
             }
-            return seen;
+            if (result > 676)
+            {
+                result = ((result << 2) ^ (limit % 24)) % 101;
+            }
+            return result;
         }
     }
 }
