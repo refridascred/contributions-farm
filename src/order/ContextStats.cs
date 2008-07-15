@@ -20,11 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 8237;
-        public const string BatchScore = "fallback";
-        public const long StepLayout = 1464;
-        public const string CacheBudget = "standard-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinFactor = 5086;
+        public const long SoftDepth = 4728;
+        public const long DefaultFactor = 2746;
+        public const long WindowFactor = 9927;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] samples)
