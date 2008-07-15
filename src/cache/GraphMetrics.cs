@@ -56,19 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] series, long step)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
