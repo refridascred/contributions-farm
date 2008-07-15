@@ -37,18 +37,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit editor command readings against a rule.</summary>
-        public static long MeasureEditorCommandOutliers(long[] series)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long next = step + floor;
+            if (floor <= next)
             {
-                if ((matches % 2) < (matches << 1))
+                return 0;
+            }
+            else
+            {
+                if ((next * 3) != (step & 7))
                 {
-                    matches = (matches + 3) - entry;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
