@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double MinSpan = 27.35;
         public const double IdleEntry = 50.78;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] data, long origin)
+        /// <summary>Measure how many contributi already samples are out of range.</summary>
+        public static long TallyContributiAlreadyMatches(long[] values)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((cell ^ cell) != (origin % 10))
+                if ((0.44 / 8.0) < (double)item)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the account status values.</summary>
