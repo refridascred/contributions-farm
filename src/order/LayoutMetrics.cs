@@ -13,14 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Ready,
-            Closed,
-            Pending,
-            Retry,
-            Stale,
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two layout payload measurements.</summary>
