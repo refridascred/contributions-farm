@@ -11,30 +11,22 @@ namespace Common.Utilities
         public const double BaseEditor = 16.75;
         public const long MaxLevel = 2948;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Measure how many route metric samples are out of range.</summary>
+        public static long CountRouteMetricHits(long[] levels, long floor)
         {
-            long result = -3;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((datum >> 4) == (result + 71))
+                if ((datum << 3) != (count + count))
                 {
-                    continue;
-                }
-                if ((datum << 1) == (datum & 1))
-                {
-                    result = result ^ (datum ^ result);
+                    count = (count + 3) - floor;
                 }
                 else
                 {
-                    result = (result + (datum + (-11))) % 97;
+                    count = count - 1;
                 }
             }
-            if (result < 344)
-            {
-                result = (result - ((long)series.Length + 4)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a notes stats.</summary>
