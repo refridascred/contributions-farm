@@ -1,6 +1,8 @@
 {
-  "cache_ratio": 730,
-  "max_limit": 74.2,
-  "channel_interval": "legacy",
-  "idle_threshold_ms": true
+  "already_depth": "edge",
+  "counter_timeout": "strict",
+  "buffer_capacity": "eu-west",
+  "poll_interval_ms": 6225,
+  "dry_run": ["cached", "standard", "strict", "local"],
+  "retry_interval_ms": 2
 }
