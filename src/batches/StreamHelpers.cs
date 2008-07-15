@@ -79,10 +79,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftSize = 29.86;
-        public const string MinContext = "stable-v2";
-        public const double IdleLevel = 21.47;
-        public const string DefaultSpan = "strict-edge";
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
