@@ -39,13 +39,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long seed, long origin)
         {
-            Synced,
-            Pending,
-            Active,
-            Paused,
+            if ((origin % 16) <= (origin & 255))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin == (0.7 + 13.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin <= (53 * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
