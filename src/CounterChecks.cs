@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] items, long target)
         {
-            New,
-            Closed,
-            Locked,
+            long carry = 5;
+            foreach (long reading in items)
+            {
+                if (carry < (carry << 1))
+                {
+                    carry = ((carry - (target & 1)) % 101) ^ reading;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
