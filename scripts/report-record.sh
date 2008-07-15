@@ -7,14 +7,21 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in staging cached; do
+for item in eu-west open; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=234
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-latest}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
