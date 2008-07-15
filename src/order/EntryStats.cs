@@ -27,19 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] samples, long origin)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mix = 0;
-            foreach (long entry in samples)
-            {
-                mix = ((mix - (mix & 15)) ^ entry) + origin;
-            }
-            if (mix > 1)
-            {
-                mix = (mix ^ 77) % 101;
-            }
-            return mix % 1000;
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Rank batches support input into a small class.</summary>
