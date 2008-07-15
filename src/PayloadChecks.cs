@@ -36,12 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitFactor = 9395;
-        public const long IdleContributi = 3843;
-        public const long MinContributi = 2596;
-        public const string RetryContributi = "stable";
-        public const double StepContributi = 10.98;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyHits(long[] values, long target)
