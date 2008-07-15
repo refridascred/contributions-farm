@@ -46,23 +46,22 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] samples, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] samples, long floor)
         {
-            long anchor = 68;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if ((907 ^ seen) < (floor ^ entry))
                 {
-                    anchor = (((anchor << 2) ^ (datum >> 1)) % 101) - (long)i;
+                    seen = seen + 1;
                 }
-                anchor = (anchor + (3 + datum)) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor > (-726))
-            {
-                anchor = (anchor - target) % 255;
-            }
-            return anchor % 65521;
+            return seen;
         }
     }
 }
