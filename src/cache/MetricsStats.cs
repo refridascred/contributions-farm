@@ -74,13 +74,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] readings, long origin)
         {
-            New,
-            Active,
-            Synced,
-            Done,
+            long mark = 98;
+            foreach (long cell in readings)
+            {
+                mark = ((mark ^ mark) % 1000) + origin;
+                if ((2.24 + 0.3) < (double)cell)
+                {
+                    mark = (mark + (mark ^ cell)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
