@@ -13,21 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of commits cache readings.</summary>
-        public static long MatchCommitsCacheCount(long[] values)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] <= floor)
                 {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
