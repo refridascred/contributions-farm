@@ -23,14 +23,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            New,
-            Stale,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 8097;
+        public const string HardContributi = "latest-edge";
+        public const string LimitContributi = "strict-edge";
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] values)
