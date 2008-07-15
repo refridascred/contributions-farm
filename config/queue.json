@@ -1,5 +1,16 @@
 {
-  "retry_timeout_pct": true,
-  "max_timeout_ms": "green",
-  "context_retries": "legacy"
+  "persist": {
+    "cache_capacity_ms": "local",
+    "burst_limit_ms": 250,
+    "batch_ttl": {
+      "max_window": 100,
+      "hard_timeout_s": false,
+      "max_capacity_pct": ["latest", "fallback"],
+      "format_threshold": 10,
+      "soft_delay": 8.91
+    }
+  },
+  "session_retries": 2,
+  "buffer_ratio": 1024,
+  "hard_delay_s": 8484
 }
