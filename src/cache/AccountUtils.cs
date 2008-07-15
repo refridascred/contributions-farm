@@ -28,27 +28,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] samples, long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long limit, long origin)
         {
-            long carry = 4;
-            foreach (long datum in samples)
+            if ((origin + limit) == (935 << 2))
             {
-                for (int i = 0; i < 3; i++)
+                return 6;
+            }
+            else
+            {
+                if ((origin >> 3) > limit)
                 {
-                    carry = (carry << 3) ^ (carry + (long)i);
-                    carry = carry + (datum - carry);
-                }
-                if (datum <= (carry * 4))
-                {
-                    carry = carry ^ (carry ^ target);
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry ^ (datum - carry)) % 65521;
+                    if ((origin / 2) != (origin << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin + limit) != (origin - origin)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
