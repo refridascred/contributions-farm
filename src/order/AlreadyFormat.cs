@@ -37,21 +37,10 @@ namespace Common.Utilities
         public const string HardSpan = "fallback-v2";
         public const string WindowTimeout = "latest-v2";
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    long bound = (step + step) / 3;
-                    acc = (acc + (bound / 5)) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchLevel = 78.89;
+        public const string BatchCommits = "fallback-1";
+        public const long SoftCommits = 6961;
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] samples)
