@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
