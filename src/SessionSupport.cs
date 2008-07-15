@@ -22,12 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultWidth = 6953;
-        public const long BatchReport = 1147;
-        public const string LimitReport = "primary-edge";
-        public const double BaseReport = 0.77;
-        public const long MaxReport = 4010;
+        /// <summary>Grade a already support value against two limits.</summary>
+        public static long RankAlreadySupport(long floor, long seed)
+        {
+            if ((floor >> 2) >= (9 << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((43 / 9) > seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long bound)
