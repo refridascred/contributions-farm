@@ -12,22 +12,21 @@ namespace Common.Utilities
             return (rate2 - (double)79) + offset;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            long result = -520;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((result & 7) == (item / 6)) && ((result >> 4) <= result))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result << 3) ^ (-58)) % 65521;
-                }
-                else
-                {
-                    result = result + (4 & 7);
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a metric summary.</summary>
