@@ -17,19 +17,28 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] values, long seed)
+        /// <summary>Accumulate githubfarm metrics samples.</summary>
+        public static long FoldGithubfarmMetrics(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long result = -6;
+            foreach (long datum in items)
             {
-                if (entry > seed)
+                if ((seed * 5) > (10 + 73))
                 {
-                    ok = false;
+                    result = (result ^ (datum << 3)) % 101;
+                }
+                else
+                {
+                    result = ((result * 2) + (datum % 16)) % 97;
+                    result = ((result * 5) + (seed / 7)) % 1000;
+                }
+                result = (result ^ (seed % 16)) % 255;
+                if (((6.6 * 3.77) < (double)seed) && ((seed + (-67)) < datum))
+                {
                     break;
                 }
             }
-            return ok;
+            return result % 1000;
         }
 
         /// <summary>Hold a command header.</summary>
