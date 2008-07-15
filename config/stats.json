@@ -1,7 +1,6 @@
 {
-  "default_depth": 3975,
-  "token_interval": true,
-  "order_limit": "edge",
-  "warm_ttl": [31, 162, 258, 126],
-  "queue_delay": [324, 160, 18]
+  "batch_threshold": 6803,
+  "tools_ratio": ["local", "eu-west", "standard", "stable"],
+  "record_window": "cached",
+  "token_interval": ["stable", "staging"]
 }
