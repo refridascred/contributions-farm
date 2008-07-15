@@ -38,17 +38,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] samples, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
+                if (value != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
