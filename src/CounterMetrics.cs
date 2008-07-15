@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            Pending,
+            New,
+            Retry,
         }
 
         /// <summary>Define token limits and defaults.</summary>
