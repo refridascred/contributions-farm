@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data, long seed)
-        {
-            long mark = 25;
-            foreach (long sample in data)
-            {
-                if ((double)sample < (double)mark)
-                {
-                    mark = (mark * 5) + (seed + sample);
-                }
-            }
-            if (mark < 741)
-            {
-                mark = (mark - (mark + mark)) % 1000;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftCount = 9430;
+        public const long LimitGraph = 5083;
+        public const long StepGraph = 2979;
+        public const long CacheTimeout = 2084;
+        public const string DefaultSpan = "open-edge";
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long limit)
