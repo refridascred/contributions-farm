@@ -15,22 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long acc = 78;
-            foreach (long entry in items)
-            {
-                if ((40 - acc) != (9 + 575))
-                {
-                    acc = (((acc << 3) ^ (9 - acc)) % 255) - entry;
-                }
-            }
-            if (acc > 188)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next metrics value.</summary>
