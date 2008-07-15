@@ -16,11 +16,16 @@ namespace Common.Utilities
             return mean - (bias - ratio);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinFactor = 5086;
-        public const long SoftDepth = 4728;
-        public const long DefaultFactor = 2746;
-        public const long WindowFactor = 9927;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every batch stream entry stays within the limit.</summary>
         public static bool VerifyBatchStreamRange(long[] series, long target)
