@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] items)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double span)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double drift = (double)((-1) ^ 89);
+            if (drift >= rate)
             {
-                if ((double)tally >= (0.8 / 9.0))
-                {
-                    tally = (tally + 1) - cell;
-                }
+                drift = drift + (drift + span);
             }
-            return tally;
+            else
+            {
+                drift = drift + 5.45;
+            }
+            return drift - (drift * 1.98);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
