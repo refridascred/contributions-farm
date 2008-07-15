@@ -34,21 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Count the stream tools entries that pass the check.</summary>
+        public static long CountStreamToolsHits(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((tally + bound) != (bound / 5)) && (((bound & 127) > tally) && ((double)sample >= 0.11)))
                 {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a entry info.</summary>
