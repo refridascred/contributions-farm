@@ -34,31 +34,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long seed, long floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] samples, long step)
         {
-            if ((seed % 2) <= 1)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 64) < floor)
+                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((-7) % 7) != (seed & 127))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
