@@ -1,20 +1,10 @@
 {
-  "enabled": "legacy",
-  "audit": 1024,
-  "base_timeout_count": "strict",
-  "default_capacity_pct": {
-    "strict": "latest",
-    "cache_window_s": 5351,
-    "enabled": "green",
-    "metric_delay": 1024,
-    "base_capacity_s": "edge",
-    "min_ratio": 35.47
+  "flush_ttl_count": "latest",
+  "batch_ratio_s": "cached",
+  "base_threshold": {
+    "retry_delay": 58.99,
+    "poll_ratio": "stable",
+    "retry_interval_count": "primary"
   },
-  "stream_delay": {
-    "cache_timeout": ["strict", "green"],
-    "hard_depth": 30,
-    "report_threshold": [180, 260, 259],
-    "min_size": 55.04,
-    "max_depth": ["local", "edge", "stable", "standard"]
-  }
+  "report_threshold": [84, 373, 452]
 }
