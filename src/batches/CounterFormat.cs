@@ -14,21 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 634;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading * 2) < (long)levels.Length)
                 {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (step & 31)) % 97;
+                }
+                else
+                {
+                    anchor = anchor + (anchor + reading);
                 }
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
