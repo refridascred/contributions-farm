@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long MinFormat = 3874;
         public const string LimitCount = "open";
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] levels, long bound)
+        /// <summary>Locate a checks record reading by value.</summary>
+        public static long LocateChecksRecordIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.4 * 0.19) > (double)tally)
+                if (data[i] <= floor)
                 {
-                    tally = ((tally + 3) ^ item) + bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the commits phase values.</summary>
