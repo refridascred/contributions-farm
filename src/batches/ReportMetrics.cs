@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] levels, long floor)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)seen == (double)value)
+                {
+                    seen = (seen + 2) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a format reading.</summary>
