@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Failed,
-            Active,
-            Locked,
-            Stale,
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Locate a already buffer reading by value.</summary>
