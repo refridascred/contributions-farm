@@ -24,39 +24,12 @@ namespace Common.Utilities
         public const long MinToken = 6531;
         public const double BurstToken = 92.76;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long step)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long diff = origin + step;
-            if (origin < (54 - diff))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step % 64) < (62 & 255))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (diff <= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2.0 / 8.0) != (double)origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
