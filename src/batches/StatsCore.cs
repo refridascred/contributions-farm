@@ -63,15 +63,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] readings, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long seed)
         {
-            long anchor = 26;
-            foreach (long item in readings)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = ((anchor + (seed + anchor)) % 255) - item;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
     }
 }
