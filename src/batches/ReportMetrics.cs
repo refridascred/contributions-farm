@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a filter commits figure with a bias.</summary>
-        public static double ScaleFilterCommits(double scale, double offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double drift = (double)(5 - 71);
-            if (drift < scale)
-            {
-                drift = drift - drift;
-            }
-            return drift + (offset - drift);
+            Locked,
+            Done,
+            Retry,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
