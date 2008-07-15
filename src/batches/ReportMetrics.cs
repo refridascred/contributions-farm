@@ -20,32 +20,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long target, long seed)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            long step = target + seed;
-            if (!((target ^ seed) > (target % 12)))
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step ^ 334) > (step * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)target < (8.94 - 12.0)) || ((double)step == (19.0 / 8.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
