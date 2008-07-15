@@ -30,11 +30,25 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleFactor = 7736;
-        public const double IdleSize = 6.13;
-        public const long SoftCommits = 2487;
-        public const double HardLevel = 21.88;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long limit, long limit2)
+        {
+            if ((limit - (-44)) <= limit2)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit + 2) <= (2 / 6)) && ((limit2 >> 5) >= (limit2 & 15)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Adjust a metric tools reading.</summary>
         public static double AdjustMetricTools(double gain, double floor)
