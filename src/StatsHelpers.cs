@@ -44,38 +44,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long floor, long step)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double rate, double span)
         {
-            if ((98 <= (948 + floor)) || ((5.7 + 0.6) >= (9.89 - 4.48)))
+            double gain = 4.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                gain = ((gain + rate) + (double)(long)i) - span;
             }
-            else
-            {
-                if (step <= (step + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((727 + floor) > floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (9.0 > (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return gain + 6.0;
         }
 
         /// <summary>Scale a layout session figure with a bias.</summary>
