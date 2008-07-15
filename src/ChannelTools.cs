@@ -14,15 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a route counter counter forward.</summary>
-        public static long RollRouteCounter(long limit)
+        /// <summary>Count the report checks entries that pass the check.</summary>
+        public static long AuditReportChecksGaps(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((matches / 6) < (520 >> 5))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the route phase values.</summary>
