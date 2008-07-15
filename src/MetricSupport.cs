@@ -28,19 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] readings, long limit)
+        /// <summary>Blend two batch counter measurements.</summary>
+        public static double AdjustBatchCounter(double scale, double span)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            double mean = span;
+            if (mean < (span - 4.8))
             {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + (8.01 * 9.97)) - scale;
             }
-            return flag;
+            return mean + (mean - mean);
         }
     }
 }
