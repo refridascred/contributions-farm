@@ -49,19 +49,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long limit, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            if ((double)bound > 1.0)
             {
-                if (!((854 ^ (long)i) <= state))
-                {
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((limit - bound) <= ((-1) - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound * 2) > (277 & 63)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
