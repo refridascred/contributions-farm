@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric stream entry stays within the limit.</summary>
-        public static bool GuardMetricStreamBounds(long[] samples, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (reading > step)
+                if (datum < seed)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Adjust a queue token reading.</summary>
