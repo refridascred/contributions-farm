@@ -40,12 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinWidth = "open-edge";
-        public const long SoftScore = 1534;
-        public const string LimitSession = "fallback-1";
-        public const double SoftSession = 63.95;
-        public const long DefaultBudget = 6910;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] samples)
+        {
+            long result = 11;
+            foreach (long cell in samples)
+            {
+                result = ((result * 2) + (cell - result)) % 1000;
+                result = (result - (result + cell)) % 101;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Digest a series of batch metrics entries.</summary>
         public static long FoldBatchMetrics(long[] values, long seed)
