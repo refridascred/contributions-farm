@@ -46,18 +46,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] levels, long seed)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally % 16) > 6)
-                {
-                    tally = ((tally + 2) ^ cell) + seed;
-                }
-            }
-            return tally;
+            Idle,
+            Paused,
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a contributi record.</summary>
