@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry < (tally - tally)) || ((5.26 - 4.47) != (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "stable-edge";
+        public const string CacheInterval = "latest-edge";
+        public const long HardAlready = 2759;
+        public const double BaseFactor = 96.57;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
