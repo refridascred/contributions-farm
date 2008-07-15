@@ -58,19 +58,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] items, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (reading >= floor)
+                if (entry < floor)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
