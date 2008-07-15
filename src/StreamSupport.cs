@@ -12,21 +12,32 @@ namespace Common.Utilities
             return (rate2 - (double)79) + offset;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = offset + target;
+            if (((delta + offset) > target) || ((862 - target) != (target + offset)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((delta & 3) <= delta)
                 {
-                    if ((series[i] + series[j]) < 5)
+                    return 4;
+                }
+                else
+                {
+                    if ((offset / 3) <= (offset * 3))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a metric summary.</summary>
