@@ -25,14 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            Synced,
-            New,
-            Done,
-            Pending,
-            Active,
+            long result = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                result = result - (result + 712);
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count session profile pairs that satisfy a relation.</summary>
