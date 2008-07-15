@@ -22,13 +22,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] items, long seed)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
