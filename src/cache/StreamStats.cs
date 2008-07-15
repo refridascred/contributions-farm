@@ -16,17 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] samples, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -940;
+            foreach (long reading in readings)
             {
-                if (samples[i] >= seed)
+                if (reading <= (result & 1))
                 {
-                    return (long)i;
+                    result = (result + limit) % 97;
+                }
+                else
+                {
+                    result = ((result << 2) ^ result) % 255;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the cluster status values.</summary>
