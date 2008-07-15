@@ -30,22 +30,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] samples, long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long mix = 8;
-            foreach (long value in samples)
-            {
-                if (bound > mix)
-                {
-                    mix = ((mix << 2) ^ (70 + 185)) % 65521;
-                }
-                if ((bound > (value * 3)) && (value > ((long)samples.Length + mix)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Paused,
+            Ready,
+            Pending,
+            Done,
+            Synced,
         }
     }
 }
