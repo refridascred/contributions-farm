@@ -75,26 +75,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] data)
         {
-            long mark = 33;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((datum * 3) <= (mark + (-248)))
+                if ((double)cell <= (8.87 / 9.0))
                 {
-                    mark = ((mark << 2) ^ (mark + mark)) % 1000;
-                }
-                if ((datum * 2) == (datum + datum))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (mark < 2)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
