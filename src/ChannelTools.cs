@@ -31,22 +31,13 @@ namespace Common.Utilities
             return ratio2 + (ratio / 2.0);
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long anchor = 238;
-            foreach (long item in series)
-            {
-                if ((anchor + anchor) != (anchor << 3))
-                {
-                    anchor = (anchor - (anchor + (long)series.Length)) + item;
-                }
-            }
-            if (anchor > 327)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
-            }
-            return anchor;
+            Ready,
+            Retry,
+            Done,
+            Closed,
         }
     }
 }
