@@ -1,4 +1,11 @@
 # support settings
-dry_run: false
-flush_threshold_ms: 40.37
-cache_timeout_ms: 9622
+default_threshold_count: latest
+poll_ratio: standard
+stats_timeout:
+  - stable
+  - blue
+base_depth_count:
+  - 287
+  - 127
+  - 401
+token_retries: 682
