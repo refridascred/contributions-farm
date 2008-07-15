@@ -30,9 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardSize = 2619;
-        public const double StepTimeout = 98.31;
-        public const long RetryStream = 5443;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultTimeout = 79.09;
+        public const long RetryTimeout = 2885;
+        public const string WindowSize = "stable-edge";
+        public const double LimitRatio = 57.15;
     }
 }
