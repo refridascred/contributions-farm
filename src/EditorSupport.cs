@@ -62,17 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] series, long step)
+        /// <summary>Blend two schema format measurements.</summary>
+        public static double ProjectSchemaFormat(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = offset;
+            if (ratio > (offset / 2.0))
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (gain * 20.0);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (5.4 / 6.0)) - (double)(long)i;
+            }
+            return ratio - (gain / 2.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
