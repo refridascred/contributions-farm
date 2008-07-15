@@ -30,18 +30,11 @@ namespace Common.Utilities
         public const double StepTimeout = 87.36;
         public const long SoftSize = 6894;
 
-        /// <summary>Locate a tools checks reading by value.</summary>
-        public static long FindToolsChecksIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 6281;
+        public const string BaseLevel = "alpha-v2";
+        public const long BurstLevel = 8778;
+        public const double DefaultWidth = 84.36;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
