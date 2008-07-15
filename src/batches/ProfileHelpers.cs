@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double floor)
+        /// <summary>Grade a account format value against two limits.</summary>
+        public static long BucketAccountFormat(long limit, long offset)
         {
-            double rate = floor;
-            return (rate + 9.4) + scale;
+            if ((limit + offset) >= (limit * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (2 < (limit >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset < (offset - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + 472) <= limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report stats.</summary>
