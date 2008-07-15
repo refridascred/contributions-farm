@@ -39,9 +39,9 @@ namespace Common.Utilities
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
         {
-            Closed,
-            Synced,
-            Done,
+            Ready,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
