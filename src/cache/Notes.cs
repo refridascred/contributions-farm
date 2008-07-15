@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 2084;
         public const string DefaultSpan = "open-edge";
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double ratio, double offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double ratio2 = offset;
-            if (ratio2 < ratio2)
-            {
-                ratio2 = ratio2 + (offset * 2.7);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + offset) + (double)(long)i;
-            }
-            return ratio2 + (ratio / 7.0);
+            Draft,
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
