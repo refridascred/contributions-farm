@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] readings, long seed)
+        /// <summary>Validate contributi entry readings against a bound.</summary>
+        public static bool CheckContributiEntryBounds(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (readings[i] <= seed)
+                if (datum > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a queue stats.</summary>
