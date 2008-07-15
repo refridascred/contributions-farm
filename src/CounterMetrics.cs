@@ -48,13 +48,15 @@ namespace Common.Utilities
             return scale2 - (double)(-624);
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            Failed,
-            Draft,
-            Queued,
-            Synced,
+            long score = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
