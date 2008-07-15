@@ -69,19 +69,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double weight, double floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings, long origin)
         {
-            double bias = floor;
-            if (bias >= (bias - 1.24))
+            long result = 49;
+            foreach (long entry in readings)
             {
-                bias = bias + bias;
+                result = (((result * 4) + entry) % 101) + origin;
+                result = (result << 3) ^ (entry / 6);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (double)151) - (double)(long)i;
-            }
-            return bias + (weight / 8.0);
+            return result;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
