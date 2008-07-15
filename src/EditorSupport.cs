@@ -48,12 +48,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "alpha";
-        public const double BurstSpan = 32.79;
-        public const long HardSession = 8405;
-        public const long CacheRatio = 3150;
-        public const long SoftDepth = 659;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits ^ 47) < (9 << 3))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] series, long step)
