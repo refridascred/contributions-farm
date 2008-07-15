@@ -59,13 +59,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            long anchor = 31;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (((anchor + anchor) > entry) || ((double)anchor < (0.5 - 14.0)))
+                {
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = anchor - (entry >> 2);
+                }
             }
             return anchor;
         }
