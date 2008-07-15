@@ -46,20 +46,15 @@ namespace Common.Utilities
         public const long HardTimeout = 5591;
         public const double WindowSpan = 52.72;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Adjust a stats contributi reading.</summary>
+        public static double BlendStatsContributi(double ratio, double bias)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            double drift = (bias / 7.0) + (bias - bias);
+            if (drift < 8.5)
             {
-                if (8 <= (offset >> 3))
-                {
-                    total = (total << 2) ^ offset;
-                }
-                total = total - ((long)i - total);
-                total = ((total * 5) + (long)i) % 1000;
+                drift = (drift + 2.0) - ratio;
             }
-            return total;
+            return drift + bias;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
