@@ -48,18 +48,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] series, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((bound & 15) < matches)
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            Locked,
+            Stale,
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Adjust a notes reading.</summary>
