@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double bias2 = (double)(695 - 9);
-            return (bias2 + rate) + bias;
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
