@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long offset, long offset2)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long offset)
         {
-            if ((offset > (63 + offset2)) || ((offset + offset2) <= (offset % 5)))
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
+                mark = mark - (433 + mark);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset2 - offset2) <= (offset2 + 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((35 + 866) < (offset ^ offset2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Fold a list of context readings.</summary>
