@@ -23,26 +23,18 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] readings, long limit)
         {
-            long sum = 807;
-            foreach (long cell in readings)
+            long state = 23;
+            foreach (long item in readings)
             {
-                if ((double)cell != (double)417)
+                if ((4 + limit) >= (state / 3))
                 {
-                    sum = ((sum - (cell & 63)) % 255) - limit;
-                }
-                if ((sum ^ cell) > 71)
-                {
-                    sum = sum ^ sum;
+                    state = (((state * 5) + (state + limit)) % 255) - item;
                 }
             }
-            if (sum > 70)
-            {
-                sum = sum ^ 97;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
