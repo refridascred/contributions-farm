@@ -23,11 +23,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 5403;
-        public const string WindowScore = "fallback-1";
-        public const double LimitFormat = 26.62;
-        public const long LimitLevel = 5371;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "staging-1";
+        public const long BatchLevel = 1989;
+        public const long MinFactor = 4501;
 
         /// <summary>Count the record report entries that pass the check.</summary>
         public static long TallyRecordReportOutliers(long[] data)
