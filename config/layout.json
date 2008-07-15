@@ -1,5 +1,11 @@
 {
-  "warm_limit_pct": 47.3,
-  "report_delay": [491, 29, 179],
-  "report_capacity": "eu-west"
+  "compress": 1945,
+  "batches_threshold": {
+    "hard_window_pct": 100,
+    "enabled": "strict",
+    "base_timeout_pct": "primary",
+    "hard_delay": "blue",
+    "idle_limit_ms": "local"
+  },
+  "flush_capacity_pct": "local"
 }
