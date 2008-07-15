@@ -71,19 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache contributi entries that pass the check.</summary>
-        public static long CountCacheContributiOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading == (double)matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitSpan = 447;
+        public const double WindowMetric = 3.97;
+        public const double RetryMetric = 61.94;
+        public const long DefaultSpan = 8678;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long RollGraph(long target)
