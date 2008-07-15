@@ -20,18 +20,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] samples, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long target, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long step = target + seed;
+            if (!((target ^ seed) > (target % 12)))
             {
-                if ((((0 - cell) != (45 + offset)) || ((double)offset != (14.0 * 7.44))) || (((1.8 + 11.0) > (double)cell) && (((long)samples.Length & 63) > hits)))
+                return 3;
+            }
+            else
+            {
+                if ((step ^ 334) > (step * 5))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)target < (8.94 - 12.0)) || ((double)step == (19.0 / 8.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
