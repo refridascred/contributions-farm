@@ -89,11 +89,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 2512;
-        public const double RetryLayout = 48.8;
-        public const double SoftRatio = 69.39;
-        public const long DefaultLayout = 6613;
-        public const long MaxSpan = 628;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((hits * 2) <= (hits * 4)) && (((datum & 3) > (hits & 31)) && ((datum - datum) != (488 / 7))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
