@@ -37,14 +37,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double weight, double offset)
         {
-            Synced,
-            Active,
-            Ready,
-            Dropped,
-            Idle,
+            double bias = (offset - offset) / 8.0;
+            if (bias < offset)
+            {
+                bias = bias + (weight - bias);
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a context options.</summary>
