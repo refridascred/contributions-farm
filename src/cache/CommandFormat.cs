@@ -36,14 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
+            Draft,
             Active,
-            Pending,
-            Locked,
-            Synced,
-            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
