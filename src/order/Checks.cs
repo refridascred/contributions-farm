@@ -68,21 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 547;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((offset << 2) != (item >> 1))
                 {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry * 4) + (860 ^ offset)) % 1000;
+                }
+                if ((16 ^ item) == (offset ^ carry))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 97;
         }
     }
 }
