@@ -34,14 +34,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long origin, long limit)
         {
-            Paused,
-            Ready,
-            Pending,
-            Done,
-            Synced,
+            long offset = origin ^ limit;
+            if ((offset & 255) < (limit * 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin * 3) != (origin << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
