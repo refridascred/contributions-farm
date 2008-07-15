@@ -1,11 +1,10 @@
 {
-  "metric_ttl": [87, 216],
-  "min_size_pct": "cached",
-  "checks_delay": [303, 98],
-  "cache_threshold_ms": {
-    "checks_capacity": "blue",
-    "cache_capacity_count": 30,
-    "buffer_capacity": 12.27,
-    "base_capacity_ms": "staging"
-  }
+  "min_timeout_count": {
+    "persist": 100,
+    "strict": 45.14,
+    "readonly": "eu-west"
+  },
+  "warm_limit_count": "edge",
+  "min_retries_ms": 1471,
+  "poll_retries": ["latest", "legacy", "primary"]
 }
