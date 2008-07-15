@@ -1,7 +1,21 @@
 {
-  "retry_interval": false,
-  "cache_depth_count": 250,
-  "enabled": false,
-  "warm_limit": 559,
-  "base_depth_ms": true
+  "cluster_size": 70.34,
+  "checks_timeout": 3371,
+  "default_threshold": 9868,
+  "base_ttl_count": {
+    "max_depth_pct": 75,
+    "soft_limit_count": 47.25,
+    "contributi_threshold": false,
+    "commits_depth": ["strict", "green", "local"],
+    "base_retries_count": 4492,
+    "queue_limit": "green"
+  },
+  "queue_retries": {
+    "persist": "open",
+    "sync_interval_ms": 33,
+    "dry_run": 23,
+    "strict": "cached",
+    "warm_ratio": 19,
+    "layout_capacity": 88
+  }
 }
