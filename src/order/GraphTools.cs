@@ -63,11 +63,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 4736;
-        public const string BurstBudget = "latest-1";
-        public const string MaxProfile = "strict-v2";
-        public const long BaseLevel = 8582;
-        public const long RetryScore = 524;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
     }
 }
