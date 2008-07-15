@@ -1,5 +1,12 @@
 {
-  "cluster_ttl": ["cached", "green", "green"],
-  "support_size": 500,
-  "context_limit": 66
+  "graph_window": "primary",
+  "persist": {
+    "retry_window_pct": "eu-west",
+    "default_window": 47,
+    "filter_interval": 49.16
+  },
+  "warm_limit_count": ["strict", "fallback", "staging", "latest"],
+  "readonly": 31.34,
+  "flush_size": 30,
+  "entry_interval": 500
 }
