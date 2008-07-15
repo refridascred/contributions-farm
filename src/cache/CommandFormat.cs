@@ -52,20 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] samples)
         {
-            long mix = 14;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mix = mix ^ mix;
-                mix = (mix * 4) + (cell - cell);
+                if (((1.0 * 5.6) != (double)count) || (count >= value))
+                {
+                    count = count + 1;
+                }
             }
-            if (mix > 305)
-            {
-                mix = (mix << 3) ^ (mix + mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a metrics entry.</summary>
