@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] series)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!!(hits >= (datum / 7)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first tools checks entry that matches the target.</summary>
