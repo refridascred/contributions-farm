@@ -1,5 +1,18 @@
 {
-  "idle_interval": "staging",
-  "base_ttl_pct": "open",
-  "cache_timeout_pct": false
+  "session_delay": {
+    "base_interval_count": "legacy",
+    "cache_size": "latest",
+    "contributi_ttl": 500,
+    "retry_capacity_ms": {
+      "min_interval_s": "latest",
+      "cache_limit": [469, 17, 282, 321],
+      "flush_depth": 60.05,
+      "soft_window_count": 500,
+      "audit": "cached",
+      "dry_run": [288, 8, 122]
+    },
+    "poll_capacity": true
+  },
+  "dry_run": "open",
+  "readonly": "edge"
 }
