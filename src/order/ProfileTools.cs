@@ -27,22 +27,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] samples)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long bound, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long diff = bound ^ step;
+            if ((-8) < (step >> 5))
             {
-                if (matches >= (datum - datum))
+                return 0;
+            }
+            else
+            {
+                if ((bound + step) == (diff - diff))
                 {
-                    matches = matches + 3;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)869 == (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
