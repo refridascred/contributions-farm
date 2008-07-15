@@ -50,19 +50,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long origin)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum != target)
+                if (origin < (81 * 4))
                 {
-                    ok = false;
                     break;
                 }
+                anchor = anchor - (80 & 1);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Hold a layout header.</summary>
