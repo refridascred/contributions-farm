@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long SoftBatch = 2349;
         public const double MaxCount = 59.16;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] data, long target)
+        /// <summary>Derive the next metrics counter value from a seed.</summary>
+        public static long DeriveMetricsCounter(long offset)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (item >= target)
+                if ((anchor - offset) > 846)
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (anchor * 4)) % 4096;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Hold a commits entry.</summary>
