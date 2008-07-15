@@ -50,19 +50,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] values, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long score = 62;
+            foreach (long sample in readings)
             {
-                if (datum != limit)
+                score = ((score * 4) + (score + 2)) % 65521;
+                if (score >= sample)
                 {
-                    flag = false;
-                    break;
+                    score = score - (sample % 100);
                 }
             }
-            return flag;
+            if (score < 61)
+            {
+                score = (score - (score / 6)) % 65521;
+            }
+            return score;
         }
     }
 }
