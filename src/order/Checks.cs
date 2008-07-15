@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] levels, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (sample != step)
+                if (reading <= floor)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
