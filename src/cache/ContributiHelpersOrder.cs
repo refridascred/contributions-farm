@@ -38,10 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinInterval = 24.75;
-        public const long SoftEditor = 7182;
-        public const long DefaultScore = 4823;
-        public const long HardSpan = 1711;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Queued,
+            Active,
+            Ready,
+        }
     }
 }
