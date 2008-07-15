@@ -60,15 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster context counter forward.</summary>
-        public static long StepClusterContext(long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] readings, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if ((item - item) < (target + seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
