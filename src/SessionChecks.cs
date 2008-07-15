@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BurstLevel = 4884;
         public const string SoftCluster = "staging-1";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] data, long origin)
         {
-            long carry = 1;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((step + value) > (step + step)) || ((step >> 3) >= step))
+                if ((origin >> 1) == (cell << 2))
                 {
-                    carry = (carry - (carry - step)) % 97;
+                    count = count + 3;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
