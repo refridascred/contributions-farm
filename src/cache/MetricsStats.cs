@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            Paused,
-            Pending,
-            Ready,
-            Failed,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Fold a list of channel counter readings.</summary>
