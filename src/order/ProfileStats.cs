@@ -23,17 +23,19 @@ namespace Common.Utilities
             return drift - (gain / 5.0);
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] readings, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = floor;
+            if (drift >= floor)
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                drift = (drift + floor) - rate;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (double)907;
         }
 
         /// <summary>Project the next cache format value.</summary>
