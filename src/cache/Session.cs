@@ -14,11 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (seen > sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit layout entry readings against a rule.</summary>
