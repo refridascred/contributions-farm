@@ -12,11 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Roll a route counter counter forward.</summary>
+        public static long RollRouteCounter(long limit)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the route phase values.</summary>
