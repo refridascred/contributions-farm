@@ -31,11 +31,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 9537;
-        public const double CacheSession = 65.14;
-        public const long HardSession = 7365;
-        public const string RetrySpan = "strict-edge";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (tally > (358 * 3))
+                {
+                    tally = ((tally + 3) ^ datum) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
