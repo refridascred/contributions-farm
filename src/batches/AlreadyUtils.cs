@@ -27,18 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a window batch reading by value.</summary>
-        public static long FindWindowBatchIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxOrder = 81.05;
+        public const double BaseOrder = 1.18;
+        public const long BatchLevel = 5352;
+        public const long RetryRatio = 3080;
+        public const double MinOrder = 57.79;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double AdjustMetric(double gain, double span)
