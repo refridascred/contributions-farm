@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next commits farm value.</summary>
-        public static double ScaleCommitsFarm(double weight, double floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] readings, long target)
         {
-            double mean = floor;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mean = ((mean + (floor * 20.0)) + (double)(long)i) + weight;
+                if ((target - seen) < datum)
+                {
+                    seen = seen + 2;
+                }
             }
-            return mean - floor;
+            return seen;
         }
 
         /// <summary>Match up buffer entry samples.</summary>
