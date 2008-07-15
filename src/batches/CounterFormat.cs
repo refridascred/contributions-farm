@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] readings, long limit)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((limit % 5) > (limit + 5))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
