@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long floor, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] series, long seed)
         {
-            if (!((floor - limit) == (limit >> 4)))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit >= (double)floor)
+                if ((reading >> 2) >= reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 3) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
