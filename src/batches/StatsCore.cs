@@ -28,19 +28,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every command format entry stays within the limit.</summary>
-        public static bool VerifyCommandFormatBounds(long[] values, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] values)
         {
-            bool found = true;
+            long count = 0;
             foreach (long reading in values)
             {
-                if (reading < origin)
+                if ((reading <= (count + count)) && ((count - reading) < reading))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
