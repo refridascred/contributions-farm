@@ -34,21 +34,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Audit metrics contributi readings against a rule.</summary>
+        public static long MeasureMetricsContributiGaps(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)8 >= (double)hits)
                 {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 3) - cell) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
