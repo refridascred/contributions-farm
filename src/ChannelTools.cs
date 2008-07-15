@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long offset, long offset2)
         {
-            double ratio = floor;
-            if (ratio > (ratio / 3.0))
+            if ((offset > (63 + offset2)) || ((offset + offset2) <= (offset % 5)))
             {
-                ratio = ratio + (scale / 8.0);
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = (ratio + (floor + floor)) + (double)(long)i;
+                if ((offset2 - offset2) <= (offset2 + 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((35 + 866) < (offset ^ offset2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return ratio + (floor * 7.0);
         }
 
         /// <summary>Project the next payload value.</summary>
