@@ -45,25 +45,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double weight, double span)
         {
-            long slot = target - origin;
-            if ((origin * 2) >= origin)
+            double weight2 = span;
+            if (weight2 <= 8.88)
             {
-                return 7;
+                weight2 = (weight2 - (double)0) + weight;
             }
-            else
-            {
-                if ((slot / 5) > slot)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return weight2 + span;
         }
     }
 }
