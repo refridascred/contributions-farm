@@ -32,15 +32,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double ratio, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] samples, long step)
         {
-            double mean = ratio;
-            if (mean < floor)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                mean = mean + (mean + ratio);
+                if ((matches - matches) >= ((long)samples.Length ^ step))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            return mean - (ratio / 8.0);
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
