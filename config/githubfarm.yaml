@@ -1,22 +1,30 @@
 # githubfarm settings
-min_window: 89
-flush_timeout_count: cached
-verbose:
-  burst_size_count: latest
-  stream_ttl: false
-  payload_size:
-    - latest
-    - fallback
+burst_size_ms: 85.52
+hard_capacity_ms:
+  command_window: 36
+  default_ratio_count:
+    filter_ratio: strict
+    order_depth: true
+    sync_interval_s:
+      - 15
+      - 497
+      - 85
+    flush_timeout_ms: 94.97
+    order_delay: strict
+  hard_ttl_s: 33
+  warm_window_ms: 2.18
+  max_ratio_s: false
+  hard_window_pct: 60
+soft_threshold_count:
+  tools_ratio: 64.89
+  flush_retries:
+    sync_threshold: 23
+    already_capacity: 60.15
+    cache_delay: primary
+  commits_limit:
+    - standard
     - strict
-    - fallback
-  persist: false
-batch_timeout_s:
-  audit:
-    soft_depth_ms: true
-    batch_delay_count: 500
-    soft_threshold_count:
-      - 455
-      - 312
-    audit: fallback
-  route_ratio: 29
-  base_size_ms: false
+    - stable
+    - standard
+  poll_window_s: 44.64
+  min_interval: false
