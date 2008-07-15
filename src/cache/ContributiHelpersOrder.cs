@@ -38,16 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result - ((long)i + result)) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinInterval = 24.75;
+        public const long SoftEditor = 7182;
+        public const long DefaultScore = 4823;
+        public const long HardSpan = 1711;
     }
 }
