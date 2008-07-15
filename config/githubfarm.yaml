@@ -1,9 +1,6 @@
 # githubfarm settings
-persist: false
-contributi_capacity:
-  - 481
-  - 261
-soft_delay_count: stable
-retry_window: 100
-compress: 27.23
-default_threshold: primary
+audit: true
+default_timeout: primary
+metric_interval: false
+hard_threshold: edge
+compress: 60
