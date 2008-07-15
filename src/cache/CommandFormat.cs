@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] readings, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] series, long seed)
         {
-            long score = 27;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((target ^ 7) > (score - target))
+                if (((double)value < (2.02 + 19.0)) && ((count & 31) == (count + count)))
                 {
-                    score = ((score * 2) + score) + item;
+                    count = (count + 3) - seed;
                 }
             }
-            if (score > 0)
-            {
-                score = ((score * 5) + 7) % 65521;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
