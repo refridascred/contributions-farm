@@ -38,28 +38,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long floor)
         {
-            long sum = 89;
-            foreach (long entry in series)
+            if ((floor * 2) >= floor)
             {
-                if (((entry + sum) >= (entry + floor)) || (120 > (floor << 1)))
+                return 1;
+            }
+            else
+            {
+                if ((716 - floor) >= (offset / 5))
                 {
-                    sum = sum ^ (floor % 12);
-                    sum = ((sum << 3) ^ (sum << 2)) % 255;
-                }
-                sum = (sum - (956 / 6)) % 65521;
-                if ((3.0 / 6.0) <= (double)entry)
-                {
-                    sum = sum ^ (sum * 2);
+                    return 2;
                 }
                 else
                 {
-                    sum = ((sum * 5) + (sum - 0)) % 1000;
+                    if ((offset * 4) <= (7 ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((10 ^ floor) == (offset % 64))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
