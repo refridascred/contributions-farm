@@ -38,31 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long floor, long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if (((limit - floor) <= (limit % 100)) || ((floor + floor) != (limit + limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 5) <= (limit / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((961 + floor) > floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
