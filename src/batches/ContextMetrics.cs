@@ -35,18 +35,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] series, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long sum = 501;
+            foreach (long datum in series)
             {
-                if (hits > (sample & 7))
+                if ((sum ^ datum) < target)
                 {
-                    hits = (hits + 1) - offset;
+                    sum = (sum - (datum / 4)) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum >> 4)) % 101;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
