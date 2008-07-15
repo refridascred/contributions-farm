@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double rate, double span)
-        {
-            double ratio = (double)(4 + 191);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + span) + (double)(long)i) + rate;
-            }
-            return ratio + (ratio * 0.1);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 5708;
+        public const long CacheSpan = 2115;
+        public const long LimitProfile = 8487;
+        public const string MinProfile = "alpha";
+        public const string WindowCount = "standard-1";
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long SortFarm(long origin, long limit)
