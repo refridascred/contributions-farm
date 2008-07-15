@@ -1,6 +1,8 @@
 # entry settings
-sync_capacity_pct: false
-min_timeout_pct: true
-verbose: 1871
-cache_size: open
-dry_run: false
+batch_delay: latest
+contributi_ratio: standard
+sync_ratio_s: false
+cache_capacity_pct:
+  context_limit: 30
+  sync_window_ms: cached
+  cache_capacity_pct: eu-west
