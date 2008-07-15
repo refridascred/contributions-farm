@@ -58,14 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 17.47;
+        public const double IdleCommand = 34.36;
+        public const long MinWidth = 4202;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long SeekAccountIndex(long[] values, long step)
