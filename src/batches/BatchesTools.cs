@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 2499;
+        public const string IdleRatio = "fallback-1";
+        public const long IdleContext = 9852;
+        public const long RetryTimeout = 5172;
+        public const long BurstContext = 8843;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long BucketSchema(long bound, long origin)
