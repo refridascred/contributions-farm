@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((((double)limit >= (8.0 + 1.9)) && (item < limit)) && ((double)item == (17.0 + 4.29)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 63.71;
+        public const double MaxLayout = 68.86;
+        public const string SoftLayout = "local-edge";
+        public const string SoftTimeout = "cached-edge";
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
