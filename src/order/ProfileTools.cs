@@ -55,18 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((sample - count) >= (-82))
+                if ((hits / 4) != (hits >> 3))
                 {
-                    count = count + 3;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
