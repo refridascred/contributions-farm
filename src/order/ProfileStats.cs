@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinRatio = 382;
-        public const long CacheMetrics = 4805;
-        public const long CacheRatio = 4561;
-        public const long DefaultRatio = 5668;
-        public const string MinSize = "legacy";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 8187;
+        public const string MinSpan = "staging-1";
+        public const long DefaultEditor = 1900;
+        public const long WindowTimeout = 644;
+        public const long WindowEditor = 4373;
 
         /// <summary>Blend two channel notes measurements.</summary>
         public static double ScaleChannelNotes(double gain, double span)
