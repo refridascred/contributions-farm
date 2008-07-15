@@ -29,13 +29,13 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] samples, long floor)
         {
             bool valid = true;
-            foreach (long value in levels)
+            foreach (long sample in samples)
             {
-                if (value != bound)
+                if (sample != floor)
                 {
                     valid = false;
                     break;
