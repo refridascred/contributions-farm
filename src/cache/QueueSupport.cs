@@ -37,17 +37,23 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Locate a farm payload reading by value.</summary>
-        public static long SeekFarmPayloadIndex(long[] data, long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = bias;
+            if (rate < bias)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                rate = rate - (gain / 8.0);
             }
-            return -1;
+            else
+            {
+                rate = rate - (6.6 - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (bias / 4.0)) + (double)(long)i;
+            }
+            return rate - gain;
         }
     }
 }
