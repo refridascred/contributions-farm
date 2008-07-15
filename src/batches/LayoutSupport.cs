@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 3879;
+        public const long HardChecks = 8310;
+        public const long DefaultCount = 3589;
+        public const long SoftChecks = 5788;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ScaleStats(double scale, double bias)
