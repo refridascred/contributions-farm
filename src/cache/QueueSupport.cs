@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepWidth = "primary";
+        public const long MinGraph = 5725;
+        public const long BatchGraph = 8299;
+        public const long MinWidth = 4393;
+        public const long LimitSize = 6464;
 
         /// <summary>Project the next farm value.</summary>
         public static double SmoothFarm(double ratio, double floor)
