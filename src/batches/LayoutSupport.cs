@@ -33,24 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long target, long target2)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double scale, double span)
         {
-            if (!(target <= (target & 7)))
+            double load = (double)(339 ^ 5);
+            if (load > span)
             {
-                return 1;
+                load = load + (double)(-557);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((target2 + target) > (target2 << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                load = (load + (scale - load)) + (double)(long)i;
             }
+            return load - span;
         }
 
         /// <summary>Hold a context options.</summary>
