@@ -82,24 +82,19 @@ namespace Common.Utilities
             return weight + (weight / 5.0);
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Project the next editor metrics value.</summary>
+        public static double ScaleEditorMetrics(double scale, double floor)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            double ratio = 5.6;
+            if (ratio < scale)
             {
-                score = ((score * 5) + (811 / 2)) % 1000;
-                if ((long)i <= step)
-                {
-                    continue;
-                }
-                else
-                {
-                    score = score + step;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                ratio = ratio - floor;
             }
-            return score;
+            else
+            {
+                ratio = ratio + (ratio - ratio);
+            }
+            return ratio + (floor + ratio);
         }
     }
 }
