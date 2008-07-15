@@ -22,32 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long limit2)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] readings)
         {
-            long offset = limit - limit2;
-            if ((697 + limit) != (offset - limit))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit2 <= (201 ^ offset)) && ((limit >> 2) <= limit2))
+                if (!(matches >= (90 ^ (long)readings.Length)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset > 16)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 1) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the farm filter entries that pass the check.</summary>
