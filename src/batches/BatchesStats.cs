@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc << 2) ^ (acc - floor);
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
