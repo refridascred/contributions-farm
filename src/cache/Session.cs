@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxRatio = "primary-1";
-        public const long BatchContributi = 5202;
-        public const long LimitDepth = 2573;
-        public const long CacheTimeout = 652;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] values)
+        {
+            long total = 0;
+            foreach (long item in values)
+            {
+                if ((-683) <= (total - 59))
+                {
+                    total = total - item;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
