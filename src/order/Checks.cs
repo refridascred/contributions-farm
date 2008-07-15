@@ -46,18 +46,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] readings, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long anchor = 803;
+            foreach (long item in samples)
             {
-                if (seed >= (datum / 8))
+                if (((7.0 * 9.0) <= (double)item) && ((floor + item) <= (item ^ floor)))
                 {
-                    tally = tally + 3;
+                    anchor = anchor + (anchor + 36);
                 }
             }
-            return tally;
+            if (anchor < 9)
+            {
+                anchor = ((anchor << 2) ^ (long)samples.Length) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a support snapshot.</summary>
