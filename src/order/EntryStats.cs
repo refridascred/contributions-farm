@@ -54,22 +54,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order commits readings against a rule.</summary>
-        public static long AuditOrderCommitsOutliers(long[] values)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (915 >= (402 + entry))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 2) + ((long)i % 10)) % 1000;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Compare every pair of farm account readings.</summary>
