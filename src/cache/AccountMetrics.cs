@@ -44,11 +44,11 @@ namespace Common.Utilities
         public const long StepAlready = 2273;
         public const double RetryRatio = 74.33;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 5016;
-        public const long CacheScore = 470;
-        public const long SoftWidth = 721;
-        public const long BatchRatio = 1703;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxTimeout = 92.56;
+        public const long StepRecord = 120;
+        public const long StepCount = 6253;
+        public const double MaxRecord = 98.43;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long CompareGraphCount(long[] series)
