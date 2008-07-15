@@ -21,11 +21,17 @@ namespace Common.Utilities
         public const string BatchInterval = "cached";
         public const double BurstCount = 97.01;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] values, long step)
         {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record mode values.</summary>
