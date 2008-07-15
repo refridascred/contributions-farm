@@ -52,19 +52,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels, long bound)
+        /// <summary>Check that every stream stats entry stays within the limit.</summary>
+        public static bool ValidateStreamStatsBounds(long[] samples, long step)
         {
-            long score = 21;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                score = (((score << 2) ^ (bound & 3)) % 101) ^ datum;
+                if (cell > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (score > 2)
-            {
-                score = (score * 5) + (bound % 16);
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Hold a filter record.</summary>
