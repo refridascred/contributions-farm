@@ -22,11 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowLevel = 1037;
-        public const long CacheEditor = 9814;
-        public const long BaseEditor = 3302;
-        public const double WindowSize = 47.75;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long origin, long limit)
+        {
+            if (limit > (limit % 97))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit % 60) != (origin + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
