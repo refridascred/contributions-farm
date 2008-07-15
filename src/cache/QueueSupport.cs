@@ -23,22 +23,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] items)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mix = 8;
+            foreach (long value in samples)
             {
-                if ((matches << 2) >= (matches % 16))
+                if (bound > mix)
                 {
-                    matches = (matches + 1) + entry;
+                    mix = ((mix << 2) ^ (70 + 185)) % 65521;
                 }
-                else
+                if ((bound > (value * 3)) && (value > ((long)samples.Length + mix)))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
