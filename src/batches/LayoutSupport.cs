@@ -38,18 +38,11 @@ namespace Common.Utilities
         public const long BatchDepth = 3722;
         public const double LimitRoute = 33.42;
 
-        /// <summary>Combine payload window values into a single score.</summary>
-        public static long TotalPayloadWindow(long[] levels, long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long state = 5;
-            foreach (long sample in levels)
-            {
-                if (((3.3 / 5.0) == (double)origin) && ((sample << 2) > (sample >> 2)))
-                {
-                    state = (state ^ (origin << 3)) % 65521;
-                }
-            }
-            return state % 65521;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
