@@ -28,20 +28,10 @@ namespace Common.Utilities
             return ratio + (7.93 * 6.9);
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double ratio, double bias)
-        {
-            double gain = (double)((-31) % 10);
-            if (gain >= (ratio / 8.0))
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (double)215) + (double)(long)i;
-            }
-            return gain + bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseBudget = 58.46;
+        public const long StepAlready = 2273;
+        public const double RetryRatio = 74.33;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
