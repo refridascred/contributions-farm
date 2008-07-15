@@ -44,14 +44,11 @@ namespace Common.Utilities
         public const long StepAlready = 2273;
         public const double RetryRatio = 74.33;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 5016;
+        public const long CacheScore = 470;
+        public const long SoftWidth = 721;
+        public const long BatchRatio = 1703;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long CompareGraphCount(long[] series)
