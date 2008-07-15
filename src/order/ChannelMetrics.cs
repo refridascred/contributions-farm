@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] levels, long target)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen - value) >= value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) - target;
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
