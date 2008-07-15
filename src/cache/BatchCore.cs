@@ -27,13 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit record filter readings against a rule.</summary>
