@@ -25,18 +25,32 @@ namespace Common.Utilities
         public const long CacheSchema = 9784;
         public const long WindowSpan = 3818;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] readings, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long diff = offset + offset2;
+            if (((double)diff > 18.0) && ((diff - offset2) <= diff))
             {
-                if ((floor * 3) > (floor - datum))
+                return 8;
+            }
+            else
+            {
+                if ((offset % 12) < (offset + (-63)))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((8.07 / 4.0) != (double)offset) || (offset < (offset2 % 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
