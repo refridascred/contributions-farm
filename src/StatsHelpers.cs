@@ -35,14 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            New,
-            Synced,
-            Retry,
-            Done,
-            Paused,
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
