@@ -14,18 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                long delta = ((long)i - seed) - (seed >> 4);
-                result = (result << 2) ^ (seed + delta);
-                result = (result ^ seed) % 4096;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Paused,
+            Retry,
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Audit layout entry readings against a rule.</summary>
