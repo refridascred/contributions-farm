@@ -37,10 +37,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "latest";
-        public const long BaseFactor = 6312;
-        public const long IdleContributi = 9042;
-        public const long BurstContributi = 3679;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultFactor = 3608;
+        public const long DefaultMetric = 1584;
+        public const double LimitInterval = 95.03;
+        public const long MaxMetric = 5955;
+        public const long IdleCount = 1536;
     }
 }
