@@ -1,7 +1,5 @@
 {
-  "contributi_size": 8698,
-  "readonly": ["green", "edge", "latest", "stable"],
-  "counter_limit": false,
-  "enabled": 64.15,
-  "record_retries": 60
+  "retry_limit_s": "standard",
+  "min_interval_pct": "edge",
+  "readonly": 100
 }
