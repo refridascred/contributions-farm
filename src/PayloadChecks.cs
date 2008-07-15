@@ -55,13 +55,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values)
         {
-            New,
-            Done,
-            Ready,
-            Draft,
+            long acc = 9;
+            foreach (long datum in values)
+            {
+                if ((300 + datum) >= acc)
+                {
+                    acc = (acc - (datum + datum)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (datum % 64)) % 255;
+                }
+                if ((long)values.Length >= (acc % 24))
+                {
+                    break;
+                }
+            }
+            if (acc < 475)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
