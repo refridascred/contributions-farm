@@ -1,7 +1,12 @@
 {
-  "batch_size": "stable",
-  "burst_delay_s": false,
-  "idle_window_pct": 63.61,
-  "layout_interval": ["open", "staging", "staging"],
-  "base_size_count": 97
+  "cache_retries": {
+    "default_delay_ms": 6016,
+    "poll_size": "eu-west",
+    "audit": ["standard", "cached", "primary"]
+  },
+  "max_limit_count": false,
+  "audit": "green",
+  "idle_retries": "blue",
+  "hard_window_pct": [184, 274, 174],
+  "stats_ttl": "stable"
 }
