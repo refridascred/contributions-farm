@@ -1,15 +1,20 @@
 # entry settings
-cache_ttl_pct: fallback
-flush_limit: 8291
-batch_capacity:
-  - green
-  - primary
-min_retries_ms: true
-strict:
-  idle_limit: staging
-  cache_interval_pct: false
-  idle_threshold: strict
-  hard_depth_ms:
-    - 282
-    - 275
-  poll_depth: 29
+hard_delay_count: eu-west
+githubfarm_interval: primary
+readonly: eu-west
+retry_retries_count:
+  retry_limit_s: 67
+  default_size_pct:
+    report_ttl: edge
+    graph_limit: 36.93
+    max_window_count: false
+  persist: 64.3
+  enabled: false
+  cache_ratio:
+    batch_delay_pct:
+      - 341
+      - 81
+      - 63
+    soft_window_count: 2458
+    min_timeout_s: 2859
+  poll_window: 730
