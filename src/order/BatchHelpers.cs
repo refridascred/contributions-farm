@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 4970;
+        public const double CacheSpan = 12.6;
+        public const long BaseSpan = 1977;
+        public const long WindowWidth = 5826;
+        public const long BaseWidth = 8185;
 
         /// <summary>Fold a list of stream support readings.</summary>
         public static long TotalStreamSupport(long[] items)
