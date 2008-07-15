@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] samples, long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] items, long step)
         {
-            long sum = 63;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + bound) + datum;
-                sum = (sum * 3) + (sum ^ sum);
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a cache summary.</summary>
