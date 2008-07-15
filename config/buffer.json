@@ -1,14 +1,6 @@
 {
-  "retry_timeout_s": 42.97,
-  "default_capacity": 5673,
-  "hard_ratio_count": false,
-  "window_size": ["eu-west", "staging", "cached", "eu-west"],
-  "retry_window": {
-    "account_size": 9171,
-    "default_threshold": 92,
-    "batch_threshold": "staging",
-    "sync_limit_s": "strict",
-    "max_limit_ms": 21
-  },
-  "audit": "latest"
+  "base_ratio_count": 17,
+  "compress": "fallback",
+  "verbose": false,
+  "soft_threshold_pct": "standard"
 }
