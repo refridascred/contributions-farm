@@ -24,12 +24,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Grade a filter format value against two limits.</summary>
+        public static long SortFilterFormat(long origin, long target)
         {
-            Ready,
-            Stale,
-            Failed,
+            if ((81 >> 1) >= (target * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((origin * 3) != (origin - origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 1) <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report options.</summary>
