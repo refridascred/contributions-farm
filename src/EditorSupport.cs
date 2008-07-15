@@ -36,15 +36,12 @@ namespace Common.Utilities
         public const long BurstLevel = 8778;
         public const double DefaultWidth = 84.36;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Synced,
-            Closed,
-            Stale,
-            Done,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSession = "alpha";
+        public const double BurstSpan = 32.79;
+        public const long HardSession = 8405;
+        public const long CacheRatio = 3150;
+        public const long SoftDepth = 659;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] series, long step)
