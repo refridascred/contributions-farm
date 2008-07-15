@@ -59,26 +59,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Compare every pair of contributi batches readings.</summary>
+        public static long OverlapContributiBatchesCount(long[] values)
         {
-            long result = 9;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((29 + result) >= result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result << 2) ^ result) % 65521;
-                }
-                if (!((double)datum > (double)result))
-                {
-                    break;
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 2)
-            {
-                result = result ^ (result ^ 4);
-            }
-            return result % 65521;
+            return seen;
         }
     }
 }
