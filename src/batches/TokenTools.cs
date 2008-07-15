@@ -15,17 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first entry farm entry that matches the target.</summary>
-        public static long SeekEntryFarmIndex(long[] series, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 2;
+            foreach (long sample in series)
             {
-                if (series[i] > offset)
+                if ((20.0 < (double)state) || ((sample % 2) >= (479 + origin)))
                 {
-                    return (long)i;
+                    state = (state ^ (state / 2)) % 65521;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Accumulate queue samples.</summary>
