@@ -1,9 +1,8 @@
-id,label,count
-1,721,31
-2,latest,blue
-3,staging,693
-4,284,461
-5,primary,554
-6,298,53.03
-7,53.26,97.48
-8,primary,516
+id,state,level,weight,owner
+1,220,strict,green,700
+2,5.62,74.53,828,681
+3,314,542,97.71,111
+4,cached,946,standard,fallback
+5,stable,687,primary,stable
+6,882,stable,eu-west,cached
+7,9.03,76,476,990
