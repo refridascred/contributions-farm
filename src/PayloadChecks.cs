@@ -40,26 +40,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate token account samples.</summary>
-        public static long ScoreTokenAccount(long[] levels)
+        /// <summary>Find the first order stats entry that matches the target.</summary>
+        public static long FindOrderStatsIndex(long[] data, long target)
         {
-            long total = 56;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)total < (17.0 * 9.23))
+                if ((data[i] > target) && ((data[i] % 5) == 0))
                 {
-                    total = (total ^ (cell ^ total)) % 101;
-                }
-                if ((cell + cell) >= (total % 8))
-                {
-                    total = (total - (total - 8)) % 1000;
-                }
-                if ((total - cell) >= cell)
-                {
-                    total = total ^ (total % 12);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
