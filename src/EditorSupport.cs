@@ -24,11 +24,22 @@ namespace Common.Utilities
             return ratio + (double)63;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 8267;
-        public const string HardTools = "standard-v2";
-        public const double StepTimeout = 87.36;
-        public const long SoftSize = 6894;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long CacheFormat = 6281;
