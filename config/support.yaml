@@ -1,36 +1,25 @@
 # support settings
-idle_window: cached
-checks_ratio:
-  channel_size:
-    entry_window:
-      - open
-      - open
-      - primary
-      - cached
-    already_threshold: 31
-    route_depth: legacy
-    record_depth: 57.69
-    hard_threshold_ms:
-      - 376
-      - 388
-      - 220
-      - 123
-    dry_run: blue
-  retry_retries_ms: 71.89
-  persist: true
-  base_interval_pct: 5365
-  enabled: edge
-  soft_threshold_count: eu-west
-hard_timeout:
-  graph_ttl:
-    - blue
-    - cached
-  enabled: latest
-  hard_window_pct: 30
-  max_capacity_ms: open
-  compress:
-    idle_delay_ms:
-      - 245
+metrics_capacity:
+  - legacy
+  - stable
+  - local
+flush_depth_count:
+  batch_retries_count: legacy
+  dry_run: 8933
+  default_retries_count:
+    - 324
+    - 126
+    - 219
+    - 252
+  soft_retries:
+    min_size_pct: stable
+    audit:
+      - 38
+      - 119
       - 313
-    compress: 28
-    editor_window: false
+      - 390
+    warm_size: cached
+    hard_depth: edge
+layout_threshold:
+  - cached
+  - green
