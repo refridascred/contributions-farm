@@ -60,13 +60,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Rank session githubfarm input into a small class.</summary>
+        public static long GradeSessionGithubfarm(long limit, long floor)
         {
-            Queued,
-            Stale,
-            Draft,
-            Synced,
+            if ((8.3 * 5.34) < (double)limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit <= (802 % 64)) && ((limit << 3) == (floor * 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
