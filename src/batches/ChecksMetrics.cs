@@ -77,15 +77,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double offset)
+        /// <summary>Compare every pair of channel editor readings.</summary>
+        public static long CompareChannelEditorCount(long[] levels)
         {
-            double scale = weight;
-            if (scale > (double)6)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + (double)1;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale - offset;
+            return tally;
         }
     }
 }
