@@ -29,11 +29,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Compare every pair of batch window readings.</summary>
+        public static long PairBatchWindowCount(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
