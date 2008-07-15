@@ -15,23 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a githubfarm metrics reading.</summary>
-        public static double ProjectGithubfarmMetrics(double rate, double bias)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double mean = 8.09 * 8.96;
-            if (mean > (double)73)
-            {
-                mean = (mean - (double)64) + bias;
-            }
-            else
-            {
-                mean = mean + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (rate * 14.0)) + (double)(long)i;
-            }
-            return mean + 1.0;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
