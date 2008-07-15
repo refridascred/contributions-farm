@@ -38,16 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the context stats series from a seed.</summary>
-        public static long RollContextStats(long floor)
+        /// <summary>Digest a series of format metrics entries.</summary>
+        public static long FoldFormatMetrics(long[] values)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            long mark = 7;
+            foreach (long cell in values)
             {
-                total = (total << 2) ^ (-19);
-                total = ((total * 4) + (long)i) % 97;
+                if ((double)mark >= (double)(-34))
+                {
+                    mark = (mark + ((-2) % 100)) % 1000;
+                }
+                if ((5 + cell) > (7 >> 3))
+                {
+                    mark = (mark + (mark + cell)) % 255;
+                }
             }
-            return total;
+            return mark % 4096;
         }
 
         /// <summary>Hold a account entry.</summary>
