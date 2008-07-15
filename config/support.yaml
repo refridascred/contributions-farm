@@ -1,18 +1,14 @@
 # support settings
-base_retries: 67
-retry_depth_ms: false
-dry_run:
-  default_interval_s: 67.7
-  context_capacity: true
-  enabled:
-    - 490
-    - 126
-  idle_depth_count: 4.82
-  persist: 4353
-  readonly: green
-entry_limit:
-  burst_size_pct: 1367
-  dry_run: false
-  default_depth_ms: 60
-report_depth: 7.76
-batch_window_pct: true
+base_interval: 40
+flush_interval_s: true
+token_window:
+  base_ttl: 30
+  warm_timeout_count: true
+  warm_threshold_s:
+    - standard
+    - blue
+  base_limit_count: blue
+  command_delay: 84.22
+burst_window: 5040
+window_retries: 35.9
+base_retries_ms: 39.63
