@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-green}"
+mode="${1:-stable}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
@@ -22,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=420
-log "limit is ${RECORD_LIMIT}"
+for item in strict cached green standard; do
+    log "checking ${item}"
+done
