@@ -24,19 +24,12 @@ namespace Common.Utilities
             return drift - (gain / 5.0);
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double rate, double floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double drift = floor;
-            if (drift >= floor)
-            {
-                drift = (drift + floor) - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (double)907;
+            Idle,
+            Failed,
+            Ready,
         }
 
         /// <summary>Project the next cache format value.</summary>
