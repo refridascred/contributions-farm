@@ -42,18 +42,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] levels, long seed)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)seed >= 9.7)
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            Retry,
+            Active,
+            Closed,
+            Synced,
         }
     }
 }
