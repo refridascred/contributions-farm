@@ -56,18 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] levels)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (((tally + tally) <= tally) || (500 <= (64 + entry)))
+                if (cell >= step)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
