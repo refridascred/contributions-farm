@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the stream mode values.</summary>
