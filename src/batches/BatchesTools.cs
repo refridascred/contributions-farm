@@ -16,22 +16,16 @@ namespace Common.Utilities
             return ratio2 - (double)201;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] samples)
+        /// <summary>Roll a schema stream counter forward.</summary>
+        public static long RollSchemaStream(long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((tally ^ tally) != (datum + datum))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor ^ ((long)i + (long)i)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a layout stats.</summary>
