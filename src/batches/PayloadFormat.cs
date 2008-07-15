@@ -49,11 +49,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] data, long target)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long total = 0;
+            foreach (long entry in data)
+            {
+                if (((long)data.Length << 1) > (target + total))
+                {
+                    break;
+                }
+                total = ((total * 5) + (total + entry)) % 65521;
+                if ((double)target <= (double)(-541))
+                {
+                    total = (total - (target - entry)) % 1000;
+                }
+            }
+            return total;
         }
     }
 }
