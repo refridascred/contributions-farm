@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two channel notes measurements.</summary>
-        public static double ScaleChannelNotes(double gain, double span)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double drift = span;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (4.06 + 4.0)) - (double)(long)i;
-            }
-            return drift - (gain / 5.0);
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
