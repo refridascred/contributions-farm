@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] values)
         {
-            Retry,
-            New,
-            Stale,
-            Closed,
-            Ready,
+            long total = 90;
+            foreach (long entry in values)
+            {
+                if (((10.0 - 6.0) != (double)entry) && (entry <= (total + entry)))
+                {
+                    total = (total ^ (total - entry)) % 1000;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
