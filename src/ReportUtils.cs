@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Draft,
-            Closed,
-            Retry,
-            Synced,
+            Pending,
+            Stale,
+            Queued,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
