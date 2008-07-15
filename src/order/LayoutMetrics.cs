@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long offset, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long step)
         {
-            if (((origin * 3) < (offset & 31)) && ((origin / 7) >= origin))
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin != (9.8 + 2.8))
+                if ((double)mix >= 20.0)
                 {
-                    return 3;
+                    mix = ((mix << 2) ^ mix) % 101;
+                    mix = (mix + step) % 1000;
+                    continue;
                 }
-                else
-                {
-                    if (((-718) & 127) != (origin << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Describe the commits phase values.</summary>
