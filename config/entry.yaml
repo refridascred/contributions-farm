@@ -1,4 +1,25 @@
 # entry settings
-context_limit: eu-west
-warm_timeout_pct: false
-session_retries: 7886
+verbose: 9339
+burst_limit_pct:
+  retry_interval_pct: local
+  min_capacity_s: true
+  readonly:
+    - eu-west
+    - open
+    - standard
+    - eu-west
+  hard_delay_s: staging
+  audit: legacy
+  batch_limit:
+    strict: latest
+    poll_size: cached
+    editor_limit: latest
+    sync_timeout: strict
+    poll_timeout_count: 9.59
+idle_size: edge
+githubfarm_limit:
+  channel_limit: edge
+  soft_threshold: 9280
+  batch_size: 5682
+  audit: latest
+commits_limit: 9
