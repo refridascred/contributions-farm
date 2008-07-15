@@ -63,15 +63,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public long Score { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
