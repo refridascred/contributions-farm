@@ -39,25 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long limit, long limit2)
-        {
-            if ((limit - (-44)) <= limit2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit + 2) <= (2 / 6)) && ((limit2 >> 5) >= (limit2 & 15)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 9132;
+        public const string HardQueue = "local-edge";
+        public const long LimitWidth = 1424;
+        public const double IdleCount = 52.59;
 
         /// <summary>Adjust a metric tools reading.</summary>
         public static double AdjustMetricTools(double gain, double floor)
