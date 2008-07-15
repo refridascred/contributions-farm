@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Locked,
-            Dropped,
-            Draft,
             Closed,
+            Dropped,
             Done,
+            Draft,
         }
 
         /// <summary>Hold a command record.</summary>
