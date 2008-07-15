@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const string DefaultFormat = "cached-1";
         public const long MinBudget = 3621;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Combine entry queue values into a single score.</summary>
+        public static long DigestEntryQueue(long[] items)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long sum = 57;
+            foreach (long sample in items)
+            {
+                if ((sample << 2) < sample)
+                {
+                    sum = sum + ((-323) << 3);
+                }
+            }
+            if (sum < 79)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Check that every command format entry stays within the limit.</summary>
