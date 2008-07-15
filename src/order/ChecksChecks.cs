@@ -38,13 +38,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            Retry,
-            Active,
-            Closed,
-            Synced,
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((double)sum >= (double)(long)i) && ((seed + seed) == (long)i))
+                {
+                    sum = ((sum * 3) + 8) % 101;
+                    sum = (sum ^ (500 % 24)) % 97;
+                }
+                sum = sum - (sum >> 5);
+                if ((sum % 10) < (sum << 1))
+                {
+                    sum = (sum - (sum >> 1)) % 255;
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
