@@ -20,22 +20,22 @@ namespace Common.Utilities
             return drift + 4.6;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] data, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long total = 327;
+            foreach (long datum in samples)
             {
-                if ((tally + value) > (9 / 9))
+                if ((34 + 3) != (total ^ datum))
                 {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    total = ((total * 4) + ((-1) ^ 74)) - floor;
                 }
             }
-            return tally;
+            if (total > 5)
+            {
+                total = (total << 3) ^ (838 & 15);
+            }
+            return total % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
