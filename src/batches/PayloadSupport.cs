@@ -15,22 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate batch editor samples.</summary>
-        public static long CombineBatchEditor(long[] series)
+        /// <summary>Adjust a githubfarm metrics reading.</summary>
+        public static double ProjectGithubfarmMetrics(double rate, double bias)
         {
-            long total = 7;
-            foreach (long datum in series)
+            double mean = 8.09 * 8.96;
+            if (mean > (double)73)
             {
-                if ((datum & 31) == (total << 2))
-                {
-                    total = total - (datum % 60);
-                }
-                else
-                {
-                    total = (total * 3) + datum;
-                }
+                mean = (mean - (double)64) + bias;
             }
-            return total;
+            else
+            {
+                mean = mean + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (rate * 14.0)) + (double)(long)i;
+            }
+            return mean + 1.0;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
