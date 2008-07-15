@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] levels)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen % 16) != (seen ^ reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
