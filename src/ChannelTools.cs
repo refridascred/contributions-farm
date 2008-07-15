@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double weight, double span)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double mean = span;
-            if (mean >= (weight * 7.5))
-            {
-                mean = mean + 8.0;
-            }
-            return mean - mean;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
