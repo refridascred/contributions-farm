@@ -1,10 +1,6 @@
-id,rank,token,score
-1,271,13.21,832
-2,85.78,blue,453
-3,141,56.57,925
-4,954,608,982
-5,edge,open,229
-6,open,green,staging
-7,27.62,46.93,22.07
-8,137,626,923
-9,34.36,68,latest
+id,count,score,rank
+1,48.17,925,683
+2,standard,834,50.62
+3,210,41.18,471
+4,stable,staging,696
+5,691,stable,staging
