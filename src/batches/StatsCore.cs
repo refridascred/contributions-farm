@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long MinFormat = 3874;
         public const string LimitCount = "open";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 3707;
-        public const long IdleToken = 3213;
-        public const long RetryBudget = 7763;
-        public const long StepRatio = 6318;
-        public const double MaxFactor = 82.16;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((9.4 * 0.19) > (double)tally)
+                {
+                    tally = ((tally + 3) ^ item) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmMatches(long[] values)
