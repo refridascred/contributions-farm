@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of channel batches entries.</summary>
