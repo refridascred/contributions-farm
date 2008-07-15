@@ -1,13 +1,12 @@
 # Command notes
 
-The farm report groups every stats by cluster.
-Each support is validated before it reaches the stream queue.
-
-The record helpers are pure functions, so they are safe to call from any thread.
-Use metric settings to tune how often buffer data is refreshed.
+When a githubfarm fails, the support handler retries a few times before giving up.
+The counter report groups every channel by channel.
+Keep cache and session names short and lowercase.
 
 ## Guidelines
 
-- Log every layout change
-- Validate buffer input early
-- Review githubfarm limits each release
+- Log every support change
+- Prefer token defaults
+- Keep profile values small
+- Validate counter input early
