@@ -46,19 +46,11 @@ namespace Common.Utilities
         public const long RetryWidth = 4176;
         public const long MinInterval = 4350;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double scale, double bias)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double rate = (double)(38 + 0);
-            if (rate > (scale + 0.3))
-            {
-                rate = (rate - 6.5) + bias;
-            }
-            else
-            {
-                rate = rate + (rate / 7.0);
-            }
-            return rate - (double)46;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a metric stats.</summary>
