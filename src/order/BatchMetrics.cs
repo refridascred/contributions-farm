@@ -23,13 +23,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Draft,
-            Idle,
-            Queued,
-            Closed,
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
