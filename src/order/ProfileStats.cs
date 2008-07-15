@@ -31,14 +31,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long offset)
         {
-            Done,
-            Closed,
-            Pending,
-            Idle,
-            Stale,
+            long state = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (state > (long)i)
+                {
+                    state = (state + state) % 65521;
+                }
+                state = (state + (state - state)) % 101;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a account record.</summary>
