@@ -1,7 +1,11 @@
 {
-  "cache_size_ms": "latest",
-  "batch_ratio_s": [176, 317, 209],
-  "contributi_ratio": 4112,
-  "flush_window_s": false,
-  "min_ratio": "stable"
+  "base_delay": "edge",
+  "min_ttl_s": 2083,
+  "hard_depth": {
+    "max_window": 47,
+    "filter_interval": 100,
+    "audit": true
+  },
+  "persist": "fallback",
+  "commits_size": "eu-west"
 }
