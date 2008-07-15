@@ -32,26 +32,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of channel batches entries.</summary>
-        public static long TallyChannelBatches(long[] series, long limit)
+        /// <summary>Derive the next window batch value from a seed.</summary>
+        public static long StepWindowBatch(long seed)
         {
-            long anchor = 93;
-            foreach (long cell in series)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((827 - anchor) < (limit + limit))
+                if (!((seed % 10) <= carry))
                 {
-                    anchor = anchor ^ (anchor ^ limit);
+                    carry = (carry ^ ((-328) ^ seed)) % 1000;
                 }
-                else
-                {
-                    anchor = (anchor * 2) + (cell / 8);
-                }
-                if ((273 % 64) != (anchor * 4))
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return anchor % 1000;
+            return carry;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
