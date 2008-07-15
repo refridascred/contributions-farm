@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] samples)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + tally) == (entry + 65))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster entry.</summary>
