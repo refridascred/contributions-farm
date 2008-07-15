@@ -55,12 +55,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "legacy-edge";
+        public const long MaxTools = 5680;
+        public const long StepTools = 239;
+        public const long LimitWidth = 6432;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] data)
