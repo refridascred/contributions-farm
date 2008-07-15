@@ -31,18 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] data, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = 0;
+            foreach (long entry in samples)
             {
-                if (limit < (count - count))
-                {
-                    count = (count + 3) ^ value;
-                }
+                mix = ((mix - (mix & 15)) ^ entry) + origin;
             }
-            return count;
+            if (mix > 1)
+            {
+                mix = (mix ^ 77) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Rank batches support input into a small class.</summary>
