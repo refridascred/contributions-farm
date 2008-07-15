@@ -26,17 +26,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] readings, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
+                if (value <= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
