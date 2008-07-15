@@ -1,14 +1,6 @@
 {
-  "warm_retries_count": 4221,
-  "warm_threshold": true,
-  "persist": {
-    "checks_retries": "primary",
-    "retry_timeout": "open",
-    "cache_limit": "fallback",
-    "strict": 30,
-    "hard_capacity_count": [268, 57, 187, 339]
-  },
-  "already_window": "staging",
-  "sync_capacity_count": ["green", "latest", "legacy", "green"],
-  "audit": 8504
+  "flush_capacity": 100,
+  "cache_ratio": 500,
+  "min_ratio_ms": "green",
+  "idle_ttl": 2694
 }
