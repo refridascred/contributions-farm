@@ -45,32 +45,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long seed, long target)
+        /// <summary>Accumulate batches channel samples.</summary>
+        public static long TotalBatchesChannel(long[] items, long offset)
         {
-            long offset = seed ^ target;
-            if (!((99 + offset) > seed))
+            long mix = 142;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - seed) > ((-596) + 58))
+                if (!(offset >= (offset & 1)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target % 2) == (target << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (((mix << 3) ^ offset) % 4096) - item;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Hold a tools options.</summary>
