@@ -52,23 +52,18 @@ namespace Common.Utilities
         public const double BatchInterval = 17.75;
         public const long LimitInterval = 6587;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double scale, double bias)
+        /// <summary>Audit command report readings against a rule.</summary>
+        public static long MeasureCommandReportOutliers(long[] items)
         {
-            double load = bias + (8.8 * 8.9);
-            if (load <= (4.0 - scale))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                load = load - 3.69;
+                if (((cell + (long)items.Length) < (cell & 7)) || (cell <= (tally + tally)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + load;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
