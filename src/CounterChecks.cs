@@ -61,20 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double ratio, double floor)
-        {
-            double weight = ratio;
-            if (weight < (floor - floor))
-            {
-                weight = weight - (double)28;
-            }
-            else
-            {
-                weight = weight + (floor * 5.35);
-            }
-            return weight + (weight / 5.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 3872;
+        public const long HardSpan = 2019;
+        public const string MinProfile = "cached-v2";
+        public const long DefaultSpan = 1605;
+        public const long BurstProfile = 1280;
 
         /// <summary>Project the next editor metrics value.</summary>
         public static double ScaleEditorMetrics(double scale, double floor)
