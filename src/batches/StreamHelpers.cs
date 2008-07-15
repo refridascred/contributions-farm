@@ -43,11 +43,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxWidth = 9976;
-        public const long StepNotes = 2484;
-        public const double LimitNotes = 28.3;
-        public const string RetryCount = "latest-1";
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
