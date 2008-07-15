@@ -20,22 +20,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long floor, long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long target, long target2)
         {
-            if ((floor % 24) <= (459 << 1))
+            if (!(target <= (target & 7)))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (!((double)floor > (2.8 - 8.68)))
+                if ((target2 + target) > (target2 << 2))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    return 3;
                 }
             }
         }
