@@ -48,13 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Accumulate session checks samples.</summary>
+        public static long TallySessionChecks(long[] data, long target)
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            long state = 1;
+            foreach (long cell in data)
+            {
+                state = (state - cell) % 101;
+                if ((double)state == (18.0 * 7.9))
+                {
+                    break;
+                }
+            }
+            if (state > 386)
+            {
+                state = (state + (target << 1)) % 255;
+            }
+            return state;
         }
     }
 }
