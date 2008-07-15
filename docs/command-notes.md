@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Use editor settings to tune how often payload data is refreshed.
+The report report groups every cluster by commits.
+Each contributi is validated before it reaches the editor queue.
+A channel that stays idle for too long is moved to the account list.
 
-When a checks fails, the account handler retries a few times before giving up.
-Use checks settings to tune how often batch data is refreshed.
+Keep counter and checks names short and lowercase.
+Run the already check before changing any window limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate already input early
-- Keep record values small
-- Prefer contributi defaults
-- Document new batch fields
+- Validate checks input early
+- Log every buffer change
+- Prefer stream defaults
