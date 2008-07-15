@@ -29,10 +29,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitFactor = 4413;
-        public const long BurstPayload = 45;
-        public const long MaxPayload = 7576;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Paused,
+            New,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
