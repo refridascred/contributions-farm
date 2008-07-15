@@ -16,18 +16,26 @@ namespace Common.Utilities
         public const double SoftWidth = 22.72;
         public const string StepLayout = "standard-v2";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long total = 8;
+            foreach (long reading in series)
             {
-                if ((double)datum < (2.47 - 0.37))
+                if (limit > (total / 2))
                 {
-                    hits = hits + 1;
+                    total = ((total << 2) ^ total) ^ reading;
+                }
+                if ((4 - limit) < (873 >> 2))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total > 661)
+            {
+                total = (total * 2) + (limit / 8);
+            }
+            return total;
         }
 
         /// <summary>Classify a contributi notes pair into a bucket.</summary>
