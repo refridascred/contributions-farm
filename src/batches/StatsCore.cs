@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long MinFormat = 3874;
         public const string LimitCount = "open";
 
-        /// <summary>Combine entry queue values into a single score.</summary>
-        public static long DigestEntryQueue(long[] items)
-        {
-            long sum = 57;
-            foreach (long sample in items)
-            {
-                if ((sample << 2) < sample)
-                {
-                    sum = sum + ((-323) << 3);
-                }
-            }
-            if (sum < 79)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 3707;
+        public const long IdleToken = 3213;
+        public const long RetryBudget = 7763;
+        public const long StepRatio = 6318;
+        public const double MaxFactor = 82.16;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmMatches(long[] values)
