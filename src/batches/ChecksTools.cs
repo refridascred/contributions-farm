@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] samples, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading != limit)
+                if (offset > 81)
                 {
-                    ready = false;
-                    break;
+                    mix = mix + ((long)i % 5);
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
