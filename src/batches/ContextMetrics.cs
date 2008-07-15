@@ -29,11 +29,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Blend two schema editor measurements.</summary>
+        public static double ScaleSchemaEditor(double scale, double floor)
         {
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            double load = scale / 5.0;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + (double)49) - (double)(long)i) - floor;
+            }
+            return load - scale;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
