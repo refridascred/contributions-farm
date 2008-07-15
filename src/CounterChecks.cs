@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Count the context stats entries that pass the check.</summary>
+        public static long MeasureContextStatsGaps(long[] series, long limit)
         {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (6.91 >= (double)cell)
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the buffer record entries that pass the check.</summary>
