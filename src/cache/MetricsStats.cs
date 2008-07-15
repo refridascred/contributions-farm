@@ -45,13 +45,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Stale,
-            Dropped,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftSpan = 2304;
+        public const long StepEditor = 3941;
+        public const long SoftEditor = 2749;
     }
 }
