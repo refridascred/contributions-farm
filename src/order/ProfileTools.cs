@@ -42,38 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long floor, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] data, long step)
         {
-            if ((546 - limit) <= (floor & 7))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor & 7) < (limit + limit))
+                if ((data[i] <= step) && ((data[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor << 2) <= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor != (4.1 - 0.02))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a counter options.</summary>
