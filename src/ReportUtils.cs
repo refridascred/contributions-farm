@@ -87,26 +87,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long total = 6;
-            foreach (long cell in items)
-            {
-                if ((1.5 * 9.08) < (double)total)
-                {
-                    total = (total ^ (long)items.Length) % 4096;
-                }
-                else
-                {
-                    total = total ^ total;
-                }
-                if ((double)cell != (double)8)
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
