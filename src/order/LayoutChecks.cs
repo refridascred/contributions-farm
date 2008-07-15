@@ -45,13 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
+            Locked,
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
