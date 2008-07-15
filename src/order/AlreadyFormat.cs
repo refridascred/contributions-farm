@@ -21,11 +21,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double ratio, double span)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values, long step)
         {
-            double mean = span;
-            return mean + ratio;
+            long sum = 18;
+            foreach (long reading in values)
+            {
+                sum = ((sum - reading) % 4096) - step;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
