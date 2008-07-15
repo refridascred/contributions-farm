@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            Draft,
-            Dropped,
-            Retry,
-            Stale,
+            double rate2 = bias;
+            if (rate2 >= bias)
+            {
+                rate2 = rate2 - rate;
+            }
+            else
+            {
+                rate2 = rate2 - (rate + rate2);
+            }
+            return rate2 + (double)2;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
