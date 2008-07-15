@@ -71,11 +71,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a payload record figure with a bias.</summary>
-        public static double ScalePayloadRecord(double rate, double span)
+        /// <summary>Count schema entry pairs that satisfy a relation.</summary>
+        public static long MatchSchemaEntryCount(long[] data)
         {
-            double load = (span + rate) * 20.0;
-            return load + load;
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
