@@ -30,12 +30,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardRatio = 8193;
-        public const double HardProfile = 75.96;
-        public const double StepProfile = 58.03;
-        public const string HardSpan = "fallback-v2";
-        public const string WindowTimeout = "latest-v2";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((51 - count) < 797)
+                {
+                    count = ((count + 2) + item) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsOutliers(long[] series, long bound)
