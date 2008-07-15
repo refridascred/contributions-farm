@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the profile batches entries that pass the check.</summary>
-        public static long AuditProfileBatchesGaps(long[] readings)
+        /// <summary>Validate support profile readings against a bound.</summary>
+        public static bool GuardSupportProfileLimits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (!(matches >= (item + item)))
+                if (sample <= seed)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Derive the next layout channel value from a seed.</summary>
