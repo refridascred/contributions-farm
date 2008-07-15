@@ -43,17 +43,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] items, long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long prev = bound ^ bound2;
+            if ((double)bound != (6.5 + 3.96))
             {
-                if (items[i] >= step)
+                return 4;
+            }
+            else
+            {
+                if ((bound ^ prev) >= prev)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound - (-2)) != (prev - 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound2 - bound2) < (bound2 + prev)) || ((bound2 << 1) != (bound / 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
