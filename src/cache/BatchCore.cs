@@ -27,21 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit record filter readings against a rule.</summary>
