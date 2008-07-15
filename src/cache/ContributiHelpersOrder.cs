@@ -14,22 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] items)
         {
-            long score = 36;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((score >> 4) != (7 << 2))
+                if ((680 - 823) > item)
                 {
-                    score = (score * 5) + entry;
+                    count = count + 1;
                 }
             }
-            if (score > 12)
-            {
-                score = (score + (684 * 3)) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
