@@ -20,38 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long limit, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long floor)
         {
-            if ((limit % 8) > limit)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit < (limit - limit))
+                if (((total ^ (long)i) != (long)i) && (total >= (floor + floor)))
                 {
-                    return 7;
+                    long cur = 4 << 2;
+                    total = (total ^ (cur + (long)i)) % 1000;
                 }
-                else
-                {
-                    if (((limit % 2) >= (limit << 1)) || ((double)origin != (2.48 * 5.6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin * 5) != (origin + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                total = (total ^ (total + total)) % 4096;
+                total = ((total * 2) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
