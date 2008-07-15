@@ -1,21 +1,5 @@
 {
-  "compress": 89,
-  "verbose": {
-    "compress": 58.99,
-    "report_delay": [269, 134, 414, 179],
-    "flush_threshold": 52.89,
-    "sync_ratio_pct": {
-      "stats_limit": true,
-      "metric_window": "latest",
-      "idle_depth_pct": true,
-      "strict": "latest",
-      "layout_size": 35.92
-    },
-    "poll_limit_s": "green",
-    "audit": 68.05
-  },
-  "idle_ttl_ms": [386, 183, 204, 34],
-  "schema_window": "staging",
-  "max_size_pct": "standard",
-  "default_retries_count": "cached"
+  "cluster_ttl": ["cached", "green", "green"],
+  "support_size": 500,
+  "context_limit": 66
 }
