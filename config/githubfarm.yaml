@@ -1,25 +1,5 @@
 # githubfarm settings
-min_retries:
-  - stable
-  - primary
-editor_delay: primary
-checks_capacity:
-  schema_threshold: eu-west
-  dry_run: false
-  hard_size: 1275
-  route_retries: 58.18
-  soft_ratio: 80.72
-  route_delay:
-    verbose: green
-    batch_limit: 1869
-    idle_limit_pct:
-      - green
-      - edge
-    profile_ttl: 77.58
-    profile_limit: true
-default_depth_ms:
-  layout_threshold: 48.34
-  flush_capacity_ms: 28
-  batch_timeout_pct: true
-  sync_window_count: 1024
-  sync_limit_count: 684
+strict: eu-west
+flush_depth: 15
+max_limit_count: true
+already_depth: 60
