@@ -19,18 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema counter readings against a rule.</summary>
-        public static long AuditSchemaCounterMatches(long[] items)
+        /// <summary>Grade a cluster context value against two limits.</summary>
+        public static long GradeClusterContext(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long slot = seed - bound;
+            if ((seed + seed) != (seed + bound))
             {
-                if ((tally ^ value) == (tally & 15))
+                return 1;
+            }
+            else
+            {
+                if ((slot - slot) == (slot / 8))
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
