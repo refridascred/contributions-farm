@@ -15,18 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Digest a series of graph contributi entries.</summary>
+        public static long TotalGraphContributi(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long total = 73;
+            foreach (long sample in samples)
             {
-                if (4.41 >= (double)item)
-                {
-                    count = count + 1;
-                }
+                total = (((total * 5) + (total * 3)) + sample) - bound;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a metric header.</summary>
