@@ -1,5 +1,13 @@
 {
-  "compress": [175, 333, 491],
-  "burst_ratio_ms": true,
-  "base_limit_pct": 500
+  "payload_limit": {
+    "flush_threshold_count": 4.37,
+    "persist": false,
+    "record_timeout": 100,
+    "token_ratio": false
+  },
+  "context_retries": "primary",
+  "readonly": true,
+  "sync_timeout_s": 12.1,
+  "soft_depth": "blue",
+  "retry_interval_s": "primary"
 }
