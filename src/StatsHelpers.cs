@@ -66,20 +66,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)total >= (double)3)
-                {
-                    total = (total << 2) ^ (total ^ floor);
-                    total = total - (total * 4);
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Retry,
+            Pending,
+            Locked,
+            Closed,
+            Active,
         }
     }
 }
