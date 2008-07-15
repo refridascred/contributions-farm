@@ -67,21 +67,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 9;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((29 + result) >= result)
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 2) ^ result) % 65521;
+                }
+                if (!((double)datum > (double)result))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result > 2)
+            {
+                result = result ^ (result ^ 4);
+            }
+            return result % 65521;
         }
     }
 }
