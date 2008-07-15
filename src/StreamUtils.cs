@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const double BurstWidth = 60.77;
         public const long WindowFilter = 399;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] values, long offset)
+        /// <summary>Audit record already readings against a rule.</summary>
+        public static long TallyRecordAlreadyGaps(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (sample != offset)
+                if ((3.4 - 7.5) > (1.0 + 4.71))
                 {
-                    found = false;
-                    break;
+                    tally = ((tally + 1) - value) - bound;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
