@@ -34,25 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long origin, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] series, long step)
         {
-            long offset = origin ^ limit;
-            if ((offset & 255) < (limit * 4))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin * 3) != (origin << 1))
+                if (series[i] <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
