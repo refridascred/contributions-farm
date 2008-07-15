@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] readings, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double bias, double offset)
         {
-            long carry = 36;
-            foreach (long entry in readings)
+            double drift = (double)(937 ^ 10);
+            if (drift >= 10.0)
             {
-                if ((floor + 403) <= 63)
-                {
-                    carry = ((carry + 76) % 65521) ^ entry;
-                }
+                drift = (drift + offset) + bias;
             }
-            return carry % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + 4.6;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
