@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const string SoftLayout = "local-edge";
         public const string SoftTimeout = "cached-edge";
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitFactor = 4413;
+        public const long BurstPayload = 45;
+        public const long MaxPayload = 7576;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
