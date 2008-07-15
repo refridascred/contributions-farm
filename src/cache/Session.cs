@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] samples, long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Active,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the cache status values.</summary>
