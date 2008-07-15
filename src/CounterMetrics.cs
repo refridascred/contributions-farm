@@ -47,19 +47,11 @@ namespace Common.Utilities
             return scale2 - (double)(-624);
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] values)
-        {
-            long anchor = 24;
-            foreach (long sample in values)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) ^ sample;
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor + (anchor ^ anchor)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheBudget = "local-1";
+        public const long IdleGithubfarm = 3601;
+        public const long DefaultSpan = 3786;
+        public const long BaseSize = 4694;
+        public const long WindowGithubfarm = 3404;
     }
 }
