@@ -46,11 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] readings, long floor)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
