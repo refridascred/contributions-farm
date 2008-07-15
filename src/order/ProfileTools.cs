@@ -64,11 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleSize = 26.04;
-        public const long BatchBuffer = 5033;
-        public const double SoftLevel = 27.9;
-        public const long HardBuffer = 9278;
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long CountNotesChannelGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!((tally << 1) == (tally ^ 8)) && (((8 - 897) >= (value % 64)) && (value >= tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] data, long seed)
