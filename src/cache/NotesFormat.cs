@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long origin, long origin2)
         {
-            Stale,
-            New,
-            Pending,
+            if (!(origin2 < (origin2 & 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin <= 6)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
