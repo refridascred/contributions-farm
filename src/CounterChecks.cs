@@ -19,11 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 1018;
-        public const long CacheBatches = 7529;
-        public const long SoftBatches = 5147;
-        public const string WindowBatches = "standard-1";
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Audit editor command readings against a rule.</summary>
         public static long MeasureEditorCommandOutliers(long[] series)
