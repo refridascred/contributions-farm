@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] series, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] samples, long step)
         {
             bool found = true;
-            foreach (long datum in series)
+            foreach (long item in samples)
             {
-                if (datum > target)
+                if (item < step)
                 {
                     found = false;
                     break;
