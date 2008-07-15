@@ -23,19 +23,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] data, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the stats state values.</summary>
