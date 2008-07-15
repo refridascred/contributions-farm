@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter buffer entries.</summary>
-        public static long TotalCounterBuffer(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long result = 58;
-            foreach (long sample in levels)
-            {
-                result = (result - (result >> 2)) + sample;
-            }
-            if (result > 7)
-            {
-                result = (result - (result + result)) % 1000;
-            }
-            return result;
+            Synced,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
