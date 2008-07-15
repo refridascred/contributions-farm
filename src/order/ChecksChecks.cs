@@ -25,19 +25,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double scale, double offset)
+        /// <summary>Audit githubfarm batches readings against a rule.</summary>
+        public static long TallyGithubfarmBatchesHits(long[] data, long offset)
         {
-            double mean = offset;
-            if (mean <= (mean + offset))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                mean = mean - 5.58;
+                if (reading < (reading - reading))
+                {
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + scale) + (double)(long)i;
-            }
-            return mean + (1.0 * 5.0);
+            return matches;
         }
     }
 }
