@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a window report figure with a bias.</summary>
-        public static double SmoothWindowReport(double ratio, double bias)
+        /// <summary>Measure how many commits entry samples are out of range.</summary>
+        public static long MeasureCommitsEntryHits(long[] readings)
         {
-            double mean = bias;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                mean = (mean - ratio) - (double)(long)i;
+                if ((value - hits) == (value + 24))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mean - (bias - ratio);
+            return hits;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
