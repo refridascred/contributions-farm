@@ -34,20 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (readings[i] <= offset)
                 {
-                    anchor = ((anchor + 473) % 65521) - (long)i2;
-                    anchor = anchor ^ (60 - seed);
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
