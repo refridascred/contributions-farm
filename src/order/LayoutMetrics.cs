@@ -33,16 +33,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = anchor - ((long)i - anchor);
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
