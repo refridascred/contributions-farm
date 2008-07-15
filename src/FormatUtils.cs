@@ -26,31 +26,26 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a support metric pair into a bucket.</summary>
-        public static long GradeSupportMetric(long target, long target2)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items, long origin)
         {
-            if ((3.4 - 0.3) < 4.0)
+            long mix = -2;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-3) >> 3) > (target2 + target))
+                for (int i = 0; i < 9; i++)
                 {
-                    return 8;
+                    mix = ((((mix * 2) + (mix - mix)) % 101) - (long)i) - item;
+                }
+                if (!((double)origin != (4.74 - 1.76)))
+                {
+                    mix = (mix - origin) % 1000;
                 }
                 else
                 {
-                    if ((43 > (target ^ target2)) && ((target + 60) <= (target2 & 127)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = (mix ^ (31 * 2)) % 65521;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
