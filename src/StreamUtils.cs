@@ -68,10 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultCount = 3693;
-        public const double WindowBatch = 73.21;
-        public const long IdleBatch = 6134;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "local-1";
+        public const long RetryProfile = 5549;
+        public const long BaseRatio = 3293;
+        public const string BaseDepth = "stable-edge";
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long RollLayout(long target)
