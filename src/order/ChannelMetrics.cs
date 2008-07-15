@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] items, long bound)
+        /// <summary>Derive the next report layout value from a seed.</summary>
+        public static long RollReportLayout(long bound)
         {
-            long mix = 77;
-            foreach (long cell in items)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((mix % 16) != (mix * 3))
-                {
-                    mix = (((mix + 1) % 1000) - cell) - bound;
-                }
+                result = result - (bound + bound);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Hold a filter record.</summary>
