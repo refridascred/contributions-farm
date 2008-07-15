@@ -76,21 +76,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count support account pairs that satisfy a relation.</summary>
-        public static long PairSupportAccountCount(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long limit, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = limit - seed;
+            if ((limit << 1) == (seed >> 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((limit >> 5) > seed)
                 {
-                    if ((readings[i] - readings[j]) == 1)
+                    return 7;
+                }
+                else
+                {
+                    if (((limit / 8) < (step + seed)) || ((seed ^ seed) > (limit & 63)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)limit >= (20.0 - 3.91)) && ((seed + limit) > ((-38) - seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
