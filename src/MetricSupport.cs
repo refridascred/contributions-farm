@@ -25,10 +25,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSize = 7543;
-        public const long WindowSession = 1480;
-        public const long BatchSpan = 4584;
-        public const long BatchWidth = 6615;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
