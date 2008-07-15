@@ -20,17 +20,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                long slot = offset >> 5;
-                result = ((result << 3) ^ (slot + result)) % 4096;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a support metric pair into a bucket.</summary>
