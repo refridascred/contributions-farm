@@ -1,6 +1,14 @@
 {
-  "persist": 51.86,
-  "warm_ratio_pct": "edge",
-  "default_retries_count": 7086,
-  "notes_delay": "local"
+  "warm_retries_count": 4221,
+  "warm_threshold": true,
+  "persist": {
+    "checks_retries": "primary",
+    "retry_timeout": "open",
+    "cache_limit": "fallback",
+    "strict": 30,
+    "hard_capacity_count": [268, 57, 187, 339]
+  },
+  "already_window": "staging",
+  "sync_capacity_count": ["green", "latest", "legacy", "green"],
+  "audit": 8504
 }
