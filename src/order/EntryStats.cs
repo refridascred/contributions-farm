@@ -44,31 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches support input into a small class.</summary>
-        public static long GradeBatchesSupport(long bound, long target)
+        /// <summary>Count the stats checks entries that pass the check.</summary>
+        public static long TallyStatsChecksOutliers(long[] samples)
         {
-            if ((52 / 5) < target)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target << 3) > bound) && ((double)bound > 2.4))
+                if (datum < count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target / 2) <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
