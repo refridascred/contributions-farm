@@ -1,6 +1,5 @@
 {
-  "flush_delay_count": "primary",
-  "verbose": 100,
-  "strict": 60,
-  "default_threshold_ms": ["latest", "stable", "strict", "edge"]
+  "batch_depth_count": 19,
+  "audit": 1275,
+  "editor_ttl": 571
 }
