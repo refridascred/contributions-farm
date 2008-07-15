@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many stream report samples are out of range.</summary>
-        public static long MeasureStreamReportMatches(long[] readings, long floor)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((5.01 / 9.0) >= (double)count)
-                {
-                    count = ((count + 2) + value) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
