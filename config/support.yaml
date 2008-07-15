@@ -1,6 +1,4 @@
 # support settings
-soft_timeout_pct: cached
-base_ratio_ms: 60
-soft_depth: 5
-max_ratio: eu-west
-flush_limit: 72.2
+counter_ratio: 65.15
+already_delay: 3346
+warm_ttl_s: 1
