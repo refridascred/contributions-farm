@@ -34,19 +34,16 @@ namespace Common.Utilities
         public const double SoftSession = 63.95;
         public const long DefaultBudget = 6910;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] data, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 2) + (mix - mix)) % 65521;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Combine record payload values into a single score.</summary>
