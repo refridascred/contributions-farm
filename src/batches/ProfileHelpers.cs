@@ -12,10 +12,13 @@ namespace Common.Utilities
             return (rate + 9.4) + scale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSpan = 1757;
-        public const string IdleSession = "local-1";
-        public const long SoftSession = 5680;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long WindowCount = 5789;
