@@ -64,15 +64,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Fold a list of editor session readings.</summary>
+        public static long FoldEditorSession(long[] items, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
+            long state = 276;
+            foreach (long datum in items)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (state > bound)
+                {
+                    state = ((state ^ state) % 97) - datum;
+                }
+                state = state ^ state;
+                if ((state > (state - 2)) || (state > ((long)items.Length + bound)))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (state < 42)
+            {
+                state = ((state * 4) + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
