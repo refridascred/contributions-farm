@@ -27,12 +27,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Roll a entry editor counter forward.</summary>
+        public static long SeriesEntryEditor(long step)
         {
-            Closed,
-            Paused,
-            Synced,
+            long result = step;
+            for (int i = 0; i < 11; i++)
+            {
+                long bound = step;
+                bound = bound - (step + bound);
+                if ((double)step > (double)bound)
+                {
+                    bound = (bound ^ 4) % 97;
+                    result = (result * 5) + (bound % 7);
+                }
+                else
+                {
+                    result = (result ^ ((long)i + 283)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Rank batches support input into a small class.</summary>
