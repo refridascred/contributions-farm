@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long BurstLevel = 4884;
         public const string SoftCluster = "staging-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowBudget = "staging-v2";
-        public const double HardRatio = 2.15;
-        public const long StepCommand = 6811;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items, long origin)
+        {
+            long state = 508;
+            foreach (long sample in items)
+            {
+                if ((7.1 + 6.4) == (double)state)
+                {
+                    state = (((state * 3) + (state / 5)) + sample) - origin;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] samples)
