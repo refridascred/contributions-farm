@@ -51,18 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long floor)
+        /// <summary>Validate record commits readings against a bound.</summary>
+        public static bool ValidateRecordCommitsLimits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((double)count >= (1.03 - 0.6))
+                if (sample < floor)
                 {
-                    count = ((count + 3) + reading) + floor;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Match up channel samples.</summary>
