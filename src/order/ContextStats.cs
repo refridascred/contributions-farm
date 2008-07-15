@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 2746;
         public const long WindowFactor = 9927;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] samples)
+        /// <summary>Check that every batch stream entry stays within the limit.</summary>
+        public static bool VerifyBatchStreamRange(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (!((sample - matches) >= matches))
+                if (sample != target)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the session state values.</summary>
