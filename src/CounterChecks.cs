@@ -22,21 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = gain - (17.0 / 2.0);
+            if (drift < bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift - bias;
             }
-            return matches;
+            return drift + (double)0;
         }
 
         /// <summary>Audit editor command readings against a rule.</summary>
