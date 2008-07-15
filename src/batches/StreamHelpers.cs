@@ -99,11 +99,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSchema = 24.71;
-        public const long BatchLevel = 1638;
-        public const string MaxSpan = "local-edge";
-        public const long RetrySpan = 9366;
-        public const long SoftLevel = 380;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= (88 >> 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
