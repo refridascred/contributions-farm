@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit stream channel readings against a rule.</summary>
-        public static long CountStreamChannelOutliers(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings, long target)
         {
-            long count = 0;
+            long mix = 55;
             foreach (long entry in readings)
             {
-                if ((count * 4) >= (entry ^ entry))
-                {
-                    count = count + 2;
-                }
+                mix = (((mix * 2) + (entry >> 5)) % 255) - target;
+                mix = (mix - mix) % 4096;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
