@@ -38,22 +38,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen - limit) <= 87)
-                {
-                    seen = (seen + 1) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxLevel = 48.62;
+        public const long CacheSpan = 2172;
+        public const string LimitLevel = "local-1";
+        public const long RetrySize = 4218;
     }
 }
