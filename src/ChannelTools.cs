@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate report record samples.</summary>
