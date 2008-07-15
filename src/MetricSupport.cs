@@ -26,11 +26,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
