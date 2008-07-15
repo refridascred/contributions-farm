@@ -31,22 +31,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] values, long limit)
+        /// <summary>Digest a series of channel batches entries.</summary>
+        public static long TallyChannelBatches(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long anchor = 93;
+            foreach (long cell in series)
             {
-                if ((limit % 60) == (limit << 1))
+                if ((827 - anchor) < (limit + limit))
                 {
-                    hits = (hits + 3) + cell;
+                    anchor = anchor ^ (anchor ^ limit);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = (anchor * 2) + (cell / 8);
+                }
+                if ((273 % 64) != (anchor * 4))
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a metric summary.</summary>
