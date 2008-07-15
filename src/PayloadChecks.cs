@@ -68,18 +68,24 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] items)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long target, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if ((238 >> 4) <= (71 - step))
             {
-                if (tally < (tally + 858))
+                return 5;
+            }
+            else
+            {
+                if ((target / 3) <= (step - step))
                 {
-                    tally = (tally + 2) ^ value;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
