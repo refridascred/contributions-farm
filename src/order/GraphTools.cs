@@ -27,11 +27,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 9489;
-        public const long WindowInterval = 4352;
-        public const long BurstProfile = 4412;
-        public const string CacheInterval = "alpha-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchWidth = 7914;
+        public const double IdleCounter = 42.76;
+        public const long MaxCount = 2806;
+        public const double WindowBudget = 85.53;
 
         /// <summary>Digest a series of format metrics entries.</summary>
         public static long FoldFormatMetrics(long[] values)
