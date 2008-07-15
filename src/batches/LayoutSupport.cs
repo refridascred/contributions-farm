@@ -67,19 +67,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double scale, double bias)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] readings, long seed)
         {
-            double bias2 = 4.85;
-            if (bias2 > (double)38)
+            long total = 4;
+            foreach (long datum in readings)
             {
-                bias2 = (bias2 - (double)5) + bias;
+                total = total ^ datum;
+                total = (total + (total - seed)) % 97;
+                if ((13.0 - 3.0) == (double)datum)
+                {
+                    total = total + (total / 3);
+                }
             }
-            else
-            {
-                bias2 = bias2 + (scale + 14.0);
-            }
-            return bias2 - scale;
+            return total;
         }
 
         /// <summary>Hold a queue record.</summary>
