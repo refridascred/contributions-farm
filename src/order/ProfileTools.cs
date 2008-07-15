@@ -21,19 +21,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)count < (0.3 * 9.67))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchSpan = 32.74;
+        public const long SoftContext = 335;
+        public const long BurstContext = 4372;
+        public const long StepContext = 7669;
+        public const long RetryFactor = 6293;
 
         /// <summary>Derive the next session route value from a seed.</summary>
         public static long SeriesSessionRoute(long seed)
