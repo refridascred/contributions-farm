@@ -1,13 +1,15 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-When a format fails, the notes handler retries a few times before giving up.
+A graph that stays idle for too long is moved to the batch list.
+Keep farm and route names short and lowercase.
 
-Keep layout and stats names short and lowercase.
-The payload report groups every session by format.
+Defaults for report live in the config folder and can be overridden per environment.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate editor input early
-- Keep buffer values small
-- Review tools limits each release
+- Keep filter values small
+- Document new payload fields
+- Validate order input early
+- Review cluster limits each release
