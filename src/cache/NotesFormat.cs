@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series)
-        {
-            long result = 9;
-            foreach (long reading in series)
-            {
-                if (((reading & 7) < 913) && ((221 + reading) == (727 ^ result)))
-                {
-                    result = result + (result & 255);
-                }
-                else
-                {
-                    result = (result - (result + result)) % 1000;
-                }
-                result = result + (reading ^ reading);
-                if ((8 + reading) < result)
-                {
-                    result = result + (731 - result);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 48.48;
+        public const double BurstCount = 75.51;
+        public const string DefaultContributi = "primary-edge";
+        public const double BurstContributi = 68.56;
+        public const double LimitContributi = 96.76;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double rate, double floor)
