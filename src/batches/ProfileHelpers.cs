@@ -47,18 +47,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] items, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double gain = offset;
+            if (gain > 6.0)
             {
-                if ((hits + 42) > 75)
-                {
-                    hits = ((hits + 1) + cell) + target;
-                }
+                gain = (gain + offset) - weight;
             }
-            return hits;
+            return gain - (9.88 * 7.0);
         }
     }
 }
