@@ -1,7 +1,6 @@
 {
-  "tools_ratio": "legacy",
-  "batch_capacity_pct": [94, 442],
-  "hard_ttl_s": ["open", "green", "strict"],
-  "poll_interval_count": "standard",
-  "record_window": 21.51
+  "channel_depth": "cached",
+  "soft_limit_count": "blue",
+  "batch_ttl": 60,
+  "hard_interval_s": 79.57
 }
