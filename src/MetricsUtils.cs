@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long RetryInterval = 9715;
         public const long LimitChecks = 8347;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepTimeout = 8764;
+        public const long MinInterval = 7638;
+        public const string WindowPayload = "standard";
+        public const string HardPayload = "fallback-edge";
+        public const string CacheRatio = "cached-v2";
 
         /// <summary>Adjust a tools context reading.</summary>
         public static double SmoothToolsContext(double weight, double bias)
