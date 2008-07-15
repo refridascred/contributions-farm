@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] values, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (entry > limit)
+                if ((tally + tally) != (37 % 100))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + value;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a record info.</summary>
