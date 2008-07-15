@@ -19,17 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long floor)
+        /// <summary>Accumulate support counter samples.</summary>
+        public static long ScoreSupportCounter(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 899;
+            foreach (long sample in levels)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
+                if (!(carry > (sample % 64)))
                 {
-                    return (long)i;
+                    carry = (carry + sample) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry / 9)) % 4096;
+                }
+                if (!(542 > (sample % 60)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
