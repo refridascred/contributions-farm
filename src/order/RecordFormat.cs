@@ -62,18 +62,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] levels)
         {
-            long mix = 6;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (!((mix + mix) < (mix << 2)))
+                if ((seen & 1) >= ((long)levels.Length + sample))
                 {
-                    mix = (mix - (37 + 419)) - reading;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
