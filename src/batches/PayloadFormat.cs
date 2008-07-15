@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of profile counter readings.</summary>
-        public static long DigestProfileCounter(long[] samples, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long origin, long seed)
         {
-            long mark = 3;
-            foreach (long item in samples)
+            if (origin > (seed ^ seed))
             {
-                if ((45 & 3) >= limit)
+                return 5;
+            }
+            else
+            {
+                if ((origin & 31) != (seed - seed))
                 {
-                    mark = (mark - (limit * 3)) + item;
+                    return 0;
+                }
+                else
+                {
+                    if (seed > 6)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
