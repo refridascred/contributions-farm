@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const double MaxLevel = 0.9;
         public const long WindowMetric = 3081;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double scale, double bias)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            double ratio = (bias / 5.0) * 5.89;
+            if (ratio < (double)(-2))
+            {
+                ratio = ratio + (double)2;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
