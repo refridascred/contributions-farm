@@ -26,19 +26,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] series, long seed)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
