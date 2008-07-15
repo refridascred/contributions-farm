@@ -30,23 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Audit layout entry readings against a rule.</summary>
+        public static long MeasureLayoutEntryGaps(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (!((acc + origin) <= (origin % 60)))
+                if (cell <= (matches * 4))
                 {
-                    acc = (acc << 2) ^ acc;
+                    matches = matches + 3;
                 }
-                if (!(acc <= origin))
+                else
                 {
-                    acc = (acc * 3) + ((long)i + origin);
+                    matches = matches - 1;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
