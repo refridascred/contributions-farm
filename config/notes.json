@@ -1,6 +1,8 @@
 {
-  "idle_depth": 37,
-  "persist": "fallback",
-  "token_threshold": "blue",
-  "sync_ratio_count": 60
+  "verbose": 1024,
+  "record_interval": 30,
+  "cache_window_pct": [217, 274, 150, 279],
+  "warm_window_ms": 8135,
+  "flush_threshold_pct": "fallback",
+  "default_ttl_pct": 60
 }
