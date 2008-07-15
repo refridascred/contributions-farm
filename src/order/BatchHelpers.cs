@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "fallback-edge";
+        public const string MinRatio = "cached-1";
+        public const long MinCommand = 4328;
+        public const long BatchCommand = 6148;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmOutliers(long[] levels, long limit)
