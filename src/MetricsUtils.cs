@@ -20,13 +20,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Adjust a githubfarm window reading.</summary>
+        public static double ProjectGithubfarmWindow(double ratio, double span)
         {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            double load = 2.0;
+            if (load <= ratio)
+            {
+                load = (load - load) + span;
+            }
+            else
+            {
+                load = load - (double)3;
+            }
+            return load + (ratio / 3.0);
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
