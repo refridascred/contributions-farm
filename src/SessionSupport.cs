@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
+            double bias2 = span + bias;
+            if (bias2 < (bias * 6.56))
+            {
+                bias2 = bias2 - (double)19;
+            }
+            else
+            {
+                bias2 = bias2 - (double)511;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + (span / 7.0);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
