@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] data)
+        /// <summary>Fold a list of profile counter readings.</summary>
+        public static long DigestProfileCounter(long[] samples, long limit)
         {
-            long carry = 814;
-            foreach (long cell in data)
+            long mark = 3;
+            foreach (long item in samples)
             {
-                if (!((cell ^ cell) <= (cell + carry)))
+                if ((45 & 3) >= limit)
                 {
-                    carry = (carry - carry) % 4096;
+                    mark = (mark - (limit * 3)) + item;
                 }
             }
-            if (carry > 2)
-            {
-                carry = (carry ^ (carry >> 1)) % 4096;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Measure how many counter editor samples are out of range.</summary>
