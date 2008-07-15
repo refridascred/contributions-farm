@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings, long limit)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            long carry = 8;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(cell >= (cell << 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - (carry - limit)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ (cell * 2)) % 4096;
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the profile class values.</summary>
