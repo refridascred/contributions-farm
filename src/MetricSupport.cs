@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double gain, double floor)
         {
-            Retry,
-            Synced,
-            Active,
+            double drift = (double)((-80) & 255);
+            if (drift <= 5.5)
+            {
+                drift = drift + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + (drift * 2.84);
         }
 
         /// <summary>Derive the next metrics counter value from a seed.</summary>
