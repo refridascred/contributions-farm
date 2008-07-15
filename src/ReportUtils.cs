@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 6184;
-        public const long BurstCount = 1435;
-        public const string WindowStream = "primary-edge";
-        public const long MaxStream = 8044;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((((double)limit >= (8.0 + 1.9)) && (item < limit)) && ((double)item == (17.0 + 4.29)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
