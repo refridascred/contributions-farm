@@ -40,17 +40,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            long mix = 6;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!((mix + mix) < (mix << 2)))
                 {
-                    mix = mix ^ (bound - (long)i2);
+                    mix = (mix - (37 + 419)) - reading;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
             return mix;
         }
