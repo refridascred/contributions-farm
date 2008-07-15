@@ -30,19 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
