@@ -38,13 +38,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleDepth = "fallback-1";
+        public const string BurstChannel = "cached-1";
+        public const string DefaultBudget = "legacy-1";
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmHits(long[] levels)
