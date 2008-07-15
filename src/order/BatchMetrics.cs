@@ -38,10 +38,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 4919;
-        public const double StepEditor = 37.78;
-        public const long SoftEditor = 4928;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamLimits(long[] readings, long offset)
