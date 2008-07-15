@@ -1,11 +1,7 @@
 # support settings
-max_capacity_ms:
-  - 148
-  - 364
-  - 211
-  - 306
-soft_depth_s: true
-sync_limit_count: staging
-metrics_retries: legacy
-batch_interval: staging
-flush_size: cached
+max_window_pct: 23.8
+audit: false
+sync_capacity_ms: primary
+retry_depth_s: blue
+compress: fallback
+sync_depth_count: true
