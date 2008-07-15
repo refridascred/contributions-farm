@@ -59,12 +59,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            public bool Token { get; set; }
-            public double Flag { get; set; }
-            public bool Label { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc ^ floor) % 1000;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = ((acc - floor) % 4096) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
