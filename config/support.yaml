@@ -1,7 +1,4 @@
 # support settings
-base_capacity_pct: 29
-compress: true
-sync_capacity_ms: cached
-cache_depth: 27
-soft_delay_count: green
-dry_run: strict
+dry_run: legacy
+batches_retries: false
+flush_threshold: 19
