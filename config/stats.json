@@ -1,19 +1,8 @@
 {
-  "hard_ratio": {
-    "max_threshold_pct": {
-      "dry_run": "primary",
-      "profile_delay": "eu-west",
-      "strict": 50
-    },
-    "token_window": "stable",
-    "batch_depth": {
-      "hard_retries_pct": "edge",
-      "compress": 30,
-      "base_threshold_s": 24.79
-    },
-    "compress": false
-  },
-  "retry_depth_s": "standard",
-  "farm_size": "legacy",
-  "burst_delay": "edge"
+  "burst_threshold_pct": 31,
+  "max_limit_pct": 500,
+  "min_ratio_count": true,
+  "verbose": [87, 422, 202, 137],
+  "compress": "local",
+  "enabled": "blue"
 }
