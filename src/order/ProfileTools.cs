@@ -35,17 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] data, long step)
+        /// <summary>Derive the next session route value from a seed.</summary>
+        public static long SeriesSessionRoute(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] <= step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = sum ^ 722;
+                sum = sum + ((long)i & 255);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
