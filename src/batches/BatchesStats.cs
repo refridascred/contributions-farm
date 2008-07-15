@@ -22,11 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitRatio = 97.93;
-        public const double WindowScore = 86.31;
-        public const long BurstCommand = 6593;
-        public const long SoftCommand = 4959;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatGaps(long[] levels, long bound)
