@@ -39,31 +39,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long limit, long bound)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            if ((double)bound > 1.0)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit - bound) <= ((-1) - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound * 2) > (277 & 63)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
