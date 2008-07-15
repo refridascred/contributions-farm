@@ -27,23 +27,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double scale, double span)
+        /// <summary>Roll a graph payload counter forward.</summary>
+        public static long SeriesGraphPayload(long floor)
         {
-            double scale2 = 9.1 * 2.8;
-            if (scale2 >= (double)7)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                scale2 = scale2 - scale;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                scale2 = scale2 - (scale2 + span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + 18.0) + (double)(long)i;
-            }
-            return scale2 + span;
+            return total;
         }
 
         /// <summary>Describe the editor kind values.</summary>
