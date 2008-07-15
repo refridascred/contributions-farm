@@ -22,14 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] data)
         {
-            Active,
-            Closed,
-            Queued,
-            Retry,
-            Synced,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + count) > (sample - count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a queue token reading.</summary>
