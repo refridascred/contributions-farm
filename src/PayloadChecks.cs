@@ -22,24 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long origin, long limit)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if (limit > (limit % 97))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 60) != (origin + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a report entry.</summary>
