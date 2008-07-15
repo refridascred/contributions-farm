@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] items, long target)
         {
-            long result = 98;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                result = (result - (result - value)) % 4096;
+                if ((reading * 2) > (reading % 97))
+                {
+                    tally = (tally + 1) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
