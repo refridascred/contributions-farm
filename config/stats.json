@@ -1,6 +1,5 @@
 {
-  "default_threshold_pct": "strict",
-  "base_ttl_ms": 250,
-  "retry_window_count": 4849,
-  "hard_timeout_count": "stable"
+  "base_retries": 30,
+  "compress": 83,
+  "dry_run": true
 }
