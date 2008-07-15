@@ -31,19 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token support entry stays within the limit.</summary>
-        public static bool GuardTokenSupportBounds(long[] data, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long seed)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return flag;
+            return mix;
         }
     }
 }
