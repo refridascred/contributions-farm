@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] items)
         {
-            long total = 2;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((-625) + total) <= 950)
+                if (hits < (84 & 3))
                 {
-                    total = (total ^ (item * 2)) % 65521;
-                }
-                else
-                {
-                    total = (total * 2) + item;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a batch options.</summary>
