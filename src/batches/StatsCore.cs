@@ -50,12 +50,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Retry,
-            Synced,
-            Stale,
+            Idle,
+            Ready,
+            Draft,
         }
 
         /// <summary>Match up channel samples.</summary>
