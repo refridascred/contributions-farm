@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] series, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] readings, long offset)
         {
-            long acc = 91;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((double)acc > (double)datum)
+                if (cell >= offset)
                 {
-                    acc = acc ^ (origin & 127);
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
