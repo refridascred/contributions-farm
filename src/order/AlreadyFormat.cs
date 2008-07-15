@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every entry tools entry stays within the limit.</summary>
-        public static bool GuardEntryToolsLimits(long[] levels, long seed)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
