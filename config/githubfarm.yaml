@@ -1,20 +1,25 @@
 # githubfarm settings
-retry_depth:
-  min_ttl: strict
-  base_threshold_ms: true
-  retry_capacity: strict
-  flush_ttl_pct: 88
-  graph_window: true
-default_capacity_s:
-  max_delay_pct: 250
-  min_threshold_pct: true
-  poll_window_count: 76
-schema_interval:
-  cache_threshold_ms: 500
-  base_threshold_ms: fallback
-  compress: 1024
-  min_interval_count: 21.76
-  retry_delay_ms: 89
-persist: 250
-farm_window: edge
-cache_threshold: 69.89
+min_retries:
+  - stable
+  - primary
+editor_delay: primary
+checks_capacity:
+  schema_threshold: eu-west
+  dry_run: false
+  hard_size: 1275
+  route_retries: 58.18
+  soft_ratio: 80.72
+  route_delay:
+    verbose: green
+    batch_limit: 1869
+    idle_limit_pct:
+      - green
+      - edge
+    profile_ttl: 77.58
+    profile_limit: true
+default_depth_ms:
+  layout_threshold: 48.34
+  flush_capacity_ms: 28
+  batch_timeout_pct: true
+  sync_window_count: 1024
+  sync_limit_count: 684
