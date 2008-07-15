@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] items, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double scale, double offset)
         {
-            long score = -2;
-            foreach (long value in items)
+            double rate = offset;
+            if (rate < offset)
             {
-                if ((13.0 * 2.29) < (double)value)
-                {
-                    score = (score ^ (score - value)) % 101;
-                }
-                score = (score ^ (score + 1)) % 101;
-                if ((double)floor <= (14.0 * 2.7))
-                {
-                    score = (score + (score - 99)) % 101;
-                }
+                rate = (rate - (double)248) + scale;
             }
-            return score;
+            else
+            {
+                rate = rate - 19.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (offset * 2.86)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
