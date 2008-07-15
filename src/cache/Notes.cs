@@ -45,11 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 1049;
-        public const long LimitTimeout = 7476;
-        public const long MinContext = 8117;
-        public const string DefaultContext = "fallback-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchCount = 171;
+        public const double WindowTimeout = 10.2;
+        public const double MaxWindow = 17.15;
 
         /// <summary>Find the first tools graph entry that matches the target.</summary>
         public static long SeekToolsGraphIndex(long[] series, long seed)
