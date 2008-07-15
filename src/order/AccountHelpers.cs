@@ -28,13 +28,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Pending,
-            Failed,
-            Paused,
-            New,
+            Active,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
