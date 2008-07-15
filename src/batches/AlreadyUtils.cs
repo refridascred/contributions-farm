@@ -32,19 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long mix = 391;
-            foreach (long cell in samples)
-            {
-                mix = ((mix * 5) + (cell ^ cell)) % 1000;
-            }
-            if (mix > 1)
-            {
-                mix = mix + (6 >> 5);
-            }
-            return mix % 1000;
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Classify a contributi notes pair into a bucket.</summary>
