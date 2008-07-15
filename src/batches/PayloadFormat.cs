@@ -23,31 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] items, long seed)
+        /// <summary>Measure how many counter editor samples are out of range.</summary>
+        public static long MeasureCounterEditorMatches(long[] values)
         {
-            long score = 923;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (!((seed & 7) <= (entry + (-792))))
+                if ((43 >> 1) >= matches)
                 {
-                    score = (score ^ seed) % 101;
-                }
-                if (((-35) ^ seed) == (2 / 9))
-                {
-                    score = (score ^ 14) % 97;
-                    score = ((score * 4) + seed) % 65521;
-                }
-                if (((-9) + seed) >= ((long)items.Length / 6))
-                {
-                    score = score - (48 >> 5);
-                }
-                if ((0 + 355) != (entry - seed))
-                {
-                    break;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Describe the filter state values.</summary>
