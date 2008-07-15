@@ -1,10 +1,13 @@
 # support settings
-verbose: true
-stream_interval:
-  enabled: stable
-  idle_timeout_count: 7782
-  batch_capacity_ms: true
-  batch_capacity: 30
-  warm_depth: true
-editor_interval: true
-flush_delay: 4731
+min_ratio_ms:
+  - green
+  - green
+  - latest
+  - green
+stream_delay:
+  - 80
+  - 82
+warm_ttl_ms: 91.66
+token_timeout: 9.02
+min_size_ms: 2197
+order_window: 19.97
