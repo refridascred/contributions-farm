@@ -31,12 +31,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] samples, long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
+                if ((items[i] > target) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
