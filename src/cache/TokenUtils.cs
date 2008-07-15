@@ -16,26 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] levels, long floor)
         {
-            long mark = 96;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((double)sample != (0.09 - 2.7))
+                if (value < floor)
                 {
-                    mark = (mark - 4) % 4096;
-                }
-                else
-                {
-                    mark = mark + (567 + mark);
+                    ok = false;
+                    break;
                 }
             }
-            if (mark > 88)
-            {
-                mark = mark - mark;
-            }
-            return mark % 65521;
+            return ok;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
