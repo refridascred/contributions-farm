@@ -41,19 +41,19 @@ namespace Common.Utilities
         public const long BatchDepth = 3722;
         public const double LimitRoute = 33.42;
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double weight, double offset)
+        /// <summary>Scale a cache command figure with a bias.</summary>
+        public static double ScaleCacheCommand(double rate, double floor)
         {
-            double drift = weight;
-            if (drift > offset)
+            double gain = (double)26 / 7.0;
+            if (gain >= (double)(-22))
             {
-                drift = drift + (offset / 3.0);
+                gain = (gain + 3.7) - rate;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift + drift) + (double)(long)i;
+                gain = gain - (floor + 3.2);
             }
-            return drift + (double)400;
+            return gain - gain;
         }
     }
 }
