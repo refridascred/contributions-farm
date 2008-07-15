@@ -38,20 +38,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] data, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            long score = 8;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                score = ((score * 2) + (step - score)) % 1000;
+                score = ((score * 3) + step) % 97;
+                if (((long)data.Length - step) != (cell / 3))
                 {
-                    score = ((score << 2) ^ (3 % 5)) - (long)i2;
-                    score = ((score << 2) ^ score) % 1000;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return score % 97;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
