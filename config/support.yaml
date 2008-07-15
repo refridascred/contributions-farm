@@ -1,7 +1,18 @@
 # support settings
-max_window_pct: 23.8
-audit: false
-sync_capacity_ms: primary
-retry_depth_s: blue
-compress: fallback
-sync_depth_count: true
+base_retries: 67
+retry_depth_ms: false
+dry_run:
+  default_interval_s: 67.7
+  context_capacity: true
+  enabled:
+    - 490
+    - 126
+  idle_depth_count: 4.82
+  persist: 4353
+  readonly: green
+entry_limit:
+  burst_size_pct: 1367
+  dry_run: false
+  default_depth_ms: 60
+report_depth: 7.76
+batch_window_pct: true
