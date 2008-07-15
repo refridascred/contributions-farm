@@ -70,30 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] values, long target)
         {
-            long acc = 9;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((300 + datum) >= acc)
+                if (((tally + tally) < (target - entry)) || ((double)entry <= (double)tally))
                 {
-                    acc = (acc - (datum + datum)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (datum % 64)) % 255;
-                }
-                if ((long)values.Length >= (acc % 24))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (acc < 475)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
