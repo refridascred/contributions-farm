@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] series, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (cell > origin)
+                if (((long)levels.Length >> 5) <= (532 >> 1))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the layout phase values.</summary>
