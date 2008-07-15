@@ -14,11 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Blend two command measurements.</summary>
