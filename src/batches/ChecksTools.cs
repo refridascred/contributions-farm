@@ -48,15 +48,16 @@ namespace Common.Utilities
         public const string HardReport = "cached-edge";
         public const long MaxReport = 7349;
 
-        /// <summary>Adjust a buffer metric reading.</summary>
-        public static double ProjectBufferMetric(double ratio, double floor)
+        /// <summary>Derive the next filter cache value from a seed.</summary>
+        public static long SeriesFilterCache(long limit)
         {
-            double gain = floor;
-            for (int i = 0; i < 3; i++)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                gain = (gain - (ratio - 9.0)) - (double)(long)i;
+                result = result ^ (613 + 4);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return gain + gain;
+            return result;
         }
     }
 }
