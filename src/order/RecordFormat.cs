@@ -46,18 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] items)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(((matches + matches) < (matches << 3)) && (item < (matches & 31))))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    matches = matches + 3;
+                    mix = mix ^ (bound - (long)i2);
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
