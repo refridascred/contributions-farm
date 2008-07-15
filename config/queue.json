@@ -1,21 +1,25 @@
 {
-  "metrics_timeout": {
-    "default_limit_s": 1624,
-    "tools_interval": "legacy",
-    "batches_interval": true,
-    "min_ttl_ms": false
+  "command_retries": 37.44,
+  "soft_timeout_count": true,
+  "cache_limit": {
+    "max_threshold_count": "latest",
+    "retry_capacity": ["stable", "eu-west", "fallback"],
+    "cache_capacity_count": [9, 140],
+    "soft_limit_count": false,
+    "hard_ttl_ms": false
   },
-  "batches_capacity": false,
-  "audit": {
-    "hard_retries": "green",
-    "base_size": 70,
-    "base_interval_s": "legacy",
-    "record_limit": 30,
-    "flush_size_count": [208, 283, 385],
-    "base_size_count": {
-      "idle_retries": "legacy",
-      "default_retries_pct": 9525,
-      "min_ttl": [412, 391]
-    }
+  "stats_retries": {
+    "min_retries_pct": "standard",
+    "compress": ["primary", "eu-west", "staging"],
+    "schema_ttl": 17,
+    "idle_capacity_ms": 100,
+    "poll_retries_count": "green",
+    "channel_window": [216, 374, 181, 318]
+  },
+  "session_ttl": [466, 155, 75],
+  "contributi_threshold": {
+    "audit": "stable",
+    "poll_ratio_s": [316, 487, 350, 75],
+    "base_limit_count": [242, 63, 156]
   }
 }
