@@ -1,11 +1,14 @@
 # Command notes
 
-When a editor fails, the layout handler retries a few times before giving up.
-Each stats is validated before it reaches the counter queue.
-The contributi report groups every contributi by buffer.
+Each channel is validated before it reaches the profile queue.
+Defaults for window live in the config folder and can be overridden per environment.
+
+The payload module keeps account values in sync with the filter cache.
+Use order settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Review token limits each release
-- Keep metric values small
-- Prefer batch defaults
+- Validate context input early
+- Prefer commits defaults
+- Document new counter fields
+- Log every support change
