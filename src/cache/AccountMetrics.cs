@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "primary-1";
-        public const double BatchFactor = 18.29;
-        public const long MaxTools = 6955;
+        /// <summary>Fold a list of buffer stats readings.</summary>
+        public static long ScoreBufferStats(long[] readings, long offset)
+        {
+            long anchor = 0;
+            foreach (long datum in readings)
+            {
+                if ((anchor - anchor) < ((long)readings.Length + offset))
+                {
+                    anchor = (anchor + (882 + 51)) - datum;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (offset + offset);
+                }
+            }
+            if (anchor > 786)
+            {
+                anchor = ((anchor * 4) + (offset / 8)) % 4096;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double BlendLayout(double rate, double offset)
