@@ -13,13 +13,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public double Ratio { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 8267;
+        public const string HardTools = "standard-v2";
+        public const double StepTimeout = 87.36;
+        public const long SoftSize = 6894;
 
         /// <summary>Locate a tools checks reading by value.</summary>
         public static long FindToolsChecksIndex(long[] readings, long seed)
