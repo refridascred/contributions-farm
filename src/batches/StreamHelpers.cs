@@ -60,18 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] readings, long limit)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double floor)
         {
-            long state = 23;
-            foreach (long item in readings)
-            {
-                if ((4 + limit) >= (state / 3))
-                {
-                    state = (((state * 5) + (state + limit)) % 255) - item;
-                }
-            }
-            return state;
+            double bias2 = (double)(25 - 3);
+            return ((bias2 + 6.8) + bias) + floor;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
