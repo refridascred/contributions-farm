@@ -30,31 +30,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long origin, long bound)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            if (((bound - bound) >= bound) && ((double)bound < (double)origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin * 4) <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin != (2.0 + 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
