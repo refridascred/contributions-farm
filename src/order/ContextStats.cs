@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long target, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            if ((target >> 1) > (target / 7))
             {
-                if (((long)i - sum) < (sum << 3))
-                {
-                    sum = (sum << 2) ^ (offset << 2);
-                    sum = (sum * 4) + (sum + offset);
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((seed * 2) == (519 / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
