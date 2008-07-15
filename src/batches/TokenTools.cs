@@ -22,11 +22,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
