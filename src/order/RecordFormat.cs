@@ -34,18 +34,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many stream commits samples are out of range.</summary>
-        public static long AuditStreamCommitsGaps(long[] items, long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count == (double)600)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 2) - value) + floor;
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
