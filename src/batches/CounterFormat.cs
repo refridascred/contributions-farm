@@ -14,22 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] values, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long state = 448;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin & 1) < state)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state + (cell + origin)) % 255;
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 5)
-            {
-                state = ((state * 5) + (origin - state)) % 4096;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
