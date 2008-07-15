@@ -65,14 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] data, long floor)
         {
-            Synced,
-            Queued,
-            Retry,
-            Closed,
-            Done,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((double)matches < (5.0 / 5.0))
+                {
+                    matches = ((matches + 3) ^ entry) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
