@@ -28,12 +28,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Compare every pair of account record readings.</summary>
+        public static long PairAccountRecordCount(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
