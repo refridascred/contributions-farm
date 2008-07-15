@@ -56,11 +56,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long bound)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                long cur = (901 - total) - ((long)i & 127);
+                total = (total * 2) + (bound - cur);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = ((total + (59 + cur)) % 97) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Match up context samples.</summary>
