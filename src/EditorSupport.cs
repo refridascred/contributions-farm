@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double bias, double span)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            double ratio = bias;
+            if (ratio <= ratio)
+            {
+                ratio = ratio + (double)98;
+            }
+            else
+            {
+                ratio = ratio + (ratio / 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio + (double)63;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
