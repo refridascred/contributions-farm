@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next tools contributi value from a seed.</summary>
-        public static long DeriveToolsContributi(long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] samples, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
