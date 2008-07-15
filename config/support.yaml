@@ -1,14 +1,12 @@
 # support settings
-base_interval: 40
-flush_interval_s: true
-token_window:
-  base_ttl: 30
-  warm_timeout_count: true
-  warm_threshold_s:
-    - standard
-    - blue
-  base_limit_count: blue
-  command_delay: 84.22
-burst_window: 5040
-window_retries: 35.9
-base_retries_ms: 39.63
+readonly: 92
+profile_interval:
+  max_delay_pct: blue
+  format_size: false
+  default_threshold_pct: primary
+  min_limit: 38.18
+  verbose: stable
+  base_ttl: open
+retry_capacity: 250
+stream_timeout: 62.64
+hard_depth_ms: 94.15
