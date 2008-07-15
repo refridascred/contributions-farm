@@ -23,39 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long floor, long floor2)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] readings, long offset)
         {
-            long diff = floor ^ floor2;
-            if (floor < 56)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0 + diff) <= (18 / 3))
+                if (sample != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff - floor) < floor2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor2 + diff) < floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the filter phase values.</summary>
