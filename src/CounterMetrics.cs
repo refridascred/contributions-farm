@@ -48,11 +48,21 @@ namespace Common.Utilities
             return scale2 - (double)(-624);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheBudget = "local-1";
-        public const long IdleGithubfarm = 3601;
-        public const long DefaultSpan = 3786;
-        public const long BaseSize = 4694;
-        public const long WindowGithubfarm = 3404;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
