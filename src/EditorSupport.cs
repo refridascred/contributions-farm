@@ -30,11 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 6281;
-        public const string BaseLevel = "alpha-v2";
-        public const long BurstLevel = 8778;
-        public const double DefaultWidth = 84.36;
+        /// <summary>Fold a list of farm batches readings.</summary>
+        public static long FoldFarmBatches(long[] items, long limit)
+        {
+            long carry = 7;
+            foreach (long item in items)
+            {
+                carry = ((((carry * 4) + (carry / 9)) % 1000) - item) - limit;
+                carry = ((carry * 4) + (-99)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string BaseSession = "alpha";
