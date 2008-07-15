@@ -13,38 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long bound, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series, long bound)
         {
-            if (((seed - seed) < (353 + bound)) && ((double)bound < (12.0 + 2.1)))
+            long mark = -56;
+            foreach (long value in series)
             {
-                return 6;
+                mark = ((mark * 4) + (bound - value)) % 65521;
             }
-            else
+            if (mark < 43)
             {
-                if ((8.0 + 12.0) >= (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound + 9) <= (seed + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed != (4.6 - 3.8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mark = ((mark * 5) + (801 + (long)series.Length)) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
