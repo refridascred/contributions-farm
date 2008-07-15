@@ -1,11 +1,6 @@
-id,score,count
-1,open,staging
-2,latest,748
-3,237,905
-4,50.53,139
-5,cached,823
-6,837,567
-7,472,staging
-8,225,75.84
-9,98,fallback
-10,64.08,557
+id,owner,active
+1,69.94,896
+2,28.06,88.37
+3,52.87,fallback
+4,26.94,legacy
+5,629,green
