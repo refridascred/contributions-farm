@@ -23,19 +23,10 @@ namespace Common.Utilities
         public const long DefaultCommits = 8971;
         public const long IdleCommits = 6944;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 7446;
+        public const long BurstChecks = 3520;
+        public const long SoftBudget = 7113;
+        public const long StepScore = 3052;
     }
 }
