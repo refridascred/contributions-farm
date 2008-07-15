@@ -42,13 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double scale, double bias)
         {
-            Locked,
-            Done,
-            Pending,
-            Paused,
+            double mean = (double)(694 & 1);
+            if (mean >= (scale * 1.3))
+            {
+                mean = mean - (scale * 4.7);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (scale - bias)) + (double)(long)i;
+            }
+            return mean + (3.3 + 9.4);
         }
     }
 }
