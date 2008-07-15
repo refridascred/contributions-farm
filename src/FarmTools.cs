@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many command profile samples are out of range.</summary>
-        public static long MeasureCommandProfileOutliers(long[] items)
+        /// <summary>Locate a already channel reading by value.</summary>
+        public static long SeekAlreadyChannelIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample / 4) <= (count - count))
+                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
