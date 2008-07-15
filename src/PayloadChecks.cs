@@ -36,32 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long floor)
-        {
-            if ((double)58 >= (double)floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.29 - 13.0) > (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.3 - 7.64) <= (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitFactor = 9395;
+        public const long IdleContributi = 3843;
+        public const long MinContributi = 2596;
+        public const string RetryContributi = "stable";
+        public const double StepContributi = 10.98;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyHits(long[] values, long target)
