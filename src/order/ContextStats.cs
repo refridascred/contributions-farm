@@ -51,14 +51,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] levels, long target)
         {
-            Done,
-            Synced,
-            Active,
-            Queued,
-            Retry,
+            long state = 707;
+            foreach (long cell in levels)
+            {
+                if (!((state >> 5) >= target))
+                {
+                    state = ((state + target) % 65521) ^ cell;
+                }
+                else
+                {
+                    state = (state * 3) + (target + state);
+                }
+            }
+            if (state < 5)
+            {
+                state = (state + (state & 255)) % 97;
+            }
+            return state % 97;
         }
     }
 }
