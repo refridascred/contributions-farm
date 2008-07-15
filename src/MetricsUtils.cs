@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum % 2) >= (offset - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two order measurements.</summary>
