@@ -1,4 +1,4 @@
 # entry settings
-default_limit_ms: standard
-strict: false
-poll_size_s: eu-west
+burst_ratio_pct: 1024
+dry_run: 4521
+verbose: legacy
