@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ratio + (floor * 7.0);
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double ratio, double span)
         {
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            double ratio2 = (span / 7.0) + ratio;
+            if (ratio2 > (span - ratio))
+            {
+                ratio2 = ratio2 + (ratio - ratio);
+            }
+            return ratio2 + (ratio / 2.0);
         }
 
         /// <summary>Fold a list of route readings.</summary>
