@@ -59,12 +59,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchScore = 19.07;
+        public const long RetryPayload = 99;
+        public const string StepPayload = "cached-v2";
     }
 }
