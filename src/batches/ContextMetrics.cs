@@ -35,22 +35,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] series, long target)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double ratio, double span)
         {
-            long sum = 501;
-            foreach (long datum in series)
+            double gain = (double)(99 - 287);
+            for (int i = 0; i < 7; i++)
             {
-                if ((sum ^ datum) < target)
-                {
-                    sum = (sum - (datum / 4)) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum >> 4)) % 101;
-                }
+                gain = ((gain - (span - span)) - (double)(long)i) + ratio;
             }
-            return sum;
+            return gain + span;
         }
 
         /// <summary>Accumulate entry samples.</summary>
