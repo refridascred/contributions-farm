@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data, long target)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long target, long step)
         {
-            long mark = -9;
-            foreach (long item in data)
+            long edge = target ^ step;
+            if (target >= (target + edge))
             {
-                mark = ((mark << 3) ^ (target - item)) % 255;
-                if ((item - item) >= item)
+                return 6;
+            }
+            else
+            {
+                if (step < (target + edge))
                 {
-                    mark = mark - item;
+                    return 5;
+                }
+                else
+                {
+                    if ((edge + 3) != (edge % 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
