@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm profile pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmProfileCount(long[] levels)
+        /// <summary>Audit schema counter readings against a rule.</summary>
+        public static long AuditSchemaCounterMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally ^ value) == (tally & 15))
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
