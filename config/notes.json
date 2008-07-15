@@ -1,7 +1,5 @@
 {
-  "burst_interval_ms": "green",
-  "readonly": "stable",
-  "max_ratio_count": true,
-  "flush_depth_ms": "latest",
-  "min_window": "latest"
+  "compress": 72,
+  "burst_ratio_s": "local",
+  "strict": "strict"
 }
