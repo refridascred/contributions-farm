@@ -23,16 +23,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = anchor ^ (5 + anchor);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 687;
+        public const double SoftCount = 79.85;
+        public const double IdleCache = 17.72;
+        public const long MaxFactor = 1840;
+        public const double MaxSize = 28.55;
     }
 }
