@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] levels, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
