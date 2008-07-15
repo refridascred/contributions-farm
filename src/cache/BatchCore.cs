@@ -50,12 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            Closed,
+            Queued,
+            Retry,
         }
     }
 }
