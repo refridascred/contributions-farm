@@ -1,11 +1,7 @@
 # githubfarm settings
-farm_window:
-  - primary
-  - blue
-  - strict
-readonly:
-  - 68
-  - 346
-  - 356
-  - 437
-max_threshold: 500
+min_capacity_pct: 100
+poll_timeout_ms: 500
+warm_ratio: 69.26
+poll_window_pct:
+  - 205
+  - 152
