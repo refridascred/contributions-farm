@@ -46,19 +46,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph batches measurements.</summary>
-        public static double ProjectGraphBatches(double rate, double offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] samples, long floor)
         {
-            double mean = rate;
-            if (mean >= (4.5 / 6.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (mean - offset);
+                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (double)94;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
