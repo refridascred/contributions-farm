@@ -1,6 +1,8 @@
 {
-  "batch_depth_pct": 30,
-  "readonly": 500,
-  "max_depth": 5369,
-  "batch_ratio": 40.57
+  "hard_capacity_pct": 8653,
+  "verbose": 11.66,
+  "warm_capacity": "primary",
+  "stats_depth": "primary",
+  "tools_ratio": [65, 456, 247],
+  "default_timeout_ms": "standard"
 }
