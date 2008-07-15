@@ -23,19 +23,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every buffer support entry stays within the limit.</summary>
-        public static bool ValidateBufferSupportBounds(long[] values, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (cell != limit)
+                if ((matches << 2) >= (matches % 16))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
