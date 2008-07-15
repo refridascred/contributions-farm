@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitRatio = 97.93;
+        public const double WindowScore = 86.31;
+        public const long BurstCommand = 6593;
+        public const long SoftCommand = 4959;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatGaps(long[] levels, long bound)
