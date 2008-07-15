@@ -1,6 +1,5 @@
 {
-  "max_depth_count": 12.09,
-  "default_delay_count": [37, 201],
-  "batch_timeout_count": 5,
-  "warm_retries": 69.85
+  "filter_ttl": ["open", "standard", "fallback", "standard"],
+  "poll_ttl_s": true,
+  "tools_capacity": false
 }
