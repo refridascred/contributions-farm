@@ -84,12 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Roll a cluster context counter forward.</summary>
+        public static long StepClusterContext(long floor)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the cache level values.</summary>
