@@ -1,20 +1,15 @@
 # entry settings
-hard_delay_count: eu-west
-githubfarm_interval: primary
-readonly: eu-west
-retry_retries_count:
-  retry_limit_s: 67
-  default_size_pct:
-    report_ttl: edge
-    graph_limit: 36.93
-    max_window_count: false
-  persist: 64.3
-  enabled: false
-  cache_ratio:
-    batch_delay_pct:
-      - 341
-      - 81
-      - 63
-    soft_window_count: 2458
-    min_timeout_s: 2859
-  poll_window: 730
+audit: fallback
+stats_limit: local
+sync_interval: true
+batch_depth_ms:
+  - 388
+  - 205
+  - 69
+  - 91
+base_capacity_ms:
+  base_ttl_ms: staging
+  base_ratio: false
+  dry_run: blue
+  max_depth_ms: eu-west
+  hard_capacity: 1024
