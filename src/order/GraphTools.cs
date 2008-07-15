@@ -13,22 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many counter buffer samples are out of range.</summary>
-        public static long MeasureCounterBufferOutliers(long[] readings, long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (43 < seen)
+                if (readings[i] <= offset)
                 {
-                    seen = ((seen + 2) - cell) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
