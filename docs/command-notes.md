@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-When a cache fails, the already handler retries a few times before giving up.
-
-Defaults for notes live in the config folder and can be overridden per environment.
-When a route fails, the queue handler retries a few times before giving up.
-Use cluster settings to tune how often account data is refreshed.
+The route helpers are pure functions, so they are safe to call from any thread.
+The graph report groups every session by report.
 
 ## Guidelines
 
-- Review commits limits each release
-- Validate channel input early
-- Prefer window defaults
-- Keep entry values small
+- Review command limits each release
+- Log every counter change
+- Document new route fields
+- Validate githubfarm input early
