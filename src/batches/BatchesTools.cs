@@ -38,19 +38,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] data, long origin)
+        /// <summary>Look up the position of a route command sample.</summary>
+        public static long LookupRouteCommandIndex(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > origin)
+                if (levels[i] < limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
