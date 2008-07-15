@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            Synced,
+            Stale,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a report stats.</summary>
