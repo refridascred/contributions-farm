@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] items, long target)
-        {
-            long carry = 5;
-            foreach (long reading in items)
-            {
-                if (carry < (carry << 1))
-                {
-                    carry = ((carry - (target & 1)) % 101) ^ reading;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 8271;
+        public const long DefaultRatio = 4838;
+        public const long WindowRecord = 7322;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
