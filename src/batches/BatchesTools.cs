@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of editor farm readings.</summary>
-        public static long OverlapEditorFarmCount(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)datum > (double)32))
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
