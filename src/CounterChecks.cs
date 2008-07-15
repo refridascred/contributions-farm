@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer record entries that pass the check.</summary>
-        public static long CountBufferRecordGaps(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((0 ^ seen) < (sample + seen))
-                {
-                    seen = (seen + 1) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 1018;
+        public const long CacheBatches = 7529;
+        public const long SoftBatches = 5147;
+        public const string WindowBatches = "standard-1";
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
