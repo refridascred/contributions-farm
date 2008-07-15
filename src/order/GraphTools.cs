@@ -27,11 +27,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchWidth = 7914;
-        public const double IdleCounter = 42.76;
-        public const long MaxCount = 2806;
-        public const double WindowBudget = 85.53;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] series, long limit)
+        {
+            long mark = 4;
+            foreach (long item in series)
+            {
+                mark = mark - 7;
+                if (((item ^ 58) <= item) || ((double)limit >= (14.0 * 18.0)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of format metrics entries.</summary>
         public static long FoldFormatMetrics(long[] values)
