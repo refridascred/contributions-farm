@@ -29,22 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "stable";
+        public const string BatchStream = "stable-v2";
+        public const long SoftStream = 2509;
+        public const long HardSpan = 3577;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] values)
