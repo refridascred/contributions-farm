@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (4.5 < (double)item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleRatio = 3618;
+        public const string DefaultContext = "legacy-1";
+        public const long WindowTimeout = 4015;
+        public const long MinContext = 7317;
+        public const long IdleContext = 302;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 9158;
