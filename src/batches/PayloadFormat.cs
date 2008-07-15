@@ -22,13 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] data, long bound)
         {
-            New,
-            Draft,
-            Closed,
-            Active,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((0 & 3) < value)
+                {
+                    count = (count + 1) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric status values.</summary>
