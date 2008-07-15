@@ -1,5 +1,26 @@
 {
-  "soft_window_count": 2405,
-  "dry_run": "green",
-  "cache_capacity_count": "staging"
+  "dry_run": 12.86,
+  "burst_limit_count": ["standard", "standard", "fallback", "green"],
+  "commits_capacity": 70.63,
+  "persist": "standard",
+  "retry_interval_ms": {
+    "batch_ratio": [212, 52],
+    "idle_window": "green",
+    "layout_interval": 54,
+    "audit": {
+      "graph_delay": 30,
+      "warm_capacity_count": "fallback",
+      "cache_delay_s": true,
+      "flush_ratio_pct": true,
+      "min_window": 45.71
+    },
+    "retry_threshold": {
+      "cache_interval": 30,
+      "verbose": "eu-west",
+      "order_depth": 25,
+      "poll_retries": 500,
+      "default_ttl_ms": "strict"
+    },
+    "strict": 15.36
+  }
 }
