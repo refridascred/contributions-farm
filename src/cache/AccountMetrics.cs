@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of buffer stats readings.</summary>
-        public static long ScoreBufferStats(long[] readings, long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] levels)
         {
-            long anchor = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((anchor - anchor) < ((long)readings.Length + offset))
+                if (((sample % 7) <= 0) || !(sample <= (count >> 1)))
                 {
-                    anchor = (anchor + (882 + 51)) - datum;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (offset + offset);
+                    count = count + 3;
                 }
             }
-            if (anchor > 786)
-            {
-                anchor = ((anchor * 4) + (offset / 8)) % 4096;
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Blend two layout measurements.</summary>
