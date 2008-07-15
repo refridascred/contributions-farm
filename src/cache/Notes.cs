@@ -49,13 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
