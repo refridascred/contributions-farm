@@ -19,12 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Look up the position of a queue batch sample.</summary>
+        public static long LocateQueueBatchIndex(long[] values, long bound)
         {
-            Paused,
-            Stale,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
