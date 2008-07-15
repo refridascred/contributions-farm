@@ -1,11 +1,5 @@
 {
-  "default_interval_s": 60,
-  "commits_window": {
-    "min_retries_s": "blue",
-    "session_threshold": ["strict", "primary", "edge"],
-    "audit": 34,
-    "stats_ratio": [107, 107, 377, 210],
-    "entry_window": "local"
-  },
-  "cluster_timeout": 100
+  "batches_delay": 60,
+  "burst_retries": 57.67,
+  "layout_threshold": 77
 }
