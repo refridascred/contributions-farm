@@ -1,8 +1,12 @@
 {
-  "cache_ratio_pct": 57.6,
-  "command_capacity": "local",
-  "githubfarm_window": 9187,
-  "batch_ttl_count": ["cached", "local", "cached", "open"],
-  "base_limit_s": true,
-  "audit": "local"
+  "strict": {
+    "poll_ttl_ms": "blue",
+    "base_delay": 19,
+    "min_retries": ["eu-west", "legacy", "standard", "legacy"],
+    "cluster_interval": true,
+    "window_limit": false
+  },
+  "hard_ratio_pct": [238, 61, 389],
+  "already_ttl": false,
+  "idle_delay": 95.65
 }
