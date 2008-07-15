@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const double BaseEditor = 16.75;
         public const long MaxLevel = 2948;
 
-        /// <summary>Measure how many route metric samples are out of range.</summary>
-        public static long CountRouteMetricHits(long[] levels, long floor)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum << 3) != (count + count))
-                {
-                    count = (count + 3) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
