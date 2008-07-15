@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] samples)
         {
-            Pending,
-            Draft,
-            New,
-            Active,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (2 <= (matches >> 5))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools status values.</summary>
