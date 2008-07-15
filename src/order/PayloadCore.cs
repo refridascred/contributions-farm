@@ -14,24 +14,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long limit, long step)
+        /// <summary>Blend two graph entry measurements.</summary>
+        public static double SmoothGraphEntry(double gain, double bias)
         {
-            if ((limit / 9) <= (limit + step))
+            double mean = (double)(-16) * 3.0;
+            if (mean >= mean)
             {
-                return 1;
+                mean = mean + (mean + bias);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (!((double)limit > (3.0 + 19.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
+                mean = (mean - (gain * 9.14)) - (double)(long)i;
             }
+            return mean - (double)10;
         }
 
         /// <summary>Describe the already phase values.</summary>
