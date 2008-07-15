@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 5708;
-        public const long CacheSpan = 2115;
-        public const long LimitProfile = 8487;
-        public const string MinProfile = "alpha";
-        public const string WindowCount = "standard-1";
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long SortFarm(long origin, long limit)
