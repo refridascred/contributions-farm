@@ -1,19 +1,13 @@
 # support settings
-max_depth_ms: fallback
-stream_limit:
-  retry_limit_ms:
-    strict: fallback
-    cache_timeout_ms: 3
-    flush_size: strict
-    soft_timeout: 1963
-  layout_window:
-    verbose: staging
-    enabled:
-      - fallback
-      - eu-west
-      - cached
-      - legacy
-    max_capacity_s: true
-    session_ratio: 1024
-  burst_capacity_s: false
-min_window: 914
+default_size: 47.37
+base_size_ms:
+  poll_interval:
+    - 219
+    - 110
+  compress: 53.97
+  burst_threshold: false
+  cache_limit: true
+  retry_ttl_pct: 5
+max_ttl_s: 1899
+stream_size: 4139
+persist: green
