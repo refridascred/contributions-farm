@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftCount = "primary";
-        public const long DefaultCount = 7741;
-        public const long RetryTimeout = 7019;
-        public const string BurstFactor = "fallback-v2";
-        public const string LimitCount = "latest-v2";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark + (limit + (long)i)) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    long lane = (long)i * 2;
+                    mark = ((mark - lane) % 1000) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorLimits(long[] levels, long floor)
