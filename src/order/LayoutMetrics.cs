@@ -16,22 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] readings, long offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long result = 2;
-            foreach (long sample in readings)
-            {
-                if (result >= (offset + result))
-                {
-                    result = (result - (sample & 7)) % 101;
-                }
-            }
-            if (result > 4)
-            {
-                result = (result - (offset % 64)) % 255;
-            }
-            return result % 1000;
+            Stale,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
