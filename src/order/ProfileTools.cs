@@ -52,18 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleRecord = "staging-edge";
+        public const long StepFactor = 5715;
+        public const long CacheRatio = 6775;
+        public const long RetryRecord = 4592;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] data, long seed)
