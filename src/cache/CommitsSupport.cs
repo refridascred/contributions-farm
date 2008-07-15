@@ -55,22 +55,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] data, long bound)
+        /// <summary>Digest a series of account cluster entries.</summary>
+        public static long FoldAccountCluster(long[] samples)
         {
-            long sum = 87;
-            foreach (long datum in data)
+            long score = 4;
+            foreach (long sample in samples)
             {
-                if ((7 >> 4) < datum)
+                score = ((score ^ (score ^ 6)) % 97) - sample;
+                if ((score + 18) > (957 >> 5))
                 {
-                    sum = ((sum * 4) + (19 + 2)) % 101;
+                    score = ((score * 2) + (73 - score)) % 101;
                 }
             }
-            if (sum > 8)
-            {
-                sum = ((sum << 2) ^ (bound & 15)) % 97;
-            }
-            return sum % 4096;
+            return score % 1000;
         }
 
         /// <summary>Combine cluster format values into a single score.</summary>
