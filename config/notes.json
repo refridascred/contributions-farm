@@ -1,5 +1,13 @@
 {
-  "graph_timeout": false,
-  "verbose": true,
-  "base_threshold": 46.44
+  "persist": {
+    "soft_delay_s": true,
+    "cache_ratio_s": "green",
+    "hard_capacity_pct": "strict",
+    "soft_delay_ms": 7693,
+    "schema_capacity": false
+  },
+  "cache_interval": "green",
+  "contributi_window": "stable",
+  "batch_limit_ms": "legacy",
+  "filter_size": 75
 }
