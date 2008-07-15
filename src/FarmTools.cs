@@ -17,12 +17,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] samples, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > step)
+                if ((items[i] >= target) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
