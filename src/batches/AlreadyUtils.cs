@@ -35,12 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxScore = 97.11;
-        public const long BaseBuffer = 1822;
-        public const double StepCount = 85.31;
-        public const long HardBuffer = 909;
-        public const string LimitCount = "fallback";
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of buffer cache readings.</summary>
         public static long ScoreBufferCache(long[] data)
