@@ -23,21 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = bias2;
+            if (scale < bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - (double)79;
             }
-            return hits;
+            return scale - 1.67;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
