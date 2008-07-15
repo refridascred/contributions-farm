@@ -56,21 +56,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                long cur = (901 - total) - ((long)i & 127);
-                total = (total * 2) + (bound - cur);
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = ((total + (59 + cur)) % 97) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
