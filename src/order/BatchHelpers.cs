@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardRatio = 3989;
-        public const long BurstSpan = 4881;
-        public const string StepLayout = "open-1";
-        public const string SoftInterval = "primary-edge";
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Fold a list of stream support readings.</summary>
         public static long TotalStreamSupport(long[] items)
