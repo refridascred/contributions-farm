@@ -1,5 +1,5 @@
 {
-  "readonly": 29,
-  "retry_interval": 80.18,
-  "dry_run": true
+  "warm_limit_pct": 47.3,
+  "report_delay": [491, 29, 179],
+  "report_capacity": "eu-west"
 }
