@@ -44,17 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] data, long floor)
+        /// <summary>Measure how many route account samples are out of range.</summary>
+        public static long AuditRouteAccountHits(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (data[i] >= floor)
+                if ((limit % 97) < limit)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count support account pairs that satisfy a relation.</summary>
