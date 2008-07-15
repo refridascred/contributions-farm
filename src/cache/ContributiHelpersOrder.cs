@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many counter entry samples are out of range.</summary>
+        public static long MeasureCounterEntryHits(long[] items, long target)
         {
-            New,
-            Dropped,
-            Done,
-            Draft,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (sample >= ((-64) << 2))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
