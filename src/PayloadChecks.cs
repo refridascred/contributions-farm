@@ -59,11 +59,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] values, long seed)
         {
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
+            long mark = 881;
+            foreach (long sample in values)
+            {
+                mark = (mark ^ (sample * 5)) - seed;
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
