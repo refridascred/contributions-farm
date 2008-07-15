@@ -31,22 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples, long offset)
+        /// <summary>Audit schema graph readings against a rule.</summary>
+        public static long MeasureSchemaGraphOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((((double)tally > 2.62) || ((offset / 5) > (entry / 3))) && ((offset ^ tally) > (offset + offset)))
+                if (((count << 1) <= sample) || (sample <= (count % 3)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
