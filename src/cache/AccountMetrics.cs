@@ -13,19 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double rate, double offset)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            double ratio = (double)(88 - 798);
-            if (ratio < rate)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - (rate + rate)) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio + (7.93 * 6.9);
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
