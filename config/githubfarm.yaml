@@ -1,4 +1,5 @@
 # githubfarm settings
-audit: open
-dry_run: false
-hard_interval_ms: 71.02
+already_ratio: open
+tools_interval: false
+min_timeout_pct: edge
+batch_depth_ms: 1024
