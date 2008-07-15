@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double bias, double span)
+        /// <summary>Validate report counter readings against a bound.</summary>
+        public static bool ValidateReportCounterRange(long[] data, long limit)
         {
-            double scale = bias;
-            return scale - (span / 3.0);
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a channel summary.</summary>
