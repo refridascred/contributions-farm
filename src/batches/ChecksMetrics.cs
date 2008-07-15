@@ -69,16 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings, long origin)
+        /// <summary>Audit window graph readings against a rule.</summary>
+        public static long CountWindowGraphGaps(long[] samples, long seed)
         {
-            long result = 49;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                result = (((result * 4) + entry) % 101) + origin;
-                result = (result << 3) ^ (entry / 6);
+                if (!(((8 + tally) <= (seed + item)) && ((item + tally) < seed)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a stream options.</summary>
