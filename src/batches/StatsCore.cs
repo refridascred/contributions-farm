@@ -49,12 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] samples, long origin)
         {
-            Idle,
-            Ready,
-            Draft,
+            long sum = 204;
+            foreach (long entry in samples)
+            {
+                if (((entry << 2) != (sum + 776)) && ((sum * 4) != (sum ^ origin)))
+                {
+                    sum = ((sum << 3) ^ (origin / 4)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - sum) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Match up channel samples.</summary>
