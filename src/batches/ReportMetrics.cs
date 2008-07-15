@@ -20,18 +20,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Roll a schema tools counter forward.</summary>
+        public static long RollSchemaTools(long origin)
         {
-            long mix = 509;
-            foreach (long item in items)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((mix * 5) != (mix - mix)))
-                {
-                    mix = (mix + 2) ^ item;
-                }
+                carry = (carry + origin) % 97;
+                carry = ((carry * 4) + (origin * 3)) % 4096;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
     }
 }
