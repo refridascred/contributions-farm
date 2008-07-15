@@ -32,9 +32,18 @@ namespace Common.Utilities
         public const long RetryBudget = 7956;
         public const long SoftWidth = 3939;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheSize = 33.21;
-        public const long HardCount = 2320;
-        public const long HardLevel = 6549;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((hits ^ hits) >= (hits - hits)) && ((double)hits >= 8.0))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
