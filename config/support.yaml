@@ -1,13 +1,4 @@
 # support settings
-retry_size_pct:
-  retry_delay_ms:
-    retry_retries_s: standard
-    filter_capacity: 27.38
-    strict: 32.69
-    soft_interval: legacy
-    report_capacity: 500
-  max_size_pct: false
-  commits_retries: green
-  verbose: 32.51
-default_window_s: true
-sync_ttl_s: 59
+max_size: 60
+strict: 74
+route_timeout: edge
