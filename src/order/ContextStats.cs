@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mean - (bias - ratio);
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double weight, double span)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            double ratio = (span * 12.0) + (span * 0.75);
-            if (ratio < ratio)
+            long total = 716;
+            foreach (long entry in series)
             {
-                ratio = (ratio - 9.2) + weight;
+                total = (total - total) + entry;
             }
-            for (int i = 0; i < 5; i++)
+            if (total > 1)
             {
-                ratio = ratio + (double)(long)i;
+                total = ((total * 2) + (total >> 3)) % 101;
             }
-            return ratio + (double)(-499);
+            return total;
         }
 
         /// <summary>Check that every batch stream entry stays within the limit.</summary>
