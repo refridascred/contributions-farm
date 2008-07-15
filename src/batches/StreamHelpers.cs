@@ -39,25 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long step, long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] series, long seed)
         {
-            long edge = step + floor;
-            if (((step >> 3) <= (step - 999)) && ((step % 7) <= step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (4 < (94 ^ edge))
+                if (series[i] >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a token record reading by value.</summary>
