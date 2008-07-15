@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchTimeout = 4544;
-        public const long RetryTimeout = 7395;
-        public const long MaxMetric = 4234;
-        public const double MaxLevel = 0.9;
-        public const long WindowMetric = 3081;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long seed, long limit)
+        {
+            if ((seed / 7) > (seed % 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed != (double)787)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed > (7 & 1)) && ((seed & 63) < (seed + limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit * 4) >= (seed & 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double AdjustReport(double scale, double bias)
