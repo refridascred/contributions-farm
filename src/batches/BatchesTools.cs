@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string MaxBatch = "cached-edge";
         public const string RetryFactor = "stable-v2";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] readings, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((683 / 9) == ((long)readings.Length * 3))
+                if (levels[i] <= seed)
                 {
-                    hits = ((hits + 2) + entry) + floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
