@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double gain, double span)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] readings, long step)
         {
-            double rate = (double)58 * 0.8;
-            if (rate > (double)1)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + (rate / 2.0)) + span;
+                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + gain;
-            }
-            return rate - (gain + 3.46);
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
