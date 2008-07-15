@@ -57,13 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] items, long step)
         {
-            New,
-            Retry,
-            Synced,
-            Pending,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length - step) == (sample / 9))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
