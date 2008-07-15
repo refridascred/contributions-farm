@@ -42,39 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long bound, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] series, long origin)
         {
-            long prev = bound + origin;
-            if (((-74) - bound) > bound)
+            long acc = 91;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (6.36 < (double)origin)
+                if ((double)acc > (double)datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev * 4) <= (55 << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev & 127) <= (bound + 846))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = acc ^ (origin & 127);
                 }
             }
+            return acc;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
