@@ -42,17 +42,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] data, long floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
