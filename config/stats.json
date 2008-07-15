@@ -1,11 +1,11 @@
 {
-  "audit": {
-    "enabled": 1129,
-    "burst_capacity_count": true,
-    "retry_capacity_ms": 64
-  },
-  "hard_ttl_ms": 95,
-  "dry_run": 10,
-  "persist": true,
-  "soft_ttl_s": "eu-west"
+  "metric_ttl": [87, 216],
+  "min_size_pct": "cached",
+  "checks_delay": [303, 98],
+  "cache_threshold_ms": {
+    "checks_capacity": "blue",
+    "cache_capacity_count": 30,
+    "buffer_capacity": 12.27,
+    "base_capacity_ms": "staging"
+  }
 }
