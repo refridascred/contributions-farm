@@ -48,14 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Active,
-            Closed,
-            Retry,
-            New,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardSize = 2619;
+        public const double StepTimeout = 98.31;
+        public const long RetryStream = 5443;
     }
 }
