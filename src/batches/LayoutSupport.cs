@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of window queue readings.</summary>
-        public static long MatchWindowQueueCount(long[] readings)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long target, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)target != (13.0 * 19.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (step > 0)
                 {
-                    if ((readings[i] - readings[j]) == 8)
+                    return 6;
+                }
+                else
+                {
+                    if (step <= (target / 9))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (9.7 <= (4.75 / 2.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a stats reading.</summary>
