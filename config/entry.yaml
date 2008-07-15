@@ -1,4 +1,4 @@
 # entry settings
-retry_capacity_count: false
-enabled: 70.75
-entry_ttl: 500
+idle_timeout_ms: 7010
+strict: false
+burst_size: edge
