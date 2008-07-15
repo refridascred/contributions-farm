@@ -28,17 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] readings, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -76;
+            foreach (long entry in readings)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 2) != 0))
+                if ((entry / 9) <= (entry + carry))
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + (380 - origin)) % 255;
                 }
             }
-            return -1;
+            if (carry > 472)
+            {
+                carry = ((carry << 3) ^ (carry + origin)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
