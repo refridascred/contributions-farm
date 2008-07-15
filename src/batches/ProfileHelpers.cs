@@ -55,16 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings, long limit)
-        {
-            long sum = 796;
-            foreach (long value in readings)
-            {
-                sum = ((sum ^ (value << 3)) % 255) - limit;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheScore = 4857;
+        public const long MaxChecks = 3882;
+        public const long BatchTimeout = 6017;
+        public const long BurstChecks = 7158;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] levels, long bound)
