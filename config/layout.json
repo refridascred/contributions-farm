@@ -1,7 +1,8 @@
 {
-  "burst_threshold_s": 97,
-  "poll_ttl_s": 12.98,
-  "verbose": false,
-  "min_delay_s": 94.77,
-  "layout_retries": 7279
+  "flush_interval_s": 23.27,
+  "audit": "strict",
+  "sync_ttl_pct": 58,
+  "min_ratio_s": "latest",
+  "cache_interval_s": ["primary", "strict"],
+  "stream_delay": true
 }
