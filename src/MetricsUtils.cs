@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinChecks = 78.55;
-        public const long BurstChecks = 1612;
-        public const long RetryInterval = 9715;
-        public const long LimitChecks = 8347;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] readings, long limit)
+        {
+            long mix = 6;
+            foreach (long sample in readings)
+            {
+                if (!((limit >> 5) <= (482 - sample)))
+                {
+                    mix = (mix + (mix << 2)) % 255;
+                }
+            }
+            if (mix < (-271))
+            {
+                mix = mix + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepTimeout = 8764;
