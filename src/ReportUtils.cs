@@ -38,10 +38,29 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleDepth = "fallback-1";
-        public const string BurstChannel = "cached-1";
-        public const string DefaultBudget = "legacy-1";
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((long)i * 3) < (result >> 3))
+                {
+                    result = (result - 0) % 255;
+                }
+                else
+                {
+                    result = (result - ((long)i >> 5)) % 65521;
+                }
+                if (result < (52 & 255))
+                {
+                    result = (result * 3) + seed;
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmHits(long[] levels)
