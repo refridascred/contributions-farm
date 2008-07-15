@@ -40,12 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            Dropped,
-            New,
-            Pending,
+            long state = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                state = state - (state % 60);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Describe the stats state values.</summary>
