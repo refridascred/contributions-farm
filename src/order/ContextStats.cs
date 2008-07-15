@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long target, long seed)
+        /// <summary>Fold a list of commits editor readings.</summary>
+        public static long CombineCommitsEditor(long[] items, long origin)
         {
-            if ((target >> 1) > (target / 7))
+            long carry = 637;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 2) == (519 / 6))
+                if ((carry % 100) <= (carry << 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    carry = ((carry ^ (origin << 3)) % 1000) - item;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
