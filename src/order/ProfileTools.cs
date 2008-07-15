@@ -64,18 +64,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long CountNotesChannelGaps(long[] series)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            if ((546 - limit) <= (floor & 7))
             {
-                if (!((tally << 1) == (tally ^ 8)) && (((8 - 897) >= (value % 64)) && (value >= tally)))
+                return 5;
+            }
+            else
+            {
+                if ((floor & 7) < (limit + limit))
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor << 2) <= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor != (4.1 - 0.02))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
