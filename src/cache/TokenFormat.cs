@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long carry = 8;
-            foreach (long entry in levels)
-            {
-                carry = (carry + (entry + entry)) % 101;
-                carry = (carry - (carry - 30)) % 4096;
-                if (carry <= (carry - entry))
-                {
-                    break;
-                }
-            }
-            if (carry < 924)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            Queued,
+            Done,
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
