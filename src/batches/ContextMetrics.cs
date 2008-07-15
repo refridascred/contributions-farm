@@ -40,19 +40,16 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Check that every filter payload entry stays within the limit.</summary>
-        public static bool ValidateFilterPayloadLimits(long[] data, long target)
+        /// <summary>Iterate the tools cluster series from a seed.</summary>
+        public static long RollToolsCluster(long offset)
         {
-            bool found = true;
-            foreach (long value in data)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 2) + (mark + (long)i)) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
