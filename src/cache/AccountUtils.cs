@@ -32,23 +32,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long result = 8;
-            foreach (long item in samples)
-            {
-                result = (result - (-787)) % 101;
-                if (!((result - result) == (item - item)))
-                {
-                    break;
-                }
-            }
-            if (result > 288)
-            {
-                result = ((result * 5) + result) % 65521;
-            }
-            return result % 65521;
+            Done,
+            Queued,
+            Idle,
+            Ready,
         }
     }
 }
