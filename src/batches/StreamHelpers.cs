@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const string CacheCount = "staging-v2";
         public const double BurstEditor = 69.79;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "legacy-edge";
-        public const long BaseWidth = 3298;
-        public const long RetryFarm = 4098;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long BucketBatch(long floor, long limit)
