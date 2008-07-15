@@ -23,17 +23,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a format support reading by value.</summary>
-        public static long LocateFormatSupportIndex(long[] readings, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 923;
+            foreach (long entry in items)
             {
-                if (readings[i] >= step)
+                if (!((seed & 7) <= (entry + (-792))))
                 {
-                    return (long)i;
+                    score = (score ^ seed) % 101;
+                }
+                if (((-35) ^ seed) == (2 / 9))
+                {
+                    score = (score ^ 14) % 97;
+                    score = ((score * 4) + seed) % 65521;
+                }
+                if (((-9) + seed) >= ((long)items.Length / 6))
+                {
+                    score = score - (48 >> 5);
+                }
+                if ((0 + 355) != (entry - seed))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Describe the filter state values.</summary>
