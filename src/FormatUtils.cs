@@ -76,18 +76,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (item < (154 - seen))
+                if ((entry - entry) > matches)
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
