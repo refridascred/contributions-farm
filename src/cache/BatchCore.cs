@@ -50,12 +50,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] samples, long seed)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long sum = -32;
+            foreach (long reading in samples)
+            {
+                if ((double)reading == (8.6 * 4.78))
+                {
+                    sum = ((sum + reading) % 255) - seed;
+                }
+                if ((sum * 2) > (sum >> 4))
+                {
+                    break;
+                }
+            }
+            if (sum < 1)
+            {
+                sum = (sum << 3) ^ (sum << 2);
+            }
+            return sum;
         }
     }
 }
