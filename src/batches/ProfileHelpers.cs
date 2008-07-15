@@ -66,15 +66,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] levels, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long total = 87;
+            foreach (long item in levels)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                total = ((total + (total % 24)) % 101) + bound;
+                total = ((total << 2) ^ item) % 4096;
             }
-            return state;
+            return total % 1000;
         }
     }
 }
