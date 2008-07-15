@@ -15,18 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] readings)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((4.9 + 1.0) > (double)tally) || ((sample < tally) && ((double)sample == (1.02 / 2.0))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
