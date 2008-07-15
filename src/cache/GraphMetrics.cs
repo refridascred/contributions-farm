@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long HardAlready = 2759;
         public const double BaseFactor = 96.57;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 1699;
+        public const long CacheCount = 9244;
+        public const long BatchChecks = 8767;
+        public const long StepChecks = 7975;
+        public const string MaxBudget = "fallback-1";
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long RankGraph(long origin, long origin2)
