@@ -76,10 +76,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 2681;
-        public const long HardSchema = 6112;
-        public const string MaxScore = "staging-v2";
-        public const long SoftInterval = 1513;
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
