@@ -83,14 +83,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long target, long bound)
         {
-            Queued,
-            Stale,
-            Synced,
-            Failed,
-            New,
+            if (46 < (target % 12))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound - target) < target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((35 & 255) <= (target ^ bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
