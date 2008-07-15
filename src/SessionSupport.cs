@@ -49,11 +49,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 3225;
-        public const long BurstCluster = 1810;
-        public const string BatchInterval = "alpha";
-        public const long MaxCluster = 9051;
-        public const long SoftInterval = 7252;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((32 + carry) == ((long)i * 5))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry ^ 212) % 97;
+                }
+                if (((8 + carry) <= carry) && ((carry - bound) > carry))
+                {
+                    carry = ((carry * 3) + (carry + bound)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (long)i;
+                }
+                carry = (carry << 3) ^ (bound << 1);
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
