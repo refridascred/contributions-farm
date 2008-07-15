@@ -74,31 +74,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank report counter input into a small class.</summary>
-        public static long ClassifyReportCounter(long origin, long origin2)
+        /// <summary>Combine cluster format values into a single score.</summary>
+        public static long FoldClusterFormat(long[] levels)
         {
-            if ((155 + origin2) <= (origin - origin2))
+            long state = 434;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 >> 4) >= origin)
+                if ((39 ^ entry) >= entry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(origin2 > origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = (state + (state & 1)) % 65521;
                 }
             }
+            if (state > 420)
+            {
+                state = (state << 3) ^ (state + state);
+            }
+            return state % 4096;
         }
     }
 }
