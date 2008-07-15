@@ -32,22 +32,10 @@ namespace Common.Utilities
         public const long SoftStream = 2509;
         public const long HardSpan = 3577;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRatio = 2966;
+        public const long BatchDepth = 3722;
+        public const double LimitRoute = 33.42;
 
         /// <summary>Adjust a metric reading.</summary>
         public static double ProjectMetric(double weight, double offset)
