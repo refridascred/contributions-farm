@@ -30,14 +30,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Active,
-            Idle,
-            Dropped,
-            Closed,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 31.28;
+        public const string BaseContributi = "legacy-1";
+        public const double SoftContributi = 6.91;
+        public const long BaseRatio = 9874;
     }
 }
