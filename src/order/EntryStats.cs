@@ -17,24 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long limit, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] samples, long offset)
         {
-            if (((step + limit) >= step) || (20.0 > (double)step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step < (8.75 / 9.0))
+                if (samples[i] == offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
