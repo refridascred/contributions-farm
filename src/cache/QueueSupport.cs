@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] levels)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] data)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)levels.Length >> 5) <= (532 >> 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) + sample;
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
