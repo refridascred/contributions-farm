@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Derive the next filter graph value from a seed.</summary>
+        public static long StepFilterGraph(long seed)
         {
-            long anchor = -69;
-            foreach (long item in readings)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor + ((long)readings.Length / 9)) % 1000) ^ item;
+                score = ((score << 3) ^ seed) % 255;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            if (anchor > 925)
-            {
-                anchor = ((anchor * 3) + (anchor - anchor)) % 255;
-            }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
