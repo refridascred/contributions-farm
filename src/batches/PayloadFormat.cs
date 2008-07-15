@@ -46,12 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public double Region { get; set; }
+            Done,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a contributi options.</summary>
