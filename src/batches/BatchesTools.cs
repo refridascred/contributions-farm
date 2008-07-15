@@ -24,10 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultTimeout = 79.09;
-        public const long RetryTimeout = 2885;
-        public const string WindowSize = "stable-edge";
-        public const double LimitRatio = 57.15;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((18.0 * 20.0) > (double)step)
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
+        }
     }
 }
