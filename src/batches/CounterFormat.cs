@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] values, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == limit)
+                if (samples[i] > offset)
                 {
                     return (long)i;
                 }
