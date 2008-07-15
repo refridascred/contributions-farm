@@ -1,6 +1,5 @@
 {
-  "retry_delay": "edge",
-  "burst_delay": true,
-  "default_depth": false,
-  "burst_capacity_pct": 250
+  "graph_timeout": false,
+  "verbose": true,
+  "base_threshold": 46.44
 }
