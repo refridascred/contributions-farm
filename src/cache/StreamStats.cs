@@ -16,11 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            Closed,
+            Retry,
+            New,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
