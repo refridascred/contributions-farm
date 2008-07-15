@@ -38,11 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double weight, double span)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] readings)
         {
-            double scale = span - span;
-            return (scale - (7.0 * 3.74)) + weight;
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)matches < 7.7)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a layout session figure with a bias.</summary>
