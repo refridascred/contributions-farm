@@ -1,10 +1,8 @@
 # githubfarm settings
-flush_threshold_pct: 30
-dry_run:
-  - eu-west
-  - standard
-  - fallback
-max_ttl_pct: 7.86
-soft_depth: stable
-max_window_s: false
-metric_interval: true
+record_size: 75.15
+cache_retries_s: edge
+default_limit_s: open
+burst_interval: false
+tools_retries:
+  - 284
+  - 452
