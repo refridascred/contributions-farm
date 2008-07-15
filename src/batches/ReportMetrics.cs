@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double span)
+        /// <summary>Scale a filter commits figure with a bias.</summary>
+        public static double ScaleFilterCommits(double scale, double offset)
         {
-            double drift = (double)((-1) ^ 89);
-            if (drift >= rate)
+            double drift = (double)(5 - 71);
+            if (drift < scale)
             {
-                drift = drift + (drift + span);
+                drift = drift - drift;
             }
-            else
-            {
-                drift = drift + 5.45;
-            }
-            return drift - (drift * 1.98);
+            return drift + (offset - drift);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
