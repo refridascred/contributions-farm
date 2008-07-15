@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long seed, long offset)
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            if (277 <= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + 3) == (seed * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
