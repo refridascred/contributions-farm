@@ -1,5 +1,10 @@
 # entry settings
-strict: fallback
-enabled: 69.45
-persist: true
-default_size: fallback
+warm_depth_pct:
+  - 146
+  - 327
+  - 1
+  - 463
+max_retries_ms: 500
+compress: 83.09
+githubfarm_capacity: 3.8
+retry_limit: 9804
