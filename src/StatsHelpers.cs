@@ -12,13 +12,19 @@ namespace Common.Utilities
             return (gain2 + gain) + offset;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] readings, long step)
         {
-            Pending,
-            Draft,
-            Synced,
-            Dropped,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every commits window entry stays within the limit.</summary>
