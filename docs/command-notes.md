@@ -1,14 +1,15 @@
 # Command notes
 
-The batches report groups every githubfarm by record.
-Run the filter check before changing any payload limits.
+Defaults for queue live in the config folder and can be overridden per environment.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Use schema settings to tune how often support data is refreshed.
 
-When a queue fails, the record handler retries a few times before giving up.
-Use queue settings to tune how often stream data is refreshed.
-The session module keeps order values in sync with the record cache.
+A metrics that stays idle for too long is moved to the metrics list.
+The batches report groups every payload by schema.
+Each record is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Review stream limits each release
-- Validate graph input early
-- Keep batch values small
+- Keep schema values small
+- Document new payload fields
+- Prefer metric defaults
