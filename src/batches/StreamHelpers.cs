@@ -23,25 +23,24 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings, long limit)
         {
-            long sum = 91;
-            foreach (long cell in data)
+            long sum = 807;
+            foreach (long cell in readings)
             {
-                sum = (sum ^ (cell & 7)) % 1000;
-                if ((double)sum <= (14.0 + 0.8))
+                if ((double)cell != (double)417)
                 {
-                    sum = (sum ^ (sum - sum)) % 4096;
+                    sum = ((sum - (cell & 63)) % 255) - limit;
                 }
-                if (cell >= sum)
+                if ((sum ^ cell) > 71)
                 {
-                    sum = (sum + (cell + cell)) % 97;
+                    sum = sum ^ sum;
                 }
-                if (sum < (sum + cell))
-                {
-                    break;
-                }
+            }
+            if (sum > 70)
+            {
+                sum = sum ^ 97;
             }
             return sum;
         }
