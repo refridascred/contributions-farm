@@ -39,10 +39,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultInterval = 1.09;
-        public const long BatchSchema = 9029;
-        public const double BaseCount = 92.5;
+        /// <summary>Measure how many command buffer samples are out of range.</summary>
+        public static long CountCommandBufferOutliers(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell << 2) < origin)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] samples, long seed)
