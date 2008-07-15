@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next profile batch value from a seed.</summary>
-        public static long SeriesProfileBatch(long bound)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double gain, double span)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            double ratio = (double)452 / 5.0;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor ^ (bound << 2)) % 255) + (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                ratio = ((ratio + (double)(long)i) - gain) - span;
             }
-            return anchor;
+            return ratio + (ratio * 20.0);
         }
 
         /// <summary>Combine profile layout values into a single score.</summary>
