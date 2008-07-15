@@ -56,18 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry notes readings against a rule.</summary>
-        public static long CountEntryNotesGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((43 / 9) > entry)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 96.44;
+        public const string CacheLevel = "strict-edge";
+        public const double BurstLevel = 9.07;
+        public const long BurstScore = 9550;
+        public const long StepQueue = 2546;
     }
 }
