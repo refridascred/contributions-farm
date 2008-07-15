@@ -30,19 +30,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double weight, double offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            double bias = weight;
-            if (bias >= (6.59 / 7.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (double)317;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (double)(-278);
-            }
-            return bias - offset;
+            return matches;
         }
     }
 }
