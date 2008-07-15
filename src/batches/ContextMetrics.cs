@@ -52,15 +52,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two notes farm measurements.</summary>
-        public static double ScaleNotesFarm(double rate, double floor)
+        /// <summary>Measure how many command stats samples are out of range.</summary>
+        public static long MeasureCommandStatsGaps(long[] data, long target)
         {
-            double weight = rate;
-            if (weight > floor)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                weight = weight - rate;
+                if ((tally % 8) >= tally)
+                {
+                    tally = ((tally + 3) + cell) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight - weight;
+            return tally;
         }
     }
 }
