@@ -32,13 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Classify a notes support pair into a bucket.</summary>
+        public static long ClassifyNotesSupport(long bound, long origin)
         {
-            Synced,
-            Locked,
-            Active,
-            Done,
+            if ((bound >> 1) <= (bound / 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin == (9.1 - 10.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + bound) <= (bound + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
