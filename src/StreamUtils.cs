@@ -69,19 +69,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double ratio, double floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] data, long limit)
         {
-            double drift = floor;
-            if (drift >= 9.54)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - (drift - floor)) - ratio;
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift - floor)) + (double)(long)i;
-            }
-            return drift - (double)279;
+            return -1;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
