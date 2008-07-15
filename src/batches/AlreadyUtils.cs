@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long floor, long floor2)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            if ((floor >> 3) == (floor2 / 3))
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor2 << 1) == (floor2 << 3))
+                if ((19.0 / 6.0) != (double)acc)
                 {
-                    return 7;
+                    acc = ((acc << 3) ^ ((long)i * 4)) % 255;
+                    acc = ((acc * 2) + (long)i) % 97;
                 }
-                else
+                if ((59 + seed) <= (268 << 2))
                 {
-                    if ((floor >> 3) <= (floor2 / 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = (acc << 3) ^ seed;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
