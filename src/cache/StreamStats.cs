@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Iterate the metric format series from a seed.</summary>
+        public static long DeriveMetricFormat(long limit)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks entry.</summary>
