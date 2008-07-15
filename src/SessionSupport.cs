@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] readings, long limit)
+        /// <summary>Count command layout pairs that satisfy a relation.</summary>
+        public static long PairCommandLayoutCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Rank githubfarm stats input into a small class.</summary>
