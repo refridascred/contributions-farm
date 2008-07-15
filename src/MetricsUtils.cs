@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((count * 3) == (limit >> 5)) && (((double)count < 9.51) || ((count / 3) <= (count + limit))))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinChecks = 78.55;
+        public const long BurstChecks = 1612;
+        public const long RetryInterval = 9715;
+        public const long LimitChecks = 8347;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] data, long target)
