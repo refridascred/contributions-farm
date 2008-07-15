@@ -36,12 +36,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            Active,
-            Draft,
-            Failed,
+            long anchor = -87;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor * 3) + (anchor % 12)) ^ sample;
+            }
+            if (anchor > (-89))
+            {
+                anchor = (anchor ^ (anchor * 4)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate counter editor samples.</summary>
