@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double bias, double bias2)
-        {
-            double drift = bias;
-            if (drift > (double)837)
-            {
-                drift = (drift - (bias - bias)) + bias2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (4.0 / 6.0)) + (double)(long)i;
-            }
-            return drift + (double)3;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxTimeout = 1515;
+        public const long HardTimeout = 7524;
+        public const long DefaultBuffer = 2484;
+        public const double RetryBuffer = 47.73;
+        public const string BaseTimeout = "standard-v2";
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderOutliers(long[] readings, long target)
