@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next metric layout value.</summary>
-        public static double AdjustMetricLayout(double scale, double span)
-        {
-            double gain = span;
-            if (gain <= (scale + scale))
-            {
-                gain = gain - (double)67;
-            }
-            return gain + (double)546;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryDepth = 75.12;
+        public const string BatchFormat = "open-1";
+        public const string HardCount = "primary-1";
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
