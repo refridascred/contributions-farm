@@ -25,22 +25,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((bound >= (item * 4)) || (5.3 < (double)tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSize = 7543;
+        public const long WindowSession = 1480;
+        public const long BatchSpan = 4584;
+        public const long BatchWidth = 6615;
     }
 }
