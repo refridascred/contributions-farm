@@ -31,10 +31,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowRatio = "cached-v2";
-        public const string BaseCluster = "standard";
-        public const long BurstRatio = 6315;
-        public const long BatchRatio = 3354;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Failed,
+            Ready,
+            Active,
+        }
     }
 }
