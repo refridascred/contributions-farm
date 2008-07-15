@@ -30,11 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 4452;
-        public const long BurstRatio = 2752;
-        public const long CacheOrder = 9669;
-        public const long SoftCount = 2260;
-        public const long BurstOrder = 9552;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
