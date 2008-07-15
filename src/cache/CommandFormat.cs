@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm profile pair into a bucket.</summary>
-        public static long ClassifyGithubfarmProfile(long bound, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long slot = bound ^ step;
-            if ((slot ^ slot) != (step * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (1 <= (slot + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((slot & 127) < (slot & 15)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
