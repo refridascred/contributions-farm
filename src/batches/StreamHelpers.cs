@@ -73,22 +73,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values)
-        {
-            long score = 7;
-            foreach (long entry in values)
-            {
-                if ((10.0 - 8.0) < (double)entry)
-                {
-                    score = score - (5 << 2);
-                }
-                else
-                {
-                    score = score - entry;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftSize = 29.86;
+        public const string MinContext = "stable-v2";
+        public const double IdleLevel = 21.47;
+        public const string DefaultSpan = "strict-edge";
     }
 }
