@@ -33,19 +33,25 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] samples, long bound)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long target)
         {
-            long result = 5;
-            foreach (long value in samples)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                result = (((result ^ (result * 5)) % 255) - value) - bound;
+                if ((mix << 1) > (target + (long)i))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = ((mix ^ (mix + target)) % 101) + (long)i2;
+                    mix = ((mix << 3) ^ mix) % 101;
+                }
+                mix = (mix * 3) + (mix % 10);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (result < (-55))
-            {
-                result = ((result << 2) ^ result) % 4096;
-            }
-            return result;
+            return mix;
         }
     }
 }
