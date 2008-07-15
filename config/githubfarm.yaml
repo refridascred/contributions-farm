@@ -1,8 +1,22 @@
 # githubfarm settings
-persist: green
-report_timeout: latest
-graph_depth: true
-entry_size:
-  - latest
-  - edge
-audit: 43.8
+min_window: 89
+flush_timeout_count: cached
+verbose:
+  burst_size_count: latest
+  stream_ttl: false
+  payload_size:
+    - latest
+    - fallback
+    - strict
+    - fallback
+  persist: false
+batch_timeout_s:
+  audit:
+    soft_depth_ms: true
+    batch_delay_count: 500
+    soft_threshold_count:
+      - 455
+      - 312
+    audit: fallback
+  route_ratio: 29
+  base_size_ms: false
