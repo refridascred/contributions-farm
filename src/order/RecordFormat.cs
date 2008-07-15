@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double gain, double bias)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long bound)
         {
-            double drift = (double)(0 - 883);
-            if (drift >= (double)6)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = ((drift - drift) - gain) - bias;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (double)45;
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
