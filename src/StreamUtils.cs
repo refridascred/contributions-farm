@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            if (((limit << 2) <= (limit - limit)) || (limit >= 1))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0.13 >= (double)origin) && ((double)limit < (4.51 + 2.2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit > (origin * 5))
+                    if ((levels[i] ^ levels[j]) > 13)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (16.0 - 9.24))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
