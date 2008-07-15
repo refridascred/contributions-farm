@@ -13,18 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] series)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((54 + hits) < value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a metric record.</summary>
