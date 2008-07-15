@@ -40,22 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format metrics entries.</summary>
-        public static long FoldFormatMetrics(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] items)
         {
-            long mark = 7;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((double)mark >= (double)(-34))
+                if (!((reading * 5) >= reading))
                 {
-                    mark = (mark + ((-2) % 100)) % 1000;
-                }
-                if ((5 + cell) > (7 >> 3))
-                {
-                    mark = (mark + (mark + cell)) % 255;
+                    count = count + 3;
                 }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Rank session githubfarm input into a small class.</summary>
