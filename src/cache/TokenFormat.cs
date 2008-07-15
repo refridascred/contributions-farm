@@ -15,11 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
