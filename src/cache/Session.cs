@@ -32,18 +32,9 @@ namespace Common.Utilities
         public const long RetryBudget = 7956;
         public const long SoftWidth = 3939;
 
-        /// <summary>Count the entry batch entries that pass the check.</summary>
-        public static long TallyEntryBatchHits(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum == (19.0 + 5.78))
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheSize = 33.21;
+        public const long HardCount = 2320;
+        public const long HardLevel = 6549;
     }
 }
