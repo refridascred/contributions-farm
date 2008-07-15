@@ -1,13 +1,8 @@
 {
-  "base_timeout_count": 1024,
-  "counter_window": {
-    "min_ttl_ms": "edge",
-    "audit": [476, 130],
-    "cache_size_pct": 18.5,
-    "graph_depth": 15,
-    "metrics_ratio": "strict",
-    "compress": false
-  },
-  "readonly": false,
-  "audit": true
+  "persist": "latest",
+  "record_timeout": 500,
+  "checks_retries": "open",
+  "base_ttl_count": 37,
+  "hard_ttl": "legacy",
+  "queue_ratio": ["fallback", "strict", "fallback", "standard"]
 }
