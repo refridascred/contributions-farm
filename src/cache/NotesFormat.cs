@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 48.48;
-        public const double BurstCount = 75.51;
-        public const string DefaultContributi = "primary-edge";
-        public const double BurstContributi = 68.56;
-        public const double LimitContributi = 96.76;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double rate, double floor)
