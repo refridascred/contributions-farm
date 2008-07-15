@@ -50,38 +50,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long limit, long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            if (!((double)seed >= (5.6 + 17.0)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 4) == (limit + limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed >= (20.0 + 7.0))
+                    if ((levels[i] + levels[j]) == 4)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(((-20) << 2) == (seed ^ seed)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
