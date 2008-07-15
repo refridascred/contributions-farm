@@ -18,17 +18,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a entry notes sample.</summary>
-        public static long FindEntryNotesIndex(long[] readings, long target)
+        /// <summary>Count support cache pairs that satisfy a relation.</summary>
+        public static long MatchSupportCacheCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine session window values into a single score.</summary>
