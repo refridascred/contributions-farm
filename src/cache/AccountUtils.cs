@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items)
         {
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = 64;
+            foreach (long datum in items)
+            {
+                if ((double)datum >= (double)mark)
+                {
+                    mark = (mark ^ datum) % 101;
+                }
+            }
+            return mark;
         }
     }
 }
