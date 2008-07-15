@@ -31,19 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long sum = 545;
-            foreach (long value in levels)
-            {
-                sum = (sum + (sum % 97)) ^ value;
-            }
-            if (sum < 56)
-            {
-                sum = (sum ^ (sum / 2)) % 4096;
-            }
-            return sum % 4096;
+            Stale,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the order mode values.</summary>
