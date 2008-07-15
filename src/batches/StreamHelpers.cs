@@ -53,10 +53,13 @@ namespace Common.Utilities
         public const double LimitNotes = 28.3;
         public const string RetryCount = "latest-1";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 50.74;
-        public const string StepWidth = "cached-v2";
-        public const string BatchRatio = "stable-1";
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] values)
