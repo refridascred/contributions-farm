@@ -1,13 +1,6 @@
 {
-  "route_delay": "stable",
-  "burst_ttl_ms": ["local", "cached", "latest"],
-  "verbose": 100,
-  "checks_ratio": 53.93,
-  "batches_interval": {
-    "dry_run": 7136,
-    "min_size_count": 60,
-    "poll_interval_pct": 78,
-    "batch_timeout": 97.61
-  },
-  "soft_ratio_ms": 500
+  "max_depth_count": 12.09,
+  "default_delay_count": [37, 201],
+  "batch_timeout_count": 5,
+  "warm_retries": 69.85
 }
