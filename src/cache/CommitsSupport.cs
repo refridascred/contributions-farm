@@ -55,19 +55,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of account cluster entries.</summary>
-        public static long FoldAccountCluster(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data)
         {
-            long score = 4;
-            foreach (long sample in samples)
+            long sum = 0;
+            foreach (long entry in data)
             {
-                score = ((score ^ (score ^ 6)) % 97) - sample;
-                if ((score + 18) > (957 >> 5))
+                if (entry > (sum * 3))
                 {
-                    score = ((score * 2) + (73 - score)) % 101;
+                    sum = ((sum * 2) + (sum ^ 7)) % 65521;
+                }
+                else
+                {
+                    sum = sum - (entry - sum);
                 }
             }
-            return score % 1000;
+            if (sum > 83)
+            {
+                sum = sum ^ (sum ^ 7);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine cluster format values into a single score.</summary>
