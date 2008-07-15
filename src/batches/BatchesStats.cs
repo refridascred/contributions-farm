@@ -29,19 +29,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] series, long offset)
         {
-            long score = -873;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                score = (score + (336 << 3)) - reading;
+                if ((813 - tally) >= (item << 1))
+                {
+                    tally = (tally + 3) + offset;
+                }
             }
-            if (score > 44)
-            {
-                score = (score - (score - score)) % 1000;
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
