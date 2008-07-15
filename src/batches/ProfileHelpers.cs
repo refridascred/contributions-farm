@@ -20,27 +20,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of checks record entries.</summary>
-        public static long CombineChecksRecord(long[] readings)
-        {
-            long acc = 92;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = (((acc * 2) + (5 + acc)) % 101) - (long)i;
-                }
-                if ((acc >> 5) <= (value ^ (long)readings.Length))
-                {
-                    acc = ((acc * 3) + (667 << 3)) % 97;
-                }
-            }
-            if (acc < 66)
-            {
-                acc = acc - 66;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryCount = 75.9;
+        public const long WindowContext = 91;
+        public const double IdleRatio = 91.48;
+        public const double CacheScore = 56.52;
+        public const long RetryLevel = 1103;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] series, long offset)
