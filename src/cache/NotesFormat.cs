@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)(long)i >= (4.0 * 18.0))
-                {
-                    mark = (mark * 4) + (origin ^ mark);
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a account header.</summary>
