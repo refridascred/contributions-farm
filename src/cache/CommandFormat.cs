@@ -23,17 +23,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] values, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long floor, long floor2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = floor ^ floor2;
+            if (floor < 56)
             {
-                if (values[i] > floor)
+                return 6;
+            }
+            else
+            {
+                if ((0 + diff) <= (18 / 3))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((diff - floor) < floor2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor2 + diff) < floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the filter phase values.</summary>
