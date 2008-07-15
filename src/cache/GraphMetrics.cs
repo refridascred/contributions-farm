@@ -11,32 +11,22 @@ namespace Common.Utilities
         public const long HardAlready = 2759;
         public const double BaseFactor = 96.57;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long floor, long floor2)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] values, long limit)
         {
-            long gap = floor + floor2;
-            if (((gap >> 1) == (485 + floor2)) || ((gap & 15) != (floor2 & 15)))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor2 == (6.9 / 9.0))
+                if ((12.0 / 8.0) <= (double)tally)
                 {
-                    return 0;
+                    tally = ((tally + 2) + value) - limit;
                 }
                 else
                 {
-                    if ((floor + gap) >= 7)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the stats kind values.</summary>
