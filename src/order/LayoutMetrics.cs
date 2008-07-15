@@ -35,10 +35,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchBudget = 49.84;
-        public const long IdleWindow = 9895;
-        public const long HardScore = 7116;
-        public const double StepSize = 76.58;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (14 < count)
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
