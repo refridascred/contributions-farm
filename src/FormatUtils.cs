@@ -84,14 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Synced,
-            Idle,
-            Queued,
-            Draft,
-            Pending,
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
