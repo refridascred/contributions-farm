@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] items, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (step < seen)
                 {
-                    score = (score - (score >> 3)) - (long)i2;
+                    seen = (seen + 3) + value;
                 }
-                score = ((score * 5) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
