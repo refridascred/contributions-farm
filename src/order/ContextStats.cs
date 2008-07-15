@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] series, long offset)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
