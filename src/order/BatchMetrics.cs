@@ -37,17 +37,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] readings, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long seed, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)seed != (3.26 - 3.3))
             {
-                if (readings[i] > origin)
+                return 7;
+            }
+            else
+            {
+                if (((bound - bound) >= 54) && ((bound + seed) <= (bound << 1)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
