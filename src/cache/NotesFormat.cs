@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] readings, long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long origin)
         {
-            long anchor = 8;
-            foreach (long datum in readings)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((datum >> 1) == (datum & 31))
+                if ((double)(long)i >= (4.0 * 18.0))
                 {
-                    anchor = ((anchor * 3) + (anchor - anchor)) + offset;
+                    mark = (mark * 4) + (origin ^ mark);
                 }
-                if (((datum - 218) == (5 / 2)) && ((15.0 / 8.0) < (double)datum))
-                {
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return anchor % 4096;
+            return mark;
         }
 
         /// <summary>Hold a account header.</summary>
