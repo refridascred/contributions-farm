@@ -56,19 +56,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (2.3 < (double)count)
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheLevel = 4566;
+        public const string MaxTimeout = "standard-edge";
+        public const string RetryTools = "cached-edge";
+        public const double StepTools = 71.28;
+        public const string CacheTools = "latest-edge";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesMatches(long[] levels, long step)
