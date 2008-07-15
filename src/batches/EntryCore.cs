@@ -30,12 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Compare every pair of window checks readings.</summary>
+        public static long PairWindowChecksCount(long[] samples)
         {
-            Retry,
-            Failed,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
