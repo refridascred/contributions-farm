@@ -32,13 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double gain, double span)
         {
-            Idle,
-            Draft,
-            Paused,
-            New,
+            double drift = gain / 8.0;
+            if (drift <= (span - span))
+            {
+                drift = drift - 2.8;
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            return drift - drift;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
