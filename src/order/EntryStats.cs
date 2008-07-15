@@ -54,17 +54,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] series, long floor)
+        /// <summary>Audit order commits readings against a rule.</summary>
+        public static long AuditOrderCommitsOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                if (915 >= (402 + entry))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
