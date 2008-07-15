@@ -1,14 +1,14 @@
 # Command notes
 
-Use window settings to tune how often account data is refreshed.
-Keep route and schema names short and lowercase.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Use editor settings to tune how often payload data is refreshed.
 
-Defaults for token live in the config folder and can be overridden per environment.
-The graph report groups every format by entry.
+When a checks fails, the account handler retries a few times before giving up.
+Use checks settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Keep editor values small
-- Log every editor change
-- Prefer context defaults
-- Review account limits each release
+- Validate already input early
+- Keep record values small
+- Prefer contributi defaults
+- Document new batch fields
