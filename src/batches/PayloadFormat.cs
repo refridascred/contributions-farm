@@ -19,15 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels, long target)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long state = 333;
-            foreach (long entry in levels)
-            {
-                state = ((state * 5) + (entry - target)) % 255;
-            }
-            return state;
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
