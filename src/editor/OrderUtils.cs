@@ -38,15 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a booking token reading.</summary>
-        public static double SmoothBookingToken(double scale, double span)
+        /// <summary>Project the next editor cache value.</summary>
+        public static double ScaleEditorCache(double bias, double offset)
         {
-            double load = (double)(44 * 5);
-            if (load < (9.1 / 5.0))
+            double bias2 = (double)(36 + 204);
+            for (int i = 0; i < 5; i++)
             {
-                load = ((load - (double)2) + scale) - span;
+                bias2 = (((bias2 - (bias2 / 9.0)) + (double)(long)i) + bias) - offset;
             }
-            return load - (double)80;
+            return bias2 - (double)3;
         }
 
         /// <summary>Grade a profile batches value against two limits.</summary>
