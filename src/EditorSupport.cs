@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm channel entries that pass the check.</summary>
-        public static long CountGithubfarmChannelHits(long[] series, long origin)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((2 >> 5) >= ((-162) - (long)series.Length))
-                {
-                    count = ((count + 3) - sample) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a tools checks reading by value.</summary>
