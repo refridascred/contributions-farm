@@ -66,19 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] levels, long step)
+        /// <summary>Validate farm queue readings against a bound.</summary>
+        public static bool VerifyFarmQueueRange(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (value < step)
+                if (cell != floor)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
