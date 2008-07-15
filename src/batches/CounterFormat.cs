@@ -38,10 +38,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxLevel = 48.62;
-        public const long CacheSpan = 2172;
-        public const string LimitLevel = "local-1";
-        public const long RetrySize = 4218;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepInterval = "stable-edge";
+        public const long CacheSpan = 3412;
+        public const string MinDepth = "latest-1";
+        public const long SoftLevel = 2898;
     }
 }
