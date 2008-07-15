@@ -12,32 +12,14 @@ namespace Common.Utilities
         public const long RetryTimeout = 5172;
         public const long BurstContext = 8843;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long origin)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long step = bound ^ origin;
-            if ((bound / 4) > step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) < 835)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(origin > (step % 12)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
