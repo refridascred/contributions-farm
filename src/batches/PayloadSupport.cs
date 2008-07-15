@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchRatio = 9251;
+        public const string WindowBudget = "strict-v2";
+        public const long RetryPayload = 2508;
+        public const double BatchPayload = 81.93;
+        public const long WindowLevel = 7182;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] series, long limit)
