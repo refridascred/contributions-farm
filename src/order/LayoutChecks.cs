@@ -26,18 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] samples, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (((6.5 / 8.0) > (double)(long)samples.Length) && (((double)cell < (5.9 * 20.0)) && ((double)matches <= (9.0 * 6.92))))
+                if (!((2.2 / 7.0) < (double)hits) && ((double)hits <= 12.0))
                 {
-                    matches = (matches + 3) + offset;
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
