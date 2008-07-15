@@ -1,11 +1,9 @@
 # githubfarm settings
-warm_delay:
-  - 223
-  - 396
-warm_depth_count: false
-retry_depth_ms: stable
-min_depth_pct:
-  record_timeout: false
-  idle_interval_ms: true
-  sync_ttl: cached
-cluster_delay: 37.32
+persist: false
+contributi_capacity:
+  - 481
+  - 261
+soft_delay_count: stable
+retry_window: 100
+compress: 27.23
+default_threshold: primary
