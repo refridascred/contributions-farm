@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of schema token readings.</summary>
-        public static long FoldSchemaToken(long[] items)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] samples, long origin)
         {
-            long total = 48;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total * 3) + (total + 6)) % 4096) - item;
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
