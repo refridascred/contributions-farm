@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] items, long limit)
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
