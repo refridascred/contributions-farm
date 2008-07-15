@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)target > (double)hits)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "alpha-v2";
+        public const string WindowWidth = "local-edge";
+        public const long HardDepth = 9730;
+        public const long BaseBatch = 3761;
+        public const string IdleBatch = "stable-v2";
 
         /// <summary>Check that every farm graph entry stays within the limit.</summary>
         public static bool ValidateFarmGraphLimits(long[] values, long origin)
