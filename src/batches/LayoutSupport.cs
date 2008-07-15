@@ -29,12 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
