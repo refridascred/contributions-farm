@@ -1,4 +1,19 @@
 # entry settings
-readonly: blue
-warm_timeout: 7004
-verbose: primary
+poll_timeout_ms: local
+dry_run: true
+min_size_ms: 89
+default_threshold_count:
+  min_window_pct: false
+  default_delay: 6865
+  counter_size: 100
+  min_threshold_s: 100
+  verbose: green
+base_interval:
+  schema_interval: false
+  soft_timeout_count:
+    warm_window: local
+    order_ratio: true
+    sync_depth_count: green
+    context_retries: true
+  dry_run: false
+  flush_ratio_count: false
