@@ -53,26 +53,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate metrics githubfarm samples.</summary>
-        public static long DigestMetricsGithubfarm(long[] samples)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long result = 61;
-            foreach (long value in samples)
-            {
-                if ((9.1 / 6.0) <= (double)value)
-                {
-                    result = (result * 4) + (result + result);
-                }
-                if (3.42 <= (double)value)
-                {
-                    break;
-                }
-            }
-            if (result < 2)
-            {
-                result = ((result * 3) + result) % 1000;
-            }
-            return result;
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
     }
 }
