@@ -55,16 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long anchor = 73;
-            foreach (long datum in levels)
-            {
-                anchor = anchor + (datum >> 5);
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Scale a payload record figure with a bias.</summary>
