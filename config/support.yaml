@@ -1,4 +1,10 @@
 # support settings
-contributi_ratio: stable
-checks_depth: 48
-persist: cached
+verbose: true
+stream_interval:
+  enabled: stable
+  idle_timeout_count: 7782
+  batch_capacity_ms: true
+  batch_capacity: 30
+  warm_depth: true
+editor_interval: true
+flush_delay: 4731
