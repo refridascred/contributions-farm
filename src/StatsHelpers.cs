@@ -64,18 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] data, long floor)
+        /// <summary>Scale a layout session figure with a bias.</summary>
+        public static double AdjustLayoutSession(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double scale = rate;
+            if (scale < 8.09)
             {
-                if ((entry % 3) > matches)
-                {
-                    matches = (matches + 3) + floor;
-                }
+                scale = scale + (rate - floor);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (floor - 3.8)) + (double)(long)i;
+            }
+            return scale + (scale / 3.0);
         }
     }
 }
