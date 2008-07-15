@@ -47,13 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxLevel = 21.87;
+        public const long SoftRoute = 7310;
+        public const long IdleRoute = 4124;
+        public const long IdleDepth = 859;
+        public const long SoftTimeout = 598;
     }
 }
