@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long limit)
+        /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
+        public static bool GuardRouteGithubfarmRange(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((samples[i] > limit) && ((samples[i] % 5) == 0))
+                if (sample < step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
