@@ -47,19 +47,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every editor cluster entry stays within the limit.</summary>
-        public static bool GuardEditorClusterLimits(long[] series, long step)
+        /// <summary>Find the first tools checks entry that matches the target.</summary>
+        public static long FindToolsChecksIndex(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > step)
+                if (samples[i] > floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
