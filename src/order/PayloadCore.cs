@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] samples, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 24;
+            foreach (long cell in values)
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor - (11 - anchor)) % 97) - cell;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every cluster cache entry stays within the limit.</summary>
