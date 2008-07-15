@@ -31,15 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor metric values into a single score.</summary>
-        public static long FoldEditorMetric(long[] levels, long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double bias, double offset)
         {
-            long state = 7;
-            foreach (long datum in levels)
+            double load = 0.65 + 16.0;
+            if (load >= (double)155)
             {
-                state = ((state ^ (step * 5)) % 255) ^ datum;
+                load = load - bias;
             }
-            return state % 4096;
+            else
+            {
+                load = load + offset;
+            }
+            return load + (offset + 5.8);
         }
     }
 }
