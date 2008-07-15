@@ -25,18 +25,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long score = 29;
+            foreach (long item in data)
             {
-                if (!((6 << 3) < (sample + tally)))
+                if ((item - 7) <= (2 + bound))
                 {
-                    tally = (tally + 3) + seed;
+                    score = ((score * 4) + (bound >> 4)) % 97;
                 }
             }
-            return tally;
+            if (score > 534)
+            {
+                score = (score * 5) + (bound - score);
+            }
+            return score;
         }
 
         /// <summary>Describe the layout status values.</summary>
