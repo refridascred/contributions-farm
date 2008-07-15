@@ -44,18 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats checks entries that pass the check.</summary>
-        public static long TallyStatsChecksOutliers(long[] samples)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (datum < count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Draft,
+            Closed,
         }
 
         /// <summary>Locate a route reading by value.</summary>
