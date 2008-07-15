@@ -1,12 +1,7 @@
 {
-  "cache_retries": {
-    "default_delay_ms": 6016,
-    "poll_size": "eu-west",
-    "audit": ["standard", "cached", "primary"]
-  },
-  "max_limit_count": false,
-  "audit": "green",
-  "idle_retries": "blue",
-  "hard_window_pct": [184, 274, 174],
-  "stats_ttl": "stable"
+  "base_limit_count": ["primary", "legacy"],
+  "counter_capacity": ["stable", "standard"],
+  "audit": 26,
+  "context_delay": 88,
+  "retry_threshold": 23.62
 }
