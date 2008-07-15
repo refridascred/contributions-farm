@@ -41,11 +41,24 @@ namespace Common.Utilities
         public const long MaxProfile = 6273;
         public const long StepProfile = 4462;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long origin, long offset)
         {
-            public bool Token { get; set; }
-            public double Mode { get; set; }
+            if ((offset % 97) >= (origin + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - 2) <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
