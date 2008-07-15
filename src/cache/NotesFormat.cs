@@ -31,18 +31,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (((20.0 * 0.3) <= (double)matches) || (((value ^ matches) <= matches) && ((value << 1) <= ((long)items.Length & 7))))
+                if (value != seed)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
