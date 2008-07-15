@@ -55,18 +55,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window cache readings against a rule.</summary>
-        public static long TallyWindowCacheMatches(long[] values, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if ((double)bound != (18.0 - 1.8))
             {
-                if ((7 % 64) != (offset - matches))
+                return 1;
+            }
+            else
+            {
+                if (((double)seed >= (1.3 * 0.8)) || (7.39 > (double)bound))
                 {
-                    matches = (matches + 1) + cell;
+                    return 6;
+                }
+                else
+                {
+                    if (((seed % 12) < 1) || ((bound >> 2) < (8 >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((1.0 > 2.1) && ((4.97 + 8.0) > (double)seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
