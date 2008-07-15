@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] data, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] levels, long seed)
         {
-            long score = 73;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((34 + reading) < (score + score))
+                if (item <= seed)
                 {
-                    score = (score ^ score) % 255;
-                    score = ((score * 3) + (score >> 3)) % 97;
-                }
-                if (!((1.99 - 1.09) <= (double)score))
-                {
-                    score = ((score * 5) + (reading - score)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (seed ^ score)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Derive the next session commits value from a seed.</summary>
