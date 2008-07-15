@@ -59,15 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] values, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long anchor = 816;
+            foreach (long value in values)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                anchor = ((anchor ^ (seed ^ anchor)) % 1000) ^ value;
             }
-            return carry;
+            if (anchor < 130)
+            {
+                anchor = (anchor << 3) ^ (4 % 3);
+            }
+            return anchor;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
