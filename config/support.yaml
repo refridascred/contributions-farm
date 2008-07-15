@@ -1,5 +1,5 @@
 # support settings
-githubfarm_retries: 45.59
-context_timeout: 85
-batch_ttl_pct: legacy
-base_ratio_count: fallback
+enabled: green
+stats_interval: 6480
+retry_timeout_s: 305
+idle_retries_s: false
