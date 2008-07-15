@@ -59,12 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long floor)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public double Score { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
