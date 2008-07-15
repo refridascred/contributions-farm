@@ -16,13 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] data)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + datum) > (5 << 1))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
