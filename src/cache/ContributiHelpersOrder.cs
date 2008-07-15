@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] levels, long seed)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
