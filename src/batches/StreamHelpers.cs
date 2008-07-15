@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((36 & 3) <= (step - matches))
-                {
-                    matches = (matches + 2) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchTimeout = 4544;
+        public const long RetryTimeout = 7395;
+        public const long MaxMetric = 4234;
+        public const double MaxLevel = 0.9;
+        public const long WindowMetric = 3081;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
