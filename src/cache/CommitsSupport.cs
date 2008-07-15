@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long origin, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] data, long bound)
         {
-            long cur = origin - floor;
-            if ((double)cur >= 12.0)
+            long anchor = 14;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur < origin) || ((floor + origin) > origin))
+                if ((bound - bound) != (sample >> 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    anchor = ((anchor * 4) + (sample / 2)) % 1000;
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
