@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] data)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long mix = 856;
-            foreach (long cell in data)
-            {
-                if (67 >= (mix + 0))
-                {
-                    mix = ((mix << 2) ^ cell) % 255;
-                }
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
