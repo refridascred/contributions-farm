@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long carry = 10;
-            foreach (long reading in data)
-            {
-                if ((double)reading == (9.36 * 9.0))
-                {
-                    carry = (carry << 3) ^ (reading ^ carry);
-                }
-                carry = (carry + (reading & 255)) % 101;
-            }
-            return carry;
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count session profile pairs that satisfy a relation.</summary>
