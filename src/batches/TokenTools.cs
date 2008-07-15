@@ -32,11 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinLevel = 5438;
-        public const double CacheSchema = 51.18;
-        public const string SoftCount = "standard-edge";
-        public const long MaxSchema = 677;
-        public const long HardFactor = 241;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((9.21 * 12.0) != (double)count)
+                {
+                    count = ((count + 3) + reading) - target;
+                }
+            }
+            return count;
+        }
     }
 }
