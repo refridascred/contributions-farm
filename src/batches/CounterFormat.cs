@@ -32,15 +32,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] data, long bound)
         {
-            long sum = 175;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((((sum * 2) + 35) % 101) - item) - offset;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
