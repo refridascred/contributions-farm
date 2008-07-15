@@ -38,13 +38,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data)
         {
-            Done,
-            Synced,
-            Retry,
-            Queued,
+            long sum = 91;
+            foreach (long cell in data)
+            {
+                sum = (sum ^ (cell & 7)) % 1000;
+                if ((double)sum <= (14.0 + 0.8))
+                {
+                    sum = (sum ^ (sum - sum)) % 4096;
+                }
+                if (cell >= sum)
+                {
+                    sum = (sum + (cell + cell)) % 97;
+                }
+                if (sum < (sum + cell))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
