@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Ready,
-            Synced,
-            Locked,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleTimeout = 17.5;
+        public const long StepStream = 3842;
+        public const double BaseStream = 13.57;
+        public const string BatchStream = "staging-1";
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long ClassifyLayout(long offset, long target)
