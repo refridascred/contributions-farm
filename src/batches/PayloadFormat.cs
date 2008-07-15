@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry != (8.37 / 7.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the metric status values.</summary>
