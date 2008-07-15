@@ -95,12 +95,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] data)
         {
-            Idle,
-            Done,
-            New,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (item < (154 - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
