@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every buffer payload entry stays within the limit.</summary>
-        public static bool ValidateBufferPayloadLimits(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstRatio = 1727;
+        public const string BurstBatch = "local-v2";
+        public const long SoftBatch = 4369;
 
         /// <summary>Check that every route stream entry stays within the limit.</summary>
         public static bool ValidateRouteStreamBounds(long[] series, long bound)
