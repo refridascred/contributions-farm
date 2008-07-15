@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate token batches samples.</summary>
-        public static long FoldTokenBatches(long[] items, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] data, long limit)
         {
-            long acc = 51;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((acc + limit) > (acc - acc))
+                if (!(((long)data.Length & 63) == (value + count)) && ((624 >= (limit - count)) || ((limit % 8) >= limit)))
                 {
-                    acc = (acc << 3) ^ (datum + 50);
+                    count = count + 2;
                 }
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
