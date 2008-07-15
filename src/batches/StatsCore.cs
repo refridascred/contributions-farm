@@ -34,18 +34,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Count the report editor entries that pass the check.</summary>
+        public static long CountReportEditorGaps(long[] levels, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((5 << 3) > tally))
                 {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 1) ^ value) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
