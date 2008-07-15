@@ -49,28 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Blend two graph batches measurements.</summary>
+        public static double ProjectGraphBatches(double rate, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            double mean = rate;
+            if (mean >= (4.5 / 6.0))
             {
-                if (((long)i * 3) < (result >> 3))
-                {
-                    result = (result - 0) % 255;
-                }
-                else
-                {
-                    result = (result - ((long)i >> 5)) % 65521;
-                }
-                if (result < (52 & 255))
-                {
-                    result = (result * 3) + seed;
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                mean = mean - (mean - offset);
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (double)94;
         }
 
         /// <summary>Measure how many farm format samples are out of range.</summary>
