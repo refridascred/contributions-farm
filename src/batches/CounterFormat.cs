@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = (((result << 2) ^ (floor << 1)) % 255) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 7.34;
+        public const long CacheRatio = 8985;
+        public const long StepLayout = 2293;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long GradeSchema(long target, long seed)
