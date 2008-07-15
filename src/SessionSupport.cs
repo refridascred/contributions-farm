@@ -25,11 +25,22 @@ namespace Common.Utilities
             return rate + (floor + floor);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxCount = 8.7;
-        public const string SoftDepth = "latest-edge";
-        public const string SoftLayout = "local-1";
-        public const long RetryLayout = 3883;
-        public const long LimitDepth = 6440;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] readings, long bound)
+        {
+            long score = 54;
+            foreach (long item in readings)
+            {
+                if ((double)item == (1.58 * 4.56))
+                {
+                    score = ((score ^ score) % 65521) + bound;
+                }
+                else
+                {
+                    score = (score + (long)readings.Length) % 101;
+                }
+            }
+            return score;
+        }
     }
 }
