@@ -80,18 +80,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] data)
+        /// <summary>Derive the next already githubfarm value from a seed.</summary>
+        public static long IterateAlreadyGithubfarm(long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell <= (88 >> 5))
-                {
-                    tally = tally + 3;
-                }
+                anchor = ((anchor << 3) ^ (anchor % 24)) % 65521;
+                anchor = (anchor - anchor) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
     }
 }
