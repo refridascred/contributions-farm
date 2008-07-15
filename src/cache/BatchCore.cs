@@ -27,13 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit record filter readings against a rule.</summary>
