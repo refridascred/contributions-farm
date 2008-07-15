@@ -1,5 +1,5 @@
 {
-  "poll_ratio": 83,
-  "poll_depth": "staging",
-  "base_ttl": [156, 314, 169]
+  "retry_timeout_pct": true,
+  "max_timeout_ms": "green",
+  "context_retries": "legacy"
 }
