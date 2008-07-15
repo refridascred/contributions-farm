@@ -37,10 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleBudget = 81;
-        public const double CacheCounter = 12.11;
-        public const string CacheSize = "strict-1";
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Pending,
+            Synced,
+            New,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitLevel = 8021;
