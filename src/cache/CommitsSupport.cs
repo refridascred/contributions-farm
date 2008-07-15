@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] samples, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] == seed)
+                if ((tally > (sample * 3)) && ((tally << 3) == (sample + tally)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
