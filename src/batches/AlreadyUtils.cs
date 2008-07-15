@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] series, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((19.0 / 6.0) != (double)acc)
+                if (series[i] >= bound)
                 {
-                    acc = ((acc << 3) ^ ((long)i * 4)) % 255;
-                    acc = ((acc * 2) + (long)i) % 97;
+                    return (long)i;
                 }
-                if ((59 + seed) <= (268 << 2))
-                {
-                    acc = (acc << 3) ^ seed;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
