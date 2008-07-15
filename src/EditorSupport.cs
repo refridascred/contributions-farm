@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Draft,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 4062;
+        public const long StepDepth = 3795;
+        public const long CacheRatio = 6312;
+        public const long RetryCount = 7261;
+        public const long BaseEditor = 8756;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] items)
