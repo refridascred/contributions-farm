@@ -1,8 +1,5 @@
 {
-  "soft_delay": 3938,
-  "readonly": "edge",
-  "sync_capacity": 9.79,
-  "warm_ttl_ms": "green",
-  "base_capacity": 500,
-  "graph_size": ["latest", "strict"]
+  "readonly": 29,
+  "retry_interval": 80.18,
+  "dry_run": true
 }
