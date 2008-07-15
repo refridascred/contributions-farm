@@ -14,22 +14,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] values)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (7.04 < (double)sample)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
