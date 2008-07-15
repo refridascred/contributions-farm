@@ -33,38 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long target, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values)
         {
-            if ((target / 7) <= (323 + target))
+            long carry = 816;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target - seed) > (seed + target))
+                if (((carry & 3) >= sample) && (((long)values.Length % 8) <= sample))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (0 <= (target * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target - seed) <= (target << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (carry + sample) % 101;
                 }
             }
+            return carry;
         }
     }
 }
