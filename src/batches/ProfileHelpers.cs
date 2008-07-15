@@ -47,19 +47,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] samples, long offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
