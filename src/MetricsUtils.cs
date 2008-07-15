@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long score = 626;
+            foreach (long entry in series)
             {
-                if ((-2) > (datum ^ 834))
+                if ((822 & 127) == (score - 236))
                 {
-                    matches = matches + 3;
+                    score = (score + (step ^ 3)) - entry;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Describe the order class values.</summary>
