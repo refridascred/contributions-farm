@@ -14,12 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] series, long target)
         {
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
