@@ -1,12 +1,8 @@
 # support settings
-readonly: strict
-warm_ttl_count: false
-context_limit:
-  - 167
-  - 261
-  - 84
-batch_ratio: primary
-hard_size_ms:
-  - cached
-  - primary
-idle_threshold_ms: false
+audit: 85.37
+support_size: 5856
+strict:
+  - eu-west
+  - blue
+  - legacy
+  - fallback
