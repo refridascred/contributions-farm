@@ -66,10 +66,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 2820;
-        public const double RetryBatches = 16.47;
-        public const long RetryLevel = 7305;
+        /// <summary>Rank batches support input into a small class.</summary>
+        public static long GradeBatchesSupport(long bound, long target)
+        {
+            if ((52 / 5) < target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target << 3) > bound) && ((double)bound > 2.4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target / 2) <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long target, long bound)
