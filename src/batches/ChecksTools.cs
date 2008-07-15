@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (offset > 81)
+                if ((data[i] == target) && ((data[i] % 3) == 0))
                 {
-                    mix = mix + ((long)i % 5);
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the profile level values.</summary>
