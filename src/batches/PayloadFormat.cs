@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] values)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry != (8.37 / 7.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
