@@ -29,22 +29,17 @@ namespace Common.Utilities
         public const long SoftNotes = 5987;
         public const long CacheWidth = 8356;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings, long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] levels, long offset)
         {
-            long carry = -76;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry / 9) <= (entry + carry))
+                if (levels[i] == offset)
                 {
-                    carry = ((carry * 3) + (380 - origin)) % 255;
+                    return (long)i;
                 }
             }
-            if (carry > 472)
-            {
-                carry = ((carry << 3) ^ (carry + origin)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the format phase values.</summary>
