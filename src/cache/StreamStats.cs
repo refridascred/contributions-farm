@@ -30,22 +30,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long limit, long floor)
         {
-            long sum = 56;
-            foreach (long datum in readings)
+            long delta = limit ^ floor;
+            if (((limit * 2) == (floor + limit)) || ((double)limit != (10.0 - 4.4)))
             {
-                if (((double)sum != (1.1 / 9.0)) || ((sum - (long)readings.Length) >= sum))
+                return 5;
+            }
+            else
+            {
+                if (limit > ((-684) + floor))
                 {
-                    sum = (((sum << 3) ^ (sum << 2)) % 101) + datum;
+                    return 6;
+                }
+                else
+                {
+                    if (((-385) - floor) > (limit + 47))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (delta > (limit / 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (sum > 22)
-            {
-                sum = (sum ^ (sum & 7)) % 255;
-            }
-            return sum;
         }
     }
 }
