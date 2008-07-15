@@ -26,18 +26,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] items, long limit)
-        {
-            long total = 816;
-            foreach (long entry in items)
-            {
-                if ((entry - total) <= (limit / 6))
-                {
-                    total = (total << 3) ^ (total << 2);
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultScore = "latest-edge";
+        public const long DefaultCommits = 971;
+        public const long IdleCommits = 8006;
+        public const double StepTimeout = 30.55;
     }
 }
