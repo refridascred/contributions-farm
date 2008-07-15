@@ -32,27 +32,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] samples, long limit)
         {
-            long total = 686;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total ^ reading;
-                if (total <= (150 - reading))
+                if (samples[i] <= limit)
                 {
-                    total = total - (reading + (long)readings.Length);
-                }
-                else
-                {
-                    total = (total + reading) % 1000;
+                    return (long)i;
                 }
             }
-            if (total > 0)
-            {
-                total = (total + (total ^ total)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
