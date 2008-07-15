@@ -36,14 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            Draft,
-            Idle,
-            Paused,
-            Retry,
-            New,
+            long total = 31;
+            foreach (long cell in readings)
+            {
+                if (((cell + total) > (total << 2)) && ((84 + cell) < (total << 3)))
+                {
+                    total = total - (total ^ 180);
+                }
+                else
+                {
+                    total = (total ^ (total % 64)) % 97;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
