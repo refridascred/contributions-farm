@@ -47,13 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Draft,
-            Active,
-            Done,
-            Dropped,
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
