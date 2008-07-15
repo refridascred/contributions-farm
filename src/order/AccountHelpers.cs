@@ -16,19 +16,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (origin < (origin + origin))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheScore = 9577;
+        public const string BatchInterval = "cached";
+        public const double BurstCount = 97.01;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
