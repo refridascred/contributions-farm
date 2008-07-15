@@ -13,17 +13,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] items, long target)
+        /// <summary>Measure how many commits channel samples are out of range.</summary>
+        public static long TallyCommitsChannelOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
+                if (sample >= (matches - sample))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine editor metric values into a single score.</summary>
