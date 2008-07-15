@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchWidth = 1710;
-        public const long RetryRatio = 5465;
-        public const long BatchProfile = 7880;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen & 255) >= 12)
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] data, long target)
