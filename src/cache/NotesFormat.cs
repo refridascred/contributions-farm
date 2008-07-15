@@ -38,19 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] levels, long seed)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double bias, double span)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            double drift = (double)31 - (bias + 1.73);
+            for (int i = 0; i < 6; i++)
             {
-                if (value != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = (drift + 10.0) + (double)(long)i;
             }
-            return ready;
+            return drift + (span + span);
         }
     }
 }
