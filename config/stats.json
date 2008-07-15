@@ -1,8 +1,13 @@
 {
-  "persist": "latest",
-  "record_timeout": 500,
-  "checks_retries": "open",
-  "base_ttl_count": 37,
-  "hard_ttl": "legacy",
-  "queue_ratio": ["fallback", "strict", "fallback", "standard"]
+  "hard_capacity_count": 4182,
+  "compress": {
+    "poll_size": 1690,
+    "warm_size_s": 66.28,
+    "base_threshold": "stable",
+    "editor_depth": "latest",
+    "format_size": "local",
+    "persist": true
+  },
+  "retry_timeout_s": "eu-west",
+  "retry_size_s": 51
 }
