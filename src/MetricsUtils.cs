@@ -48,11 +48,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheCount = 5854;
-        public const double HardSpan = 4.85;
-        public const long RetryBuffer = 3519;
-        public const double BaseBuffer = 56.61;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample < (sample * 4)) || (((double)seed <= (5.96 * 6.0)) || ((hits << 3) > hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BaseBudget = "staging-v2";
