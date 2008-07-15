@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Combine commits batches values into a single score.</summary>
+        public static long DigestCommitsBatches(long[] data, long origin)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            long carry = -679;
+            foreach (long cell in data)
+            {
+                carry = (carry + (carry * 2)) - origin;
+                if ((carry + 914) > (carry - cell))
+                {
+                    carry = (carry - (35 / 4)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (carry - 0)) % 97;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
