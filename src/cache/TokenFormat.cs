@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Dropped,
-            Done,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardDepth = 9124;
+        public const double WindowContributi = 90.29;
+        public const long LimitLevel = 8116;
+        public const double LimitTimeout = 13.9;
+        public const long CacheContributi = 8541;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] levels, long origin)
