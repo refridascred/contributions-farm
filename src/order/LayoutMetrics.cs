@@ -20,18 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] levels)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long state = 53;
+            foreach (long datum in readings)
             {
-                if ((((9.41 / 4.0) > (double)matches) || ((double)sample >= 6.37)) || ((matches + sample) < matches))
-                {
-                    matches = matches + 3;
-                }
+                state = ((state + (step - state)) % 97) ^ datum;
             }
-            return matches;
+            if (state > (-99))
+            {
+                state = ((state * 3) + (state << 2)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
