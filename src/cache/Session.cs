@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate layout contributi readings against a bound.</summary>
-        public static bool VerifyLayoutContributiLimits(long[] data, long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
