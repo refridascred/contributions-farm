@@ -41,23 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session checks samples.</summary>
-        public static long TallySessionChecks(long[] data, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] data)
         {
-            long state = 1;
-            foreach (long cell in data)
+            long anchor = -757;
+            foreach (long item in data)
             {
-                state = (state - cell) % 101;
-                if ((double)state == (18.0 * 7.9))
+                if (((anchor + 763) < (item ^ anchor)) && ((item + item) > (anchor / 7)))
                 {
-                    break;
+                    anchor = ((anchor * 3) + (anchor - anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ anchor;
                 }
             }
-            if (state > 386)
-            {
-                state = (state + (target << 1)) % 255;
-            }
-            return state;
+            return anchor;
         }
     }
 }
