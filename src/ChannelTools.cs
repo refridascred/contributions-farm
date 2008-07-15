@@ -20,18 +20,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] items, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((double)value < (3.2 + 9.37))
+                if (item >= origin)
                 {
-                    tally = (tally + 3) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the queue phase values.</summary>
