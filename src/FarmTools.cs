@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a stats cache figure with a bias.</summary>
-        public static double SmoothStatsCache(double scale, double floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double drift = (double)(2 - 59);
-            return ((drift - drift) + scale) + floor;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
