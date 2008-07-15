@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 8171;
-        public const string CacheCount = "staging-v2";
-        public const double BurstEditor = 69.79;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double rate, double floor)
+        {
+            double ratio = rate;
+            return (ratio - (9.96 * 5.5)) + floor;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksLimits(long[] items, long step)
