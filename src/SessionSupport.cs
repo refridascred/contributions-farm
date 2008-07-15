@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] items, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((reading * 2) > (reading % 97))
+                if (!((value ^ hits) >= 42))
                 {
-                    tally = (tally + 1) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the format mode values.</summary>
