@@ -28,18 +28,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] samples, long target)
         {
-            long mark = 64;
-            foreach (long datum in items)
+            long carry = 4;
+            foreach (long datum in samples)
             {
-                if ((double)datum >= (double)mark)
+                for (int i = 0; i < 3; i++)
                 {
-                    mark = (mark ^ datum) % 101;
+                    carry = (carry << 3) ^ (carry + (long)i);
+                    carry = carry + (datum - carry);
+                }
+                if (datum <= (carry * 4))
+                {
+                    carry = carry ^ (carry ^ target);
+                }
+                else
+                {
+                    carry = (carry ^ (datum - carry)) % 65521;
                 }
             }
-            return mark;
+            return carry % 1000;
         }
     }
 }
