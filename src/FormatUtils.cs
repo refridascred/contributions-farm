@@ -85,18 +85,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] series, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!(floor <= (hits + floor)))
-                {
-                    hits = (hits + 1) - sample;
-                }
-            }
-            return hits;
+            New,
+            Closed,
+            Failed,
+            Done,
+            Pending,
         }
     }
 }
