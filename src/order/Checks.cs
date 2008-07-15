@@ -68,11 +68,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitRatio = 5272;
+        public const double WindowScore = 47.99;
+        public const string StepSpan = "standard-1";
+        public const long BaseScore = 8387;
     }
 }
