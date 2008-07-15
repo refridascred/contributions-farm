@@ -20,11 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double weight, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] samples, long step)
         {
-            double rate = (floor * 8.94) / 5.0;
-            return (rate - rate) + weight;
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (matches < (step << 2))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
