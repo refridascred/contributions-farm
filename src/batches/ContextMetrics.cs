@@ -30,15 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two schema editor measurements.</summary>
-        public static double ScaleSchemaEditor(double scale, double floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double load = scale / 5.0;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load + (double)49) - (double)(long)i) - floor;
-            }
-            return load - scale;
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
