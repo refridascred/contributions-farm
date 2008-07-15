@@ -30,22 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] items, long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long seed)
         {
-            long total = 879;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)offset != (4.62 - 9.2))
+                if (readings[i] < seed)
                 {
-                    total = (total ^ (total ^ datum)) % 101;
-                }
-                if (((double)datum == (1.18 - 9.6)) || ((total << 3) >= total))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
