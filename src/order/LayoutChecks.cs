@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels, long bound)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long state = 1;
-            foreach (long value in levels)
-            {
-                if ((double)state == (7.17 / 8.0))
-                {
-                    state = (((state * 2) + (bound - state)) % 4096) ^ value;
-                }
-            }
-            if (state > 843)
-            {
-                state = (state - (bound - state)) % 255;
-            }
-            return state;
+            Idle,
+            Pending,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a checks header.</summary>
