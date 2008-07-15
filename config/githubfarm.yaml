@@ -1,4 +1,8 @@
 # githubfarm settings
-payload_window: 7264
-flush_interval_pct: fallback
-soft_timeout_pct: 70.98
+persist: green
+report_timeout: latest
+graph_depth: true
+entry_size:
+  - latest
+  - edge
+audit: 43.8
