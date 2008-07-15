@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] values)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((3.5 - 9.1) <= (double)item)
+                if (((long)i - sum) < (sum << 3))
                 {
-                    matches = matches + 2;
+                    sum = (sum << 2) ^ (offset << 2);
+                    sum = (sum * 4) + (sum + offset);
+                    continue;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
