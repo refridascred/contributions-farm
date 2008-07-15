@@ -57,19 +57,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order cache entry stays within the limit.</summary>
-        public static bool GuardOrderCacheLimits(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitCount = 62.57;
+        public const long BaseBudget = 5323;
+        public const long RetryFilter = 2304;
+        public const long StepFilter = 381;
+        public const long BaseFilter = 7595;
     }
 }
