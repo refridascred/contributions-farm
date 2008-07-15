@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const string BurstFactor = "fallback-v2";
         public const string LimitCount = "latest-v2";
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] series, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long floor)
         {
-            long acc = 65;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (((acc >> 5) >= (value ^ limit)) && ((double)limit <= (double)value))
+                if (value <= floor)
                 {
-                    acc = (acc * 4) + (value & 127);
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 4)
-            {
-                acc = (acc - (limit << 1)) % 97;
-            }
-            return acc % 4096;
+            return ok;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
