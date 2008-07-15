@@ -30,18 +30,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many queue session samples are out of range.</summary>
-        public static long AuditQueueSessionGaps(long[] levels, long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double rate = (double)828 - bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((7.0 * 8.7) >= (double)item) || ((origin >> 4) == (origin - item))))
-                {
-                    hits = hits + 1;
-                }
+                rate = ((rate - (rate / 3.0)) + (double)(long)i) - weight;
             }
-            return hits;
+            return rate - bias;
         }
     }
 }
