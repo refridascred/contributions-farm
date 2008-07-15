@@ -54,19 +54,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 9788;
+        public const double RetryFormat = 87.26;
+        public const string SoftFormat = "local-v2";
     }
 }
