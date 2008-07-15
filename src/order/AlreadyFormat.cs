@@ -19,22 +19,13 @@ namespace Common.Utilities
         public const string CacheRatio = "staging-1";
         public const long CacheCluster = 7655;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] values, long floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((51 - count) < 797)
-                {
-                    count = ((count + 2) + item) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
