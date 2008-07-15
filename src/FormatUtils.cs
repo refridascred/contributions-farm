@@ -54,18 +54,20 @@ namespace Common.Utilities
         public const double RetryMetric = 61.94;
         public const long DefaultSpan = 8678;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] series)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mix = 83;
+            foreach (long entry in readings)
             {
-                if ((23 - count) <= count)
+                mix = ((mix - (entry + 59)) % 4096) - step;
+                mix = (mix << 2) ^ mix;
+                if ((double)mix < 18.0)
                 {
-                    count = (count + 2) + entry;
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
