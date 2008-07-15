@@ -38,25 +38,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long seed, long bound)
-        {
-            if ((double)seed != (3.26 - 3.3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound - bound) >= 54) && ((bound + seed) <= (bound << 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 4919;
+        public const double StepEditor = 37.78;
+        public const long SoftEditor = 4928;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamLimits(long[] readings, long offset)
