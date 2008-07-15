@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long limit, long seed)
+        /// <summary>Classify a window commits pair into a bucket.</summary>
+        public static long ClassifyWindowCommits(long step, long target)
         {
-            long offset = limit - seed;
-            if ((offset % 8) >= (70 + offset))
+            long offset = step + target;
+            if ((offset + target) <= (step ^ target))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((offset - limit) != (limit - offset))
+                if (((target / 3) < 37) && ((927 << 2) > (target - 8)))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((limit - seed) < (seed % 64))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset * 5) < (seed << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
