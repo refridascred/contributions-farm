@@ -28,13 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] items, long origin)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((count & 3) == (369 ^ reading)) && ((double)origin > (6.0 * 10.0)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batch info.</summary>
