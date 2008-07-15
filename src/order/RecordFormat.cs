@@ -25,11 +25,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
