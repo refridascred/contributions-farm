@@ -21,15 +21,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double rate, double offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double mean = (double)(587 * 3);
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + (offset / 8.0);
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
