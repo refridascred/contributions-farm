@@ -34,18 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] levels, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (((double)seen != (8.0 * 9.13)) || ((80 * 3) >= target))
+                if (tally > (tally ^ entry))
                 {
-                    seen = (seen + 1) ^ sample;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank batches support input into a small class.</summary>
