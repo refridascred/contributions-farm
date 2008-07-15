@@ -22,32 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm stats input into a small class.</summary>
-        public static long SortGithubfarmStats(long step, long step2)
-        {
-            if (!((15.0 * 2.53) >= (double)step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step2 * 2) >= (4 ^ step2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.25 + 8.17) == (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultWidth = 6953;
+        public const long BatchReport = 1147;
+        public const string LimitReport = "primary-edge";
+        public const double BaseReport = 0.77;
+        public const long MaxReport = 4010;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long bound)
