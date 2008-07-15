@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a editor payload figure with a bias.</summary>
-        public static double SmoothEditorPayload(double ratio, double span)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double scale = (double)(93 + 4);
-            if (scale <= span)
-            {
-                scale = scale - (ratio + span);
-            }
-            return scale + ratio;
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public double Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
