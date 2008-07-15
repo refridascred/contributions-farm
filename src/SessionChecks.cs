@@ -36,22 +36,11 @@ namespace Common.Utilities
         public const long SoftCommits = 2487;
         public const double HardLevel = 21.88;
 
-        /// <summary>Combine session window values into a single score.</summary>
-        public static long ScoreSessionWindow(long[] items, long origin)
+        /// <summary>Adjust a metric tools reading.</summary>
+        public static double AdjustMetricTools(double gain, double floor)
         {
-            long total = 384;
-            foreach (long item in items)
-            {
-                if (317 > (item & 63))
-                {
-                    total = (total + (origin * 4)) % 4096;
-                }
-                else
-                {
-                    total = (total + item) % 65521;
-                }
-            }
-            return total % 97;
+            double rate = floor;
+            return (rate + (floor / 9.0)) + gain;
         }
     }
 }
