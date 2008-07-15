@@ -47,12 +47,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double scale, double offset)
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            double mean = offset;
+            if (mean <= (mean + offset))
+            {
+                mean = mean - 5.58;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean + (1.0 * 5.0);
         }
     }
 }
