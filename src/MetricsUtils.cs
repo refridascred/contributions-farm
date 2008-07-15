@@ -37,17 +37,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long target)
+        /// <summary>Adjust a tools context reading.</summary>
+        public static double SmoothToolsContext(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (double)(658 % 97);
+            if (bias2 > weight)
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (double)(-5);
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + (double)(-256);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (bias * 7.42)) - (double)(long)i;
+            }
+            return bias2 - (11.0 * 2.0);
         }
 
         /// <summary>Digest a series of format entries.</summary>
