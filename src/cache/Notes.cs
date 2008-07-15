@@ -32,19 +32,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next window batch value from a seed.</summary>
-        public static long StepWindowBatch(long seed)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((seed % 10) <= carry))
-                {
-                    carry = (carry ^ ((-328) ^ seed)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Stale,
+            Synced,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
