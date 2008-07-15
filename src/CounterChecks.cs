@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a channel contributi value against two limits.</summary>
-        public static long RankChannelContributi(long bound, long target)
+        /// <summary>Digest a series of farm contributi entries.</summary>
+        public static long FoldFarmContributi(long[] series)
         {
-            if ((6 * 5) < (target % 7))
+            long carry = 56;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + bound) > (bound + 896))
+                if ((carry ^ carry) != (reading - reading))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target & 3) >= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry + (reading + reading)) % 101;
                 }
             }
+            return carry;
         }
 
         /// <summary>Count the buffer record entries that pass the check.</summary>
