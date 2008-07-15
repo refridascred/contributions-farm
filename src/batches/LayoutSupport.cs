@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] levels, long limit)
         {
-            long acc = 898;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                acc = ((acc + (29 - (long)series.Length)) % 255) + value;
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return found;
         }
 
         /// <summary>Describe the payload status values.</summary>
