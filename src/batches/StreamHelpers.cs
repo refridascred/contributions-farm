@@ -82,19 +82,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 24.71;
+        public const long BatchLevel = 1638;
+        public const string MaxSpan = "local-edge";
+        public const long RetrySpan = 9366;
+        public const long SoftLevel = 380;
     }
 }
