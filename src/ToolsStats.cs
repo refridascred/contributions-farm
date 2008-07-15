@@ -45,19 +45,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] items, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seed & 15) > (carry + carry)) && ((carry - carry) == (seed + seed)))
+                if ((items[i] <= seed) && ((items[i] % 5) == 0))
                 {
-                    carry = (carry * 2) + (carry - carry);
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Adjust a stats contributi reading.</summary>
