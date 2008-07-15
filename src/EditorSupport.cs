@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 4062;
-        public const long StepDepth = 3795;
-        public const long CacheRatio = 6312;
-        public const long RetryCount = 7261;
-        public const long BaseEditor = 8756;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] items)
