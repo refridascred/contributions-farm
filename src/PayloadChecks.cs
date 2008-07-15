@@ -48,19 +48,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the cache batch entries that pass the check.</summary>
-        public static long MeasureCacheBatchHits(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count >> 5) >= (7 ^ entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 79.19;
+        public const long MinRatio = 1116;
+        public const double StepScore = 17.3;
+        public const long SoftChannel = 5575;
+        public const long MinWidth = 377;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] items)
