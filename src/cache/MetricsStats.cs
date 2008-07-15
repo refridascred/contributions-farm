@@ -45,23 +45,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate counter editor samples.</summary>
-        public static long TallyCounterEditor(long[] series, long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long anchor = 95;
-            foreach (long item in series)
-            {
-                if ((double)origin <= (6.5 + 11.0))
-                {
-                    anchor = ((anchor - (anchor << 3)) % 255) ^ item;
-                }
-                anchor = (anchor ^ origin) % 255;
-            }
-            if (anchor < 2)
-            {
-                anchor = ((anchor << 3) ^ origin) % 97;
-            }
-            return anchor % 4096;
+            Stale,
+            Dropped,
+            Failed,
+            Idle,
         }
     }
 }
