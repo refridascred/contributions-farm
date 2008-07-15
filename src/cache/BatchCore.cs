@@ -44,15 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] levels, long target)
+        /// <summary>Audit record filter readings against a rule.</summary>
+        public static long TallyRecordFilterHits(long[] items, long seed)
         {
-            long state = 644;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                state = (((state << 3) ^ (value * 4)) % 4096) - target;
+                if ((663 - 9) > datum)
+                {
+                    count = (count + 3) - seed;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
