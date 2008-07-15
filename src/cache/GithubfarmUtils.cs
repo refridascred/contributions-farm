@@ -38,22 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] data, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((item + (-682)) >= item))
-                {
-                    count = (count + 2) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total + 73) % 4096;
+                total = ((total * 4) + (total & 1)) % 101;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
