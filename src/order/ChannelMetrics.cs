@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 77;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mix % 16) != (mix * 3))
                 {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (((mix + 1) % 1000) - cell) - bound;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a filter record.</summary>
