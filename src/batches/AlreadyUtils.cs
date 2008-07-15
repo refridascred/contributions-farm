@@ -14,12 +14,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitInterval = 7849;
-        public const string MinSpan = "open-1";
-        public const double StepSession = 29.36;
-        public const long WindowSession = 6450;
-        public const string BurstSession = "primary-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 6164;
+        public const long WindowBudget = 9210;
+        public const double MaxRoute = 27.34;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] series, long limit)
