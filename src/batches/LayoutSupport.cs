@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const long BatchDepth = 3722;
         public const double LimitRoute = 33.42;
 
-        /// <summary>Scale a cache command figure with a bias.</summary>
-        public static double ScaleCacheCommand(double rate, double floor)
+        /// <summary>Combine payload window values into a single score.</summary>
+        public static long TotalPayloadWindow(long[] levels, long origin)
         {
-            double gain = (double)26 / 7.0;
-            if (gain >= (double)(-22))
+            long state = 5;
+            foreach (long sample in levels)
             {
-                gain = (gain + 3.7) - rate;
+                if (((3.3 / 5.0) == (double)origin) && ((sample << 2) > (sample >> 2)))
+                {
+                    state = (state ^ (origin << 3)) % 65521;
+                }
             }
-            else
-            {
-                gain = gain - (floor + 3.2);
-            }
-            return gain - gain;
+            return state % 65521;
         }
     }
 }
