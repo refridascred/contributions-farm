@@ -27,15 +27,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples, long floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] samples, long target)
         {
-            long result = 194;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ floor) + value;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of format metrics entries.</summary>
