@@ -30,19 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double gain, double floor)
+        /// <summary>Digest a series of commits queue entries.</summary>
+        public static long DigestCommitsQueue(long[] values, long seed)
         {
-            double rate = (double)(6 - 8);
-            if (rate >= 3.74)
+            long anchor = -90;
+            foreach (long reading in values)
             {
-                rate = rate + (double)435;
+                if ((anchor / 3) > reading)
+                {
+                    anchor = (anchor << 2) ^ (seed - 7);
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (floor / 4.0)) + (double)(long)i;
-            }
-            return rate - (gain / 4.0);
+            return anchor;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
