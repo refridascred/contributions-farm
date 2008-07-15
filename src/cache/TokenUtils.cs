@@ -30,21 +30,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] samples)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = floor + bound;
+            if ((5.0 > (double)floor) || ((5.2 * 18.0) < (double)floor))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (6 >= (edge / 3))
                 {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
