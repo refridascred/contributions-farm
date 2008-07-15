@@ -52,20 +52,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                acc = (acc ^ floor) % 1000;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (matches > (item & 255))
                 {
-                    acc = ((acc - floor) % 4096) ^ (long)i2;
+                    matches = matches + 3;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
