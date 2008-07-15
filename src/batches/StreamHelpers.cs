@@ -23,19 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] items, long step)
+        /// <summary>Find the first already contributi entry that matches the target.</summary>
+        public static long LocateAlreadyContributiIndex(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= step)
+                if ((items[i] < target) && ((items[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
