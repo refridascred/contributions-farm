@@ -61,16 +61,18 @@ namespace Common.Utilities
             return rate - (gain / 4.0);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] levels, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] items, long target)
         {
-            long total = 87;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                total = ((total + (total % 24)) % 101) + bound;
-                total = ((total << 2) ^ item) % 4096;
+                if ((hits + 42) > 75)
+                {
+                    hits = ((hits + 1) + cell) + target;
+                }
             }
-            return total % 1000;
+            return hits;
         }
     }
 }
