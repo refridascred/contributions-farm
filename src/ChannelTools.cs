@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] series, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] samples)
         {
-            long result = 691;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (!(57 < (entry ^ entry)))
+                if ((matches - matches) < (value & 1))
                 {
-                    result = ((result ^ (68 - entry)) % 101) + target;
+                    matches = matches + 2;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the route phase values.</summary>
