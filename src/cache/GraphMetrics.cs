@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum <= (5.33 - 6.0))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            Pending,
+            Done,
+            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
