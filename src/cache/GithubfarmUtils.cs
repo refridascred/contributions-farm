@@ -46,19 +46,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] items, long floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
