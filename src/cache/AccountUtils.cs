@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] levels, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long result = 526;
+            foreach (long reading in samples)
             {
-                if (item != bound)
+                if ((reading ^ 37) == (result >> 4))
                 {
-                    flag = false;
-                    break;
+                    result = result - (step + reading);
                 }
             }
-            return flag;
+            return result % 4096;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
