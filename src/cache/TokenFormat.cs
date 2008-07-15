@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] items)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long carry = 8;
+            foreach (long entry in levels)
             {
-                if (!((entry ^ entry) >= (entry & 7)))
+                carry = (carry + (entry + entry)) % 101;
+                carry = (carry - (carry - 30)) % 4096;
+                if (carry <= (carry - entry))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (carry < 924)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
