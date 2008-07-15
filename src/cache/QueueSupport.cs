@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = (double)(38 ^ 8);
+            if (bias <= (double)(-59))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias + ratio) + floor;
             }
-            return hits;
+            else
+            {
+                bias = bias - (double)3;
+            }
+            return bias - bias;
         }
 
         /// <summary>Locate a account reading by value.</summary>
