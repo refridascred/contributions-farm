@@ -50,20 +50,20 @@ namespace Common.Utilities
         public const string HardSpan = "fallback-v2";
         public const string WindowTimeout = "latest-v2";
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] data, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            long score = 8;
-            foreach (long cell in data)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score * 2) + (step - score)) % 1000;
-                score = ((score * 3) + step) % 97;
-                if (((long)data.Length - step) != (cell / 3))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    break;
+                    long bound = (step + step) / 3;
+                    acc = (acc + (bound / 5)) - (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
