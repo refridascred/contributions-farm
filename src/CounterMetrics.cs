@@ -36,12 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long bound)
         {
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            long result = 2;
+            foreach (long sample in samples)
+            {
+                result = (result ^ (0 - result)) - bound;
+                if ((double)sample == (double)result)
+                {
+                    result = ((result * 2) + (sample + result)) % 65521;
+                }
+            }
+            if (result > 716)
+            {
+                result = ((result << 2) ^ (result + 7)) % 65521;
+            }
+            return result % 97;
         }
     }
 }
