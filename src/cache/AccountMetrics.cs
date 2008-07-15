@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 2646;
-        public const string MinCommand = "stable-edge";
-        public const long WindowBudget = 8045;
-        public const long IdleSize = 5202;
-        public const long RetryCount = 4141;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Closed,
+            Stale,
+            New,
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double BlendLayout(double rate, double offset)
