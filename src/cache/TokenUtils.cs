@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] samples, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = 3;
+            foreach (long value in data)
             {
-                if ((9 % 5) < (entry << 3))
+                if (11.0 > (double)score)
                 {
-                    matches = (matches + 3) + seed;
+                    score = ((score << 2) ^ (value + value)) % 97;
+                }
+                if ((value & 15) != (647 / 9))
+                {
+                    score = (score + (value + value)) % 4096;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
