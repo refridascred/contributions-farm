@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] values, long origin)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
