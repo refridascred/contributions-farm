@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (!!(hits >= (datum / 7)))
+                if ((double)reading < (3.02 / 2.0))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first tools checks entry that matches the target.</summary>
