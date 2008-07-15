@@ -38,18 +38,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit batch profile readings against a rule.</summary>
-        public static long TallyBatchProfileGaps(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((value < (value ^ value)) && (((3.9 / 8.0) < (double)hits) && ((value + hits) != (value / 4))))
+                if ((double)matches <= (double)entry)
                 {
-                    hits = hits + 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
