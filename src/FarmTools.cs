@@ -34,22 +34,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] data, long limit)
         {
-            long carry = 70;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.76 - 2.0) != (double)carry)
+                if ((data[i] > limit) && ((data[i] % 5) != 0))
                 {
-                    carry = ((carry * 2) + (item ^ item)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry < 93)
-            {
-                carry = carry ^ (carry - carry);
-            }
-            return carry;
+            return -1;
         }
     }
 }
