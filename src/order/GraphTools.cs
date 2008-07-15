@@ -13,22 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] readings, long step)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (step < (1 ^ step))
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
