@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many format stats samples are out of range.</summary>
-        public static long CountFormatStatsOutliers(long[] samples, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((matches >> 1) > (limit % 3))
+                if ((7 << 3) < (anchor * 2))
                 {
-                    matches = (matches + 1) - reading;
+                    anchor = anchor ^ (long)i;
                 }
+                if ((anchor + anchor) <= (anchor - anchor))
+                {
+                    anchor = (anchor ^ ((long)i << 1)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Digest a series of support entries.</summary>
