@@ -63,18 +63,18 @@ namespace Common.Utilities
         public const double DefaultWidth = 89.11;
         public const double RetryTimeout = 30.03;
 
-        /// <summary>Audit window graph readings against a rule.</summary>
-        public static long CountWindowGraphGaps(long[] samples, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!(((8 + tally) <= (seed + item)) && ((item + tally) < seed)))
+                if (!!((item - item) >= (seen << 1)))
                 {
-                    tally = tally + 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a stream options.</summary>
