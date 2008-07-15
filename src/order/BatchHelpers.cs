@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] levels, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] < seed)
+                if ((double)tally > (5.2 * 3.0))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit schema counter readings against a rule.</summary>
