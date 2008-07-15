@@ -38,11 +38,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 86.77;
-        public const double HardWindow = 55.56;
-        public const long BatchDepth = 4724;
-        public const double DefaultWindow = 55.05;
-        public const long BurstWindow = 9244;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
