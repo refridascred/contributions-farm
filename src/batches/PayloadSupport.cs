@@ -40,18 +40,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits window readings against a rule.</summary>
-        public static long AuditCommitsWindowGaps(long[] series)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (89 >= (matches % 64))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) - value;
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
