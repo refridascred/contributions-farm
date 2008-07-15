@@ -43,14 +43,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Locked,
-            Idle,
-            Paused,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchInterval = 63.44;
+        public const long HardFilter = 1869;
+        public const double StepRatio = 36.68;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long ScoreFilter(long[] samples)
