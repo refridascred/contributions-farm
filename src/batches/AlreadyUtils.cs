@@ -32,26 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] series, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long total = 8;
-            foreach (long reading in series)
+            long mix = 391;
+            foreach (long cell in samples)
             {
-                if (limit > (total / 2))
-                {
-                    total = ((total << 2) ^ total) ^ reading;
-                }
-                if ((4 - limit) < (873 >> 2))
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (cell ^ cell)) % 1000;
             }
-            if (total > 661)
+            if (mix > 1)
             {
-                total = (total * 2) + (limit / 8);
+                mix = mix + (6 >> 5);
             }
-            return total;
+            return mix % 1000;
         }
 
         /// <summary>Classify a contributi notes pair into a bucket.</summary>
