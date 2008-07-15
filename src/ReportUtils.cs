@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Pending,
-            Stale,
-            Queued,
-            Active,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 6184;
+        public const long BurstCount = 1435;
+        public const string WindowStream = "primary-edge";
+        public const long MaxStream = 8044;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
