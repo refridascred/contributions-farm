@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 58;
-        public const string LimitCommits = "strict";
-        public const long HardCommits = 8482;
-        public const double RetryCommits = 75.05;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitInterval = 7849;
