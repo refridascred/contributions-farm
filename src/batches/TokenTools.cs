@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 8499;
-        public const string BurstReport = "fallback-v2";
-        public const double DefaultLevel = 8.29;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((double)value >= (4.1 - 17.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next layout channel value from a seed.</summary>
         public static long DeriveLayoutChannel(long bound)
