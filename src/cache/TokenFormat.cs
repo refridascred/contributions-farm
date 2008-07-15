@@ -23,22 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] samples, long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((double)(-81) != (double)count) && !((455 / 8) > (origin << 2)))
-                {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
