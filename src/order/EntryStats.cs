@@ -53,17 +53,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] items, long target)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)floor != (4.95 + 14.0))
             {
-                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if (0 < (seed + floor))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
