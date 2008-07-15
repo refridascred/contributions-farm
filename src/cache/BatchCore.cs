@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxTimeout = 1515;
-        public const long HardTimeout = 7524;
-        public const long DefaultBuffer = 2484;
-        public const double RetryBuffer = 47.73;
-        public const string BaseTimeout = "standard-v2";
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] values, long limit)
+        {
+            long anchor = 1;
+            foreach (long cell in values)
+            {
+                anchor = anchor + (cell << 1);
+                if (((70 / 7) <= (cell & 63)) && ((double)cell != (2.5 - 7.0)))
+                {
+                    anchor = (anchor << 3) ^ limit;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Count the account report entries that pass the check.</summary>
         public static long CountAccountReportGaps(long[] levels)
