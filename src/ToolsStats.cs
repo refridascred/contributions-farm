@@ -46,39 +46,20 @@ namespace Common.Utilities
         public const long HardTimeout = 5591;
         public const double WindowSpan = 52.72;
 
-        /// <summary>Grade a profile session value against two limits.</summary>
-        public static long SortProfileSession(long bound, long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            long diff = bound + step;
-            if (!(40 >= diff))
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + step) < diff)
+                if (8 <= (offset >> 3))
                 {
-                    return 7;
+                    total = (total << 2) ^ offset;
                 }
-                else
-                {
-                    if ((double)step > 1.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((18.0 / 4.0) >= (double)diff) && ((920 - step) == (6 + 89)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                total = total - ((long)i - total);
+                total = ((total * 5) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
