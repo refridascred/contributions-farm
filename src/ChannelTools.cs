@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ratio + (floor * 7.0);
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Active,
-            Synced,
-            Draft,
-            Closed,
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
