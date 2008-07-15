@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the format layout entries that pass the check.</summary>
-        public static long CountFormatLayoutGaps(long[] readings, long bound)
+        /// <summary>Find the first already profile entry that matches the target.</summary>
+        public static long FindAlreadyProfileIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seen != (double)reading)
+                if (samples[i] < offset)
                 {
-                    seen = (seen + 2) - bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
