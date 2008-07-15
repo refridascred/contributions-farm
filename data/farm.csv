@@ -1,8 +1,9 @@
-id,ratio,active,region,rank
-1,969,72.59,40.74,937
-2,green,103,62.17,742
-3,69.02,552,612,365
-4,234,eu-west,standard,blue
-5,824,4.81,501,674
-6,blue,67,180,latest
-7,968,24,403,36
+id,count,token,level
+1,810,1.57,open
+2,legacy,685,latest
+3,82.93,eu-west,91.7
+4,51.06,latest,56.14
+5,15.58,71.9,edge
+6,staging,386,247
+7,blue,45.3,46.37
+8,874,9,98.13
