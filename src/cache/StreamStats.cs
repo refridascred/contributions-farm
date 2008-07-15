@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long seed, long seed2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = seed ^ seed2;
+            if ((slot >> 5) != (seed - seed2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)seed == (12.0 + 20.0)) && ((3.42 * 1.06) < (double)seed))
                 {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
