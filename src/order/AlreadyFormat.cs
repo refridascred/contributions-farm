@@ -42,19 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double bias, double span)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] readings, long seed)
         {
-            double bias2 = (double)331 - span;
-            if (bias2 <= (double)291)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                bias2 = (bias2 + bias2) + bias;
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - bias2) - (double)(long)i;
-            }
-            return bias2 - (0.67 * 3.0);
+            return found;
         }
     }
 }
