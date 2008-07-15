@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long SoftBatches = 5147;
         public const string WindowBatches = "standard-1";
 
-        /// <summary>Validate support format readings against a bound.</summary>
-        public static bool ValidateSupportFormatBounds(long[] values, long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
