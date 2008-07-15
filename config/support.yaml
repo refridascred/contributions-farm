@@ -1,15 +1,6 @@
 # support settings
-batch_size_pct:
-  batch_ttl_s: 20
-  poll_ttl_ms: legacy
-  min_ttl_ms: true
-  soft_window: staging
-  retry_depth: 3.97
-readonly: true
-poll_retries_ms: 72.21
-batch_limit: green
-poll_capacity_count:
-  - primary
-  - staging
-  - fallback
-batch_ratio_count: fallback
+soft_timeout_pct: cached
+base_ratio_ms: 60
+soft_depth: 5
+max_ratio: eu-west
+flush_limit: 72.2
