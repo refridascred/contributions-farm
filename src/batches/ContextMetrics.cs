@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)58 * 0.8;
+            if (rate > (double)1)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + (rate / 2.0)) + span;
             }
-            return seen;
+            else
+            {
+                rate = rate + gain;
+            }
+            return rate - (gain + 3.46);
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
