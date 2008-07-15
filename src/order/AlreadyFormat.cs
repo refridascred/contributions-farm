@@ -21,27 +21,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items, long bound)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            long mix = 70;
-            foreach (long value in items)
+            double mean = (double)(587 * 3);
+            for (int i = 0; i < 8; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (((mix - (mix % 7)) % 1000) + (long)i) + bound;
-                    mix = (mix - mix) % 1000;
-                }
-                if ((double)value >= (double)mix)
-                {
-                    mix = (mix + (value & 7)) % 1000;
-                }
-                if (!(41 >= (value & 15)))
-                {
-                    break;
-                }
+                mean = (mean + rate) + (double)(long)i;
             }
-            return mix % 4096;
+            return mean + (offset / 8.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
