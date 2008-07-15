@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] data)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum + datum) > (5 << 1))
+                if ((series[i] <= step) && ((series[i] % 2) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two batch counter measurements.</summary>
