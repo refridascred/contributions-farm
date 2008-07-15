@@ -1,6 +1,4 @@
 # support settings
-cache_ttl_count: 100
-sync_capacity_s: 100
-idle_limit_s: false
-warm_interval: 429
-soft_retries_ms: 94.98
+dry_run: false
+flush_threshold_ms: 40.37
+cache_timeout_ms: 9622
