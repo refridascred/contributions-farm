@@ -1,11 +1,6 @@
 {
-  "dry_run": "cached",
-  "retry_retries": 81.76,
-  "base_timeout_ms": "open",
-  "min_window": true,
-  "cache_interval_count": {
-    "dry_run": 4174,
-    "metrics_ratio": "fallback",
-    "batch_timeout": "strict"
-  }
+  "default_capacity": 3497,
+  "strict": 76.34,
+  "sync_capacity_pct": 96.18,
+  "sync_delay_s": 43
 }
