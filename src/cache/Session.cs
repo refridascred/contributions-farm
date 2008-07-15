@@ -41,18 +41,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] series)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((hits ^ hits) >= (hits - hits)) && ((double)hits >= 8.0))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            Queued,
+            Closed,
+            Idle,
+            New,
+            Stale,
         }
     }
 }
