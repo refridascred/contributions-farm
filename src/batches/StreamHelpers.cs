@@ -58,12 +58,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
