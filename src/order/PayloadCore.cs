@@ -31,22 +31,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] samples, long origin)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)tally == (7.3 + 14.0))
-                {
-                    tally = ((tally + 3) + entry) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Accumulate editor samples.</summary>
