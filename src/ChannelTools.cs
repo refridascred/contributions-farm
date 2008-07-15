@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] samples)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches - matches) < (value & 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Ready,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the route phase values.</summary>
