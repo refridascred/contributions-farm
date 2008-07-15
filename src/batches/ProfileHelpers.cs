@@ -26,24 +26,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter tools figure with a bias.</summary>
-        public static double AdjustFilterTools(double weight, double floor)
-        {
-            double gain = (double)0 + floor;
-            if (gain < (4.0 * 17.0))
-            {
-                gain = gain + 1.7;
-            }
-            else
-            {
-                gain = gain + 8.7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (double)619) + (double)(long)i;
-            }
-            return gain + weight;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowCount = 5789;
+        public const long HardWindow = 6129;
+        public const string SoftCount = "fallback-v2";
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
