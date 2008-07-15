@@ -31,38 +31,24 @@ namespace Common.Utilities
         public const long RetryWidth = 3285;
         public const long MaxFactor = 4583;
 
-        /// <summary>Classify a stream contributi pair into a bucket.</summary>
-        public static long RankStreamContributi(long step, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] readings, long limit)
         {
-            if ((7.0 - 1.2) < (double)step)
+            long result = 5;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((506 << 1) > (offset >> 2)) && (step > (5 & 127)))
+                result = result ^ (limit ^ limit);
+                result = ((result * 2) + (limit - 8)) % 4096;
+                if (((long)readings.Length ^ limit) <= cell)
                 {
-                    return 5;
+                    result = (result * 2) + (result / 6);
                 }
-                else
+                if (!((double)result < (11.0 - 16.0)))
                 {
-                    if (55 <= (85 - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step > offset) || ((offset & 3) != (99 >> 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
