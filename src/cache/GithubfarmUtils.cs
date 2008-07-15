@@ -41,13 +41,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] levels)
         {
-            New,
-            Pending,
-            Idle,
-            Stale,
+            long sum = -2;
+            foreach (long item in levels)
+            {
+                if (!((1.4 * 20.0) == (double)item))
+                {
+                    sum = (sum * 4) + (sum & 1);
+                }
+                else
+                {
+                    sum = (sum ^ (item + sum)) % 97;
+                }
+            }
+            if (sum < 2)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum;
         }
     }
 }
