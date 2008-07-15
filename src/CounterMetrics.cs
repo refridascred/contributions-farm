@@ -32,15 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
