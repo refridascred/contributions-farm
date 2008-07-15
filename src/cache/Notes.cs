@@ -63,13 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Ready,
-            Active,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 587;
+        public const long CacheScore = 6445;
+        public const double BaseTimeout = 5.06;
+        public const long BatchScore = 3819;
+        public const long BatchRatio = 9007;
     }
 }
