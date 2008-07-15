@@ -42,12 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Retry,
-            Draft,
-            Failed,
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
