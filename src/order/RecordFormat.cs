@@ -34,22 +34,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit metrics contributi readings against a rule.</summary>
-        public static long MeasureMetricsContributiGaps(long[] data, long floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)8 >= (double)hits)
-                {
-                    hits = ((hits + 3) - cell) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
