@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] values, long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] > target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = ((load - 6.9) + (double)(long)i) - weight;
             }
-            return -1;
+            return load - (offset / 2.0);
         }
 
         /// <summary>Validate contributi entry readings against a bound.</summary>
