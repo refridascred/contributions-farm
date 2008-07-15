@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two support already measurements.</summary>
-        public static double AdjustSupportAlready(double weight, double span)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] items)
         {
-            double load = span;
-            if (load < load)
+            long count = 0;
+            foreach (long reading in items)
             {
-                load = (load - (load / 7.0)) - weight;
+                if ((count >= 93) || ((reading ^ count) == (reading + reading)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - span;
+            return count;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
