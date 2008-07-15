@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] levels)
         {
-            Dropped,
-            Pending,
-            Paused,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (matches > (matches * 3))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
