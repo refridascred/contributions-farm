@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] series, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a notes entry.</summary>
