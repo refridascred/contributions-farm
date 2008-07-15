@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftDepth = 9004;
-        public const double WindowCommand = 94.62;
-        public const double BurstCommand = 40.97;
-        public const double StepLevel = 7.17;
+        /// <summary>Rank queue entry input into a small class.</summary>
+        public static long ClassifyQueueEntry(long bound, long floor)
+        {
+            long offset = bound - floor;
+            if ((0 + floor) >= (offset & 255))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) < (offset >> 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
