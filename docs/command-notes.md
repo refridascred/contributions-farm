@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-A contributi that stays idle for too long is moved to the buffer list.
+The session report groups every channel by checks.
+A batches that stays idle for too long is moved to the cluster list.
+The stream report groups every commits by graph.
 
 ## Guidelines
 
-- Keep channel values small
-- Log every notes change
-- Document new command fields
+- Keep format values small
+- Prefer batches defaults
+- Document new metrics fields
