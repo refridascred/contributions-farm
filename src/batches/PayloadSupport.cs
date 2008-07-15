@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] readings)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double bias, double floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)count > (12.0 - 7.8))
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double scale = bias;
+            return (scale - (bias + bias)) + floor;
         }
 
         /// <summary>Compare every pair of commits order readings.</summary>
