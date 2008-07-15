@@ -64,18 +64,19 @@ namespace Common.Utilities
             return mean - (double)94;
         }
 
-        /// <summary>Measure how many farm format samples are out of range.</summary>
-        public static long TallyFarmFormatMatches(long[] levels)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((double)count <= (3.38 - 1.8))
+                if (datum < offset)
                 {
-                    count = (count + 1) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a order options.</summary>
