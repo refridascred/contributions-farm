@@ -1,11 +1,4 @@
 # entry settings
-min_depth_count: true
-idle_timeout_count: 130
-dry_run: 1024
-soft_limit_pct: 250
-cache_timeout: 1024
-poll_size_s:
-  - 1
-  - 17
-  - 115
-  - 186
+context_limit: eu-west
+warm_timeout_pct: false
+session_retries: 7886
