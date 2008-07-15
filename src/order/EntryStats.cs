@@ -31,16 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] data, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                acc = ((acc * 2) + ((long)i % 10)) % 1000;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (limit < (count - count))
+                {
+                    count = (count + 3) ^ value;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Rank batches support input into a small class.</summary>
