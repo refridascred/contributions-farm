@@ -19,22 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] readings, long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long step)
         {
-            long anchor = 2;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading < (5.4 + 7.8))
+                if (levels[i] == step)
                 {
-                    anchor = ((anchor << 3) ^ (reading - reading)) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor < 878)
-            {
-                anchor = anchor + (anchor + bound);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the order level values.</summary>
