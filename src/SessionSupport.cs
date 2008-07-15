@@ -14,22 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit tools metric readings against a rule.</summary>
-        public static long MeasureToolsMetricMatches(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (seen < (69 & 127))
+                if (((-59) * 3) != (hits % 8))
                 {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
