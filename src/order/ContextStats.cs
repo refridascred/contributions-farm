@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "alpha-v2";
-        public const string WindowWidth = "local-edge";
-        public const long HardDepth = 9730;
-        public const long BaseBatch = 3761;
-        public const string IdleBatch = "stable-v2";
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long bound)
