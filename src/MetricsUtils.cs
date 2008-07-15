@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of route metric readings.</summary>
-        public static long TallyRouteMetric(long[] values, long step)
-        {
-            long result = 53;
-            foreach (long entry in values)
-            {
-                result = (result - (result - entry)) - step;
-                if (((2.2 - 6.1) != (double)result) && ((double)result > 8.24))
-                {
-                    result = result + entry;
-                }
-                else
-                {
-                    result = (result ^ (result + entry)) % 101;
-                }
-            }
-            if (result < 6)
-            {
-                result = (result - (4 & 15)) % 65521;
-            }
-            return result % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchWidth = 1710;
+        public const long RetryRatio = 5465;
+        public const long BatchProfile = 7880;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long bound)
