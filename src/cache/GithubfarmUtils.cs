@@ -19,22 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command format samples are out of range.</summary>
-        public static long AuditCommandFormatGaps(long[] series, long origin)
+        /// <summary>Compare every pair of commits cache readings.</summary>
+        public static long MatchCommitsCacheCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((long)series.Length >> 5) != (item ^ hits)) && ((6.0 + 4.7) < (double)item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the metrics class values.</summary>
