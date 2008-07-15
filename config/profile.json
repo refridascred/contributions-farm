@@ -1,15 +1,7 @@
 {
-  "stats_timeout": 12.45,
-  "max_retries": 49.27,
-  "buffer_interval": {
-    "batch_threshold_s": 0.49,
-    "audit": 98.36,
-    "record_depth": {
-      "max_capacity_pct": "strict",
-      "enabled": 56.17,
-      "farm_delay": 74,
-      "retry_ratio_ms": "latest"
-    },
-    "warm_delay_pct": 96.12
-  }
+  "poll_ttl_s": 1421,
+  "verbose": "primary",
+  "poll_ratio_count": 56,
+  "base_timeout": 68,
+  "session_depth": 100
 }
