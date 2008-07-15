@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long SoftBatches = 5147;
         public const string WindowBatches = "standard-1";
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate support format readings against a bound.</summary>
+        public static bool ValidateSupportFormatBounds(long[] values, long limit)
         {
-            Locked,
-            New,
-            Active,
-            Done,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the farm phase values.</summary>
