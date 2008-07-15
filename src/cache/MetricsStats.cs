@@ -44,13 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 9537;
+        public const double CacheSession = 65.14;
+        public const long HardSession = 7365;
+        public const string RetrySpan = "strict-edge";
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long ScorePayload(long[] samples)
