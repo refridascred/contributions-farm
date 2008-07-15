@@ -28,21 +28,21 @@ namespace Common.Utilities
         public const double RetryRatio = 35.05;
         public const long LimitStats = 7721;
 
-        /// <summary>Count session profile pairs that satisfy a relation.</summary>
-        public static long PairSessionProfileCount(long[] data)
+        /// <summary>Compare every pair of farm tools readings.</summary>
+        public static long CompareFarmToolsCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 5)
+                    if ((levels[i] + levels[j]) < 4)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
