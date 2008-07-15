@@ -17,19 +17,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] levels, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long carry = 486;
+            foreach (long reading in levels)
             {
-                if (item < seed)
+                for (int i = 0; i < 4; i++)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry ^ reading) % 101) - (long)i;
+                }
+                carry = (carry * 2) + (reading % 16);
+                if ((reading & 7) == (carry * 5))
+                {
+                    carry = ((carry << 3) ^ (4 - 71)) % 101;
                 }
             }
-            return ready;
+            if (carry > 707)
+            {
+                carry = ((carry * 2) + (carry - carry)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a stream info.</summary>
