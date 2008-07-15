@@ -22,21 +22,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
-        public static long PairMetricsEntryCount(long[] items)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Pending,
+            Retry,
+            Stale,
         }
 
         /// <summary>Blend two layout payload measurements.</summary>
