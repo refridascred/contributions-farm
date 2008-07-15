@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] items, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (cell < limit)
+                if (item != bound)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
