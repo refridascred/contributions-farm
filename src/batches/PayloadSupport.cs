@@ -28,18 +28,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] values, long limit)
+        /// <summary>Audit commits window readings against a rule.</summary>
+        public static long AuditCommitsWindowGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((double)datum <= (9.97 - 6.0))
+                if (89 >= (matches % 64))
                 {
-                    seen = (seen + 3) - limit;
+                    matches = (matches + 1) - value;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
