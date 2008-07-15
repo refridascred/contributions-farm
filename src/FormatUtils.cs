@@ -85,20 +85,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report format samples.</summary>
-        public static long CombineReportFormat(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] series, long floor)
         {
-            long mark = 8;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 4; i++)
+                if (!(floor <= (hits + floor)))
                 {
-                    mark = ((mark << 2) ^ ((long)i << 2)) % 97;
-                    mark = mark ^ (96 % 24);
+                    hits = (hits + 1) - sample;
                 }
-                mark = (mark - (sample << 2)) % 255;
             }
-            return mark % 65521;
+            return hits;
         }
     }
 }
