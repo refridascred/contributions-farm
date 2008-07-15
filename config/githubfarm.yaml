@@ -1,5 +1,11 @@
 # githubfarm settings
-strict: eu-west
-flush_depth: 15
-max_limit_count: true
-already_depth: 60
+dry_run:
+  command_depth: standard
+  readonly: open
+  editor_retries: legacy
+  persist: true
+  strict: blue
+warm_size_count: 250
+sync_size_ms: 30
+cache_timeout_pct: green
+queue_threshold: 8510
