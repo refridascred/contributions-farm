@@ -29,13 +29,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long offset)
         {
-            Paused,
-            New,
-            Pending,
-            Retry,
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor * 2) + (offset - offset);
+                if ((1 - anchor) > anchor)
+                {
+                    anchor = (anchor ^ (long)i) % 97;
+                }
+                if (!(offset <= (anchor + (long)i)))
+                {
+                    anchor = (anchor * 3) + ((long)i + anchor);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
