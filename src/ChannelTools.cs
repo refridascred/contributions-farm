@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double weight, double span)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            double mean = span;
+            if (mean >= (weight * 7.5))
             {
-                mark = mark - (433 + mark);
-                mark = ((mark * 5) + (long)i) % 101;
+                mean = mean + 8.0;
             }
-            return mark;
+            return mean - mean;
         }
 
         /// <summary>Fold a list of context readings.</summary>
