@@ -8,13 +8,19 @@ log() {
 
 total=0
 for i in $(seq 1 10); do
-    total=$((total + i * 5))
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in eu-west legacy; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=401
+COMMAND_LIMIT=73
 log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-local}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
