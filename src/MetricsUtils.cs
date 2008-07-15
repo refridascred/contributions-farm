@@ -24,13 +24,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Locked,
-            Done,
-            Ready,
-            Paused,
+            public double Score { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
