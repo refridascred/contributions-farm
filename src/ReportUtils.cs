@@ -27,11 +27,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinSpan = 5767;
-        public const double BatchFilter = 69.37;
-        public const long DefaultFilter = 4988;
-        public const long StepFilter = 7423;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmHits(long[] levels)
