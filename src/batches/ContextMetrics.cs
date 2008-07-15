@@ -40,17 +40,10 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Iterate the tools cluster series from a seed.</summary>
-        public static long RollToolsCluster(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 2) + (mark + (long)i)) % 101;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultInterval = 1.09;
+        public const long BatchSchema = 9029;
+        public const double BaseCount = 92.5;
 
         /// <summary>Measure how many command stats samples are out of range.</summary>
         public static long MeasureCommandStatsGaps(long[] data, long target)
