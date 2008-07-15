@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] samples, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
