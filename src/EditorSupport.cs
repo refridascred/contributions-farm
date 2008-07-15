@@ -62,19 +62,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two schema format measurements.</summary>
-        public static double ProjectSchemaFormat(double gain, double offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            double ratio = offset;
-            if (ratio > (offset / 2.0))
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                ratio = ratio + (gain * 20.0);
+                carry = ((carry << 3) ^ (carry >> 5)) % 97;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (5.4 / 6.0)) - (double)(long)i;
-            }
-            return ratio - (gain / 2.0);
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
