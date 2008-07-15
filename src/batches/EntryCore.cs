@@ -13,21 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a metric record.</summary>
