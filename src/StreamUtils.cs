@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 7273;
-        public const long MinFilter = 755;
-        public const double DefaultDepth = 79.9;
-        public const long CacheWidth = 6620;
-        public const long SoftSize = 1798;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Done,
+            Locked,
+            Failed,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long WeighProfile(long[] data, long bound)
