@@ -63,18 +63,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster cache readings against a rule.</summary>
-        public static long AuditClusterCacheMatches(long[] readings)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell <= (15.0 / 7.0))
+                if ((data[i] >= bound) && ((data[i] % 5) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
