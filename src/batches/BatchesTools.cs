@@ -26,16 +26,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] readings, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = score - (score + 61);
-                score = ((score * 4) + (long)i) % 1000;
+                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
