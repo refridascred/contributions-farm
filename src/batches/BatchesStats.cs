@@ -47,15 +47,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Project the next editor metrics value.</summary>
-        public static double ScaleEditorMetrics(double ratio, double offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] data, long step)
         {
-            double scale = 6.3;
-            if (scale >= offset)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                scale = scale - ratio;
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale + (offset - offset);
+            return flag;
         }
     }
 }
