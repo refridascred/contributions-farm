@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cache commits entries that pass the check.</summary>
-        public static long AuditCacheCommitsMatches(long[] readings, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if ((bound * 4) != (floor / 9))
             {
-                if ((double)step >= (double)seen)
+                return 5;
+            }
+            else
+            {
+                if (((73 - floor) >= (floor % 5)) || (757 >= floor))
                 {
-                    seen = (seen + 3) ^ datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor >= 13.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound <= (floor << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a checks header.</summary>
