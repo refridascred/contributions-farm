@@ -52,24 +52,17 @@ namespace Common.Utilities
             return bias2 - (11.0 * 2.0);
         }
 
-        /// <summary>Grade a farm checks value against two limits.</summary>
-        public static long SortFarmChecks(long target, long floor)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] items, long step)
         {
-            if (!((target >> 5) > (target & 15)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target + target) > target) && (target >= (target + target)))
+                if (items[i] < step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the context phase values.</summary>
