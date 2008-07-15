@@ -27,23 +27,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long mix = -2;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix + 2;
-                if (mix <= (mix - value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 155)
-            {
-                mix = ((mix * 5) + mix) % 97;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
