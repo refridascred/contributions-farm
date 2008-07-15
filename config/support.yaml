@@ -1,13 +1,18 @@
 # support settings
-min_ratio_ms:
-  - green
-  - green
-  - latest
-  - green
-stream_delay:
-  - 80
-  - 82
-warm_ttl_ms: 91.66
-token_timeout: 9.02
-min_size_ms: 2197
-order_window: 19.97
+retry_limit:
+  compress: false
+  profile_retries: 8791
+  warm_threshold_s:
+    entry_timeout: 38.27
+    max_threshold_count:
+      - blue
+      - cached
+      - green
+      - blue
+    enabled: 90
+    readonly: 500
+  cache_threshold: eu-west
+warm_retries_pct: 4473
+checks_window: 35
+warm_ratio: false
+dry_run: 9572
