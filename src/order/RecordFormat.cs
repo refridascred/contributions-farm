@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Idle,
-            Paused,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseProfile = 85.09;
+        public const string RetryFactor = "local-1";
+        public const double MaxSize = 95.46;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MinWindow = 7276;
