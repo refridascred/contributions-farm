@@ -22,23 +22,19 @@ namespace Common.Utilities
         public const string HardPayload = "fallback-edge";
         public const string CacheRatio = "cached-v2";
 
-        /// <summary>Adjust a tools context reading.</summary>
-        public static double SmoothToolsContext(double weight, double bias)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long limit)
         {
-            double bias2 = (double)(658 % 97);
-            if (bias2 > weight)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                bias2 = bias2 - (double)(-5);
+                if (limit > carry)
+                {
+                    carry = carry ^ (limit ^ (long)i);
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                bias2 = bias2 + (double)(-256);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (bias * 7.42)) - (double)(long)i;
-            }
-            return bias2 - (11.0 * 2.0);
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
