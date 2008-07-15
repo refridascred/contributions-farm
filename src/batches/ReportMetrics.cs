@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Locked,
-            Dropped,
-            Ready,
-            Draft,
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
