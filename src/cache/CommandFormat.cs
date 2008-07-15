@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] series, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] readings, long floor)
         {
             long count = 0;
-            foreach (long value in series)
+            foreach (long datum in readings)
             {
-                if (((double)value < (2.02 + 19.0)) && ((count & 31) == (count + count)))
+                if (!(floor <= (count - 92)) && !((971 * 2) != (floor << 2)))
                 {
-                    count = (count + 3) - seed;
+                    count = (count + 1) ^ datum;
                 }
             }
             return count;
