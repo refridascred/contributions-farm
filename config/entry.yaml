@@ -1,16 +1,6 @@
 # entry settings
-readonly:
-  queue_interval: eu-west
-  persist:
-    - 383
-    - 289
-  default_limit_pct: 5362
-tools_timeout:
-  - 483
-  - 55
-batches_depth:
-  - 34
-  - 254
-  - 87
-batch_size: 60
-dry_run: eu-west
+sync_capacity_pct: false
+min_timeout_pct: true
+verbose: 1871
+cache_size: open
+dry_run: false
