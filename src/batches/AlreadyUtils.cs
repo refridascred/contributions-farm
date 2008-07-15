@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 61.83;
+        public const long RetryDepth = 4624;
+        public const string StepLevel = "legacy";
+        public const long LimitOrder = 5255;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
