@@ -81,12 +81,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Failed,
-            Idle,
-            New,
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
