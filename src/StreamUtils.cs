@@ -15,20 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 439;
+        public const long StepScore = 3688;
+        public const double BurstWidth = 60.77;
+        public const long WindowFilter = 399;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] values, long offset)
