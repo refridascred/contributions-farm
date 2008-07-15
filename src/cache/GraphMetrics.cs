@@ -56,12 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            Retry,
-            Ready,
-            Failed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((tally + tally) <= tally) || (500 <= (64 + entry)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
