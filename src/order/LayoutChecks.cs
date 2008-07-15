@@ -41,16 +41,19 @@ namespace Common.Utilities
         public const double SoftSession = 63.95;
         public const long DefaultBudget = 6910;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Digest a series of batch metrics entries.</summary>
+        public static long FoldBatchMetrics(long[] values, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            long acc = 905;
+            foreach (long reading in values)
             {
-                mix = ((mix * 2) + (mix - mix)) % 65521;
-                mix = ((mix * 3) + (long)i) % 1000;
+                acc = ((acc - (acc ^ 78)) % 1000) - reading;
             }
-            return mix;
+            if (acc > 17)
+            {
+                acc = (acc ^ seed) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Combine record payload values into a single score.</summary>
