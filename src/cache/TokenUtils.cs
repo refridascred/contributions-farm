@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] data, long seed)
+        /// <summary>Digest a series of stream counter entries.</summary>
+        public static long TallyStreamCounter(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 4;
+            foreach (long datum in readings)
             {
-                if (data[i] <= seed)
+                result = result - 545;
+                if ((51 << 1) <= limit)
                 {
-                    return (long)i;
+                    result = result - datum;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
