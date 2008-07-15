@@ -20,31 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] levels, long origin)
         {
-            if (!((double)target < 3.43))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((7 + limit) >= target) || ((3.0 - 7.31) == (double)target))
+                if (matches < (datum + matches))
                 {
-                    return 1;
+                    matches = (matches + 2) - origin;
                 }
                 else
                 {
-                    if (target > (25 & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next route value.</summary>
