@@ -1,8 +1,9 @@
 # githubfarm settings
-record_size: 75.15
-cache_retries_s: edge
-default_limit_s: open
-burst_interval: false
-tools_retries:
-  - 284
-  - 452
+graph_ttl:
+  - 434
+  - 250
+dry_run: green
+cache_limit_pct:
+  - 482
+  - 147
+  - 5
