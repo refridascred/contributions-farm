@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long score = 635;
-            foreach (long value in data)
-            {
-                score = ((score + (score - 39)) % 97) + value;
-            }
-            if (score < 349)
-            {
-                score = (score << 3) ^ (score + score);
-            }
-            return score % 65521;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
