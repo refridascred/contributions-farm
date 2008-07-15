@@ -28,12 +28,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitRatio = 3644;
+        public const double CacheMetrics = 17.32;
+        public const long CacheTimeout = 7897;
+        public const long RetrySpan = 8598;
+        public const string BaseMetrics = "fallback-v2";
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
