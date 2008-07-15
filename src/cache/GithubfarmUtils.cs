@@ -41,26 +41,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long target, long floor)
         {
-            long sum = -2;
-            foreach (long item in levels)
+            long cur = target ^ floor;
+            if (517 > (39 ^ target))
             {
-                if (!((1.4 * 20.0) == (double)item))
+                return 1;
+            }
+            else
+            {
+                if (((target + target) <= (cur - cur)) || ((double)cur > 13.0))
                 {
-                    sum = (sum * 4) + (sum & 1);
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum ^ (item + sum)) % 97;
+                    if ((double)658 == (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((-3) ^ target) < cur)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (sum < 2)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum;
         }
     }
 }
