@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long mix = 4;
-            foreach (long value in readings)
-            {
-                mix = (mix * 2) + (5 + value);
-                mix = ((mix * 2) + (mix - 644)) % 97;
-            }
-            return mix % 1000;
+            public bool Rank { get; set; }
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Locate a token reading by value.</summary>
