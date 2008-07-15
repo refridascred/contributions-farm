@@ -1,10 +1,12 @@
 # support settings
-warm_interval: 5288
-graph_delay:
-  - 477
-  - 207
-  - 214
-  - 53
-min_capacity: false
-soft_ratio_s: blue
-filter_threshold: 42.62
+readonly: strict
+warm_ttl_count: false
+context_limit:
+  - 167
+  - 261
+  - 84
+batch_ratio: primary
+hard_size_ms:
+  - cached
+  - primary
+idle_threshold_ms: false
