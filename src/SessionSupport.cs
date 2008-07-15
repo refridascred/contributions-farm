@@ -23,22 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] data, long origin)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item >> 4) <= (385 - item))
-                {
-                    count = (count + 2) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Synced,
+            Paused,
         }
 
         /// <summary>Roll a already counter forward.</summary>
