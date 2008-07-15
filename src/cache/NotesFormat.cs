@@ -23,10 +23,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 8097;
-        public const string HardContributi = "latest-edge";
-        public const string LimitContributi = "strict-edge";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (((datum <= seed) && ((seed - tally) != (seed / 4))) || ((double)seed <= 1.0))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
