@@ -18,18 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] series, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mix = 70;
+            foreach (long value in items)
             {
-                if ((floor * 4) < (seen / 8))
+                for (int i = 0; i < 5; i++)
                 {
-                    seen = (seen + 3) - cell;
+                    mix = (((mix - (mix % 7)) % 1000) + (long)i) + bound;
+                    mix = (mix - mix) % 1000;
+                }
+                if ((double)value >= (double)mix)
+                {
+                    mix = (mix + (value & 7)) % 1000;
+                }
+                if (!(41 >= (value & 15)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
