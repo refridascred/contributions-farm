@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitSize = 4330;
+        public const string WindowReport = "open-edge";
+        public const long StepReport = 4122;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] items)
