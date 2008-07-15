@@ -1,6 +1,8 @@
 {
-  "channel_limit": 78.98,
-  "enabled": "staging",
-  "hard_interval_ms": true,
-  "soft_capacity_ms": [36, 178, 327]
+  "warm_threshold": false,
+  "poll_ratio_ms": ["strict", "open", "fallback"],
+  "idle_window_s": ["fallback", "eu-west", "edge"],
+  "route_depth": false,
+  "poll_interval_pct": 2127,
+  "soft_retries_pct": 77.87
 }
