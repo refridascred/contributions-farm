@@ -34,13 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] levels, long bound)
         {
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((double)item <= (9.0 * 4.0)) && !((bound % 8) <= tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
