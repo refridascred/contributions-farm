@@ -14,13 +14,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] readings, long offset)
         {
-            Pending,
-            Done,
-            Active,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel summary.</summary>
