@@ -42,19 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit githubfarm batches readings against a rule.</summary>
-        public static long TallyGithubfarmBatchesHits(long[] data, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] levels, long seed)
         {
             long matches = 0;
-            foreach (long reading in data)
+            foreach (long entry in levels)
             {
-                if (reading < (reading - reading))
+                if ((double)seed >= 9.7)
                 {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) ^ entry;
                 }
             }
             return matches;
