@@ -51,18 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record filter readings against a rule.</summary>
-        public static long TallyRecordFilterHits(long[] items, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((663 - 9) > datum)
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
