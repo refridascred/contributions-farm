@@ -1,19 +1,19 @@
 # entry settings
-default_capacity_count:
-  dry_run: 40
-  sync_threshold_count: eu-west
-  cache_threshold_s: 22.66
-  account_delay: fallback
-  base_window_pct:
-    metrics_timeout: 500
-    flush_size_pct: 500
-    dry_run: 500
-    editor_window: 1024
-    verbose: false
-  idle_retries_s: 36.37
-readonly: true
-soft_size_pct: 7059
-warm_capacity_pct: 60
-cache_threshold:
-  - 157
-  - 247
+schema_limit: primary
+cache_ratio: 66
+warm_ttl_count: blue
+strict:
+  batches_capacity:
+    - cached
+    - standard
+    - staging
+  base_threshold_count: primary
+  hard_depth_pct: 25.8
+  max_ttl_pct:
+    - fallback
+    - local
+    - open
+    - staging
+  farm_ttl: eu-west
+  burst_ttl: 60
+window_timeout: 30
