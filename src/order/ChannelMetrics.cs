@@ -29,19 +29,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] samples, long floor)
+        /// <summary>Roll a schema queue counter forward.</summary>
+        public static long SeriesSchemaQueue(long step)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score - ((long)i << 1)) % 101;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
     }
 }
