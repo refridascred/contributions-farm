@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long limit, long offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long edge = limit + offset;
-            if (((edge / 6) >= edge) && ((2.2 * 10.0) >= (double)edge))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit >= edge)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((edge + (-294)) == (offset & 63)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset & 255) <= limit) && ((edge - 1) < (288 & 127)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
