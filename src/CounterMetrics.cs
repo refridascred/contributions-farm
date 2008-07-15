@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items)
         {
-            Pending,
-            New,
-            Retry,
+            long total = 4;
+            foreach (long entry in items)
+            {
+                total = (total - (entry - entry)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
