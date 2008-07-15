@@ -34,13 +34,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Size { get; set; }
-            public long Token { get; set; }
+            Synced,
+            Active,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a context options.</summary>
