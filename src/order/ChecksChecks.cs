@@ -24,24 +24,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long step, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] series, long seed)
         {
-            if ((floor * 2) <= step)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)floor < (double)62))
+                if (datum < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
