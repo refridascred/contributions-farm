@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((total ^ (long)i) != (long)i) && (total >= (floor + floor)))
-                {
-                    long cur = 4 << 2;
-                    total = (total ^ (cur + (long)i)) % 1000;
-                }
-                total = (total ^ (total + total)) % 4096;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
