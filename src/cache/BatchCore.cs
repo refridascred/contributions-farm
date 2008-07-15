@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double scale, double offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double rate = offset;
-            if (rate < offset)
-            {
-                rate = (rate - (double)248) + scale;
-            }
-            else
-            {
-                rate = rate - 19.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (offset * 2.86)) + (double)(long)i;
-            }
-            return rate - rate;
+            Active,
+            Retry,
+            Draft,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
