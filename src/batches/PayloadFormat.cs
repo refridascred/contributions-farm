@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Adjust a counter token reading.</summary>
+        public static double ScaleCounterToken(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = (gain * 2.1) - floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain2 = (gain2 + gain2) - (double)(long)i;
             }
-            return count;
+            return gain2 - (gain2 - gain);
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
