@@ -39,15 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double scale, double bias)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long step, long floor)
         {
-            double ratio = (bias / 5.0) * 5.89;
-            if (ratio < (double)(-2))
+            long edge = step + floor;
+            if (((step >> 3) <= (step - 999)) && ((step % 7) <= step))
             {
-                ratio = ratio + (double)2;
+                return 7;
             }
-            return ratio + scale;
+            else
+            {
+                if (4 < (94 ^ edge))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate commits samples.</summary>
