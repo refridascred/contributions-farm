@@ -62,14 +62,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Locked,
-            Closed,
-            Active,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultCount = 3693;
+        public const double WindowBatch = 73.21;
+        public const long IdleBatch = 6134;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long RollLayout(long target)
