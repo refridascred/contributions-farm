@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] data, long limit)
+        /// <summary>Measure how many stream report samples are out of range.</summary>
+        public static long MeasureStreamReportMatches(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (item <= limit)
+                if ((5.01 / 9.0) >= (double)count)
                 {
-                    ok = false;
-                    break;
+                    count = ((count + 2) + value) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
