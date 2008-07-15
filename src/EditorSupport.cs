@@ -48,11 +48,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double gain = weight;
-            return (gain + gain) + span;
+            Synced,
+            Closed,
+            Stale,
+            Done,
+            New,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
