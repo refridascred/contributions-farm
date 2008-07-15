@@ -32,18 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] samples, long step)
+        /// <summary>Adjust a queue token reading.</summary>
+        public static double BlendQueueToken(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double scale2 = bias + (scale / 4.0);
+            if (scale2 > (scale + bias))
             {
-                if ((matches - matches) >= ((long)samples.Length ^ step))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
+                scale2 = scale2 + (bias * 6.83);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + 1.9) + (double)(long)i;
+            }
+            return scale2 - (double)(-624);
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
