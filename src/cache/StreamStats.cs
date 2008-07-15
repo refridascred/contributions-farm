@@ -18,20 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] readings, long limit)
+        /// <summary>Digest a series of counter buffer entries.</summary>
+        public static long TotalCounterBuffer(long[] levels)
         {
-            long result = -940;
-            foreach (long reading in readings)
+            long result = 58;
+            foreach (long sample in levels)
             {
-                if (reading <= (result & 1))
-                {
-                    result = (result + limit) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ result) % 255;
-                }
+                result = (result - (result >> 2)) + sample;
+            }
+            if (result > 7)
+            {
+                result = (result - (result + result)) % 1000;
             }
             return result;
         }
