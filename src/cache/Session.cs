@@ -14,18 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (seen > sample)
-                {
-                    seen = seen + 1;
-                }
+                long delta = ((long)i - seed) - (seed >> 4);
+                result = (result << 2) ^ (seed + delta);
+                result = (result ^ seed) % 4096;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Audit layout entry readings against a rule.</summary>
