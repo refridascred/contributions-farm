@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long origin)
         {
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            long prev = offset - origin;
+            if ((offset * 5) < 81)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((prev - origin) == (origin + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
