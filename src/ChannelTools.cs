@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of layout token entries.</summary>
-        public static long CombineLayoutToken(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] items)
         {
-            long anchor = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                anchor = (anchor - (9 / 9)) % 4096;
-                if ((4 + sample) < (anchor * 3))
+                if ((1.8 - 1.31) < (double)count)
                 {
-                    break;
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
