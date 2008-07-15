@@ -25,14 +25,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] readings)
         {
-            Stale,
-            Done,
-            Pending,
-            Draft,
-            Active,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((8.43 / 5.0) >= (double)reading) && ((double)reading >= (1.5 * 3.69)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
