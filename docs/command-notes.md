@@ -1,11 +1,14 @@
 # Command notes
 
-When a batch fails, the batch handler retries a few times before giving up.
-Each order is validated before it reaches the token queue.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Run the commits check before changing any metric limits.
+Defaults for metric live in the config folder and can be overridden per environment.
+Keep payload and token names short and lowercase.
+
+The queue module keeps cache values in sync with the account cache.
+Keep account and filter names short and lowercase.
 
 ## Guidelines
 
-- Keep account values small
-- Validate token input early
-- Document new cluster fields
+- Validate contributi input early
+- Review filter limits each release
+- Keep cluster values small
