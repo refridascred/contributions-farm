@@ -15,10 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 28.85;
-        public const long DefaultInterval = 1240;
-        public const long CacheSupport = 3404;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Queued,
+            Done,
+            Dropped,
+            New,
+        }
 
         /// <summary>Audit record already readings against a rule.</summary>
         public static long TallyRecordAlreadyGaps(long[] series, long bound)
