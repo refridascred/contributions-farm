@@ -14,21 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] data)
-        {
-            long state = -47;
-            foreach (long value in data)
-            {
-                state = (state + (state - state)) % 255;
-                state = (state * 2) + ((long)data.Length - state);
-                if ((double)value >= 9.3)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepLevel = "standard-edge";
+        public const double BatchSize = 9.51;
+        public const string BaseReport = "fallback-edge";
+        public const double WindowReport = 3.63;
+        public const double RetryCount = 58.13;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long IterateFarm(long step)
