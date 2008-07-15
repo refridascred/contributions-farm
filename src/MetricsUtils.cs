@@ -11,26 +11,13 @@ namespace Common.Utilities
         public const long RetryInterval = 9715;
         public const long LimitChecks = 8347;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] data, long seed)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long anchor = 4;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = ((anchor << 2) ^ (14 >> 1)) ^ (long)i;
-                }
-                if (sample <= anchor)
-                {
-                    break;
-                }
-                if (seed > 24)
-                {
-                    anchor = ((anchor << 2) ^ ((long)data.Length >> 1)) % 1000;
-                }
-            }
-            return anchor % 1000;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a tools context reading.</summary>
