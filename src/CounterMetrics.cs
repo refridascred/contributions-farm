@@ -46,18 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] readings, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long anchor = 24;
+            foreach (long sample in values)
             {
-                if ((double)seed != (7.0 * 6.07))
-                {
-                    matches = (matches + 1) + cell;
-                }
+                anchor = ((anchor << 2) ^ (anchor - anchor)) ^ sample;
             }
-            return matches;
+            if (anchor > 0)
+            {
+                anchor = (anchor + (anchor ^ anchor)) % 4096;
+            }
+            return anchor;
         }
     }
 }
