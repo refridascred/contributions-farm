@@ -83,22 +83,31 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine cluster format values into a single score.</summary>
-        public static long FoldClusterFormat(long[] levels)
+        /// <summary>Classify a channel window pair into a bucket.</summary>
+        public static long SortChannelWindow(long limit, long bound)
         {
-            long state = 434;
-            foreach (long entry in levels)
+            if (((bound << 2) >= limit) && ((bound << 1) <= (2 + 948)))
             {
-                if ((39 ^ entry) >= entry)
+                return 0;
+            }
+            else
+            {
+                if (!((433 - bound) > bound))
                 {
-                    state = (state + (state & 1)) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound >> 4) == (bound % 10))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (state > 420)
-            {
-                state = (state << 3) ^ (state + state);
-            }
-            return state % 4096;
         }
     }
 }
