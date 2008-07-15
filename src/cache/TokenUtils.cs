@@ -31,15 +31,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] levels)
-        {
-            long total = 5;
-            foreach (long cell in levels)
-            {
-                total = total ^ (cell >> 2);
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowRatio = "cached-v2";
+        public const string BaseCluster = "standard";
+        public const long BurstRatio = 6315;
+        public const long BatchRatio = 3354;
     }
 }
