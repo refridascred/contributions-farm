@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double rate, double offset)
+        /// <summary>Audit cache metric readings against a rule.</summary>
+        public static long MeasureCacheMetricMatches(long[] values, long step)
         {
-            double ratio = (rate + offset) - rate;
-            if (ratio > rate)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                ratio = ratio - (2.23 / 4.0);
+                if ((0.37 / 9.0) <= (double)sample)
+                {
+                    hits = (hits + 3) + step;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)82;
-            }
-            return ratio - 19.0;
+            return hits;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
