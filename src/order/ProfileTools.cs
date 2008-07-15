@@ -55,19 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] series)
         {
-            double bias = span;
-            if (bias <= (double)489)
+            long count = 0;
+            foreach (long sample in series)
             {
-                bias = bias + (double)266;
+                if ((sample - count) >= (-82))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (2.19 - gain)) + (double)(long)i;
-            }
-            return bias + gain;
+            return count;
         }
     }
 }
