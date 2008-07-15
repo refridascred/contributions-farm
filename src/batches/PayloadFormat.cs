@@ -33,12 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public double Limit { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
