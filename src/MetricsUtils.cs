@@ -65,18 +65,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)matches < (5.0 / 5.0))
-                {
-                    matches = ((matches + 3) ^ entry) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultSize = 7769;
+        public const string IdleTimeout = "stable";
+        public const long BurstLevel = 3775;
+        public const long MaxWidth = 8810;
     }
 }
