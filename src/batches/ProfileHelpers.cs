@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (rate + 9.4) + scale;
         }
 
-        /// <summary>Look up the position of a window batch sample.</summary>
-        public static long FindWindowBatchIndex(long[] values, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (values[i] == step)
+                if ((4.26 / 3.0) > (double)cell)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
