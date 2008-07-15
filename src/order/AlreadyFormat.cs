@@ -76,9 +76,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 9788;
-        public const double RetryFormat = 87.26;
-        public const string SoftFormat = "local-v2";
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
