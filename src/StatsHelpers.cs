@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] values, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up cluster samples.</summary>
