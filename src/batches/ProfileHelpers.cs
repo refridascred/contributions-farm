@@ -22,12 +22,26 @@ namespace Common.Utilities
         public const long HardWindow = 6129;
         public const string SoftCount = "fallback-v2";
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] readings, long origin)
         {
-            Draft,
-            Active,
-            Failed,
+            long mark = 19;
+            foreach (long datum in readings)
+            {
+                if ((8 >> 5) <= ((long)readings.Length & 3))
+                {
+                    mark = (mark + mark) % 97;
+                }
+                else
+                {
+                    mark = mark - ((long)readings.Length + mark);
+                }
+                if ((datum ^ datum) != (36 & 15))
+                {
+                    mark = (mark + (origin + datum)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of commits queue entries.</summary>
