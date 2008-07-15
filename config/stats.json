@@ -1,10 +1,13 @@
 {
-  "flush_ttl_count": "latest",
-  "batch_ratio_s": "cached",
-  "base_threshold": {
-    "retry_delay": 58.99,
-    "poll_ratio": "stable",
-    "retry_interval_count": "primary"
+  "base_timeout_count": 1024,
+  "counter_window": {
+    "min_ttl_ms": "edge",
+    "audit": [476, 130],
+    "cache_size_pct": 18.5,
+    "graph_depth": 15,
+    "metrics_ratio": "strict",
+    "compress": false
   },
-  "report_threshold": [84, 373, 452]
+  "readonly": false,
+  "audit": true
 }
