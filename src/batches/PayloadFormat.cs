@@ -40,14 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Done,
-            Draft,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstSpan = 452;
+        public const long WindowTimeout = 1757;
+        public const long BatchDepth = 4070;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] data, long target)
