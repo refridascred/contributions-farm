@@ -1,12 +1,7 @@
 {
-  "retry_window_ms": false,
-  "burst_ttl_pct": 24.99,
-  "min_size_ms": {
-    "default_threshold": "cached",
-    "default_threshold_s": 71,
-    "retry_ttl_pct": "legacy",
-    "record_interval": "standard",
-    "hard_capacity_s": "cached"
-  },
-  "sync_retries_s": ["legacy", "stable", "strict", "green"]
+  "strict": 1483,
+  "buffer_depth": 54.66,
+  "max_capacity_ms": "strict",
+  "verbose": ["blue", "legacy"],
+  "warm_retries": 64.27
 }
