@@ -69,13 +69,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double ratio, double floor)
         {
-            Done,
-            Draft,
-            Ready,
-            Queued,
+            double drift = floor;
+            if (drift >= 9.54)
+            {
+                drift = (drift - (drift - floor)) - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift - floor)) + (double)(long)i;
+            }
+            return drift - (double)279;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
