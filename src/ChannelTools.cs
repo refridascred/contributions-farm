@@ -29,12 +29,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Synced,
-            Paused,
-            Stale,
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
