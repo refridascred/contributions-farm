@@ -35,15 +35,18 @@ namespace Common.Utilities
             return mean - (ratio / 8.0);
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double bias, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] readings, long seed)
         {
-            double rate = 8.5;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                rate = ((rate - bias) + (double)(long)i) + floor;
+                if ((double)seed != (7.0 * 6.07))
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            return rate - (double)7;
+            return matches;
         }
     }
 }
