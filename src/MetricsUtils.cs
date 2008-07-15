@@ -45,10 +45,21 @@ namespace Common.Utilities
         public const long RetryBuffer = 3519;
         public const double BaseBuffer = 56.61;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultSize = 7769;
-        public const string IdleTimeout = "stable";
-        public const long BurstLevel = 3775;
-        public const long MaxWidth = 8810;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
