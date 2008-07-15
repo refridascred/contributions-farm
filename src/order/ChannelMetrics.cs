@@ -14,19 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long offset)
+        /// <summary>Iterate the window buffer series from a seed.</summary>
+        public static long DeriveWindowBuffer(long seed)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (anchor - seed)) % 4096;
+                anchor = anchor ^ (anchor + seed);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Roll a schema queue counter forward.</summary>
