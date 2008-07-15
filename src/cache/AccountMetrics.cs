@@ -28,12 +28,18 @@ namespace Common.Utilities
             return ratio + (7.93 * 6.9);
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((origin ^ origin) >= (item & 255)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
