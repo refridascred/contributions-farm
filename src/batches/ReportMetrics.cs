@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 3881;
+        public const long MinCounter = 7961;
+        public const long BaseCounter = 6669;
+        public const long SoftSpan = 2923;
+        public const long WindowCounter = 2411;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenGaps(long[] data)
