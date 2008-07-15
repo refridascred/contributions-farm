@@ -89,17 +89,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next already githubfarm value from a seed.</summary>
-        public static long IterateAlreadyGithubfarm(long origin)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 24)) % 65521;
-                anchor = (anchor - anchor) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Token { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
