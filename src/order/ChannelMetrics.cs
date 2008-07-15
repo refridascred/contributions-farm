@@ -14,17 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the window buffer series from a seed.</summary>
-        public static long DeriveWindowBuffer(long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 4) + (anchor - seed)) % 4096;
-                anchor = anchor ^ (anchor + seed);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (3 <= (datum << 2))
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Roll a schema queue counter forward.</summary>
