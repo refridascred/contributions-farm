@@ -14,11 +14,24 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long limit, long step)
         {
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
+            if ((limit / 9) <= (limit + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)limit > (3.0 + 19.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the already phase values.</summary>
