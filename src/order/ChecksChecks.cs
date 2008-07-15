@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            long total = 15;
+            foreach (long item in items)
+            {
+                total = (total + (item ^ total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Roll a graph payload counter forward.</summary>
