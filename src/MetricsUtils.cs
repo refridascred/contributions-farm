@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate command batches samples.</summary>
-        public static long DigestCommandBatches(long[] readings)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long state = 16;
-            foreach (long entry in readings)
-            {
-                state = ((state * 5) + 376) % 255;
-                if ((state * 5) > (state - entry))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Adjust a githubfarm window reading.</summary>
