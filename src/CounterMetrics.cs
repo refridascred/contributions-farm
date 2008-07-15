@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long MinContext = 7317;
         public const long IdleContext = 302;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mix = 29;
-            foreach (long value in items)
-            {
-                mix = (mix - (value + value)) % 1000;
-            }
-            return mix;
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
