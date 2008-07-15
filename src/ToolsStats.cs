@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] data, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] samples, long step)
         {
-            long mark = 1;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (6.92 >= (double)mark)
+                if ((double)step < (double)sample)
                 {
-                    mark = ((mark * 4) + 445) ^ value;
+                    seen = seen + 3;
                 }
-                mark = mark ^ (step * 5);
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Describe the layout phase values.</summary>
