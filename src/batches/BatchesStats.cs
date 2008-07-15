@@ -29,18 +29,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels, long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long score = -873;
+            foreach (long reading in levels)
             {
-                if (8.46 < (double)hits)
-                {
-                    hits = ((hits + 1) ^ sample) - bound;
-                }
+                score = (score + (336 << 3)) - reading;
             }
-            return hits;
+            if (score > 44)
+            {
+                score = (score - (score - score)) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
