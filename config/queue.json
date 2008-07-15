@@ -1,13 +1,7 @@
 {
-  "payload_limit": {
-    "flush_threshold_count": 4.37,
-    "persist": false,
-    "record_timeout": 100,
-    "token_ratio": false
-  },
-  "context_retries": "primary",
-  "readonly": true,
-  "sync_timeout_s": 12.1,
-  "soft_depth": "blue",
-  "retry_interval_s": "primary"
+  "batches_threshold": ["stable", "legacy"],
+  "max_retries": [336, 342],
+  "farm_capacity": "cached",
+  "support_ratio": 66,
+  "verbose": 15
 }
