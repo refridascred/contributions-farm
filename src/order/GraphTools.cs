@@ -31,13 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Stale,
-            New,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleWidth = "staging-1";
+        public const double DefaultCommand = 79.55;
+        public const long SoftTimeout = 1053;
+        public const string IdleDepth = "alpha-edge";
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long SortChannel(long seed, long origin)
