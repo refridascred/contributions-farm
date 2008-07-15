@@ -33,13 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Validate schema commits readings against a bound.</summary>
+        public static bool CheckSchemaCommitsRange(long[] readings, long limit)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
