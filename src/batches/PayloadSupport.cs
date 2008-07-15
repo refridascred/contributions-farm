@@ -13,22 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of report channel readings.</summary>
-        public static long MatchReportChannelCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 46.23;
+        public const double BatchRatio = 36.07;
+        public const double LimitWidth = 56.45;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsMatches(long[] values, long limit)
