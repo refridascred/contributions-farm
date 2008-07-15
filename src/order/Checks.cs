@@ -68,19 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] readings, long step)
+        /// <summary>Count the token graph entries that pass the check.</summary>
+        public static long AuditTokenGraphGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (reading < step)
+                if (!(((matches << 2) != (item << 2)) || (matches > (item & 31))))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
