@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] items)
+        /// <summary>Digest a series of route window entries.</summary>
+        public static long CombineRouteWindow(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long score = 1;
+            foreach (long entry in series)
             {
-                if (hits < (84 & 3))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
+                score = (((score * 5) + (504 - limit)) % 1000) + entry;
             }
-            return hits;
+            if (score < 9)
+            {
+                score = ((score << 3) ^ (4 + score)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
