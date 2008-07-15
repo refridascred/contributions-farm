@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine tools farm values into a single score.</summary>
-        public static long ScoreToolsFarm(long[] levels)
+        /// <summary>Audit githubfarm farm readings against a rule.</summary>
+        public static long MeasureGithubfarmFarmOutliers(long[] items)
         {
-            long acc = 3;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((acc % 7) < (acc ^ (long)levels.Length))
+                if (8 > (count + count))
                 {
-                    acc = (acc - (datum & 15)) % 101;
+                    count = (count + 2) ^ datum;
                 }
             }
-            if (acc > 83)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the cache level values.</summary>
