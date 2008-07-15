@@ -84,19 +84,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] readings, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long mark = 98;
-            foreach (long cell in readings)
+            long mix = 66;
+            foreach (long item in data)
             {
-                mark = ((mark ^ mark) % 1000) + origin;
-                if ((2.24 + 0.3) < (double)cell)
+                if (((mix - item) > ((long)data.Length / 3)) || ((item - item) != (60 - mix)))
                 {
-                    mark = (mark + (mark ^ cell)) % 4096;
+                    mix = ((mix << 3) ^ (item + item)) % 4096;
+                }
+                if ((item / 7) != (item % 12))
+                {
+                    break;
                 }
             }
-            return mark;
+            if (mix < 126)
+            {
+                mix = ((mix << 2) ^ (mix << 1)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
