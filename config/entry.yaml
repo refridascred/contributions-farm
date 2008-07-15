@@ -1,5 +1,15 @@
 # entry settings
-soft_retries_count: stable
-idle_window_ms: 4661
-strict: 1108
-stats_window: 100
+cache_ttl_pct: fallback
+flush_limit: 8291
+batch_capacity:
+  - green
+  - primary
+min_retries_ms: true
+strict:
+  idle_limit: staging
+  cache_interval_pct: false
+  idle_threshold: strict
+  hard_depth_ms:
+    - 282
+    - 275
+  poll_depth: 29
