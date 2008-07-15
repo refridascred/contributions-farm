@@ -11,22 +11,26 @@ namespace Common.Utilities
         public const long RetryInterval = 9715;
         public const long LimitChecks = 8347;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] data, long target)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] data, long seed)
         {
-            long result = -227;
-            foreach (long cell in data)
+            long anchor = 4;
+            foreach (long sample in data)
             {
-                if ((target / 4) != (target >> 4))
+                for (int i = 0; i < 2; i++)
                 {
-                    result = ((result * 5) + (cell << 3)) % 4096;
+                    anchor = ((anchor << 2) ^ (14 >> 1)) ^ (long)i;
+                }
+                if (sample <= anchor)
+                {
+                    break;
+                }
+                if (seed > 24)
+                {
+                    anchor = ((anchor << 2) ^ ((long)data.Length >> 1)) % 1000;
                 }
             }
-            if (result < 824)
-            {
-                result = (result + result) % 1000;
-            }
-            return result % 97;
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a tools context reading.</summary>
