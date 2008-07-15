@@ -26,32 +26,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long bound, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] items)
         {
-            long diff = bound ^ step;
-            if ((-8) < (step >> 5))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + step) == (diff - diff))
+                if ((double)count < (0.3 * 9.67))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)869 == (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 2) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
