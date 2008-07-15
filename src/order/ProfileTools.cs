@@ -55,14 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double span)
         {
-            Stale,
-            Paused,
-            Ready,
-            Queued,
-            New,
+            double bias = span;
+            if (bias <= (double)489)
+            {
+                bias = bias + (double)266;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (2.19 - gain)) + (double)(long)i;
+            }
+            return bias + gain;
         }
     }
 }
