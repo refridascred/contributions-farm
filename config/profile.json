@@ -1,7 +1,11 @@
 {
-  "min_retries": ["standard", "edge", "staging", "latest"],
-  "retry_limit": 144,
-  "soft_window_count": [89, 492, 266, 20],
-  "format_threshold": 60,
-  "audit": "legacy"
+  "dry_run": "cached",
+  "retry_retries": 81.76,
+  "base_timeout_ms": "open",
+  "min_window": true,
+  "cache_interval_count": {
+    "dry_run": 4174,
+    "metrics_ratio": "fallback",
+    "batch_timeout": "strict"
+  }
 }
