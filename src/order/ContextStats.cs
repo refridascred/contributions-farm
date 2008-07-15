@@ -41,12 +41,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "legacy";
-        public const double MaxFormat = 50.39;
-        public const long BatchFormat = 6942;
-        public const long WindowSize = 1810;
-        public const double BatchTimeout = 88.59;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Synced,
+            Locked,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
