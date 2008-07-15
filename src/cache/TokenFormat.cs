@@ -15,11 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultWidth = 5785;
-        public const long IdleInterval = 2157;
-        public const long CacheTimeout = 4034;
-        public const string DefaultEditor = "strict";
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
