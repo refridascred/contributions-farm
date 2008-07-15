@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long origin, long seed)
+        /// <summary>Look up the position of a account batch sample.</summary>
+        public static long SeekAccountBatchIndex(long[] readings, long limit)
         {
-            if (origin > (seed ^ seed))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 31) != (seed - seed))
+                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed > 6)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
