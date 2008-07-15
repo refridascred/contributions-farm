@@ -77,11 +77,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double offset)
         {
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            double scale = weight;
+            if (scale > (double)6)
+            {
+                scale = scale + (double)1;
+            }
+            return scale - offset;
         }
     }
 }
