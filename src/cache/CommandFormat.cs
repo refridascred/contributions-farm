@@ -67,15 +67,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double weight, double span)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long limit)
         {
-            double weight2 = span;
-            if (weight2 <= 8.88)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                weight2 = (weight2 - (double)0) + weight;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return weight2 + span;
+            return state;
         }
     }
 }
