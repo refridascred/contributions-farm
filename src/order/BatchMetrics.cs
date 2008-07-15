@@ -29,11 +29,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheTimeout = 8107;
-        public const long CacheDepth = 7466;
-        public const double SoftScore = 44.04;
-        public const long BaseFormat = 2310;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long bound, long origin)
