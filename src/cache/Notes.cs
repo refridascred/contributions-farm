@@ -23,21 +23,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = acc - (6 * 3);
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc * 4) + (118 * 3)) - (long)i2;
-                }
-                acc = (acc - (584 * 5)) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
