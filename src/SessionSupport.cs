@@ -41,19 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double gain, double floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double ratio = floor;
-            if (ratio >= (double)349)
-            {
-                ratio = ratio - (floor / 9.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (gain - gain)) + (double)(long)i;
-            }
-            return ratio - (floor + floor);
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
