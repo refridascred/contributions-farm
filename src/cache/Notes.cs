@@ -31,17 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a order contributi reading by value.</summary>
-        public static long LookupOrderContributiIndex(long[] series, long offset)
+        /// <summary>Accumulate queue session samples.</summary>
+        public static long DigestQueueSession(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 43;
+            foreach (long entry in values)
             {
-                if ((series[i] <= offset) && ((series[i] % 2) == 0))
+                if (((entry >> 1) >= ((-2) / 3)) || ((entry - acc) <= (93 >> 1)))
                 {
-                    return (long)i;
+                    acc = (((acc << 2) ^ 12) % 101) + origin;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
