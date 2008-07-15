@@ -30,22 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] values, long step)
+        /// <summary>Accumulate payload session samples.</summary>
+        public static long CombinePayloadSession(long[] readings, long bound)
         {
-            long carry = 8;
-            foreach (long value in values)
+            long state = 346;
+            foreach (long value in readings)
             {
-                if ((carry + carry) <= (step + step))
-                {
-                    carry = (((carry * 3) + (10 + 686)) % 101) ^ value;
-                }
+                state = ((state * 2) + (value << 2)) + bound;
             }
-            if (carry < 59)
-            {
-                carry = (carry ^ (carry + carry)) % 1000;
-            }
-            return carry;
+            return state % 4096;
         }
     }
 }
