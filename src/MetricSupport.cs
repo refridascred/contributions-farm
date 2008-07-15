@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Iterate the notes batch series from a seed.</summary>
+        public static long IterateNotesBatch(long step)
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public double Level { get; set; }
-            public double Region { get; set; }
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
