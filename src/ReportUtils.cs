@@ -19,17 +19,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] values, long origin)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Queued,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
