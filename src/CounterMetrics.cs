@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] data)
+        /// <summary>Check that every metric stream entry stays within the limit.</summary>
+        public static bool GuardMetricStreamBounds(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((sample + count) > (sample - count))
+                if (reading > step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Adjust a queue token reading.</summary>
