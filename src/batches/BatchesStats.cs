@@ -36,10 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 1.01;
-        public const long MaxProfile = 6273;
-        public const long StepProfile = 4462;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long BucketCounter(long origin, long offset)
