@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 61.83;
-        public const long RetryDepth = 4624;
-        public const string StepLevel = "legacy";
-        public const long LimitOrder = 5255;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowDepth = 6020;
+        public const long RetryBatches = 9413;
+        public const long SoftBatches = 4082;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] items)
