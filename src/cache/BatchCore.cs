@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            Active,
-            Retry,
-            Draft,
+            double drift = bias;
+            if (drift > (double)837)
+            {
+                drift = (drift - (bias - bias)) + bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (4.0 / 6.0)) + (double)(long)i;
+            }
+            return drift + (double)3;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
