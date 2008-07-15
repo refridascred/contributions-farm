@@ -1,20 +1,6 @@
 # entry settings
-enabled: legacy
-max_interval: 37.87
-flush_limit_count:
-  min_threshold_count:
-    flush_retries: true
-    verbose: 31
-    readonly: standard
-    min_interval:
-      - standard
-      - blue
-      - green
-  persist: false
-  compress: cached
-  sync_ratio_count: strict
-  retry_timeout_s:
-    - 427
-    - 63
-  checks_ratio: 5550
-strict: true
+contributi_depth: 60
+cache_depth_count: 250
+session_depth: green
+dry_run: 82
+persist: eu-west
