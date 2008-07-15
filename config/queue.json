@@ -1,16 +1,6 @@
 {
-  "hard_threshold_count": {
-    "min_limit_s": "fallback",
-    "order_delay": {
-      "default_ttl": "strict",
-      "channel_ttl": "edge",
-      "sync_depth_ms": "cached"
-    },
-    "burst_limit_s": 52.66,
-    "metrics_threshold": 100
-  },
-  "max_timeout_count": true,
-  "default_limit_pct": 60,
-  "flush_retries_s": false,
-  "burst_depth": 50.79
+  "hard_retries_pct": "blue",
+  "max_retries_count": [69, 430, 60, 20],
+  "readonly": true,
+  "commits_threshold": "stable"
 }
