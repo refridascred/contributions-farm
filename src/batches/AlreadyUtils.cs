@@ -19,12 +19,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxOrder = 81.05;
-        public const double BaseOrder = 1.18;
-        public const long BatchLevel = 5352;
-        public const long RetryRatio = 3080;
-        public const double MinOrder = 57.79;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result ^ (bound << 1)) % 1000;
+                result = ((result << 2) ^ result) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double AdjustMetric(double gain, double span)
