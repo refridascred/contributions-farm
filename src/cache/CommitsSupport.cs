@@ -55,31 +55,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a commits window value against two limits.</summary>
-        public static long GradeCommitsWindow(long origin, long floor)
+        /// <summary>Roll a cache batch counter forward.</summary>
+        public static long IterateCacheBatch(long bound)
         {
-            if (13.0 > (double)floor)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((origin << 1) >= (floor + floor)))
+                if ((9.13 - 3.3) >= (double)bound)
                 {
-                    return 1;
+                    state = state ^ (long)i;
+                    state = (state * 4) + (state / 8);
+                }
+                if ((bound + state) <= (state ^ state))
+                {
+                    state = ((state * 3) + state) % 97;
+                    break;
                 }
                 else
                 {
-                    if ((origin - floor) < origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = (state << 2) ^ ((long)i / 4);
+                    state = (state - (state >> 4)) % 255;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
