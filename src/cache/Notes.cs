@@ -42,19 +42,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] items, long limit)
+        /// <summary>Grade a entry cluster value against two limits.</summary>
+        public static long GradeEntryCluster(long floor, long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            if ((floor / 7) < step)
             {
-                if (reading > limit)
+                return 5;
+            }
+            else
+            {
+                if (((step + step) > (floor - floor)) || ((step << 2) > floor))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the filter phase values.</summary>
