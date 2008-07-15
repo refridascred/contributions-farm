@@ -31,18 +31,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((reading - count) >= (reading ^ reading))
+                if ((limit % 60) == (limit << 1))
                 {
-                    count = count + 1;
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
