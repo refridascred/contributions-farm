@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
-        public static long CompareStatsCacheCount(long[] data)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Match up command samples.</summary>
