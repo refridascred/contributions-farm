@@ -12,19 +12,10 @@ namespace Common.Utilities
             return (rate + 9.4) + scale;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((4.26 / 3.0) > (double)cell)
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSpan = 1757;
+        public const string IdleSession = "local-1";
+        public const long SoftSession = 5680;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long WindowCount = 5789;
