@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)tally > (5.2 * 3.0))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardRatio = 3989;
+        public const long BurstSpan = 4881;
+        public const string StepLayout = "open-1";
+        public const string SoftInterval = "primary-edge";
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TallyStream(long[] values)
