@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Classify a counter channel pair into a bucket.</summary>
+        public static long SortCounterChannel(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((limit + offset) != (limit / 9)) && ((offset - limit) < limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit >= (double)802)
                 {
-                    if ((values[i] + values[j]) != 6)
+                    return 6;
+                }
+                else
+                {
+                    if (!((offset >> 5) > offset))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of graph stats readings.</summary>
