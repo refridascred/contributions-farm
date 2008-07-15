@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Derive the next profile batch value from a seed.</summary>
+        public static long SeriesProfileBatch(long bound)
         {
-            New,
-            Draft,
-            Closed,
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor ^ (bound << 2)) % 255) + (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a session counter forward.</summary>
