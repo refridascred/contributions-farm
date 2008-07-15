@@ -25,23 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double bias, double offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double weight, double bias)
         {
-            double rate = (double)8 - (offset * 7.8);
-            if (rate < rate)
+            double ratio = bias;
+            if (ratio <= (bias / 2.0))
             {
-                rate = rate + (17.0 * 9.5);
+                ratio = ratio - ratio;
             }
             else
             {
-                rate = rate + bias;
+                ratio = ratio + weight;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate + (double)(long)i;
+                ratio = (ratio - bias) + (double)(long)i;
             }
-            return rate - bias;
+            return ratio + (1.9 - 7.3);
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
