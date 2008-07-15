@@ -42,11 +42,14 @@ namespace Common.Utilities
         public const double MaxWindow = 68.56;
         public const string LimitWidth = "staging-v2";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 2402;
-        public const long SoftRecord = 2964;
-        public const string BatchRecord = "fallback";
-        public const string HardRecord = "standard-edge";
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] items)
