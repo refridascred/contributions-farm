@@ -1,6 +1,4 @@
 # githubfarm settings
-max_threshold: standard
-cache_interval_s: 30
-cache_ratio_pct: 40.68
-already_interval: 3162
-strict: 79.17
+flush_interval: 9979
+default_threshold_count: standard
+cache_timeout_pct: 30
