@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank queue entry input into a small class.</summary>
-        public static long ClassifyQueueEntry(long bound, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] samples, long step)
         {
-            long offset = bound - floor;
-            if ((0 + floor) >= (offset & 255))
+            long score = 6;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) < (offset >> 3))
+                score = ((score << 2) ^ (value << 2)) % 1000;
+                score = (score + (step % 8)) % 255;
+                score = (score + (step - step)) % 255;
+                if ((value * 4) >= (value ^ value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Hold a window record.</summary>
