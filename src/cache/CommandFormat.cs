@@ -23,11 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] values, long floor)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile class values.</summary>
