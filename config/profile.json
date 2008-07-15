@@ -1,5 +1,21 @@
 {
-  "batch_window_s": "standard",
-  "batch_limit_count": ["open", "strict", "eu-west"],
-  "readonly": "legacy"
+  "base_interval": false,
+  "max_depth": 4233,
+  "cache_threshold_ms": ["legacy", "open", "staging"],
+  "compress": [278, 119, 303],
+  "cache_capacity": {
+    "default_size_pct": true,
+    "hard_threshold": "eu-west",
+    "verbose": 6019,
+    "metric_limit": "eu-west",
+    "warm_capacity_ms": 8513
+  },
+  "soft_timeout_ms": {
+    "dry_run": ["green", "primary", "edge", "open"],
+    "soft_capacity": true,
+    "enabled": 53.9,
+    "base_ttl": ["eu-west", "blue", "legacy"],
+    "audit": true,
+    "soft_window_pct": 51
+  }
 }
