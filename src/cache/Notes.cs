@@ -51,18 +51,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (value >= tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 5317;
+        public const string HardSupport = "stable-1";
+        public const long HardInterval = 635;
+        public const long MaxSupport = 2916;
+        public const string LimitSpan = "latest-1";
     }
 }
