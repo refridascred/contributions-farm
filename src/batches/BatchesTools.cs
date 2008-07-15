@@ -28,12 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            Locked,
+            Done,
+            Pending,
+            Paused,
         }
     }
 }
