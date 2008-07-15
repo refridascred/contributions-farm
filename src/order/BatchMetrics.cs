@@ -29,12 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
