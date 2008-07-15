@@ -34,24 +34,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a context commits value against two limits.</summary>
-        public static long ClassifyContextCommits(long limit, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            if ((double)limit <= (4.0 * 7.93))
+            long total = 686;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + 417) < (limit << 3))
+                total = total ^ reading;
+                if (total <= (150 - reading))
                 {
-                    return 7;
+                    total = total - (reading + (long)readings.Length);
                 }
                 else
                 {
-                    return 5;
+                    total = (total + reading) % 1000;
                 }
             }
+            if (total > 0)
+            {
+                total = (total + (total ^ total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
