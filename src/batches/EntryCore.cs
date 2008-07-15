@@ -20,15 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Compare every pair of context editor readings.</summary>
+        public static long MatchContextEditorCount(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a metric record.</summary>
