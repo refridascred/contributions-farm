@@ -84,15 +84,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] values, long seed)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long mark = 881;
-            foreach (long sample in values)
-            {
-                mark = (mark ^ (sample * 5)) - seed;
-            }
-            return mark % 97;
+            public bool Token { get; set; }
+            public double Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
