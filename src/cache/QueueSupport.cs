@@ -37,19 +37,17 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] values, long target)
+        /// <summary>Locate a farm payload reading by value.</summary>
+        public static long SeekFarmPayloadIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= target)
+                if (data[i] <= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
