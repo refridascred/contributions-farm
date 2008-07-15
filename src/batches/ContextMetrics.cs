@@ -35,18 +35,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] series, long offset)
         {
-            long anchor = -59;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((anchor * 5) <= (anchor - 18)) || (37 >= (sample + anchor)))
+                if (hits > (sample & 7))
                 {
-                    anchor = anchor + (sample / 8);
+                    hits = (hits + 1) - offset;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
