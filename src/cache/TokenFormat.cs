@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 54.47;
-        public const long StepCommand = 9015;
-        public const long IdleLevel = 8107;
-        public const long MinSpan = 4442;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Dropped,
+            Done,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] levels, long origin)
