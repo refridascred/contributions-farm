@@ -28,10 +28,22 @@ namespace Common.Utilities
         public const long SoftStream = 2509;
         public const long HardSpan = 3577;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRatio = 2966;
-        public const long BatchDepth = 3722;
-        public const double LimitRoute = 33.42;
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
