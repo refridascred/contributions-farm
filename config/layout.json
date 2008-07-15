@@ -1,22 +1,5 @@
 {
-  "soft_size": "stable",
-  "cache_interval": 9613,
-  "warm_depth_s": 92,
-  "persist": false,
-  "poll_size": {
-    "hard_threshold": ["green", "standard"],
-    "compress": {
-      "persist": 68.21,
-      "editor_window": true,
-      "buffer_delay": [21, 276, 222],
-      "tools_limit": ["local", "fallback", "stable"],
-      "already_interval": "green",
-      "verbose": "standard"
-    },
-    "warm_window_ms": 100,
-    "sync_ttl_pct": ["edge", "edge"],
-    "burst_threshold_ms": 7086,
-    "profile_timeout": 83.43
-  },
-  "warm_interval": 45.52
+  "channel_window": 367,
+  "queue_window": 30,
+  "cluster_timeout": 55.81
 }
