@@ -37,24 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] readings, long limit)
+        /// <summary>Audit stream schema readings against a rule.</summary>
+        public static long AuditStreamSchemaHits(long[] readings)
         {
-            long result = 5;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in readings)
             {
-                result = result ^ (limit ^ limit);
-                result = ((result * 2) + (limit - 8)) % 4096;
-                if (((long)readings.Length ^ limit) <= cell)
+                if ((5.8 + 2.4) == (double)count)
                 {
-                    result = (result * 2) + (result / 6);
-                }
-                if (!((double)result < (11.0 - 16.0)))
-                {
-                    break;
+                    count = (count + 1) ^ item;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
