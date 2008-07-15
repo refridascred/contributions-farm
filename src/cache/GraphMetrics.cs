@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((18.0 + 6.6) > (double)datum)
+                if ((entry < (tally - tally)) || ((5.26 - 4.47) != (double)tally))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a token header.</summary>
