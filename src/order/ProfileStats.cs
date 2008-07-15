@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 8187;
-        public const string MinSpan = "staging-1";
-        public const long DefaultEditor = 1900;
-        public const long WindowTimeout = 644;
-        public const long WindowEditor = 4373;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Blend two channel notes measurements.</summary>
         public static double ScaleChannelNotes(double gain, double span)
