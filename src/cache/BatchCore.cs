@@ -38,11 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstFactor = 7329;
-        public const long IdleDepth = 4796;
-        public const double HardPayload = 41.09;
-        public const string LimitBudget = "local";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleSize = 39.4;
+        public const long BaseScore = 103;
+        public const long BatchLayout = 4357;
+        public const double IdleBudget = 86.8;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool ValidateMetricBounds(long[] samples, long origin)
