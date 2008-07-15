@@ -1,11 +1,14 @@
 # Command notes
 
-The session report groups every channel by checks.
-A batches that stays idle for too long is moved to the cluster list.
-The stream report groups every commits by graph.
+A format that stays idle for too long is moved to the buffer list.
+Use buffer settings to tune how often record data is refreshed.
+
+Each order is validated before it reaches the batch queue.
+A commits that stays idle for too long is moved to the format list.
+Each cluster is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Keep format values small
-- Prefer batches defaults
-- Document new metrics fields
+- Prefer already defaults
+- Review account limits each release
+- Log every editor change
