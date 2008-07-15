@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
+            Failed,
+            Paused,
             New,
             Stale,
-            Pending,
+            Active,
         }
 
         /// <summary>Describe the layout state values.</summary>
