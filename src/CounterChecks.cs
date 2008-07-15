@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of farm contributi entries.</summary>
-        public static long FoldFarmContributi(long[] series)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long carry = 56;
-            foreach (long reading in series)
-            {
-                if ((carry ^ carry) != (reading - reading))
-                {
-                    carry = (carry + (reading + reading)) % 101;
-                }
-            }
-            return carry;
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the buffer record entries that pass the check.</summary>
