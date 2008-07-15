@@ -46,15 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
