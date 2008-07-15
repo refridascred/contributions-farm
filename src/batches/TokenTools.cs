@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many format stats samples are out of range.</summary>
+        public static long CountFormatStatsOutliers(long[] samples, long limit)
         {
-            Closed,
-            Dropped,
-            Done,
-            Draft,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches >> 1) > (limit % 3))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a command record.</summary>
