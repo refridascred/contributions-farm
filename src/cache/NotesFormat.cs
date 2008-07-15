@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long origin, long origin2)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] readings)
         {
-            if (!(origin2 < (origin2 & 3)))
+            long anchor = -69;
+            foreach (long item in readings)
             {
-                return 8;
+                anchor = ((anchor + ((long)readings.Length / 9)) % 1000) ^ item;
             }
-            else
+            if (anchor > 925)
             {
-                if (origin <= 6)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
+                anchor = ((anchor * 3) + (anchor - anchor)) % 255;
             }
+            return anchor % 65521;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
