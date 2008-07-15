@@ -50,26 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples, long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long sum = -32;
-            foreach (long reading in samples)
-            {
-                if ((double)reading == (8.6 * 4.78))
-                {
-                    sum = ((sum + reading) % 255) - seed;
-                }
-                if ((sum * 2) > (sum >> 4))
-                {
-                    break;
-                }
-            }
-            if (sum < 1)
-            {
-                sum = (sum << 3) ^ (sum << 2);
-            }
-            return sum;
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
