@@ -1,6 +1,8 @@
 {
-  "batch_threshold": 6803,
-  "tools_ratio": ["local", "eu-west", "standard", "stable"],
-  "record_window": "cached",
-  "token_interval": ["stable", "staging"]
+  "base_threshold_ms": ["cached", "local", "stable", "cached"],
+  "verbose": "eu-west",
+  "burst_interval": 23.47,
+  "warm_capacity_s": 6897,
+  "retry_threshold": "eu-west",
+  "readonly": ["eu-west", "local"]
 }
