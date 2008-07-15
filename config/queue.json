@@ -1,17 +1,5 @@
 {
-  "poll_threshold_ms": {
-    "retry_ttl_ms": "local",
-    "already_retries": "cached",
-    "cache_interval": 30,
-    "retry_capacity": 100,
-    "order_depth": {
-      "default_delay_count": "local",
-      "sync_timeout": 593,
-      "default_ttl_s": 51.33
-    }
-  },
-  "cache_ttl": 100,
-  "idle_size_s": 1024,
-  "readonly": 64.07,
-  "metrics_window": "standard"
+  "compress": [175, 333, 491],
+  "burst_ratio_ms": true,
+  "base_limit_pct": 500
 }
