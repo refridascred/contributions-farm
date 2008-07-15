@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-open}"
 case "${mode}" in
-    standard)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached blue open; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=217
+log "limit is ${COMMAND_LIMIT}"
