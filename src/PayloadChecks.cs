@@ -85,24 +85,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long target, long step)
-        {
-            if ((238 >> 4) <= (71 - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target / 3) <= (step - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheTimeout = 84.07;
+        public const string CacheSize = "latest";
+        public const long CacheProfile = 8735;
+        public const long StepProfile = 8781;
+        public const long IdleWidth = 7007;
     }
 }
