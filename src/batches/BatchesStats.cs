@@ -45,24 +45,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long origin, long offset)
+        /// <summary>Project the next editor metrics value.</summary>
+        public static double ScaleEditorMetrics(double ratio, double offset)
         {
-            if ((offset % 97) >= (origin + offset))
+            double scale = 6.3;
+            if (scale >= offset)
             {
-                return 3;
+                scale = scale - ratio;
             }
-            else
-            {
-                if ((origin - 2) <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return scale + (offset - offset);
         }
     }
 }
