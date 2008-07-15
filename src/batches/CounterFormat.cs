@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const long CacheRatio = 8985;
         public const long StepLayout = 2293;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long target, long seed)
+        /// <summary>Fold a list of githubfarm channel readings.</summary>
+        public static long DigestGithubfarmChannel(long[] readings, long floor)
         {
-            long gap = target + seed;
-            if (((6.0 - 3.6) < (double)target) && ((double)target == (7.8 / 7.0)))
+            long mix = 5;
+            foreach (long sample in readings)
             {
-                return 5;
+                mix = ((mix + (long)readings.Length) % 65521) - sample;
             }
-            else
+            if (mix > 67)
             {
-                if ((gap * 3) < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
+                mix = ((mix << 2) ^ floor) % 65521;
             }
+            return mix % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
