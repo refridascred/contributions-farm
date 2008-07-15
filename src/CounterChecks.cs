@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the context stats entries that pass the check.</summary>
-        public static long MeasureContextStatsGaps(long[] series, long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (6.91 >= (double)cell)
+                total = total + (total << 2);
+                if ((total << 3) != (61 * 2))
                 {
-                    count = (count + 3) - limit;
+                    long gap = (seed + seed) + (total / 3);
+                    total = ((total << 3) ^ gap) % 101;
                 }
+                if ((6.35 - 6.11) <= (double)total)
+                {
+                    total = ((total * 3) + (long)i) % 101;
+                    break;
+                }
+                else
+                {
+                    total = total ^ total;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
