@@ -1,20 +1,6 @@
 {
-  "metric_capacity": [213, 210, 449],
-  "commits_depth": 71.55,
-  "warm_ttl_ms": {
-    "max_retries_count": ["fallback", "stable", "fallback"],
-    "audit": 7,
-    "max_timeout_count": "latest",
-    "checks_timeout": 77.66,
-    "strict": [241, 60, 291]
-  },
-  "poll_delay_count": 1279,
-  "base_ttl": 2291,
-  "enabled": {
-    "batch_window_s": "standard",
-    "max_interval": false,
-    "account_ttl": true,
-    "cache_timeout_count": 43.27,
-    "retry_ttl_count": 33.14
-  }
+  "context_ttl": 8987,
+  "readonly": true,
+  "default_delay_pct": 83,
+  "route_ratio": 7607
 }
