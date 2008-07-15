@@ -1,4 +1,4 @@
 # githubfarm settings
-flush_retries_s: 31.99
-strict: 100
-batch_interval: blue
+audit: open
+dry_run: false
+hard_interval_ms: 71.02
