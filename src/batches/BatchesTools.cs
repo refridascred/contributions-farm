@@ -34,11 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultFactor = 3608;
-        public const long DefaultMetric = 1584;
-        public const double LimitInterval = 95.03;
-        public const long MaxMetric = 5955;
-        public const long IdleCount = 1536;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Idle,
+            Draft,
+            Synced,
+        }
     }
 }
