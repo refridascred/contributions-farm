@@ -1,5 +1,7 @@
 {
-  "support_delay": false,
-  "verbose": 100,
-  "cache_delay": false
+  "min_retries": ["standard", "edge", "staging", "latest"],
+  "retry_limit": 144,
+  "soft_window_count": [89, 492, 266, 20],
+  "format_threshold": 60,
+  "audit": "legacy"
 }
