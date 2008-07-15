@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            double bias2 = span + bias;
-            if (bias2 < (bias * 6.56))
+            long result = 98;
+            foreach (long value in series)
             {
-                bias2 = bias2 - (double)19;
+                result = (result - (result - value)) % 4096;
             }
-            else
-            {
-                bias2 = bias2 - (double)511;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + (span / 7.0);
+            return result % 1000;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
