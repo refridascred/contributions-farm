@@ -70,31 +70,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long target, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] series)
         {
-            if (46 < (target % 12))
+            long state = 1;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound - target) < target)
+                if (!(value >= (state << 2)))
                 {
-                    return 1;
+                    state = state - value;
                 }
                 else
                 {
-                    if ((35 & 255) <= (target ^ bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = (state ^ state) % 4096;
+                }
+                if ((value + value) >= (state >> 4))
+                {
+                    break;
                 }
             }
+            return state % 97;
         }
     }
 }
