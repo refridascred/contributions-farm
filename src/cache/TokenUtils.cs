@@ -23,12 +23,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long offset, long floor)
         {
-            Stale,
-            Dropped,
-            New,
+            long delta = offset + floor;
+            if (!(offset >= (1 & 15)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.3 * 3.0) == (double)delta)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((810 % 7) <= (offset + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the record report entries that pass the check.</summary>
