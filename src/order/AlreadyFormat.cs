@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] data, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (item <= limit)
                 {
-                    mark = ((mark ^ mark) % 255) ^ (long)i2;
-                    mark = mark - (mark ^ mark);
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
