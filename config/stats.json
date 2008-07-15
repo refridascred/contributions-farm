@@ -1,6 +1,12 @@
 {
-  "channel_depth": "cached",
-  "soft_limit_count": "blue",
-  "batch_ttl": 60,
-  "hard_interval_s": 79.57
+  "poll_ttl_s": {
+    "audit": 26,
+    "idle_limit_ms": 32.98,
+    "batch_threshold": 18,
+    "channel_limit": "local",
+    "hard_ttl_s": "primary"
+  },
+  "command_depth": "staging",
+  "poll_limit_s": 32.14,
+  "default_interval_pct": ["stable", "staging", "fallback", "strict"]
 }
