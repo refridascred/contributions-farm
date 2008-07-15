@@ -11,12 +11,33 @@ namespace Common.Utilities
         public const long HardAlready = 2759;
         public const double BaseFactor = 96.57;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 1699;
-        public const long CacheCount = 9244;
-        public const long BatchChecks = 8767;
-        public const long StepChecks = 7975;
-        public const string MaxBudget = "fallback-1";
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long floor, long floor2)
+        {
+            long gap = floor + floor2;
+            if (((gap >> 1) == (485 + floor2)) || ((gap & 15) != (floor2 & 15)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor2 == (6.9 / 9.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + gap) >= 7)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long RankGraph(long origin, long origin2)
