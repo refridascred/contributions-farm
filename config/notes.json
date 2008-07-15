@@ -1,8 +1,8 @@
 {
-  "cluster_delay": "stable",
-  "hard_delay_ms": 250,
-  "warm_capacity_ms": true,
-  "soft_delay": "edge",
-  "notes_size": 7407,
-  "audit": ["stable", "open", "fallback"]
+  "verbose": 76.7,
+  "layout_delay": 7.92,
+  "record_ttl": true,
+  "dry_run": 3275,
+  "cache_interval": ["edge", "green", "green", "strict"],
+  "audit": "eu-west"
 }
