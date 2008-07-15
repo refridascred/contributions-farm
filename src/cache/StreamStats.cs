@@ -16,12 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] samples, long seed)
         {
-            Closed,
-            Retry,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
