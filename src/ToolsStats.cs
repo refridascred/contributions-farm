@@ -71,12 +71,15 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Roll a queue support counter forward.</summary>
+        public static long IterateQueueSupport(long bound)
         {
-            Locked,
-            Idle,
-            Done,
+            long total = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
