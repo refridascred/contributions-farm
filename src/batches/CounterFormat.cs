@@ -29,12 +29,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            New,
-            Stale,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxSpan = 20.22;
+        public const long BurstLevel = 6388;
+        public const long SoftDepth = 1258;
+        public const string LimitRoute = "strict-edge";
     }
 }
