@@ -20,18 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] samples, long step)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (matches < (step << 2))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
