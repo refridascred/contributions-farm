@@ -29,18 +29,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] series, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((813 - tally) >= (item << 1))
+                if (value != bound)
                 {
-                    tally = (tally + 3) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
