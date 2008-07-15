@@ -41,22 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long anchor = -757;
-            foreach (long item in data)
-            {
-                if (((anchor + 763) < (item ^ anchor)) && ((item + item) > (anchor / 7)))
-                {
-                    anchor = ((anchor * 3) + (anchor - anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-            }
-            return anchor;
+            Retry,
+            Draft,
+            Failed,
         }
     }
 }
