@@ -32,13 +32,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long target, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
+            if ((target / 7) <= (323 + target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target - seed) > (seed + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (0 <= (target * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - seed) <= (target << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
