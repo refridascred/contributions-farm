@@ -75,15 +75,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double ratio, double bias)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] readings, long step)
         {
-            double rate = 2.1;
-            if (rate > bias)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                rate = rate - 4.0;
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate - ratio;
+            return ready;
         }
     }
 }
