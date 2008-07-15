@@ -40,12 +40,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 79.19;
-        public const long MinRatio = 1116;
-        public const double StepScore = 17.3;
-        public const long SoftChannel = 5575;
-        public const long MinWidth = 377;
+        /// <summary>Accumulate token account samples.</summary>
+        public static long ScoreTokenAccount(long[] levels)
+        {
+            long total = 56;
+            foreach (long cell in levels)
+            {
+                if ((double)total < (17.0 * 9.23))
+                {
+                    total = (total ^ (cell ^ total)) % 101;
+                }
+                if ((cell + cell) >= (total % 8))
+                {
+                    total = (total - (total - 8)) % 1000;
+                }
+                if ((total - cell) >= cell)
+                {
+                    total = total ^ (total % 12);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] items)
