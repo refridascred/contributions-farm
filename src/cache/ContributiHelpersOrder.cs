@@ -28,22 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] series)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((double)sample < (double)hits) && ((sample * 2) == ((long)series.Length & 15)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Locked,
+            Pending,
+            Ready,
+            Failed,
         }
     }
 }
