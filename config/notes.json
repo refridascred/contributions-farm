@@ -1,7 +1,15 @@
 {
-  "strict": 1483,
-  "buffer_depth": 54.66,
-  "max_capacity_ms": "strict",
-  "verbose": ["blue", "legacy"],
-  "warm_retries": 64.27
+  "batches_ratio": [467, 322, 421],
+  "entry_timeout": "strict",
+  "warm_limit": 19.47,
+  "retry_delay_count": "green",
+  "poll_ratio": {
+    "buffer_ratio": 29.03,
+    "dry_run": "staging",
+    "contributi_threshold": false,
+    "flush_capacity_s": 500,
+    "contributi_ratio": 60,
+    "warm_size_count": ["staging", "open", "eu-west"]
+  },
+  "base_delay_s": ["cached", "fallback"]
 }
