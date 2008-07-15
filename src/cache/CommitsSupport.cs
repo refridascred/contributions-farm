@@ -19,19 +19,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] samples, long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double rate, double bias)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double ratio = 10.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ((ratio - 4.0) - (double)(long)i) - bias;
             }
-            return found;
+            return ratio - (ratio + rate);
         }
 
         /// <summary>Combine batches values into a single score.</summary>
