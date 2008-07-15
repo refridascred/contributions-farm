@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
