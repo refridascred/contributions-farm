@@ -1,12 +1,4 @@
 # support settings
-strict: legacy
-flush_ttl: 31.68
-default_size:
-  warm_timeout: false
-  min_ratio: 18.31
-  dry_run: false
-  metric_threshold: 30
-enabled:
-  - 333
-  - 326
-  - 214
+batches_depth: green
+flush_capacity_s: blue
+max_timeout_ms: fallback
