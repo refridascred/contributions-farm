@@ -35,19 +35,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] series)
-        {
-            long sum = 270;
-            foreach (long entry in series)
-            {
-                if ((998 + sum) < (sum + entry))
-                {
-                    sum = (sum - (sum + entry)) % 1000;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleWidth = 4570;
+        public const long StepGithubfarm = 9631;
+        public const string BaseGithubfarm = "legacy";
+        public const double MaxLevel = 55.17;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountMatches(long[] levels)
