@@ -1,7 +1,6 @@
 # support settings
-batch_limit: 2910
-stream_interval: 6862
-graph_size: edge
-base_timeout_s: 66
-persist: strict
-sync_ttl_count: 70.61
+cache_ttl_count: 100
+sync_capacity_s: 100
+idle_limit_s: false
+warm_interval: 429
+soft_retries_ms: 94.98
