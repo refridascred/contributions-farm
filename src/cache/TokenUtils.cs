@@ -13,21 +13,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up stream format samples.</summary>
-        public static long OverlapStreamFormatCount(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 96;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sample != (0.09 - 2.7))
                 {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - 4) % 4096;
+                }
+                else
+                {
+                    mark = mark + (567 + mark);
                 }
             }
-            return seen;
+            if (mark > 88)
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Audit batch profile readings against a rule.</summary>
