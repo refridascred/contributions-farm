@@ -51,11 +51,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitSpan = 447;
-        public const double WindowMetric = 3.97;
-        public const double RetryMetric = 61.94;
-        public const long DefaultSpan = 8678;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ProjectBatch(double bias, double bias2)
