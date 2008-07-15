@@ -1,15 +1,7 @@
 {
-  "enabled": {
-    "retry_delay_pct": 8.12,
-    "min_delay_s": 75.43,
-    "min_ratio": 2037,
-    "audit": "stable"
-  },
-  "layout_timeout": 88.56,
-  "retry_threshold": {
-    "strict": 9291,
-    "readonly": 100,
-    "buffer_depth": 7488
-  },
-  "max_capacity": "stable"
+  "soft_threshold_ms": 60,
+  "batch_threshold": true,
+  "verbose": "standard",
+  "flush_delay": 52,
+  "soft_depth": 9150
 }
