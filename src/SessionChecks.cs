@@ -30,21 +30,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count support cache pairs that satisfy a relation.</summary>
-        public static long MatchSupportCacheCount(long[] series)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine session window values into a single score.</summary>
