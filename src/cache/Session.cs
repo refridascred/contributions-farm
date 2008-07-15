@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Derive the next tools contributi value from a seed.</summary>
+        public static long DeriveToolsContributi(long seed)
         {
-            long total = 0;
-            foreach (long item in values)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((-683) <= (total - 59))
-                {
-                    total = total - item;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return total % 65521;
+            return result;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
