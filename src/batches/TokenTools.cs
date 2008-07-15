@@ -32,11 +32,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinLevel = 5438;
+        public const double CacheSchema = 51.18;
+        public const string SoftCount = "standard-edge";
+        public const long MaxSchema = 677;
+        public const long HardFactor = 241;
     }
 }
