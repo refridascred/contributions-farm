@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate contributi entry readings against a bound.</summary>
-        public static bool CheckContributiEntryBounds(long[] levels, long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Done,
+            Retry,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
