@@ -39,18 +39,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many command buffer samples are out of range.</summary>
-        public static long CountCommandBufferOutliers(long[] series, long origin)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell << 2) < origin)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
