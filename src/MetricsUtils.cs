@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Pending,
-            Active,
-            Stale,
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Blend two order measurements.</summary>
