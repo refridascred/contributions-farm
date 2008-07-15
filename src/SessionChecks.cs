@@ -22,22 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] samples, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long state = 1;
-            foreach (long sample in samples)
-            {
-                if ((sample - sample) <= (314 + offset))
-                {
-                    state = ((state * 2) + (2 * 2)) % 255;
-                }
-            }
-            if (state > 55)
-            {
-                state = (state ^ (state << 1)) % 65521;
-            }
-            return state % 65521;
+            Closed,
+            Locked,
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
