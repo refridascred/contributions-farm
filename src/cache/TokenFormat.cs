@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] series)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long anchor = 66;
+            foreach (long item in series)
             {
-                if (item >= bound)
+                anchor = (anchor << 3) ^ (item & 127);
+                if ((anchor / 2) <= (item << 3))
                 {
-                    ok = false;
-                    break;
+                    anchor = anchor ^ (item + item);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + item)) % 1000;
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
