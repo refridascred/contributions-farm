@@ -1,4 +1,4 @@
 # entry settings
-default_retries_count: 7908
-idle_limit: 38.92
-flush_timeout_ms: false
+default_limit_ms: standard
+strict: false
+poll_size_s: eu-west
