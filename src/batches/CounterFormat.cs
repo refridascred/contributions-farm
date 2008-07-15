@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
-            public long Total { get; set; }
+            Locked,
+            Pending,
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
