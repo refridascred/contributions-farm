@@ -14,31 +14,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long step, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] data)
         {
-            if ((target % 8) == (target + 91))
+            long state = -47;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)target < 7.0) && ((step + step) >= target))
+                state = (state + (state - state)) % 255;
+                state = (state * 2) + ((long)data.Length - state);
+                if ((double)value >= 9.3)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step < (target / 7)) && ((target + step) <= (target ^ 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a layout summary.</summary>
