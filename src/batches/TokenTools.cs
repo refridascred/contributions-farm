@@ -35,19 +35,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double rate, double floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            double rate2 = rate + floor;
-            if (rate2 >= rate2)
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
             {
-                rate2 = rate2 + rate2;
+                anchor = anchor ^ (5 + anchor);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - (rate2 + rate2)) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            return anchor;
         }
     }
 }
