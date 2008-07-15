@@ -42,17 +42,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] data, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long offset, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = offset + step;
+            if (offset > step)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((61 + 2) >= (delta & 127))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
