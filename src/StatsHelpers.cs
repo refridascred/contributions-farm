@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit contributi format readings against a rule.</summary>
-        public static long CountContributiFormatHits(long[] series, long origin)
+        /// <summary>Audit already context readings against a rule.</summary>
+        public static long TallyAlreadyContextGaps(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((entry * 2) == (origin >> 2))
+                if (((bound + (long)values.Length) < ((long)values.Length + count)) && (((bound + (-4)) >= (value - count)) && ((bound - count) <= (count / 3))))
                 {
-                    hits = hits + 3;
+                    count = count + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up cluster samples.</summary>
