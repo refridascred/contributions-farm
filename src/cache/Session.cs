@@ -38,38 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long floor, long bound)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            if (bound <= (bound / 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(bound < (bound / 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (8.7 >= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (828 <= (floor - floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
