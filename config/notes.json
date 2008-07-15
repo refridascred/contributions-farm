@@ -1,5 +1,18 @@
 {
-  "compress": 72,
-  "burst_ratio_s": "local",
-  "strict": "strict"
+  "max_timeout": 3606,
+  "warm_threshold_s": {
+    "batch_ratio": {
+      "route_interval": true,
+      "entry_capacity": "primary",
+      "support_window": ["blue", "open", "legacy", "latest"],
+      "verbose": "eu-west",
+      "commits_size": "blue"
+    },
+    "min_interval": "legacy",
+    "max_threshold": 76.19
+  },
+  "readonly": 48,
+  "persist": 51,
+  "min_limit_count": "open",
+  "poll_timeout_pct": [476, 250, 398]
 }
