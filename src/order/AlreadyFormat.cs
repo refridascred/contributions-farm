@@ -25,17 +25,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] series, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                long gap = origin;
-                acc = ((acc * 4) + gap) % 65521;
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((double)seed >= (8.0 / 4.0))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
