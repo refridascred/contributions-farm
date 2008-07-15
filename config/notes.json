@@ -1,7 +1,14 @@
 {
-  "default_ratio": [188, 351, 72],
-  "warm_ratio_ms": "strict",
-  "format_ratio": 6169,
-  "cache_depth_ms": 44,
-  "batch_size_count": [93, 84]
+  "flush_delay_pct": "stable",
+  "cluster_retries": true,
+  "dry_run": {
+    "warm_threshold_s": {
+      "poll_ratio": "legacy",
+      "soft_limit": true,
+      "poll_retries": true
+    },
+    "idle_ratio": "latest",
+    "max_capacity_s": false
+  },
+  "schema_timeout": 12.61
 }
