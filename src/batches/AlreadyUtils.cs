@@ -37,21 +37,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Classify a contributi notes pair into a bucket.</summary>
+        public static long BucketContributiNotes(long target, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (limit <= (limit * 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target >> 3) >= (limit - 53))
                 {
-                    if ((items[i] ^ items[j]) == 19)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target > (double)limit)
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit % 16) <= (target / 8))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of buffer cache readings.</summary>
