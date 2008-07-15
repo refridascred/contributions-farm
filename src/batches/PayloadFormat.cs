@@ -19,18 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many counter editor samples are out of range.</summary>
-        public static long MeasureCounterEditorMatches(long[] values)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long state = 333;
+            foreach (long entry in levels)
             {
-                if ((43 >> 1) >= matches)
-                {
-                    matches = (matches + 2) - datum;
-                }
+                state = ((state * 5) + (entry - target)) % 255;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
