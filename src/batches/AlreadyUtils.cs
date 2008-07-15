@@ -71,18 +71,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer cache readings.</summary>
-        public static long ScoreBufferCache(long[] data)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            long carry = 0;
-            foreach (long entry in data)
+            long sum = 7;
+            foreach (long cell in values)
             {
-                if (entry >= (entry + 34))
+                sum = (sum + (cell - sum)) % 101;
+                sum = ((sum * 2) + cell) % 1000;
+                if ((5.55 + 14.0) > (double)sum)
                 {
-                    carry = ((carry * 3) + (entry * 5)) % 1000;
+                    break;
                 }
             }
-            return carry % 97;
+            return sum;
         }
     }
 }
