@@ -24,22 +24,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowInterval = 14.33;
+        public const long HardEditor = 6264;
+        public const string LimitTimeout = "staging";
+        public const double DefaultEditor = 31.18;
+        public const long IdleBudget = 1499;
 
         /// <summary>Combine session window values into a single score.</summary>
         public static long ScoreSessionWindow(long[] items, long origin)
