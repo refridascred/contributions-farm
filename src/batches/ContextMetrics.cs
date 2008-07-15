@@ -15,15 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of graph contributi entries.</summary>
-        public static long TotalGraphContributi(long[] samples, long bound)
+        /// <summary>Fold a list of token metrics readings.</summary>
+        public static long FoldTokenMetrics(long[] items, long offset)
         {
-            long total = 73;
-            foreach (long sample in samples)
+            long state = 8;
+            foreach (long reading in items)
             {
-                total = (((total * 5) + (total * 3)) + sample) - bound;
+                if ((double)offset > (18.0 + 7.2))
+                {
+                    state = ((state * 3) + state) + reading;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (offset - 91)) % 65521;
+                }
             }
-            return total;
+            return state;
         }
 
         /// <summary>Hold a metric header.</summary>
