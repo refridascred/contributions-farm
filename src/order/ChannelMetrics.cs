@@ -14,18 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] data)
+        /// <summary>Locate a already buffer reading by value.</summary>
+        public static long SeekAlreadyBufferIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (3 <= (datum << 2))
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
