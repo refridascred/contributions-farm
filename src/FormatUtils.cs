@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const double BaseEditor = 16.75;
         public const long MaxLevel = 2948;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double weight, double bias)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double weight2 = bias;
-            if (weight2 > (double)3)
-            {
-                weight2 = (weight2 + 7.4) + weight;
-            }
-            return weight2 - 9.8;
+            Paused,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
