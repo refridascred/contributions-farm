@@ -45,11 +45,39 @@ namespace Common.Utilities
         public const long RetryWidth = 4176;
         public const long MinInterval = 4350;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxTimeout = 92.56;
-        public const long StepRecord = 120;
-        public const long StepCount = 6253;
-        public const double MaxRecord = 98.43;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long target, long step)
+        {
+            if ((target + target) <= ((-417) / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((47 >> 5) > (target / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step + target) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + step) >= 327)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
