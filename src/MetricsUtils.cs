@@ -56,18 +56,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] levels)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches << 1) <= (reading << 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Retry,
+            Closed,
+            Done,
         }
     }
 }
