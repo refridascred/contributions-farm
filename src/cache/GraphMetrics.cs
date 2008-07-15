@@ -39,31 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long origin2)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            if (origin2 < (origin + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 & 127) >= origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin2 < (3 + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Active,
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define command limits and defaults.</summary>
