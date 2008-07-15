@@ -52,10 +52,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "primary";
-        public const string BurstCount = "cached-v2";
-        public const double StepContext = 57.66;
-        public const long CacheContext = 2548;
+        /// <summary>Blend two notes farm measurements.</summary>
+        public static double ScaleNotesFarm(double rate, double floor)
+        {
+            double weight = rate;
+            if (weight > floor)
+            {
+                weight = weight - rate;
+            }
+            return weight - weight;
+        }
     }
 }
