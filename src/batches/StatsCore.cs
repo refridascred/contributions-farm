@@ -26,11 +26,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardLevel = "staging-edge";
-        public const long CacheAccount = 1802;
-        public const long IdleCount = 9293;
-        public const long DefaultDepth = 4562;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = ((state * 4) + (6 - (long)i)) - (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
