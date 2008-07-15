@@ -1,7 +1,9 @@
-id,weight,level
-1,standard,274
-2,711,945
-3,cached,81.8
-4,primary,1.91
-5,78.32,421
-6,40.88,49.04
+id,state,region,count
+1,386,30.25,421
+2,81.99,621,184
+3,47.8,eu-west,green
+4,stable,300,open
+5,open,45.42,113
+6,83.46,staging,872
+7,31.16,1.21,2.2
+8,22.46,standard,80
