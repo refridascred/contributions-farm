@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] data)
+        /// <summary>Compare every pair of editor farm readings.</summary>
+        public static long OverlapEditorFarmCount(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits & 255) <= hits)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) ^ reading;
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
