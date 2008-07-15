@@ -14,16 +14,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a schema stream counter forward.</summary>
-        public static long RollSchemaStream(long origin)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long step = bound ^ origin;
+            if ((bound / 4) > step)
             {
-                anchor = (anchor ^ ((long)i + (long)i)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((bound + bound) < 835)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(origin > (step % 12)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already state values.</summary>
