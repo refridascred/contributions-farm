@@ -55,10 +55,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchCount = 171;
-        public const double WindowTimeout = 10.2;
-        public const double MaxWindow = 17.15;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
