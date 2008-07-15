@@ -1,4 +1,5 @@
 # support settings
-sync_delay_pct: eu-west
-sync_capacity_s: 60
-session_size: 5.17
+githubfarm_retries: 45.59
+context_timeout: 85
+batch_ttl_pct: legacy
+base_ratio_count: fallback
