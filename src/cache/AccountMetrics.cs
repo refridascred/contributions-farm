@@ -39,10 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseBudget = 58.46;
-        public const long StepAlready = 2273;
-        public const double RetryRatio = 74.33;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitWidth = 2652;
+        public const long BatchBudget = 6315;
+        public const long RetryWidth = 4176;
+        public const long MinInterval = 4350;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double MaxTimeout = 92.56;
