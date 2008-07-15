@@ -23,11 +23,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 687;
-        public const double SoftCount = 79.85;
-        public const double IdleCache = 17.72;
-        public const long MaxFactor = 1840;
-        public const double MaxSize = 28.55;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] values, long bound)
+        {
+            long result = 824;
+            foreach (long datum in values)
+            {
+                if ((datum << 2) >= (result ^ result))
+                {
+                    result = (result ^ result) % 4096;
+                }
+            }
+            if (result < 1)
+            {
+                result = result - (bound & 7);
+            }
+            return result % 97;
+        }
     }
 }
