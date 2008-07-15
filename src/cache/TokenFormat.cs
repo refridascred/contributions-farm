@@ -26,19 +26,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] items, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (item >= seed)
+                if ((datum % 100) == ((-87) - seed))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
