@@ -25,18 +25,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long result = 5;
+            foreach (long value in samples)
             {
-                if (((8.43 / 5.0) >= (double)reading) && ((double)reading >= (1.5 * 3.69)))
-                {
-                    hits = hits + 1;
-                }
+                result = (((result ^ (result * 5)) % 255) - value) - bound;
             }
-            return hits;
+            if (result < (-55))
+            {
+                result = ((result << 2) ^ result) % 4096;
+            }
+            return result;
         }
     }
 }
