@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Queued,
-            Done,
-            Dropped,
-            New,
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit record already readings against a rule.</summary>
