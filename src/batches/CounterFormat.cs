@@ -31,21 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of account record readings.</summary>
-        public static long PairAccountRecordCount(long[] readings)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Active,
         }
     }
 }
