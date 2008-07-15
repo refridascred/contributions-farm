@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] data, long seed)
         {
-            long score = 3;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (11.0 > (double)score)
+                if (data[i] <= seed)
                 {
-                    score = ((score << 2) ^ (value + value)) % 97;
-                }
-                if ((value & 15) != (647 / 9))
-                {
-                    score = (score + (value + value)) % 4096;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
