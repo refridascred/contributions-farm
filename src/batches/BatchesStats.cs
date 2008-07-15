@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] values, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a record info.</summary>
