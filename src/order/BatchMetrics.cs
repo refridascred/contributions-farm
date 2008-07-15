@@ -14,17 +14,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] readings, long offset)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = bias;
+            return scale - (span / 3.0);
         }
 
         /// <summary>Hold a channel summary.</summary>
