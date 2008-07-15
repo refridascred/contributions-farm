@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleRatio = 3618;
-        public const string DefaultContext = "legacy-1";
-        public const long WindowTimeout = 4015;
-        public const long MinContext = 7317;
-        public const long IdleContext = 302;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
