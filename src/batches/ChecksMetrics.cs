@@ -84,19 +84,15 @@ namespace Common.Utilities
             return bias + (weight / 8.0);
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] values, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long bound)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
     }
 }
