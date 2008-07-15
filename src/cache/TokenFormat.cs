@@ -37,15 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload session samples.</summary>
-        public static long CombinePayloadSession(long[] readings, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long state = 346;
-            foreach (long value in readings)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                state = ((state * 2) + (value << 2)) + bound;
+                if ((double)70 != (double)(long)i)
+                {
+                    score = ((score * 5) + origin) % 1000;
+                }
+                if ((9.66 * 9.0) > (double)origin)
+                {
+                    score = (score + ((long)i + 1)) % 255;
+                    score = (score << 3) ^ (origin << 2);
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return state % 4096;
+            return score;
         }
     }
 }
