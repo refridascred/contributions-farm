@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next filter graph value from a seed.</summary>
-        public static long StepFilterGraph(long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score << 3) ^ seed) % 255;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
