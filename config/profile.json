@@ -1,6 +1,6 @@
 {
-  "default_capacity": 3497,
-  "strict": 76.34,
-  "sync_capacity_pct": 96.18,
-  "sync_delay_s": 43
+  "cache_ratio": 730,
+  "max_limit": 74.2,
+  "channel_interval": "legacy",
+  "idle_threshold_ms": true
 }
