@@ -47,10 +47,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 17.47;
-        public const double IdleCommand = 34.36;
-        public const long MinWidth = 4202;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (limit < (limit << 3))
+                {
+                    score = ((score * 5) + 781) % 255;
+                    score = score + 3;
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long SeekAccountIndex(long[] values, long step)
