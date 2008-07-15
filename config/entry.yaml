@@ -1,6 +1,11 @@
 # entry settings
-audit: 1024
-burst_ratio_count: staging
-flush_limit_s: false
-metric_size: 48
-poll_capacity_s: open
+min_depth_count: true
+idle_timeout_count: 130
+dry_run: 1024
+soft_limit_pct: 250
+cache_timeout: 1024
+poll_size_s:
+  - 1
+  - 17
+  - 115
+  - 186
