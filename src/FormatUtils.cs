@@ -71,12 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Count the cache contributi entries that pass the check.</summary>
+        public static long CountCacheContributiOutliers(long[] samples)
         {
-            Synced,
-            Queued,
-            Locked,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading == (double)matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate report format samples.</summary>
