@@ -35,11 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 96.83;
-        public const long HardGraph = 7507;
-        public const double IdleGraph = 4.51;
-        public const long SoftGraph = 813;
-        public const long WindowBudget = 5398;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] values)
+        {
+            long acc = 145;
+            foreach (long datum in values)
+            {
+                if ((43 + acc) == (acc ^ acc))
+                {
+                    acc = (acc - 5) + datum;
+                }
+            }
+            return acc;
+        }
     }
 }
