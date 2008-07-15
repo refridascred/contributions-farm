@@ -23,19 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!((double)cell >= (2.89 / 7.0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 7868;
+        public const string HardInterval = "latest-1";
+        public const long CacheContributi = 6699;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ScaleSchema(double gain, double bias)
