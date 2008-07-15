@@ -59,26 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] levels, long target)
+        /// <summary>Audit entry notes readings against a rule.</summary>
+        public static long CountEntryNotesGaps(long[] data)
         {
-            long state = 707;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((state >> 5) >= target))
+                if ((43 / 9) > entry)
                 {
-                    state = ((state + target) % 65521) ^ cell;
-                }
-                else
-                {
-                    state = (state * 3) + (target + state);
+                    count = count + 2;
                 }
             }
-            if (state < 5)
-            {
-                state = (state + (state & 255)) % 97;
-            }
-            return state % 97;
+            return count;
         }
     }
 }
