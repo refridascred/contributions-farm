@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count command layout pairs that satisfy a relation.</summary>
-        public static long PairCommandLayoutCount(long[] items)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
