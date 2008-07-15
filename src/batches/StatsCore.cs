@@ -34,14 +34,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            Active,
-            Paused,
-            Pending,
-            Stale,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
