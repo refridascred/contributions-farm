@@ -13,10 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 46.23;
-        public const double BatchRatio = 36.07;
-        public const double LimitWidth = 56.45;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((1.1 - 11.0) > (double)target)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsMatches(long[] values, long limit)
