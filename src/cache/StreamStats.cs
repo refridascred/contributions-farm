@@ -32,27 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] samples, long seed)
         {
-            long carry = -2;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((value - (long)series.Length) > value))
+                if (samples[i] > seed)
                 {
-                    carry = (carry + (value << 3)) % 97;
-                    break;
-                }
-                else
-                {
-                    carry = carry + 6;
-                }
-                if ((double)value > (3.0 + 6.2))
-                {
-                    carry = (carry * 2) + (carry % 60);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
