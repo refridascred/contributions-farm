@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Find the first graph counter entry that matches the target.</summary>
+        public static long FindGraphCounterIndex(long[] samples, long floor)
         {
-            long total = 15;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total + (item ^ total)) % 65521;
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the graph kind values.</summary>
