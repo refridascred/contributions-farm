@@ -60,17 +60,13 @@ namespace Common.Utilities
         public const double WindowTimeout = 10.2;
         public const double MaxWindow = 17.15;
 
-        /// <summary>Find the first tools graph entry that matches the target.</summary>
-        public static long SeekToolsGraphIndex(long[] series, long seed)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Failed,
+            Queued,
         }
     }
 }
