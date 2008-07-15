@@ -52,18 +52,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] samples)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long seed, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if (seed >= bound)
             {
-                if (((1.0 * 5.6) != (double)count) || (count >= value))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound < (11.0 * 4.44))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed >> 4) >= 6)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((90 ^ 8) > seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
