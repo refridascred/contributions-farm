@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] values, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long sum = 11;
+            foreach (long value in samples)
             {
-                if (limit < sample)
+                if ((3.84 + 2.9) <= (double)value)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = sum + (sum ^ sum);
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
