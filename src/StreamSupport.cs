@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleTimeout = 17.5;
-        public const long StepStream = 3842;
-        public const double BaseStream = 13.57;
-        public const string BatchStream = "staging-1";
+        /// <summary>Rank counter window input into a small class.</summary>
+        public static long SortCounterWindow(long seed, long origin)
+        {
+            if (seed < (seed ^ seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)origin != (3.48 * 10.0)) || ((5.93 - 3.9) < (double)origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long ClassifyLayout(long offset, long target)
