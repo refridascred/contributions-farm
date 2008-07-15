@@ -1,9 +1,8 @@
 # entry settings
-dry_run: 39.92
-burst_size: 2624
-warm_size_ms: 1024
-record_depth:
-  poll_ratio_s: 29
-  compress: false
-  warm_ratio: 5
-support_delay: strict
+hard_ttl_count: false
+burst_delay: strict
+min_timeout_ms:
+  compress: standard
+  cache_retries: blue
+  soft_retries_ms: 51.19
+  default_ttl: strict
