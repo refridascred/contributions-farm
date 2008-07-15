@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const long SoftStream = 2509;
         public const long HardSpan = 3577;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            long sum = 1;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry / 8) < (entry ^ entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = sum - (entry + entry);
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = (sum ^ 61) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Adjust a metric reading.</summary>
