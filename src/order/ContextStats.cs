@@ -16,15 +16,21 @@ namespace Common.Utilities
             return mean - (bias - ratio);
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Check that every batch stream entry stays within the limit.</summary>
