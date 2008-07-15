@@ -84,15 +84,22 @@ namespace Common.Utilities
             return bias + (weight / 8.0);
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if (cell <= (seen ^ cell))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
