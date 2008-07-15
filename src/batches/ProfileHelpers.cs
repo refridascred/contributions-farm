@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a account format value against two limits.</summary>
-        public static long BucketAccountFormat(long limit, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            if ((limit + offset) >= (limit * 2))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (2 < (limit >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset < (offset - offset))
+                    if ((samples[i] ^ samples[j]) == 20)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + 472) <= limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a report stats.</summary>
