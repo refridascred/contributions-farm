@@ -23,10 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 7868;
-        public const string HardInterval = "latest-1";
-        public const long CacheContributi = 6699;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Dropped,
+            Closed,
+            Active,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
