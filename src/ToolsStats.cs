@@ -19,14 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count notes payload pairs that satisfy a relation.</summary>
+        public static long PairNotesPayloadCount(long[] levels)
         {
-            Dropped,
-            Done,
-            Retry,
-            Paused,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
