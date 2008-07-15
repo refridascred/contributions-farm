@@ -1,5 +1,6 @@
 {
-  "burst_limit_ms": ["open", "strict"],
-  "metrics_depth": 41,
-  "hard_retries": ["fallback", "local", "green", "primary"]
+  "context_retries": true,
+  "cache_threshold_count": 69,
+  "format_limit": 30,
+  "strict": "edge"
 }
