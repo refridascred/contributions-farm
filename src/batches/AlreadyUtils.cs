@@ -32,12 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Locate a window batch reading by value.</summary>
+        public static long FindWindowBatchIndex(long[] items, long origin)
         {
-            Done,
-            Pending,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the format phase values.</summary>
