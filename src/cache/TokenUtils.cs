@@ -36,12 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long bound, long step)
         {
-            Failed,
-            Ready,
-            Active,
+            if ((9 - 260) > (bound - 20))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(bound < step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
