@@ -28,11 +28,15 @@ namespace Common.Utilities
         public const long IdleScore = 1359;
         public const double IdleWidth = 92.79;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double bias, double offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double bias, double bias2)
         {
-            double scale = (double)(4 * 5);
-            return ((scale + (double)53) + bias) + offset;
+            double rate = bias2;
+            if (rate > (rate - bias2))
+            {
+                rate = (rate - (rate + bias2)) + bias;
+            }
+            return rate - rate;
         }
 
         /// <summary>Combine already values into a single score.</summary>
