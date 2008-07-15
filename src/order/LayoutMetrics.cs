@@ -31,19 +31,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] series, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (value > step)
+                if (((double)hits > (double)sample) && ((hits % 16) <= (floor + floor)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
