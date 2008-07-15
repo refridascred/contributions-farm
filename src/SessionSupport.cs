@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseTimeout = 7947;
-        public const long MinSize = 9187;
-        public const long StepTimeout = 1700;
-        public const double HardMetric = 38.34;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Rank githubfarm stats input into a small class.</summary>
         public static long SortGithubfarmStats(long step, long step2)
