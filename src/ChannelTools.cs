@@ -28,26 +28,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total * 5) + bound;
-                if ((7.07 + 7.22) == (double)bound)
-                {
-                    total = ((total * 4) + (total ^ bound)) % 1000;
-                    break;
-                }
-                else
-                {
-                    total = (total * 3) + (long)i;
-                    total = (total * 2) + (total << 2);
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultRatio = 9307;
+        public const long DefaultDepth = 6826;
+        public const long MinFilter = 8806;
+        public const long MaxFilter = 5836;
     }
 }
