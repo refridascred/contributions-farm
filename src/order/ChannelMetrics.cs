@@ -22,11 +22,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double scale, double span)
-        {
-            double rate = (span - span) - (span / 6.0);
-            return (rate - rate) + scale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftInterval = 3651;
+        public const long BurstRecord = 4513;
+        public const double HardRecord = 93.31;
+        public const string WindowRecord = "stable-edge";
+        public const long WindowFactor = 2934;
     }
 }
