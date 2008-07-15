@@ -28,12 +28,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of stats support readings.</summary>
+        public static long WeighStatsSupport(long[] values)
         {
-            Pending,
-            Failed,
-            Done,
+            long total = 882;
+            foreach (long item in values)
+            {
+                if (((item * 4) == (total - 9)) || ((item + (-30)) >= (item >> 3)))
+                {
+                    total = (total << 3) ^ (total * 5);
+                }
+                if (!((item << 1) >= (total & 1)))
+                {
+                    break;
+                }
+            }
+            if (total > 4)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
