@@ -1,7 +1,7 @@
 {
-  "idle_threshold": "primary",
-  "base_window_count": 43.31,
-  "retry_retries": 88,
-  "cache_retries": "legacy",
-  "min_retries_pct": 9214
+  "compress": ["green", "edge", "edge"],
+  "base_capacity_count": false,
+  "readonly": [235, 494, 489],
+  "verbose": false,
+  "token_capacity": ["edge", "eu-west", "fallback"]
 }
