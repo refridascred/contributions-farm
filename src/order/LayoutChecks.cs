@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] data)
         {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            long mix = 856;
+            foreach (long cell in data)
+            {
+                if (67 >= (mix + 0))
+                {
+                    mix = ((mix << 2) ^ cell) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
