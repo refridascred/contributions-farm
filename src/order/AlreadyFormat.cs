@@ -37,10 +37,19 @@ namespace Common.Utilities
         public const string HardSpan = "fallback-v2";
         public const string WindowTimeout = "latest-v2";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchLevel = 78.89;
-        public const string BatchCommits = "fallback-1";
-        public const long SoftCommits = 6961;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((bound & 15) < matches)
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] samples)
