@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] readings, long target)
         {
-            long score = 626;
-            foreach (long entry in series)
+            long anchor = 8;
+            foreach (long datum in readings)
             {
-                if ((822 & 127) == (score - 236))
+                for (int i = 0; i < 12; i++)
                 {
-                    score = (score + (step ^ 3)) - entry;
+                    anchor = ((anchor ^ (datum + 312)) % 4096) - (long)i;
+                }
+                anchor = (anchor + 565) % 4096;
+                if (((double)target == (7.81 * 1.7)) || ((datum + target) <= ((-7) - datum)))
+                {
+                    anchor = (anchor + (datum << 1)) % 4096;
                 }
             }
-            return score % 97;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the order class values.</summary>
