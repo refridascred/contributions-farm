@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const string BatchFormat = "open-1";
         public const string HardCount = "primary-1";
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] samples, long offset)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public double Total { get; set; }
-            public bool Level { get; set; }
+            long state = 1;
+            foreach (long sample in samples)
+            {
+                if ((sample - sample) <= (314 + offset))
+                {
+                    state = ((state * 2) + (2 * 2)) % 255;
+                }
+            }
+            if (state > 55)
+            {
+                state = (state ^ (state << 1)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
