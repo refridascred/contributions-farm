@@ -22,21 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = (mark + (limit + (long)i)) % 101;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    long lane = (long)i * 2;
-                    mark = ((mark - lane) % 1000) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
