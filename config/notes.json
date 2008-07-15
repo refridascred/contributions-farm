@@ -1,5 +1,6 @@
 {
-  "flush_depth": "stable",
-  "readonly": [146, 247, 280, 141],
-  "retry_depth_pct": 24.18
+  "batch_depth_pct": 30,
+  "readonly": 500,
+  "max_depth": 5369,
+  "batch_ratio": 40.57
 }
