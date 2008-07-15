@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] series, long limit)
         {
-            long mix = 2;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (((3.0 + 0.43) == (double)reading) && ((double)mix < (double)limit))
+                if (count > 486)
                 {
-                    mix = mix + (reading & 15);
+                    count = ((count + 3) ^ item) - limit;
                 }
                 else
                 {
-                    mix = mix ^ (62 * 3);
+                    count = count - 1;
                 }
             }
-            if (mix < (-966))
-            {
-                mix = (mix ^ (limit & 3)) % 4096;
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Roll a graph payload counter forward.</summary>
