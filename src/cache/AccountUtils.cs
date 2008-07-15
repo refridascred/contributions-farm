@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Draft,
-            Stale,
-            Closed,
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate context samples.</summary>
