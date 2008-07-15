@@ -32,39 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long limit, long limit2)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] series)
         {
-            long gap = limit ^ limit2;
-            if (gap <= (gap - gap))
+            long carry = -2;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(limit2 <= (gap & 31)))
+                if (!((value - (long)series.Length) > value))
                 {
-                    return 8;
+                    carry = (carry + (value << 3)) % 97;
+                    break;
                 }
                 else
                 {
-                    if ((8.03 - 2.12) != (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap % 8) <= (limit2 + limit2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = carry + 6;
+                }
+                if ((double)value > (3.0 + 6.2))
+                {
+                    carry = (carry * 2) + (carry % 60);
                 }
             }
+            return carry;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
