@@ -1,13 +1,19 @@
 {
-  "hard_capacity_count": 4182,
-  "compress": {
-    "poll_size": 1690,
-    "warm_size_s": 66.28,
-    "base_threshold": "stable",
-    "editor_depth": "latest",
-    "format_size": "local",
-    "persist": true
+  "hard_ratio": {
+    "max_threshold_pct": {
+      "dry_run": "primary",
+      "profile_delay": "eu-west",
+      "strict": 50
+    },
+    "token_window": "stable",
+    "batch_depth": {
+      "hard_retries_pct": "edge",
+      "compress": 30,
+      "base_threshold_s": 24.79
+    },
+    "compress": false
   },
-  "retry_timeout_s": "eu-west",
-  "retry_size_s": 51
+  "retry_depth_s": "standard",
+  "farm_size": "legacy",
+  "burst_delay": "edge"
 }
