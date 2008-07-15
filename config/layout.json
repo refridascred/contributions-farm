@@ -1,5 +1,16 @@
 {
-  "filter_ttl": ["open", "standard", "fallback", "standard"],
-  "poll_ttl_s": true,
-  "tools_capacity": false
+  "dry_run": 250,
+  "enabled": "blue",
+  "default_threshold_s": {
+    "cache_ratio": ["cached", "open"],
+    "sync_size_pct": 77.98,
+    "order_depth": ["fallback", "cached"],
+    "cache_timeout": {
+      "commits_retries": ["local", "staging"],
+      "queue_threshold": false,
+      "compress": "strict"
+    },
+    "retry_timeout": "primary"
+  },
+  "persist": 14.09
 }
