@@ -54,11 +54,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] samples, long offset)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            long anchor = 96;
+            foreach (long item in samples)
+            {
+                if (((9.48 * 1.5) >= (double)anchor) || ((3 >> 1) >= (anchor ^ item)))
+                {
+                    anchor = ((anchor << 3) ^ (offset + anchor)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Find the first tools graph entry that matches the target.</summary>
