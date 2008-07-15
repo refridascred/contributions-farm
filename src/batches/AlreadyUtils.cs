@@ -49,13 +49,16 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long bound)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            long score = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score + score) % 1000;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
