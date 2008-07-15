@@ -20,21 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of context editor readings.</summary>
-        public static long MatchContextEditorCount(long[] readings)
+        /// <summary>Combine profile layout values into a single score.</summary>
+        public static long ScoreProfileLayout(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 9;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor - (anchor << 3)) + datum;
             }
-            return seen;
+            if (anchor < (-74))
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metric record.</summary>
