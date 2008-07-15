@@ -1,12 +1,17 @@
 {
-  "warm_capacity": "fallback",
-  "burst_depth_count": [35, 221, 5],
-  "enabled": {
-    "soft_depth": true,
-    "base_capacity_ms": "edge",
-    "cluster_capacity": 6764,
-    "default_size_ms": 14
+  "already_threshold": {
+    "burst_ttl_pct": {
+      "dry_run": 30,
+      "warm_size_ms": ["eu-west", "open", "stable"],
+      "enabled": 8809
+    },
+    "batch_timeout_s": "edge",
+    "batches_window": "standard",
+    "metric_ratio": false
   },
-  "poll_capacity_count": "open",
-  "retry_threshold": "open"
+  "max_retries_pct": false,
+  "sync_size_count": [254, 225, 278],
+  "max_ratio_ms": true,
+  "max_size": 500,
+  "token_timeout": 4451
 }
