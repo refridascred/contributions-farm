@@ -74,21 +74,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Combine record payload values into a single score.</summary>
+        public static long WeighRecordPayload(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((876 / 7) != (state >> 5)))
                 {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state << 3) ^ (item % 12);
+                    break;
+                }
+                if ((item + 78) == (item / 9))
+                {
+                    state = (state - (item % 3)) % 1000;
+                }
+                else
+                {
+                    state = (state << 2) ^ item;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
