@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count & 63) >= (count << 2))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 7276;
+        public const long SoftWidth = 9640;
+        public const long DefaultWindow = 6549;
+        public const long MaxWindow = 468;
+        public const long HardWindow = 6574;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
