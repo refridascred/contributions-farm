@@ -24,22 +24,23 @@ namespace Common.Utilities
         public const long MinToken = 6531;
         public const double BurstToken = 92.76;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] samples, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long mark = 644;
+            foreach (long entry in items)
             {
-                if ((reading + count) <= ((long)samples.Length * 2))
+                mark = ((mark << 2) ^ (mark + entry)) % 255;
+                if (mark <= (mark % 64))
                 {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (mark < 3)
+            {
+                mark = ((mark << 3) ^ mark) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
