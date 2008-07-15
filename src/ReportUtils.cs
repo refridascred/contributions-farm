@@ -33,14 +33,22 @@ namespace Common.Utilities
         public const long DefaultFilter = 4988;
         public const long StepFilter = 7423;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] levels)
         {
-            Stale,
-            Pending,
-            Ready,
-            Retry,
-            Draft,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits - value) == (value >> 1))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
