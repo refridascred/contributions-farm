@@ -45,21 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(6 - 8);
+            if (rate >= 3.74)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + (double)435;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (floor / 4.0)) + (double)(long)i;
+            }
+            return rate - (gain / 4.0);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
