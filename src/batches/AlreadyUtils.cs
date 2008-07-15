@@ -49,17 +49,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] levels, long floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
