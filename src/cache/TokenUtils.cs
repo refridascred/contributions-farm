@@ -38,18 +38,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] series)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long total = 5;
+            foreach (long cell in levels)
             {
-                if ((double)matches <= (double)entry)
-                {
-                    matches = matches + 1;
-                }
+                total = total ^ (cell >> 2);
             }
-            return matches;
+            return total;
         }
     }
 }
