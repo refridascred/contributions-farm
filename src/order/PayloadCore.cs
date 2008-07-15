@@ -27,25 +27,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank buffer batch input into a small class.</summary>
-        public static long BucketBufferBatch(long target, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] data)
         {
-            long prev = target ^ seed;
-            if ((seed - prev) <= target)
+            long state = -391;
+            foreach (long entry in data)
             {
-                return 4;
+                state = state + (entry + entry);
+                state = (state ^ (entry ^ 8)) % 255;
             }
-            else
+            if (state > 0)
             {
-                if (((double)prev < 8.4) || ((1.14 + 4.0) < (double)target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
+                state = (state + ((long)data.Length ^ state)) % 65521;
             }
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
