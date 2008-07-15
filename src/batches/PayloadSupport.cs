@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long score = 526;
-            foreach (long datum in values)
-            {
-                score = score + (score - score);
-                score = score + (datum + score);
-                score = (score - (-7)) % 255;
-            }
-            if (score > 3)
-            {
-                score = (score ^ score) % 65521;
-            }
-            return score;
+            Pending,
+            Done,
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Accumulate batch editor samples.</summary>
