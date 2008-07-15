@@ -30,21 +30,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long origin, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((bound - bound) >= bound) && ((double)bound < (double)origin))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin * 4) <= bound)
                 {
-                    if ((values[i] ^ values[j]) == 15)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin != (2.0 + 2.0))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
     }
 }
