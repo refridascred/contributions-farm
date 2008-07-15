@@ -35,18 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] values)
-        {
-            long acc = 145;
-            foreach (long datum in values)
-            {
-                if ((43 + acc) == (acc ^ acc))
-                {
-                    acc = (acc - 5) + datum;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchBudget = 49.84;
+        public const long IdleWindow = 9895;
+        public const long HardScore = 7116;
+        public const double StepSize = 76.58;
     }
 }
