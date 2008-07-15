@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long floor)
         {
-            Closed,
-            New,
-            Retry,
-            Idle,
+            long result = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = (((result << 2) ^ (floor << 1)) % 255) ^ (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Accumulate report samples.</summary>
