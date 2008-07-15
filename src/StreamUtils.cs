@@ -24,18 +24,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] values, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = 71;
+            foreach (long value in data)
             {
-                if (!((reading % 5) == (hits * 5)) || (hits < (step % 8)))
+                if (!(bound > 4))
                 {
-                    hits = hits + 1;
+                    anchor = ((anchor + (anchor & 31)) % 255) ^ value;
                 }
             }
-            return hits;
+            if (anchor > 1)
+            {
+                anchor = (anchor ^ (bound + bound)) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many token batch samples are out of range.</summary>
