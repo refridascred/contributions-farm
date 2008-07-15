@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double ratio, double floor)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double scale = (3.0 / 9.0) * 4.26;
-            return ((scale + (double)(-958)) + ratio) + floor;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the filter phase values.</summary>
