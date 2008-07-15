@@ -39,12 +39,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 1448;
-        public const string HardInterval = "legacy-edge";
-        public const string MinPayload = "stable";
-        public const long LimitRatio = 2300;
-        public const long IdlePayload = 5755;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphLimits(long[] data, long seed)
