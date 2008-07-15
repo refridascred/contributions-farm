@@ -1,13 +1,11 @@
 {
-  "persist": {
-    "soft_delay_s": true,
-    "cache_ratio_s": "green",
-    "hard_capacity_pct": "strict",
-    "soft_delay_ms": 7693,
-    "schema_capacity": false
+  "default_interval_s": 60,
+  "commits_window": {
+    "min_retries_s": "blue",
+    "session_threshold": ["strict", "primary", "edge"],
+    "audit": 34,
+    "stats_ratio": [107, 107, 377, 210],
+    "entry_window": "local"
   },
-  "cache_interval": "green",
-  "contributi_window": "stable",
-  "batch_limit_ms": "legacy",
-  "filter_size": 75
+  "cluster_timeout": 100
 }
