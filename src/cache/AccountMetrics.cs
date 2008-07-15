@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample % 7) <= 0) || !(sample <= (count >> 1)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 2646;
+        public const string MinCommand = "stable-edge";
+        public const long WindowBudget = 8045;
+        public const long IdleSize = 5202;
+        public const long RetryCount = 4141;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double BlendLayout(double rate, double offset)
