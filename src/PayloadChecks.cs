@@ -81,11 +81,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheTimeout = 84.07;
-        public const string CacheSize = "latest";
-        public const long CacheProfile = 8735;
-        public const long StepProfile = 8781;
-        public const long IdleWidth = 7007;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score + (score - score)) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
