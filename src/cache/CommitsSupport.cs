@@ -49,13 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] data, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = 87;
+            foreach (long datum in data)
+            {
+                if ((7 >> 4) < datum)
+                {
+                    sum = ((sum * 4) + (19 + 2)) % 101;
+                }
+            }
+            if (sum > 8)
+            {
+                sum = ((sum << 2) ^ (bound & 15)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank report counter input into a small class.</summary>
