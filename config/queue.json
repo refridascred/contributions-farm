@@ -1,5 +1,7 @@
 {
-  "retry_limit_s": "standard",
-  "min_interval_pct": "edge",
-  "readonly": 100
+  "idle_threshold": "primary",
+  "base_window_count": 43.31,
+  "retry_retries": 88,
+  "cache_retries": "legacy",
+  "min_retries_pct": 9214
 }
