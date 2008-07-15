@@ -44,21 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Count the context stats entries that pass the check.</summary>
+        public static long AuditContextStatsMatches(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((seen / 2) == (623 >> 3)) || (((long)levels.Length - (-41)) >= cell))
                 {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) - offset;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
