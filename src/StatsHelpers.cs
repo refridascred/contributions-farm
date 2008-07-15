@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a profile format reading.</summary>
-        public static double SmoothProfileFormat(double gain, double offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double rate, double bias)
         {
-            double gain2 = (double)232 / 9.0;
-            return (gain2 + gain) + offset;
+            double scale = bias / 9.0;
+            if (scale < scale)
+            {
+                scale = (scale + 1.06) - rate;
+            }
+            else
+            {
+                scale = scale - 8.9;
+            }
+            return scale + (scale / 9.0);
         }
 
         /// <summary>Iterate the stats queue series from a seed.</summary>
