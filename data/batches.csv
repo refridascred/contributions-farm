@@ -1,8 +1,7 @@
-id,score,active,weight
-1,60.65,20,590
-2,827,335,green
-3,528,69,latest
-4,160,129,243
-5,226,staging,staging
-6,latest,fallback,51.61
-7,open,573,850
+id,owner,score
+1,7.1,343
+2,960,257
+3,cached,open
+4,71.06,968
+5,green,fallback
+6,edge,234
