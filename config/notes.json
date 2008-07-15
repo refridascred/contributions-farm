@@ -1,5 +1,12 @@
 {
-  "warm_capacity": 2884,
-  "warm_retries_count": "latest",
-  "soft_capacity_pct": true
+  "warm_capacity": "fallback",
+  "burst_depth_count": [35, 221, 5],
+  "enabled": {
+    "soft_depth": true,
+    "base_capacity_ms": "edge",
+    "cluster_capacity": 6764,
+    "default_size_ms": 14
+  },
+  "poll_capacity_count": "open",
+  "retry_threshold": "open"
 }
