@@ -13,38 +13,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long floor, long origin)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] values, long offset)
         {
-            if ((floor ^ origin) < 5)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)4 < (double)origin)
+                if ((values[i] < offset) && ((values[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin > (923 + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor < (4.7 - 1.98))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine editor metric values into a single score.</summary>
