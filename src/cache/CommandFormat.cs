@@ -66,13 +66,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] readings)
         {
-            public double Weight { get; set; }
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((tally + reading) > (reading ^ tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
