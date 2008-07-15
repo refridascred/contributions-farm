@@ -14,12 +14,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 5288;
-        public const double MinCount = 10.65;
-        public const double RetryEditor = 41.73;
-        public const long WindowEditor = 5166;
-        public const long CacheWidth = 3039;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count & 63) > (item + item))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of metric checks readings.</summary>
         public static long TallyMetricChecks(long[] readings)
