@@ -15,11 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowEntry = "legacy-1";
-        public const double LimitEntry = 59.53;
-        public const string BaseEntry = "alpha-1";
-        public const long CacheEntry = 3825;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (4.41 >= (double)item)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
