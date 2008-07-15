@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every report command entry stays within the limit.</summary>
-        public static bool GuardReportCommandRange(long[] readings, long step)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
