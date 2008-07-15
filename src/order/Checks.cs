@@ -68,18 +68,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token graph entries that pass the check.</summary>
-        public static long AuditTokenGraphGaps(long[] levels)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!(((matches << 2) != (item << 2)) || (matches > (item & 31))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
