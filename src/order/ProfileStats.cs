@@ -35,15 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Pending,
-            Locked,
-            Stale,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepCount = 81.73;
+        public const double WindowBudget = 54.61;
+        public const long WindowDepth = 7642;
+        public const long MaxSupport = 8033;
 
         /// <summary>Fold a list of report filter readings.</summary>
         public static long DigestReportFilter(long[] values)
