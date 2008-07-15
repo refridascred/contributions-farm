@@ -1,15 +1,20 @@
 # entry settings
-audit: fallback
-stats_limit: local
-sync_interval: true
-batch_depth_ms:
-  - 388
-  - 205
-  - 69
-  - 91
-base_capacity_ms:
-  base_ttl_ms: staging
-  base_ratio: false
-  dry_run: blue
-  max_depth_ms: eu-west
-  hard_capacity: 1024
+enabled: legacy
+max_interval: 37.87
+flush_limit_count:
+  min_threshold_count:
+    flush_retries: true
+    verbose: 31
+    readonly: standard
+    min_interval:
+      - standard
+      - blue
+      - green
+  persist: false
+  compress: cached
+  sync_ratio_count: strict
+  retry_timeout_s:
+    - 427
+    - 63
+  checks_ratio: 5550
+strict: true
