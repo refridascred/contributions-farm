@@ -6,11 +6,9 @@ namespace Common.Utilities
     public static class StatsCore
     {
         /// <summary>Define format limits and defaults.</summary>
-        public const long StepWidth = 5026;
-        public const string StepFormat = "legacy-v2";
-        public const long RetryFormat = 5776;
-        public const string DefaultFormat = "cached-1";
-        public const long MinBudget = 3621;
+        public const double BaseFormat = 18.52;
+        public const long MinFormat = 3874;
+        public const string LimitCount = "open";
 
         /// <summary>Combine entry queue values into a single score.</summary>
         public static long DigestEntryQueue(long[] items)
