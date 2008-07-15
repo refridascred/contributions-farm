@@ -46,17 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long origin)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
