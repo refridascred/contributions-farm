@@ -37,22 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinWidth = "open-edge";
+        public const long SoftScore = 1534;
+        public const string LimitSession = "fallback-1";
+        public const double SoftSession = 63.95;
+        public const long DefaultBudget = 6910;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextLimits(long[] data, long limit)
