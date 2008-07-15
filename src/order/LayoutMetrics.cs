@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] data, long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the batch mode values.</summary>
