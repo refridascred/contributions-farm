@@ -56,13 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series, long limit)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
+            long total = 0;
+            foreach (long reading in series)
+            {
+                total = ((total ^ ((long)series.Length - limit)) % 1000) - reading;
+            }
+            return total;
         }
 
         /// <summary>Describe the batches level values.</summary>
