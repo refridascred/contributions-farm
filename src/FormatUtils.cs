@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const double BaseEditor = 16.75;
         public const long MaxLevel = 2948;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long bound, long bound2)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] readings)
         {
-            if ((double)bound2 == (8.0 - 6.0))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 ^ bound2) > (bound2 / 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
