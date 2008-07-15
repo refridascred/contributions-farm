@@ -24,18 +24,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] items, long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double mean = ratio;
+            if (mean < floor)
             {
-                if (!((double)seen >= (double)value))
-                {
-                    seen = (seen + 2) - offset;
-                }
+                mean = mean + (mean + ratio);
             }
-            return seen;
+            return mean - (ratio / 8.0);
         }
 
         /// <summary>Project the next filter value.</summary>
