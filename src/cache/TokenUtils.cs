@@ -48,23 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter schema readings.</summary>
-        public static long DigestFilterSchema(long[] samples, long seed)
-        {
-            long acc = 87;
-            foreach (long sample in samples)
-            {
-                acc = ((acc * 4) + (seed + seed)) + sample;
-                if ((6.2 - 1.6) > (double)seed)
-                {
-                    acc = ((acc * 5) + seed) % 97;
-                }
-            }
-            if (acc < (-100))
-            {
-                acc = ((acc * 5) + acc) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftFactor = 2911;
+        public const double SoftTimeout = 59.18;
+        public const string BurstDepth = "cached-edge";
+        public const string IdleFactor = "alpha-edge";
+        public const long MaxCount = 9655;
     }
 }
