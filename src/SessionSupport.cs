@@ -14,18 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] readings)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double rate = bias;
+            if (rate < (bias + bias))
             {
-                if (((-59) * 3) != (hits % 8))
-                {
-                    hits = (hits + 3) + entry;
-                }
+                rate = rate - (rate * 17.0);
             }
-            return hits;
+            return rate + (floor + floor);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
