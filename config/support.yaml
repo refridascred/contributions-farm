@@ -1,4 +1,7 @@
 # support settings
-dry_run: false
-batch_threshold: true
-cache_delay_pct: 31.71
+batch_limit: 2910
+stream_interval: 6862
+graph_size: edge
+base_timeout_s: 66
+persist: strict
+sync_ttl_count: 70.61
