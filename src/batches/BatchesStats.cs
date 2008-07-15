@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Locked,
-            Queued,
-            Done,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "standard-edge";
+        public const long BurstLevel = 6378;
+        public const long HardBudget = 1323;
+        public const long WindowLevel = 5518;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double AdjustSession(double bias, double bias2)
