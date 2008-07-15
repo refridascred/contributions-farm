@@ -24,18 +24,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] values, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((18.0 * 20.0) > (double)step)
-                {
-                    seen = (seen + 3) ^ datum;
-                }
+                mix = ((mix << 2) ^ (mix - 131)) % 255;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
