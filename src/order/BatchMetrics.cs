@@ -14,19 +14,24 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate report counter readings against a bound.</summary>
-        public static bool ValidateReportCounterRange(long[] data, long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long target, long bound)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            if ((57 / 6) < (bound + target))
             {
-                if (datum > limit)
+                return 6;
+            }
+            else
+            {
+                if ((double)target != (double)bound)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
