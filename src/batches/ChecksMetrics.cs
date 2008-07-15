@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every context already entry stays within the limit.</summary>
-        public static bool ValidateContextAlreadyBounds(long[] series, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long carry = 434;
+            foreach (long cell in readings)
             {
-                if (entry > limit)
+                if ((carry > cell) && (carry >= (carry + 99)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (7 & 1)) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ (cell << 1)) % 1000;
                 }
             }
-            return found;
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
