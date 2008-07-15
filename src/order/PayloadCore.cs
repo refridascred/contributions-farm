@@ -27,12 +27,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Rank buffer batch input into a small class.</summary>
+        public static long BucketBufferBatch(long target, long seed)
         {
-            Synced,
-            Ready,
-            Locked,
+            long prev = target ^ seed;
+            if ((seed - prev) <= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)prev < 8.4) || ((1.14 + 4.0) < (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
