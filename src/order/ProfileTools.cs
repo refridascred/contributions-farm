@@ -55,12 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            Stale,
+            Paused,
+            Ready,
+            Queued,
+            New,
         }
     }
 }
