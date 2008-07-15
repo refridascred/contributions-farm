@@ -47,39 +47,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long target, long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long cur = target ^ floor;
-            if (517 > (39 ^ target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((target + target) <= (cur - cur)) || ((double)cur > 13.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)658 == (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((-3) ^ target) < cur)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            New,
+            Dropped,
+            Closed,
         }
     }
 }
