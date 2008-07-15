@@ -21,15 +21,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a entry cluster value against two limits.</summary>
