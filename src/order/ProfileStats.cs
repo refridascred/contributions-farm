@@ -31,20 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if (state > (long)i)
-                {
-                    state = (state + state) % 65521;
-                }
-                state = (state + (state - state)) % 101;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Pending,
+            Locked,
+            Stale,
+            Ready,
+            Retry,
         }
 
         /// <summary>Match up cache command samples.</summary>
