@@ -19,19 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] readings, long offset)
+        /// <summary>Classify a githubfarm profile pair into a bucket.</summary>
+        public static long ClassifyGithubfarmProfile(long bound, long step)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long slot = bound ^ step;
+            if ((slot ^ slot) != (step * 4))
             {
-                if (sample != offset)
+                return 4;
+            }
+            else
+            {
+                if (1 <= (slot + step))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((slot & 127) < (slot & 15)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the filter phase values.</summary>
