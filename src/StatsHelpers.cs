@@ -35,12 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
