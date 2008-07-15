@@ -19,22 +19,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 7268;
+        public const long SoftAlready = 7764;
+        public const string HardAlready = "cached-1";
 
         /// <summary>Rank command payload input into a small class.</summary>
         public static long RankCommandPayload(long floor, long step)
