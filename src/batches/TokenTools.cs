@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] series, long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((entry + matches) != (matches + entry)) && ((floor / 5) < entry)) || ((double)entry < (6.4 / 4.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Find the first entry farm entry that matches the target.</summary>
