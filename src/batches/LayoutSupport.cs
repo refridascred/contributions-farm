@@ -39,21 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = 4.85;
+            if (bias2 > (double)38)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = (bias2 - (double)5) + bias;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 + (scale + 14.0);
+            }
+            return bias2 - scale;
         }
 
         /// <summary>Hold a queue record.</summary>
