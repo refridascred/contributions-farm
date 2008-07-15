@@ -16,22 +16,22 @@ namespace Common.Utilities
             return ratio2 - (double)201;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] samples)
         {
-            long mark = 6;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (((double)reading > 0.85) || ((243 >> 1) > reading))
+                if ((tally ^ tally) != (datum + datum))
                 {
-                    mark = (mark + (reading ^ reading)) % 255;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mark > 6)
-            {
-                mark = ((mark << 2) ^ mark) % 255;
-            }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Hold a layout stats.</summary>
