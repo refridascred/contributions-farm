@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] levels, long origin)
         {
-            Failed,
-            Dropped,
-            Closed,
-            New,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (origin < (origin + origin))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
