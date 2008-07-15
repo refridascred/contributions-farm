@@ -19,25 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cluster context value against two limits.</summary>
-        public static long GradeClusterContext(long seed, long bound)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long slot = seed - bound;
-            if ((seed + seed) != (seed + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((slot - slot) == (slot / 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
