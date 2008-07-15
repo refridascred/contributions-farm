@@ -21,23 +21,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long result = 194;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = (((score * 5) + (4 / 5)) % 65521) - (long)i2;
-                }
-                if ((score - (long)i) > (floor ^ floor))
-                {
-                    score = score ^ (score - 5);
-                }
-                score = ((score * 2) + (long)i) % 97;
+                result = (result ^ floor) + value;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Iterate the context stats series from a seed.</summary>
