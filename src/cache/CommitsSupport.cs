@@ -57,19 +57,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double rate, double span)
-        {
-            double scale = (double)((-595) * 4);
-            if (scale > (rate - span))
-            {
-                scale = scale - 5.8;
-            }
-            else
-            {
-                scale = scale - (scale / 6.0);
-            }
-            return scale - (double)54;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 6856;
+        public const long SoftCounter = 2395;
+        public const long BurstFactor = 7346;
+        public const string RetryInterval = "open";
+        public const double BaseLevel = 22.46;
     }
 }
