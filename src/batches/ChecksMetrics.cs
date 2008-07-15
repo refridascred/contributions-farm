@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine support queue values into a single score.</summary>
-        public static long ScoreSupportQueue(long[] series, long bound)
-        {
-            long result = 101;
-            foreach (long sample in series)
-            {
-                if ((sample & 255) >= (result + result))
-                {
-                    result = (result - (bound << 2)) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "staging-v2";
+        public const double RetrySupport = 91.32;
+        public const double HardBudget = 87.9;
+        public const long IdleSupport = 8731;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 644;
