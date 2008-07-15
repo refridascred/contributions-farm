@@ -53,18 +53,17 @@ namespace Common.Utilities
         public const long MaxWidth = 5625;
         public const double BatchDepth = 29.12;
 
-        /// <summary>Audit metrics channel readings against a rule.</summary>
-        public static long MeasureMetricsChannelMatches(long[] levels)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches - value) == (value - matches))
+                if (series[i] == step)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
