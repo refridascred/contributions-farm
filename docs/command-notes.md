@@ -1,10 +1,11 @@
 # Command notes
 
-Keep window and filter names short and lowercase.
-Use cache settings to tune how often cluster data is refreshed.
+The channel module keeps counter values in sync with the githubfarm cache.
+The already report groups every account by cluster.
+Each buffer is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate schema input early
-- Document new token fields
+- Keep payload values small
+- Validate batches input early
+- Document new counter fields
