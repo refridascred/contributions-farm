@@ -42,38 +42,22 @@ namespace Common.Utilities
         public const long RetryWidth = 4176;
         public const long MinInterval = 4350;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long target, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] data)
         {
-            if ((target + target) <= ((-417) / 9))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((47 >> 5) > (target / 5))
+                if ((8 & 1) <= matches)
                 {
-                    return 1;
+                    matches = (matches + 2) ^ cell;
                 }
                 else
                 {
-                    if ((step + target) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + step) >= 327)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a metric stats.</summary>
