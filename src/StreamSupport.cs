@@ -42,13 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((10.0 / 2.0) != (double)(long)i))
+                {
+                    anchor = ((anchor * 4) + (anchor + 8)) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
