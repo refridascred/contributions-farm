@@ -1,6 +1,5 @@
 {
-  "batch_ratio": "fallback",
-  "checks_capacity": "latest",
-  "poll_ttl": ["latest", "standard", "primary"],
-  "dry_run": 5847
+  "verbose": 9,
+  "metrics_retries": 66.25,
+  "burst_timeout": 89
 }
