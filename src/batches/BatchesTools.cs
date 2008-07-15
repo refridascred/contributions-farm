@@ -24,16 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] data, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                mix = ((mix << 2) ^ (mix - 131)) % 255;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
     }
 }
