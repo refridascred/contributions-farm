@@ -12,14 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] series)
         {
-            Locked,
-            Queued,
-            Synced,
-            Paused,
-            Retry,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((54 + hits) < value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits class values.</summary>
