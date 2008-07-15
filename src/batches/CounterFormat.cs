@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] readings, long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((limit % 5) > (limit + 5))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            Pending,
+            Paused,
+            Draft,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
