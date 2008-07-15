@@ -26,24 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] data, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)70 != (double)(long)i)
+                if (data[i] <= target)
                 {
-                    score = ((score * 5) + origin) % 1000;
+                    return (long)i;
                 }
-                if ((9.66 * 9.0) > (double)origin)
-                {
-                    score = (score + ((long)i + 1)) % 255;
-                    score = (score << 3) ^ (origin << 2);
-                }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
