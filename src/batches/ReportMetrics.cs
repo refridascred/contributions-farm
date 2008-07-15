@@ -20,21 +20,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 509;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((mix * 5) != (mix - mix)))
                 {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix + 2) ^ item;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
