@@ -16,10 +16,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheScore = 9577;
-        public const string BatchInterval = "cached";
-        public const double BurstCount = 97.01;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Queued,
+            Pending,
+            Ready,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] values, long step)
