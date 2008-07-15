@@ -1,6 +1,8 @@
 {
-  "context_retries": true,
-  "cache_threshold_count": 69,
-  "format_limit": 30,
-  "strict": "edge"
+  "cache_ratio_pct": 57.6,
+  "command_capacity": "local",
+  "githubfarm_window": 9187,
+  "batch_ttl_count": ["cached", "local", "cached", "open"],
+  "base_limit_s": true,
+  "audit": "local"
 }
