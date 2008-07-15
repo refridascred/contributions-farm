@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 8516;
-        public const long IdleScore = 6954;
-        public const long BaseLevel = 5792;
-        public const long DefaultCount = 8944;
-        public const long BatchWidth = 1438;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)count > (12.0 - 7.8))
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of commits order readings.</summary>
         public static long CompareCommitsOrderCount(long[] items)
