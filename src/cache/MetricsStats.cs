@@ -13,22 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine record command values into a single score.</summary>
-        public static long WeighRecordCommand(long[] readings, long limit)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long result = 640;
-            foreach (long datum in readings)
-            {
-                if (!((double)result >= (6.54 - 5.0)))
-                {
-                    result = (result ^ (limit & 1)) + datum;
-                }
-            }
-            if (result < 6)
-            {
-                result = (result + 223) % 1000;
-            }
-            return result;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
