@@ -1,13 +1,12 @@
 {
-  "entry_timeout": {
-    "counter_depth": ["strict", "green", "edge"],
-    "payload_depth": false,
-    "default_ratio_pct": true,
-    "base_depth": 22,
-    "sync_timeout_pct": "standard",
-    "retry_interval_s": 9321
+  "record_delay": 60,
+  "already_limit": {
+    "cache_ratio_s": "green",
+    "flush_timeout": [472, 380, 259],
+    "strict": 54
   },
-  "persist": 3979,
-  "order_window": 18,
-  "hard_interval_ms": 2539
+  "idle_limit_count": 57,
+  "compress": "strict",
+  "poll_size_s": [499, 493],
+  "idle_threshold": "local"
 }
