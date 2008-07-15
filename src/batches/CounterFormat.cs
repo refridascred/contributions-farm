@@ -30,10 +30,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxSpan = 20.22;
-        public const long BurstLevel = 6388;
-        public const long SoftDepth = 1258;
-        public const string LimitRoute = "strict-edge";
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (entry >= (3 << 3))
+                {
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
