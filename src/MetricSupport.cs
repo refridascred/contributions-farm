@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 8.02;
-        public const long RetryBatch = 9455;
-        public const long SoftBatch = 2349;
-        public const double MaxCount = 59.16;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Retry,
+            Synced,
+            Active,
+        }
 
         /// <summary>Derive the next metrics counter value from a seed.</summary>
         public static long DeriveMetricsCounter(long offset)
