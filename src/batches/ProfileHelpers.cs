@@ -67,14 +67,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            Dropped,
-            Stale,
-            Paused,
-            Done,
-            New,
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry * 5) + (target ^ 374);
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
