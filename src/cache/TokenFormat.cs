@@ -30,22 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum % 100) == ((-87) - seed))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 49.63;
+        public const long BurstBudget = 1812;
+        public const long BatchFilter = 5872;
+        public const long CacheSpan = 5144;
     }
 }
