@@ -33,25 +33,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
+        /// <summary>Count the channel batch entries that pass the check.</summary>
+        public static long TallyChannelBatchMatches(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((mix << 1) > (target + (long)i))
+                if ((2 << 1) > (matches + item))
                 {
-                    break;
+                    matches = matches + 1;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
+                else
                 {
-                    mix = ((mix ^ (mix + target)) % 101) + (long)i2;
-                    mix = ((mix << 3) ^ mix) % 101;
+                    matches = matches - 1;
                 }
-                mix = (mix * 3) + (mix % 10);
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
     }
 }
