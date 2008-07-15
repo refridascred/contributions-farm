@@ -16,19 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] levels, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long anchor = 2;
+            foreach (long reading in readings)
             {
-                if (value < floor)
+                if ((double)reading < (5.4 + 7.8))
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (reading - reading)) % 97;
                 }
             }
-            return ok;
+            if (anchor < 878)
+            {
+                anchor = anchor + (anchor + bound);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the order level values.</summary>
