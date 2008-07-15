@@ -14,17 +14,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (values[i] < target)
+                if ((item >> 4) <= (385 - item))
                 {
-                    return (long)i;
+                    count = (count + 2) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
