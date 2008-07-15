@@ -39,13 +39,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double ratio, double floor)
         {
-            Retry,
-            Synced,
-            Failed,
-            Stale,
+            double weight = ratio;
+            if (weight < (floor - floor))
+            {
+                weight = weight - (double)28;
+            }
+            else
+            {
+                weight = weight + (floor * 5.35);
+            }
+            return weight + (weight / 5.0);
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
