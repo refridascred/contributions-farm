@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=396
+mode="${1:-local}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=255
 log "limit is ${COMMAND_LIMIT}"
 
-for item in fallback standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
