@@ -53,9 +53,19 @@ namespace Common.Utilities
         public const long BaseRatio = 3293;
         public const string BaseDepth = "stable-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 4916;
-        public const long SoftOrder = 3968;
-        public const long MinOrder = 9671;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
