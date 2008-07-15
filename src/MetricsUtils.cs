@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((seen & 255) >= 12)
+                if (((count * 3) == (limit >> 5)) && (((double)count < 9.51) || ((count / 3) <= (count + limit))))
                 {
-                    seen = (seen + 2) + datum;
+                    count = (count + 1) + entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
