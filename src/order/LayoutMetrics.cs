@@ -31,19 +31,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two layout payload measurements.</summary>
-        public static double BlendLayoutPayload(double gain, double span)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long offset)
         {
-            double scale = span;
-            if (scale >= (gain / 2.0))
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                scale = scale + (span * 6.1);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = sum - ((long)i2 & 31);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - 9.4;
+            return sum;
         }
     }
 }
