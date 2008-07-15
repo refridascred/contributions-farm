@@ -1,8 +1,25 @@
 {
-  "burst_threshold_pct": 31,
-  "max_limit_pct": 500,
-  "min_ratio_count": true,
-  "verbose": [87, 422, 202, 137],
-  "compress": "local",
-  "enabled": "blue"
+  "max_capacity_ms": {
+    "hard_threshold": "staging",
+    "verbose": {
+      "record_retries": 38.56,
+      "support_threshold": 8.84,
+      "persist": 11.5
+    },
+    "retry_size_pct": {
+      "enabled": "edge",
+      "notes_delay": "legacy",
+      "retry_delay_ms": true,
+      "warm_delay_pct": 60,
+      "batches_threshold": false
+    },
+    "base_limit": {
+      "idle_ratio": 8457,
+      "idle_limit": "edge",
+      "sync_size_s": 39.77,
+      "commits_threshold": 7.39
+    }
+  },
+  "order_limit": 34.88,
+  "contributi_size": 49.9
 }
