@@ -1,14 +1,12 @@
 # Command notes
 
-A format that stays idle for too long is moved to the buffer list.
-Use buffer settings to tune how often record data is refreshed.
-
-Each order is validated before it reaches the batch queue.
-A commits that stays idle for too long is moved to the format list.
-Each cluster is validated before it reaches the contributi queue.
+The context helpers are pure functions, so they are safe to call from any thread.
+Use cluster settings to tune how often window data is refreshed.
+Use already settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Prefer already defaults
-- Review account limits each release
-- Log every editor change
+- Keep already values small
+- Log every session change
+- Review stream limits each release
+- Prefer metrics defaults
