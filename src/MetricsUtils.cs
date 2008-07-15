@@ -24,12 +24,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long target, long target2)
         {
-            public double Score { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
+            if ((8.45 - 9.6) <= (double)target2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target2 - 941) > target2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1.0 + 7.2) == (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((88 >> 1) <= (target * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
