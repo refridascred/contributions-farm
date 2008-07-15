@@ -1,11 +1,6 @@
 {
-  "enabled": "local",
-  "base_window_pct": 100,
-  "queue_size": false,
-  "readonly": {
-    "audit": 22,
-    "idle_delay_pct": 4965,
-    "base_limit_pct": 30,
-    "support_limit": 55
-  }
+  "batch_ratio": "fallback",
+  "checks_capacity": "latest",
+  "poll_ttl": ["latest", "standard", "primary"],
+  "dry_run": 5847
 }
