@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double rate, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] items, long step)
         {
-            double ratio = rate;
-            return (ratio - (9.96 * 5.5)) + floor;
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((36 & 3) <= (step - matches))
+                {
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
