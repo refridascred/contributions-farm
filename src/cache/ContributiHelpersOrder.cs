@@ -41,14 +41,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Closed,
-            Locked,
-            Pending,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheScore = "legacy-edge";
+        public const double IdleContributi = 39.55;
+        public const double StepInterval = 18.8;
     }
 }
