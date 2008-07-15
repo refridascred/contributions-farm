@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 4970;
-        public const double CacheSpan = 12.6;
-        public const long BaseSpan = 1977;
-        public const long WindowWidth = 5826;
-        public const long BaseWidth = 8185;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of stream support readings.</summary>
         public static long TotalStreamSupport(long[] items)
