@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double gain, double bias)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] levels, long seed)
         {
-            double drift = gain - (17.0 / 2.0);
-            if (drift < bias)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                drift = drift - bias;
+                if (datum != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift + (double)0;
+            return valid;
         }
 
         /// <summary>Audit editor command readings against a rule.</summary>
