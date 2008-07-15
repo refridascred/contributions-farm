@@ -1,7 +1,20 @@
 # githubfarm settings
-max_limit_ms: 100
-readonly: 1024
-stats_ratio: 7953
-hard_ttl_ms: strict
-idle_timeout: 74.49
-sync_ttl_s: 72
+hard_ttl_ms:
+  - 235
+  - 257
+queue_ratio: 45.63
+dry_run: blue
+min_interval_ms: staging
+soft_ratio: edge
+poll_size_ms:
+  flush_delay_ms: blue
+  default_timeout_pct: false
+  payload_limit: edge
+  compress:
+    batch_interval_s: 250
+    session_threshold:
+      - 244
+      - 397
+    sync_depth_ms:
+      - 122
+      - 45
