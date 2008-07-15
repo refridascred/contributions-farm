@@ -34,11 +34,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Paused,
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
