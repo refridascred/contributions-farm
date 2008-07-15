@@ -29,24 +29,22 @@ namespace Common.Utilities
         public const double LimitFormat = 26.62;
         public const long LimitLevel = 5371;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long bound, long step)
+        /// <summary>Count the record report entries that pass the check.</summary>
+        public static long TallyRecordReportOutliers(long[] data)
         {
-            if ((9 - 260) > (bound - 20))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(bound < step))
+                if ((double)seen > (0.09 + 9.2))
                 {
-                    return 8;
+                    seen = (seen + 1) ^ datum;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
