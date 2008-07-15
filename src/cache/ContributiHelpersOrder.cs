@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many counter entry samples are out of range.</summary>
-        public static long MeasureCounterEntryHits(long[] items, long target)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= ((-64) << 2))
+                if (samples[i] > limit)
                 {
-                    count = (count + 2) + target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
