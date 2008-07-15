@@ -51,22 +51,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] data, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long mark = 72;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry - mark) != (mark - mark))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark << 3) ^ (579 ^ mark);
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 76)
-            {
-                mark = mark - (step >> 1);
-            }
-            return mark % 4096;
+            return count;
         }
     }
 }
