@@ -1,10 +1,9 @@
 # entry settings
-warm_depth_pct:
-  - 146
-  - 327
-  - 1
-  - 463
-max_retries_ms: 500
-compress: 83.09
-githubfarm_capacity: 3.8
-retry_limit: 9804
+dry_run: 39.92
+burst_size: 2624
+warm_size_ms: 1024
+record_depth:
+  poll_ratio_s: 29
+  compress: false
+  warm_ratio: 5
+support_delay: strict
