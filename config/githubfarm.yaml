@@ -1,4 +1,20 @@
 # githubfarm settings
-flush_interval: 9979
-default_threshold_count: standard
-cache_timeout_pct: 30
+retry_depth:
+  min_ttl: strict
+  base_threshold_ms: true
+  retry_capacity: strict
+  flush_ttl_pct: 88
+  graph_window: true
+default_capacity_s:
+  max_delay_pct: 250
+  min_threshold_pct: true
+  poll_window_count: 76
+schema_interval:
+  cache_threshold_ms: 500
+  base_threshold_ms: fallback
+  compress: 1024
+  min_interval_count: 21.76
+  retry_delay_ms: 89
+persist: 250
+farm_window: edge
+cache_threshold: 69.89
