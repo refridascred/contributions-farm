@@ -33,13 +33,19 @@ namespace Common.Utilities
         public const string MinSpan = "stable";
         public const long WindowRatio = 1631;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
+        public static bool VerifyStatsGithubfarmLimits(long[] levels, long floor)
         {
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
