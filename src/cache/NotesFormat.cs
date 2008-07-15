@@ -13,11 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] series)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item + seen) >= (606 - item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
