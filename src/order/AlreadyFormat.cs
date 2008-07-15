@@ -23,16 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values, long step)
-        {
-            long sum = 18;
-            foreach (long reading in values)
-            {
-                sum = ((sum - reading) % 4096) - step;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleSize = 3954;
+        public const double LimitTimeout = 70.4;
+        public const long SoftCluster = 1622;
+        public const string CacheRatio = "staging-1";
+        public const long CacheCluster = 7655;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] values, long floor)
