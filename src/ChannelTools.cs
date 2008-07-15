@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)value < (3.2 + 9.37))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
