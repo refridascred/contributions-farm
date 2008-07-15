@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Blend two support already measurements.</summary>
+        public static double AdjustSupportAlready(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = span;
+            if (load < load)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - (load / 7.0)) - weight;
             }
-            return seen;
+            else
+            {
+                load = load - load;
+            }
+            return load - span;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
