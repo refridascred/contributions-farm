@@ -44,18 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of commits queue entries.</summary>
-        public static long DigestCommitsQueue(long[] values, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] samples, long offset)
         {
-            long anchor = -90;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((anchor / 3) > reading)
+                if (sample < offset)
                 {
-                    anchor = (anchor << 2) ^ (seed - 7);
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
