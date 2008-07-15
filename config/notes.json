@@ -1,5 +1,8 @@
 {
-  "cache_window": "eu-west",
-  "format_delay": 30,
-  "base_window_s": "strict"
+  "cluster_delay": "stable",
+  "hard_delay_ms": 250,
+  "warm_capacity_ms": true,
+  "soft_delay": "edge",
+  "notes_size": 7407,
+  "audit": ["stable", "open", "fallback"]
 }
