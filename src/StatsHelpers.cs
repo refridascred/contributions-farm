@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit already context readings against a rule.</summary>
-        public static long TallyAlreadyContextGaps(long[] values, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((bound + (long)values.Length) < ((long)values.Length + count)) && (((bound + (-4)) >= (value - count)) && ((bound - count) <= (count / 3))))
+                if (values[i] < offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
