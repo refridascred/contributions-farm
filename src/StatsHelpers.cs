@@ -60,11 +60,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] data, long floor)
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry % 3) > matches)
+                {
+                    matches = (matches + 3) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
