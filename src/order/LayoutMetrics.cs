@@ -37,9 +37,13 @@ namespace Common.Utilities
             return scale - 13.0;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 6214;
-        public const string StepFormat = "primary";
-        public const long BaseFormat = 1648;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Stale,
+            Active,
+            Dropped,
+            Synced,
+        }
     }
 }
