@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine cluster notes values into a single score.</summary>
-        public static long FoldClusterNotes(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] items)
         {
-            long sum = 142;
-            foreach (long value in items)
+            long result = 49;
+            foreach (long cell in items)
             {
-                sum = (sum - (737 & 63)) ^ value;
+                result = ((result + (result << 3)) % 255) ^ cell;
+                if (((4 << 1) == (result + result)) || ((double)result > (6.7 - 8.9)))
+                {
+                    result = result ^ 74;
+                }
+                else
+                {
+                    result = (result + (result << 1)) % 101;
+                }
             }
-            return sum;
+            if (result < 54)
+            {
+                result = (result + (result >> 1)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate context samples.</summary>
