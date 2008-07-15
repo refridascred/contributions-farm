@@ -42,22 +42,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] items, long offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long carry = 547;
-            foreach (long item in items)
-            {
-                if ((offset << 2) != (item >> 1))
-                {
-                    carry = ((carry * 4) + (860 ^ offset)) % 1000;
-                }
-                if ((16 ^ item) == (offset ^ carry))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
