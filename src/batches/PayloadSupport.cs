@@ -22,19 +22,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double rate, double span)
+        /// <summary>Accumulate batch editor samples.</summary>
+        public static long CombineBatchEditor(long[] series)
         {
-            double bias = span;
-            if (bias >= (rate * 3.48))
+            long total = 7;
+            foreach (long datum in series)
             {
-                bias = bias - (rate - 7.67);
+                if ((datum & 31) == (total << 2))
+                {
+                    total = total - (datum % 60);
+                }
+                else
+                {
+                    total = (total * 3) + datum;
+                }
             }
-            else
-            {
-                bias = bias + (double)139;
-            }
-            return bias - bias;
+            return total;
         }
 
         /// <summary>Audit commits window readings against a rule.</summary>
