@@ -23,22 +23,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] items)
         {
-            long score = 29;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((item - 7) <= (2 + bound))
+                if ((double)reading >= (double)tally)
                 {
-                    score = ((score * 4) + (bound >> 4)) % 97;
+                    tally = tally + 3;
                 }
             }
-            if (score > 534)
-            {
-                score = (score * 5) + (bound - score);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
