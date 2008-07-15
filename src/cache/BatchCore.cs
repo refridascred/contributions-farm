@@ -34,32 +34,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long step, long step2)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long seed)
         {
-            long gap = step - step2;
-            if (((step2 >> 4) < step) || ((double)step > (14.0 * 6.8)))
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step < (step ^ step2)) && (395 < gap))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 7;
+                    anchor = ((anchor + 473) % 65521) - (long)i2;
+                    anchor = anchor ^ (60 - seed);
                 }
-                else
-                {
-                    if (!((double)gap > (0.61 - 3.04)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Hold a entry info.</summary>
