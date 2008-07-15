@@ -21,19 +21,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Check that every command format entry stays within the limit.</summary>
+        public static bool VerifyCommandFormatBounds(long[] values, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (reading < origin)
                 {
-                    state = ((state * 4) + (6 - (long)i)) - (long)i2;
+                    found = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
