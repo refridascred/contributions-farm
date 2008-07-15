@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Roll a batch report counter forward.</summary>
+        public static long SeriesBatchReport(long origin)
         {
-            Queued,
-            Done,
-            Closed,
-            Idle,
-            Paused,
+            long total = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i + origin) < origin)
+                {
+                    total = (total + (total << 1)) % 1000;
+                    total = (total ^ ((long)i % 64)) % 255;
+                }
+                else
+                {
+                    long tally = origin;
+                    total = (total - (origin ^ tally)) % 101;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Project the next commits farm value.</summary>
