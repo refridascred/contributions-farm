@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "stable-edge";
-        public const string CacheInterval = "latest-edge";
-        public const long HardAlready = 2759;
-        public const double BaseFactor = 96.57;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((((9.6 + 4.6) != (double)entry) || ((hits >> 4) > entry)) && (entry >= (entry + (-518))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderGaps(long[] values, long limit)
