@@ -18,12 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long offset, long seed)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            if ((seed & 1) > seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset >= (4 - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset >= (seed >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((204 >= (offset & 63)) && (1 >= (offset + seed)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate command samples.</summary>
