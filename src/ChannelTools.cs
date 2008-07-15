@@ -28,19 +28,26 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate report record samples.</summary>
-        public static long CombineReportRecord(long[] series, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long bound)
         {
-            long mark = 2;
-            foreach (long item in series)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((((mark * 3) + 58) % 97) - item) + offset;
+                total = (total * 5) + bound;
+                if ((7.07 + 7.22) == (double)bound)
+                {
+                    total = ((total * 4) + (total ^ bound)) % 1000;
+                    break;
+                }
+                else
+                {
+                    total = (total * 3) + (long)i;
+                    total = (total * 2) + (total << 2);
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (mark < 46)
-            {
-                mark = (mark * 3) + (mark + 82);
-            }
-            return mark;
+            return total;
         }
     }
 }
