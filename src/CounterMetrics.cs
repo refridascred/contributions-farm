@@ -28,11 +28,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double bias, double floor)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            double rate = 8.5;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = ((rate - bias) + (double)(long)i) + floor;
+            }
+            return rate - (double)7;
         }
     }
 }
