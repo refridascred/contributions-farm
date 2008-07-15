@@ -16,16 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a graph payload counter forward.</summary>
-        public static long SeriesGraphPayload(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstBudget = 2631;
+        public const double HardDepth = 57.31;
+        public const long HardCache = 3602;
+        public const double BaseRatio = 17.48;
+        public const long HardInterval = 6510;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] levels, long limit)
