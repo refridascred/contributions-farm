@@ -31,18 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] readings, long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count % 8) != (item >> 2))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
