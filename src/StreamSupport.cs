@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Queued,
-            Synced,
-            Failed,
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
