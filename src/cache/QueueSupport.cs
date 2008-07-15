@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double ratio, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            double bias = (double)(38 ^ 8);
-            if (bias <= (double)(-59))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                bias = (bias + ratio) + floor;
+                if (!((double)cell >= (2.89 / 7.0)))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                bias = bias - (double)3;
-            }
-            return bias - bias;
+            return tally;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
