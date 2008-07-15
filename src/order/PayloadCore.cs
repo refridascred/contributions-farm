@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] series, long limit)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
