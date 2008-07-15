@@ -25,15 +25,38 @@ namespace Common.Utilities
         public const long RetryWidth = 3285;
         public const long MaxFactor = 4583;
 
-        /// <summary>Project the next cache buffer value.</summary>
-        public static double AdjustCacheBuffer(double ratio, double offset)
+        /// <summary>Classify a stream contributi pair into a bucket.</summary>
+        public static long RankStreamContributi(long step, long offset)
         {
-            double scale = offset;
-            if (scale <= (double)6)
+            if ((7.0 - 1.2) < (double)step)
             {
-                scale = scale + (ratio + scale);
+                return 8;
             }
-            return scale - scale;
+            else
+            {
+                if (((506 << 1) > (offset >> 2)) && (step > (5 & 127)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (55 <= (85 - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step > offset) || ((offset & 3) != (99 >> 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
