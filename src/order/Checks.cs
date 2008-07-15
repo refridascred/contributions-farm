@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] values, long step)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
