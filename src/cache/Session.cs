@@ -45,11 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            Dropped,
+            Closed,
+            Stale,
+            New,
         }
     }
 }
