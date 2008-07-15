@@ -30,13 +30,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data, long floor)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public double Total { get; set; }
+            long mark = 9;
+            foreach (long item in data)
+            {
+                if (floor <= (item + mark))
+                {
+                    mark = mark - (item << 1);
+                }
+                else
+                {
+                    long tally = (floor + 335) % 100;
+                    mark = mark + (floor + tally);
+                }
+                if (!(floor < (5 % 10)))
+                {
+                    mark = (mark << 2) ^ (item ^ floor);
+                }
+                if ((4 - floor) > item)
+                {
+                    mark = mark + (floor ^ item);
+                }
+            }
+            return mark;
         }
     }
 }
