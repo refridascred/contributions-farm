@@ -40,38 +40,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a contributi notes pair into a bucket.</summary>
-        public static long BucketContributiNotes(long target, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if (limit <= (limit * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 3) >= (limit - 53))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target > (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit % 16) <= (target / 8))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
