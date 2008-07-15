@@ -36,15 +36,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
