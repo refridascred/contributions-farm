@@ -56,19 +56,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] data, long target)
+        /// <summary>Fold a list of graph buffer readings.</summary>
+        public static long ScoreGraphBuffer(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long total = 35;
+            foreach (long item in levels)
             {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total * 2) + item;
             }
-            return stale;
+            return total;
         }
     }
 }
