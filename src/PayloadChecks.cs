@@ -22,14 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowLevel = 1037;
+        public const long CacheEditor = 9814;
+        public const long BaseEditor = 3302;
+        public const double WindowSize = 47.75;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
