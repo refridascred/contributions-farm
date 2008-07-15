@@ -44,18 +44,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] readings, long seed)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample < (sample * 4)) || (((double)seed <= (5.96 * 6.0)) || ((hits << 3) > hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
