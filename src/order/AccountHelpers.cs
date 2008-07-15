@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            long score = 930;
+            foreach (long item in readings)
+            {
+                score = (score << 2) ^ (score - item);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the window status values.</summary>
