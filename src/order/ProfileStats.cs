@@ -42,22 +42,18 @@ namespace Common.Utilities
         public const double RetryMetrics = 85.71;
         public const long CacheMetrics = 4562;
 
-        /// <summary>Fold a list of report filter readings.</summary>
-        public static long DigestReportFilter(long[] values)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] samples, long limit)
         {
-            long mix = 94;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((value - mix) < value) && ((mix & 31) <= mix))
+                if (((16.0 * 1.0) <= (double)limit) || ((double)519 == (double)entry))
                 {
-                    mix = (mix + (mix % 10)) % 65521;
-                }
-                if (20.0 < (double)value)
-                {
-                    mix = mix - (981 * 5);
+                    matches = matches + 3;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
