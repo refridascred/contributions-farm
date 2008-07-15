@@ -1,8 +1,9 @@
-id,weight,active
-1,standard,local
-2,733,917
-3,76,strict
-4,97.48,local
-5,490,459
-6,717,7.14
-7,558,edge
+id,level,score
+1,edge,fallback
+2,948,eu-west
+3,local,8.48
+4,edge,93.01
+5,427,blue
+6,633,79.66
+7,18.36,28.35
+8,160,latest
