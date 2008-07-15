@@ -14,15 +14,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double ratio = (double)(52 % 10);
-            if (ratio > rate)
-            {
-                ratio = ratio + bias;
-            }
-            return ratio + (double)612;
+            Pending,
+            Done,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the counter level values.</summary>
