@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long carry = 36;
+            foreach (long entry in readings)
             {
-                if (datum < (offset << 2))
+                if ((floor + 403) <= 63)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = ((carry + 76) % 65521) ^ entry;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
