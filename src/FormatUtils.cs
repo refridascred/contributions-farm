@@ -20,13 +20,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Classify a support metric pair into a bucket.</summary>
