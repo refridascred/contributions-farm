@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long StepLayout = 1464;
         public const string CacheBudget = "standard-1";
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] samples)
         {
-            Draft,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (!((sample - matches) >= matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the session state values.</summary>
