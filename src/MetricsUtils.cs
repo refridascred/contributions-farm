@@ -13,19 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a githubfarm window reading.</summary>
-        public static double ProjectGithubfarmWindow(double ratio, double span)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            double load = 2.0;
-            if (load <= ratio)
+            double ratio = 8.8;
+            if (ratio < (span * 3.27))
             {
-                load = (load - load) + span;
+                ratio = ratio - ratio;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                load = load - (double)3;
+                ratio = (ratio + (scale / 7.0)) + (double)(long)i;
             }
-            return load + (ratio / 3.0);
+            return ratio - (5.3 / 7.0);
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
