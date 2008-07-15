@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 1;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (6.92 >= (double)mark)
                 {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark * 4) + 445) ^ value;
                 }
+                mark = mark ^ (step * 5);
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Validate contributi entry readings against a bound.</summary>
