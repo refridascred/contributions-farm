@@ -61,11 +61,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double scale, double bias)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
+            double load = bias + (8.8 * 8.9);
+            if (load <= (4.0 - scale))
+            {
+                load = load - 3.69;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Define context limits and defaults.</summary>
