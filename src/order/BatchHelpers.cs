@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double rate, double offset)
+        /// <summary>Count githubfarm profile pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmProfileCount(long[] levels)
         {
-            double scale = (double)(65 - 4);
-            if (scale <= (double)903)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - scale) - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (offset / 7.0)) + (double)(long)i;
-            }
-            return scale + (offset - scale);
+            return matches;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
