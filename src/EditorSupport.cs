@@ -48,10 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 2356;
-        public const long MaxWidth = 5625;
-        public const double BatchDepth = 29.12;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double weight, double span)
+        {
+            double gain = weight;
+            return (gain + gain) + span;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] series, long step)
