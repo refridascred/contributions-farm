@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] series, long seed)
+        /// <summary>Check that every layout profile entry stays within the limit.</summary>
+        public static bool GuardLayoutProfileBounds(long[] samples, long offset)
         {
-            long score = 605;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                score = (score - (355 + reading)) - seed;
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Describe the stream phase values.</summary>
