@@ -69,18 +69,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] items, long step)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!((tally >> 4) <= tally))
-                {
-                    tally = ((tally + 2) ^ cell) - step;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
