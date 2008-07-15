@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 3773;
-        public const long BurstEntry = 4999;
-        public const double MinSpan = 27.35;
-        public const double IdleEntry = 50.78;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 8516;
+        public const long IdleScore = 6954;
+        public const long BaseLevel = 5792;
+        public const long DefaultCount = 8944;
+        public const long BatchWidth = 1438;
 
         /// <summary>Measure how many contributi already samples are out of range.</summary>
         public static long TallyContributiAlreadyMatches(long[] values)
