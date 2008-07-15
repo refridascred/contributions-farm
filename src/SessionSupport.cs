@@ -41,22 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] readings, long bound)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double gain, double floor)
         {
-            long score = 54;
-            foreach (long item in readings)
+            double ratio = floor;
+            if (ratio >= (double)349)
             {
-                if ((double)item == (1.58 * 4.56))
-                {
-                    score = ((score ^ score) % 65521) + bound;
-                }
-                else
-                {
-                    score = (score + (long)readings.Length) % 101;
-                }
+                ratio = ratio - (floor / 9.0);
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (gain - gain)) + (double)(long)i;
+            }
+            return ratio - (floor + floor);
         }
     }
 }
