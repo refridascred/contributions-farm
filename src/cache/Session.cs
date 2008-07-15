@@ -14,14 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] readings, long seed)
         {
-            Paused,
-            Retry,
-            Stale,
-            Done,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit layout entry readings against a rule.</summary>
