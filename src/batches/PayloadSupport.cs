@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const long BaseSize = 3143;
         public const double LimitSize = 56.33;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] data)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally + tally) < (sample / 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
