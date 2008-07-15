@@ -52,11 +52,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitCount = 62.57;
-        public const long BaseBudget = 5323;
-        public const long RetryFilter = 2304;
-        public const long StepFilter = 381;
-        public const long BaseFilter = 7595;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 519;
+        public const double HardRecord = 53.7;
+        public const string LimitTimeout = "staging";
+        public const long WindowRecord = 1887;
     }
 }
