@@ -75,18 +75,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] data)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell <= (8.87 / 9.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
