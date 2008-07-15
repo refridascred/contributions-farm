@@ -20,12 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long target)
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            if (!((double)target < 3.43))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((7 + limit) >= target) || ((3.0 - 7.31) == (double)target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target > (25 & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next route value.</summary>
