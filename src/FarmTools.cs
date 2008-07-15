@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many command profile samples are out of range.</summary>
+        public static long MeasureCommandProfileOutliers(long[] items)
         {
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample / 4) <= (count - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
