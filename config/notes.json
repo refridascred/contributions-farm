@@ -1,15 +1,5 @@
 {
-  "metric_capacity": "cached",
-  "persist": 70,
-  "graph_ttl": 8760,
-  "tools_timeout": {
-    "enabled": [414, 94, 492],
-    "readonly": 100,
-    "retry_interval_count": ["legacy", "cached", "legacy", "staging"],
-    "cache_depth_pct": 61.36,
-    "format_window": [23, 307, 15, 384],
-    "tools_depth": ["legacy", "primary", "local", "open"]
-  },
-  "idle_threshold": [250, 486, 71, 165],
-  "hard_timeout_count": 250
+  "cache_window": "eu-west",
+  "format_delay": 30,
+  "base_window_s": "strict"
 }
