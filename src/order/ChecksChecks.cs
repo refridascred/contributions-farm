@@ -24,11 +24,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 3375;
-        public const long DefaultContext = 257;
-        public const long MinDepth = 4230;
-        public const long IdleWidth = 4142;
-        public const double WindowRatio = 1.96;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long step, long floor)
+        {
+            if ((floor * 2) <= step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)floor < (double)62))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
