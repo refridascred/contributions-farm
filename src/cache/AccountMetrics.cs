@@ -51,21 +51,12 @@ namespace Common.Utilities
         public const long StepCount = 6253;
         public const double MaxRecord = 98.43;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
