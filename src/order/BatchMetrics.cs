@@ -76,18 +76,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] items)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if (((floor ^ origin) >= ((-74) + floor)) || (9 < (floor % 3)))
             {
-                if (((hits * 2) <= (hits * 4)) && (((datum & 3) > (hits & 31)) && ((datum - datum) != (488 / 7))))
+                return 3;
+            }
+            else
+            {
+                if (14 < (origin ^ floor))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (66 <= (floor >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin >= floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
