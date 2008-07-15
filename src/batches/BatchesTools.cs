@@ -38,17 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a route command sample.</summary>
-        public static long LookupRouteCommandIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "latest";
+        public const long BaseFactor = 6312;
+        public const long IdleContributi = 9042;
+        public const long BurstContributi = 3679;
     }
 }
