@@ -30,21 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of window checks readings.</summary>
-        public static long PairWindowChecksCount(long[] samples)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
