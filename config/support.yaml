@@ -1,5 +1,8 @@
 # support settings
-warm_depth_count: 8703
-flush_threshold_ms: eu-west
-persist: fallback
-retry_ttl_s: true
+contributi_delay:
+  - 54
+  - 384
+  - 370
+order_ratio: green
+default_depth_count: eu-west
+batches_threshold: latest
