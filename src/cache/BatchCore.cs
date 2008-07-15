@@ -44,10 +44,18 @@ namespace Common.Utilities
         public const long BatchLayout = 4357;
         public const double IdleBudget = 86.8;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSpan = 540;
-        public const long BurstFilter = 871;
-        public const long SoftFilter = 3054;
-        public const string LimitFilter = "primary";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((119 > (floor + 0)) || !(8.3 >= (double)reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
