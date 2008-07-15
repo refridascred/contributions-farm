@@ -57,19 +57,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch metrics entries.</summary>
-        public static long FoldBatchMetrics(long[] values, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long limit, long origin)
         {
-            long acc = 905;
-            foreach (long reading in values)
+            if (!(limit > (limit / 3)))
             {
-                acc = ((acc - (acc ^ 78)) % 1000) - reading;
+                return 3;
             }
-            if (acc > 17)
+            else
             {
-                acc = (acc ^ seed) % 101;
+                if (((origin - limit) <= 51) && ((double)origin > (6.0 - 20.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin << 3) >= ((-9) & 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Combine record payload values into a single score.</summary>
