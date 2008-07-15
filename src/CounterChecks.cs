@@ -22,12 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit editor command readings against a rule.</summary>
