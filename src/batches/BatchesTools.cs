@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 5172;
         public const long BurstContext = 8843;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] readings, long floor)
         {
-            Retry,
-            Done,
-            Paused,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((683 / 9) == ((long)readings.Length * 3))
+                {
+                    hits = ((hits + 2) + entry) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
