@@ -1,6 +1,9 @@
 # githubfarm settings
-audit: true
-default_timeout: primary
-metric_interval: false
-hard_threshold: edge
-compress: 60
+farm_window: false
+dry_run: false
+filter_timeout:
+  - 73
+  - 442
+  - 357
+base_depth: fallback
+queue_capacity: edge
