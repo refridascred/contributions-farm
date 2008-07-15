@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
