@@ -38,15 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
