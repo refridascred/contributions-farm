@@ -1,4 +1,11 @@
 # support settings
-batches_depth: green
-flush_capacity_s: blue
-max_timeout_ms: fallback
+max_capacity_ms:
+  - 148
+  - 364
+  - 211
+  - 306
+soft_depth_s: true
+sync_limit_count: staging
+metrics_retries: legacy
+batch_interval: staging
+flush_size: cached
