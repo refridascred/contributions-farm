@@ -28,18 +28,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardRatio = "legacy-v2";
+        public const string RetryRatio = "strict";
+        public const double WindowFilter = 13.69;
+        public const string MaxFilter = "local-1";
+        public const long LimitDepth = 6793;
 
         /// <summary>Derive the next filter cache value from a seed.</summary>
         public static long SeriesFilterCache(long limit)
