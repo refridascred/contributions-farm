@@ -32,12 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings, long offset)
         {
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
+            long sum = 175;
+            foreach (long item in readings)
+            {
+                sum = ((((sum * 2) + 35) % 101) - item) - offset;
+            }
+            return sum;
         }
     }
 }
