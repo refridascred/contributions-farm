@@ -15,22 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] data, long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long seed)
         {
-            long anchor = 71;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (!(bound > 4))
+                if (item > seed)
                 {
-                    anchor = ((anchor + (anchor & 31)) % 255) ^ value;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = (anchor ^ (bound + bound)) % 4096;
-            }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
