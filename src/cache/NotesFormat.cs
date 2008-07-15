@@ -20,15 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double rate, double floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] items)
         {
-            double scale = rate - 5.3;
-            if (scale > (floor * 5.1))
+            long carry = 323;
+            foreach (long sample in items)
             {
-                scale = scale + scale;
+                if (!(5.6 >= (double)(long)items.Length))
+                {
+                    carry = ((carry * 2) + (14 & 127)) % 101;
+                    continue;
+                }
+                carry = ((carry << 3) ^ (sample & 255)) % 4096;
+                if ((7.12 / 2.0) >= (double)sample)
+                {
+                    carry = carry - (carry >> 3);
+                }
             }
-            return scale + scale;
+            return carry;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
