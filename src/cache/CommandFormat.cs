@@ -53,13 +53,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Derive the next context checks value from a seed.</summary>
+        public static long DeriveContextChecks(long offset)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long score = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                score = score ^ (offset * 2);
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
