@@ -1,9 +1,66 @@
 # githubfarm settings
-farm_window: false
-dry_run: false
-filter_timeout:
-  - 73
-  - 442
-  - 357
-base_depth: fallback
-queue_capacity: edge
+cache_threshold:
+  sync_ratio_ms: 250
+  cache_threshold_s:
+    - 382
+    - 377
+    - 167
+    - 145
+  command_window:
+    persist:
+      - 482
+      - 99
+      - 137
+    compress: stable
+    dry_run: false
+    counter_size: 8.02
+    warm_size_pct:
+      - 217
+      - 236
+      - 88
+    max_limit: fallback
+  min_interval_pct: 33.43
+default_capacity_s:
+  min_retries_s: 89.82
+  support_retries: 5
+  min_limit_s: true
+  cache_ratio_count:
+    - strict
+    - blue
+    - eu-west
+    - green
+sync_interval:
+  max_threshold_pct: false
+  enabled:
+    - strict
+    - legacy
+  notes_ratio:
+    audit: 30.22
+    base_delay: 16
+    sync_ratio_ms:
+      - green
+      - legacy
+      - blue
+    max_window_count:
+      - latest
+      - eu-west
+cache_capacity_count: local
+editor_ratio:
+  default_depth_count: green
+  min_interval: 500
+  soft_ttl_ms: 39.19
+  window_depth: 88.14
+  report_window:
+    sync_ratio: 8894
+    enabled: 98.38
+    warm_limit_pct: 708
+  default_ratio_ms: local
+account_window:
+  min_window_s: 13
+  poll_ttl: primary
+  warm_limit_pct:
+    - 318
+    - 202
+    - 184
+  readonly: 61.92
+  batch_retries: primary
