@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mark = -35;
-            foreach (long cell in series)
-            {
-                mark = (((mark * 5) + (mark << 3)) % 65521) ^ cell;
-            }
-            return mark;
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a entry stats.</summary>
