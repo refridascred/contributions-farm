@@ -27,19 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry buffer readings against a rule.</summary>
-        public static long CountEntryBufferHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!!((5.4 - 9.56) == (double)hits))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardLevel = "staging-edge";
+        public const long CacheAccount = 1802;
+        public const long IdleCount = 9293;
+        public const long DefaultDepth = 4562;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
