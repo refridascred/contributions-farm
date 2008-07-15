@@ -13,15 +13,38 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double bias, double floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long floor, long origin)
         {
-            double drift = (double)(457 + 9);
-            if (drift > floor)
+            if ((floor ^ origin) < 5)
             {
-                drift = (drift + (drift - 12.0)) - bias;
+                return 8;
             }
-            return drift - (20.0 * 3.37);
+            else
+            {
+                if ((double)4 < (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin > (923 + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor < (4.7 - 1.98))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine editor metric values into a single score.</summary>
