@@ -1,16 +1,7 @@
 # entry settings
-base_depth_ms: standard
-max_retries_s: 18.46
-max_timeout:
-  burst_window_ms: 74
-  batches_retries: 60
-  min_timeout_ms: 92.19
-  base_capacity_s: 16.76
-retry_depth_s: 74.36
-queue_ttl:
-  audit: staging
-  readonly: 10.05
-  stream_window:
-    soft_ratio: latest
-    flush_ratio: edge
-    cache_depth_ms: 44.59
+dry_run: false
+retry_interval_ms: 100
+format_ttl: edge
+payload_limit: eu-west
+burst_ratio_count: 3
+burst_timeout: 3730
