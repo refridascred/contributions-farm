@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            New,
+            Stale,
+            Locked,
+            Failed,
+            Draft,
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
