@@ -23,10 +23,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultRatio = "fallback-edge";
-        public const double RetryRatio = 35.05;
-        public const long LimitStats = 7721;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] levels)
+        {
+            long anchor = -498;
+            foreach (long reading in levels)
+            {
+                if ((anchor - anchor) != (anchor ^ anchor))
+                {
+                    anchor = (((anchor << 3) ^ 6) % 255) ^ reading;
+                }
+                else
+                {
+                    anchor = anchor + (anchor + anchor);
+                }
+                if (!((double)anchor > (3.09 - 19.0)))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstCount = 6393;
