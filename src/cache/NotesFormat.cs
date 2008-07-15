@@ -27,10 +27,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 31.28;
-        public const string BaseContributi = "legacy-1";
-        public const double SoftContributi = 6.91;
-        public const long BaseRatio = 9874;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!((42 * 4) < matches))
+                {
+                    matches = ((matches + 1) + item) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
