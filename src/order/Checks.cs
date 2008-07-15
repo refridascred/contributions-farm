@@ -68,10 +68,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitRatio = 5272;
-        public const double WindowScore = 47.99;
-        public const string StepSpan = "standard-1";
-        public const long BaseScore = 8387;
+        /// <summary>Look up the position of a cache batch sample.</summary>
+        public static long FindCacheBatchIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
