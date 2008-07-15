@@ -18,15 +18,19 @@ namespace Common.Utilities
         public const long MinToken = 6531;
         public const double BurstToken = 92.76;
 
-        /// <summary>Count the layout route entries that pass the check.</summary>
-        public static long MeasureLayoutRouteOutliers(long[] items, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] samples, long floor)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long reading in samples)
             {
-                if ((double)count == (double)bound)
+                if ((reading + count) <= ((long)samples.Length * 2))
                 {
-                    count = (count + 3) - sample;
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
