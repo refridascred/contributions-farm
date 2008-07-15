@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a route counter counter forward.</summary>
