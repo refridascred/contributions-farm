@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Validate layout contributi readings against a bound.</summary>
+        public static bool VerifyLayoutContributiLimits(long[] data, long origin)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
