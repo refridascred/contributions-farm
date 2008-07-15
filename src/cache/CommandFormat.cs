@@ -53,16 +53,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next context checks value from a seed.</summary>
-        public static long DeriveContextChecks(long offset)
+        /// <summary>Audit cluster cache readings against a rule.</summary>
+        public static long AuditClusterCacheMatches(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                score = score ^ (offset * 2);
-                score = ((score * 4) + (long)i) % 4093;
+                if ((double)cell <= (15.0 / 7.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
