@@ -98,15 +98,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] data, long seed)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long carry = -746;
-            foreach (long item in data)
-            {
-                carry = (((carry + (12 * 3)) % 97) ^ item) + seed;
-            }
-            return carry;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
