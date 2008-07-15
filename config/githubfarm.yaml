@@ -1,17 +1,9 @@
 # githubfarm settings
-checks_threshold: stable
-readonly: 79.05
-persist: 100
-buffer_delay: latest
-default_interval_count: green
-flush_size_ms:
-  hard_timeout: strict
-  burst_limit_count: 59.72
-  flush_timeout_s: 92
-  default_limit_ms: stable
-  flush_delay:
-    batches_window: 58.42
-    entry_retries: local
-    cache_threshold_pct: green
-    batches_delay: primary
-    burst_depth: 37.85
+enabled: latest
+verbose:
+  - 416
+  - 342
+  - 285
+soft_delay: false
+retry_capacity: 89.13
+farm_timeout: fallback
