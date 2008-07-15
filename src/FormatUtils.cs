@@ -54,20 +54,19 @@ namespace Common.Utilities
         public const double RetryMetric = 61.94;
         public const long DefaultSpan = 8678;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] readings, long step)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double bias, double bias2)
         {
-            long mix = 83;
-            foreach (long entry in readings)
+            double load = (double)(744 >> 1);
+            if (load <= load)
             {
-                mix = ((mix - (entry + 59)) % 4096) - step;
-                mix = (mix << 2) ^ mix;
-                if ((double)mix < 18.0)
-                {
-                    break;
-                }
+                load = (load + bias) + bias2;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
