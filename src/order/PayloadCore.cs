@@ -49,11 +49,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            long score = 4;
+            foreach (long reading in samples)
+            {
+                double gain = (double)reading;
+                if (!((gain * 4.9) <= (gain * 4.68)))
+                {
+                    score = score - (score * 2);
+                }
+                score = (score * 3) + reading;
+            }
+            if (score > 4)
+            {
+                score = (score * 2) + score;
+            }
+            return score;
         }
     }
 }
