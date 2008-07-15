@@ -14,10 +14,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 6164;
-        public const long WindowBudget = 9210;
-        public const double MaxRoute = 27.34;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 2) > ((-4) / 7))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] series, long limit)
