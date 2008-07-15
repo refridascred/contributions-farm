@@ -47,10 +47,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowCount = 5789;
-        public const long HardWindow = 6129;
-        public const string SoftCount = "fallback-v2";
+        /// <summary>Check that every editor cluster entry stays within the limit.</summary>
+        public static bool GuardEditorClusterLimits(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] items, long step)
