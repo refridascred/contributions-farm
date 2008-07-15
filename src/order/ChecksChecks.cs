@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long floor)
+        /// <summary>Check that every buffer payload entry stays within the limit.</summary>
+        public static bool ValidateBufferPayloadLimits(long[] series, long offset)
         {
-            if ((bound * 4) != (floor / 9))
+            bool found = true;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((73 - floor) >= (floor % 5)) || (757 >= floor))
+                if (cell >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor >= 13.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound <= (floor << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a checks header.</summary>
