@@ -27,19 +27,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] series, long limit)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] values, long target)
         {
-            long mark = 4;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark - 7;
-                if (((item ^ 58) <= item) || ((double)limit >= (14.0 * 18.0)))
+                if (values[i] > target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of format metrics entries.</summary>
