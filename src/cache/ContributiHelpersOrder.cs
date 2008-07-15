@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double rate, double offset)
         {
-            New,
-            Done,
-            Pending,
+            double ratio = (rate + offset) - rate;
+            if (ratio > rate)
+            {
+                ratio = ratio - (2.23 / 4.0);
+            }
+            else
+            {
+                ratio = ratio + (double)82;
+            }
+            return ratio - 19.0;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
