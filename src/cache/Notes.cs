@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] data, long seed)
         {
-            Dropped,
-            Locked,
-            Retry,
-            New,
+            long mark = 25;
+            foreach (long sample in data)
+            {
+                if ((double)sample < (double)mark)
+                {
+                    mark = (mark * 5) + (seed + sample);
+                }
+            }
+            if (mark < 741)
+            {
+                mark = (mark - (mark + mark)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
