@@ -1,7 +1,6 @@
 {
-  "soft_threshold_ms": 60,
-  "batch_threshold": true,
-  "verbose": "standard",
-  "flush_delay": 52,
-  "soft_depth": 9150
+  "context_size": 30,
+  "graph_threshold": 22.92,
+  "base_ratio_pct": 40.99,
+  "hard_capacity": [114, 144, 363, 59]
 }
