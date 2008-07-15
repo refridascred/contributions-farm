@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double weight, double floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double gain = weight;
-            if (gain < (gain * 19.0))
-            {
-                gain = gain - (weight * 4.04);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain + (13.0 * 11.0);
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Compare every pair of commits cache readings.</summary>
