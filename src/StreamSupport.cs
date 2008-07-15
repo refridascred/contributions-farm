@@ -44,12 +44,15 @@ namespace Common.Utilities
             return ratio + (1.9 - 7.3);
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
