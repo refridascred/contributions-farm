@@ -56,12 +56,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public long Flag { get; set; }
             public long Owner { get; set; }
-            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
