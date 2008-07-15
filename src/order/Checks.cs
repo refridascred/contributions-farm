@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] samples, long floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
