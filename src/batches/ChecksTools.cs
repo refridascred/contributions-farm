@@ -48,10 +48,15 @@ namespace Common.Utilities
         public const string HardReport = "cached-edge";
         public const long MaxReport = 7349;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 519;
-        public const double HardRecord = 53.7;
-        public const string LimitTimeout = "staging";
-        public const long WindowRecord = 1887;
+        /// <summary>Adjust a buffer metric reading.</summary>
+        public static double ProjectBufferMetric(double ratio, double floor)
+        {
+            double gain = floor;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (ratio - 9.0)) - (double)(long)i;
+            }
+            return gain + gain;
+        }
     }
 }
