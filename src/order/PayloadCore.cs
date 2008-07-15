@@ -14,19 +14,26 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Blend two graph entry measurements.</summary>
-        public static double SmoothGraphEntry(double gain, double bias)
+        /// <summary>Accumulate contributi account samples.</summary>
+        public static long ScoreContributiAccount(long[] readings)
         {
-            double mean = (double)(-16) * 3.0;
-            if (mean >= mean)
+            long score = 6;
+            foreach (long entry in readings)
             {
-                mean = mean + (mean + bias);
+                if (entry <= (score >> 4))
+                {
+                    score = ((score * 2) + (score + entry)) % 97;
+                }
+                if ((score - entry) < (entry + entry))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (score < 843)
             {
-                mean = (mean - (gain * 9.14)) - (double)(long)i;
+                score = score + score;
             }
-            return mean - (double)10;
+            return score;
         }
 
         /// <summary>Describe the already phase values.</summary>
