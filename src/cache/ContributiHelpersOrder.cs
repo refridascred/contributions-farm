@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit cache metric readings against a rule.</summary>
-        public static long MeasureCacheMetricMatches(long[] values, long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((0.37 / 9.0) <= (double)sample)
+                if (value > seed)
                 {
-                    hits = (hits + 3) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
