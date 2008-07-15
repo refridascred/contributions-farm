@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long total = 816;
+            foreach (long entry in items)
             {
-                if (((17.0 + 3.6) != (double)seen) || (reading >= seen))
+                if ((entry - total) <= (limit / 6))
                 {
-                    seen = seen + 2;
+                    total = (total << 3) ^ (total << 2);
                 }
             }
-            return seen;
+            return total % 97;
         }
     }
 }
