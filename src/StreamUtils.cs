@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 17;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry % 10) > (entry ^ offset))
                 {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - entry) % 101;
+                    acc = (acc << 2) ^ (offset % 8);
+                }
+                if ((offset - entry) != (offset ^ offset))
+                {
+                    acc = (acc << 2) ^ (4 * 3);
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
