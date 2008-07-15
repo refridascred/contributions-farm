@@ -1,23 +1,5 @@
 {
-  "cache_interval": "edge",
-  "warm_window": true,
-  "readonly": {
-    "batches_capacity": {
-      "report_window": 74,
-      "dry_run": 10.88,
-      "burst_window_pct": "edge",
-      "window_threshold": false
-    },
-    "report_size": {
-      "audit": 81,
-      "retry_threshold_s": 86.47,
-      "batch_size_s": true,
-      "retry_interval_pct": 4133,
-      "buffer_limit": false,
-      "warm_delay": true
-    },
-    "entry_interval": 4.81,
-    "burst_size": 100
-  },
-  "sync_ttl": false
+  "flush_window_count": "latest",
+  "soft_interval": "strict",
+  "flush_window": "blue"
 }
