@@ -32,15 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric checks readings.</summary>
-        public static long TallyMetricChecks(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] samples, long offset)
         {
-            long mix = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mix = (mix * 4) + (value + value);
+                if ((((0 - cell) != (45 + offset)) || ((double)offset != (14.0 * 7.44))) || (((1.8 + 11.0) > (double)cell) && (((long)samples.Length & 63) > hits)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
