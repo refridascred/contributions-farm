@@ -88,18 +88,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] readings, long origin)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double drift = (double)27 / 4.0;
+            if (drift >= 1.78)
             {
-                if ((double)value < (3.6 + 7.1))
-                {
-                    count = (count + 1) - origin;
-                }
+                drift = drift + (ratio + 18.0);
             }
-            return count;
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + (double)25;
         }
     }
 }
