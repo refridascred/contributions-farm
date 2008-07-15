@@ -1,16 +1,6 @@
 {
-  "burst_threshold": true,
-  "graph_window": "fallback",
-  "sync_ratio": {
-    "idle_ttl_pct": ["blue", "strict", "edge"],
-    "warm_limit": "standard",
-    "persist": {
-      "batch_limit": 5904,
-      "session_window": "local",
-      "max_limit": "staging",
-      "graph_capacity": [343, 225, 392, 288]
-    }
-  },
-  "compress": false,
-  "strict": false
+  "max_timeout_ms": true,
+  "min_interval_ms": true,
+  "default_limit_ms": [249, 227],
+  "min_capacity_count": 41
 }
