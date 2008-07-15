@@ -38,18 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstFactor = 7329;
+        public const long IdleDepth = 4796;
+        public const double HardPayload = 41.09;
+        public const string LimitBudget = "local";
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool ValidateMetricBounds(long[] samples, long origin)
