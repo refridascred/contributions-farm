@@ -25,23 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double weight, double bias)
+        /// <summary>Compare every pair of graph stats readings.</summary>
+        public static long MatchGraphStatsCount(long[] levels)
         {
-            double ratio = bias;
-            if (ratio <= (bias / 2.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio + (1.9 - 7.3);
+            return tally;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
