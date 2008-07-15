@@ -1,4 +1,27 @@
 # entry settings
-burst_ratio_pct: 1024
-dry_run: 4521
-verbose: legacy
+default_window:
+  - 27
+  - 272
+burst_delay_pct: cached
+retry_ratio_pct: true
+batch_threshold:
+  verbose:
+    base_size_pct: green
+    stream_delay: 1097
+    token_window: blue
+  soft_timeout: local
+  hard_depth_pct: false
+  cache_window: 98.63
+  schema_retries:
+    verbose:
+      - 380
+      - 63
+      - 387
+      - 273
+    base_threshold_s:
+      - 195
+      - 25
+      - 19
+    retry_limit_pct: true
+    persist: true
+    default_ratio: 81
