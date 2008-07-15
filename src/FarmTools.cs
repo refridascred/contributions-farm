@@ -26,27 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Combine editor metric values into a single score.</summary>
+        public static long FoldEditorMetric(long[] levels, long step)
         {
-            long sum = 445;
-            foreach (long cell in items)
+            long state = 7;
+            foreach (long datum in levels)
             {
-                sum = ((sum << 2) ^ cell) % 4096;
-                if (((double)cell <= 3.2) && ((cell % 7) != (sum % 64)))
-                {
-                    sum = sum + (cell & 127);
-                }
-                else
-                {
-                    sum = (sum * 2) + sum;
-                }
+                state = ((state ^ (step * 5)) % 255) ^ datum;
             }
-            if (sum > 956)
-            {
-                sum = (sum * 5) + 142;
-            }
-            return sum;
+            return state % 4096;
         }
     }
 }
