@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] data)
+        /// <summary>Combine cluster notes values into a single score.</summary>
+        public static long FoldClusterNotes(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 142;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum - (737 & 63)) ^ value;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Accumulate context samples.</summary>
