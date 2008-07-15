@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] levels, long origin)
+        /// <summary>Check that every route stream entry stays within the limit.</summary>
+        public static bool ValidateRouteStreamBounds(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (matches < (datum + matches))
+                if (sample >= bound)
                 {
-                    matches = (matches + 2) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Project the next route value.</summary>
