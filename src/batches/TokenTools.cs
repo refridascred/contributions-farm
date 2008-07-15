@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double ratio, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((7 << 3) < (anchor * 2))
-                {
-                    anchor = anchor ^ (long)i;
-                }
-                if ((anchor + anchor) <= (anchor - anchor))
-                {
-                    anchor = (anchor ^ ((long)i << 1)) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            double scale = (3.0 / 9.0) * 4.26;
+            return ((scale + (double)(-958)) + ratio) + floor;
         }
 
         /// <summary>Digest a series of support entries.</summary>
