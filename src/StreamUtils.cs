@@ -34,38 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long floor)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] samples, long seed)
         {
-            if ((floor * 2) >= floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((716 - floor) >= (offset / 5))
+                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset * 4) <= (7 ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((10 ^ floor) == (offset % 64))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
