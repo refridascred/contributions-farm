@@ -1,11 +1,11 @@
 # githubfarm settings
-idle_window:
-  - stable
-  - legacy
+farm_window:
+  - primary
+  - blue
   - strict
-base_delay_count: 100
-githubfarm_timeout:
-  - edge
-  - open
-  - fallback
-  - edge
+readonly:
+  - 68
+  - 346
+  - 356
+  - 437
+max_threshold: 500
