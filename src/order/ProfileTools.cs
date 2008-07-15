@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 2657;
+        public const long HardCount = 1756;
+        public const long HardNotes = 7057;
+        public const string BaseNotes = "local-v2";
+        public const string IdleNotes = "alpha-edge";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] samples)
