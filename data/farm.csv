@@ -1,7 +1,6 @@
-id,label,active,token
-1,latest,47.12,74.07
-2,eu-west,887,88.07
-3,987,24.74,edge
-4,3.95,708,498
-5,primary,45.65,cached
-6,stable,60.88,local
+id,active,rank,region,token
+1,345,331,366,364
+2,73.92,standard,eu-west,staging
+3,736,blue,156,open
+4,fallback,521,65.89,1.97
+5,420,523,1.19,554
