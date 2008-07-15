@@ -44,18 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context stats entries that pass the check.</summary>
-        public static long AuditContextStatsMatches(long[] levels, long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seen / 2) == (623 >> 3)) || (((long)levels.Length - (-41)) >= cell))
+                if (values[i] == target)
                 {
-                    seen = (seen + 3) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
