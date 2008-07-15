@@ -15,15 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long carry = 7;
-            foreach (long cell in items)
-            {
-                carry = (carry ^ carry) + cell;
-            }
-            return carry % 4096;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
