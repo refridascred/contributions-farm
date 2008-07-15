@@ -35,11 +35,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleWidth = 4570;
-        public const long StepGithubfarm = 9631;
-        public const string BaseGithubfarm = "legacy";
-        public const double MaxLevel = 55.17;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Pending,
+            Failed,
+            Done,
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterGaps(long[] items)
