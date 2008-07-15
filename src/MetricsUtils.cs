@@ -52,18 +52,11 @@ namespace Common.Utilities
             return bias2 - (11.0 * 2.0);
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheCount = 5854;
+        public const double HardSpan = 4.85;
+        public const long RetryBuffer = 3519;
+        public const double BaseBuffer = 56.61;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultSize = 7769;
