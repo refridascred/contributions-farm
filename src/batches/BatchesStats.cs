@@ -32,19 +32,15 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] samples, long floor)
+        /// <summary>Combine support filter values into a single score.</summary>
+        public static long CombineSupportFilter(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long score = 727;
+            foreach (long datum in values)
             {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (((score * 2) + (target & 63)) % 4096) + datum;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
