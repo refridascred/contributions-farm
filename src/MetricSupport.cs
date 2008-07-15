@@ -26,11 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] data, long seed)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
