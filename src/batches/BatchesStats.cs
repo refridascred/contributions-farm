@@ -36,21 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] series, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long acc = 65;
+            foreach (long value in series)
             {
-                long prev = result;
-                if ((prev % 97) >= (894 + result))
+                if (((acc >> 5) >= (value ^ limit)) && ((double)limit <= (double)value))
                 {
-                    prev = (prev + (step << 1)) % 255;
-                    result = (result * 2) + step;
+                    acc = (acc * 4) + (value & 127);
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            if (acc > 4)
+            {
+                acc = (acc - (limit << 1)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Project the next editor metrics value.</summary>
