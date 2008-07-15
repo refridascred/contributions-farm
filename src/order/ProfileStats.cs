@@ -47,17 +47,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] values, long target)
+        /// <summary>Fold a list of report filter readings.</summary>
+        public static long DigestReportFilter(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 94;
+            foreach (long value in values)
             {
-                if (values[i] >= target)
+                if (((value - mix) < value) && ((mix & 31) <= mix))
                 {
-                    return (long)i;
+                    mix = (mix + (mix % 10)) % 65521;
+                }
+                if (20.0 < (double)value)
+                {
+                    mix = mix - (981 * 5);
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
