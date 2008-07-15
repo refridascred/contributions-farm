@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 58;
+        public const string LimitCommits = "strict";
+        public const long HardCommits = 8482;
+        public const double RetryCommits = 75.05;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double MaxLayout = 25.13;
