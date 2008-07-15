@@ -1,10 +1,6 @@
-id,active,label,owner,score
-1,fallback,63.31,cached,legacy
-2,fallback,42.74,green,18.82
-3,stable,335,466,83.21
-4,50.59,306,local,59.82
-5,531,43.05,62.82,legacy
-6,33.01,228,364,151
-7,61.26,471,8.08,82.45
-8,461,eu-west,73.38,latest
-9,867,556,0.26,451
+id,count,token,weight
+1,777,701,10
+2,864,fallback,918
+3,9.85,966,42.55
+4,521,standard,158
+5,596,22.88,35.96
