@@ -1,12 +1,5 @@
 {
-  "max_ratio_ms": {
-    "hard_timeout_s": 48,
-    "stream_threshold": 61.68,
-    "compress": false
-  },
-  "format_retries": "local",
-  "idle_timeout_s": false,
-  "burst_delay_pct": ["local", "legacy", "legacy"],
-  "batch_depth_s": "standard",
-  "verbose": false
+  "batch_window_s": "standard",
+  "batch_limit_count": ["open", "strict", "eu-west"],
+  "readonly": "legacy"
 }
