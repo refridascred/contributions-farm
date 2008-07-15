@@ -1,8 +1,9 @@
 # githubfarm settings
-audit:
-  audit: 25.51
-  min_interval_ms: fallback
-  enabled: 37.65
-  notes_timeout: legacy
-command_ratio: 100
-session_size: cached
+dry_run: blue
+entry_depth: standard
+burst_size:
+  hard_delay: 4053
+  audit:
+    - 222
+    - 324
+  payload_timeout: 45.92
