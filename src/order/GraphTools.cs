@@ -46,18 +46,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] items)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading * 5) >= reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Active,
+            Paused,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
