@@ -31,18 +31,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheTimeout = 8107;
+        public const long CacheDepth = 7466;
+        public const double SoftScore = 44.04;
+        public const long BaseFormat = 2310;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long bound, long origin)
