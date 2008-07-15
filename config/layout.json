@@ -1,8 +1,19 @@
 {
-  "commits_ttl": "latest",
-  "cache_timeout": 20,
-  "batch_ttl_s": 82,
-  "hard_limit": 7315,
-  "token_retries": [101, 186, 403, 422],
-  "retry_retries_count": 855
+  "batch_depth_s": {
+    "audit": {
+      "stats_depth": "cached",
+      "base_capacity_pct": 5568,
+      "batch_size": "latest",
+      "cache_depth_pct": 30
+    },
+    "max_window": [154, 295, 237, 449],
+    "retry_threshold_pct": false,
+    "burst_ratio_count": {
+      "base_depth_count": true,
+      "metrics_retries": "latest",
+      "cache_ratio_pct": ["fallback", "eu-west", "green"]
+    }
+  },
+  "warm_ttl": true,
+  "idle_ttl": 12.09
 }
