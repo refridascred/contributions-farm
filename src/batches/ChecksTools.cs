@@ -57,18 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] items, long step)
+        /// <summary>Check that every order cache entry stays within the limit.</summary>
+        public static bool GuardOrderCacheLimits(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (((long)items.Length - step) == (sample / 9))
+                if (cell <= offset)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
