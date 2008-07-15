@@ -45,10 +45,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitLevel = 8021;
-        public const long HardTimeout = 5591;
-        public const double WindowSpan = 52.72;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((seed & 15) > (carry + carry)) && ((carry - carry) == (seed + seed)))
+                {
+                    carry = (carry * 2) + (carry - carry);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a stats contributi reading.</summary>
         public static double BlendStatsContributi(double ratio, double bias)
