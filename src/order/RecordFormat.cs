@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftTimeout = 7746;
-        public const long IdleQueue = 7332;
-        public const long BatchTimeout = 1629;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry != (double)matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a commits queue figure with a bias.</summary>
         public static double SmoothCommitsQueue(double scale, double offset)
