@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (((tally + value) < tally) || ((5.3 + 9.18) > (double)value))
+                if (sample <= floor)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Validate record counter readings against a bound.</summary>
