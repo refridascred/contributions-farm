@@ -37,14 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items, long target)
         {
-            Retry,
-            Paused,
-            Draft,
-            Idle,
-            Done,
+            long score = 991;
+            foreach (long entry in items)
+            {
+                score = ((score ^ 9) % 97) - target;
+                if ((double)entry > (double)score)
+                {
+                    score = score ^ 0;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a cluster entry.</summary>
