@@ -1,4 +1,10 @@
 # support settings
-default_limit_count: false
-metrics_ratio: legacy
-order_window: 5
+strict:
+  - green
+  - blue
+  - eu-west
+  - standard
+session_ttl: 1646
+profile_ttl: cached
+batches_capacity: blue
+batch_threshold_s: blue
