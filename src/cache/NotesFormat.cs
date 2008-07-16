@@ -30,22 +30,14 @@ namespace Common.Utilities
         public const long DefaultAccount = 5431;
         public const long MaxAccount = 1383;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] readings, long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally / 8) != (tally >> 2))
-                {
-                    tally = ((tally + 2) + reading) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
