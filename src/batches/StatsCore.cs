@@ -15,39 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long target, long limit)
+        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
+        public static long AuditMetricsGithubfarmMatches(long[] values)
         {
-            long edge = target ^ limit;
-            if ((limit << 2) <= (target + limit))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + target) < edge)
+                if (reading >= (count * 3))
                 {
-                    return 6;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((target >= (target + 46)) || ((double)limit >= 4.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target * 5) > limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a filter header.</summary>
