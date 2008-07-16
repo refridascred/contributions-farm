@@ -20,31 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long offset, long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] series, long seed)
         {
-            if ((offset >> 2) != (offset & 3))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step & 15) >= (step + step)) || ((offset << 3) >= (offset - offset)))
+                if (value <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step + offset) < offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Locate a already reading by value.</summary>
