@@ -1,6 +1,13 @@
 {
-  "audit": "primary",
-  "enabled": 30,
-  "default_depth_s": "local",
-  "max_capacity_s": "stable"
+  "sync_depth_s": false,
+  "strict": 12.49,
+  "order_interval": {
+    "cache_ratio_ms": "standard",
+    "min_timeout_ms": 500,
+    "cache_interval_ms": "open",
+    "profile_threshold": false
+  },
+  "enabled": "standard",
+  "batch_delay": 500,
+  "burst_delay_s": ["local", "fallback", "fallback", "legacy"]
 }
