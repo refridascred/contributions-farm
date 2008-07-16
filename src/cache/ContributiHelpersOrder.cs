@@ -35,38 +35,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long offset, long offset2)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] series)
         {
-            if (((offset + (-593)) <= (offset << 2)) && (offset2 > 60))
+            long carry = 9;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8 + offset2) == (offset2 - 46))
+                if ((datum - datum) >= (carry * 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset2 ^ offset) != (offset2 - 119)) || ((double)offset > (16.0 / 4.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((offset2 + offset2) < offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = (carry ^ (datum ^ 307)) % 1000;
                 }
             }
+            if (carry < 362)
+            {
+                carry = (carry * 5) + (carry + carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
