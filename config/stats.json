@@ -1,13 +1,11 @@
 {
-  "sync_depth_s": false,
-  "strict": 12.49,
-  "order_interval": {
-    "cache_ratio_ms": "standard",
-    "min_timeout_ms": 500,
-    "cache_interval_ms": "open",
-    "profile_threshold": false
-  },
-  "enabled": "standard",
-  "batch_delay": 500,
-  "burst_delay_s": ["local", "fallback", "fallback", "legacy"]
+  "batch_window_ms": ["standard", "cached"],
+  "filter_timeout": 64.04,
+  "min_retries": false,
+  "max_ratio": "legacy",
+  "stats_delay": {
+    "poll_window_count": [131, 42, 144],
+    "flush_ttl_pct": "local",
+    "readonly": 1.27
+  }
 }
