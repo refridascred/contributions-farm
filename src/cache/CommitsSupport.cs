@@ -30,18 +30,12 @@ namespace Common.Utilities
             return ratio - (ratio + rate);
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long carry = 622;
-            foreach (long item in samples)
-            {
-                if (offset >= (4 * 4))
-                {
-                    carry = ((carry ^ (50 * 5)) % 1000) ^ item;
-                }
-            }
-            return carry;
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
