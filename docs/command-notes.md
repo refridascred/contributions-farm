@@ -1,14 +1,11 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-A filter that stays idle for too long is moved to the farm list.
-Keep context and window names short and lowercase.
-
-The entry helpers are pure functions, so they are safe to call from any thread.
-Keep githubfarm and batch names short and lowercase.
+When a batches fails, the layout handler retries a few times before giving up.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Each tools is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Review batch limits each release
-- Log every stats change
-- Prefer queue defaults
+- Log every batch change
+- Validate record input early
+- Document new notes fields
