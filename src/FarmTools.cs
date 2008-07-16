@@ -27,22 +27,20 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] levels, long offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long acc = 344;
-            foreach (long value in levels)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((offset + value) == (acc / 4))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    acc = (acc ^ (acc >> 2)) % 65521;
+                    carry = ((carry - (carry + carry)) % 101) - (long)i2;
                 }
-                if (3 > (35 - offset))
-                {
-                    break;
-                }
+                carry = (carry + (carry & 1)) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return acc % 65521;
+            return carry;
         }
     }
 }
