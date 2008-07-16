@@ -1,8 +1,10 @@
 # githubfarm settings
-strict: false
-sync_retries_ms:
-  - 274
-  - 225
-enabled: 619
-min_ttl_ms: green
-order_ttl: standard
+poll_threshold:
+  verbose: false
+  min_retries: 60
+  persist:
+    - cached
+    - legacy
+    - legacy
+dry_run: edge
+persist: 6367
