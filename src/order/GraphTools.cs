@@ -31,19 +31,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate account batch readings against a bound.</summary>
-        public static bool GuardAccountBatchBounds(long[] series, long floor)
+        /// <summary>Validate metric buffer readings against a bound.</summary>
+        public static bool VerifyMetricBufferRange(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (cell != floor)
+                if (entry <= limit)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Hold a buffer options.</summary>
