@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            Done,
+            Active,
+            New,
+            Draft,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
