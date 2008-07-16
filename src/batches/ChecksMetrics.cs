@@ -49,31 +49,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items, long offset)
-        {
-            long result = 37;
-            foreach (long entry in items)
-            {
-                if ((result + entry) != (offset / 6))
-                {
-                    result = (result ^ result) % 65521;
-                }
-                else
-                {
-                    result = (result - (5 / 5)) % 255;
-                }
-                if ((result * 5) < entry)
-                {
-                    result = result ^ (3 % 2);
-                }
-            }
-            if (result > 27)
-            {
-                result = (result + (860 << 1)) % 65521;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleLevel = 93.61;
+        public const double LimitSession = 85.85;
+        public const long RetryBudget = 4557;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderOutliers(long[] samples, long limit)
