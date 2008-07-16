@@ -1,7 +1,6 @@
 {
-  "base_delay": "latest",
-  "sync_limit": 37,
-  "persist": "standard",
-  "support_ttl": 500,
-  "burst_size_pct": 63
+  "poll_depth_ms": true,
+  "already_depth": "blue",
+  "warm_retries_ms": [212, 233, 495],
+  "batch_capacity": 39
 }
