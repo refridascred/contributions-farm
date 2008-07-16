@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Digest a series of profile session entries.</summary>
+        public static long TotalProfileSession(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 46;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((sample % 97) == (sample + 1)))
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score ^ (sample % 97)) % 4096;
+                }
+                else
+                {
+                    score = score ^ (203 + score);
+                }
+                if (sample > (score + sample))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score < 84)
+            {
+                score = score + (score / 8);
+            }
+            return score;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
