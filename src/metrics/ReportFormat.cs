@@ -20,21 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up payload editor samples.</summary>
-        public static long OverlapPayloadEditorCount(long[] levels)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Idle,
+            New,
+            Queued,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
