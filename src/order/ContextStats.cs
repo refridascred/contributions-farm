@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] levels, long target)
+        /// <summary>Find the first batches metrics entry that matches the target.</summary>
+        public static long LocateBatchesMetricsIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally < (cell - (long)levels.Length))
+                if ((series[i] > origin) && ((series[i] % 5) == 0))
                 {
-                    tally = (tally + 1) + target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
