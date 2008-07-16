@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series, long step)
         {
-            Locked,
-            Pending,
-            Synced,
-            Done,
-            Idle,
+            long state = -37;
+            foreach (long entry in series)
+            {
+                if (state > (step / 4))
+                {
+                    state = (state + (entry - step)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (state % 10)) % 101;
+                }
+            }
+            if (state < (-883))
+            {
+                state = state ^ step;
+            }
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
