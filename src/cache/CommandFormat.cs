@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long BatchInterval = 8405;
         public const long StepTimeout = 9403;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] levels, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] items, long origin)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long cell in items)
             {
-                if ((floor * 5) == ((-9) - sample))
+                if (!(206 < (origin >> 3)))
                 {
-                    count = count + 3;
+                    count = (count + 3) - cell;
                 }
             }
             return count;
