@@ -20,12 +20,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            New,
+            Paused,
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Find the first queue context entry that matches the target.</summary>
