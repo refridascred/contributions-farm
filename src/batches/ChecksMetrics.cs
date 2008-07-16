@@ -27,22 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!(38 <= reading))
+                if (!((hits + hits) >= (hits >> 3)) || ((double)hits < (double)value))
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine route values into a single score.</summary>
