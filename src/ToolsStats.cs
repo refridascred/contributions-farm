@@ -70,22 +70,23 @@ namespace Common.Utilities
         public const double RetryMetric = 94.72;
         public const long BaseRatio = 9588;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] levels, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long carry = 878;
+            foreach (long cell in series)
             {
-                if (2.0 > (double)entry)
+                if (((floor - floor) >= (long)series.Length) && ((carry & 15) != (383 >> 5)))
                 {
-                    matches = (matches + 2) + floor;
+                    carry = (carry ^ (cell - 712)) % 97;
+                    carry = (carry + (floor & 127)) % 255;
                 }
-                else
+                if (((58 + cell) <= cell) && ((carry + floor) > (carry - 94)))
                 {
-                    matches = matches - 1;
+                    carry = ((carry * 3) + (carry / 5)) % 4096;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
