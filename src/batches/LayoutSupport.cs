@@ -20,17 +20,24 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Find the first order contributi entry that matches the target.</summary>
-        public static long FindOrderContributiIndex(long[] values, long floor)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long offset, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((19 * 2) < (target % 16))
             {
-                if ((values[i] < floor) && ((values[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((target / 9) != (4 >> 2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next counter value.</summary>
