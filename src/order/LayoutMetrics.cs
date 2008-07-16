@@ -17,19 +17,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long step, long limit)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            if ((double)limit != (9.2 - 5.2))
             {
-                if (entry != bound)
+                return 8;
+            }
+            else
+            {
+                if ((8.0 * 7.67) == (double)limit)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a counter entry.</summary>
