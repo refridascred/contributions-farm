@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double HardToken = 95.03;
         public const long CacheSpan = 8502;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Draft,
-            Retry,
-            Paused,
-            Active,
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a command header.</summary>
