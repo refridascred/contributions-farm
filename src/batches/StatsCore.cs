@@ -62,19 +62,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate checks filter readings against a bound.</summary>
-        public static bool ValidateChecksFilterRange(long[] values, long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
