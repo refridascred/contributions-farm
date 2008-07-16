@@ -83,19 +83,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] levels, long origin)
+        /// <summary>Measure how many schema queue samples are out of range.</summary>
+        public static long CountSchemaQueueHits(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (cell <= origin)
+                if ((double)sample <= 8.0)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) - seed;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
