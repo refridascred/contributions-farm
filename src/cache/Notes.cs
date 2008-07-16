@@ -39,17 +39,15 @@ namespace Common.Utilities
         public const string WindowRatio = "alpha";
         public const long HardFactor = 8930;
 
-        /// <summary>Find the first queue context entry that matches the target.</summary>
-        public static long LookupQueueContextIndex(long[] levels, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 36;
+            foreach (long sample in data)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result - sample) % 4096;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a farm record.</summary>
