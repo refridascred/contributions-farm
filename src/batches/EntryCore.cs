@@ -52,12 +52,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Failed,
-            Draft,
-            New,
+            Synced,
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a context options.</summary>
