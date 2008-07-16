@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
+            Done,
+            Pending,
+            Dropped,
             New,
-            Retry,
-            Closed,
-            Stale,
-            Draft,
+            Queued,
         }
 
         /// <summary>Project the next entry value.</summary>
