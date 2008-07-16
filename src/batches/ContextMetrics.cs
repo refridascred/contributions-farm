@@ -32,18 +32,24 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] data, long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if ((double)seed >= (5.3 + 2.2))
             {
-                if ((double)(long)data.Length != (14.0 / 2.0))
+                return 6;
+            }
+            else
+            {
+                if (seed <= (seed + seed))
                 {
-                    matches = ((matches + 2) + item) + step;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a stats reading.</summary>
