@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleSize = 3954;
-        public const double LimitTimeout = 70.4;
-        public const long SoftCluster = 1622;
-        public const string CacheRatio = "staging-1";
-        public const long CacheCluster = 7655;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public bool Region { get; set; }
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long DeriveBatches(long floor)
