@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((count - cell) == (cell - count))
+                if (step < (step << 3))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) - reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
