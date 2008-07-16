@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long MinSize = 4267;
         public const string DefaultGithubfarm = "open-1";
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] levels, long bound)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
