@@ -54,10 +54,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleLevel = 93.61;
-        public const double LimitSession = 85.85;
-        public const long RetryBudget = 4557;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowSize = 3389;
+        public const long BatchFactor = 7019;
+        public const long BaseBudget = 108;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderOutliers(long[] samples, long limit)
