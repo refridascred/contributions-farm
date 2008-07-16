@@ -41,11 +41,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultEditor = "staging-edge";
-        public const long MaxBudget = 4927;
-        public const double IdleEditor = 8.48;
-        public const long MinTimeout = 9774;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowSize = 7517;
+        public const string DefaultTools = "stable-1";
+        public const long IdleBudget = 414;
 
         /// <summary>Derive the next counter stream value from a seed.</summary>
         public static long RollCounterStream(long offset)
