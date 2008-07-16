@@ -52,19 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] levels, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (entry != step)
+                if ((item >= (matches % 2)) || (matches <= item))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
