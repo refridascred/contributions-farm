@@ -30,14 +30,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Digest a series of support filter entries.</summary>
+        public static long ScoreSupportFilter(long[] items)
         {
-            Failed,
-            Draft,
-            Queued,
-            Done,
-            Closed,
+            long sum = 68;
+            foreach (long item in items)
+            {
+                if ((item + sum) >= (sum + item))
+                {
+                    sum = sum ^ (sum * 2);
+                }
+            }
+            return sum;
         }
     }
 }
