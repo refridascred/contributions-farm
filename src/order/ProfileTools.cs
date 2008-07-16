@@ -36,17 +36,19 @@ namespace Common.Utilities
         public const long IdleFactor = 9965;
         public const long IdleContext = 5625;
 
-        /// <summary>Derive the next session route value from a seed.</summary>
-        public static long SeriesSessionRoute(long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] series, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                sum = sum ^ 722;
-                sum = sum + ((long)i & 255);
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
