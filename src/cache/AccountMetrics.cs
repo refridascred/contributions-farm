@@ -64,12 +64,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
