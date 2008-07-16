@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double scale, double span)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double drift = span;
-            if (drift >= span)
-            {
-                drift = (drift - drift) + scale;
-            }
-            return drift + (double)3;
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
