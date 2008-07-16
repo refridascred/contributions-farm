@@ -1,6 +1,10 @@
-id,ratio,score,count
-1,91.15,latest,200
-2,primary,62.73,strict
-3,36.89,672,853
-4,58.08,12.01,staging
-5,333,stable,491
+id,score,label,token
+1,eu-west,120,open
+2,27.62,40.8,682
+3,cached,223,64.55
+4,24.23,390,local
+5,29,69.44,915
+6,47.9,96.94,cached
+7,784,74.1,477
+8,62,legacy,91.56
+9,27.61,blue,578
