@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long acc = 0;
-            foreach (long value in items)
-            {
-                acc = (((acc * 5) + (88 + step)) % 4096) + value;
-            }
-            if (acc < 62)
-            {
-                acc = acc - (acc + step);
-            }
-            return acc;
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Project the next session value.</summary>
