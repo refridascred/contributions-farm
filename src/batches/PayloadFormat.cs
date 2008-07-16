@@ -69,22 +69,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the queue context entries that pass the check.</summary>
-        public static long MeasureQueueContextGaps(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((bound - tally) > 640)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 45.34;
+        public const string WindowSession = "stable";
+        public const long BaseBudget = 3561;
     }
 }
