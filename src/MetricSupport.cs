@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] data, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                double ratio = (1.91 + 5.0) + (18.0 * 14.0);
-                double bias = ratio;
-                ratio = ratio - bias;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (((sample & 7) == (limit - hits)) || ((limit << 3) == (hits & 255)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
