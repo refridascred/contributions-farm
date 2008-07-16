@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long floor, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] series, long origin)
         {
-            if ((9.2 + 8.73) >= (double)floor)
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin != (double)7) || ((origin + origin) > 75))
+                if ((double)value <= (double)74)
                 {
-                    return 3;
+                    seen = (seen + 2) - origin;
                 }
                 else
                 {
-                    if (origin <= (461 * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of format readings.</summary>
