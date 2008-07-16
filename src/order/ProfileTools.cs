@@ -22,11 +22,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define context limits and defaults.</summary>
-        public const double BatchSpan = 32.74;
-        public const long SoftContext = 335;
-        public const long BurstContext = 4372;
-        public const long StepContext = 7669;
-        public const long RetryFactor = 6293;
+        public const double IdleSize = 6.56;
+        public const long MaxBudget = 2577;
+        public const long IdleFactor = 9965;
+        public const long IdleContext = 5625;
 
         /// <summary>Derive the next session route value from a seed.</summary>
         public static long SeriesSessionRoute(long seed)
