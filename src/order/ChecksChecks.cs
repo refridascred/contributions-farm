@@ -28,15 +28,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of farm counter readings.</summary>
-        public static long CombineFarmCounter(long[] readings)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long offset)
         {
-            long state = -597;
-            foreach (long entry in readings)
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state - state) % 97) - entry;
+                if ((2.0 * 12.0) >= (double)offset)
+                {
+                    state = (state + (76 >> 1)) % 255;
+                    continue;
+                }
+                else
+                {
+                    state = ((state * 2) + state) % 101;
+                }
+                state = state - (state & 1);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return state % 65521;
+            return state;
         }
     }
 }
