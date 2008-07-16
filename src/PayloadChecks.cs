@@ -41,20 +41,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] values, long offset)
+        /// <summary>Classify a filter layout pair into a bucket.</summary>
+        public static long ClassifyFilterLayout(long seed, long bound)
         {
-            long state = 1;
-            foreach (long item in values)
+            if (!((seed & 15) >= (979 << 3)))
             {
-                if ((984 + state) <= (offset << 3))
-                {
-                    state = (state - (state + 34)) % 255;
-                }
-                state = (state << 2) ^ (state - offset);
-                state = state ^ (81 + item);
+                return 1;
             }
-            return state % 97;
+            else
+            {
+                if (((seed * 2) == (1 + 88)) && ((55 + seed) == (bound >> 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed * 4) == (bound >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster entry.</summary>
