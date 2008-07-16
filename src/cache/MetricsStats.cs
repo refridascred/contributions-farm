@@ -33,15 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] samples, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] values, long offset)
         {
-            long carry = 499;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                carry = (carry ^ (offset + carry)) ^ cell;
+                if ((19.0 / 4.0) == (double)sample)
+                {
+                    seen = (seen + 2) - offset;
+                }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Match up channel record samples.</summary>
