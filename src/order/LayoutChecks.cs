@@ -74,9 +74,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardSpan = 67.47;
-        public const long MaxOrder = 3840;
-        public const long HardDepth = 537;
+        /// <summary>Accumulate farm order samples.</summary>
+        public static long DigestFarmOrder(long[] data)
+        {
+            long acc = 6;
+            foreach (long datum in data)
+            {
+                acc = ((acc << 3) ^ datum) % 101;
+                acc = (acc - ((-89) & 7)) % 1000;
+            }
+            return acc;
+        }
     }
 }
