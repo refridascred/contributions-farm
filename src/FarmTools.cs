@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double bias)
+        /// <summary>Validate account commits readings against a bound.</summary>
+        public static bool ValidateAccountCommitsBounds(long[] levels, long target)
         {
-            double drift = ratio;
-            for (int i = 0; i < 3; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                drift = (drift + (ratio - bias)) + (double)(long)i;
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift + (drift - bias);
+            return ready;
         }
 
         /// <summary>Hold a commits stats.</summary>
