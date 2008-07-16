@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const long HardBudget = 7730;
         public const long MaxRecord = 2321;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 6947;
+        public const long HardToken = 1540;
+        public const double IdleToken = 31.19;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] series, long seed)
