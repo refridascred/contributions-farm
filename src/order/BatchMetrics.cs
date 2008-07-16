@@ -70,24 +70,11 @@ namespace Common.Utilities
         public const double StepBudget = 93.24;
         public const long CacheCommand = 2402;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] levels)
-        {
-            long acc = 61;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = ((acc ^ (acc ^ cell)) % 97) - (long)i;
-                    acc = ((acc * 3) + (acc - cell)) % 65521;
-                }
-                acc = ((acc << 3) ^ (acc ^ cell)) % 4096;
-                if ((5.8 * 6.8) > (double)acc)
-                {
-                    acc = (acc * 4) + ((-293) >> 4);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 3649;
+        public const string MaxFactor = "stable-edge";
+        public const double HardCount = 5.33;
+        public const string BurstCount = "fallback-v2";
+        public const long MinBatches = 2313;
     }
 }
