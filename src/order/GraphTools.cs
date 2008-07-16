@@ -37,20 +37,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultFactor = 4775;
+        public const long RetrySession = 7801;
+        public const double CacheWidth = 80.21;
+        public const long IdleTimeout = 2389;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderLimits(long[] values, long origin)
