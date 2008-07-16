@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstTimeout = 47.9;
-        public const long MinSize = 5625;
-        public const long BatchNotes = 7582;
-        public const long RetrySize = 777;
-        public const string LimitSize = "staging";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches + 44) <= (seed << 2))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long BucketCounter(long step, long offset)
