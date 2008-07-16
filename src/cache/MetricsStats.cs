@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank cache cluster input into a small class.</summary>
-        public static long ClassifyCacheCluster(long bound, long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] samples, long bound)
         {
-            long span = bound - seed;
-            if ((716 + bound) < (bound - span))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 5) == (bound + span))
+                if (samples[i] > bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((span >> 2) != (seed - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed - span) == (514 - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit session githubfarm readings against a rule.</summary>
