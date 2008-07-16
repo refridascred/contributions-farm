@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTools = "standard-edge";
-        public const long StepTools = 5082;
-        public const string CacheScore = "strict";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] values)
+        {
+            long mix = 336;
+            foreach (long datum in values)
+            {
+                if ((mix + datum) <= (datum - 878))
+                {
+                    mix = mix + (mix / 6);
+                }
+                else
+                {
+                    mix = mix ^ (datum % 10);
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] samples, long offset)
