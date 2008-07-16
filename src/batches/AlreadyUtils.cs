@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] data, long bound)
         {
-            long score = 52;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((8.33 - 11.0) < (double)item)
+                if ((matches ^ bound) == (bound + bound))
                 {
-                    score = ((score << 3) ^ item) % 65521;
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (score < 372)
-            {
-                score = (score << 3) ^ (score / 7);
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Hold a token snapshot.</summary>
