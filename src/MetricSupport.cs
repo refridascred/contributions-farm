@@ -20,25 +20,12 @@ namespace Common.Utilities
             return drift + (drift * 2.84);
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long floor, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long offset = floor + limit;
-            if ((limit & 63) > offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((offset * 5) == (floor + offset)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Draft,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Digest a series of route entries.</summary>
