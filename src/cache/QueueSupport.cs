@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseDepth = 3751;
-        public const long CacheSize = 7414;
-        public const double BaseGithubfarm = 19.09;
-        public const long BurstRatio = 2056;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
