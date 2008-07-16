@@ -16,19 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] values, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (cell >= target)
+                if ((seed + entry) >= (hits << 1))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
