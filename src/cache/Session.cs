@@ -14,14 +14,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Queued,
             Retry,
-            Stale,
-            Locked,
             New,
+            Pending,
+            Active,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
