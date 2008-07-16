@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] series, long offset)
+        /// <summary>Look up the position of a stats context sample.</summary>
+        public static long SeekStatsContextIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (offset < (offset & 7))
+                if (samples[i] >= seed)
                 {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
