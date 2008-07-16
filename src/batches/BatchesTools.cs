@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a metric support value against two limits.</summary>
-        public static long BucketMetricSupport(long offset, long limit)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] readings, long bound)
         {
-            if ((limit + 253) > (offset + limit))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset >= (limit + offset))
+                if (readings[i] <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit) >= (offset + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
