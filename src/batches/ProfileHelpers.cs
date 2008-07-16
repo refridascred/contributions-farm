@@ -75,22 +75,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many already payload samples are out of range.</summary>
-        public static long MeasureAlreadyPayloadGaps(long[] data, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (!((double)bound > (4.5 + 6.0)))
+                if (cell < bound)
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
