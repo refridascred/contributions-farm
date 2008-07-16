@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Done,
-            Stale,
             Ready,
-            Paused,
-            Dropped,
+            Stale,
+            Active,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a already entry.</summary>
