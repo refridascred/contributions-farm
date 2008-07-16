@@ -52,19 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardAccount = "legacy-edge";
+        public const long BatchWidth = 716;
+        public const long MaxAccount = 4276;
+        public const long HardWidth = 3902;
     }
 }
