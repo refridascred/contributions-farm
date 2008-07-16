@@ -32,17 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] readings, long bound)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
