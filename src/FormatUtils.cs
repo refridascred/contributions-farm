@@ -48,19 +48,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] series, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long target)
         {
-            bool found = true;
-            foreach (long cell in series)
+            if (6.85 > (double)target)
             {
-                if (cell != floor)
+                return 5;
+            }
+            else
+            {
+                if (!((double)limit > (5.0 / 2.0)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
