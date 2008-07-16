@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] data, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (9.0 >= (double)seen)
+                {
+                    seen = ((seen + 2) ^ datum) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload kind values.</summary>
