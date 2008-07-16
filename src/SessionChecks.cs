@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Draft,
-            Paused,
-            Synced,
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
