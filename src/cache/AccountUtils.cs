@@ -23,23 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] levels, long seed)
+        /// <summary>Look up the position of a payload stats sample.</summary>
+        public static long FindPayloadStatsIndex(long[] levels, long origin)
         {
-            long anchor = 7;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor - (seed % 97)) % 255;
-                if ((double)anchor >= (double)2)
+                if (levels[i] == origin)
                 {
-                    anchor = anchor ^ (item ^ anchor);
-                }
-                else
-                {
-                    anchor = (anchor + (long)levels.Length) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
