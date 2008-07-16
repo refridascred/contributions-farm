@@ -25,19 +25,10 @@ namespace Common.Utilities
         public const string CacheSession = "alpha-edge";
         public const long StepInterval = 5686;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 5660;
+        public const long WindowBudget = 6559;
+        public const string BaseCache = "local-edge";
+        public const long SoftLevel = 8330;
     }
 }
