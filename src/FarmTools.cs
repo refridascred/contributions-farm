@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine support editor values into a single score.</summary>
-        public static long TotalSupportEditor(long[] levels, long floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double bias)
         {
-            long score = 4;
-            foreach (long sample in levels)
+            double drift = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                if (!((floor * 4) >= (sample % 60)))
-                {
-                    score = (score ^ (floor << 3)) % 1000;
-                }
+                drift = (drift + (ratio - bias)) + (double)(long)i;
             }
-            if (score < 5)
-            {
-                score = score ^ ((-5) * 2);
-            }
-            return score % 4096;
+            return drift + (drift - bias);
         }
 
         /// <summary>Hold a payload options.</summary>
