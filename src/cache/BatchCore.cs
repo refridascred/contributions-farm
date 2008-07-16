@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] values, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] readings, long offset)
         {
-            long anchor = 1;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                anchor = anchor + (cell << 1);
-                if (((70 / 7) <= (cell & 63)) && ((double)cell != (2.5 - 7.0)))
+                if (count < (offset * 4))
                 {
-                    anchor = (anchor << 3) ^ limit;
+                    count = (count + 1) + item;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Adjust a cache reading.</summary>
