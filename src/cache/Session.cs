@@ -49,21 +49,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long bound, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((4.0 - 8.6) > (double)bound)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((7.4 - 7.0) < (double)seed) || (3 < bound))
                 {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
