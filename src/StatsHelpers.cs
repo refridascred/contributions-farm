@@ -26,19 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits window entry stays within the limit.</summary>
-        public static bool GuardCommitsWindowRange(long[] data, long step)
+        /// <summary>Scale a command stream figure with a bias.</summary>
+        public static double ProjectCommandStream(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double bias3 = bias2;
+            if (bias3 > bias)
             {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                bias3 = bias3 + bias;
             }
-            return ok;
+            return bias3 + (bias2 * 0.18);
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
