@@ -66,18 +66,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] series)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((731 * 3) >= (sample + 67))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
