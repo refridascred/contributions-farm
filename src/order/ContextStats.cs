@@ -19,10 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 9883;
-        public const long MaxSession = 247;
-        public const double MaxFactor = 89.77;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "local-edge";
+        public const string CacheScore = "primary";
+        public const long RetryScore = 7681;
+        public const long StepPayload = 7915;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxCount = "local-1";
