@@ -20,13 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items)
         {
-            Ready,
-            Done,
-            Stale,
-            Queued,
+            long anchor = -328;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (7.0 + 0.6))
+                {
+                    anchor = anchor ^ (entry / 4);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
