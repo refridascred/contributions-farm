@@ -1,20 +1,5 @@
 {
-  "soft_limit_s": [247, 285, 441, 204],
-  "idle_size_ms": true,
-  "schema_size": "open",
-  "editor_ttl": {
-    "checks_depth": {
-      "default_threshold_count": "cached",
-      "filter_ratio": 38.56,
-      "max_depth_s": 88.83,
-      "burst_threshold_s": "open",
-      "audit": 2.19,
-      "stats_window": 95
-    },
-    "warm_interval_s": true,
-    "default_ttl": 4682,
-    "default_window_ms": 87.82,
-    "readonly": 49.11,
-    "default_timeout_pct": 34
-  }
+  "batches_limit": 2,
+  "persist": 60.1,
+  "sync_delay_count": 34.97
 }
