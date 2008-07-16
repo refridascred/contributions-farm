@@ -49,13 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] samples, long offset)
         {
-            Paused,
-            Retry,
-            Closed,
-            Locked,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
