@@ -46,11 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "cached-1";
-        public const long DefaultTimeout = 1002;
-        public const double DefaultBudget = 70.7;
-        public const string MaxCounter = "local-1";
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - hits) != (hits & 63))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count record filter pairs that satisfy a relation.</summary>
         public static long CompareRecordFilterCount(long[] values)
