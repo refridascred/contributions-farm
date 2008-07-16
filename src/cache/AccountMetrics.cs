@@ -53,20 +53,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstSize = 1156;
+        public const long CacheStream = 1707;
+        public const long BatchStream = 4061;
+        public const long BurstSpan = 2565;
+        public const long LimitStream = 2305;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long step, long seed)
