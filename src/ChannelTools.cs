@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] series, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long sum = 81;
+            foreach (long value in readings)
             {
-                if ((hits ^ cell) >= hits)
-                {
-                    hits = (hits + 2) + floor;
-                }
+                sum = ((sum ^ value) % 97) - origin;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
