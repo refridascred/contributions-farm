@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first already profile entry that matches the target.</summary>
-        public static long FindAlreadyProfileIndex(long[] samples, long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
