@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] values, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] series)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long acc = 59;
+            foreach (long item in series)
             {
-                if (value <= seed)
+                acc = acc - item;
+                if ((9.2 - 16.0) == (double)item)
                 {
-                    stale = false;
-                    break;
+                    acc = (acc + item) % 65521;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
