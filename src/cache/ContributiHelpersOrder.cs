@@ -50,14 +50,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] values, long bound)
         {
-            Stale,
-            Ready,
-            Closed,
-            Draft,
-            Failed,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
