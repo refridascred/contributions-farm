@@ -17,17 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] samples, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (samples[i] == offset)
+                if ((3.66 - 4.41) < (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
