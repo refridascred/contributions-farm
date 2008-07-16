@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long MinSize = 4267;
         public const string DefaultGithubfarm = "open-1";
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if (((((long)series.Length + 287) < (707 - hits)) || ((double)cell < (double)hits)) && ((hits ^ 27) == ((-339) + cell)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the support level values.</summary>
