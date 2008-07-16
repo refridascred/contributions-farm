@@ -1,12 +1,6 @@
 {
-  "burst_timeout_ms": 92.58,
-  "max_threshold_count": 9657,
-  "batch_ttl_s": {
-    "enabled": 250,
-    "soft_threshold_count": 500,
-    "compress": 57,
-    "readonly": "stable",
-    "sync_interval_s": [418, 452, 339]
-  },
-  "cluster_limit": [399, 238]
+  "cache_threshold_s": 28,
+  "channel_window": [480, 252, 244],
+  "retry_window_count": 2165,
+  "cache_depth": 994
 }
