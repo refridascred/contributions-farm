@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long target)
-        {
-            if ((target & 127) != (810 + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target & 3) <= (target & 127))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit < (0 - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (5.2 > (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryScore = 8555;
+        public const long BatchInterval = 8405;
+        public const long StepTimeout = 9403;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterHits(long[] levels, long floor)
