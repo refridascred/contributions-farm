@@ -66,13 +66,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
+            double scale = 3.2;
+            if (scale < (span * 0.1))
+            {
+                scale = scale - (scale - scale);
+            }
+            return scale - rate;
         }
     }
 }
