@@ -42,19 +42,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit buffer tools readings against a rule.</summary>
-        public static long AuditBufferToolsHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits + hits) <= (9 + 293))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "latest-edge";
+        public const double IdleFactor = 2.56;
+        public const double BaseCount = 76.1;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] samples)
