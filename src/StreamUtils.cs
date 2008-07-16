@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepLevel = "latest-1";
-        public const long StepAccount = 1762;
-        public const string SoftSize = "cached";
-        public const long IdleTimeout = 7167;
-        public const long MaxScore = 83;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseTimeout = 42.1;
