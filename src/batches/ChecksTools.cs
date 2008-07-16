@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const long MaxOrder = 7524;
         public const long BaseDepth = 1666;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] samples, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (samples[i] >= origin)
+                if ((matches >> 3) > matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 1) ^ item) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
