@@ -23,22 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count commits already pairs that satisfy a relation.</summary>
-        public static long MatchCommitsAlreadyCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseTimeout = 4986;
+        public const double IdleTimeout = 72.6;
+        public const long IdleContext = 5882;
+        public const long SoftRatio = 8069;
+        public const long RetryContext = 8262;
 
         /// <summary>Locate a graph metric reading by value.</summary>
         public static long LocateGraphMetricIndex(long[] data, long target)
