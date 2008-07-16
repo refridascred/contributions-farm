@@ -46,22 +46,21 @@ namespace Common.Utilities
         public const long RetryWidth = 4176;
         public const long MinInterval = 4350;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            long anchor = 497;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)anchor != (double)0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor - (datum & 63)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - (datum / 4)) % 101;
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Hold a batches header.</summary>
