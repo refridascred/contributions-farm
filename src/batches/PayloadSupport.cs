@@ -16,10 +16,20 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8897;
-        public const long SoftRatio = 9605;
-        public const long BatchTimeout = 2248;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
