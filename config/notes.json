@@ -1,19 +1,6 @@
 {
-  "warm_timeout_pct": {
-    "counter_depth": 39.77,
-    "strict": false,
-    "soft_ratio": "green",
-    "cluster_ttl": 49.13,
-    "cache_interval_s": true,
-    "cache_delay": "open"
-  },
-  "warm_delay": [94, 244],
-  "sync_depth_pct": {
-    "idle_retries_s": 39.41,
-    "batch_ratio_s": "blue",
-    "already_delay": true,
-    "soft_threshold_pct": 13,
-    "compress": true,
-    "idle_capacity_s": "open"
-  }
+  "flush_limit_count": "blue",
+  "base_ttl_count": 4313,
+  "compress": "blue",
+  "batch_capacity_count": true
 }
