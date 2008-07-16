@@ -1,6 +1,14 @@
 {
-  "contributi_size": "open",
-  "farm_timeout": [16, 258, 34],
-  "poll_threshold_ms": "edge",
-  "entry_ratio": [28, 89, 9]
+  "soft_interval_count": true,
+  "window_timeout": ["open", "latest", "legacy"],
+  "compress": false,
+  "dry_run": {
+    "default_ratio_count": 5.31,
+    "readonly": ["standard", "cached", "primary"],
+    "command_window": "latest",
+    "warm_timeout": 1024,
+    "base_size": "cached"
+  },
+  "max_size_pct": "edge",
+  "audit": 2.12
 }
