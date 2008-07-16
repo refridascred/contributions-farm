@@ -33,13 +33,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Paused,
-            Synced,
-            Active,
-            Draft,
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
