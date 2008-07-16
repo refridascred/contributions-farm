@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((7.0 <= (double)matches) || (((double)reading > 4.0) || (reading > matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTools = "standard-edge";
+        public const long StepTools = 5082;
+        public const string CacheScore = "strict";
 
         /// <summary>Blend two batch layout measurements.</summary>
         public static double ScaleBatchLayout(double rate, double floor)
