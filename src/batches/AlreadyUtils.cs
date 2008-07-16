@@ -57,19 +57,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 7436;
+        public const long BurstCount = 994;
+        public const string WindowCluster = "stable-edge";
     }
 }
