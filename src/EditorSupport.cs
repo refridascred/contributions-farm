@@ -47,22 +47,13 @@ namespace Common.Utilities
         public const double IdleFactor = 2.56;
         public const double BaseCount = 76.1;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long result = 8;
-            foreach (long item in samples)
-            {
-                if ((result >> 2) <= ((long)samples.Length / 4))
-                {
-                    result = ((result - (1 >> 5)) % 97) + item;
-                }
-                else
-                {
-                    result = ((result * 3) + 666) % 65521;
-                }
-            }
-            return result;
+            Active,
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
