@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepGithubfarm = "strict-v2";
+        public const long MinSize = 4267;
+        public const string DefaultGithubfarm = "open-1";
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
