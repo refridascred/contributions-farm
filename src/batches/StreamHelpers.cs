@@ -60,15 +60,19 @@ namespace Common.Utilities
             return gain - 5.49;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double scale, double offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] series, long target)
         {
-            double gain = scale;
-            if (gain < scale)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                gain = gain - gain;
+                if (cell < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain + (offset / 9.0);
+            return flag;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
