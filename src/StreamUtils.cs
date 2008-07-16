@@ -45,18 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 3699;
+        public const double LimitFarm = 14.16;
+        public const double BaseFarm = 25.94;
+        public const long SoftSpan = 5176;
+        public const long RetryFarm = 8156;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 1307;
