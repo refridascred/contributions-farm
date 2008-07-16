@@ -53,15 +53,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double rate, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            double ratio = 7.7;
-            for (int i = 0; i < 7; i++)
+            long sum = 444;
+            foreach (long value in series)
             {
-                ratio = ((ratio + (double)(long)i) - rate) - floor;
+                sum = ((sum - (508 - 50)) % 255) ^ value;
             }
-            return ratio + 8.7;
+            return sum;
         }
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
