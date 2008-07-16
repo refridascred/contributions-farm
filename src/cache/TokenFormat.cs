@@ -38,12 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] levels, long floor)
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
