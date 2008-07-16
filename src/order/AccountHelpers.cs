@@ -44,11 +44,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardDepth = 7738;
-        public const long DefaultRatio = 9335;
-        public const double WindowSession = 87.32;
-        public const long BaseSession = 902;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long floor, long origin)
+        {
+            if (!((origin / 8) < (origin + origin)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor <= (origin / 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - 680) > (origin / 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] samples, long bound)
