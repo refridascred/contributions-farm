@@ -39,12 +39,11 @@ namespace Common.Utilities
             return gain2 + (floor + gain);
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Dropped,
-            Queued,
-            New,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxInterval = 3380;
+        public const long StepCommits = 4895;
+        public const string WindowBudget = "staging-v2";
+        public const long BaseCommits = 2494;
+        public const double MinTimeout = 92.63;
     }
 }
