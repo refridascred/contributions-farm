@@ -36,11 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftLevel = 87.38;
-        public const long DefaultSchema = 9674;
-        public const long IdleBudget = 9175;
-        public const long WindowSchema = 4090;
-        public const long SoftSchema = 3317;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
