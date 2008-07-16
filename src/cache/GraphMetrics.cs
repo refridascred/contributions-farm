@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up notes already samples.</summary>
-        public static long MatchNotesAlreadyCount(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((20.0 * 8.78) > (double)target)
                 {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
