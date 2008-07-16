@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] values)
         {
-            Retry,
-            Idle,
-            Pending,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (9.32 <= (double)seen)
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a entry summary.</summary>
