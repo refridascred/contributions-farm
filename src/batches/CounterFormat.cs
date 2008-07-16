@@ -24,20 +24,10 @@ namespace Common.Utilities
             return weight2 + (double)390;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 2784;
+        public const double DefaultAlready = 14.35;
+        public const double LimitCount = 35.42;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
