@@ -28,9 +28,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 9426;
-        public const double SoftOrder = 22.06;
-        public const double BatchFactor = 25.17;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 5263;
+        public const long BaseChecks = 3089;
+        public const long BurstChecks = 953;
     }
 }
