@@ -45,11 +45,17 @@ namespace Common.Utilities
             return gain2 - (gain2 + 4.82);
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double bias, double bias2)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] values, long origin)
         {
-            double mean = bias2;
-            return (mean + bias2) + bias;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next contributi schema value from a seed.</summary>
