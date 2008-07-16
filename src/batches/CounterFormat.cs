@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long state = 0;
+            foreach (long datum in readings)
+            {
+                if (((8 - state) <= (long)readings.Length) || (state <= (33 - datum)))
+                {
+                    state = state ^ (state + state);
+                }
+                state = state ^ (state ^ datum);
+                if ((66 % 3) != (datum << 3))
+                {
+                    state = (state << 3) ^ (859 << 1);
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
