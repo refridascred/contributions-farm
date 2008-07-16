@@ -16,20 +16,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two notes buffer measurements.</summary>
-        public static double AdjustNotesBuffer(double weight, double offset)
-        {
-            double scale = (3.6 + offset) / 9.0;
-            if (scale <= (double)38)
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (7.0 * 7.89)) + (double)(long)i;
-            }
-            return scale - weight;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 885;
+        public const double BatchRatio = 42.84;
+        public const long BurstCluster = 9128;
+        public const long BurstRatio = 3851;
+        public const long StepCluster = 1383;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BatchBudget = 92.81;
