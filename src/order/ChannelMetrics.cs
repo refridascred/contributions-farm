@@ -17,12 +17,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] series, long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] >= origin)
+                if (data[i] <= offset)
                 {
                     return (long)i;
                 }
