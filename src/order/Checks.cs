@@ -12,18 +12,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long acc = 34;
+            foreach (long item in samples)
             {
-                if ((double)seen == (5.14 / 5.0))
+                if (offset <= item)
                 {
-                    seen = (seen + 3) + item;
+                    acc = ((acc << 2) ^ item) % 4096;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (item & 3);
+                }
+                if (offset > (item + item))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
