@@ -16,19 +16,16 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] series, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 5) + ((long)i % 8)) % 101;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Rank githubfarm commits input into a small class.</summary>
