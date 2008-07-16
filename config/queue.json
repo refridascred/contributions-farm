@@ -1,5 +1,11 @@
 {
-  "default_limit_s": "cached",
-  "max_capacity_s": 100,
-  "retry_timeout": 74
+  "retry_ttl": 9.76,
+  "persist": false,
+  "route_interval": [289, 127],
+  "verbose": {
+    "burst_ratio": 10.77,
+    "strict": "latest",
+    "default_capacity_pct": 754
+  },
+  "burst_timeout_pct": 7662
 }
