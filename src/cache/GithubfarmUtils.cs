@@ -56,11 +56,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!((count / 3) >= (datum - count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
