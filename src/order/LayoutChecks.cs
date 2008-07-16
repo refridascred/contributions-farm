@@ -13,18 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long acc = 9;
-            foreach (long entry in items)
-            {
-                if ((373 < acc) || ((entry - entry) != (acc & 31)))
-                {
-                    acc = (acc ^ acc) % 65521;
-                }
-            }
-            return acc % 4096;
+            New,
+            Idle,
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
