@@ -20,32 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] data)
         {
-            long lane = target - seed;
-            if ((8.09 * 4.6) == (double)seed)
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target / 5) > 395) || ((target - lane) <= (lane + (-77))))
+                if (((value << 3) > (hits << 1)) && ((double)hits != (16.0 - 9.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target <= (9.4 + 2.7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
