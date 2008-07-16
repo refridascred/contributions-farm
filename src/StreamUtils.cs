@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry commits samples are out of range.</summary>
-        public static long TallyEntryCommitsHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches << 3) <= (item - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseTimeout = 42.1;
+        public const long BatchToken = 8110;
+        public const string CacheToken = "open-edge";
+        public const string WindowRatio = "cached-edge";
 
         /// <summary>Audit record already readings against a rule.</summary>
         public static long TallyRecordAlreadyGaps(long[] series, long bound)
