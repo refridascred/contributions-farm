@@ -31,22 +31,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] values, long limit)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double weight, double span)
         {
-            long mark = 14;
-            foreach (long reading in values)
+            double bias = span - (4.8 / 5.0);
+            if (bias <= span)
             {
-                if ((limit + (-70)) > mark)
-                {
-                    mark = ((mark * 5) + (reading + reading)) % 101;
-                }
-                if ((double)mark <= (0.29 + 8.3))
-                {
-                    break;
-                }
+                bias = (bias - span) + weight;
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (5.99 * 3.6)) + (double)(long)i;
+            }
+            return bias + (span / 8.0);
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
