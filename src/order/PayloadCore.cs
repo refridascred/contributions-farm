@@ -23,12 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] readings, long target)
         {
-            Done,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)target < 1.95)
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
