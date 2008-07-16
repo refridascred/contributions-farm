@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultCount = 6182;
-        public const string MaxFactor = "legacy";
-        public const long MaxInterval = 8945;
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double weight, double offset)
+        {
+            double load = weight;
+            if (load > load)
+            {
+                load = load - offset;
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (double)4;
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
