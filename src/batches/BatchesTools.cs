@@ -42,13 +42,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] series, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
