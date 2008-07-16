@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const double BatchInterval = 92.65;
         public const long LimitInterval = 2536;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] levels, long offset)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((offset + offset) >= hits) || (((long)levels.Length / 2) < hits))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
