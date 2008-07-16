@@ -55,19 +55,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate record commits readings against a bound.</summary>
-        public static bool ValidateRecordCommitsLimits(long[] levels, long floor)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
