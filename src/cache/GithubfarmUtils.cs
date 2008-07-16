@@ -45,10 +45,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 1162;
-        public const long MinTools = 9122;
-        public const string LimitTools = "legacy-edge";
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long limit)
