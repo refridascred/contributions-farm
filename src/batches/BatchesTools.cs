@@ -31,17 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] series, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 0;
+            foreach (long datum in data)
             {
-                if (series[i] > bound)
+                if (((datum / 2) <= (state / 3)) || (state < datum))
                 {
-                    return (long)i;
+                    state = state ^ (66 & 3);
+                    state = state ^ (0 ^ datum);
                 }
+                state = (state ^ (state + datum)) % 101;
+                state = (state ^ datum) % 255;
             }
-            return -1;
+            if (state > 49)
+            {
+                state = (state ^ (state - (long)data.Length)) % 65521;
+            }
+            return state % 65521;
         }
     }
 }
