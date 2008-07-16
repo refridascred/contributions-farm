@@ -1,7 +1,14 @@
 {
-  "compress": ["green", "edge", "edge"],
-  "base_capacity_count": false,
-  "readonly": [235, 494, 489],
-  "verbose": false,
-  "token_capacity": ["edge", "eu-west", "fallback"]
+  "min_ttl": "stable",
+  "batch_size": "stable",
+  "profile_size": false,
+  "readonly": true,
+  "retry_retries_count": {
+    "githubfarm_limit": ["green", "legacy", "latest"],
+    "batch_size": "latest",
+    "flush_size_pct": "cached",
+    "persist": 299,
+    "cache_delay_pct": ["stable", "eu-west"],
+    "warm_capacity_ms": "legacy"
+  }
 }
