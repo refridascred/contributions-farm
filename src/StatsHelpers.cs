@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheRatio = 4857;
-        public const long SoftEntry = 8624;
-        public const long BaseEntry = 2096;
-        public const double BatchTimeout = 34.45;
-        public const double DefaultBudget = 76.44;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (offset < (offset & 7))
+                {
+                    tally = (tally + 2) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the payload entry entries that pass the check.</summary>
         public static long AuditPayloadEntryMatches(long[] series)
