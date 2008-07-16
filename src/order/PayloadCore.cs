@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
