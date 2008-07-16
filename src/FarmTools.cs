@@ -50,18 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] values)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((8 + entry) > ((long)values.Length & 3)) || (((entry / 8) >= (entry >> 1)) && ((entry - 3) <= entry)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Failed,
+            Draft,
+            Queued,
+            Done,
+            Closed,
         }
     }
 }
