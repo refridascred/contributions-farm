@@ -20,18 +20,25 @@ namespace Common.Utilities
             return drift + (drift * 2.84);
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long floor, long limit)
         {
-            long result = 916;
-            foreach (long value in samples)
+            long offset = floor + limit;
+            if ((limit & 63) > offset)
             {
-                if ((722 << 2) > (value & 1))
+                return 0;
+            }
+            else
+            {
+                if (!((offset * 5) == (floor + offset)))
                 {
-                    result = ((result * 5) + (value % 2)) % 255;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return result;
         }
 
         /// <summary>Digest a series of route entries.</summary>
