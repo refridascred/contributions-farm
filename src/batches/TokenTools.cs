@@ -27,13 +27,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long offset, long bound)
         {
-            Closed,
-            Retry,
-            New,
-            Stale,
+            if (!((offset * 2) <= (941 - bound)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound > (7 + 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound <= (offset >> 5)) && ((double)bound >= (0.9 * 8.33)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
