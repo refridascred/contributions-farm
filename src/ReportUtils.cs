@@ -60,18 +60,16 @@ namespace Common.Utilities
         public const long MaxInterval = 2549;
         public const long BurstRoute = 4074;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] series)
+        /// <summary>Roll a token metrics counter forward.</summary>
+        public static long SeriesTokenMetrics(long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)matches < 5.2)
-                {
-                    matches = (matches + 2) ^ datum;
-                }
+                mix = mix - (18 << 2);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
