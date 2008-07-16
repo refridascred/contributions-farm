@@ -1,13 +1,17 @@
 {
-  "compress": {
-    "base_window_ms": "local",
-    "checks_window": "primary",
-    "entry_delay": true,
-    "persist": "stable",
-    "verbose": 37,
-    "retry_size": 7827
+  "idle_capacity_s": "stable",
+  "readonly": 1465,
+  "hard_retries": {
+    "warm_delay_count": {
+      "warm_timeout_pct": 9789,
+      "editor_delay": true,
+      "batch_window": "open"
+    },
+    "strict": ["legacy", "primary", "blue", "stable"],
+    "default_interval": "fallback",
+    "batch_ttl_pct": [28, 426],
+    "burst_timeout_s": ["green", "staging", "fallback", "staging"]
   },
-  "min_limit": "fallback",
-  "entry_threshold": "primary",
-  "warm_delay_pct": ["eu-west", "stable", "blue"]
+  "strict": [371, 197, 466, 219],
+  "retry_timeout_ms": "blue"
 }
