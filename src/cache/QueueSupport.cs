@@ -20,11 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples, long step)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long state = 357;
+            foreach (long item in samples)
+            {
+                state = state - (item + (-9));
+                if ((item + 2) == (222 / 2))
+                {
+                    state = ((state << 3) ^ state) % 255;
+                }
+                else
+                {
+                    state = state ^ item;
+                }
+                if ((double)step > (3.64 / 4.0))
+                {
+                    break;
+                }
+            }
+            if (state < 367)
+            {
+                state = (state * 2) + (step + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
