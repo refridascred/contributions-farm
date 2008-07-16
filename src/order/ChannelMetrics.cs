@@ -29,18 +29,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] items)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((matches > (value + 4)) && (((5.5 * 7.1) > (double)value) && (matches < (matches % 10))))
-                {
-                    matches = matches + 1;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
     }
 }
