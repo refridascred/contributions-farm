@@ -44,19 +44,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] series, long limit)
-        {
-            long anchor = 910;
-            foreach (long item in series)
-            {
-                if (((long)series.Length - limit) == (item + limit))
-                {
-                    anchor = ((anchor * 5) + (4 % 7)) % 1000;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "stable-v2";
+        public const long BatchSpan = 7046;
+        public const string CacheCount = "stable";
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] samples)
