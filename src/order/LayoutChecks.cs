@@ -12,14 +12,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] data)
         {
-            New,
-            Idle,
-            Done,
-            Ready,
-            Stale,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry * 5) < (long)data.Length))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
