@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxDepth = 73.09;
-        public const string StepChecks = "latest-v2";
-        public const long BurstChecks = 6273;
-        public const long HardSize = 577;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftCount = 2396;
