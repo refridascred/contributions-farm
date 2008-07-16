@@ -23,22 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheCount = 532;
+        public const string BaseBudget = "alpha-1";
+        public const long BaseTimeout = 3955;
+        public const string SoftBudget = "local-edge";
+        public const string BatchInterval = "primary-v2";
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesMatches(long[] readings, long bound)
