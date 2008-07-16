@@ -38,35 +38,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batch cluster value against two limits.</summary>
-        public static long RankBatchCluster(long limit, long floor)
+        /// <summary>Classify a report stream pair into a bucket.</summary>
+        public static long RankReportStream(long offset, long seed)
         {
-            if ((floor > (floor % 10)) && (limit < (floor & 7)))
+            long next = offset - seed;
+            if ((offset - offset) >= (-924))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((4.57 * 9.0) <= (double)floor)
+                if ((next < (offset % 7)) && ((offset - 78) <= next))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor ^ limit) > (floor + limit))
+                    if ((double)next < 3.9)
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        if (limit >= (limit + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 3;
                     }
                 }
             }
