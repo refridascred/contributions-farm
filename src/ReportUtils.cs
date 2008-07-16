@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine stats session values into a single score.</summary>
-        public static long WeighStatsSession(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mix = 36;
-            foreach (long reading in levels)
-            {
-                if ((1.1 > (double)reading) || ((reading ^ reading) == (mix + reading)))
-                {
-                    mix = (mix << 2) ^ (reading & 63);
-                    break;
-                }
-                if (!(reading > mix))
-                {
-                    mix = (mix * 5) + (mix * 2);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ 55;
-                }
-            }
-            if (mix < 9)
-            {
-                mix = (mix ^ (mix & 15)) % 1000;
-            }
-            return mix;
+            Draft,
+            Active,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a support options.</summary>
