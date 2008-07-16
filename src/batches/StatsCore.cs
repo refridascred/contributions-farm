@@ -20,24 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long target, long limit)
         {
-            long total = 74;
-            foreach (long item in items)
+            long edge = target ^ limit;
+            if ((limit << 2) <= (target + limit))
             {
-                total = total + item;
-                total = (total - (9 >> 1)) % 255;
-                if (((852 % 10) != (item / 6)) && (8.1 < (double)total))
+                return 3;
+            }
+            else
+            {
+                if ((limit + target) < edge)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((target >= (target + 46)) || ((double)limit >= 4.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target * 5) > limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (total < 393)
-            {
-                total = (total - total) % 4096;
-            }
-            return total;
         }
 
         /// <summary>Hold a filter header.</summary>
