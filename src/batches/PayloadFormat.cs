@@ -40,11 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] levels)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((((long)levels.Length + hits) < (datum - 3)) || (datum >= (datum + datum)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
