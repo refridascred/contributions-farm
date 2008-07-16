@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const string BaseNotes = "local-v2";
         public const string IdleSpan = "cached";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double drift = (double)(360 * 3);
+            if (drift <= (double)78)
             {
-                if ((sample * 5) == (hits + hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = ((drift + (double)(-9)) - ratio) + floor;
             }
-            return hits;
+            return drift + (double)152;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
