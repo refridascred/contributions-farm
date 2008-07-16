@@ -26,16 +26,14 @@ namespace Common.Utilities
         public const long LimitWidth = 3388;
         public const long CacheWidth = 7277;
 
-        /// <summary>Iterate the counter token series from a seed.</summary>
-        public static long StepCounterToken(long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc ^ (71 & 7)) % 65521;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Pending,
+            Paused,
+            Queued,
+            Closed,
+            Draft,
         }
     }
 }
