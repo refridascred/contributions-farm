@@ -58,18 +58,18 @@ namespace Common.Utilities
         public const long WindowCommits = 3309;
         public const double LimitSize = 2.68;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] levels, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((double)reading == (1.0 - 5.3))
+                if ((datum - datum) != (16 + matches))
                 {
-                    hits = (hits + 2) + seed;
+                    matches = (matches + 2) - step;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
