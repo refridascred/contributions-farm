@@ -1,7 +1,14 @@
 # githubfarm settings
-min_retries_count: 3348
-poll_threshold:
-  - strict
-  - cached
-metric_capacity: strict
-default_interval: 28
+burst_retries_pct: edge
+hard_retries_s:
+  schema_threshold:
+    - 493
+    - 33
+    - 243
+  hard_retries_count: 3485
+  persist:
+    - 329
+    - 194
+    - 495
+  compress: false
+cache_delay_s: eu-west
