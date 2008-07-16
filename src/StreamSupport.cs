@@ -32,14 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] series, long floor)
         {
-            Queued,
-            Closed,
-            Pending,
-            Dropped,
-            Idle,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value & 63) < (value + floor))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
