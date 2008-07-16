@@ -47,15 +47,14 @@ namespace Common.Utilities
         public const long IdleQueue = 5585;
         public const long MinBudget = 5776;
 
-        /// <summary>Combine counter stats values into a single score.</summary>
-        public static long TotalCounterStats(long[] data, long target)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long acc = 0;
-            foreach (long sample in data)
-            {
-                acc = (((acc * 3) + acc) ^ sample) + target;
-            }
-            return acc;
+            Locked,
+            Dropped,
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
