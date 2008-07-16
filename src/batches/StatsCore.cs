@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 18.52;
-        public const long MinFormat = 3874;
-        public const string LimitCount = "open";
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TotalGraph(long[] items)
