@@ -28,19 +28,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] samples, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit - anchor) < (8 - (long)i))
+                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
                 {
-                    anchor = (anchor - (anchor / 3)) % 1000;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
