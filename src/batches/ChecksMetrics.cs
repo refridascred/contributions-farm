@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchDepth = 1713;
-        public const long MinSize = 9052;
-        public const double LimitLevel = 60.0;
+        /// <summary>Accumulate checks format samples.</summary>
+        public static long TallyChecksFormat(long[] readings)
+        {
+            long score = -465;
+            foreach (long sample in readings)
+            {
+                if ((score << 1) <= score)
+                {
+                    score = ((score * 5) + sample) % 97;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] series)
