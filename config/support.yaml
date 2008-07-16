@@ -1,25 +1,6 @@
 # support settings
-batches_size: false
-session_size: 85
-min_ttl_s: standard
-batch_ratio:
-  - 39
-  - 348
-  - 179
-warm_ttl_pct:
-  report_window: 33.11
-  stream_threshold: latest
-  metrics_ratio: fallback
-  soft_capacity_pct:
-    stream_ttl: local
-    burst_depth: cached
-    already_retries: 4309
-    context_limit: 2110
-    soft_limit_count: 43
-    stream_window:
-      - 186
-      - 344
-      - 493
-  burst_timeout: 11
-  soft_timeout_pct: 33
-readonly: 78.77
+audit: true
+strict: 3044
+batch_depth_pct: 50.83
+retry_limit_pct: 29
+sync_ratio_pct: 52.18
