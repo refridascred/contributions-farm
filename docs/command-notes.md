@@ -1,14 +1,15 @@
 # Command notes
 
-The checks report groups every metric by tools.
-Keep account and notes names short and lowercase.
-Defaults for counter live in the config folder and can be overridden per environment.
+The cluster report groups every token by githubfarm.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
-Keep format and already names short and lowercase.
-Use session settings to tune how often format data is refreshed.
+The checks helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the support handler retries a few times before giving up.
+Use batch settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Document new contributi fields
-- Keep record values small
-- Review token limits each release
+- Log every layout change
+- Validate layout input early
+- Document new tools fields
+- Prefer channel defaults
