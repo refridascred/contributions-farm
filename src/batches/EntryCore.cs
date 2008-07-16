@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] levels, long offset)
         {
-            Idle,
-            Closed,
-            Failed,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine profile layout values into a single score.</summary>
