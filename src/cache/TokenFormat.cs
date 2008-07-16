@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema notes samples are out of range.</summary>
-        public static long CountSchemaNotesOutliers(long[] samples, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (((hits % 60) <= (item * 5)) || !((12.0 * 9.2) <= (double)offset))
+                if (item != bound)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the command class values.</summary>
