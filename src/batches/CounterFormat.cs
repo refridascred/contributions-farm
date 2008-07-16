@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
