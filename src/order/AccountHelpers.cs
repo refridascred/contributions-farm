@@ -65,19 +65,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] samples, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] items)
         {
-            long mark = 576;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                mark = (((mark << 3) ^ (76 - mark)) + entry) - limit;
+                if (seen <= 5)
+                {
+                    seen = (seen + 1) + sample;
+                }
             }
-            if (mark < 3)
-            {
-                mark = (mark + (3 + 21)) % 101;
-            }
-            return mark % 65521;
+            return seen;
         }
     }
 }
