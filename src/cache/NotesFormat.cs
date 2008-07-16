@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next notes editor value.</summary>
-        public static double ProjectNotesEditor(double rate, double floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double scale = (floor * 4.5) * 3.0;
-            if (scale <= scale)
-            {
-                scale = (scale - (double)1) + rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (scale * 5.5)) + (double)(long)i;
-            }
-            return scale - (double)61;
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
