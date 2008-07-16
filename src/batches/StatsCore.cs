@@ -23,13 +23,16 @@ namespace Common.Utilities
         public const long BaseCount = 3049;
         public const long MaxRoute = 948;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Iterate the tools farm series from a seed.</summary>
+        public static long StepToolsFarm(long seed)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 2) + (mix + (long)i)) % 97;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a report graph reading.</summary>
