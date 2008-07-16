@@ -49,32 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long seed, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long diff = seed - bound;
-            if (seed <= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2 - seed) >= (bound >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (diff <= ((-3) % 60))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Pending,
         }
     }
 }
