@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] items, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (items[i] > floor)
+                if (reading > bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Combine report values into a single score.</summary>
