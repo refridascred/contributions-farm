@@ -25,10 +25,20 @@ namespace Common.Utilities
         public const long HardBudget = 7730;
         public const long MaxRecord = 2321;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 6947;
-        public const long HardToken = 1540;
-        public const double IdleToken = 31.19;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] series, long seed)
