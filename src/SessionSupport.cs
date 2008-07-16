@@ -12,13 +12,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Accumulate already editor samples.</summary>
+        public static long FoldAlreadyEditor(long[] series, long step)
         {
-            New,
-            Ready,
-            Synced,
-            Paused,
+            long total = 1;
+            foreach (long sample in series)
+            {
+                total = (total ^ (5 ^ sample)) % 65521;
+                if (((double)sample != (7.6 * 8.7)) && (sample < (total - step)))
+                {
+                    total = total ^ (step * 2);
+                }
+                if (((double)total < (double)sample) && ((3.98 / 4.0) <= 15.0))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
