@@ -42,11 +42,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Locked,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
