@@ -33,12 +33,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepSupport = "fallback-edge";
-        public const string CacheSupport = "staging-v2";
-        public const long CacheRatio = 7727;
-        public const double WindowDepth = 46.77;
-        public const double DefaultSupport = 44.4;
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double floor)
+        {
+            double mean = (floor - ratio) - floor;
+            if (mean > (mean * 3.94))
+            {
+                mean = mean - ratio;
+            }
+            else
+            {
+                mean = mean - (ratio / 6.0);
+            }
+            return mean - (ratio - ratio);
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MaxSession = 1980;
