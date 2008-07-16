@@ -56,23 +56,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] values, long floor)
         {
-            long acc = 323;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                acc = (acc + 480) % 255;
-                if ((double)acc < (double)20)
+                if ((matches - matches) >= (floor ^ floor))
                 {
-                    acc = (acc * 5) + (item & 15);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc + (-18))) % 101;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
     }
 }
