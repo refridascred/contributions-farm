@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally % 24) < (tally * 3))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a payload reading.</summary>
