@@ -79,10 +79,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 9119;
-        public const string WindowGithubfarm = "primary-v2";
-        public const long IdleGithubfarm = 2817;
-        public const string BatchGithubfarm = "primary";
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long floor, long origin)
+        {
+            if (1.79 >= (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor > (origin - origin)) && (origin >= (598 + 23)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
