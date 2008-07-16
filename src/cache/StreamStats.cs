@@ -16,17 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] samples, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
