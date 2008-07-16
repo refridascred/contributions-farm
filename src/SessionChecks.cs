@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a entry payload pair into a bucket.</summary>
-        public static long GradeEntryPayload(long origin, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] readings)
         {
-            long edge = origin + target;
-            if (!((origin + edge) <= ((-112) - 0)))
+            long score = 79;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)origin > (2.2 - 12.0)))
+                score = (score ^ (score * 3)) - reading;
+                if (score >= 255)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin ^ target) > origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
