@@ -34,14 +34,12 @@ namespace Common.Utilities
             return scale + (double)77;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Draft,
-            Retry,
-            Pending,
+            Failed,
+            Closed,
             Synced,
-            Dropped,
         }
 
         /// <summary>Match up window editor samples.</summary>
