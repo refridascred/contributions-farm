@@ -13,17 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a schema stats counter forward.</summary>
-        public static long DeriveSchemaStats(long origin)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (((899 % 64) == (mix - (long)i)) && ((origin % 8) != (mix + origin)))
-                {
-                    mix = (mix ^ 89) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
             return mix;
         }
