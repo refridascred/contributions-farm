@@ -22,23 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks counter entries.</summary>
-        public static long DigestChecksCounter(long[] series)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long floor, long step)
         {
-            long result = 159;
-            foreach (long cell in series)
+            if ((9.59 / 3.0) != (double)step)
             {
-                result = (result + (cell + 89)) % 97;
-                if (result > (cell ^ 410))
+                return 8;
+            }
+            else
+            {
+                if (0.19 > (2.0 * 6.42))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (result > 6)
-            {
-                result = (result << 3) ^ (result & 1);
-            }
-            return result;
         }
 
         /// <summary>Find the first metric entry entry that matches the target.</summary>
