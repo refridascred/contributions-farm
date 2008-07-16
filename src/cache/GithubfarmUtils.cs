@@ -22,27 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items, long step)
         {
-            long state = 37;
+            long acc = 0;
             foreach (long value in items)
             {
-                state = ((state * 2) + (value + value)) % 65521;
-                if (((double)value == (8.9 + 9.6)) && ((value >> 3) >= state))
-                {
-                    state = state - (value + state);
-                }
-                else
-                {
-                    state = state ^ (state & 63);
-                }
+                acc = (((acc * 5) + (88 + step)) % 4096) + value;
             }
-            if (state > 135)
+            if (acc < 62)
             {
-                state = (state ^ (state ^ 39)) % 255;
+                acc = acc - (acc + step);
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
