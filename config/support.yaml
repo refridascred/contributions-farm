@@ -1,26 +1,29 @@
 # support settings
-default_retries:
-  retry_interval:
-    - 289
-    - 209
-    - 44
-    - 129
-  base_depth: false
-  layout_ttl:
-    sync_capacity: 250
-    idle_size_ms: legacy
-    sync_threshold_ms: 46
-    verbose: standard
-  default_delay_pct: 6
-  base_capacity: 37.48
-dry_run:
-  queue_timeout: standard
-  burst_threshold_s: false
-  burst_ttl_pct: 500
-  record_delay: false
-  default_capacity: 57.34
-  poll_ttl: true
-audit: false
-filter_interval: 84.3
-graph_size: 1634
-persist: primary
+burst_threshold_ms:
+  record_ratio:
+    sync_limit_ms: 45
+    dry_run: 60.34
+    min_ttl_count: true
+    cache_ttl_count: 45
+  compress: 39.92
+  dry_run: false
+readonly:
+  idle_timeout_ms: 41
+  idle_ratio_count: standard
+  order_interval: 5.58
+  metric_delay: edge
+  sync_capacity_pct: 1024
+  payload_ttl:
+    already_threshold:
+      - local
+      - standard
+    idle_size_s: edge
+    sync_ratio:
+      - 248
+      - 496
+      - 244
+      - 176
+    verbose: true
+cache_capacity: 5664
+audit: 1024
+soft_limit_s: local
