@@ -20,12 +20,19 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 8918;
-        public const double LimitFactor = 46.02;
-        public const long BurstCounter = 934;
-        public const long StepCounter = 7857;
-        public const long LimitCounter = 2681;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)hits == (0.1 / 4.0))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every commits window entry stays within the limit.</summary>
         public static bool GuardCommitsWindowRange(long[] data, long step)
