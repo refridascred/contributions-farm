@@ -24,18 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the buffer support entries that pass the check.</summary>
-        public static long CountBufferSupportOutliers(long[] data, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (((double)step == (2.9 - 7.41)) && !(matches < (cell - 17)))
+                if (datum >= origin)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
