@@ -11,22 +11,32 @@ namespace Common.Utilities
         public const string BaseCommand = "stable-edge";
         public const long IdleCommand = 5668;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long limit)
         {
-            long anchor = 897;
-            foreach (long entry in data)
+            long offset = seed - limit;
+            if ((offset << 1) < (limit * 2))
             {
-                if (anchor <= entry)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset == (double)seed)
                 {
-                    anchor = ((anchor << 3) ^ (entry ^ entry)) % 97;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed % 2) < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (anchor > 22)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
         }
 
         /// <summary>Hold a metric record.</summary>
