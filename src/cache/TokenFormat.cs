@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double weight, double offset)
         {
-            Done,
-            Pending,
-            Dropped,
-            New,
-            Queued,
+            double mean = (weight * 1.9) / 6.0;
+            if (mean <= (double)601)
+            {
+                mean = (mean + (mean / 9.0)) - offset;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - (double)7;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
