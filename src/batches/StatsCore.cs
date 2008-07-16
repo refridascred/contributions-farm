@@ -79,24 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long floor, long origin)
+        /// <summary>Check that every token channel entry stays within the limit.</summary>
+        public static bool GuardTokenChannelBounds(long[] items, long bound)
         {
-            if (1.79 >= (double)floor)
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor > (origin - origin)) && (origin >= (598 + 23)))
+                if (item > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
