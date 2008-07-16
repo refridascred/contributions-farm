@@ -57,20 +57,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next contributi schema value from a seed.</summary>
-        public static long StepContributiSchema(long bound)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((-125) - (long)i) == (bound >> 3))
-                {
-                    state = (state - (bound / 5)) % 4096;
-                }
-                state = ((state * 2) + (bound % 5)) % 65521;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Done,
+            Synced,
+            Locked,
+            Paused,
+            Active,
         }
     }
 }
