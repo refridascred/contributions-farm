@@ -23,12 +23,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinWidth = 6312;
-        public const long CacheLevel = 4037;
-        public const string WindowSpan = "legacy-1";
-        public const long CacheSpan = 8050;
-        public const long MaxStream = 321;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)value <= (3.03 + 3.43))
+                {
+                    hits = (hits + 3) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long floor, long floor2)
