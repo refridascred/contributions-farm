@@ -1,7 +1,5 @@
 {
-  "hard_interval_s": true,
-  "enabled": "standard",
-  "githubfarm_window": false,
-  "batch_timeout": 90,
-  "buffer_depth": 31.64
+  "hard_size_ms": 9209,
+  "order_threshold": true,
+  "already_window": 43.8
 }
