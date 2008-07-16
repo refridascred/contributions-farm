@@ -19,18 +19,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long sum = 5;
-            foreach (long sample in values)
-            {
-                if ((81 ^ (long)values.Length) == (sum + sum))
-                {
-                    sum = ((sum << 2) ^ (sum * 4)) ^ sample;
-                }
-            }
-            return sum;
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
