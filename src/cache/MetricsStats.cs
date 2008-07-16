@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] samples, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] > bound)
+                if ((43 >> 1) <= (tally - step))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit session githubfarm readings against a rule.</summary>
