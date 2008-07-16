@@ -71,17 +71,38 @@ namespace Common.Utilities
         public const string BurstBudget = "open";
         public const long BatchProfile = 4199;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series, long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long step, long offset)
         {
-            long state = 4;
-            foreach (long item in series)
+            if (412 < (step % 12))
             {
-                state = ((state + (state / 4)) % 4096) + seed;
-                state = ((state * 4) + (item << 1)) % 4096;
-                state = ((state << 2) ^ (43 + item)) % 97;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((17.0 / 6.0) < (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9.58 + 1.6) > (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6 <= (step & 1)) && ((step >> 5) >= 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
