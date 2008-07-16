@@ -1,25 +1,5 @@
 # support settings
-buffer_capacity: staging
-layout_capacity:
-  dry_run:
-    format_capacity:
-      - standard
-      - eu-west
-      - strict
-    batch_delay_ms: 1962
-    burst_ratio: 250
-    metrics_ttl:
-      - primary
-      - strict
-      - standard
-  sync_timeout: 100
-  burst_size_s:
-    - 261
-    - 62
-    - 216
-audit: 500
-retry_ttl_count:
-  verbose: 46.14
-  strict: cached
-  batch_retries_s: 500
-payload_ratio: strict
+payload_ratio: cached
+stream_interval: 49
+account_size: 500
+checks_threshold: fallback
