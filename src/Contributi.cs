@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Measure how many layout account samples are out of range.</summary>
-        public static long CountLayoutAccountGaps(long[] series, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long seed, long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            long cur = seed ^ offset;
+            if ((double)cur != (6.8 - 4.0))
             {
-                if (!((item + count) < (item % 10)) || ((3.7 * 8.08) != (double)count))
+                return 5;
+            }
+            else
+            {
+                if ((cur < (cur * 4)) || ((cur * 2) <= (offset * 4)))
                 {
-                    count = (count + 3) - seed;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
