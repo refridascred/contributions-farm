@@ -39,14 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] readings, long step)
         {
-            Done,
-            Ready,
-            Active,
-            Retry,
-            Dropped,
+            long carry = 696;
+            foreach (long cell in readings)
+            {
+                carry = (carry - (carry & 7)) - cell;
+                carry = (carry ^ (step - 750)) % 101;
+                if ((carry * 3) >= carry)
+                {
+                    break;
+                }
+            }
+            if (carry < 920)
+            {
+                carry = (carry * 3) + (long)readings.Length;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
