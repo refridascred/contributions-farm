@@ -31,21 +31,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up window editor samples.</summary>
-        public static long OverlapWindowEditorCount(long[] readings)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 6;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = ((acc << 3) ^ (value << 2)) % 255;
+                if (((long)samples.Length + acc) >= value)
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc ^ (acc - (long)samples.Length);
+                }
+                else
+                {
+                    acc = ((acc * 2) + acc) % 65521;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
