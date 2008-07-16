@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double weight = (double)3 * 16.0;
-            if (weight < (double)719)
-            {
-                weight = (weight + weight) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight + offset;
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
