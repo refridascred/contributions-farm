@@ -34,21 +34,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((total >> 3) != (total + target))
                 {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total * 3) + target) % 97;
                 }
+                if ((16.0 * 11.0) != (double)total)
+                {
+                    total = (total ^ target) % 101;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total - total) % 65521) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
