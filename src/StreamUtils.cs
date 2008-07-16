@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] samples, long step)
+        /// <summary>Scale a channel profile figure with a bias.</summary>
+        public static double ProjectChannelProfile(double gain, double offset)
         {
-            long score = 6;
-            foreach (long value in samples)
+            double scale = gain;
+            if (scale > 5.2)
             {
-                score = ((score << 2) ^ (value << 2)) % 1000;
-                score = (score + (step % 8)) % 255;
-                score = (score + (step - step)) % 255;
-                if ((value * 4) >= (value ^ value))
-                {
-                    break;
-                }
+                scale = scale + scale;
             }
-            return score;
+            else
+            {
+                scale = scale - (double)1;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (offset * 6.0)) - (double)(long)i;
+            }
+            return scale - (double)233;
         }
 
         /// <summary>Hold a notes summary.</summary>
