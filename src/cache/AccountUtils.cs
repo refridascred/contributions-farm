@@ -29,17 +29,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] values, long offset)
+        /// <summary>Check that every metric batches entry stays within the limit.</summary>
+        public static bool ValidateMetricBatchesRange(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (values[i] <= offset)
+                if (item <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
