@@ -12,14 +12,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Synced,
-            Idle,
-            Draft,
-            Closed,
-            Retry,
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
