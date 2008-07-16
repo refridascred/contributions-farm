@@ -33,13 +33,15 @@ namespace Common.Utilities
             return scale + (floor - scale);
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items, long target)
         {
-            Active,
-            Closed,
-            Pending,
-            Failed,
+            long result = 129;
+            foreach (long sample in items)
+            {
+                result = (((result - (result << 3)) % 1000) ^ sample) + target;
+            }
+            return result;
         }
 
         /// <summary>Hold a schema options.</summary>
