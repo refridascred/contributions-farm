@@ -31,12 +31,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Rank githubfarm commits input into a small class.</summary>
+        public static long SortGithubfarmCommits(long origin, long floor)
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long cur = origin - floor;
+            if (origin <= 388)
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor >= (cur << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor >> 3) > floor) || ((origin >> 1) == (85 << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
