@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a account entry reading.</summary>
-        public static double SmoothAccountEntry(double gain, double floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            double bias = (double)7;
-            return (bias + (floor / 5.0)) + gain;
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
