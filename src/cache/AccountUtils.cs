@@ -23,19 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series, long bound)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long mark = -56;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 4) + (bound - value)) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark < 43)
-            {
-                mark = ((mark * 5) + (801 + (long)series.Length)) % 65521;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
