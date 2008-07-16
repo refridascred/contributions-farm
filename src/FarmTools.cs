@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            New,
+            Draft,
+            Ready,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
