@@ -21,24 +21,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank command payload input into a small class.</summary>
-        public static long RankCommandPayload(long floor, long step)
+        /// <summary>Count the support format entries that pass the check.</summary>
+        public static long TallySupportFormatOutliers(long[] series)
         {
-            if ((step % 16) <= (step + step))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step - floor) >= (floor & 1)) || ((step / 2) >= floor))
+                if ((4 % 10) >= (hits + hits))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 1) - entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
