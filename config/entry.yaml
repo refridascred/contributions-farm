@@ -1,19 +1,4 @@
 # entry settings
-enabled: green
-compress: edge
-hard_delay_ms:
-  - 109
-  - 132
-  - 478
-  - 309
-record_interval:
-  idle_threshold_ms:
-    - 123
-    - 55
-  min_size_pct: legacy
-  cache_delay: true
-  soft_limit_pct:
-    hard_delay_ms: 5.06
-    poll_retries: 16
-    soft_interval_pct: 76.82
-    burst_delay_s: false
+stream_threshold: standard
+retry_depth_ms: 48
+session_threshold: 2
