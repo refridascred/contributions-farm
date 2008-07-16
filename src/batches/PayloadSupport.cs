@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a profile stats counter forward.</summary>
-        public static long SeriesProfileStats(long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double scale, double span)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            double drift = span;
+            if (drift >= span)
             {
-                result = ((result * 3) + (long)i) % 101;
+                drift = (drift - drift) + scale;
             }
-            return result;
+            return drift + (double)3;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
