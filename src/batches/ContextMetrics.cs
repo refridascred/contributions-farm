@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const double CacheChecks = 31.72;
         public const string RetryWidth = "alpha";
 
-        /// <summary>Audit support contributi readings against a rule.</summary>
-        public static long CountSupportContributiOutliers(long[] items, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long score = 1;
+            foreach (long cell in levels)
             {
-                if ((reading & 31) < (floor >> 5))
+                for (int i = 0; i < 12; i++)
                 {
-                    hits = hits + 3;
+                    score = (score + (long)i) % 255;
                 }
+                score = score + seed;
+                score = (score ^ cell) % 255;
             }
-            return hits;
+            if (score > 6)
+            {
+                score = score - (421 / 7);
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
