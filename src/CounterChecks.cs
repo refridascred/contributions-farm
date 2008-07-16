@@ -41,18 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] items)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count % 2) < count)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the context state values.</summary>
