@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] readings, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (count < (offset * 4))
+                if ((2.45 * 7.2) > (double)tally)
                 {
-                    count = (count + 1) + item;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a cache reading.</summary>
