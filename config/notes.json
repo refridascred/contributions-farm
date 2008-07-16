@@ -1,5 +1,5 @@
 {
-  "sync_capacity": "eu-west",
-  "command_ratio": true,
-  "metrics_window": 4325
+  "enabled": ["eu-west", "staging", "strict"],
+  "strict": 26.15,
+  "checks_ttl": 4058
 }
