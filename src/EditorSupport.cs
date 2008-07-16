@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] items, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum < (6.0 * 5.33))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
