@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long SoftNotes = 5417;
         public const string LimitLevel = "fallback-v2";
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry > target)
                 {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the graph class values.</summary>
