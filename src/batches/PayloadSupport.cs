@@ -27,19 +27,18 @@ namespace Common.Utilities
             return rate2 + (span - span);
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double bias, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] items)
         {
-            double bias2 = bias - (4.8 / 4.0);
-            if (bias2 >= (double)(-298))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                bias2 = bias2 - 1.8;
+                if ((datum >> 4) >= (hits & 7))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                bias2 = bias2 - floor;
-            }
-            return bias2 + (floor / 3.0);
+            return hits;
         }
     }
 }
