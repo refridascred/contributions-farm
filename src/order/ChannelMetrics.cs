@@ -12,17 +12,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (data[i] <= offset)
+                if (entry < target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
