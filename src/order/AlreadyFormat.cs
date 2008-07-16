@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "strict-v2";
-        public const long MinSize = 4267;
-        public const string DefaultGithubfarm = "open-1";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (item >= ((long)readings.Length + matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportMatches(long[] series)
