@@ -32,17 +32,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] samples, long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long seed, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = seed ^ step;
+            if (!((gap + 0) > seed))
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((step & 7) < gap)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (step - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
