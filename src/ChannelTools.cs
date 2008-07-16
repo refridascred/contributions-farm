@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 4.7;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (((ratio - ratio) - (double)(long)i) - rate) + offset;
             }
-            return count;
+            return ratio - (double)3;
         }
 
         /// <summary>Digest a series of token entries.</summary>
