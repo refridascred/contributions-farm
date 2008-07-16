@@ -26,12 +26,10 @@ namespace Common.Utilities
         public const string CacheToken = "open-edge";
         public const string WindowRatio = "cached-edge";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "open-1";
-        public const long LimitFilter = 177;
-        public const long BurstSpan = 9280;
-        public const long HardFactor = 1218;
-        public const string BurstFilter = "standard-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitBudget = 8933;
+        public const string StepFactor = "cached-v2";
+        public const long LimitPayload = 2075;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
