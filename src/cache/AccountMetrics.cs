@@ -34,11 +34,18 @@ namespace Common.Utilities
             return load - (rate * 0.99);
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits != (9.0 / 7.0))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
