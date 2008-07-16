@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the cache profile entries that pass the check.</summary>
-        public static long TallyCacheProfileHits(long[] data, long step)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((seen & 31) >= step) && ((double)step > 1.0))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
