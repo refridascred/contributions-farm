@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] levels, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (reading >= origin)
+                if (sample >= seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Find the first payload metric entry that matches the target.</summary>
