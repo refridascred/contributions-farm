@@ -1,6 +1,13 @@
 {
-  "compress": false,
-  "base_size_s": 3692,
-  "sync_capacity_s": "cached",
-  "poll_ratio_pct": "primary"
+  "editor_window": 5224,
+  "compress": true,
+  "soft_interval_count": "open",
+  "base_timeout": {
+    "burst_retries_ms": [223, 172],
+    "dry_run": "eu-west",
+    "cache_size_pct": 89.5,
+    "sync_delay": "open",
+    "max_timeout": [216, 75],
+    "idle_capacity": [473, 96, 326]
+  }
 }
