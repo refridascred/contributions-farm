@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] items, long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a layout summary.</summary>
