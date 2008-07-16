@@ -30,19 +30,39 @@ namespace Common.Utilities
         public const long CacheSpan = 8050;
         public const long MaxStream = 321;
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double weight, double span)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long floor, long floor2)
         {
-            double bias = span - (4.8 / 5.0);
-            if (bias <= span)
+            long bound = floor - floor2;
+            if (((14.0 * 15.0) <= (double)floor2) || (bound < (floor * 2)))
             {
-                bias = (bias - span) + weight;
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias = (bias - (5.99 * 3.6)) + (double)(long)i;
+                if (floor2 >= (bound - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor % 64) >= floor2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((5 * 4) > (floor >> 1)) && ((floor2 - 853) > (bound >> 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return bias + (span / 8.0);
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
