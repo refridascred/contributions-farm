@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate account commits readings against a bound.</summary>
-        public static bool ValidateAccountCommitsBounds(long[] levels, long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
