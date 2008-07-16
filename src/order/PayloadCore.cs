@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] data, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long score = 24;
+            foreach (long datum in readings)
             {
-                if (sample < seed)
+                if (!((4 - limit) >= limit))
                 {
-                    ok = false;
-                    break;
+                    score = ((score - (score % 60)) % 255) ^ datum;
+                }
+                else
+                {
+                    score = (score ^ (limit / 4)) % 65521;
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Hold a filter info.</summary>
