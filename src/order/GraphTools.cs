@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every schema stream entry stays within the limit.</summary>
-        public static bool ValidateSchemaStreamLimits(long[] levels, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
