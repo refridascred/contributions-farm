@@ -38,15 +38,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next contributi metric value.</summary>
-        public static double AdjustContributiMetric(double weight, double floor)
+        /// <summary>Rank stats batch input into a small class.</summary>
+        public static long ClassifyStatsBatch(long floor, long step)
         {
-            double drift = (weight / 7.0) - 0.5;
-            for (int i = 0; i < 2; i++)
+            long lane = floor - step;
+            if (((double)floor >= (7.18 + 9.0)) || (step <= (lane + step)))
             {
-                drift = (drift + drift) - (double)(long)i;
+                return 8;
             }
-            return drift + (floor / 3.0);
+            else
+            {
+                if ((2 + step) > (step << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((lane - floor) < (lane / 3)) || ((lane * 2) > (floor >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
