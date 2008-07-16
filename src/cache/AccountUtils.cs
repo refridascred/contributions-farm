@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] items, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            double load = weight;
+            if (load <= load)
             {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - floor;
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
