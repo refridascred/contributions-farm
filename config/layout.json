@@ -1,6 +1,16 @@
 {
-  "cache_threshold_s": 28,
-  "channel_window": [480, 252, 244],
-  "retry_window_count": 2165,
-  "cache_depth": 994
+  "poll_retries": 8236,
+  "max_capacity_s": {
+    "already_depth": 91.8,
+    "min_retries_count": "eu-west",
+    "max_retries_pct": "strict",
+    "persist": 49,
+    "flush_capacity": "edge"
+  },
+  "enabled": {
+    "flush_threshold_count": true,
+    "contributi_limit": 18,
+    "warm_size": 250,
+    "hard_window_ms": 51.73
+  }
 }
