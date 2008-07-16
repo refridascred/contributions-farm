@@ -50,16 +50,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the githubfarm format series from a seed.</summary>
-        public static long IterateGithubfarmFormat(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "standard-edge";
+        public const long HardRoute = 4970;
+        public const long MaxInterval = 2549;
+        public const long BurstRoute = 4074;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] series)
