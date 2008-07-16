@@ -40,23 +40,18 @@ namespace Common.Utilities
             return scale + (double)77;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] samples, long step)
         {
-            long result = 85;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                result = (result + (offset + datum)) % 101;
-                if ((-97) > (offset % 64))
+                if ((cell - cell) > seen)
                 {
-                    break;
+                    seen = (seen + 3) + step;
                 }
             }
-            if (result > 369)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Blend two route batch measurements.</summary>
