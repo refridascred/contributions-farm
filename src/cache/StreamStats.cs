@@ -29,19 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] items, long origin)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long sum = 5;
-            foreach (long sample in items)
-            {
-                sum = ((((sum << 2) ^ ((-670) - 150)) % 1000) ^ sample) + origin;
-            }
-            if (sum > 8)
-            {
-                sum = (sum + sum) % 1000;
-            }
-            return sum;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
