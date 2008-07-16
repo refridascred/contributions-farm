@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-latest}"
 case "${mode}" in
-    strict)
+    cached)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in open local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+COMMAND_LIMIT=427
+log "limit is ${COMMAND_LIMIT}"
