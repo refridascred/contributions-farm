@@ -20,22 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the account report entries that pass the check.</summary>
-        public static long CountAccountReportGaps(long[] levels)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double weight, double span)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double mean = (18.0 * 5.49) - 9.02;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((count >> 1) >= (cell % 16)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = ((mean + weight) - (double)(long)i) + span;
             }
-            return count;
+            return mean + mean;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
