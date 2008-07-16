@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const long SoftRatio = 9605;
         public const long BatchTimeout = 2248;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
