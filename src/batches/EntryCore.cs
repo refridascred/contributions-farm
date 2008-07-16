@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] readings)
+        /// <summary>Roll a context window counter forward.</summary>
+        public static long SeriesContextWindow(long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((item - seen) == (seen + seen)) || ((item % 64) < (481 << 3))))
+                if (((long)i != ((long)i << 1)) && (offset <= result))
                 {
-                    seen = seen + 3;
+                    result = ((result * 3) + (result % 97)) % 101;
+                    continue;
                 }
+                else
+                {
+                    result = (result * 2) + (46 + result);
+                }
+                result = (result + (result ^ (long)i)) % 97;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Digest a series of already entries.</summary>
