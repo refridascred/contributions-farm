@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] values, long step)
+        /// <summary>Fold a list of account farm readings.</summary>
+        public static long FoldAccountFarm(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long sum = 498;
+            foreach (long reading in series)
             {
-                if (value > step)
+                if (reading >= offset)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum ^ (33 - reading)) % 97;
                 }
             }
-            return stale;
+            if (sum < 86)
+            {
+                sum = sum - offset;
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
