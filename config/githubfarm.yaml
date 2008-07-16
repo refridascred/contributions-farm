@@ -1,13 +1,5 @@
 # githubfarm settings
-min_capacity_count: 23
-enabled: cached
-hard_window_s: edge
-min_ratio_ms:
-  - 144
-  - 488
-commits_timeout:
-  base_delay: 7388
-  min_retries: false
-  min_window:
-    - 1
-    - 173
+sync_retries: false
+soft_timeout_ms: cached
+stream_interval: false
+burst_capacity_count: true
