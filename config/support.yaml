@@ -1,29 +1,19 @@
 # support settings
-burst_threshold_ms:
-  record_ratio:
-    sync_limit_ms: 45
-    dry_run: 60.34
-    min_ttl_count: true
-    cache_ttl_count: 45
-  compress: 39.92
-  dry_run: false
-readonly:
-  idle_timeout_ms: 41
-  idle_ratio_count: standard
-  order_interval: 5.58
-  metric_delay: edge
-  sync_capacity_pct: 1024
-  payload_ttl:
-    already_threshold:
-      - local
-      - standard
-    idle_size_s: edge
-    sync_ratio:
-      - 248
-      - 496
-      - 244
-      - 176
-    verbose: true
-cache_capacity: 5664
-audit: 1024
-soft_limit_s: local
+batch_depth_s:
+  dry_run: 2850
+  retry_capacity: local
+  hard_interval_s:
+    - 380
+    - 39
+    - 351
+cluster_timeout:
+  - 256
+  - 145
+  - 493
+  - 171
+retry_interval: 2979
+base_threshold_count:
+  strict: false
+  layout_limit: 1024
+  warm_capacity: standard
+  base_ttl: 25.44
