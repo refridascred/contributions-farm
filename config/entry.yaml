@@ -1,4 +1,4 @@
 # entry settings
-default_interval_ms: 60
-token_interval: 69
-base_ttl_count: staging
+retry_depth: 40
+default_threshold: 60
+flush_delay_s: true
