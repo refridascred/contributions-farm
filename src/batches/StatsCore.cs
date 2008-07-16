@@ -57,19 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token channel entry stays within the limit.</summary>
-        public static bool GuardTokenChannelBounds(long[] items, long bound)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
