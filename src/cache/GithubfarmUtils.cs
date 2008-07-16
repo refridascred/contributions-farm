@@ -26,19 +26,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double floor)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            double mean = (floor - ratio) - floor;
-            if (mean > (mean * 3.94))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (ratio / 6.0);
-            }
-            return mean - (ratio - ratio);
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
