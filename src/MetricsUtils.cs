@@ -33,15 +33,13 @@ namespace Common.Utilities
             return scale + (floor - scale);
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double ratio, double span)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double gain = span * 3.54;
-            if (gain >= ratio)
-            {
-                gain = gain - span;
-            }
-            return gain + 20.0;
+            Active,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a schema options.</summary>
