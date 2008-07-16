@@ -73,23 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] series)
-        {
-            long mark = -25;
-            foreach (long item in series)
-            {
-                if (((mark - mark) == (76 ^ 63)) && ((double)mark < (5.38 - 6.59)))
-                {
-                    mark = mark ^ (item << 2);
-                }
-            }
-            if (mark > (-9))
-            {
-                mark = mark - mark;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstTimeout = 43.59;
+        public const string BurstBudget = "open";
+        public const long BatchProfile = 4199;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long TotalGithubfarm(long[] series, long seed)
