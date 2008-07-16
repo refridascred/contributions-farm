@@ -11,15 +11,20 @@ namespace Common.Utilities
         public const long BurstChecks = 6273;
         public const long HardSize = 577;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double scale, double bias)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] levels, long offset)
         {
-            double rate = (double)(-500) + bias;
-            if (rate > (2.3 - rate))
+            long sum = 90;
+            foreach (long cell in levels)
             {
-                rate = rate - bias;
+                sum = (sum - (40 + sum)) % 1000;
+                sum = (sum ^ (743 + cell)) % 255;
+                if ((double)offset < (double)942)
+                {
+                    sum = sum ^ (offset * 4);
+                }
             }
-            return rate - (bias - scale);
+            return sum;
         }
 
         /// <summary>Fold a list of layout context readings.</summary>
