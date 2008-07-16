@@ -26,11 +26,25 @@ namespace Common.Utilities
         public const double WindowCluster = 87.05;
         public const long LimitTimeout = 5676;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 6820;
-        public const string LimitRoute = "open";
-        public const double WindowRoute = 10.79;
-        public const long SoftRatio = 3995;
-        public const long LimitScore = 941;
+        /// <summary>Rank profile buffer input into a small class.</summary>
+        public static long RankProfileBuffer(long floor, long origin)
+        {
+            long cur = floor ^ origin;
+            if (cur >= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((floor + 795) <= (cur / 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
