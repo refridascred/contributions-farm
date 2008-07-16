@@ -1,6 +1,10 @@
-id,active,label
-1,eu-west,11
-2,816,20
-3,blue,816
-4,72.72,24.34
-5,648,cached
+id,active,score
+1,staging,30.9
+2,393,397
+3,98.57,stable
+4,eu-west,187
+5,open,496
+6,55.41,41.45
+7,cached,fallback
+8,51.17,blue
+9,42.0,54.48
