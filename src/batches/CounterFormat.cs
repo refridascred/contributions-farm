@@ -17,10 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxScore = 9568;
-        public const long BaseSession = 2580;
-        public const double DefaultLevel = 62.04;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long CombineReport(long[] items, long step)
