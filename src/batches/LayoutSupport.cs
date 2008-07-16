@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const long LimitSize = 7207;
         public const double SoftTimeout = 59.08;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long offset, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] series, long offset)
         {
-            if ((19 * 2) < (target % 16))
+            long anchor = -202;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target / 9) != (4 >> 2))
+                if (cell <= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    anchor = anchor - (anchor + anchor);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Project the next counter value.</summary>
