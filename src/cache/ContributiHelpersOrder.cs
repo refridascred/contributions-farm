@@ -24,11 +24,39 @@ namespace Common.Utilities
             return load - (double)4;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long offset)
         {
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
+            long edge = seed - offset;
+            if ((offset >> 5) >= (seed & 127))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((4.0 / 3.0) == (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset % 16) <= (edge << 1)) || ((double)seed <= (6.0 + 7.37)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((edge - seed) < offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
