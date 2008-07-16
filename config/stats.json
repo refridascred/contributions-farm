@@ -1,14 +1,5 @@
 {
-  "soft_interval_count": true,
-  "window_timeout": ["open", "latest", "legacy"],
-  "compress": false,
-  "dry_run": {
-    "default_ratio_count": 5.31,
-    "readonly": ["standard", "cached", "primary"],
-    "command_window": "latest",
-    "warm_timeout": 1024,
-    "base_size": "cached"
-  },
-  "max_size_pct": "edge",
-  "audit": 2.12
+  "support_threshold": 85,
+  "account_size": [104, 432, 407],
+  "default_retries_s": "staging"
 }
