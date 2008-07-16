@@ -35,22 +35,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] items, long step)
         {
-            long carry = 9;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((datum - datum) >= (carry * 4))
+                if (item >= step)
                 {
-                    carry = (carry ^ (datum ^ 307)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 362)
-            {
-                carry = (carry * 5) + (carry + carry);
-            }
-            return carry % 1000;
+            return flag;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
