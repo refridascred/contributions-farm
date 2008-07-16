@@ -35,19 +35,38 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] series, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long offset, long offset2)
         {
-            bool found = true;
-            foreach (long sample in series)
+            if (((offset + (-593)) <= (offset << 2)) && (offset2 > 60))
             {
-                if (sample > origin)
+                return 2;
+            }
+            else
+            {
+                if ((8 + offset2) == (offset2 - 46))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((offset2 ^ offset) != (offset2 - 119)) || ((double)offset > (16.0 / 4.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((offset2 + offset2) < offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
