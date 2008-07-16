@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] levels)
+        /// <summary>Project the next commits metric value.</summary>
+        public static double ProjectCommitsMetric(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double gain = (double)(282 >> 1);
+            if (gain < gain)
             {
-                if ((2.45 * 7.2) > (double)tally)
-                {
-                    tally = (tally + 3) + sample;
-                }
+                gain = gain - (offset * 1.08);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (double)807) + (double)(long)i;
+            }
+            return gain - (weight + weight);
         }
 
         /// <summary>Adjust a cache reading.</summary>
