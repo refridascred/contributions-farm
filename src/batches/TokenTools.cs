@@ -25,31 +25,19 @@ namespace Common.Utilities
         public const string CacheSession = "alpha-edge";
         public const long StepInterval = 5686;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long offset, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] readings, long offset)
         {
-            if (!((offset * 2) <= (941 - bound)))
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound > (7 + 2))
+                if (datum >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound <= (offset >> 5)) && ((double)bound >= (0.9 * 8.33)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
