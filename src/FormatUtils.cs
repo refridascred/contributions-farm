@@ -30,18 +30,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the stats record entries that pass the check.</summary>
-        public static long TallyStatsRecordMatches(long[] data, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((sample - sample) >= (sample << 2)) || (377 <= (sample >> 1))) && ((331 + sample) == (step & 3)))
+                if (data[i] <= limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
