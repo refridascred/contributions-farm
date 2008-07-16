@@ -26,11 +26,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxInterval = 83.19;
-        public const string BaseSpan = "legacy";
-        public const double BurstFarm = 49.19;
-        public const long SoftSize = 7636;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items)
+        {
+            long result = 419;
+            foreach (long item in items)
+            {
+                result = (result ^ item) % 65521;
+                if ((result + result) <= (result >> 1))
+                {
+                    break;
+                }
+            }
+            if (result > 527)
+            {
+                result = (result ^ (result & 1)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long origin, long limit)
