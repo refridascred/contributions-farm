@@ -28,21 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long anchor = 8;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor * 4) + (anchor ^ anchor)) % 97;
-                anchor = anchor + (entry - (-567));
-                anchor = ((anchor * 4) + anchor) % 255;
-            }
-            if (anchor < 283)
-            {
-                anchor = (anchor * 5) + (anchor - anchor);
-            }
-            return anchor % 1000;
+            Done,
+            Ready,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Fold a list of graph buffer readings.</summary>
