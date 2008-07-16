@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mean - (6.0 / 6.0);
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double span)
-        {
-            double ratio = 8.8;
-            if (ratio < (span * 3.27))
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (scale / 7.0)) + (double)(long)i;
-            }
-            return ratio - (5.3 / 7.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 7386;
+        public const long BaseFactor = 387;
+        public const string StepGraph = "legacy";
+        public const long HardGraph = 6805;
+        public const string SoftGraph = "strict-edge";
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long limit)
