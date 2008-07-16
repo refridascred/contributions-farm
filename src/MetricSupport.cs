@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] items, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] <= step)
+                if ((2.21 + 11.0) >= (double)(long)i)
                 {
-                    return (long)i;
+                    carry = carry - offset;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
