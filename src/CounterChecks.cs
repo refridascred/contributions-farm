@@ -71,21 +71,26 @@ namespace Common.Utilities
         public const double DefaultRatio = 9.8;
         public const long BurstCache = 5576;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 46;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)state < (2.4 - 0.33))
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    state = state + (seed & 15);
+                }
+                if ((seed ^ seed) > (state << 3))
+                {
+                    state = (state - (cell + (long)values.Length)) % 4096;
                 }
             }
-            return count;
+            if (state < (-68))
+            {
+                state = (state * 4) + (seed * 2);
+            }
+            return state;
         }
     }
 }
