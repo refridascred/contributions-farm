@@ -50,17 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] items, long seed)
+        /// <summary>Roll a batch buffer counter forward.</summary>
+        public static long IterateBatchBuffer(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 5) == 0))
+                if (!((double)(long)i == (11.0 / 7.0)))
                 {
-                    return (long)i;
+                    long tally = anchor;
+                    anchor = anchor ^ tally;
                 }
+                anchor = (anchor << 2) ^ (long)i;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
