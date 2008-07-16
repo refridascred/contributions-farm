@@ -19,17 +19,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long limit)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            New,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the stream state values.</summary>
