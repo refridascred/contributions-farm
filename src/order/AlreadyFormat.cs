@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long MinSize = 4267;
         public const string DefaultGithubfarm = "open-1";
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] levels, long bound)
         {
-            public bool Region { get; set; }
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
