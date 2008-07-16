@@ -35,18 +35,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] series)
+        /// <summary>Fold a list of profile tools readings.</summary>
+        public static long ScoreProfileTools(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long result = 20;
+            foreach (long cell in data)
             {
-                if (tally > (tally ^ entry))
+                result = ((result * 4) + (cell % 12)) % 1000;
+                if (limit > (result & 15))
                 {
-                    tally = tally + 1;
+                    result = (result + (cell + result)) % 97;
+                }
+                if ((cell * 5) == (limit % 97))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
