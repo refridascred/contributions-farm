@@ -59,11 +59,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = ((score ^ 17) % 1000) ^ (long)i2;
+                }
+                if ((double)(long)i == (0.72 * 1.5))
+                {
+                    score = (score ^ ((long)i + offset)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
