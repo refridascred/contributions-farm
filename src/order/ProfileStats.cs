@@ -22,17 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] values, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - (floor + rate)) + (double)(long)i;
             }
-            return -1;
+            return drift - (double)841;
         }
 
         /// <summary>Describe the record status values.</summary>
