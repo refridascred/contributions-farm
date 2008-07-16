@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const string MaxDepth = "latest-edge";
         public const double HardWidth = 46.74;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] data, long bound)
         {
-            Dropped,
-            Closed,
-            Active,
-            Paused,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token phase values.</summary>
