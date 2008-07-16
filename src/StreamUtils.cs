@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "cached-v2";
-        public const string WindowPayload = "standard-1";
-        public const long RetryPayload = 7426;
-        public const long BurstPayload = 826;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseTimeout = 42.1;
