@@ -20,19 +20,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] levels, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)98 >= (2.0 + 14.0))
                 {
-                    state = ((state * 2) + (521 ^ state)) ^ (long)i2;
+                    count = ((count + 3) - reading) - step;
                 }
-                state = ((state * 4) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
