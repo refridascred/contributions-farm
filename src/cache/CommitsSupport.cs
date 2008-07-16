@@ -40,20 +40,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Rank counter entry input into a small class.</summary>
+        public static long RankCounterEntry(long origin, long floor)
         {
-            long total = 43;
-            foreach (long cell in samples)
+            long bound = origin - floor;
+            if ((double)bound != (0.6 / 2.0))
             {
-                total = ((total ^ (4 + 5)) % 101) ^ cell;
-                total = (total ^ (total * 2)) % 65521;
+                return 4;
             }
-            if (total > (-151))
+            else
             {
-                total = ((total << 3) ^ (total >> 1)) % 1000;
+                if ((floor - 699) < (floor + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((450 + floor) >= (floor & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return total % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
