@@ -14,23 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the metric stream entries that pass the check.</summary>
-        public static long CountMetricStreamGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item + seen) > (792 & 1))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowLevel = 64.32;
+        public const long DefaultReport = 8014;
+        public const double BurstReport = 88.0;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double IdleSize = 6.56;
