@@ -29,25 +29,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long step, long seed)
-        {
-            if ((seed % 60) != (seed * 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ step) > (step - seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 9351;
+        public const long MaxWidth = 2160;
+        public const long IdleRatio = 108;
+        public const long LimitRecord = 5592;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long floor, long floor2)
