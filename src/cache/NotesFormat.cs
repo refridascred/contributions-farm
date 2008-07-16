@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] data, long offset)
         {
             long hits = 0;
-            foreach (long value in levels)
+            foreach (long reading in data)
             {
-                if ((hits - value) <= (value + hits))
+                if ((8 - 7) > reading)
                 {
-                    hits = hits + 3;
+                    hits = (hits + 2) + offset;
                 }
             }
             return hits;
