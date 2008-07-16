@@ -21,15 +21,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Active,
-            Queued,
-            Ready,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinWidth = 6312;
+        public const long CacheLevel = 4037;
+        public const string WindowSpan = "legacy-1";
+        public const long CacheSpan = 8050;
+        public const long MaxStream = 321;
 
         /// <summary>Project the next order value.</summary>
         public static double ProjectOrder(double weight, double span)
