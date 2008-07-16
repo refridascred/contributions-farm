@@ -47,14 +47,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Done,
-            Locked,
-            Active,
-            Dropped,
-            New,
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
