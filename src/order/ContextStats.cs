@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)tally < (double)841)
-                {
-                    tally = ((tally + 3) + datum) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 6122;
+        public const long HardScore = 3545;
+        public const long WindowGraph = 9658;
 
         /// <summary>Find the first batches metrics entry that matches the target.</summary>
         public static long LocateBatchesMetricsIndex(long[] series, long origin)
