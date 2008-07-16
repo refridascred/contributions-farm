@@ -5,17 +5,34 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] samples, long limit)
+        /// <summary>Combine counter buffer values into a single score.</summary>
+        public static long TallyCounterBuffer(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 7;
+            foreach (long value in series)
             {
-                if (samples[i] > limit)
+                if ((bound - bound) == (bound >> 4))
                 {
-                    return (long)i;
+                    anchor = anchor - value;
+                }
+                if (anchor > (65 + 92))
+                {
+                    anchor = (anchor + (bound * 3)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (bound << 3);
+                }
+                if ((bound ^ anchor) <= (anchor + bound))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 2)
+            {
+                anchor = anchor - (bound ^ anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
