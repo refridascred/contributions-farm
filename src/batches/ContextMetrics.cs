@@ -22,15 +22,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] data, long step)
         {
-            long total = 938;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                total = (total << 3) ^ (entry - (long)levels.Length);
+                if ((double)(long)data.Length != (14.0 / 2.0))
+                {
+                    matches = ((matches + 2) + item) + step;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a tools record.</summary>
