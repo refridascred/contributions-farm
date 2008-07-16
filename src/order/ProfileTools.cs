@@ -52,10 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardScore = 3938;
-        public const double CacheTimeout = 43.26;
-        public const long HardLevel = 6865;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Dropped,
+            Pending,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Digest a series of profile cluster entries.</summary>
         public static long FoldProfileCluster(long[] readings)
