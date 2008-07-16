@@ -28,32 +28,15 @@ namespace Common.Utilities
         public const long HardCluster = 4047;
         public const long StepRatio = 7047;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long seed, long step)
+        /// <summary>Project the next already cache value.</summary>
+        public static double AdjustAlreadyCache(double weight, double span)
         {
-            long gap = seed ^ step;
-            if (!((gap + 0) > seed))
+            double ratio = (double)27;
+            if (ratio < (double)3)
             {
-                return 1;
+                ratio = (ratio - (double)5) - span;
             }
-            else
-            {
-                if ((step & 7) < gap)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < (step - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return ratio - (ratio - weight);
         }
     }
 }
