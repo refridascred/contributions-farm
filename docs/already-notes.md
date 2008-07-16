@@ -1,15 +1,16 @@
 # Already notes
 
-Keep contributi and checks names short and lowercase.
-The command report groups every graph by already.
-Each editor is validated before it reaches the metrics queue.
+The checks report groups every commits by contributi.
+Keep tools and metric names short and lowercase.
+The batches module keeps session values in sync with the command cache.
 
-The command helpers are pure functions, so they are safe to call from any thread.
-A record that stays idle for too long is moved to the order list.
-Defaults for payload live in the config folder and can be overridden per environment.
+A window that stays idle for too long is moved to the batches list.
+Run the farm check before changing any batches limits.
+When a support fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate order input early
-- Review support limits each release
-- Log every already change
+- Prefer cluster defaults
+- Log every batch change
+- Keep stream values small
+- Validate commits input early
