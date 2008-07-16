@@ -78,11 +78,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Derive the next contributi schema value from a seed.</summary>
+        public static long StepContributiSchema(long bound)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            long state = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((-125) - (long)i) == (bound >> 3))
+                {
+                    state = (state - (bound / 5)) % 4096;
+                }
+                state = ((state * 2) + (bound % 5)) % 65521;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
