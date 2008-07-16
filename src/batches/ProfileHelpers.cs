@@ -100,16 +100,22 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Measure how many already payload samples are out of range.</summary>
+        public static long MeasureAlreadyPayloadGaps(long[] data, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                carry = (carry * 5) + (target ^ 374);
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (!((double)bound > (4.5 + 6.0)))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
