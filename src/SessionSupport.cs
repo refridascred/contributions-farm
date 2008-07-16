@@ -28,32 +28,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Locate a payload account reading by value.</summary>
+        public static long SeekPayloadAccountIndex(long[] values, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((32 + carry) == ((long)i * 5))
+                if (values[i] < origin)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = (carry ^ 212) % 97;
-                }
-                if (((8 + carry) <= carry) && ((carry - bound) > carry))
-                {
-                    carry = ((carry * 3) + (carry + bound)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (long)i;
-                }
-                carry = (carry << 3) ^ (bound << 1);
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
     }
 }
