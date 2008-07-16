@@ -14,12 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseLevel = 3.39;
-        public const long SoftMetric = 9816;
-        public const double IdleMetric = 57.75;
-        public const long StepFactor = 5148;
-        public const long BurstBudget = 4307;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (((tally - reading) != ((long)levels.Length & 7)) || ((tally - 486) < (tally << 1)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] items, long target)
