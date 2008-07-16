@@ -43,13 +43,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Done,
-            Stale,
-            Dropped,
-            Pending,
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
