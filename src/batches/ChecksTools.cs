@@ -39,16 +39,19 @@ namespace Common.Utilities
         public const string MinTimeout = "primary-1";
         public const string SoftSize = "latest-edge";
 
-        /// <summary>Derive the next filter cache value from a seed.</summary>
-        public static long SeriesFilterCache(long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] series, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                result = result ^ (613 + 4);
-                result = ((result * 3) + (long)i) % 97;
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
