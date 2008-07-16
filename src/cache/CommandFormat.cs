@@ -86,18 +86,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] readings)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!((tally + reading) > (reading ^ tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
