@@ -20,19 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] levels, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long seed)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long lane = target - seed;
+            if ((8.09 * 4.6) == (double)seed)
             {
-                if (item != origin)
+                return 7;
+            }
+            else
+            {
+                if (((target / 5) > 395) || ((target - lane) <= (lane + (-77))))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target <= (9.4 + 2.7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
