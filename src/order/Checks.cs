@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the metrics graph entries that pass the check.</summary>
-        public static long MeasureMetricsGraphHits(long[] data)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((matches > (matches % 3)) || (((long)data.Length + reading) >= matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
