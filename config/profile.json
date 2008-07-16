@@ -1,13 +1,6 @@
 {
-  "schema_ttl": 88.59,
-  "flush_timeout": {
-    "warm_timeout": "green",
-    "layout_retries": "green",
-    "poll_delay": 4.75,
-    "persist": 83.74
-  },
-  "filter_timeout": 27.13,
-  "sync_size_count": ["latest", "strict", "staging"],
-  "max_ttl_s": "edge",
-  "batch_timeout_s": ["eu-west", "eu-west", "local", "local"]
+  "hard_timeout_pct": false,
+  "soft_delay": "staging",
+  "batch_interval": [290, 388],
+  "audit": true
 }
