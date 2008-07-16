@@ -34,14 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series, long bound)
         {
-            Paused,
-            Done,
-            Stale,
-            Locked,
-            New,
+            long carry = 11;
+            foreach (long reading in series)
+            {
+                carry = ((carry << 2) ^ (bound + bound)) - reading;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Rank stats batch input into a small class.</summary>
