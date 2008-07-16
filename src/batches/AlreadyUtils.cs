@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public double Owner { get; set; }
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
             public double Count { get; set; }
         }
 
