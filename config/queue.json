@@ -1,5 +1,22 @@
 {
-  "soft_limit": false,
-  "verbose": "edge",
-  "strict": "staging"
+  "flush_ttl_s": "local",
+  "batch_capacity_s": {
+    "burst_delay": "cached",
+    "filter_ttl": 60,
+    "counter_limit": {
+      "poll_depth_s": 1515,
+      "enabled": 58.68,
+      "persist": ["blue", "strict"],
+      "soft_retries_count": [202, 412, 455],
+      "base_ratio_count": 8014,
+      "notes_window": 250
+    },
+    "compress": {
+      "audit": 22,
+      "batch_retries_ms": "standard",
+      "metrics_timeout": "blue",
+      "batch_depth_pct": "local"
+    }
+  },
+  "default_retries_s": [465, 233, 214]
 }
