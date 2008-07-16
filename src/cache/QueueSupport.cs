@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] levels)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long result = 857;
+            foreach (long item in samples)
             {
-                if ((1.81 / 9.0) == (double)item)
-                {
-                    matches = matches + 3;
-                }
+                result = (result << 3) ^ (item + item);
             }
-            return matches;
+            if (result > 686)
+            {
+                result = (result * 5) + result;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
