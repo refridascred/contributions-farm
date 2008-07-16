@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of window filter readings.</summary>
-        public static long OverlapWindowFilterCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultCount = 6182;
+        public const string MaxFactor = "legacy";
+        public const long MaxInterval = 8945;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueGaps(long[] levels)
