@@ -1,32 +1,23 @@
 # githubfarm settings
-default_capacity_s:
-  sync_capacity_s: 3.88
-  cache_limit:
-    burst_depth_pct: 8515
-    schema_ratio: 250
-    already_window: green
-    dry_run: 6650
-    entry_retries: 250
-  batch_delay_pct: false
-  strict:
-    - 23
-    - 402
-    - 185
-    - 457
-  layout_interval:
-    - fallback
-    - edge
-already_interval: green
-strict:
-  tools_timeout: 36.56
-  layout_depth:
-    - stable
-    - green
-    - local
-    - cached
-  poll_window:
-    - 266
-    - 119
-  max_size: blue
-dry_run: 16
-soft_size: 82.05
+persist:
+  warm_limit_count: 74.79
+  batch_capacity_pct:
+    - 80
+    - 276
+  burst_capacity_ms: edge
+  batch_threshold_ms:
+    format_window: open
+    counter_ttl: legacy
+    soft_window: strict
+    idle_size:
+      - open
+      - stable
+      - cached
+    warm_ratio_s: strict
+    warm_interval:
+      - 46
+      - 95
+  flush_size_ms: 48.86
+  default_window_count: 98
+account_delay: 87.64
+hard_window_count: 66
