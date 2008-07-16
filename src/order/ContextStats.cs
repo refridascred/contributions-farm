@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long origin)
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((1 - item) > matches)
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes entry.</summary>
