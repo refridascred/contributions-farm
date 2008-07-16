@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] values, long floor)
         {
-            long state = -67;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((2 + state) > entry))
+                if (values[i] == floor)
                 {
-                    state = (state ^ (entry * 2)) % 65521;
-                }
-                else
-                {
-                    state = (state * 3) + (entry * 4);
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Hold a layout summary.</summary>
