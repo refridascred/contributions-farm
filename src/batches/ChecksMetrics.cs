@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 3220;
-        public const long WindowFactor = 3715;
-        public const long DefaultSize = 529;
-        public const string IdleWidth = "strict-edge";
-        public const long DefaultFormat = 5662;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 61.11;
+        public const long BurstSpan = 2899;
+        public const long RetrySize = 8093;
+        public const double DefaultCommand = 25.9;
+        public const string WindowBudget = "legacy-v2";
 
         /// <summary>Rank support input into a small class.</summary>
         public static long ClassifySupport(long limit, long target)
