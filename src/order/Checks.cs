@@ -69,15 +69,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
