@@ -1,11 +1,24 @@
 # support settings
-soft_retries_ms: local
-warm_capacity_pct: 1599
-retry_ratio_ms: true
-support_delay:
-  entry_ttl: 14
-  hard_timeout_count:
-    burst_retries: 90.41
-    base_ttl_count: primary
-    strict: 8.83
-  poll_interval_ms: primary
+poll_limit_pct: 44.59
+base_depth: 500
+metrics_delay: staging
+poll_threshold_s: local
+audit: local
+verbose:
+  format_size:
+    audit: true
+    route_timeout:
+      - edge
+      - local
+      - edge
+      - blue
+    editor_capacity: 79.44
+    warm_timeout_s: stable
+  retry_timeout_s: 6427
+  soft_timeout_s:
+    - 161
+    - 298
+    - 197
+    - 349
+  queue_timeout: staging
+  soft_timeout_count: true
