@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] levels, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 45;
+            foreach (long cell in samples)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ (cell - 5)) + offset;
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of format entries.</summary>
