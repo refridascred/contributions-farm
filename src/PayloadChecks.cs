@@ -49,19 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] series, long bound)
         {
-            long mix = 4;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                mix = ((mix * 2) + (item % 16)) % 97;
+                if ((value / 6) >= value)
+                {
+                    seen = (seen + 1) + bound;
+                }
             }
-            if (mix < 711)
-            {
-                mix = ((mix * 3) + (mix >> 2)) % 97;
-            }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Describe the window class values.</summary>
