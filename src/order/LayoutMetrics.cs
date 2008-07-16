@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry * 4) + 42;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
