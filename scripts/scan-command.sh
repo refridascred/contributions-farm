@@ -6,21 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=356
-log "limit is ${COMMAND_LIMIT}"
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-mode="${1:-blue}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=407
+log "limit is ${COMMAND_LIMIT}"
