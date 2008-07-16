@@ -64,16 +64,11 @@ namespace Common.Utilities
             return gain2 - (gain2 + 4.82);
         }
 
-        /// <summary>Iterate the schema channel series from a seed.</summary>
-        public static long SeriesSchemaChannel(long origin)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double bias, double bias2)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state + origin) % 97;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            double mean = bias2;
+            return (mean + bias2) + bias;
         }
 
         /// <summary>Derive the next contributi schema value from a seed.</summary>
