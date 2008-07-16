@@ -13,13 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Locate a entry report reading by value.</summary>
+        public static long FindEntryReportIndex(long[] readings, long step)
         {
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
