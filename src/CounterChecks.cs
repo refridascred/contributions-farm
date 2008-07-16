@@ -66,12 +66,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 3872;
-        public const long HardSpan = 2019;
-        public const string MinProfile = "cached-v2";
-        public const long DefaultSpan = 1605;
-        public const long BurstProfile = 1280;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseWidth = 13.95;
+        public const double DefaultRatio = 9.8;
+        public const long BurstCache = 5576;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] items)
