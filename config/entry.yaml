@@ -1,4 +1,4 @@
 # entry settings
-already_limit: 87
-hard_threshold_s: 37.52
-warm_depth_ms: 500
+default_window: false
+format_window: 5
+verbose: fallback
