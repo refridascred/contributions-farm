@@ -1,8 +1,16 @@
 {
-  "sync_retries": ["standard", "green"],
-  "warm_threshold": "edge",
-  "poll_ratio_s": "primary",
-  "cache_ttl": "edge",
-  "default_ratio": false,
-  "channel_ratio": [476, 454, 147, 1]
+  "default_size_count": false,
+  "burst_size_ms": ["green", "green", "green", "latest"],
+  "compress": false,
+  "max_size": {
+    "verbose": false,
+    "max_ttl_s": 1024,
+    "base_retries_s": 1024,
+    "editor_depth": {
+      "hard_threshold_s": 15.08,
+      "warm_ratio_ms": "green",
+      "poll_timeout_s": false
+    }
+  },
+  "flush_window_pct": 60
 }
