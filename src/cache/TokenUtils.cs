@@ -35,10 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftWidth = 5905;
-        public const long RetryEntry = 7230;
-        public const string StepCount = "strict-1";
-        public const long BurstFactor = 3561;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Active,
+            Draft,
+            Retry,
+            Done,
+        }
     }
 }
